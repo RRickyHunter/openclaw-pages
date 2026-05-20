@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenClaw Mastery Accelerator - VIP Upgrade</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --blue:#4F8EFF;
+  --purple:#7B2FBE;
+  --pink:#FF2D87;
+  --green:#22C55E;
+  --gold:#FFB800;
+  --white:#FFFFFF;
+  --off:#F5F5F7;
+  --dark:#0D0D12;
+  --dark2:#16161E;
+  --text:#1D1D1F;
+  --gray:#6E6E73;
+  --lt:#86868B;
+  --grad:linear-gradient(135deg,var(--blue),var(--purple));
+  --grad2:linear-gradient(135deg,var(--purple),var(--pink));
+  --grad3:linear-gradient(135deg,var(--blue),var(--purple),var(--pink));
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--white);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+
+/* Urgency Bar */
+.urgency-bar{background:linear-gradient(90deg,var(--pink),var(--purple));padding:16px 24px;text-align:center;color:var(--white);font-weight:700;font-size:15px;letter-spacing:0.5px}
+.urgency-bar span{background:rgba(255,255,255,0.2);padding:4px 12px;border-radius:20px;margin-left:8px}
+
+/* Navigation */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(24px);border-bottom:1px solid rgba(0,0,0,0.04)}
+.nav-c{max-width:1200px;margin:0 auto;padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:800;font-size:20px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-btn{background:var(--grad);color:var(--white);padding:12px 28px;border-radius:980px;font-size:14px;font-weight:700;text-decoration:none;transition:all 0.3s;border:none;cursor:pointer}
+.nav-btn:hover{transform:scale(1.05);box-shadow:0 4px 20px var(--blue)}
+
+/* Hero */
+.hero{background:var(--dark);padding:100px 24px 80px;text-align:center;position:relative;overflow:hidden;color:var(--white)}
+.hero::before{content:'';position:absolute;top:-400px;left:50%;transform:translateX(-50%);width:1600px;height:1600px;background:radial-gradient(ellipse,rgba(79,142,255,0.12) 0%,rgba(123,43,190,0.08) 30%,transparent 65%);pointer-events:none}
+.hero>*{position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,184,0,0.15);border:1px solid rgba(255,184,0,0.3);padding:10px 24px;border-radius:980px;font-size:13px;font-weight:700;color:var(--gold);margin-bottom:28px}
+.hero h1{font-size:clamp(40px,7vw,72px);font-weight:900;line-height:1.08;letter-spacing:-0.03em;max-width:1000px;margin:0 auto 24px}
+.hero h1 em{font-style:normal;background:var(--grad3);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:clamp(18px,2.5vw,22px);color:rgba(255,255,255,0.6);max-width:800px;margin:0 auto 40px;font-weight:400;line-height:1.6}
+
+/* Price Box */
+.price-box{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:24px;padding:40px;max-width:500px;margin:0 auto 40px;backdrop-filter:blur(10px)}
+.price-label{font-size:14px;color:rgba(255,255,255,0.5);text-transform:uppercase;letter-spacing:2px;margin-bottom:12px}
+.old-price{font-size:28px;color:rgba(255,255,255,0.4);text-decoration:line-through;display:block;margin-bottom:8px}
+.new-price{font-size:72px;font-weight:900;background:var(--grad3);-webkit-background-clip:text;-webkit-text-fill-color:transparent;display:block;line-height:1}
+.price-note{font-size:15px;color:rgba(255,255,255,0.5);margin-top:16px}
+
+/* CTA Button */
+.cta{display:inline-flex;align-items:center;gap:12px;background:var(--grad);color:var(--white);padding:24px 56px;border-radius:980px;font-size:20px;font-weight:800;text-decoration:none;transition:all 0.3s;cursor:pointer;border:none;box-shadow:0 10px 40px rgba(79,142,255,0.4)}
+.cta:hover{transform:translateY(-3px);box-shadow:0 15px 50px rgba(79,142,255,0.5)}
+.cta-note{font-size:14px;color:rgba(255,255,255,0.4);margin-top:20px}
+
+/* What's Included */
+.included{background:var(--white);padding:100px 24px}
+.included-c{max-width:1200px;margin:0 auto}
+.included h2{font-size:clamp(36px,5vw,56px);font-weight:900;text-align:center;margin-bottom:20px}
+.included h2 em{font-style:normal;color:var(--blue)}
+.included-sub{text-align:center;font-size:19px;color:var(--gray);max-width:700px;margin:0 auto 60px;line-height:1.7}
+
+.benefits{display:grid;grid-template-columns:repeat(auto-fit,minmax(350px,1fr));gap:30px}
+.benefit{background:var(--off);border-radius:20px;padding:40px;transition:all 0.4s;border:2px solid transparent}
+.benefit:hover{transform:translateY(-5px);box-shadow:0 20px 60px rgba(0,0,0,0.1);border-color:var(--blue)}
+.benefit-icon{width:70px;height:70px;background:var(--grad);border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:32px;margin-bottom:24px;color:var(--white)}
+.benefit h3{font-size:24px;font-weight:800;margin-bottom:16px}
+.benefit p{font-size:16px;color:var(--gray);line-height:1.7}
+.benefit .value{color:var(--pink);font-weight:700;font-size:15px;margin-top:16px}
+
+/* Bonuses */
+.bonuses{background:var(--dark);padding:100px 24px;color:var(--white)}
+.bonuses-c{max-width:1200px;margin:0 auto}
+.bonuses h2{font-size:clamp(36px,5vw,56px);font-weight:900;text-align:center;margin-bottom:20px}
+.bonuses h2 em{font-style:normal;background:var(--grad3);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.bonuses-sub{text-align:center;font-size:19px;color:rgba(255,255,255,0.6);max-width:700px;margin:0 auto 60px;line-height:1.7}
+
+.bonus-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px}
+.bonus-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:20px;padding:40px;transition:all 0.4s}
+.bonus-card:hover{background:rgba(255,255,255,0.08);transform:translateY(-5px)}
+.bonus-number{width:50px;height:50px;background:var(--grad);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;margin-bottom:24px;color:var(--white)}
+.bonus-card h3{font-size:22px;font-weight:800;margin-bottom:16px}
+.bonus-card p{font-size:16px;color:rgba(255,255,255,0.7);line-height:1.7}
+
+/* Guarantee */
+.guarantee{background:var(--off);padding:100px 24px}
+.guarantee-c{max-width:800px;margin:0 auto;text-align:center}
+.guarantee-badge{width:120px;height:120px;background:var(--grad);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 40px;font-size:60px;color:var(--white);box-shadow:0 20px 60px rgba(79,142,255,0.3)}
+.guarantee h2{font-size:clamp(32px,5vw,48px);font-weight:900;margin-bottom:24px}
+.guarantee p{font-size:18px;color:var(--gray);line-height:1.8;margin-bottom:20px}
+
+/* FAQ */
+.faq{background:var(--white);padding:100px 24px}
+.faq-c{max-width:900px;margin:0 auto}
+.faq h2{font-size:clamp(36px,5vw,56px);font-weight:900;text-align:center;margin-bottom:60px}
+.faq h2 em{font-style:normal;color:var(--blue)}
+
+.faq-item{background:var(--off);border-radius:16px;margin-bottom:16px;overflow:hidden}
+.faq-question{padding:24px 30px;font-size:18px;font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background 0.3s}
+.faq-question:hover{background:rgba(79,142,255,0.05)}
+.faq-answer{padding:0 30px 24px;font-size:16px;color:var(--gray);line-height:1.7;display:none}
+.faq-item.active .faq-answer{display:block}
+.faq-icon{transition:transform 0.3s}
+.faq-item.active .faq-icon{transform:rotate(180deg)}
+
+/* Final CTA */
+.final-cta{background:linear-gradient(135deg,var(--blue),var(--purple));padding:100px 24px;text-align:center;color:var(--white)}
+.final-cta h2{font-size:clamp(36px,5vw,56px);font-weight:900;margin-bottom:24px}
+.final-cta p{font-size:20px;margin-bottom:40px;opacity:0.9;max-width:700px;margin-left:auto;margin-right:auto}
+.final-cta .cta{background:var(--white);color:var(--purple);box-shadow:0 10px 40px rgba(0,0,0,0.2)}
+.final-cta .cta:hover{box-shadow:0 15px 50px rgba(0,0,0,0.3)}
+
+/* Footer */
+footer{background:var(--dark);color:var(--white);padding:60px 24px;text-align:center}
+footer p{opacity:0.5;font-size:14px}
+
+@media(max-width:768px){
+  .hero{padding:80px 20px 60px}
+  .included,.bonuses,.guarantee,.faq,.final-cta{padding:60px 20px}
+  .benefits,.bonus-grid{grid-template-columns:1fr}
+  .benefit,.bonus-card{padding:30px}
+  .new-price{font-size:56px}
+  .cta{padding:20px 40px;font-size:18px}
+}
+</style>
+</head>
+<body>
+
+<div class="urgency-bar">
+  ⚡ ONE-TIME OFFER — This Page Expires In <span id="timer">15:00</span>
+</div>
+
+<nav>
+  <div class="nav-c">
+    <div class="logo">OpenClaw Summit</div>
+    <button onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})" class="nav-btn">Get Instant Access →</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">🚀 EXCLUSIVE UPGRADE OFFER</div>
+  <h1>
+    Want To <em>Accelerate</em> Your Results?
+  </h1>
+  <p class="hero-sub">
+    Join the <strong>OpenClaw Mastery Accelerator</strong> and get 6 weeks of intensive coaching, done-for-you templates, and direct access to our expert team to fast-track your success.
+  </p>
+  
+  <div class="price-box">
+    <div class="price-label">Limited Time Offer</div>
+    <span class="old-price">$1,997</span>
+    <span class="new-price">$497</span>
+    <p class="price-note">One-time payment • Instant access • 30-day guarantee</p>
+  </div>
+  
+  <button id="order" class="cta">YES! Upgrade To Accelerator →</button>
+  <p class="cta-note">🔒 Secure checkout • 30-day money-back guarantee</p>
+</section>
+
+<section class="included">
+  <div class="included-c">
+    <h2>Here's What You Get With The <em>Accelerator</em></h2>
+    <p class="included-sub">Everything you need to go from beginner to expert in record time</p>
+    
+    <div class="benefits">
+      <div class="benefit">
+        <div class="benefit-icon">🎯</div>
+        <h3>6-Week Intensive Coaching</h3>
+        <p>Weekly live coaching calls with Chad and the OpenClaw team. Get your questions answered, receive personalized feedback, and stay accountable to your goals.</p>
+        <div class="value">Value: $2,997</div>
+      </div>
+      
+      <div class="benefit">
+        <div class="benefit-icon">📚</div>
+        <h3>Complete Template Library</h3>
+        <p>Access our entire vault of 50+ proven OpenClaw skill templates. Sales pages, email sequences, automation workflows, and more - all ready to customize and deploy.</p>
+        <div class="value">Value: $1,997</div>
+      </div>
+      
+      <div class="benefit">
+        <div class="benefit-icon">👥</div>
+        <h3>Private Accelerator Community</h3>
+        <p>Join an exclusive group of serious builders. Network, collaborate, and get support from peers who are committed to achieving real results.</p>
+        <div class="value">Value: $997</div>
+      </div>
+      
+      <div class="benefit">
+        <div class="benefit-icon">⚡</div>
+        <h3>Priority Support & Reviews</h3>
+        <p>Get your skills reviewed by our team before you launch. Priority email support with 24-hour response time to keep you moving forward.</p>
+        <div class="value">Value: $797</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bonuses">
+  <div class="bonuses-c">
+    <h2>Plus These <em>Exclusive Bonuses</em></h2>
+    <p class="bonuses-sub">Available only to Accelerator members</p>
+    
+    <div class="bonus-grid">
+      <div class="bonus-card">
+        <div class="bonus-number">1</div>
+        <h3>Launch Checklist System</h3>
+        <p>Our step-by-step launch framework that has generated over $2M in sales. Every task, timeline, and resource you need for a successful launch.</p>
+      </div>
+      
+      <div class="bonus-card">
+        <div class="bonus-number">2</div>
+        <h3>Client Acquisition Scripts</h3>
+        <p>Word-for-word scripts for landing your first (or next) 10 clients. Includes DM templates, email sequences, and sales call frameworks.</p>
+      </div>
+      
+      <div class="bonus-card">
+        <div class="bonus-number">3</div>
+        <h3>Automation Blueprints</h3>
+        <p>Pre-built automation workflows for onboarding, delivery, follow-up, and scaling. Import and customize in minutes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="guarantee">
+  <div class="guarantee-c">
+    <div class="guarantee-badge">✓</div>
+    <h2>30-Day "Love It or Leave It" Guarantee</h2>
+    <p>Join the Accelerator risk-free. If you're not completely satisfied with the program within 30 days, just let us know and we'll refund every penny. No questions asked.</p>
+    <p>We're taking all the risk because we're confident this program will transform your business.</p>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="faq-c">
+    <h2>Frequently Asked <em>Questions</em></h2>
+    
+    <div class="faq-item">
+      <div class="faq-question">
+        How is this different from the free summit?
+        <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        The summit gives you the foundation. The Accelerator gives you implementation, coaching, templates, and direct support to actually build and launch your skills. It's the difference between learning and doing.
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question">
+        What if I can't attend the live calls?
+        <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        All calls are recorded and uploaded within 24 hours. You also get lifetime access to the recordings, so you can watch (and re-watch) at your convenience.
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question">
+        Do I need technical skills?
+        <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        Not at all! The Accelerator is designed for beginners. We provide templates, scripts, and step-by-step guidance. If you can follow instructions, you can succeed.
+      </div>
+    </div>
+    
+    <div class="faq-item">
+      <div class="faq-question">
+        How long do I have access?
+        <span class="faq-icon">▼</span>
+      </div>
+      <div class="faq-answer">
+        You get lifetime access to all course materials, templates, and recordings. The community access and coaching calls are for the 6-week program period.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <h2>Ready To Accelerate Your Success?</h2>
+  <p>Join the OpenClaw Mastery Accelerator today and get everything you need to build a thriving skill business in record time.</p>
+  <button class="cta">YES! Give Me Instant Access →</button>
+</section>
+
+<footer>
+  <p>&copy; 2026 OpenClaw Summit. All rights reserved.</p>
+</footer>
+
+<script>
+// Countdown Timer
+function startTimer() {
+  let minutes = 15;
+  let seconds = 0;
+  const timerEl = document.getElementById('timer');
+  
+  setInterval(() => {
+    if (seconds === 0) {
+      if (minutes === 0) return;
+      minutes--;
+      seconds = 59;
+    } else {
+      seconds--;
+    }
+    timerEl.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  }, 1000);
+}
+startTimer();
+
+// FAQ Toggle
+document.querySelectorAll('.faq-question').forEach(q => {
+  q.addEventListener('click', () => {
+    q.parentElement.classList.toggle('active');
+  });
+});
+</script>
+
+</body>
+</html>

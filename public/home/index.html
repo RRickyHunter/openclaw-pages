@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Riccardo Romano - Business Architect & OpenClaw Ecosystem</title>
+  <meta name="description" content="Trasforma il caos del tuo business in chiarezza e sistemi. Prenota una call con Riccardo Romano." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold: #ffb400;
+      --orange: #ff7a00;
+      --ink: #10203e;
+      --muted: #4b5b7a;
+      --radius: 24px;
+      --max: 900px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+      color: #fff;
+      background: radial-gradient(circle at top, #2e6bff 0%, #123c8f 28%, #07142d 76%);
+      min-height: 100vh;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .container {
+      width: min(var(--max), 100%);
+      text-align: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: .5rem 1rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.13);
+      font-weight: 700;
+      font-size: .85rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -.03em;
+      margin-bottom: 1rem;
+    }
+
+    h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--gold), var(--orange));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 1.25rem;
+      color: rgba(255,255,255,.85);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .cta-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 64px;
+      padding: 0 2.5rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      color: var(--ink);
+      font-weight: 900;
+      font-size: 1.1rem;
+      text-decoration: none;
+      box-shadow: 0 14px 40px rgba(255,122,0,.35);
+      transition: transform .2s ease, box-shadow .2s ease;
+      margin-bottom: 1rem;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 50px rgba(255,122,0,.5);
+    }
+
+    .micro {
+      font-size: .9rem;
+      color: rgba(255,255,255,.6);
+    }
+
+    .divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--orange));
+      margin: 3rem auto;
+      border-radius: 3px;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .link-card {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 16px;
+      padding: 1.2rem 1.5rem;
+      min-width: 200px;
+      text-decoration: none;
+      color: #fff;
+      transition: background .2s, transform .2s;
+    }
+
+    .link-card:hover {
+      background: rgba(255,255,255,.15);
+      transform: translateY(-2px);
+    }
+
+    .link-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: .3rem;
+    }
+
+    .link-card p {
+      font-size: .85rem;
+      color: rgba(255,255,255,.6);
+    }
+
+    .avatar {
+      margin-bottom: 1.5rem;
+    }
+
+    .avatar img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid var(--gold);
+      box-shadow: 0 8px 30px rgba(255,180,0,.3);
+      object-fit: cover;
+    }
+
+    footer {
+      margin-top: 4rem;
+      font-size: .85rem;
+      color: rgba(255,255,255,.4);
+    }
+
+    @media (max-width: 600px) {
+      .links { flex-direction: column; align-items: center; }
+      .link-card { width: 100%; max-width: 300px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="avatar">
+      <img src="riccardo-avatar.jpg" alt="Riccardo Romano">
+    </div>
+    <span class="eyebrow">Business Architect & Coach</span>
+    
+    <h1>Trasforma il <em>caos</em> del tuo business in <em>chiarezza</em> e sistemi.</h1>
+    
+    <p class="subtitle">
+      Aiuto business owner e professionisti a liberarsi dall'operatività, 
+      automatizzare i processi e ritrovare tempo per ciò che conta davvero.
+    </p>
+
+    <a href="https://calendar.app.google/RJyxGPqhs3HRQpew8" class="cta-button">
+      Prenota una Call Gratuita →
+    </a>
+    
+    <p class="micro">30 minuti per capire se possiamo lavorare insieme</p>
+
+    <div class="divider"></div>
+
+    <div class="links">
+      <a href="https://form.jotform.com/261255147856059" class="link-card">
+        <h3>🎯 Scopri cosa sta rallentando davvero il tuo business</h3>
+        <p>Se arrivi a sera distrutto, con la sensazione di aver fatto mille cose ma di non aver concluso abbastanza, questo test ti aiuta a capire dove si trova il vero collo di bottiglia.</p>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 Riccardo Romano · Tutti i diritti riservati
+  </footer>
+
+</body>
+</html>

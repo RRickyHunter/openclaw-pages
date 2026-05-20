@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenClaw Activation Experience</title>
+  <meta name="description" content="Attiva un sistema che lavora al posto tuo. OpenClaw Activation Experience per coach, consulenti e formatori." />
+  <style>
+    :root {
+      --primary: #00d4ff;
+      --primary-dark: #00a8cc;
+      --primary-glow: rgba(0, 212, 255, 0.32);
+      --accent: #7c3aed;
+      --bg: #07080d;
+      --bg-alt: #0d1018;
+      --bg-card: #121621;
+      --text: #eef4ff;
+      --muted: #98a2b7;
+      --border: #232a3a;
+      --danger: #ff5d5d;
+      --success: #22c55e;
+      --shadow: 0 25px 80px rgba(0,0,0,.45);
+      --hero-grad: linear-gradient(180deg, #07080d 0%, #0b0f18 45%, #07111a 75%, #07080d 100%);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .container-narrow { width: min(760px, calc(100% - 40px)); margin: 0 auto; }
+    .hero {
+      position: relative;
+      padding: 54px 0 96px;
+      background: var(--hero-grad);
+      overflow: hidden;
+    }
+    .hero:before {
+      content:"";
+      position:absolute; inset:0;
+      background: radial-gradient(circle at 50% 18%, rgba(0,212,255,.12), transparent 30%), radial-gradient(circle at 85% 25%, rgba(124,58,237,.12), transparent 18%), radial-gradient(circle at 10% 35%, rgba(0,212,255,.08), transparent 16%);
+      pointer-events:none;
+    }
+    .hero-grid {
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      align-items:center;
+      position:relative;
+      z-index:1;
+    }
+    .eyebrow {
+      display:inline-block;
+      margin-bottom:4px;
+      padding:8px 14px;
+      border:1px solid rgba(0,212,255,.2);
+      border-radius:999px;
+      color:var(--primary);
+      background:rgba(0,212,255,.07);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    h1 {
+      margin:0 0 18px;
+      font-size: clamp(2rem, 4.5vw, 3.8rem);
+      line-height: 1.02;
+      letter-spacing:-.04em;
+      font-weight:900;
+    }
+    .highlight { color: var(--primary); }
+    .hero-sub {
+      font-size: clamp(1.05rem, 1.6vw, 1.26rem);
+      color: var(--muted);
+      max-width: 760px;
+      margin: 0 auto 24px;
+      text-align: center;
+    }
+    .hero-bullets {
+      display:grid;
+      gap:10px;
+      margin: 0 auto 28px;
+      padding:0;
+      list-style:none;
+      max-width: 760px;
+    }
+    .hero-bullets li { color: var(--text); display:flex; gap:10px; align-items:flex-start; justify-content:center; text-align:center; }
+    .hero-bullets li span { color: var(--primary); font-weight:800; }
+    .cta-row { display:flex; flex-wrap:wrap; gap:14px; margin-top:12px; justify-content:center; }
+    .btn {
+      display:inline-flex; align-items:center; justify-content:center;
+      min-width:220px;
+      padding:16px 24px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:800;
+      transition:.18s ease;
+      border:1px solid transparent;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #00d4ff, #4fe2ff);
+      color:#051019;
+      box-shadow: 0 0 20px var(--primary-glow), 0 10px 30px rgba(0,212,255,.18);
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      border-color: rgba(255,255,255,.1);
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .hero-visual {
+      display:flex; align-items:center; justify-content:center;
+      margin-top: 8px;
+    }
+    .hero-card {
+      position:relative;
+      border:1px solid rgba(0,212,255,.16);
+      border-radius:22px;
+      overflow:hidden;
+      background: rgba(255,255,255,.02);
+      box-shadow: var(--shadow);
+      width: min(980px, 100%);
+    }
+    .hero-card img { width:100%; height:auto; }
+    .hero-card:after {
+      content:"";
+      position:absolute; inset:auto 0 0 0; height:30%;
+      background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.38));
+      pointer-events:none;
+    }
+    .section { padding: 90px 0; }
+    .section.dark { background: var(--bg-alt); }
+    .section-title {
+      font-size: clamp(1.9rem, 3.8vw, 3rem);
+      line-height:1.08;
+      letter-spacing:-.03em;
+      margin:0 0 18px;
+      font-weight:900;
+    }
+    .section-sub {
+      color:var(--muted);
+      font-size:1.08rem;
+      max-width:720px;
+      margin:0 0 40px;
+    }
+    .grid-2 { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+    .grid-3 { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; }
+    .card {
+      background: var(--bg-card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:28px;
+      box-shadow: var(--shadow);
+    }
+    .card h3 { margin:0 0 10px; font-size:1.15rem; }
+    .card p { margin:0 0 10px; color:var(--muted); }
+    .pain-card { border-color: rgba(255,93,93,.16); position:relative; }
+    .pain-card:before {
+      content:""; position:absolute; left:0; top:0; bottom:0; width:3px;
+      background: linear-gradient(180deg, #ff5d5d, #ff9b6b);
+      border-radius:18px 0 0 18px;
+    }
+    .solution-card { border-color: rgba(34,197,94,.16); position:relative; }
+    .solution-card:before {
+      content:""; position:absolute; left:0; top:0; bottom:0; width:3px;
+      background: linear-gradient(180deg, #22c55e, #4ade80);
+      border-radius:18px 0 0 18px;
+    }
+    .quote {
+      border-left: 3px solid var(--primary);
+      padding-left: 18px;
+      margin: 22px 0;
+      font-size: clamp(1.15rem, 2vw, 1.45rem);
+      font-weight: 800;
+      line-height: 1.35;
+      color: var(--text);
+    }
+    .offer {
+      text-align:center;
+      background: linear-gradient(180deg, rgba(0,212,255,.05), rgba(124,58,237,.05));
+      border:1px solid rgba(0,212,255,.16);
+    }
+    .price {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight:900;
+      margin: 10px 0 2px;
+      color:#fff;
+    }
+    .price-old {
+      text-decoration: line-through;
+      color: var(--muted);
+      font-size: 1.2rem;
+    }
+    .list { margin:0; padding-left:18px; }
+    .list li { margin-bottom:10px; color:var(--muted); }
+    .check li { color:var(--text); }
+    .check li::marker { color: var(--success); }
+    .xmark li { color:var(--muted); }
+    .xmark li::marker { color: var(--danger); }
+    .mini-note { color: var(--muted); font-size: .92rem; }
+    .footer-cta {
+      text-align:center;
+      padding: 42px 28px;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:24px;
+      background: linear-gradient(180deg, rgba(0,212,255,.05), rgba(255,255,255,.02));
+    }
+    .includes-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .includes-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .includes-list li:last-child { border-bottom: none; }
+    .includes-list .icon {
+      color: var(--primary);
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    @media (max-width: 920px) {
+      .hero-grid, .grid-2, .grid-3 { grid-template-columns:1fr; }
+      .hero { padding-top: 54px; }
+      .cta-row { flex-direction:column; }
+      .btn { width:100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div style="text-align:center;">
+        <div class="eyebrow">OpenClaw Activation Experience</div>
+        <h1>Hai già provato l'AI.<br>Ma non hai ancora un <span class="highlight">sistema</span> che lavora per te.</h1>
+        <p class="hero-sub">
+          Per coach, consulenti e formatori che usano ChatGPT, Claude o altri tool AI ogni giorno — ma tra caos, troppi prompt e dispersione continua, non hanno ancora costruito un sistema reale dentro il loro business.
+        </p>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <img src="/ocae/hero.jpg" alt="OpenClaw Activation Experience hero image" />
+        </div>
+      </div>
+      <div style="text-align:center;">
+        <ul class="hero-bullets">
+          <li><span>•</span> Smetti di usare l'AI "a mano"</li>
+          <li><span>•</span> Attivi un sistema reale in pochi giorni</li>
+          <li><span>•</span> Meno dispersione, più output concreto</li>
+        </ul>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://quiz.riccardoromano.biz/oce">Candidati / Prenota una call</a>
+          <a class="btn btn-secondary" href="https://buy.stripe.com/6oU28r3rAcYmfu30KVeUU00">Accedi subito — €497</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE 1: IL PROBLEMA -->
+  <section class="section dark">
+    <div class="container">
+      <div class="container-narrow" style="text-align:center; margin-bottom: 38px;">
+        <h2 class="section-title">La frustrazione silenziosa</h2>
+        <p class="section-sub" style="margin:0 auto;">Lo sai che l'AI può cambiare il tuo business. Lo senti. Lo vedi ovunque. Eppure, ogni giorno...</p>
+      </div>
+      <div class="grid-2">
+        <div class="card pain-card">
+          <h3>Apri ChatGPT, scrivi un prompt...</h3>
+          <p>Ottieni una risposta... e poi devi rifare tutto da capo la volta dopo. Stesso lavoro, stessa fatica, zero accumulo.</p>
+        </div>
+        <div class="card pain-card">
+          <h3>Hai provato 15 tool diversi</h3>
+          <p>Ma nessuno si integra davvero con il tuo flusso di lavoro. Ogni tool è un'isola, e tu fai da ponte.</p>
+        </div>
+        <div class="card pain-card">
+          <h3>Passi ore a "sperimentare"</h3>
+          <p>A fine giornata l'unico risultato concreto è che hai perso tempo. Movimento senza progresso.</p>
+        </div>
+        <div class="card pain-card">
+          <h3>Corri dietro alla tecnologia</h3>
+          <p>Invece di farla lavorare per te. Sempre in reazione, mai in controllo.</p>
+        </div>
+      </div>
+      <div class="container-narrow">
+        <div class="quote">Non è che l'AI non funziona. È che non hai un sistema. Hai i pezzi del puzzle sparsi sul tavolo, ma nessuno ti ha mai mostrato come assemblarli.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE 2: LA SVOLTA -->
+  <section class="section">
+    <div class="container">
+      <div class="container-narrow" style="text-align:center; margin-bottom: 38px;">
+        <h2 class="section-title">Dallo sperimentatore al sistemista</h2>
+        <p class="section-sub" style="margin:0 auto;">Immagina di svegliarti domani mattina e sapere che...</p>
+      </div>
+      <div class="grid-2">
+        <div class="card solution-card">
+          <h3>I tuoi contenuti social sono già pronti</h3>
+          <p>Pianificati e pronti da pubblicare. Non devi più inventarti cosa postare ogni giorno.</p>
+        </div>
+        <div class="card solution-card">
+          <h3>Le risposte alle email si scrivono da sole</h3>
+          <p>Nel tuo tono, con la tua voce. Le domande frequenti non ti rubano più tempo.</p>
+        </div>
+        <div class="card solution-card">
+          <h3>I lead vengono qualificati automaticamente</h3>
+          <p>Senza screening manuale. Solo le opportunità giuste arrivano sul tuo tavolo.</p>
+        </div>
+        <div class="card solution-card">
+          <h3>Hai un assistente AI che conosce il tuo business</h3>
+          <p>I tuoi clienti, il tuo metodo. Lavora 24/7 senza mai stancarsi.</p>
+        </div>
+      </div>
+      <div class="container-narrow">
+        <div class="quote">Non è fantascienza. È quello che succede quando smetti di usare l'AI "a mano" e attivi un sistema.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE 3: COS'È -->
+  <section class="section dark">
+    <div class="container">
+      <div class="container-narrow" style="text-align:center; margin-bottom: 38px;">
+        <h2 class="section-title">Cos'è OpenClaw Activation Experience</h2>
+        <p class="section-sub" style="margin:0 auto;">Non è un corso. Non è un tool. Non è un altro tutorial da guardare e dimenticare.</p>
+      </div>
+      <div class="card" style="max-width: 900px; margin: 0 auto 28px;">
+        <div class="quote" style="margin: 0;">È un programma di attivazione sistemica che in 3-5 giorni ti porta da "uso l'AI a caso" a "ho un sistema che lavora al posto mio".</div>
+      </div>
+      <div style="text-align:center; margin-bottom: 34px;">
+        <h3 style="font-size: 1.4rem; margin-bottom: 8px;">Cosa include:</h3>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>1. Attivazione Sistema OpenClaw</h3>
+          <p>1 mese incluso. Accesso completo alla piattaforma con il tuo agente AI personale configurato e pronto all'uso. Non devi installare nulla, configurare server, o imparare linguaggi di programmazione.</p>
+        </div>
+        <div class="card">
+          <h3>2. Workshop Guidato 3-5 Giorni</h3>
+          <p>Live + Replay. Ti guido passo dopo passo: come strutturare il tuo primo workflow automatizzato, creare prompt consistenti, collegare OpenClaw ai tuoi strumenti esistenti.</p>
+        </div>
+        <div class="card">
+          <h3>3. Gruppo Telegram VIP</h3>
+          <p>Accesso diretto a me e agli altri partecipanti. Domande rapide, feedback sui tuoi workflow, condivisione di best practice. Non è un gruppo "teorico" — è dove risolviamo problemi concreti.</p>
+        </div>
+        <div class="card">
+          <h3>4. 3 Sessioni Q&A Live</h3>
+          <p>Tre incontri dedicati dove porti i tuoi casi specifici e li risolviamo insieme. Non genericità: il tuo business, i tuoi clienti, i tuoi processi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE 4: COSA CAMBIA -->
+  <section class="section">
+    <div class="container grid-2">
+      <div>
+        <h2 class="section-title" style="margin-bottom: 22px;">Cosa cambia dopo</h2>
+        <ul class="list check">
+          <li><strong>Un sistema attivo che lavora per te</strong> — non una lista di "cose da provare"</li>
+          <li><strong>Workflow automatizzati</strong> per almeno 3 task ricorrenti del tuo business</li>
+          <li><strong>Un agente AI che conosce il tuo metodo</strong> e risponde al posto tuo in modo coerente</li>
+          <li><strong>Chiarezza totale</strong> su cosa automatizzare subito e cosa delegare più avanti</li>
+          <li><strong>1 mese di OpenClaw attivo</strong> per consolidare e espandere il tuo sistema</li>
+        </ul>
+      </div>
+      <div class="card offer" id="call">
+        <h3>OpenClaw Activation Experience</h3>
+        <div class="price-old">Valore totale: €1.088</div>
+        <div class="price">€497</div>
+        <p class="mini-note">Una tantum — nessun abbonamento nascosto</p>
+        <div style="text-align: left; margin: 22px 0;">
+          <ul class="includes-list">
+            <li><span class="icon">✓</span> Attivazione sistema OpenClaw (1 mese)</li>
+            <li><span class="icon">✓</span> Workshop guidato 3-5 giorni</li>
+            <li><span class="icon">✓</span> Gruppo Telegram VIP</li>
+            <li><span class="icon">✓</span> 3 Sessioni Q&A Live</li>
+          </ul>
+        </div>
+        <div class="cta-row" style="flex-direction: column;">
+          <a class="btn btn-primary" href="https://quiz.riccardoromano.biz/oce">Candidati / Prenota una call</a>
+          <a class="btn btn-secondary" href="https://buy.stripe.com/6oU28r3rAcYmfu30KVeUU00">Accedi subito — €497</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE 5: PER CHI È -->
+  <section class="section dark">
+    <div class="container">
+      <div class="grid-2">
+        <div class="card">
+          <h3 style="color: var(--success);">È per te se:</h3>
+          <ul class="list check">
+            <li>Sei coach, consulente, formatore o professionista con un business esistente</li>
+            <li>Già usi l'AI ma senti di non sfruttarne nemmeno il 10% del potenziale</li>
+            <li>Vuoi velocità e risultati, non teoria e concetti astratti</li>
+            <li>Sei disposto a investire 3-5 giorni intensivi per costruire un asset che ti serve per i prossimi anni</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="color: var(--danger);">NON è per te se:</h3>
+          <ul class="list xmark">
+            <li>Cerci "trucchi magici" senza voler mettere mano al tuo business</li>
+            <li>Non hai ancora un'offerta o un cliente</li>
+            <li>Preferisci guardare contenuti gratuiti per mesi senza mai agire</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE 6: GARANZIA -->
+  <section class="section">
+    <div class="container-narrow" style="text-align: center;">
+      <h2 class="section-title">La mia "garanzia"</h2>
+      <p class="section-sub" style="margin: 0 auto 22px;">Non offro "soddisfazione garantita o rimborsati" perché non vendo promesse — vendo un sistema da costruire insieme.</p>
+      <div class="card" style="text-align: left;">
+        <p>Ma posso garantirti questo: <strong>se segui il programma, partecipi ai workshop, applichi ciò che ti mostro e alla fine non hai almeno 3 workflow automatizzati che ti fanno risparmiare ore ogni settimana, ti rimango accanto finché non ce la fai.</strong></p>
+        <p style="margin-bottom: 0;">Perché il mio obiettivo non è venderti un corso. È che tu abbia un sistema che funziona.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER CTA -->
+  <section class="section dark">
+    <div class="container-narrow footer-cta">
+      <h2 class="section-title" style="font-size:2.4rem; margin-bottom:12px;">Da strumenti sparsi a sistema attivo</h2>
+      <p class="section-sub" style="margin:0 auto 18px;">Se oggi stai usando l'AI in modo confuso, sparso e manuale, questa esperienza serve a fare un passaggio netto.</p>
+      <div class="quote" style="text-align:left; max-width:640px; margin:18px auto;">Non impari OpenClaw. Lo attivi e lo fai lavorare per te.</div>
+      <div class="cta-row" style="justify-content:center;">
+        <a class="btn btn-primary" href="https://quiz.riccardoromano.biz/oce">Candidati / Prenota una call</a>
+        <a class="btn btn-secondary" href="https://buy.stripe.com/6oU28r3rAcYmfu30KVeUU00">Accedi subito — €497</a>
+      </div>
+      <p class="mini-note" id="accesso" style="margin-top:18px;">Call primaria per traffico freddo. Accesso diretto disponibile per chi è già convinto.</p>
+      <p style="margin-top: 28px; color: var(--muted); font-size: 0.9rem;">
+        <strong>Riccardo Romano</strong><br>
+        Business Architect & OpenClaw Ecosystem Founder
+      </p>
+    </div>
+  </section>
+
+</body>
+</html>

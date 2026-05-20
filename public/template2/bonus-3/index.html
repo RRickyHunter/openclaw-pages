@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Profit Tracker | Riccardo Romano</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a1a;
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(124,58,237,0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(168,85,247,0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(124,58,237,0.05) 0%, transparent 70%);
+            animation: bgPulse 8s ease-in-out infinite;
+        }
+        
+        @keyframes bgPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(124,58,237,0.6);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+        
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 2s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 4s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 1s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 3s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 5s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 2.5s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 4.5s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 1.5s; }
+        .particle:nth-child(10) { left: 5%; animation-delay: 3.5s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .logo {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            animation: logoGlow 2s ease-in-out infinite;
+        }
+        
+        @keyframes logoGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #fff 0%, #a855f7 50%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            color: #a0a0b0;
+        }
+        
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .metric-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #7c3aed 0%, #a855f7 100%);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .metric-card:hover::before {
+            transform: scaleX(1);
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(124, 58, 237, 0.4);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.2);
+        }
+        
+        .metric-card.profit {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(76, 175, 80, 0.05) 100%);
+            border-color: rgba(76, 175, 80, 0.3);
+        }
+        
+        .metric-card.profit::before {
+            background: linear-gradient(90deg, #4caf50 0%, #66bb6a 100%);
+        }
+        
+        .metric-card.roi {
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(168, 85, 247, 0.05) 100%);
+            border-color: rgba(124, 58, 237, 0.3);
+        }
+        
+        .metric-label {
+            font-size: 0.85rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        
+        .metric-value {
+            font-size: 2rem;
+            font-weight: 800;
+            animation: valuePulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes valuePulse {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+        }
+        
+        .metric-card.revenue .metric-value {
+            color: #4caf50;
+        }
+        
+        .metric-card.expenses .metric-value {
+            color: #f44336;
+        }
+        
+        .metric-card.profit .metric-value {
+            color: #4caf50;
+        }
+        
+        .metric-card.roi .metric-value {
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .input-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            backdrop-filter: blur(10px);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .input-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #7c3aed 0%, #a855f7 100%);
+        }
+        
+        .section-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .input-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        
+        .input-group {
+            margin-bottom: 15px;
+        }
+        
+        .input-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #e0e0e8;
+            font-size: 0.95rem;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid rgba(124, 58, 237, 0.2);
+            border-radius: 12px;
+            background: rgba(0, 0, 0, 0.3);
+            color: #fff;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: #7c3aed;
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+        }
+        
+        .input-group input::placeholder {
+            color: #666;
+        }
+        
+        .charts-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            backdrop-filter: blur(10px);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .charts-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #7c3aed 0%, #a855f7 100%);
+        }
+        
+        .chart-container {
+            height: 250px;
+            position: relative;
+            margin-top: 20px;
+        }
+        
+        .simple-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 200px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+        }
+        
+        .chart-bar {
+            width: 60px;
+            background: linear-gradient(180deg, #7c3aed 0%, #a855f7 100%);
+            border-radius: 8px 8px 0 0;
+            transition: all 0.5s ease;
+            position: relative;
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+        }
+        
+        .chart-bar.revenue {
+            background: linear-gradient(180deg, #4caf50 0%, #66bb6a 100%);
+            box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+        }
+        
+        .chart-bar.expenses {
+            background: linear-gradient(180deg, #f44336 0%, #ef5350 100%);
+            box-shadow: 0 0 20px rgba(244, 67, 54, 0.3);
+        }
+        
+        .chart-bar.profit {
+            background: linear-gradient(180deg, #2196f3 0%, #42a5f5 100%);
+            box-shadow: 0 0 20px rgba(33, 150, 243, 0.3);
+        }
+        
+        .chart-label {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            color: #888;
+            white-space: nowrap;
+        }
+        
+        .chart-value {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        
+        .breakdown-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .breakdown-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #7c3aed 0%, #a855f7 100%);
+        }
+        
+        .breakdown-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .breakdown-item:last-child {
+            border-bottom: none;
+        }
+        
+        .breakdown-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .breakdown-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px currentColor;
+        }
+        
+        .breakdown-dot.revenue { background: #4caf50; color: rgba(76,175,80,0.5); }
+        .breakdown-dot.expenses { background: #f44336; color: rgba(244,67,54,0.5); }
+        .breakdown-dot.profit { background: #2196f3; color: rgba(33,150,243,0.5); }
+        
+        .breakdown-value {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .cta-section {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.2) 0%, rgba(168, 85, 247, 0.1) 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 50%);
+            animation: ctaGlow 4s ease-in-out infinite;
+        }
+        
+        @keyframes ctaGlow {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+        
+        .cta-section > * { position: relative; z-index: 1; }
+        
+        .cta-section p {
+            color: #a0a0b0;
+            margin-bottom: 20px;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+            border: none;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .cta-btn:hover::before {
+            left: 100%;
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.5);
+        }
+        
+        .save-indicator {
+            display: inline-block;
+            margin-left: 10px;
+            font-size: 0.85rem;
+            color: #4caf50;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .save-indicator.show {
+            opacity: 1;
+        }
+        
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 1.6rem;
+            }
+            
+            .metric-value {
+                font-size: 1.5rem;
+            }
+            
+            .input-section, .charts-section, .breakdown-section {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <div class="logo">Riccardo Romano Bonus</div>
+            <h1>Course Profit Tracker</h1>
+            <p class="subtitle">Track your revenue, expenses, and profitability in real-time</p>
+        </div>
+        
+        <div class="dashboard">
+            <div class="metric-card revenue">
+                <div class="metric-label">Total Revenue</div>
+                <div class="metric-value" id="totalRevenue">$0</div>
+            </div>
+            <div class="metric-card expenses">
+                <div class="metric-label">Total Expenses</div>
+                <div class="metric-value" id="totalExpenses">$0</div>
+            </div>
+            <div class="metric-card profit">
+                <div class="metric-label">Net Profit</div>
+                <div class="metric-value" id="netProfit">$0</div>
+            </div>
+            <div class="metric-card roi">
+                <div class="metric-label">ROI</div>
+                <div class="metric-value" id="roi">0%</div>
+            </div>
+        </div>
+        
+        <div class="input-section">
+            <h2 class="section-title">
+                📊 Enter Your Numbers
+                <span class="save-indicator" id="saveIndicator">✓ Saved</span>
+            </h2>
+            <div class="input-grid">
+                <div>
+                    <div class="input-group">
+                        <label for="coursePrice">Course Price ($)</label>
+                        <input type="number" id="coursePrice" placeholder="97" value="97">
+                    </div>
+                    <div class="input-group">
+                        <label for="totalStudents">Total Students</label>
+                        <input type="number" id="totalStudents" placeholder="0" value="0">
+                    </div>
+                </div>
+                <div>
+                    <div class="input-group">
+                        <label for="adSpend">Ad Spend ($)</label>
+                        <input type="number" id="adSpend" placeholder="0" value="0">
+                    </div>
+                    <div class="input-group">
+                        <label for="otherExpenses">Other Expenses ($)</label>
+                        <input type="number" id="otherExpenses" placeholder="0" value="0">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="charts-section">
+            <h2 class="section-title">📈 Profit Visualization</h2>
+            <div class="chart-container">
+                <div class="simple-chart">
+                    <div class="chart-bar revenue" id="revenueBar" style="height: 0%">
+                        <span class="chart-value" id="revenueBarValue">$0</span>
+                        <span class="chart-label">Revenue</span>
+                    </div>
+                    <div class="chart-bar expenses" id="expensesBar" style="height: 0%">
+                        <span class="chart-value" id="expensesBarValue">$0</span>
+                        <span class="chart-label">Expenses</span>
+                    </div>
+                    <div class="chart-bar profit" id="profitBar" style="height: 0%">
+                        <span class="chart-value" id="profitBarValue">$0</span>
+                        <span class="chart-label">Profit</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="breakdown-section">
+            <h2 class="section-title">📋 Financial Breakdown</h2>
+            <div class="breakdown-item">
+                <div class="breakdown-label">
+                    <div class="breakdown-dot revenue"></div>
+                    <span>Gross Revenue</span>
+                </div>
+                <div class="breakdown-value" id="breakdownRevenue">$0</div>
+            </div>
+            <div class="breakdown-item">
+                <div class="breakdown-label">
+                    <div class="breakdown-dot expenses"></div>
+                    <span>Total Expenses</span>
+                </div>
+                <div class="breakdown-value" id="breakdownExpenses">$0</div>
+            </div>
+            <div class="breakdown-item">
+                <div class="breakdown-label">
+                    <div class="breakdown-dot profit"></div>
+                    <span>Net Profit</span>
+                </div>
+                <div class="breakdown-value" id="breakdownProfit">$0</div>
+            </div>
+            <div class="breakdown-item" style="margin-top: 15px; padding-top: 15px; border-top: 2px solid rgba(255,255,255,0.1);">
+                <div class="breakdown-label">
+                    <span style="font-weight: 700;">Profit Per Student</span>
+                </div>
+                <div class="breakdown-value" id="profitPerStudent">$0</div>
+            </div>
+            <div class="breakdown-item">
+                <div class="breakdown-label">
+                    <span style="font-weight: 700;">Cost Per Acquisition</span>
+                </div>
+                <div class="breakdown-value" id="costPerAcquisition">$0</div>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <p>Ready to scale your course business with AI-powered automation?</p>
+            <a href="https://go.openclawcracked.com/riccardoromano.bizb" class="cta-btn">Scale With Riccardo Romano</a>
+        </div>
+    </div>
+    
+    <script>
+        const inputs = {
+            coursePrice: document.getElementById('coursePrice'),
+            totalStudents: document.getElementById('totalStudents'),
+            adSpend: document.getElementById('adSpend'),
+            otherExpenses: document.getElementById('otherExpenses')
+        };
+        
+        function calculate() {
+            const price = parseFloat(inputs.coursePrice.value) || 0;
+            const students = parseInt(inputs.totalStudents.value) || 0;
+            const ads = parseFloat(inputs.adSpend.value) || 0;
+            const other = parseFloat(inputs.otherExpenses.value) || 0;
+            
+            const revenue = price * students;
+            const expenses = ads + other;
+            const profit = revenue - expenses;
+            const roi = expenses > 0 ? ((profit / expenses) * 100) : 0;
+            const profitPerStudent = students > 0 ? (profit / students) : 0;
+            const cpa = students > 0 ? (ads / students) : 0;
+            
+            // Update dashboard
+            document.getElementById('totalRevenue').textContent = formatCurrency(revenue);
+            document.getElementById('totalExpenses').textContent = formatCurrency(expenses);
+            document.getElementById('netProfit').textContent = formatCurrency(profit);
+            document.getElementById('roi').textContent = roi.toFixed(1) + '%';
+            
+            // Update breakdown
+            document.getElementById('breakdownRevenue').textContent = formatCurrency(revenue);
+            document.getElementById('breakdownExpenses').textContent = formatCurrency(expenses);
+            document.getElementById('breakdownProfit').textContent = formatCurrency(profit);
+            document.getElementById('profitPerStudent').textContent = formatCurrency(profitPerStudent);
+            document.getElementById('costPerAcquisition').textContent = formatCurrency(cpa);
+            
+            // Update chart
+            updateChart(revenue, expenses, profit);
+            
+            // Save to localStorage
+            saveData();
+        }
+        
+        function updateChart(revenue, expenses, profit) {
+            const max = Math.max(revenue, expenses, Math.abs(profit), 1);
+            
+            document.getElementById('revenueBar').style.height = Math.max((revenue / max) * 100, 5) + '%';
+            document.getElementById('expensesBar').style.height = Math.max((expenses / max) * 100, 5) + '%';
+            document.getElementById('profitBar').style.height = Math.max((Math.abs(profit) / max) * 100, 5) + '%';
+            
+            document.getElementById('revenueBarValue').textContent = formatCurrency(revenue);
+            document.getElementById('expensesBarValue').textContent = formatCurrency(expenses);
+            document.getElementById('profitBarValue').textContent = formatCurrency(profit);
+            
+            // Color profit bar based on positive/negative
+            const profitBar = document.getElementById('profitBar');
+            if (profit < 0) {
+                profitBar.style.background = 'linear-gradient(180deg, #f44336 0%, #ef5350 100%)';
+            } else {
+                profitBar.style.background = 'linear-gradient(180deg, #2196f3 0%, #42a5f5 100%)';
+            }
+        }
+        
+        function formatCurrency(value) {
+            return new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(value);
+        }
+        
+        function saveData() {
+            const data = {
+                coursePrice: inputs.coursePrice.value,
+                totalStudents: inputs.totalStudents.value,
+                adSpend: inputs.adSpend.value,
+                otherExpenses: inputs.otherExpenses.value
+            };
+            localStorage.setItem('riccardoromano.bizProfitTracker', JSON.stringify(data));
+            
+            // Show save indicator
+            const indicator = document.getElementById('saveIndicator');
+            indicator.classList.add('show');
+            setTimeout(() => indicator.classList.remove('show'), 1500);
+        }
+        
+        function loadData() {
+            const saved = localStorage.getItem('riccardoromano.bizProfitTracker');
+            if (saved) {
+                const data = JSON.parse(saved);
+                inputs.coursePrice.value = data.coursePrice || 97;
+                inputs.totalStudents.value = data.totalStudents || 0;
+                inputs.adSpend.value = data.adSpend || 0;
+                inputs.otherExpenses.value = data.otherExpenses || 0;
+            }
+            calculate();
+        }
+        
+        // Add event listeners
+        Object.values(inputs).forEach(input => {
+            input.addEventListener('input', calculate);
+        });
+        
+        // Load saved data on init
+        loadData();
+    </script>
+</body>
+</html>

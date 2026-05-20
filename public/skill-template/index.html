@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Local Business Prospector - Free OpenClaw Skill</title>
+  <meta name="description" content="Find local businesses that desperately need your help - automatically scored, email-enriched, and pushed to your CRM. Free OpenClaw skill." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold: #ffb400;
+      --orange: #ff7a00;
+      --ink: #10203e;
+      --muted: #4b5b7a;
+      --line: rgba(16,32,62,.12);
+      --shadow: 0 18px 50px rgba(4,16,40,.22);
+      --radius: 24px;
+      --max: 1160px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+      color: #fff;
+      background: radial-gradient(circle at top, #2e6bff 0%, #123c8f 28%, #07142d 76%);
+      min-height: 100vh;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    .wrap { width: min(var(--max), calc(100% - 2rem)); margin: 0 auto; }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+
+    /* ── HERO ── */
+    .hero { padding: 3rem 0 2rem; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 2rem;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-block;
+      padding: .45rem .8rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.13);
+      font-weight: 800;
+      letter-spacing: .03em;
+      font-size: .9rem;
+      margin-bottom: .5rem;
+    }
+    .headline {
+      font-size: clamp(2.4rem, 5vw, 4.8rem);
+      line-height: .95;
+      letter-spacing: -.045em;
+      font-weight: 900;
+      margin: 1rem 0;
+    }
+    .sub {
+      font-size: 1.12rem;
+      max-width: 60ch;
+      color: rgba(255,255,255,.88);
+      margin-bottom: 1.4rem;
+    }
+    .bullets { display: grid; gap: .85rem; margin-bottom: 1.8rem; }
+    .bullet { display: flex; gap: .75rem; align-items: flex-start; }
+    .dot {
+      width: 1.4rem; height: 1.4rem; flex: 0 0 auto;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      display: grid; place-items: center;
+      color: #10203e; font-size: .8rem; font-weight: 900; margin-top: .15rem;
+    }
+
+    /* ── VIDEO ── */
+    .video-wrap {
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0,0,0,.5);
+      background: #0d1a3a;
+      margin-bottom: 1.2rem;
+      position: relative;
+    }
+    .video-wrap iframe {
+      width: 100%; aspect-ratio: 16/9; display: block; border: none;
+    }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 56px; padding: 0 1.6rem; border-radius: 999px;
+      font-weight: 900; font-size: 1rem; font-family: inherit;
+      cursor: pointer; border: none;
+      transition: transform .18s ease, box-shadow .18s ease;
+      width: 100%;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      color: #10203e;
+      box-shadow: 0 14px 32px rgba(255,122,0,.28);
+    }
+    .btn-primary:hover { box-shadow: 0 18px 40px rgba(255,122,0,.45); }
+    .micro { font-size: .94rem; color: rgba(255,255,255,.8); text-align: center; }
+    .cta-col { display: flex; flex-direction: column; gap: .6rem; }
+
+    /* ── PAIN CARDS ── */
+    .pain-row { padding: 1.2rem 0 2rem; }
+    .cols-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+    .box {
+      padding: 1.25rem; border-radius: 20px; background: #fff;
+      border: 1px solid var(--line); box-shadow: var(--shadow); color: var(--ink);
+    }
+    .box h3 { margin: .2rem 0 .5rem; font-size: 1rem; font-weight: 800; }
+    .box p { font-size: .95rem; color: var(--muted); line-height: 1.55; }
+
+    /* ── BOTTOM BAND ── */
+    .bottom-row { padding: 0 0 3rem; }
+    .bottom-card {
+      background: rgba(255,255,255,.9); border: 1px solid rgba(255,255,255,.18);
+      border-radius: var(--radius); box-shadow: var(--shadow); color: var(--ink); padding: 1.4rem;
+    }
+    .band-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 1rem; align-items: center; }
+    .band-grid h2 {
+      font-size: clamp(1.8rem, 3vw, 2.8rem); line-height: 1.02;
+      letter-spacing: -.03em; font-weight: 900; margin-bottom: 1rem; color: var(--ink);
+    }
+    .band-grid p { font-size: .95rem; color: var(--muted); margin-bottom: 1.4rem; line-height: 1.55; }
+    .stack { display: grid; gap: .9rem; }
+    .stack .box h3 { font-size: .95rem; }
+    .stack .box p { font-size: .88rem; }
+
+    /* ── BANNER SECTIONS ── */
+    .banner-section { padding: 3.5rem 0; }
+    .banner-section img {
+      width: 100%; display: block; border-radius: var(--radius);
+      box-shadow: 0 24px 60px rgba(0,0,0,.5);
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .banner-section img:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 32px 72px rgba(0,0,0,.6);
+    }
+
+    /* ── ACCESS BUTTON CARD ── */
+    .access-card {
+      margin-top: 1.5rem;
+      border-radius: 20px;
+      padding: 1.6rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: .5rem;
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease;
+      text-align: center;
+      border: 1px solid rgba(255,255,255,.2);
+      position: relative;
+      overflow: hidden;
+    }
+    .access-card:hover { transform: translateY(-3px); box-shadow: 0 20px 50px rgba(0,0,0,.4); }
+    .access-card.dark { background: rgba(10,15,40,.85); }
+    .access-card.light { background: rgba(30,20,70,.9); color: #fff; }
+    .access-card.purple { background: rgba(20,10,50,.9); }
+    .access-card h3 { font-size: 1.4rem; font-weight: 900; letter-spacing: -.02em; }
+    .access-card p { font-size: .9rem; opacity: .7; }
+
+    /* ── POPUP OVERLAY ── */
+    .popup-overlay {
+      display: none; position: fixed; inset: 0; z-index: 1000;
+      background: rgba(0,0,0,.8); backdrop-filter: blur(8px);
+      align-items: flex-start; justify-content: center;
+      padding: 1rem;
+      overflow-y: auto;
+    }
+    .popup-overlay.open { display: flex; }
+
+    /* ── POPUP ── */
+    .popup {
+      background: linear-gradient(160deg, #0d1f52 0%, #07122e 100%);
+      border: 1px solid rgba(100,140,255,.25);
+      border-radius: 32px;
+      width: min(580px, 100%);
+      max-height: 90vh;
+      position: relative;
+      box-shadow: 0 40px 120px rgba(0,0,0,.7), 0 0 0 1px rgba(100,150,255,.15), inset 0 1px 0 rgba(255,255,255,.08);
+      animation: popIn .3s cubic-bezier(.175,.885,.32,1.275);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    @keyframes popIn {
+      from { opacity: 0; transform: scale(.92) translateY(16px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    /* glow top bar */
+    .popup::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--orange), #ff4eb8, #a855f7);
+    }
+
+    .popup-close {
+      position: absolute; top: 1.2rem; right: 1.2rem;
+      width: 34px; height: 34px; border-radius: 50%;
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12);
+      cursor: pointer; color: rgba(255,255,255,.6); font-size: 1rem;
+      display: grid; place-items: center;
+      transition: background .15s, color .15s; z-index: 1;
+    }
+    .popup-close:hover { background: rgba(255,255,255,.15); color: #fff; }
+
+    /* popup header */
+    .popup-header {
+      padding: 2.2rem 2.2rem 0;
+      text-align: center;
+    }
+
+    .popup-badge {
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .4rem 1rem;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(255,180,0,.15), rgba(255,122,0,.1));
+      color: var(--gold); font-size: .8rem; font-weight: 800;
+      letter-spacing: .06em; text-transform: uppercase;
+      border: 1px solid rgba(255,180,0,.25);
+      margin-bottom: 1.2rem;
+    }
+
+    .popup-header h2 {
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+      font-weight: 900; line-height: 1.1; letter-spacing: -.03em;
+      margin-bottom: .6rem;
+    }
+
+    .popup-header p {
+      font-size: .95rem; color: rgba(255,255,255,.6); line-height: 1.5;
+    }
+
+    /* what you get */
+    .popup-perks {
+      display: grid; gap: .6rem;
+      padding: 1.4rem 2.2rem;
+    }
+
+    .perk {
+      display: flex; align-items: center; gap: .85rem;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px; padding: .85rem 1rem;
+      transition: background .15s;
+    }
+    .perk:hover { background: rgba(255,255,255,.08); }
+
+    .perk-icon {
+      width: 40px; height: 40px; flex-shrink: 0; border-radius: 12px;
+      display: grid; place-items: center; font-size: 1.2rem;
+    }
+    .perk-icon.gold { background: linear-gradient(135deg, rgba(255,180,0,.2), rgba(255,122,0,.15)); }
+    .perk-icon.blue { background: linear-gradient(135deg, rgba(50,120,255,.25), rgba(30,80,200,.2)); }
+    .perk-icon.purple { background: linear-gradient(135deg, rgba(168,85,247,.25), rgba(109,40,217,.2)); }
+    .perk-icon.green { background: linear-gradient(135deg, rgba(20,184,106,.25), rgba(5,150,105,.2)); }
+
+    .perk-text strong { display: block; font-size: .95rem; font-weight: 800; }
+    .perk-text span { font-size: .82rem; color: rgba(255,255,255,.5); }
+
+    /* form area */
+    .popup-form-area { padding: 0 2.2rem 2.2rem; }
+
+    .popup-form { display: grid; gap: .7rem; }
+
+    .input-row { display: grid; grid-template-columns: 1fr 1fr; gap: .7rem; }
+
+    .popup-form input {
+      width: 100%; padding: .9rem 1.1rem;
+      border-radius: 12px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.12);
+      color: #fff; font-size: .95rem; font-family: inherit;
+      transition: border-color .15s, background .15s;
+      outline: none;
+    }
+    .popup-form input::placeholder { color: rgba(255,255,255,.3); }
+    .popup-form input:focus {
+      border-color: rgba(100,150,255,.5);
+      background: rgba(255,255,255,.1);
+    }
+
+    .popup-submit {
+      width: 100%; padding: 1.05rem; border-radius: 14px; border: none;
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      color: #10203e; font-size: 1.05rem; font-weight: 900;
+      font-family: inherit; cursor: pointer;
+      box-shadow: 0 10px 28px rgba(255,122,0,.35);
+      transition: transform .15s, box-shadow .15s;
+      margin-top: .2rem;
+      letter-spacing: .01em;
+    }
+    .popup-submit:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(255,122,0,.5); }
+    .popup-submit:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+
+    .popup-fine {
+      font-size: .76rem; color: rgba(255,255,255,.3);
+      text-align: center; margin-top: .6rem;
+    }
+
+    /* success state */
+    .popup-success {
+      display: none;
+      padding: 3rem 2.2rem;
+      text-align: center;
+    }
+    .success-icon {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: linear-gradient(135deg, #13b86a, #0d9455);
+      display: grid; place-items: center; margin: 0 auto 1.2rem;
+      font-size: 2rem;
+      box-shadow: 0 8px 28px rgba(19,184,106,.4);
+    }
+    .popup-success h3 { font-size: 1.8rem; font-weight: 900; margin-bottom: .5rem; }
+    .popup-success p { color: rgba(255,255,255,.6); font-size: 1rem; line-height: 1.5; }
+
+    footer { padding: 0 0 2.4rem; text-align: center; color: rgba(255,255,255,.25); font-size: .85rem; }
+
+    @media (max-width: 900px) {
+      .hero-grid, .cols-3, .band-grid { grid-template-columns: 1fr; }
+      .input-row { grid-template-columns: 1fr; }
+      .popup-header, .popup-perks, .popup-form-area { padding-left: 1.4rem; padding-right: 1.4rem; }
+      .popup {
+        max-height: 85vh;
+        border-radius: 24px;
+      }
+      .popup-overlay {
+        padding: 0.5rem;
+        align-items: flex-end;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ HERO ══ -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+
+        <!-- LEFT -->
+        <div class="reveal-left">
+          <span class="eyebrow">Free OpenClaw Skill</span>
+          <h1 class="headline">Find businesses that <em style="font-style:normal;background:linear-gradient(90deg,#ffb400,#ff7a00);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">desperately need</em> your help.</h1>
+          <p class="sub">Get the <strong>Local Business Prospector</strong> - a free OpenClaw skill that finds weak-marketing businesses in any city, scores them Hot/Warm/Low, finds their email, and drops them straight into your CRM.</p>
+          <div class="bullets">
+            <div class="bullet">
+              <div class="dot">✓</div>
+              <span>Stop cold calling strangers - only contact businesses <strong>already proven to need you</strong>.</span>
+            </div>
+            <div class="bullet">
+              <div class="dot">✓</div>
+              <span>Any city, any niche - restaurants, dentists, roofers, salons, <strong>you name it</strong>.</span>
+            </div>
+            <div class="bullet">
+              <div class="dot">✓</div>
+              <span>One command. Full prospect list with emails - <strong>ready to follow up in minutes</strong>.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: video + CTA -->
+        <div class="reveal-right">
+          <div class="video-wrap">
+            <iframe
+              src="https://player.vimeo.com/video/1190855162?badge=0&autopause=0&player_id=0&app_id=58479"
+              allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+              title="Content-With-a-Door Map"
+            ></iframe>
+          </div>
+          <div class="cta-col">
+            <button class="btn btn-primary" onclick="openPopup()">Get the Free Skill Now →</button>
+            <span class="micro">Instant access - works with any OpenClaw setup</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ══ BOTTOM BAND ══ -->
+  <div class="bottom-row">
+    <div class="wrap">
+      <div class="bottom-card reveal">
+        <div class="band-grid">
+          <div>
+            <h2>Stop wasting time on businesses that will never buy. Start calling the ones that already need you.</h2>
+            <p>The Local Business Prospector finds weak-marketing businesses, scores them by urgency, finds their contact info, and loads them into your CRM - automatically.</p>
+            <button class="btn btn-primary" style="max-width:280px;" onclick="openPopup()">Install the Free Skill →</button>
+          </div>
+          <div class="stack">
+            <div class="box">
+              <h3>🔥 Hot/Warm/Low scoring</h3>
+              <p>So you call the best prospects first - not waste time on ones that aren't ready.</p>
+            </div>
+            <div class="box">
+              <h3>⚡ Runs in minutes</h3>
+              <p>One command. Any city. Any niche. Full prospect list with emails ready to go.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ BANNER 1: CLAW LAUNCHER - BLACK ══ -->
+  <section class="banner-section reveal" style="background:#000;">
+    <div class="wrap">
+      <img src="https://global-control.s3.wasabisys.com/843b8739_b87a_4ef4_b2db_33c81994f0f4" alt="Claw Launcher" onclick="openPopup()" />
+      <div class="access-card dark reveal reveal-delay-1" onclick="openPopup()">
+        <h3>🚀 Get Claw Launcher - Free</h3>
+        <p>Install the Local Business Prospector skill and start prospecting today.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ BANNER 2: MEMBERSHIP ══ -->
+  <section class="banner-section reveal" style="background:#EEEFFB;">
+    <div class="wrap">
+      <img src="https://global-control.s3.wasabisys.com/f5214837_61fb_48bc_b53f_4ffd8d93c846" alt="OpenClaw Membership" onclick="openPopup()" />
+      <div class="access-card light reveal reveal-delay-1" onclick="openPopup()">
+        <h3>🎓 Members Area Access Included</h3>
+        <p>Step-by-step training on running the skill, finding clients, and closing deals.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ BANNER 3: SUMMIT ══ -->
+  <section class="banner-section reveal" style="background:#130a2a;">
+    <div class="wrap">
+      <img src="https://global-control.s3.wasabisys.com/c88df146_1f7c_4c6f_b4a0_e949ff5bbaaa" alt="OpenClaw Summit" onclick="openPopup()" />
+      <div class="access-card purple reveal reveal-delay-1" onclick="openPopup()">
+        <h3>🎤 Summit Replays Included</h3>
+        <p>Watch real OpenClaw users land clients using skills just like this one.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2026 · All rights reserved</footer>
+
+  <!-- ══ POPUP ══ -->
+  <div class="popup-overlay" id="popup-overlay" onclick="closeOnOverlay(event)">
+    <div class="popup">
+      <button class="popup-close" onclick="closePopup()">✕</button>
+
+      <div id="popup-form-wrap">
+        <div class="popup-header">
+          <div class="popup-badge">🎯 Free - No Credit Card Required</div>
+          <h2>Install the Skill.<br/>Start Prospecting Today.</h2>
+          <p>Enter your details and get instant access to the Local Business Prospector + everything below - free.</p>
+        </div>
+
+        <div class="popup-perks">
+          <div class="perk">
+            <div class="perk-icon gold">🚀</div>
+            <div class="perk-text">
+              <strong>Local Business Prospector Skill</strong>
+              <span>Find, score &amp; contact hot prospects in any city automatically</span>
+            </div>
+          </div>
+          <div class="perk">
+            <div class="perk-icon blue">🎓</div>
+            <div class="perk-text">
+              <strong>OpenClaw Members Area</strong>
+              <span>Step-by-step training, courses, badges & community</span>
+            </div>
+          </div>
+          <div class="perk">
+            <div class="perk-icon purple">🎤</div>
+            <div class="perk-text">
+              <strong>OpenClaw Members Area</strong><span>Step-by-step training on running the skill and landing clients</span>
+            </div>
+          </div>
+          <div class="perk">
+            <div class="perk-icon green">📅</div>
+            <div class="perk-text">
+              <strong>Summit Replays + Next Summit Access</strong><span>Watch real users land clients - plus get enrolled in the next live summit</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="popup-form-area">
+          <form class="popup-form" onsubmit="submitPopup(event)">
+            <div class="input-row">
+              <input type="text" id="popup-fname" placeholder="First Name" required autocomplete="given-name" />
+              <input type="text" id="popup-lname" placeholder="Last Name" autocomplete="family-name" />
+            </div>
+            <input type="email" id="popup-email" placeholder="Email Address" required autocomplete="email" />
+            <button type="submit" class="popup-submit" id="popup-btn">Yes! Install My Free Skill ? →</button>
+            <p class="popup-fine">🔒 Your info is safe. No spam, ever. Unsubscribe anytime.</p>
+          </form>
+        </div>
+      </div>
+
+      <div class="popup-success" id="popup-success">
+        <div class="success-icon">✓</div>
+        <h3>You're In!</h3>
+        <p>You're in! Check your inbox for your skill install link + access to everything.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const GC_API_KEY = '14a90d89c27094ee877bfdade90256d86bd1e4f51912698da36ed075c90bed72';
+
+    // ── POPUP ──
+    function openPopup() {
+      document.getElementById('popup-form-wrap').style.display = 'block';
+      document.getElementById('popup-success').style.display = 'none';
+      document.getElementById('popup-btn').disabled = false;
+      document.getElementById('popup-btn').textContent = 'Yes! Install My Free Skill ? →';
+      document.getElementById('popup-overlay').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePopup() {
+      document.getElementById('popup-overlay').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function closeOnOverlay(e) {
+      if (e.target === document.getElementById('popup-overlay')) closePopup();
+    }
+
+    async function submitPopup(e) {
+      e.preventDefault();
+      const btn = document.getElementById('popup-btn');
+      const firstName = document.getElementById('popup-fname').value.trim();
+      const lastName = document.getElementById('popup-lname').value.trim();
+      const email = document.getElementById('popup-email').value.trim();
+
+      btn.disabled = true;
+      btn.textContent = 'Getting Your Access Ready...';
+
+      try {
+        await fetch('https://api.globalcontrol.io/api/ai/contacts', {
+          method: 'POST',
+          headers: { 'X-API-KEY': GC_API_KEY, 'Content-Type': 'application/json' },
+          body: JSON.stringify({ firstName, lastName, email })
+        });
+      } catch (err) {
+        console.error('GC error:', err);
+      }
+
+      document.getElementById('popup-form-wrap').style.display = 'none';
+      document.getElementById('popup-success').style.display = 'block';
+      setTimeout(closePopup, 4000);
+    }
+
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
+
+    // ── SCROLL REVEAL ──
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

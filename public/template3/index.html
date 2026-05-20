@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenClaw Summit — Build AI Businesses On Command</title>
+<meta name="description" content="The all-in-one AI system that creates products, builds funnels, and drives revenue on demand — even if you've never used AI before.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --blue:#4F8EFF;
+  --purple:#7B2FBE;
+  --pink:#FF2D87;
+  --green:#22C55E;
+  --gold:#FFB800;
+  --white:#FFFFFF;--off:#F5F5F7;--dark:#0D0D12;--dark2:#16161E;
+  --text:#1D1D1F;--gray:#6E6E73;--lt:#86868B;
+  --grad:linear-gradient(135deg,var(--blue),var(--purple));
+  --grad2:linear-gradient(135deg,var(--purple),var(--pink));
+  --grad3:linear-gradient(135deg,var(--blue),var(--purple),var(--pink));
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,sans-serif;background:var(--white);color:var(--text);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.gt{background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.gt2{background:var(--grad3);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,255,255,.6)}50%{box-shadow:0 0 0 8px rgba(255,255,255,0)}}
+@keyframes glow{0%,100%{box-shadow:0 0 20px rgba(79,142,255,.3)}50%{box-shadow:0 0 40px rgba(123,43,190,.4)}}
+
+.live-bar{background:var(--dark);padding:12px 20px;text-align:center;border-bottom:1px solid rgba(255,255,255,.06)}
+.live-inner{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
+.live-dot{width:8px;height:8px;background:var(--green);border-radius:50%;animation:pulse 1.5s infinite}
+.live-bar span{color:rgba(255,255,255,.8);font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase}
+.live-bar strong{color:#fff}
+
+nav{position:sticky;top:0;z-index:90;background:rgba(255,255,255,.95);backdrop-filter:blur(24px);border-bottom:1px solid rgba(0,0,0,.04)}
+.nav-c{max-width:1100px;margin:0 auto;padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:800;font-size:17px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-btn{background:var(--grad);color:#fff;padding:10px 22px;border-radius:980px;font-size:13px;font-weight:700;text-decoration:none;transition:all .3s}
+.nav-btn:hover{transform:scale(1.05);box-shadow:0 4px 20px var(--blue)}
+
+.hero{background:var(--dark);padding:80px 24px 70px;text-align:center;position:relative;overflow:hidden;color:#fff}
+.hero::before{content:'';position:absolute;top:-400px;left:50%;transform:translateX(-50%);width:1600px;height:1600px;background:radial-gradient(ellipse,rgba(79,142,255,.12) 0%,rgba(123,43,190,.08) 30%,transparent 65%);pointer-events:none}
+.hero>*{position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:8px 20px;border-radius:980px;font-size:13px;font-weight:700;color:rgba(255,255,255,.7);margin-bottom:28px}
+.hero h1{font-size:clamp(36px,7.5vw,72px);font-weight:900;line-height:1.08;letter-spacing:-.05em;max-width:950px;margin:0 auto 22px}
+.hero h1 em{font-style:normal;background:var(--grad3);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-sub{font-size:clamp(17px,2.2vw,21px);color:rgba(255,255,255,.55);max-width:700px;margin:0 auto 40px;font-weight:400;line-height:1.55}
+.hero-sub strong{color:#fff;font-weight:600}
+
+.cd-wrap{margin:0 auto 40px}
+.cd-label{font-size:11px;text-transform:uppercase;letter-spacing:3px;font-weight:700;color:var(--gold);margin-bottom:12px}
+.cd{display:flex;justify-content:center;gap:10px}
+.cd-u{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:16px 18px;min-width:74px}
+.cd-u .n{font-size:clamp(28px,4vw,40px);font-weight:900;display:block;line-height:1;color:#fff}
+.cd-u .l{font-size:9px;text-transform:uppercase;letter-spacing:2px;color:rgba(255,255,255,.35);margin-top:4px;display:block;font-weight:600}
+
+.cta{display:inline-flex;align-items:center;gap:8px;background:var(--grad);color:#fff;padding:20px 44px;border-radius:980px;font-size:18px;font-weight:800;text-decoration:none;transition:all .3s;cursor:pointer;animation:glow 3s ease-in-out infinite}
+.cta:hover{transform:scale(1.05)}
+.cta-note{font-size:13px;color:rgba(255,255,255,.3);margin-top:14px}
+
+.stats{display:flex;flex-wrap:wrap;justify-content:center;gap:36px;padding:48px 24px;background:var(--off)}
+.stat{text-align:center;min-width:110px}
+.stat .b{font-size:clamp(32px,5vw,54px);font-weight:900;line-height:1;display:block}
+.stat .ll{font-size:10px;text-transform:uppercase;letter-spacing:2px;margin-top:6px;font-weight:700;color:var(--lt)}
+
+.sec{padding:80px 24px}.sec.alt{background:var(--off)}.sec.dark{background:var(--dark);color:#fff}
+.sc{max-width:800px;margin:0 auto}.scw{max-width:1000px;margin:0 auto}
+.st{font-size:clamp(28px,5vw,48px);font-weight:900;text-align:center;letter-spacing:-.04em;line-height:1.08;margin-bottom:14px}
+.st em{font-style:normal;color:var(--blue)}
+.ss{font-size:17px;text-align:center;max-width:600px;margin:0 auto 48px;line-height:1.65;color:var(--gray)}
+
+.founders{padding:80px 24px;background:var(--off)}
+.founders-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;max-width:1100px;margin:0 auto;align-items:start}
+.f-kicker{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px}
+.f-title{font-size:clamp(28px,4.5vw,42px);font-weight:900;line-height:1.1;margin-bottom:20px}
+.f-title em{font-style:normal;color:var(--blue)}
+.f-body p{margin-bottom:16px;line-height:1.7;color:var(--gray)}
+.f-body strong{color:var(--text);font-weight:700}
+.f-body mark{background:linear-gradient(120deg,#fef3c7 0%,#fef3c7 100%);background-position:0 80%;background-repeat:no-repeat;padding:2px 0}
+.founders-img{width:100%;border-radius:20px;box-shadow:0 24px 48px rgba(0,0,0,.12)}
+
+.days{display:flex;flex-direction:column;gap:20px;max-width:900px;margin:0 auto}
+.day{display:flex;gap:24px;padding:32px;background:var(--white);border:1px solid rgba(0,0,0,.05);border-radius:20px;transition:all .4s}
+.day:hover{transform:translateY(-3px);box-shadow:0 16px 48px rgba(0,0,0,.07)}
+.day-n{font-size:48px;font-weight:900;min-width:70px;line-height:1;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.day-c h3{font-size:22px;font-weight:800;margin-bottom:8px}
+.day-c h3 em{font-style:normal;color:var(--blue)}
+.day-c .day-sub{font-size:15px;color:var(--gray);margin-bottom:12px;font-style:italic}
+.day-c p{font-size:15px;color:var(--gray);line-height:1.65;margin-bottom:8px}
+.day-c strong{color:var(--text)}
+
+.testimonials{padding:80px 24px;background:var(--dark);color:#fff}
+.tm-badge{display:inline-block;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:8px 20px;border-radius:980px;font-size:13px;font-weight:700;margin-bottom:20px}
+.tm-title{font-size:clamp(32px,5vw,52px);font-weight:900;text-align:center;line-height:1.08;margin-bottom:12px}
+.tm-title em{font-style:normal;background:var(--grad3);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.tm-sub{text-align:center;color:rgba(255,255,255,.55);font-size:17px;margin-bottom:48px}
+.tm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;max-width:1200px;margin:0 auto}
+.tm-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:24px;transition:all .3s}
+.tm-card:hover{transform:translateY(-4px);box-shadow:0 12px 36px rgba(0,0,0,.3)}
+.tm-top{display:flex;gap:14px;align-items:center;margin-bottom:16px}
+.tm-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover}
+.tm-name{display:block;font-size:15px;font-weight:700;color:#fff}
+.tm-loc{display:block;font-size:13px;color:rgba(255,255,255,.5)}
+.tm-stars{color:var(--gold);font-size:14px;margin-top:4px}
+.tm-quote{font-size:14px;line-height:1.65;color:rgba(255,255,255,.7)}
+
+.social-proof{padding:80px 24px;background:var(--off)}
+.sp-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;max-width:1100px;margin:0 auto;align-items:start}
+.sp-badge{display:inline-block;background:var(--white);border:1px solid rgba(0,0,0,.06);padding:8px 20px;border-radius:980px;font-size:13px;font-weight:700;margin-bottom:20px;color:var(--text)}
+.sp-title{font-size:clamp(28px,4.5vw,42px);font-weight:900;line-height:1.1;margin-bottom:32px}
+.sp-title em{font-style:normal;color:var(--blue)}
+.sp-letter{background:var(--white);border:1px solid rgba(0,0,0,.06);border-radius:20px;padding:36px;box-shadow:0 12px 36px rgba(0,0,0,.06)}
+.sp-letter p{margin-bottom:16px;line-height:1.7;color:var(--gray)}
+.sp-letter strong{color:var(--text);font-weight:700}
+.sp-closing{margin-top:32px;padding-top:24px;border-top:1px solid rgba(0,0,0,.08)}
+.sp-sign-off{font-size:15px;color:var(--gray);margin-bottom:12px}
+.sp-author-name{display:block;font-size:16px;font-weight:700;color:var(--text)}
+.sp-author-role{display:block;font-size:13px;color:var(--gray)}
+
+.form-card{background:var(--white);border:1px solid rgba(0,0,0,.06);border-radius:24px;padding:44px 36px;box-shadow:0 24px 64px rgba(0,0,0,.08);max-width:550px;margin:0 auto;position:relative;overflow:hidden}
+.form-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--grad3)}
+.form-card h2{font-size:28px;font-weight:900;text-align:center;margin-bottom:8px}
+.form-card .fs{text-align:center;color:var(--gray);font-size:15px;margin-bottom:28px}
+.fg{margin-bottom:14px}
+.fg input{width:100%;padding:15px 20px;background:var(--off);border:1px solid rgba(0,0,0,.06);border-radius:12px;font-family:inherit;font-size:15px;color:var(--text);transition:all .3s}
+.fg input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(79,142,255,.12)}
+.form-btn{width:100%;padding:18px;background:var(--grad);color:#fff;font-family:inherit;font-size:18px;font-weight:800;border:none;border-radius:12px;cursor:pointer;transition:all .3s;margin-top:8px}
+.form-btn:hover{box-shadow:0 8px 30px var(--blue);transform:translateY(-1px)}
+.form-fine{font-size:11px;color:var(--lt);text-align:center;margin-top:16px;line-height:1.6}
+
+.modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:9999;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(8px)}
+.modal.open{display:flex}
+.modal-content{background:var(--white);border-radius:24px;max-width:550px;width:100%;position:relative;animation:fadeUp .4s ease}
+.modal-close{position:absolute;top:20px;right:20px;width:32px;height:32px;border:none;background:rgba(0,0,0,.06);border-radius:50%;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--gray);transition:all .2s}
+.modal-close:hover{background:rgba(0,0,0,.12);transform:scale(1.1)}
+
+footer{padding:48px 24px;text-align:center;border-top:1px solid rgba(0,0,0,.04)}
+footer .f-logo{font-weight:800;font-size:18px;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px}
+footer p{font-size:11px;color:var(--lt);line-height:1.8;max-width:700px;margin:0 auto 12px}
+footer a{color:var(--blue);text-decoration:none}
+footer a:hover{text-decoration:underline}
+
+@media(max-width:768px){
+  .hero{padding:50px 16px 40px}.sec{padding:56px 16px}
+  .cd{gap:6px}.cd-u{padding:12px 12px;min-width:58px}
+  .form-card{padding:28px 20px;margin:0 8px}
+  .day{flex-direction:column;gap:12px;padding:24px 20px}
+  .day-n{font-size:36px}
+  .stats{gap:18px}
+  .founders-grid,.sp-grid{grid-template-columns:1fr;gap:32px}
+  .tm-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="live-bar">
+  <div class="live-inner">
+    <span class="live-dot"></span>
+    <span><strong>LIVE TRAINING</strong> — 4 Days — May 4-7 — <strong>Free Registration</strong></span>
+  </div>
+</div>
+
+<nav>
+  <div class="nav-c">
+    <div class="logo">OpenClaw Summit</div>
+    <button onclick="openModal()" class="nav-btn" style="border:none;cursor:pointer;">Join Free →</button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-badge">🏆 OpenClaw Training — Live Buildout — Free For 3 Days!</div>
+  <h1>
+    How OpenClaw Builds <em>Revenue-Generating</em> Products and Automates <em>Every Task</em> in Your Business on Command
+  </h1>
+  <p class="hero-sub">
+    The all-in-one AI system that creates products, builds funnels, and drives revenue on demand — <strong>even if you've never used AI before.</strong>
+  </p>
+  
+  <div style="max-width:800px;margin:32px auto;border-radius:16px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,.4);">
+    <div style="padding:56.25% 0 0 0;position:relative;">
+      <iframe src="https://player.vimeo.com/video/1176278720?badge=0&autopause=0&player_id=0&app_id=58479&dnt=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="OpenClaw Summit Preview"></iframe>
+    </div>
+  </div>
+  <div style="text-align:center;margin-bottom:40px;">
+    <div style="display:inline-flex;align-items:center;gap:12px;">
+      <span style="color:var(--gold);font-size:18px;">★★★★★</span>
+      <span style="color:rgba(255,255,255,.7);font-size:14px;"><strong style="color:#fff;">4.9/5</strong> from <strong style="color:#fff;">2,400+</strong> attendees</span>
+    </div>
+  </div>
+  
+  <div class="cd-wrap">
+    <div class="cd-label">⏰ TRAINING STARTS IN</div>
+    <div class="cd">
+      <div class="cd-u"><span class="n" id="c-d">--</span><span class="l">Days</span></div>
+      <div class="cd-u"><span class="n" id="c-h">--</span><span class="l">Hours</span></div>
+      <div class="cd-u"><span class="n" id="c-m">--</span><span class="l">Mins</span></div>
+      <div class="cd-u"><span class="n" id="c-s">--</span><span class="l">Secs</span></div>
+    </div>
+  </div>
+  
+  <button onclick="openModal()" class="cta" style="border:none;">Sign Me Up — It's Free →</button>
+  <p class="cta-note">100% Free · No Credit Card · Reserve Your Spot Now</p>
+</section>
+
+<div class="stats">
+  <div class="stat"><span class="b gt">1,200+</span><span class="ll">Skills Created</span></div>
+  <div class="stat"><span class="b gt">7,000+</span><span class="ll">Rave Reviews</span></div>
+  <div class="stat"><span class="b gt">12,000+</span><span class="ll">Businesses Built</span></div>
+  <div class="stat"><span class="b gt2">4.9/5</span><span class="ll">Rating</span></div>
+</div>
+
+<!-- FOUNDERS SECTION -->
+<section class="founders">
+  <div class="founders-grid">
+    <div>
+      <span class="f-kicker">👋 Meet The Founders</span>
+      <h2 class="f-title">
+        My Name Is <em>Chad Nicely</em> and That's My Partner <em>Karthik!</em>
+      </h2>
+      <div class="f-body">
+        <p>That photo? It's over 15 years old.</p>
+        <p>We've been business partners for <mark>25+ years</mark>… building, scaling, and staying ahead of every major shift in the game.</p>
+        <p>And let me tell you something straight:</p>
+        <p>If you feel like you've fallen behind with AI… <strong>you haven't.</strong></p>
+        <p><strong>Up until now?</strong> It didn't really matter.</p>
+        <p><strong>But today?</strong> It does.</p>
+        <p>As an entrepreneur or business owner, this is <strong>no longer optional</strong>.</p>
+        <p>You don't get to sit this one out.</p>
+      </div>
+    </div>
+    <div>
+      <img src="images/chad-karthik.png" alt="Chad Nicely and Karthik" class="founders-img">
+    </div>
+  </div>
+</section>
+
+<!-- AGENDA SECTION -->
+<section class="sec">
+  <div class="sc">
+    <h2 class="st">Here's What We're Going To Do <em>Live On The Call!</em></h2>
+    <p class="ss">A 4-day hands-on training where you'll learn, build, and launch with OpenClaw — the AI that turns ideas into income-generating assets.</p>
+    
+    <div class="days">
+      <!-- DAY 1 -->
+      <div class="day">
+        <div class="day-n">01</div>
+        <div class="day-c">
+          <h3>Day 1: OpenClaw <em>Onboarding</em></h3>
+          <p class="day-sub">May 4 · 10am PST / 1pm EST</p>
+          <p><strong>Everything</strong> You Need To Get Started!</p>
+          <p>Before anything else, we'll make sure you're fully and safely onboarded with OpenClaw.</p>
+          <p>We've already helped over <strong>3,000 users</strong> get set up on their own systems with zero incidents.</p>
+          <p>You'll have everything you need to hit the ground running, and we'll guide you through the AI models, how Claw Launcher works, and how to confidently navigate OpenClaw from day one.</p>
+        </div>
+      </div>
+      
+      <!-- DAY 2 -->
+      <div class="day">
+        <div class="day-n">02</div>
+        <div class="day-c">
+          <h3>Day 2: Creating Your First <em>OpenClaw Skill</em></h3>
+          <p class="day-sub">May 5 · 10am PST / 1pm EST</p>
+          <p class="day-sub"><em>The people who build skills now will own the ecosystem later.</em></p>
+          <p>On Day 2, we dive straight in and show you how to create your very first OpenClaw skill.</p>
+          <p>These skills are the <strong>future of business.</strong></p>
+          <p>They are digital assets that can build, run, and automate entire parts of your business… on command.</p>
+          <p><strong>Right now, you have a rare window of opportunity.</strong> In the near future, businesses won't build their own systems.</p>
+        </div>
+      </div>
+      
+      <!-- DAY 3 -->
+      <div class="day">
+        <div class="day-n">03</div>
+        <div class="day-c">
+          <h3>Day 3: <em>Providing OpenClaw Services For Profit</em></h3>
+          <p class="day-sub">May 6 · 10am PST / 1pm EST</p>
+          <p class="day-sub"><em>This is the <strong>BIGGEST GOLDRUSH</strong> we have seen in the last 20 years!</em></p>
+          <p>This is about to become one of the <strong>most in-demand services for entrepreneurs over the next 18 months.</strong></p>
+          <p>And we're going to show you how to get in early. You'll learn how to build powerful skills…</p>
+          <p>and how to <strong>give them away strategically — and get paid in return.</strong></p>
+          <p>While everyone else is chasing the next opportunity… <strong>you'll be selling the picks and shovels.</strong> 🔥</p>
+        </div>
+      </div>
+
+      <!-- DAY 4 -->
+      <div class="day">
+        <div class="day-n">04</div>
+        <div class="day-c">
+          <h3>Day 4: <em>Live Q&A + Buildout Session</em></h3>
+          <p class="day-sub">May 7 · 10am PST / 1pm EST</p>
+          <p>Bring your questions, your ideas, and your roadblocks.</p>
+          <p>We'll build live, troubleshoot together, and make sure you walk away with <strong>working systems, not just notes.</strong></p>
+          <p>This is your chance to get personalized help from Chad and Karthik — who've been building businesses together for <strong>25+ years.</strong></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS SECTION -->
+<section class="testimonials">
+  <div class="scw">
+    <div style="text-align:center">
+      <span class="tm-badge">💬 Real Results, Real People</span>
+      <h2 class="tm-title">What Our Community <em>Says About OpenClaw</em></h2>
+      <p class="tm-sub">Over <strong>7,000+</strong> comments from workshop attendees just like you</p>
+    </div>
+    
+    <div class="tm-grid">
+      <div class="tm-card">
+        <div class="tm-top">
+          <img src="images/sam.png" alt="Sam Portney" class="tm-avatar">
+          <div>
+            <strong class="tm-name">Sam Portney</strong>
+            <span class="tm-loc">Chesterfield, MO</span>
+            <div class="tm-stars">★★★★★</div>
+          </div>
+        </div>
+        <p class="tm-quote">🔥 Ready to GO! The workshop has been fire — the breakdown on using agents to automate lead follow-up was a game changer. Already mapping out my first OpenClaw workflow. Let's build! 🚀</p>
+      </div>
+
+      <div class="tm-card">
+        <div class="tm-top">
+          <img src="images/isaac.jpg" alt="Isaac Atterbury" class="tm-avatar">
+          <div>
+            <strong class="tm-name">Isaac Atterbury</strong>
+            <span class="tm-loc">Edmonton, AB</span>
+            <div class="tm-stars">★★★★★</div>
+          </div>
+        </div>
+        <p class="tm-quote">100% Committed. Chad has a heart for his sheep (followers). Best teacher/shepherd ever. Continuously over delivering with such a great giving heart. Thanks Chad and Team.</p>
+      </div>
+
+      <div class="tm-card">
+        <div class="tm-top">
+          <img src="images/chris.jpg" alt="Chris Higgins" class="tm-avatar">
+          <div>
+            <strong class="tm-name">Chris Higgins</strong>
+            <span class="tm-loc">Digital Creator</span>
+            <div class="tm-stars">★★★★★</div>
+          </div>
+        </div>
+        <p class="tm-quote">Readyyyy, Santa! 🎅 This has been an incredible ride, education, and opportunity that only Chad Nicely is out there giving. Andddd there's more!</p>
+      </div>
+
+      <div class="tm-card">
+        <div class="tm-top">
+          <img src="images/lea.jpg" alt="Lea Rosenberry" class="tm-avatar">
+          <div>
+            <strong class="tm-name">Lea Rosenberry</strong>
+            <span class="tm-loc">Altoona, PA</span>
+            <div class="tm-stars">★★★★★</div>
+          </div>
+        </div>
+        <p class="tm-quote">Ready!!! I have spent tons of money on trainings over the years and THIS is and will be the most consequential one of them all! Chad and his team OVERDELIVER on everything.</p>
+      </div>
+
+      <div class="tm-card">
+        <div class="tm-top">
+          <img src="images/jennifer.jpg" alt="Jennifer Mead Rodriguez" class="tm-avatar">
+          <div>
+            <strong class="tm-name">Jennifer Mead Rodriguez</strong>
+            <span class="tm-loc">Simi Valley, CA</span>
+            <div class="tm-stars">★★★★★</div>
+          </div>
+        </div>
+        <p class="tm-quote">Every day gets better and better. Chad overdelivers and the workshop is beyond outstanding. 100% committed to implementing!</p>
+      </div>
+
+      <div class="tm-card">
+        <div class="tm-top">
+          <img src="images/mike.jpg" alt="Mike Ward" class="tm-avatar">
+          <div>
+            <strong class="tm-name">Mike Ward</strong>
+            <span class="tm-loc">Nxtgen Recruits</span>
+            <div class="tm-stars">★★★★★</div>
+          </div>
+        </div>
+        <p class="tm-quote">Chad. This is the FIRST TIME EVER that I am able to set things up without totally stressing out over the tech and processes required to build something substantial online.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF SECTION -->
+<section class="social-proof">
+  <div class="sp-grid">
+    <div>
+      <span class="sp-badge">🔥 Over 3,000 People Can't Be Wrong</span>
+      <h2 class="sp-title">You're Going To Be <em>Blown Away!</em></h2>
+      
+      <div class="sp-letter">
+        <div>
+          <p>The one thing I love more than anything is working with people and teaching them how to succeed using the very best tips, strategies, and resources.</p>
+          <p>For the past two months, I've been hosting a <strong>3-hour OpenClaw workshop every single day</strong> starting February 7, 2026.</p>
+          <p>And if there's one thing we've cracked the code on… it's OpenClaw. We've broken it down into <strong>4 simple steps</strong> that <em>anyone</em> can follow.</p>
+          <p>I have students as young as 8 and as experienced as 70+ who are already building skills, pages, and full businesses — live on our trainings.</p>
+          <p>So I can't wait to see what <em>you</em> create.</p>
+        </div>
+        
+        <div class="sp-closing">
+          <p class="sp-sign-off">See you on the call. 🚀</p>
+          <div>
+            <strong class="sp-author-name">Chad Nicely</strong>
+            <span class="sp-author-role">Founder, OpenClaw Summit</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <p style="padding:24px;background:rgba(79,142,255,.08);border:1px solid rgba(79,142,255,.2);border-radius:12px;font-size:15px;line-height:1.6;color:var(--gray);">"Chad's workshop changed everything for me. I went from confused about AI to building my first skill in 3 days." — <strong>Sarah M.</strong></p>
+      <p style="padding:24px;background:rgba(123,43,190,.08);border:1px solid rgba(123,43,190,.2);border-radius:12px;font-size:15px;line-height:1.6;color:var(--gray);">"Finally, someone who explains this stuff in plain English. No fluff, just results." — <strong>Mike R.</strong></p>
+      <p style="padding:24px;background:rgba(255,45,135,.08);border:1px solid rgba(255,45,135,.2);border-radius:12px;font-size:15px;line-height:1.6;color:var(--gray);">"I'm 67 years old and I built a complete funnel with OpenClaw. If I can do it, anyone can." — <strong>Robert T.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL POPUP -->
+<div id="registerModal" class="modal" onclick="if(event.target===this) closeModal()">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()">&times;</button>
+    <div class="form-card" style="box-shadow:none;margin:0;">
+      <h2>Reserve Your Free Spot</h2>
+      <p class="fs">For the exclusive OpenClaw training · May 4-7 · 10:00 AM PST</p>
+      
+      <form action="https://api.globalcontrol.io/api/contacts/create-tag" method="POST">
+        <div class="fg">
+          <input type="text" name="firstName" placeholder="First Name" required>
+        </div>
+        <div class="fg">
+          <input type="email" name="email" placeholder="Email Address" required>
+        </div>
+        <button type="submit" class="form-btn">Get Registered For The Training →</button>
+      </form>
+      
+      <p class="form-fine">🔒 Your information is safe & will never be shared · Free for 3 days · No credit card required</p>
+    </div>
+  </div>
+</div>
+
+<!-- FINAL REGISTER SECTION -->
+<section class="sec dark" id="register">
+  <div class="form-card">
+    <h2>Reserve Your Free Spot</h2>
+    <p class="fs">For the exclusive OpenClaw training · May 4-7 · 10:00 AM PST</p>
+    
+    <form action="https://api.globalcontrol.io/api/contacts/create-tag" method="POST">
+      <div class="fg">
+        <input type="text" name="firstName" placeholder="First Name" required>
+      </div>
+      <div class="fg">
+        <input type="email" name="email" placeholder="Email Address" required>
+      </div>
+      <button type="submit" class="form-btn">Get Registered For The Training →</button>
+    </form>
+    
+    <p class="form-fine">🔒 Your information is safe & will never be shared · Free for 3 days · No credit card required</p>
+  </div>
+</section>
+
+<footer>
+  <div class="f-logo">OpenClaw Summit</div>
+  <p>Disclaimer: This site is NOT endorsed by Google, Facebook, Yelp, or FourSquare, in ANY WAY. All trademarks & Logo/branding are the property of their respective owners.</p>
+  <p><a href="https://chadnicely.com/privacy-policy">Privacy Policy</a> | <a href="https://chadnicely.com/terms-condition">Terms Of Services</a> | <a href="https://chadnicely.com/site-disclaimer">Site Disclaimer</a> | <a href="https://chadnicely.com/contact-us">Contact Us</a></p>
+  <p>Copyright © 2026 Nicely Media LLC. All rights reserved.</p>
+</footer>
+
+<script>
+function openModal() {
+  document.getElementById('registerModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('registerModal').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// Close on Escape key
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeModal();
+});
+
+const target = new Date('2026-05-04 10:00:00').getTime();
+const cd = setInterval(() => {
+  const now = new Date().getTime();
+  const diff = target - now;
+  if(diff < 0) { clearInterval(cd); return; }
+  document.getElementById('c-d').textContent = String(Math.floor(diff/(1000*60*60*24))).padStart(2,'0');
+  document.getElementById('c-h').textContent = String(Math.floor((diff%(1000*60*60*24))/(1000*60*60))).padStart(2,'0');
+  document.getElementById('c-m').textContent = String(Math.floor((diff%(1000*60*60))/(1000*60))).padStart(2,'0');
+  document.getElementById('c-s').textContent = String(Math.floor((diff%(1000*60))/1000)).padStart(2,'0');
+}, 1000);
+</script>
+
+</body>
+</html>

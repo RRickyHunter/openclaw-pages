@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>30-Day Launch Planner | Riccardo Romano</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a1a;
+            min-height: 100vh;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(124,58,237,0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(168,85,247,0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(124,58,237,0.05) 0%, transparent 70%);
+            animation: bgPulse 8s ease-in-out infinite;
+        }
+        
+        @keyframes bgPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(124,58,237,0.6);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+        
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 2s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 4s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 1s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 3s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 5s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 2.5s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 4.5s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 1.5s; }
+        .particle:nth-child(10) { left: 5%; animation-delay: 3.5s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .logo {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            animation: logoGlow 2s ease-in-out infinite;
+        }
+        
+        @keyframes logoGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #fff 0%, #a855f7 50%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            color: #a0a0b0;
+            margin-bottom: 30px;
+        }
+        
+        .progress-overview {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+        
+        .stat-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-box:hover {
+            transform: translateY(-5px);
+            border-color: rgba(124, 58, 237, 0.4);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.2);
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: statPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes statPulse {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.3); }
+        }
+        
+        .stat-label {
+            font-size: 0.85rem;
+            color: #888;
+            margin-top: 5px;
+        }
+        
+        .calendar {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .calendar-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        .week-nav {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .nav-btn {
+            padding: 8px 16px;
+            background: rgba(124, 58, 237, 0.2);
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            border-radius: 8px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(124, 58, 237, 0.4);
+            box-shadow: 0 0 20px rgba(124, 58, 237, 0.3);
+        }
+        
+        .week-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+        }
+        
+        .day-header {
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #888;
+            text-transform: uppercase;
+            padding: 10px;
+        }
+        
+        .day-cell {
+            aspect-ratio: 1;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .day-cell:hover {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(124, 58, 237, 0.4);
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.2);
+        }
+        
+        .day-cell.completed {
+            background: rgba(76, 175, 80, 0.15);
+            border-color: rgba(76, 175, 80, 0.5);
+            box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+        }
+        
+        .day-cell.has-task::after {
+            content: '';
+            position: absolute;
+            bottom: 8px;
+            width: 6px;
+            height: 6px;
+            background: #7c3aed;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(124, 58, 237, 0.5);
+        }
+        
+        .day-cell.completed::after {
+            background: #4caf50;
+            box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+        }
+        
+        .day-number {
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+        
+        .day-phase {
+            font-size: 0.65rem;
+            color: #888;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+        
+        .phase-legend {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #a0a0b0;
+        }
+        
+        .legend-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 3px;
+            box-shadow: 0 0 10px currentColor;
+        }
+        
+        .legend-dot.setup { background: #7c3aed; color: rgba(124,58,237,0.5); }
+        .legend-dot.create { background: #f093fb; color: rgba(240,147,251,0.5); }
+        .legend-dot.build { background: #4facfe; color: rgba(79,172,254,0.5); }
+        .legend-dot.launch { background: #43e97b; color: rgba(67,233,123,0.5); }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .modal.show {
+            display: flex;
+        }
+        
+        .modal-content {
+            background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 100%);
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 500px;
+            width: 100%;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+        }
+        
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .modal-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+        }
+        
+        .modal-close {
+            background: none;
+            border: none;
+            color: #888;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+            transition: color 0.3s;
+        }
+        
+        .modal-close:hover {
+            color: #fff;
+        }
+        
+        .task-list {
+            list-style: none;
+        }
+        
+        .task-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+        }
+        
+        .task-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(124, 58, 237, 0.3);
+        }
+        
+        .task-item.completed {
+            background: rgba(76, 175, 80, 0.1);
+            border-color: rgba(76, 175, 80, 0.3);
+        }
+        
+        .task-checkbox {
+            width: 22px;
+            height: 22px;
+            border: 2px solid rgba(124, 58, 237, 0.3);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+            transition: all 0.3s ease;
+        }
+        
+        .task-item:hover .task-checkbox {
+            border-color: #7c3aed;
+        }
+        
+        .task-item.completed .task-checkbox {
+            background: linear-gradient(135deg, #4caf50 0%, #66bb6a 100%);
+            border-color: #4caf50;
+            box-shadow: 0 0 15px rgba(76, 175, 80, 0.5);
+        }
+        
+        .task-checkbox::after {
+            content: '✓';
+            color: #fff;
+            font-size: 0.8rem;
+            opacity: 0;
+        }
+        
+        .task-item.completed .task-checkbox::after {
+            opacity: 1;
+        }
+        
+        .task-text {
+            flex: 1;
+        }
+        
+        .task-item.completed .task-text {
+            text-decoration: line-through;
+            color: #888;
+        }
+        
+        .task-time {
+            font-size: 0.8rem;
+            color: #7c3aed;
+            margin-top: 4px;
+        }
+        
+        .cta-section {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.2) 0%, rgba(168, 85, 247, 0.1) 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(124, 58, 237, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 50%);
+            animation: ctaGlow 4s ease-in-out infinite;
+        }
+        
+        @keyframes ctaGlow {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+        
+        .cta-section > * { position: relative; z-index: 1; }
+        
+        .cta-section p {
+            color: #a0a0b0;
+            margin-bottom: 20px;
+        }
+        
+        .cta-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+            border: none;
+            border-radius: 12px;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .cta-btn:hover::before {
+            left: 100%;
+        }
+        
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.5);
+        }
+        
+        @media (max-width: 768px) {
+            .week-grid {
+                grid-template-columns: repeat(7, 1fr);
+                gap: 5px;
+            }
+            
+            .day-cell {
+                padding: 5px;
+            }
+            
+            .day-number {
+                font-size: 0.9rem;
+            }
+            
+            .day-phase {
+                display: none;
+            }
+            
+            h1 {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <div class="logo">Riccardo Romano Bonus</div>
+            <h1>30-Day Launch Planner</h1>
+            <p class="subtitle">Your day-by-day roadmap to a successful product launch</p>
+        </div>
+        
+        <div class="progress-overview">
+            <div class="stat-box">
+                <div class="stat-value" id="daysCompleted">0</div>
+                <div class="stat-label">Days Completed</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="tasksCompleted">0</div>
+                <div class="stat-label">Tasks Done</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="percentComplete">0%</div>
+                <div class="stat-label">Progress</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="daysRemaining">30</div>
+                <div class="stat-label">Days Left</div>
+            </div>
+        </div>
+        
+        <div class="calendar">
+            <div class="calendar-header">
+                <h2 class="calendar-title" id="calendarTitle">Week 1: Foundation</h2>
+                <div class="week-nav">
+                    <button class="nav-btn" onclick="changeWeek(-1)">← Prev</button>
+                    <button class="nav-btn" onclick="changeWeek(1)">Next →</button>
+                </div>
+            </div>
+            <div class="week-grid" id="calendarGrid">
+                <!-- Generated by JS -->
+            </div>
+            <div class="phase-legend">
+                <div class="legend-item">
+                    <div class="legend-dot setup"></div>
+                    <span>Setup</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot create"></div>
+                    <span>Create</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot build"></div>
+                    <span>Build</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-dot launch"></div>
+                    <span>Launch</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <p>Want AI agents to execute this 30-day plan for you automatically?</p>
+            <a href="https://go.openclawcracked.com/riccardoromano.bizb" class="cta-btn">Let Riccardo Romano Handle It</a>
+        </div>
+    </div>
+    
+    <div class="modal" id="dayModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Day 1</h3>
+                <button class="modal-close" onclick="closeModal()">×</button>
+            </div>
+            <ul class="task-list" id="taskList">
+                <!-- Generated by JS -->
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        const launchPlan = {
+            1: { phase: 'setup', tasks: ['Set up your workspace', 'Define your niche', 'Research competitors', 'Set launch goals'] },
+            2: { phase: 'setup', tasks: ['Create customer avatar', 'Map out course outline', 'Choose pricing strategy', 'Set up project timeline'] },
+            3: { phase: 'setup', tasks: ['Register domain', 'Set up hosting', 'Install necessary tools', 'Create brand assets'] },
+            4: { phase: 'setup', tasks: ['Set up email service', 'Configure payment processor', 'Install analytics', 'Create social accounts'] },
+            5: { phase: 'create', tasks: ['Write module 1 script', 'Record module 1 videos', 'Create worksheets', 'Edit videos'] },
+            6: { phase: 'create', tasks: ['Write module 2 script', 'Record module 2 videos', 'Create resources', 'Edit videos'] },
+            7: { phase: 'create', tasks: ['Review all content', 'Make improvements', 'Plan next week', 'Rest and recharge'] },
+            8: { phase: 'create', tasks: ['Write module 3 script', 'Record module 3 videos', 'Create bonus content', 'Edit videos'] },
+            9: { phase: 'create', tasks: ['Write module 4 script', 'Record module 4 videos', 'Create checklists', 'Edit videos'] },
+            10: { phase: 'create', tasks: ['Create welcome video', 'Record sales video', 'Make bonus videos', 'Final content review'] },
+            11: { phase: 'build', tasks: ['Design sales page', 'Write sales copy', 'Create opt-in page', 'Set up thank you page'] },
+            12: { phase: 'build', tasks: ['Build checkout flow', 'Configure upsells', 'Set up member area', 'Upload course content'] },
+            13: { phase: 'build', tasks: ['Write email sequence', 'Set up automation', 'Create launch emails', 'Test all links'] },
+            14: { phase: 'build', tasks: ['Review all pages', 'Mobile testing', 'Fix any issues', 'Prepare for pre-launch'] },
+            15: { phase: 'launch', tasks: ['Announce pre-launch', 'Send first teaser', 'Post on social media', 'Engage with audience'] },
+            16: { phase: 'launch', tasks: ['Share valuable content', 'Build anticipation', 'Answer questions', 'Grow waitlist'] },
+            17: { phase: 'launch', tasks: ['Send case studies', 'Share testimonials', 'Post behind-scenes', 'Increase excitement'] },
+            18: { phase: 'launch', tasks: ['Open early bird', 'Send cart open email', 'Post on all channels', 'Handle objections'] },
+            19: { phase: 'launch', tasks: ['Send reminder emails', 'Share success stories', 'Address concerns', 'Keep momentum'] },
+            20: { phase: 'launch', tasks: ['Mid-launch check', 'Optimize conversions', 'Add urgency', 'Share more proof'] },
+            21: { phase: 'launch', tasks: ['Send scarcity emails', 'Announce bonuses', 'Final push begins', 'Increase frequency'] },
+            22: { phase: 'launch', tasks: ['Last chance emails', 'Final social posts', 'Address last doubts', 'Prepare for close'] },
+            23: { phase: 'launch', tasks: ['Cart closing soon', 'Final reminders', 'Thank supporters', 'Prepare follow-up'] },
+            24: { phase: 'launch', tasks: ['Cart closes', 'Send thank you', 'Welcome new students', 'Celebrate wins'] },
+            25: { phase: 'build', tasks: ['Analyze results', 'Document learnings', 'Plan improvements', 'Gather feedback'] },
+            26: { phase: 'build', tasks: ['Optimize funnel', 'Fix weak points', 'A/B test elements', 'Improve conversions'] },
+            27: { phase: 'build', tasks: ['Create evergreen version', 'Set up automation', 'Build follow-up sequence', 'Plan next launch'] },
+            28: { phase: 'build', tasks: ['Document processes', 'Create SOPs', 'Train team members', 'Scale systems'] },
+            29: { phase: 'setup', tasks: ['Review entire launch', 'Calculate ROI', 'Plan next steps', 'Set new goals'] },
+            30: { phase: 'setup', tasks: ['Celebrate success', 'Thank your team', 'Share results', 'Prepare for growth'] }
+        };
+        
+        const phaseColors = {
+            setup: '#7c3aed',
+            create: '#f093fb',
+            build: '#4facfe',
+            launch: '#43e97b'
+        };
+        
+        const phaseNames = {
+            setup: 'Setup',
+            create: 'Create',
+            build: 'Build',
+            launch: 'Launch'
+        };
+        
+        let currentWeek = 1;
+        const completedDays = new Set();
+        const completedTasks = new Set();
+        
+        function init() {
+            loadProgress();
+            renderCalendar();
+            updateStats();
+        }
+        
+        function renderCalendar() {
+            const grid = document.getElementById('calendarGrid');
+            grid.innerHTML = '';
+            
+            // Day headers
+            const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            days.forEach(day => {
+                const header = document.createElement('div');
+                header.className = 'day-header';
+                header.textContent = day;
+                grid.appendChild(header);
+            });
+            
+            // Calculate start day for current week
+            const startDay = (currentWeek - 1) * 7 + 1;
+            const endDay = Math.min(startDay + 6, 30);
+            
+            // Update title
+            const weekPhases = [];
+            for (let i = startDay; i <= endDay; i++) {
+                if (launchPlan[i]) {
+                    weekPhases.push(phaseNames[launchPlan[i].phase]);
+                }
+            }
+            const mainPhase = weekPhases[0] || 'Foundation';
+            document.getElementById('calendarTitle').textContent = `Week ${currentWeek}: ${mainPhase}`;
+            
+            // Render days
+            for (let day = startDay; day <= endDay; day++) {
+                const cell = document.createElement('div');
+                cell.className = 'day-cell';
+                cell.dataset.day = day;
+                
+                if (launchPlan[day]) {
+                    const plan = launchPlan[day];
+                    cell.classList.add('has-task');
+                    if (completedDays.has(day)) {
+                        cell.classList.add('completed');
+                    }
+                    
+                    cell.innerHTML = `
+                        <div class="day-number">${day}</div>
+                        <div class="day-phase">${phaseNames[plan.phase]}</div>
+                    `;
+                    cell.style.borderColor = phaseColors[plan.phase] + '40';
+                    cell.onclick = () => openDay(day);
+                } else {
+                    cell.innerHTML = `<div class="day-number">${day}</div>`;
+                    cell.style.opacity = '0.3';
+                }
+                
+                grid.appendChild(cell);
+            }
+        }
+        
+        function changeWeek(direction) {
+            currentWeek += direction;
+            if (currentWeek < 1) currentWeek = 1;
+            if (currentWeek > 5) currentWeek = 5;
+            renderCalendar();
+        }
+        
+        function openDay(day) {
+            const plan = launchPlan[day];
+            if (!plan) return;
+            
+            document.getElementById('modalTitle').textContent = `Day ${day} - ${phaseNames[plan.phase]} Phase`;
+            
+            const taskList = document.getElementById('taskList');
+            taskList.innerHTML = '';
+            
+            plan.tasks.forEach((task, index) => {
+                const taskId = `${day}-${index}`;
+                const li = document.createElement('li');
+                li.className = 'task-item';
+                if (completedTasks.has(taskId)) {
+                    li.classList.add('completed');
+                }
+                li.innerHTML = `
+                    <div class="task-checkbox"></div>
+                    <div class="task-text">
+                        <div>${task}</div>
+                        <div class="task-time">~30-60 min</div>
+                    </div>
+                `;
+                li.onclick = () => toggleTask(day, index, li);
+                taskList.appendChild(li);
+            });
+            
+            document.getElementById('dayModal').classList.add('show');
+        }
+        
+        function closeModal() {
+            document.getElementById('dayModal').classList.remove('show');
+        }
+        
+        function toggleTask(day, taskIndex, element) {
+            const taskId = `${day}-${taskIndex}`;
+            
+            if (completedTasks.has(taskId)) {
+                completedTasks.delete(taskId);
+                element.classList.remove('completed');
+            } else {
+                completedTasks.add(taskId);
+                element.classList.add('completed');
+            }
+            
+            // Check if all tasks for this day are completed
+            const plan = launchPlan[day];
+            const allCompleted = plan.tasks.every((_, i) => completedTasks.has(`${day}-${i}`));
+            
+            if (allCompleted) {
+                completedDays.add(day);
+            } else {
+                completedDays.delete(day);
+            }
+            
+            saveProgress();
+            updateStats();
+            renderCalendar();
+        }
+        
+        function updateStats() {
+            const totalDays = 30;
+            const daysDone = completedDays.size;
+            const totalTasks = Object.values(launchPlan).reduce((sum, p) => sum + p.tasks.length, 0);
+            const tasksDone = completedTasks.size;
+            const percent = Math.round((tasksDone / totalTasks) * 100);
+            
+            document.getElementById('daysCompleted').textContent = daysDone;
+            document.getElementById('tasksCompleted').textContent = tasksDone;
+            document.getElementById('percentComplete').textContent = percent + '%';
+            document.getElementById('daysRemaining').textContent = totalDays - daysDone;
+        }
+        
+        function saveProgress() {
+            localStorage.setItem('riccardoromano.bizPlannerDays', JSON.stringify([...completedDays]));
+            localStorage.setItem('riccardoromano.bizPlannerTasks', JSON.stringify([...completedTasks]));
+        }
+        
+        function loadProgress() {
+            const savedDays = localStorage.getItem('riccardoromano.bizPlannerDays');
+            const savedTasks = localStorage.getItem('riccardoromano.bizPlannerTasks');
+            
+            if (savedDays) {
+                JSON.parse(savedDays).forEach(d => completedDays.add(d));
+            }
+            if (savedTasks) {
+                JSON.parse(savedTasks).forEach(t => completedTasks.add(t));
+            }
+        }
+        
+        // Close modal on outside click
+        document.getElementById('dayModal').addEventListener('click', (e) => {
+            if (e.target.id === 'dayModal') {
+                closeModal();
+            }
+        });
+        
+        init();
+    </script>
+</body>
+</html>

@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Bonuses - Riccardo Romano</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0a0a1a;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Animated background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(124,58,237,0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(168,85,247,0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(124,58,237,0.05) 0%, transparent 70%);
+            animation: bgPulse 8s ease-in-out infinite;
+        }
+        
+        @keyframes bgPulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        /* Floating particles */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(124,58,237,0.6);
+            border-radius: 50%;
+            animation: float 15s infinite;
+        }
+        
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 2s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 4s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 1s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 3s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 5s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 2.5s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 4.5s; }
+        .particle:nth-child(9) { left: 90%; animation-delay: 1.5s; }
+        .particle:nth-child(10) { left: 5%; animation-delay: 3.5s; }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+        }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 80px 0 60px;
+            position: relative;
+        }
+        
+        .success-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 24px;
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid rgba(76, 175, 80, 0.4);
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #4caf50;
+            margin-bottom: 30px;
+            animation: badgePulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes badgePulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.4); }
+            50% { box-shadow: 0 0 20px 5px rgba(76, 175, 80, 0.2); }
+        }
+        
+        .check-icon {
+            width: 20px;
+            height: 20px;
+            background: #4caf50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: checkBounce 1s ease infinite;
+        }
+        
+        @keyframes checkBounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        h1 {
+            font-size: 56px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, #a855f7 50%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes titleGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            color: #a0a0b0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Value banner */
+        .value-banner {
+            background: linear-gradient(135deg, rgba(124,58,237,0.2) 0%, rgba(168,85,247,0.2) 100%);
+            border-radius: 24px;
+            padding: 50px;
+            border: 2px solid rgba(124,58,237,0.4);
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .value-banner::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.05), transparent);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+        
+        .value-banner > * { position: relative; z-index: 1; }
+        
+        .value-text {
+            font-size: 18px;
+            color: #e0e0e8;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .value-amount {
+            font-size: 72px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 15px 0;
+            animation: valuePulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes valuePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .value-note {
+            font-size: 16px;
+            color: #888;
+        }
+        
+        /* Section headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-header h2 {
+            font-size: 36px;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #fff 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .section-header p {
+            color: #a0a0b0;
+            font-size: 18px;
+        }
+        
+        /* Bonus cards */
+        .bonuses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+        
+        .bonus-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 24px;
+            padding: 40px;
+            border: 1px solid rgba(124,58,237,0.2);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: cardFloat 6s ease-in-out infinite;
+        }
+        
+        .bonus-card:nth-child(1) { animation-delay: 0s; }
+        .bonus-card:nth-child(2) { animation-delay: 2s; }
+        .bonus-card:nth-child(3) { animation-delay: 4s; }
+        
+        @keyframes cardFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .bonus-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #7c3aed 0%, #a855f7 100%);
+        }
+        
+        .bonus-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 50% 0%, rgba(124,58,237,0.3) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .bonus-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(124,58,237,0.4);
+            box-shadow: 0 30px 60px rgba(124,58,237,0.3);
+        }
+        
+        .bonus-card:hover::after {
+            opacity: 1;
+        }
+        
+        .bonus-number {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 20px;
+            box-shadow: 0 10px 30px rgba(124,58,237,0.4);
+            animation: numberGlow 2s ease-in-out infinite;
+        }
+        
+        @keyframes numberGlow {
+            0%, 100% { box-shadow: 0 10px 30px rgba(124,58,237,0.4); }
+            50% { box-shadow: 0 10px 40px rgba(124,58,237,0.6); }
+        }
+        
+        .bonus-icon {
+            font-size: 56px;
+            margin-bottom: 25px;
+            display: block;
+            animation: iconBounce 2s ease infinite;
+        }
+        
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .bonus-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+        
+        .bonus-description {
+            color: #a0a0b0;
+            font-size: 16px;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+        
+        .bonus-value {
+            display: inline-block;
+            padding: 8px 18px;
+            background: rgba(76, 175, 80, 0.15);
+            border: 1px solid rgba(76, 175, 80, 0.3);
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #4caf50;
+            margin-bottom: 25px;
+        }
+        
+        .bonus-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 32px;
+            background: linear-gradient(135deg, #7c3aed 0%, #a855f7 100%);
+            border-radius: 12px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .bonus-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .bonus-link:hover::before {
+            left: 100%;
+        }
+        
+        .bonus-link:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 30px rgba(124,58,237,0.5);
+        }
+        
+        /* Presell section */
+        .presell-section {
+            margin-bottom: 80px;
+        }
+        
+        .presell-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .presell-card {
+            background: rgba(255,255,255,0.03);
+            border-radius: 16px;
+            padding: 30px;
+            border: 1px solid rgba(124,58,237,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .presell-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(124,58,237,0.4);
+            box-shadow: 0 15px 40px rgba(124,58,237,0.2);
+        }
+        
+        .presell-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+        
+        .presell-card p {
+            color: #a0a0b0;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .presell-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: rgba(124,58,237,0.2);
+            border: 1px solid rgba(124,58,237,0.4);
+            border-radius: 8px;
+            color: #a855f7;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .presell-link:hover {
+            background: rgba(124,58,237,0.3);
+            color: #fff;
+        }
+        
+        /* Support section */
+        .support-section {
+            background: rgba(255,255,255,0.03);
+            border-radius: 24px;
+            padding: 60px;
+            border: 1px solid rgba(124,58,237,0.2);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+        
+        .support-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(124,58,237,0.1) 0%, transparent 50%);
+            animation: supportPulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes supportPulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.1); opacity: 1; }
+        }
+        
+        .support-section > * { position: relative; z-index: 1; }
+        
+        .support-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .support-section p {
+            color: #a0a0b0;
+            margin-bottom: 40px;
+            font-size: 18px;
+        }
+        
+        .support-options {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .support-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 36px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(124,58,237,0.3);
+            border-radius: 14px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .support-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(124,58,237,0.3);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+        
+        .support-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        
+        .support-btn:hover {
+            border-color: rgba(124,58,237,0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(124,58,237,0.2);
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 60px 0;
+            color: #505060;
+            font-size: 14px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 36px; }
+            .value-amount { font-size: 48px; }
+            .bonuses-grid { grid-template-columns: 1fr; }
+            .support-section { padding: 40px 20px; }
+            .support-options { flex-direction: column; }
+            .section-header h2 { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+    <div class="particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <div class="success-badge">
+                <div class="check-icon">✓</div>
+                Welcome to Your Bonus Hub
+            </div>
+            <h1>Your Complete Bonus Package</h1>
+            <p class="subtitle">Everything you need to launch, track, and scale your info business successfully</p>
+        </div>
+        
+        <div class="value-banner">
+            <div class="value-text">Total Bonus Value</div>
+            <div class="value-amount">$211</div>
+            <div class="value-note">Yours FREE with your purchase</div>
+        </div>
+        
+        <div class="section-header">
+            <h2>🎁 Your Exclusive Bonuses</h2>
+            <p>Click any bonus below to access it instantly</p>
+        </div>
+        
+        <div class="bonuses-grid">
+            <div class="bonus-card">
+                <div class="bonus-number">1</div>
+                <span class="bonus-icon">✅</span>
+                <h3 class="bonus-title">Implementation Checklist</h3>
+                <p class="bonus-description">Step-by-step interactive checklist for setting up your system, training your AI agents, and launching your first product without missing anything critical.</p>
+                <div class="bonus-value">$97 Value</div>
+                <a href="/template2/bonus-1/index.html" class="bonus-link">Access Checklist →</a>
+            </div>
+            
+            <div class="bonus-card">
+                <div class="bonus-number">2</div>
+                <span class="bonus-icon">📅</span>
+                <h3 class="bonus-title">30-Day Launch Planner</h3>
+                <p class="bonus-description">Your day-by-day roadmap to a successful product launch. Interactive calendar with daily tasks, progress tracking, and completion markers.</p>
+                <div class="bonus-value">$67 Value</div>
+                <a href="/template2/bonus-2/index.html" class="bonus-link">Open Planner →</a>
+            </div>
+            
+            <div class="bonus-card">
+                <div class="bonus-number">3</div>
+                <span class="bonus-icon">📊</span>
+                <h3 class="bonus-title">Course Profit Tracker</h3>
+                <p class="bonus-description">Track revenue, students, expenses, and profitability in real-time. Visual charts show your financial progress and help optimize your business.</p>
+                <div class="bonus-value">$47 Value</div>
+                <a href="/template2/bonus-3/index.html" class="bonus-link">Launch Tracker →</a>
+            </div>
+        </div>
+        
+        <div class="presell-section">
+            <div class="section-header">
+                <h2>🛠️ Your Free Tools</h2>
+                <p>Additional resources to help you plan and validate your info business</p>
+            </div>
+            <div class="presell-grid">
+                <div class="presell-card">
+                    <h3>💰 Profit Calculator</h3>
+                    <p>Discover how much revenue you could generate with your own info product based on your niche and audience size.</p>
+                    <a href="https://bonuses-eight.vercel.app/presells/presell-1/index.html" class="presell-link">Try Calculator →</a>
+                </div>
+                <div class="presell-card">
+                    <h3>🎯 Course Topic Generator</h3>
+                    <p>Enter your interests and skills to discover profitable course ideas with proven market demand.</p>
+                    <a href="https://bonuses-eight.vercel.app/presells/presell-2/index.html" class="presell-link">Generate Ideas →</a>
+                </div>
+                <div class="presell-card">
+                    <h3>🗺️ 7-Figure Roadmap</h3>
+                    <p>The exact 7-step process to build a million-dollar information business from scratch.</p>
+                    <a href="https://bonuses-eight.vercel.app/presells/presell-3/index.html" class="presell-link">View Roadmap →</a>
+                </div>
+            </div>
+        </div>
+        
+
+
+        <div class="support-section">
+            <h2>Need Help With Your Bonuses?</h2>
+            <p>Our support team is here to assist you with any questions</p>
+            <div class="support-options">
+                <a href="mailto:info@riccardoromano.biz" class="support-btn">
+                    <span>✉️</span> Email Support
+                </a>
+                <a href="index.html#" class="support-btn">
+                    <span>💬</span> Live Chat
+                </a>
+                <a href="index.html#" class="support-btn">
+                    <span>📚</span> Help Center
+                </a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 Riccardo Romano. All rights reserved.</p>
+        </div>
+    </div>
+</body>
+</html>
