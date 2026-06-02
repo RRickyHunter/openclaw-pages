@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Metodo DEC Genova | Check-up Patente per teoria, guida e paura al volante</title>
+  <meta name="description" content="Scopri il Metodo DEC di Autoscuola DEC a Genova: un percorso guidato per teoria, guida, ansia e paura al volante. Fai il Check-up Patente DEC." />
+  <meta property="og:title" content="Metodo DEC Genova | Check-up Patente DEC" />
+  <meta property="og:description" content="Non una patente lasciata al caso: un percorso guidato, progressivo e costruito intorno a te." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pages.riccardoromano.biz/metodo-dec/" />
+  <link rel="canonical" href="https://pages.riccardoromano.biz/metodo-dec/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #08111f;
+      --bg-alt: #0f1b31;
+      --surface: rgba(12, 20, 36, 0.82);
+      --surface-soft: rgba(255, 255, 255, 0.04);
+      --card: #111d33;
+      --text: #f5f7fb;
+      --muted: #a7b4c9;
+      --accent: #7dd3fc;
+      --accent-strong: #38bdf8;
+      --accent-warm: #fbbf24;
+      --border: rgba(148, 163, 184, 0.2);
+      --success: #86efac;
+      --danger: #fca5a5;
+      --shadow: 0 24px 80px rgba(2, 6, 23, 0.45);
+      --radius: 24px;
+      --radius-sm: 16px;
+      --max: 1320px;
+      --hero-max: 1820px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top, rgba(56, 189, 248, 0.16), transparent 28%),
+        radial-gradient(circle at 80% 0%, rgba(251, 191, 36, 0.12), transparent 20%),
+        linear-gradient(180deg, #08111f 0%, #0b1425 36%, #0f1b31 100%);
+      line-height: 1.6;
+    }
+
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+    .section { padding: 72px 0; }
+    .section-tight { padding-top: 40px; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(125, 211, 252, 0.12);
+      border: 1px solid rgba(125, 211, 252, 0.18);
+      color: var(--accent);
+      font-size: 0.86rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-warm);
+      box-shadow: 0 0 0 6px rgba(251, 191, 36, 0.12);
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      font-size: clamp(2.3rem, calc(1.5rem + 3.1cqi), 4.2rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      margin: 20px 0 18px;
+    }
+    h2 {
+      font-size: clamp(1.9rem, 4vw, 3rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin-bottom: 18px;
+    }
+    h3 {
+      font-size: clamp(1.15rem, 2vw, 1.4rem);
+      margin-bottom: 12px;
+    }
+    .lead {
+      font-size: clamp(1.05rem, calc(0.98rem + 0.9cqi), 1.28rem);
+      color: var(--muted);
+      max-width: 760px;
+    }
+    .muted { color: var(--muted); }
+    .accent { color: var(--accent); }
+
+    .hero {
+      padding: 0 0 72px;
+    }
+    .hero-topbar {
+      padding-top: 8px;
+    }
+    .hero-shell {
+      width: min(100%, var(--hero-max));
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .brand-mark {
+      width: 52px;
+      height: 52px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(125,211,252,0.2), rgba(56,189,248,0.45));
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: white;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.12);
+    }
+    .brand small { display: block; color: var(--muted); }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 0;
+      align-items: stretch;
+      max-width: 100%;
+    }
+    .hero-main {
+      display: grid;
+      gap: 24px;
+      align-items: center;
+    }
+    .hero-copy,
+    .hero-card,
+    .card,
+    .quiz-wrap,
+    .result-box,
+    .testimonial,
+    .service,
+    .team-card,
+    .step,
+    .stat,
+    .final-cta,
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+      border-radius: var(--radius);
+    }
+    .hero-copy {
+      padding: clamp(40px, 4vw, 56px) clamp(36px, 6vw, 108px) clamp(28px, 3vw, 44px);
+      min-height: calc(100vh - 72px);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 14px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 36px;
+      container-type: inline-size;
+    }
+    .hero-layout-accent {
+      position: relative;
+    }
+    .hero-layout-accent::after {
+      content: "";
+      position: absolute;
+      inset: auto 34px 34px auto;
+      width: 220px;
+      height: 220px;
+      border-radius: 28px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.16), transparent 68%);
+      pointer-events: none;
+      filter: blur(8px);
+    }
+    .hero-text {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: none;
+    }
+    .hero-copy-column {
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+    .hero-text h1 {
+      max-width: none;
+      width: 100%;
+    }
+    .hero-text .lead {
+      max-width: none;
+      width: 100%;
+    }
+    .hero-media {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      overflow: hidden;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: #0c162a;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+      width: 100%;
+      align-self: stretch;
+      min-height: 100%;
+    }
+    .hero-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8,17,31,0.02) 0%, rgba(8,17,31,0.08) 100%);
+      pointer-events: none;
+    }
+    .hero-media img {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      object-position: center;
+    }
+    .hero-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+    .hero-points,
+    .bullet-list,
+    .check-list,
+    .service ul {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .hero-points li,
+    .check-list li,
+    .service li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 14px;
+      color: var(--muted);
+    }
+    .hero-points li::before,
+    .check-list li::before,
+    .service li::before {
+      content: "✓";
+      color: var(--success);
+      font-weight: 800;
+      margin-top: 1px;
+    }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin: 0;
+    }
+    .hero-cta {
+      margin-top: 4px;
+      justify-content: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 15px 22px;
+      border-radius: 16px;
+      text-decoration: none;
+      font-weight: 700;
+      border: 1px solid transparent;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+      color: #04111e;
+      box-shadow: 0 12px 32px rgba(14, 165, 233, 0.28);
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,0.03);
+      border-color: var(--border);
+      color: var(--text);
+    }
+    .microproof {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .hero-card .image-frame,
+    .team-visual {
+      overflow: hidden;
+      border-radius: 20px;
+      margin-bottom: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: #0c162a;
+      position: relative;
+      width: 100%;
+      min-height: 320px;
+      display: block;
+      isolation: isolate;
+    }
+    .google-proof-wrap {
+      display: grid;
+      gap: 22px;
+    }
+    .google-proof-head {
+      display: grid;
+      gap: 14px;
+      align-items: start;
+    }
+    .google-score-card {
+      position: relative;
+      overflow: hidden;
+      padding: 28px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(125,211,252,0.08));
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .google-score-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -30px -50px auto;
+      width: 170px;
+      height: 170px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(251,191,36,0.28), transparent 70%);
+      pointer-events: none;
+    }
+    .google-score-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .google-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-weight: 700;
+      width: fit-content;
+    }
+    .google-badge-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #4285f4, #34a853);
+      color: white;
+      font-weight: 800;
+      font-size: 0.95rem;
+    }
+    .google-score-value {
+      display: flex;
+      align-items: flex-end;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+    .google-score-number {
+      font-size: clamp(3rem, 8vw, 4.8rem);
+      line-height: 0.9;
+      letter-spacing: -0.05em;
+      font-weight: 800;
+    }
+    .google-score-stars {
+      display: grid;
+      gap: 6px;
+    }
+    .stars {
+      font-size: 1.2rem;
+      letter-spacing: 0.18em;
+      color: var(--accent-warm);
+    }
+    .google-proof-points {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .google-proof-point {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: var(--muted);
+    }
+    .google-proof-point::before {
+      content: "✦";
+      color: var(--accent-warm);
+      font-weight: 700;
+      margin-top: 1px;
+    }
+    .review-slider {
+      position: relative;
+      overflow: hidden;
+    }
+    .review-slider-track {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: minmax(280px, 1fr);
+      gap: 18px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 8px;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+    .review-slider-track::-webkit-scrollbar { display: none; }
+    .review-slide {
+      scroll-snap-align: start;
+      min-width: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .review-shot {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      background: #091221;
+      overflow: hidden;
+    }
+    .review-shot img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+    }
+    .review-copy {
+      padding: 20px 22px 22px;
+      display: grid;
+      gap: 12px;
+    }
+    .review-copy blockquote {
+      margin: 0;
+      font-size: 1.02rem;
+      line-height: 1.65;
+      color: var(--text);
+    }
+    .review-copy footer {
+      margin-top: 0;
+      display: grid;
+      gap: 4px;
+    }
+    .review-copy strong {
+      font-size: 0.98rem;
+    }
+    .review-role {
+      font-size: 0.84rem;
+      color: var(--muted);
+    }
+    .review-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .review-nav-buttons {
+      display: inline-flex;
+      gap: 10px;
+    }
+    .review-nav button {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 1.1rem;
+    }
+    .review-nav button:hover,
+    .review-nav button:focus-visible {
+      outline: none;
+      border-color: rgba(125,211,252,0.55);
+      background: rgba(125,211,252,0.1);
+    }
+    .hero-card .image-frame img,
+    .team-visual img {
+      width: 100%;
+      height: 100%;
+      min-height: 320px;
+      aspect-ratio: 16/11;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .team-card {
+      overflow: visible;
+    }
+    .hero-badge-grid {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+      max-width: 560px;
+    }
+    .mini-badge {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: var(--surface-soft);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    .mini-badge strong { display: block; margin-bottom: 4px; }
+
+    .grid-2, .grid-3, .grid-4 {
+      display: grid;
+      gap: 20px;
+    }
+    .card, .step, .stat, .testimonial, .service, .team-card, .contact-card, .final-cta { padding: 26px; }
+    .problem-card { padding: 28px; }
+    .quote {
+      border-left: 3px solid var(--accent-strong);
+      padding-left: 18px;
+      color: var(--text);
+      font-weight: 600;
+      margin-top: 22px;
+    }
+
+    .quiz-wrap { padding: 28px; }
+    .quiz-progress {
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      overflow: hidden;
+      margin-bottom: 22px;
+    }
+    .quiz-progress span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, #38bdf8, #fbbf24);
+      transition: width .25s ease;
+    }
+    .quiz-answers {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+    .quiz-option {
+      width: 100%;
+      text-align: left;
+      padding: 16px 18px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      font: inherit;
+      cursor: pointer;
+    }
+    .quiz-option:hover,
+    .quiz-option:focus-visible {
+      outline: none;
+      border-color: rgba(125,211,252,0.55);
+      background: rgba(125,211,252,0.08);
+    }
+    .quiz-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      margin-bottom: 8px;
+    }
+    .result-box { padding: 24px; margin-top: 20px; }
+    .result-box.hidden,
+    .prequal-form.hidden,
+    .quiz-intro.hidden,
+    .question-screen.hidden { display: none; }
+    .result-tag {
+      display: inline-block;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .result-low { background: rgba(134, 239, 172, 0.15); color: var(--success); }
+    .result-mid { background: rgba(251, 191, 36, 0.18); color: #fcd34d; }
+    .result-high { background: rgba(252, 165, 165, 0.14); color: var(--danger); }
+
+    .prequal-form {
+      margin-top: 22px;
+      display: grid;
+      gap: 14px;
+    }
+    .field-grid {
+      display: grid;
+      gap: 14px;
+    }
+    label {
+      display: grid;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--text);
+    }
+    input, textarea, select {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: rgba(7, 12, 24, 0.65);
+      color: var(--text);
+      padding: 14px 14px;
+      font: inherit;
+    }
+    textarea { min-height: 120px; resize: vertical; }
+    .consent {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+    .consent input { width: auto; margin-top: 4px; }
+    .helper {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+    .form-status {
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 16px;
+      border: 1px solid transparent;
+      font-size: 0.92rem;
+    }
+    .form-status.hidden { display: none; }
+    .form-status.is-success {
+      background: rgba(134, 239, 172, 0.12);
+      border-color: rgba(134, 239, 172, 0.28);
+      color: #dcfce7;
+    }
+    .form-status.is-error {
+      background: rgba(252, 165, 165, 0.12);
+      border-color: rgba(252, 165, 165, 0.28);
+      color: #fee2e2;
+    }
+    .hp-field {
+      position: absolute !important;
+      left: -9999px !important;
+      width: 1px !important;
+      height: 1px !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: clamp(2rem, 4vw, 2.6rem);
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+    .testimonial footer {
+      margin-top: 18px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .testimonial-visual {
+      overflow: hidden;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.02);
+      margin-bottom: 18px;
+    }
+    .testimonial-visual img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: top;
+    }
+    .testimonial-quote {
+      font-size: 1rem;
+      color: var(--text);
+      margin-bottom: 14px;
+    }
+    .testimonial-meta {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .testimonial-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(125, 211, 252, 0.1);
+      border: 1px solid rgba(125, 211, 252, 0.18);
+    }
+    .team-card p:last-child,
+    .service p:last-child,
+    .contact-card p:last-child { margin-bottom: 0; }
+    .contact-stack {
+      display: grid;
+      gap: 18px;
+    }
+    .contact-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .final-cta {
+      text-align: center;
+      padding: 36px 26px;
+    }
+    .footer-note {
+      padding: 28px 0 60px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    @media (min-width: 760px) {
+      .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .field-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (min-width: 980px) {
+      h1 {
+        font-size: clamp(2.95rem, calc(1.9rem + 2.35cqi), 4.15rem);
+        line-height: 0.96;
+      }
+      .lead {
+        font-size: clamp(1.1rem, calc(1rem + 0.75cqi), 1.34rem);
+        max-width: 1100px;
+      }
+      .hero-main {
+        grid-template-columns: minmax(0, 1.08fr) minmax(360px, 0.92fr);
+        gap: 32px;
+      }
+      .hero-copy {
+        justify-content: flex-start;
+      }
+      .hero-cta {
+        margin-top: 18px;
+      }
+      .hero-media img {
+        height: 100%;
+        min-height: 380px;
+        aspect-ratio: auto;
+      }
+    }
+
+    @media (min-width: 1440px) {
+      .hero-shell {
+        padding: 0 32px;
+      }
+
+      .hero-copy {
+        padding: clamp(40px, 4vw, 56px) clamp(48px, 4.2vw, 112px) clamp(28px, 2.6vw, 42px);
+      }
+
+      .hero-text {
+        width: 100%;
+        max-width: none;
+      }
+
+      h1 {
+        font-size: clamp(3.35rem, calc(2.2rem + 1.9cqi), 4.4rem);
+      }
+    }
+
+    @media (min-width: 1720px) {
+      .hero-shell {
+        max-width: 1900px;
+      }
+
+      .hero-text {
+        width: 100%;
+        max-width: none;
+      }
+
+      h1 {
+        font-size: clamp(3.55rem, calc(2.5rem + 1.55cqi), 4.55rem);
+      }
+    }
+
+    @media (max-width: 979px) {
+      .hero-shell {
+        width: 100%;
+        padding: 0 16px;
+      }
+      .hero-copy {
+        min-height: auto;
+        padding: 40px 22px 32px;
+        border-radius: 24px;
+      }
+      .hero-main {
+        gap: 20px;
+      }
+      .hero-text,
+      .hero-media {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 759px) {
+      .hero-copy, .hero-card, .card, .step, .stat, .testimonial, .service, .team-card, .contact-card, .quiz-wrap, .final-cta {
+        padding: 22px;
+      }
+      .hero-copy {
+        padding-top: 40px;
+      }
+      .hero-shell {
+        padding: 0 12px;
+      }
+      .topbar { align-items: flex-start; }
+      .microproof { flex-direction: column; gap: 8px; }
+      .quiz-meta { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container hero-topbar">
+      <div class="topbar">
+        <div class="brand">
+          <div class="brand-mark">DEC</div>
+          <div>
+            <strong>Autoscuola DEC</strong>
+            <small>Driving Educational Center · Genova</small>
+          </div>
+        </div>
+        <a class="nav-cta" href="#quiz">Fai il Check-up Patente DEC</a>
+      </div>
+    </div>
+
+    <div class="hero-shell">
+      <div class="hero-grid">
+        <div class="hero-copy hero-layout-accent">
+          <div class="hero-main">
+            <div class="hero-copy-column">
+              <div class="hero-text">
+                <span class="eyebrow">Metodo proprietario per patente a Genova</span>
+                <h1>Non sei tu che <span class="accent">non sei portato</span>. Serve un metodo che ti insegni nel modo giusto.</h1>
+                <p class="lead">Metodo DEC è il percorso di Autoscuola DEC pensato per chi vuole prendere la patente con più struttura, più chiarezza e meno caos: teoria, guida, blocchi, ansia e paura al volante affrontati con un metodo progressivo.</p>
+              </div>
+            </div>
+            <figure class="hero-media">
+              <img src="https://static.wixstatic.com/media/96bfb1_c1e2746340fb4ddb9e7adb0ea597eec9~mv2.jpg/v1/fill/w_1200,h_640,al_c,q_85,enc_avif,quality_auto/96bfb1_c1e2746340fb4ddb9e7adb0ea597eec9~mv2.jpg" alt="Autoscuola DEC, ambiente scuola guida Metodo DEC" />
+            </figure>
+          </div>
+          <div class="cta-row hero-cta">
+            <a class="btn btn-primary" href="#quiz">Fai il Check-up Patente DEC</a>
+            <a class="btn btn-secondary" href="#metodo">Scopri come funziona il Metodo DEC</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section section-tight" id="quiz">
+      <div class="container">
+        <div class="quiz-wrap">
+          <span class="eyebrow">Check-up Patente DEC</span>
+          <h2>Capisci in 2 minuti quale percorso guidato ha più senso per te</h2>
+          <p class="lead">Questo check-up ti orienta tra teoria, guida, recupero, percorso privatista e supporto emotivo. L'obiettivo non è spingerti su un'opzione standard, ma capire da dove partire con il metodo giusto.</p>
+
+          <div class="quiz-intro" id="quizIntro">
+            <div class="cta-row">
+              <button class="btn btn-primary" type="button" id="startQuizBtn">Inizia il Check-up</button>
+              <a class="btn btn-secondary" href="#problema">Prima fammi capire se è adatto a me</a>
+            </div>
+          </div>
+
+          <div class="question-screen hidden" id="questionScreen">
+            <div class="quiz-meta">
+              <span id="questionCounter">Domanda 1 di 6</span>
+              <span id="questionTheme">Analisi iniziale</span>
+            </div>
+            <div class="quiz-progress" aria-hidden="true"><span id="quizProgressBar"></span></div>
+            <h3 id="questionText">Domanda</h3>
+            <div class="quiz-answers" id="quizAnswers"></div>
+          </div>
+
+          <div class="result-box hidden" id="quizResult" aria-live="polite">
+            <div id="resultTag" class="result-tag result-mid">Profilo</div>
+            <h3 id="resultTitle">Risultato</h3>
+            <p id="resultBody" class="muted"></p>
+            <ul class="check-list" id="resultBullets"></ul>
+
+            <form class="prequal-form hidden" id="prequalForm" method="POST" action="/api/dec-checkup">
+              <input type="hidden" name="quiz_score" id="quizScoreField" />
+              <input type="hidden" name="quiz_result" id="quizResultField" />
+              <input type="hidden" name="quiz_profile" id="quizProfileField" />
+              <input type="hidden" name="quiz_support_level" id="quizSupportField" />
+              <input type="hidden" name="qualification_score" id="qualificationScoreField" />
+              <input type="hidden" name="form_started_at" id="formStartedAtField" />
+              <input type="hidden" name="source_page" value="metodo-dec" />
+              <input type="hidden" name="source_url" value="https://pages.riccardoromano.biz/metodo-dec/" />
+
+              <label class="hp-field" aria-hidden="true" tabindex="-1">Lascia vuoto questo campo
+                <input type="text" name="website" autocomplete="off" tabindex="-1" />
+              </label>
+
+              <div class="field-grid">
+                <label>Nome e cognome
+                  <input type="text" name="name" placeholder="Come ti chiami?" required />
+                </label>
+                <label>Telefono
+                  <input type="tel" name="phone" placeholder="351 000 0000" required />
+                </label>
+              </div>
+              <div class="field-grid">
+                <label>Email
+                  <input type="email" name="email" placeholder="nome@email.it" required />
+                </label>
+                <label>Zona
+                  <input type="text" name="location" placeholder="Genova o zona vicina?" required />
+                </label>
+              </div>
+              <div class="field-grid">
+                <label>Obiettivo principale
+                  <select name="goal" required>
+                    <option value="">Seleziona</option>
+                    <option>Prendere la patente B</option>
+                    <option>Patente A o servizi collegati</option>
+                    <option>Recuperare fiducia alla guida</option>
+                    <option>Prepararmi all'esame con metodo</option>
+                    <option>Capire tempi e costi reali</option>
+                  </select>
+                </label>
+                <label>Disponibilità per una chiamata
+                  <select name="callback_window" required>
+                    <option value="">Seleziona</option>
+                    <option>Mattina</option>
+                    <option>Pausa pranzo</option>
+                    <option>Pomeriggio</option>
+                    <option>Sera</option>
+                  </select>
+                </label>
+              </div>
+              <label>Raccontaci la tua situazione
+                <textarea name="notes" placeholder="Per esempio: parto da zero, ho paura del traffico, voglio capire se mi serve più pratica, teoria o un recupero guidato..."></textarea>
+              </label>
+              <label class="consent">
+                <input type="checkbox" name="privacy_consent" required />
+                <span>Autorizzo il trattamento dei dati per essere ricontattato in merito al Check-up Patente DEC.</span>
+              </label>
+              <button class="btn btn-primary" type="submit">Invia il mio check-up e richiedi una valutazione guidata</button>
+              <p class="helper">I dati vengono inviati in modo sicuro all'endpoint interno della pagina e possono essere inoltrati lato server ai sistemi di gestione lead.</p>
+              <div class="form-status hidden" id="formStatus" role="status" aria-live="polite"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="problema">
+      <div class="container">
+        <span class="eyebrow">Il problema</span>
+        <div class="grid-2">
+          <div class="card problem-card">
+            <h2>Molte persone non falliscono per mancanza di capacità. Si bloccano perché nessuno ha dato loro un metodo.</h2>
+            <p class="muted">Confusione sulla teoria. Ansia nel traffico. Paura di sbagliare. Esperienze negative con istruttori troppo generici. Sensazione di non essere portati. È qui che tante persone iniziano a pensare di avere un problema personale, quando in realtà manca un percorso strutturato.</p>
+            <p class="quote">“Non una patente lasciata al caso. Un percorso guidato, progressivo e costruito intorno a te.”</p>
+          </div>
+          <div class="card">
+            <h3>Se ti ritrovi qui, questa pagina è per te</h3>
+            <ul class="check-list">
+              <li>Hai paura della guida o ti irrigidisci appena succede qualcosa di imprevisto.</li>
+              <li>Hai già avuto una bocciatura o una brutta esperienza e ora parti sfiduciato.</li>
+              <li>Vorresti una scuola più presente, più chiara e meno standardizzata.</li>
+              <li>Ti serve qualcuno che ti accompagni passo dopo passo, senza farti sentire inadeguato.</li>
+            </ul>
+            <div class="cta-row">
+              <a class="btn btn-secondary" href="#quiz">Verifica il tuo profilo con il check-up</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="metodo">
+      <div class="container">
+        <span class="eyebrow">Il Metodo DEC</span>
+        <div class="grid-2">
+          <div class="card">
+            <h2>Un metodo proprietario sviluppato da Alessandro Rossi</h2>
+            <p class="muted">Il Metodo DEC nasce da un approccio proprietario sviluppato da Alessandro Rossi, con ispirazione a studi e applicazioni sviluppate in Svizzera e riferimento all’Università di Losanna. Il principio centrale è semplice: <strong>scomporre, allenare, consolidare</strong>.</p>
+            <p class="muted">Invece di buttarti tutto addosso in una volta, ogni gesto e ogni situazione vengono letti, separati e allenati fino a diventare più chiari e più gestibili.</p>
+          </div>
+          <div class="card">
+            <h3>Perché funziona bene anche con ansia, paura e blocchi</h3>
+            <ul class="check-list">
+              <li>Riduce il sovraccarico iniziale perché ogni competenza viene scomposta.</li>
+              <li>Aiuta chi arriva da esperienze negative a ritrovare controllo e continuità.</li>
+              <li>Trasforma la guida in un processo da apprendere, non in un giudizio su di te.</li>
+              <li>Rende più credibile un progresso reale, perché il percorso si vede passo dopo passo.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="funziona">
+      <div class="container">
+        <span class="eyebrow">Come funziona</span>
+        <h2>Dal blocco alla progressione: una struttura chiara</h2>
+        <div class="grid-3">
+          <div class="step">
+            <h3>1. Analisi iniziale</h3>
+            <p class="muted">Si parte dal tuo livello reale: teoria, pratica, emotività, esperienza pregressa e obiettivo.</p>
+          </div>
+          <div class="step">
+            <h3>2. Decomposizione</h3>
+            <p class="muted">Movimenti, decisioni e difficoltà vengono scomposti in parti allenabili, invece di essere affrontati tutte insieme.</p>
+          </div>
+          <div class="step">
+            <h3>3. Consolidamento progressivo</h3>
+            <p class="muted">Ogni passaggio viene ripreso finché diventa più stabile, per costruire sicurezza vera e non solo fortuna d’esame.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="risultati">
+      <div class="container">
+        <span class="eyebrow">Risultati</span>
+        <h2>Un percorso serio, con risultati eccellenti</h2>
+        <div class="grid-3">
+          <div class="stat">
+            <strong>90%+</strong>
+            <p class="muted">Promossi alla prima negli ultimi anni, secondo la comunicazione della scuola.</p>
+          </div>
+          <div class="stat">
+            <strong>Fino al 99%</strong>
+            <p class="muted">Dato interno riportato nel sito pubblico della scuola, da presentare come claim prudenziale e da verificare in sede finale.</p>
+          </div>
+          <div class="stat">
+            <strong>1 metodo</strong>
+            <p class="muted">Per affrontare teoria, guida, blocchi emotivi e bisogno di una progressione più chiara.</p>
+          </div>
+        </div>
+        <p class="helper" style="margin-top:16px;">Nota: i risultati dipendono dalla situazione iniziale della persona, dalla continuità e dal lavoro svolto. Per correttezza, i numeri vanno sempre presentati come dati comunicati dalla scuola.</p>
+      </div>
+    </section>
+
+    <section class="section" id="testimonianze">
+      <div class="container google-proof-wrap">
+        <div class="google-proof-head grid-2">
+          <div>
+            <span class="eyebrow">Recensioni Google</span>
+            <h2>Una reputazione forte, visibile e coerente con il livello del Metodo DEC</h2>
+            <p class="lead">Abbiamo trasformato le recensioni Google in una prova sociale più autorevole: un riepilogo credibile dell’account e una selezione di testimonianze reali che parlano di metodo, sicurezza, pazienza e risultati concreti.</p>
+          </div>
+          <div class="google-score-card">
+            <div class="google-score-top">
+              <div class="google-badge">
+                <span class="google-badge-mark">G</span>
+                <span>Google Reviews</span>
+              </div>
+              <a class="btn btn-secondary" href="https://share.google/2kRrXPoqVcRwjoKBX" target="_blank" rel="noopener noreferrer">Apri tutte le recensioni</a>
+            </div>
+            <div class="google-score-value">
+              <span class="google-score-number">4,9</span>
+              <div class="google-score-stars">
+                <span class="stars" aria-label="Valutazione media 4,9 su 5">★★★★★</span>
+                <strong>382 recensioni pubbliche</strong>
+              </div>
+            </div>
+            <p class="muted">Riepilogo account Google integrato come segnale immediato di fiducia: alto volume di recensioni, media eccellente e coerenza tra esperienza promessa e esperienza percepita.</p>
+            <div class="google-proof-points">
+              <div class="google-proof-point">Recensioni reali con screenshot originali forniti direttamente dal cliente.</div>
+              <div class="google-proof-point">Pattern ricorrenti: pazienza, metodo chiaro, supporto umano, promozione al primo tentativo.</div>
+              <div class="google-proof-point">Sezione progettata per rafforzare la conversione senza sporcare il layout premium della landing.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="review-slider" aria-label="Selezione di recensioni Google">
+          <div class="review-slider-track" id="reviewSliderTrack">
+            <article class="testimonial review-slide">
+              <div class="review-shot">
+                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80" alt="Ritratto di giovane uomo associato alla recensione di Andrea Nicosia" loading="lazy" />
+              </div>
+              <div class="review-copy">
+                <div class="testimonial-meta">
+                  <span class="testimonial-chip">Paura superata</span>
+                  <span class="testimonial-chip">Metodo teoria + pratica</span>
+                </div>
+                <blockquote>“Avevo paura persino a tenere in mano le chiavi di una macchina ma grazie a loro ora ho finalmente la patente, so guidare in qualunque situazione... Hanno un metodo validissimo sia per la teoria che per la pratica.”</blockquote>
+                <footer>
+                  <strong>Andrea Nicosia</strong>
+                  <span class="review-role">Recensione Google · 5 stelle visibili nello screenshot</span>
+                </footer>
+              </div>
+            </article>
+
+            <article class="testimonial review-slide">
+              <div class="review-shot">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80" alt="Ritratto di giovane donna associata alla recensione di Olya Larina" loading="lazy" />
+              </div>
+              <div class="review-copy">
+                <div class="testimonial-meta">
+                  <span class="testimonial-chip">0 errori teoria</span>
+                  <span class="testimonial-chip">Esame al primo tentativo</span>
+                </div>
+                <blockquote>“Le lezioni di teoria... mi hanno permesso di superare l’esame in 7 minuti, con 0 errori... le guide... mi hanno permesso di passare l’esame al primo tentativo. Grande professionalità e metodologia.”</blockquote>
+                <footer>
+                  <strong>Olya Larina</strong>
+                  <span class="review-role">Recensione Google · 5 stelle visibili nello screenshot</span>
+                </footer>
+              </div>
+            </article>
+
+            <article class="testimonial review-slide">
+              <div class="review-shot">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=200&q=80" alt="Ritratto di giovane uomo associato alla recensione di Massimo Giovannini" loading="lazy" />
+              </div>
+              <div class="review-copy">
+                <div class="testimonial-meta">
+                  <span class="testimonial-chip">Metodo semplice ed efficace</span>
+                  <span class="testimonial-chip">Teoria memorabile</span>
+                </div>
+                <blockquote>“Il suo metodo di insegnamento è molto ma molto semplice ma efficace allo stesso tempo... le sue lezioni sono molto divertenti e riesce a farti entrare in testa tanti concetti... in modo semplice e chiaro.”</blockquote>
+                <footer>
+                  <strong>Massimo Giovannini</strong>
+                  <span class="review-role">Recensione Google · 5 stelle visibili nello screenshot</span>
+                </footer>
+              </div>
+            </article>
+
+            <article class="testimonial review-slide">
+              <div class="review-shot">
+                <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=200&q=80" alt="Ritratto di giovane donna associata alla recensione di Teresa Picollo" loading="lazy" />
+              </div>
+              <div class="review-copy">
+                <div class="testimonial-meta">
+                  <span class="testimonial-chip">Seguita passo dopo passo</span>
+                  <span class="testimonial-chip">Patente che sembrava impossibile</span>
+                </div>
+                <blockquote>“Sia nella teoria che nella pratica mi hanno messa a mio agio e mi hanno seguito passo dopo passo con professionalità e pazienza. Grazie a loro sono riuscita a prendere la patente che sembrava impossibile!”</blockquote>
+                <footer>
+                  <strong>Teresa Picollo</strong>
+                  <span class="review-role">Recensione Google · 5 stelle visibili nello screenshot</span>
+                </footer>
+              </div>
+            </article>
+          </div>
+
+          <div class="review-nav">
+            <p class="helper" style="margin:0;">Scorri le recensioni selezionate oppure usa i controlli per vedere le prove sociali più forti.</p>
+            <div class="review-nav-buttons">
+              <button type="button" id="reviewPrevBtn" aria-label="Recensione precedente">←</button>
+              <button type="button" id="reviewNextBtn" aria-label="Recensione successiva">→</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="team">
+      <div class="container">
+        <span class="eyebrow">Team</span>
+        <div class="grid-2">
+          <div class="team-card">
+            <div class="team-visual">
+              <img src="https://pages.riccardoromano.biz/metodo-dec/assets/alessandro.jpg" alt="Alessandro Rossi di Autoscuola DEC" loading="eager" decoding="async" />
+            </div>
+            <h2>Alessandro Rossi</h2>
+            <p class="muted"><strong>Fondatore e sviluppatore del Metodo DEC.</strong> È il riferimento sulla teoria, sulla formazione e sulla costruzione del metodo didattico: l'idea di fondo è aiutarti a imparare con più chiarezza, non lasciarti da solo davanti a teoria, esame e insicurezze.</p>
+          </div>
+          <div class="team-card">
+            <div class="team-visual">
+              <img src="https://pages.riccardoromano.biz/metodo-dec/assets/marco.jpg" alt="Marco Doccula di Autoscuola DEC" loading="eager" decoding="async" />
+            </div>
+            <h2>Marco Doccula</h2>
+            <p class="muted"><strong>Istruttore e riferimento operativo.</strong> Segue la guida, la gestione degli allievi, le pratiche e l'organizzazione del percorso. È la figura che tiene insieme operatività, presenza e continuità, così il percorso resta umano oltre che strutturato.</p>
+            <ul class="check-list">
+              <li>Metodo e teoria con Alessandro Rossi.</li>
+              <li>Guida, allievi e percorso operativo con Marco Doccula.</li>
+              <li>Un team che punta a essere premium ma accessibile, non generico.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="servizi">
+      <div class="container">
+        <span class="eyebrow">Servizi</span>
+        <h2>Servizi utili, senza perdere il focus sul percorso giusto</h2>
+        <div class="grid-3">
+          <div class="service">
+            <h3>Percorsi patente ed esame</h3>
+            <ul>
+              <li>Patente B</li>
+              <li>Patente A</li>
+              <li>Patente A senza esame</li>
+            </ul>
+            <p class="muted">Servizi centrali per chi vuole una preparazione più guidata, progressiva e coerente con il proprio punto di partenza.</p>
+          </div>
+          <div class="service">
+            <h3>Recupero, rinnovi e pratiche</h3>
+            <ul>
+              <li>Revisione patente</li>
+              <li>Recupero punti</li>
+              <li>Rinnovo patente</li>
+              <li>Patente internazionale</li>
+            </ul>
+            <p class="muted">Gestione pratica e operativa per chi ha bisogno di rimettersi in regola o sbloccare un passaggio specifico.</p>
+          </div>
+          <div class="service">
+            <h3>Guida e perfezionamento</h3>
+            <ul>
+              <li>Perfezionamento guida</li>
+              <li>Corsi guida sicura moto</li>
+            </ul>
+            <p class="muted">Per chi vuole più controllo, sicurezza e qualità di guida, anche oltre il solo esame.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contatti">
+      <div class="container">
+        <span class="eyebrow">Contatti</span>
+        <div class="contact-stack grid-2">
+          <div class="contact-card">
+            <h2>Autoscuola DEC / Driving Educational Center</h2>
+            <p class="muted">Corso Torino, 31 c rosso<br />16129 Genova GE</p>
+            <p><a class="contact-link" href="tel:+393517540936">Tel 351 754 0936</a></p>
+            <p><a class="contact-link" href="mailto:autoscuoladec@gmail.com">autoscuoladec@gmail.com</a></p>
+          </div>
+          <div class="contact-card">
+            <h3>Prima di iscriverti, fai chiarezza</h3>
+            <p class="muted">Se vuoi capire quale percorso ha più senso per te — teoria, guida, ansia, blocco o ripartenza dopo una bocciatura — il modo più semplice è iniziare dal Check-up Patente DEC.</p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="#quiz">Fai il Check-up Patente DEC</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="final-cta">
+          <span class="eyebrow">CTA finale</span>
+          <h2>Se vuoi prendere la patente con più metodo e meno incertezza, il primo passo è capire da dove partire</h2>
+          <p class="lead" style="margin: 0 auto 24px;">Compila il Check-up Patente DEC: la scuola riceve già il tuo profilo, il punteggio e il bisogno principale, così può ricontattarti in modo più utile e meno generico.</p>
+          <div class="cta-row" style="justify-content:center;">
+            <a class="btn btn-primary" href="#quiz">Fai il Check-up Patente DEC</a>
+            <a class="btn btn-secondary" href="#contatti">Vedi i contatti completi</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer-note container">
+    <p>Nota tecnica: il check-up invia i dati a un endpoint interno Vercel, predisposto per eventuale inoltro server-side verso webhook o CRM.</p>
+  </footer>
+
+  <script>
+    const quizData = [
+      {
+        theme: 'Punto di partenza',
+        question: 'Da dove parti?',
+        answers: [
+          { text: 'Parto da zero e voglio una base chiara.', profile: 'start' },
+          { text: 'Ho già iniziato ma mi manca continuità.', profile: 'esame' },
+          { text: 'Mi sono bloccato dopo errori o bocciature.', profile: 'recupero' },
+          { text: 'Mi interessa soprattutto la guida o il percorso da privatista.', profile: 'privatista' }
+        ]
+      },
+      {
+        theme: 'Stato emotivo',
+        question: 'Come ti senti rispetto alla guida?',
+        answers: [
+          { text: 'Abbastanza tranquillo, mi serve metodo.', profile: 'start' },
+          { text: 'Ho ansia, blocchi o paura di sbagliare.', profile: 'sicurezza', qualifySupport: true },
+          { text: 'Mi sento rigido e ho bisogno di essere seguito.', profile: 'sicurezza', qualifySupport: true },
+          { text: 'Voglio capire se posso cavarmela quasi da solo.', profile: 'privatista' }
+        ]
+      },
+      {
+        theme: 'Tempo disponibile',
+        question: 'Quanto tempo puoi dedicare ogni settimana?',
+        answers: [
+          { text: 'Più di 4 ore: voglio partire subito bene.', profile: 'start', qualifySoon: true },
+          { text: '2-4 ore: posso seguire un percorso costante.', profile: 'esame' },
+          { text: 'Meno di 2 ore: ho bisogno di ottimizzare il tempo.', profile: 'recupero' },
+          { text: 'Dipende: prima voglio capire come organizzarmi.', profile: 'privatista' }
+        ]
+      },
+      {
+        theme: 'Priorità',
+        question: 'Qual è la tua priorità?',
+        answers: [
+          { text: 'Avere un percorso guidato e progressivo.', profile: 'start', qualifySupportNeed: true },
+          { text: 'Sentirmi sicuro alla guida e non bloccarmi.', profile: 'sicurezza', qualifySupportNeed: true },
+          { text: 'Arrivare all’esame in modo smart, senza perdere tempo.', profile: 'esame', qualifySupportNeed: true },
+          { text: 'Spendere meno possibile, anche valutando tutto con calma.', profile: 'privatista', pricePriority: true, evaluating: true }
+        ]
+      },
+      {
+        theme: 'Timing',
+        question: 'Quando vorresti iniziare?',
+        answers: [
+          { text: 'Subito.', profile: 'start', qualifyImmediate: true },
+          { text: 'Entro 30 giorni.', profile: 'esame', qualifySoon: true },
+          { text: 'Quando mi sento più pronto e tranquillo.', profile: 'sicurezza' },
+          { text: 'Sto solo valutando per ora.', profile: 'privatista', evaluating: true }
+        ]
+      },
+      {
+        theme: 'Costo e orientamento',
+        question: 'Hai già un budget o vuoi capire quanto può costarti?',
+        answers: [
+          { text: 'Ho un budget, ma mi interessa soprattutto il supporto giusto.', profile: 'start', qualifySupportNeed: true },
+          { text: 'Voglio capire costi e percorso migliore prima di decidere.', profile: 'esame' },
+          { text: 'Se vengo seguito bene, per me conta più sbloccarmi che risparmiare.', profile: 'recupero', qualifySupportNeed: true, qualifySupport: true },
+          { text: 'La mia priorità assoluta è spendere il meno possibile.', profile: 'privatista', pricePriority: true }
+        ]
+      }
+    ];
+
+    const resultProfiles = {
+      start: {
+        label: 'Percorso Start DEC',
+        title: 'Percorso Start DEC',
+        body: 'Sei in una fase in cui serve partire bene: basi chiare, percorso progressivo e una struttura che ti faccia sentire seguito senza confusione.',
+        support: 'Supporto consigliato: medio-alto, con guida costante tra teoria e organizzazione del percorso.',
+        cost: 'Nota costo: il percorso va valutato in base al livello di accompagnamento richiesto, non solo sul prezzo più basso.',
+        bullets: [
+          'Ideale se vuoi evitare errori di impostazione fin dall’inizio.',
+          'Ti aiuta a partire con ordine, progressione e meno dispersione.',
+          'Coerente con il posizionamento di scuola guida premium accessibile.'
+        ]
+      },
+      sicurezza: {
+        label: 'Percorso Sicurezza alla Guida',
+        title: 'Percorso Sicurezza alla Guida',
+        body: 'Qui la priorità è ridurre ansia, blocchi e rigidità. Non serve giudicarti: serve un percorso guidato, progressivo e costruito intorno a te.',
+        support: 'Supporto consigliato: alto, con presenza ravvicinata e lavoro graduale sulla sicurezza personale.',
+        cost: 'Nota costo: quando il bisogno è sbloccarsi bene, il criterio corretto è il valore del supporto, non il solo risparmio immediato.',
+        bullets: [
+          'Pensato per chi sente paura, tensione o blocchi alla guida.',
+          'Il metodo lavora sulla progressione, non sulla pressione.',
+          'Utile se vuoi sentirti seguito davvero, non lasciato al caso.'
+        ]
+      },
+      esame: {
+        label: 'Percorso Esame Smart',
+        title: 'Percorso Esame Smart',
+        body: 'Hai bisogno di ottimizzare tempi, teoria e preparazione all’esame con un metodo più chiaro e meno dispersivo.',
+        support: 'Supporto consigliato: medio, con focus su organizzazione, continuità e preparazione mirata.',
+        cost: 'Nota costo: il percorso più conveniente è quello che ti evita ritardi, dispersione e ripartenze inutili.',
+        bullets: [
+          'Adatto a chi vuole arrivare all’esame con più lucidità.',
+          'Riduce il caos tra teoria, pratica e organizzazione.',
+          'Ti orienta su cosa fare prima e cosa fare dopo.'
+        ]
+      },
+      recupero: {
+        label: 'Percorso Recupero',
+        title: 'Percorso Recupero',
+        body: 'Se hai avuto blocchi, pause o esperienze negative, il punto non è ricominciare a caso: è recuperare fiducia con un metodo realistico.',
+        support: 'Supporto consigliato: alto, con attenzione a continuità, motivazione e ricostruzione della sicurezza.',
+        cost: 'Nota costo: un recupero fatto bene può costare più di una soluzione minima, ma evita di restare fermo o peggiorare il blocco.',
+        bullets: [
+          'Pensato per chi non vuole sentirsi di nuovo indietro.',
+          'Aiuta a ripartire da dove ti sei bloccato davvero.',
+          'Mette al centro continuità, supporto e progressione.'
+        ]
+      },
+      privatista: {
+        label: 'Percorso Privatista / Solo Guida',
+        title: 'Percorso Privatista / Solo Guida',
+        body: 'Potresti avere bisogno di un assetto più leggero o di capire se ti serve solo una parte del percorso, come guida, pratica o orientamento iniziale.',
+        support: 'Supporto consigliato: variabile, da essenziale a mirato in base a quanto vuoi gestire in autonomia.',
+        cost: 'Nota costo: se il focus è solo spendere meno, conviene chiarire bene cosa rischi di lasciare scoperto prima di decidere.',
+        bullets: [
+          'Utile se stai valutando un percorso più autonomo.',
+          'Può avere senso quando ti serve solo una parte del supporto.',
+          'Va chiarito bene per evitare false economie o passaggi scoperti.'
+        ]
+      }
+    };
+
+    const reviewSliderTrack = document.getElementById('reviewSliderTrack');
+    const reviewPrevBtn = document.getElementById('reviewPrevBtn');
+    const reviewNextBtn = document.getElementById('reviewNextBtn');
+    const startQuizBtn = document.getElementById('startQuizBtn');
+    const quizIntro = document.getElementById('quizIntro');
+    const questionScreen = document.getElementById('questionScreen');
+    const questionCounter = document.getElementById('questionCounter');
+    const questionTheme = document.getElementById('questionTheme');
+    const questionText = document.getElementById('questionText');
+    const quizAnswers = document.getElementById('quizAnswers');
+    const quizProgressBar = document.getElementById('quizProgressBar');
+    const quizResult = document.getElementById('quizResult');
+    const resultTag = document.getElementById('resultTag');
+    const resultTitle = document.getElementById('resultTitle');
+    const resultBody = document.getElementById('resultBody');
+    const resultBullets = document.getElementById('resultBullets');
+    const prequalForm = document.getElementById('prequalForm');
+    const quizScoreField = document.getElementById('quizScoreField');
+    const quizResultField = document.getElementById('quizResultField');
+    const quizProfileField = document.getElementById('quizProfileField');
+    const quizSupportField = document.getElementById('quizSupportField');
+    const qualificationScoreField = document.getElementById('qualificationScoreField');
+    const formStartedAtField = document.getElementById('formStartedAtField');
+    const formStatus = document.getElementById('formStatus');
+
+    let currentQuestion = 0;
+    let totalScore = 0;
+    let qualificationScore = 0;
+    const profileVotes = {
+      start: 0,
+      sicurezza: 0,
+      esame: 0,
+      recupero: 0,
+      privatista: 0
+    };
+
+    function renderQuestion() {
+      const item = quizData[currentQuestion];
+      questionCounter.textContent = `Domanda ${currentQuestion + 1} di ${quizData.length}`;
+      questionTheme.textContent = item.theme;
+      questionText.textContent = item.question;
+      quizProgressBar.style.width = `${(currentQuestion / quizData.length) * 100}%`;
+      quizAnswers.innerHTML = '';
+
+      item.answers.forEach(answer => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'quiz-option';
+        button.textContent = answer.text;
+        button.addEventListener('click', () => {
+          profileVotes[answer.profile] += 1;
+
+          if (answer.qualifyImmediate) qualificationScore += 3;
+          if (answer.qualifySoon) qualificationScore += 2;
+          if (answer.qualifySupportNeed) qualificationScore += 2;
+          if (answer.qualifySupport) qualificationScore += 2;
+          if (answer.evaluating) qualificationScore -= 2;
+          if (answer.pricePriority) qualificationScore -= 2;
+
+          totalScore += 1;
+          currentQuestion += 1;
+          if (currentQuestion < quizData.length) {
+            renderQuestion();
+          } else {
+            showResult();
+          }
+        });
+        quizAnswers.appendChild(button);
+      });
+    }
+
+    function resolveProfile() {
+      const winner = Object.entries(profileVotes).sort((a, b) => b[1] - a[1])[0][0];
+      return { key: winner, ...resultProfiles[winner] };
+    }
+
+    function resolveQualificationMessage(score) {
+      if (score >= 6) {
+        return {
+          tag: 'Profilo alto potenziale',
+          className: 'result-high',
+          extra: 'Profilo da richiamare con priorità: cerca supporto, timing vicino o un aiuto concreto per sbloccarsi.',
+          submitMessage: 'Richiesta inviata. Il team DEC ti ricontatterà con priorità per proporti il percorso più adatto al tuo profilo.'
+        };
+      }
+      if (score >= 2) {
+        return {
+          tag: 'Profilo da approfondire',
+          className: 'result-mid',
+          extra: 'Buon interesse, ma serve una valutazione guidata per chiarire timing, supporto e sostenibilità del percorso.',
+          submitMessage: 'Richiesta inviata. Il team DEC userà il tuo check-up per capire insieme a te il percorso più sensato da attivare.'
+        };
+      }
+      return {
+        tag: 'Profilo esplorativo',
+        className: 'result-low',
+        extra: 'Sei ancora in fase di valutazione: il check-up aiuta a chiarire aspettative, tempi e livello di supporto utile per te.',
+        submitMessage: 'Richiesta inviata. Il team DEC ti ricontatterà per aiutarti a capire opzioni, tempi e livello di supporto più adatto.'
+      };
+    }
+
+    function showResult() {
+      const profile = resolveProfile();
+      const qualification = resolveQualificationMessage(qualificationScore);
+      quizProgressBar.style.width = '100%';
+      questionScreen.classList.add('hidden');
+      quizResult.classList.remove('hidden');
+      prequalForm.classList.remove('hidden');
+      prequalForm.dataset.submitMessage = qualification.submitMessage;
+
+      resultTag.className = `result-tag ${qualification.className}`;
+      resultTag.textContent = qualification.tag;
+      resultTitle.textContent = profile.title;
+      resultBody.innerHTML = `${profile.body} <br /><br /><strong>${profile.support}</strong><br />${profile.cost}<br /><br /><span class="helper">${qualification.extra}</span>`;
+      resultBullets.innerHTML = profile.bullets.map(item => `<li>${item}</li>`).join('');
+
+      quizScoreField.value = totalScore;
+      quizResultField.value = profile.title;
+      quizProfileField.value = profile.label;
+      quizSupportField.value = profile.support;
+      qualificationScoreField.value = qualificationScore;
+      formStartedAtField.value = String(Date.now());
+      formStatus.className = 'form-status hidden';
+      formStatus.textContent = '';
+    }
+
+    prequalForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const submitButton = prequalForm.querySelector('button[type="submit"]');
+      const formData = new FormData(prequalForm);
+      const payload = Object.fromEntries(formData.entries());
+
+      submitButton.disabled = true;
+      submitButton.textContent = 'Invio in corso...';
+      formStatus.className = 'form-status hidden';
+      formStatus.textContent = '';
+
+      try {
+        if (!formStartedAtField.value) {
+          formStartedAtField.value = String(Date.now());
+        }
+
+        const response = await fetch(prequalForm.action, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          throw new Error('submit_failed');
+        }
+
+        const data = await response.json().catch(() => ({}));
+        formStatus.className = 'form-status is-success';
+        formStatus.textContent = data.message || prequalForm.dataset.submitMessage || 'Richiesta inviata correttamente.';
+        prequalForm.reset();
+      } catch (error) {
+        formStatus.className = 'form-status is-error';
+        formStatus.textContent = 'C’è stato un problema nell’invio. Puoi riprovare tra poco oppure contattare direttamente Autoscuola DEC.';
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = 'Invia il mio check-up e richiedi una valutazione guidata';
+      }
+    });
+
+    if (reviewSliderTrack && reviewPrevBtn && reviewNextBtn) {
+      const scrollReviews = (direction) => {
+        const firstCard = reviewSliderTrack.querySelector('.review-slide');
+        const gap = 18;
+        const offset = firstCard ? firstCard.getBoundingClientRect().width + gap : 320;
+        reviewSliderTrack.scrollBy({ left: direction * offset, behavior: 'smooth' });
+      };
+
+      reviewPrevBtn.addEventListener('click', () => scrollReviews(-1));
+      reviewNextBtn.addEventListener('click', () => scrollReviews(1));
+    }
+
+    startQuizBtn.addEventListener('click', () => {
+      quizIntro.classList.add('hidden');
+      questionScreen.classList.remove('hidden');
+      currentQuestion = 0;
+      totalScore = 0;
+      qualificationScore = 0;
+      Object.keys(profileVotes).forEach(key => {
+        profileVotes[key] = 0;
+      });
+      quizResult.classList.add('hidden');
+      prequalForm.classList.add('hidden');
+      formStatus.className = 'form-status hidden';
+      formStatus.textContent = '';
+      renderQuestion();
+    });
+  </script>
+</body>
+</html>
