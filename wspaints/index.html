@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Perché l’AI non ti serve (se non hai questo prima) | Workshop</title>
+  <meta name="description" content="Workshop pratico per capire perché l’AI non ti sta ancora facendo recuperare il tempo che speravi e cosa sistemare prima di aggiungere altri prompt, tool o automazioni." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #070b14;
+      --bg-soft: #0e1525;
+      --panel: rgba(15, 23, 42, 0.88);
+      --panel-strong: #0f172a;
+      --line: rgba(148, 163, 184, 0.18);
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --muted-2: #94a3b8;
+      --accent: #7c3aed;
+      --accent-2: #22d3ee;
+      --accent-3: #f59e0b;
+      --success: #34d399;
+      --danger: #fb7185;
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --shadow: 0 30px 80px rgba(2, 6, 23, 0.6);
+      --max: 1160px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      line-height: 1.65;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(124, 58, 237, 0.32), transparent 28%),
+        radial-gradient(circle at 85% 10%, rgba(34, 211, 238, 0.22), transparent 24%),
+        radial-gradient(circle at 50% 55%, rgba(245, 158, 11, 0.1), transparent 32%),
+        linear-gradient(180deg, #04070f 0%, #090d17 38%, #05070c 100%);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: radial-gradient(circle at center, black 45%, transparent 88%);
+      opacity: 0.28;
+    }
+
+    a { color: inherit; }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 96px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(124, 58, 237, 0.22);
+      border-radius: var(--radius-xl);
+      padding: 32px;
+      background:
+        linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(8, 15, 28, 0.9)),
+        rgba(15, 23, 42, 0.8);
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -12% -30% auto;
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.35), transparent 68%);
+      filter: blur(12px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(34, 211, 238, 0.22);
+      background: rgba(15, 23, 42, 0.72);
+      color: #c4b5fd;
+      font-weight: 800;
+      font-size: 0.76rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+      gap: 28px;
+      align-items: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.6rem, 6vw, 5.4rem);
+      line-height: 0.94;
+      letter-spacing: -0.05em;
+      font-weight: 900;
+    }
+
+    .subtitle-kicker {
+      display: block;
+      margin-top: 12px;
+      font-size: clamp(1rem, 2vw, 1.45rem);
+      line-height: 1.25;
+      font-weight: 700;
+      color: #cbd5e1;
+      letter-spacing: -0.02em;
+    }
+
+    .headline-accent {
+      background: linear-gradient(90deg, #ffffff 0%, #c4b5fd 36%, #67e8f9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-copy {
+      margin: 24px 0 0;
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+
+    .hero-copy strong { color: #fff; }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 26px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 60px;
+      padding: 0 26px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 900;
+      transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+      border: 0;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      color: #08111f;
+      background: linear-gradient(135deg, #67e8f9 0%, #a78bfa 42%, #f59e0b 100%);
+      box-shadow: 0 18px 45px rgba(124, 58, 237, 0.35);
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover { transform: translateY(-2px); }
+
+    .btn-secondary {
+      color: #e2e8f0;
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid rgba(148, 163, 184, 0.24);
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+      color: var(--muted-2);
+      font-size: 0.94rem;
+    }
+
+    .hero-meta span,
+    .stat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+    }
+
+    .hero-visual {
+      position: relative;
+      display: grid;
+      gap: 16px;
+    }
+
+    .visual-card,
+    .panel,
+    .quote-card,
+    .testimonial-card,
+    .pricing-box,
+    .guarantee,
+    .cta-box {
+      border: 1px solid var(--line);
+      background: rgba(15, 23, 42, 0.72);
+      backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+    }
+
+    .visual-card {
+      border-radius: 28px;
+      padding: 18px;
+      min-height: 360px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .visual-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(124,58,237,0.18), rgba(34,211,238,0.06) 52%, rgba(245,158,11,0.14));
+      pointer-events: none;
+    }
+
+    .placeholder-label {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(8, 15, 28, 0.72);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #e9d5ff;
+    }
+
+    .placeholder-surface {
+      position: relative;
+      z-index: 1;
+      flex: 1;
+      margin: 18px 0 16px;
+      border-radius: 24px;
+      border: 1px dashed rgba(255,255,255,0.18);
+      background:
+        radial-gradient(circle at top right, rgba(103, 232, 249, 0.18), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(245, 158, 11, 0.18), transparent 30%),
+        rgba(2, 6, 23, 0.48);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 28px;
+      min-height: 230px;
+    }
+
+    .placeholder-surface strong {
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .placeholder-surface span {
+      color: var(--muted-2);
+      font-size: 0.95rem;
+      margin-top: 8px;
+      max-width: 260px;
+    }
+
+    .visual-foot {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .stat-pill strong { color: #fff; }
+
+    .grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    .section {
+      margin-top: 22px;
+      padding: 32px;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(7, 11, 20, 0.92), rgba(9, 13, 23, 0.88));
+      border: 1px solid rgba(148, 163, 184, 0.12);
+      box-shadow: 0 22px 60px rgba(2, 6, 23, 0.45);
+    }
+
+    .section-header {
+      max-width: 760px;
+      margin-bottom: 24px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: #67e8f9;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(1.7rem, 3vw, 2.8rem);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+    }
+
+    .section-intro {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 1.03rem;
+    }
+
+    p { margin: 0 0 16px; }
+
+    .lead {
+      font-size: 1.08rem;
+      color: #e2e8f0;
+    }
+
+    .text-stack p:last-child,
+    .bullet-list li:last-child,
+    .testimonial-card p:last-child { margin-bottom: 0; }
+
+    .problem-grid,
+    .discover-grid,
+    .fit-grid,
+    .gain-grid,
+    .testimonials-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .problem-grid { grid-template-columns: 1.1fr 0.9fr; }
+    .discover-grid,
+    .gain-grid,
+    .testimonials-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .fit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .panel {
+      border-radius: var(--radius-lg);
+      padding: 24px;
+    }
+
+    .panel h3,
+    .pricing-box h3,
+    .guarantee h3,
+    .cta-box h3 {
+      margin: 0 0 14px;
+      font-size: 1.24rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+
+    .bullet-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 14px;
+    }
+
+    .bullet-list li {
+      position: relative;
+      padding-left: 20px;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .bullet-list li::before {
+      content: "";
+      position: absolute;
+      top: 11px;
+      left: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent-2), var(--accent));
+      box-shadow: 0 0 18px rgba(34, 211, 238, 0.45);
+    }
+
+    .quote-card {
+      border-radius: 28px;
+      padding: 26px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .quote-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -40px -50px auto;
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle, rgba(245,158,11,0.25), transparent 70%);
+    }
+
+    .quote-card strong {
+      display: block;
+      font-size: 1.18rem;
+      line-height: 1.45;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      max-width: 460px;
+    }
+
+    .error-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .error-item {
+      border-radius: 18px;
+      padding: 16px 18px;
+      background: rgba(8, 15, 28, 0.72);
+      border: 1px solid rgba(148, 163, 184, 0.12);
+    }
+
+    .error-item span {
+      display: block;
+      color: var(--muted-2);
+      font-size: 0.93rem;
+      margin-top: 6px;
+    }
+
+    .fit-card,
+    .gain-card,
+    .discover-card,
+    .testimonial-card {
+      border-radius: 22px;
+      padding: 22px;
+      background: rgba(8, 15, 28, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.12);
+    }
+
+    .fit-card.good { border-color: rgba(52, 211, 153, 0.22); }
+    .fit-card.bad { border-color: rgba(251, 113, 133, 0.22); }
+
+    .fit-card h3,
+    .gain-card h3,
+    .discover-card h3,
+    .testimonial-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.1rem;
+    }
+
+    .check-list,
+    .cross-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .check-list li,
+    .cross-list li {
+      position: relative;
+      padding-left: 28px;
+      color: var(--muted);
+    }
+
+    .check-list li::before,
+    .cross-list li::before {
+      position: absolute;
+      left: 0;
+      top: 1px;
+      font-weight: 900;
+    }
+
+    .check-list li::before { content: "✓"; color: var(--success); }
+    .cross-list li::before { content: "×"; color: var(--danger); }
+
+    .bonus-layout {
+      display: grid;
+      grid-template-columns: minmax(290px, 0.95fr) minmax(0, 1.05fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .workbook-card {
+      border-radius: 28px;
+      padding: 18px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(160deg, rgba(124,58,237,0.24), rgba(15,23,42,0.92) 48%, rgba(34,211,238,0.08));
+      border: 1px solid rgba(124, 58, 237, 0.22);
+      box-shadow: var(--shadow);
+    }
+
+    .workbook-mock {
+      min-height: 360px;
+      border-radius: 22px;
+      border: 1px dashed rgba(255,255,255,0.18);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
+        rgba(2, 6, 23, 0.42);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 28px;
+    }
+
+    .workbook-mock strong {
+      font-size: 1.2rem;
+      line-height: 1.2;
+      max-width: 220px;
+    }
+
+    .workbook-mock small {
+      color: var(--muted-2);
+      margin-top: 10px;
+      max-width: 220px;
+      display: block;
+    }
+
+    .pricing-box,
+    .guarantee,
+    .cta-box {
+      border-radius: 28px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing-box {
+      background: linear-gradient(160deg, rgba(103,232,249,0.12), rgba(15,23,42,0.88) 38%, rgba(124,58,237,0.18));
+    }
+
+    .price {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      margin: 8px 0 18px;
+    }
+
+    .price strong {
+      font-size: clamp(3rem, 6vw, 4.5rem);
+      line-height: 0.9;
+      letter-spacing: -0.06em;
+    }
+
+    .price span {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .testimonial-card {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(124,58,237,0.08), transparent 50%, rgba(34,211,238,0.06));
+      pointer-events: none;
+    }
+
+    .testimonial-avatar {
+      width: 54px;
+      height: 54px;
+      border-radius: 18px;
+      border: 1px dashed rgba(255,255,255,0.2);
+      display: grid;
+      place-items: center;
+      color: #c4b5fd;
+      font-weight: 800;
+      background: rgba(15, 23, 42, 0.76);
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-card blockquote,
+    .testimonial-card footer {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+    }
+
+    blockquote {
+      color: #e2e8f0;
+      font-size: 1rem;
+      line-height: 1.7;
+    }
+
+    .testimonial-role {
+      color: var(--muted-2);
+      font-size: 0.92rem;
+    }
+
+    .guarantee {
+      background: linear-gradient(140deg, rgba(52,211,153,0.12), rgba(15,23,42,0.9) 48%, rgba(8,15,28,0.86));
+      margin-top: 20px;
+    }
+
+    .cta-box {
+      margin-top: 22px;
+      text-align: center;
+      background: linear-gradient(145deg, rgba(124,58,237,0.22), rgba(8,15,28,0.94) 44%, rgba(34,211,238,0.14));
+    }
+
+    .cta-box p {
+      color: var(--muted);
+      max-width: 760px;
+      margin: 0 auto 20px;
+    }
+
+    .footer-note {
+      margin-top: 16px;
+      color: var(--muted-2);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .problem-grid,
+      .bonus-layout,
+      .fit-grid,
+      .discover-grid,
+      .gain-grid,
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 26px;
+      }
+
+      .section {
+        padding: 26px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .wrap {
+        width: min(var(--max), calc(100% - 18px));
+        padding-bottom: 72px;
+      }
+
+      .hero,
+      .section,
+      .pricing-box,
+      .guarantee,
+      .cta-box {
+        border-radius: 24px;
+      }
+
+      .hero {
+        padding: 22px 18px;
+      }
+
+      .section {
+        padding: 22px 18px;
+        margin-top: 18px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-meta {
+        flex-direction: column;
+      }
+
+      .visual-card,
+      .panel,
+      .quote-card,
+      .fit-card,
+      .gain-card,
+      .discover-card,
+      .testimonial-card,
+      .pricing-box,
+      .guarantee,
+      .cta-box {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: clamp(2.2rem, 10vw, 3.4rem);
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero" id="top">
+      <div class="eyebrow">Workshop pratico • 37€ • Accesso immediato</div>
+      <div class="hero-grid">
+        <div>
+          <h1>
+            <span class="headline-accent">Perché l’AI non ti serve</span>
+            <span class="subtitle-kicker">(se non hai questo prima)</span>
+          </h1>
+          <p class="hero-copy">
+            <strong>Il workshop pratico</strong> per capire perché l’AI non ti sta ancora facendo recuperare il tempo che speravi… e cosa devi sistemare prima di aggiungere altri prompt, tool o automazioni.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://buy.stripe.com/14AeVd7HQ8I6bdNdxHeUU02" target="_blank" rel="noopener noreferrer">Entra ora nel workshop • 37€</a>
+            <a class="btn btn-secondary" href="#cosa-scoprirai">Guarda cosa scoprirai</a>
+          </div>
+          <div class="hero-meta">
+            <span>✔ Per professionisti, freelancer, solopreneur, piccoli imprenditori</span>
+            <span>✔ Focus: recuperare tempo, lucidità e continuità operativa</span>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="visual-card">
+            <div class="placeholder-label">Hero image placeholder</div>
+            <div class="placeholder-surface">
+              <strong>Inserisci qui l’immagine hero del workshop</strong>
+              <span>Spazio predisposto per visual principale scuro/moderno con soggetto o key art.</span>
+            </div>
+            <div class="visual-foot">
+              <div class="stat-pill"><strong>Problema:</strong> AI sopra il caos</div>
+              <div class="stat-pill"><strong>Obiettivo:</strong> tempo recuperato</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="section-tag">Il contesto</div>
+        <h2>Hai iniziato a usare l’AI per lavorare meglio. Eppure ti ritrovi ancora lì.</h2>
+      </div>
+      <div class="problem-grid">
+        <div class="panel text-stack">
+          <p class="lead">Magari per scrivere più velocemente. Trovare idee. Riassumere informazioni. Creare contenuti. Organizzare task. Preparare email, strategie, pagine, offerte.</p>
+          <p>Eppure, nonostante tutto, ti ritrovi ancora lì.</p>
+          <p>Con troppe cose aperte. Troppe decisioni da rimettere insieme. Troppe idee sparse. Troppi output che sembrano utili… ma poi non diventano azioni concrete.</p>
+          <p>E alla fine la sensazione è sempre la stessa: <strong>l’AI ti aiuta, sì… ma sei ancora tu a dover tenere insieme tutto.</strong></p>
+        </div>
+        <aside class="quote-card">
+          <strong>Il problema non è che non sai usare l’AI.</strong>
+          <p>Il problema è che, molto probabilmente, stai usando l’AI sopra un modo di lavorare che non ha ancora una struttura abbastanza chiara.</p>
+          <p>Quando manca quella base, l’AI non ti libera davvero tempo: ti dà più idee, più possibilità, più alternative, più output, più cose da valutare.</p>
+        </aside>
+      </div>
+      <div class="panel" style="margin-top:18px;">
+        <p>Ti era stata promessa velocità. Ma forse ti sei ritrovato con più roba da gestire.</p>
+        <p>Questo workshop nasce proprio da qui.</p>
+        <p>Non per darti la solita lista di prompt. Non per consigliarti l’ennesimo tool. Non per dirti “usa questa nuova app e risolvi tutto”.</p>
+        <p>Ma per aiutarti a vedere una cosa molto più importante: <strong>prima di chiedere all’AI di lavorare per te, devi capire se il tuo modo di lavorare le permette davvero di esserti utile.</strong></p>
+      </div>
+    </section>
+
+    <section class="section" id="cosa-scoprirai">
+      <div class="section-header">
+        <div class="section-tag">Cosa scoprirai</div>
+        <h2>I 5 errori mortali che fanno perdere tempo anche a chi usa già l’AI</h2>
+        <p class="section-intro">Ci sono errori che sembrano piccoli. Quasi innocui. Li fanno professionisti, freelancer, solopreneur e piccoli imprenditori ogni giorno. E il problema è che questi errori non ti bloccano perché “non sei bravo con la tecnologia”. Ti bloccano perché creano dispersione.</p>
+      </div>
+      <div class="quote-card" style="margin-bottom:18px;">
+        <strong>Ti fanno produrre di più, ma avanzare meno. Ti fanno aprire più possibilità, ma chiudere meno cicli. Ti fanno accumulare output, ma trasformarne pochi in valore reale.</strong>
+        <p>Nel workshop vedremo questi errori uno per uno, con esempi concreti e domande pratiche per riconoscerli nel tuo lavoro.</p>
+      </div>
+      <div class="error-list">
+        <div class="error-item"><strong>Errore 1 — Usare l’AI sopra una struttura confusa</strong><span>Quando la base non è chiara, ogni output aggiunge complessità invece di alleggerire il lavoro.</span></div>
+        <div class="error-item"><strong>Errore 2 — Produrre troppo senza trasformare in azioni</strong><span>Più idee, più bozze, più materiali… ma poca esecuzione concreta.</span></div>
+        <div class="error-item"><strong>Errore 3 — Aprire possibilità invece di chiudere cicli</strong><span>L’AI moltiplica alternative: senza un sistema, diventa dispersione decisionale.</span></div>
+        <div class="error-item"><strong>Errore 4 — Confondere velocità con chiarezza</strong><span>Fare più in fretta non basta se poi devi rimettere insieme tutto con la testa.</span></div>
+        <div class="error-item"><strong>Errore 5 — Cercare il tool giusto prima di sistemare il metodo</strong><span>Il problema non è aggiungere un altro prompt: è capire cosa va messo in ordine prima.</span></div>
+      </div>
+      <div class="discover-grid" style="margin-top:18px;">
+        <div class="discover-card">
+          <h3>Dove l’AI ti sta aiutando davvero</h3>
+          <p>Capirai quali usi sono già utili e quali stanno solo creando altra attività da gestire.</p>
+        </div>
+        <div class="discover-card">
+          <h3>Dove oggi disperdi energia</h3>
+          <p>Vedrai quali parti del tuo lavoro assorbono tempo senza generare avanzamento reale.</p>
+        </div>
+        <div class="discover-card">
+          <h3>Cosa sistemare prima di automatizzare</h3>
+          <p>Avrai una base più lucida per capire quali pezzi vanno ordinati prima di salire di livello.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="section-tag">Obiettivo</div>
+        <h2>L’obiettivo è semplice: recuperare tempo</h2>
+      </div>
+      <div class="panel text-stack">
+        <p>Non recuperare tempo “facendo tutto più velocemente” a caso.</p>
+        <p>Ma recuperare tempo perché inizi a capire:</p>
+        <ul class="bullet-list">
+          <li>dove oggi l’AI ti sta aiutando davvero;</li>
+          <li>dove invece ti sta creando altra complessità;</li>
+          <li>quali parti del tuo lavoro disperdono energia;</li>
+          <li>quali output produci ma non riesci a usare bene;</li>
+          <li>dove continui a dover rimettere insieme tutto con la testa;</li>
+          <li>quali pezzi vanno sistemati prima di pensare ad automazioni più avanzate.</li>
+        </ul>
+        <p>Alla fine del workshop avrai una fotografia molto più chiara del tuo modo di lavorare.</p>
+        <p>E soprattutto capirai perché, fino a oggi, l’AI potrebbe non averti fatto recuperare tutto il tempo che ti aspettavi.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="section-tag">Fit</div>
+        <h2>Per chi è / non è</h2>
+      </div>
+      <div class="fit-grid">
+        <div class="fit-card good">
+          <h3>Questo workshop è per te se…</h3>
+          <ul class="check-list">
+            <li>lavori in proprio e senti di avere troppe cose sulle spalle;</li>
+            <li>usi già l’AI, ma spesso in modo frammentato;</li>
+            <li>produci contenuti, idee, bozze, strategie o task… ma poi fatichi a trasformarli in qualcosa di davvero utilizzabile;</li>
+            <li>arrivi a fine giornata con la sensazione di aver fatto tanto, ma di non aver fatto avanzare abbastanza le cose importanti;</li>
+            <li>vuoi recuperare tempo per lavorare meglio, pensare meglio, decidere meglio… e anche vivere meglio.</li>
+          </ul>
+        </div>
+        <div class="fit-card bad">
+          <h3>Non è per te se…</h3>
+          <ul class="cross-list">
+            <li>cerchi la lista dei “100 prompt magici”;</li>
+            <li>vuoi un trucchetto veloce senza mettere ordine nel tuo modo di lavorare;</li>
+            <li>pensi che l’AI debba fare tutto al posto tuo;</li>
+            <li>vuoi solo provare l’ennesimo tool per curiosità;</li>
+            <li>non sei disposto a guardare con onestà dove oggi il tuo lavoro si disperde.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="section-tag">Deliverable</div>
+        <h2>Cosa ottieni</h2>
+      </div>
+      <div class="gain-grid">
+        <div class="gain-card">
+          <h3>Training workshop</h3>
+          <p>Accesso al training “Perché l’AI non ti serve se non hai questo prima”.</p>
+        </div>
+        <div class="gain-card">
+          <h3>5 errori spiegati in modo pratico</h3>
+          <p>Una spiegazione concreta dei 5 errori che rendono l’AI meno utile di quanto potrebbe essere.</p>
+        </div>
+        <div class="gain-card">
+          <h3>Esempi + diagnosi personale</h3>
+          <p>Esempi applicati al lavoro reale e domande guidate per fare la tua diagnosi personale.</p>
+        </div>
+        <div class="gain-card">
+          <h3>Workbook incluso</h3>
+          <p>Il workbook “Sistema o Caos — Il Framework R.I.S.S.A.” incluso come bonus.</p>
+        </div>
+        <div class="gain-card">
+          <h3>Mappa di priorità</h3>
+          <p>Una mappa più chiara per capire dove iniziare a recuperare tempo e ridurre dispersione.</p>
+        </div>
+        <div class="gain-card">
+          <h3>Maggiore lucidità operativa</h3>
+          <p>Più chiarezza su cosa sistemare prima di aggiungere altre automazioni.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="section-tag">Bonus workbook RISSA</div>
+        <h2>Sistema o Caos — Il Framework R.I.S.S.A.</h2>
+      </div>
+      <div class="bonus-layout">
+        <div class="workbook-card">
+          <div class="placeholder-label">Workbook mockup placeholder</div>
+          <div class="workbook-mock">
+            <strong>Mockup workbook RISSA</strong>
+            <small>Sostituisci questo blocco con il mockup finale del workbook quando Riccardo fornirà il visual.</small>
+          </div>
+        </div>
+        <div class="panel text-stack">
+          <p>Insieme al workshop ricevi anche il workbook pratico per analizzare dove oggi il tuo lavoro si incastra, si disperde o torna continuamente sulle tue spalle.</p>
+          <p>Non è un documento da leggere e basta.</p>
+          <p>È uno strumento per fermarti, guardare il tuo modo di lavorare e iniziare a vedere con più chiarezza cosa va sistemato prima di chiedere all’AI di fare di più.</p>
+          <div class="hero-actions" style="margin-top:22px;">
+            <a class="btn btn-primary" href="https://buy.stripe.com/14AeVd7HQ8I6bdNdxHeUU02" target="_blank" rel="noopener noreferrer">Accedi al workshop + workbook</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="section-tag">Prezzo</div>
+        <h2>Perché 37€?</h2>
+      </div>
+      <div class="pricing-box">
+        <div class="price">
+          <strong>37€</strong>
+          <span>pagamento una tantum</span>
+        </div>
+        <p>Perché voglio che questo workshop sia accessibile.</p>
+        <p>Non è il percorso completo. Non è un lavoro personalizzato sul tuo sistema. Non è una consulenza individuale.</p>
+        <p><strong>È il primo passo.</strong></p>
+        <p>È il punto in cui capisci se il problema è davvero l’AI… oppure se prima devi sistemare qualcosa nel modo in cui lavori.</p>
+        <p>E per 37€, può evitarti settimane o mesi passati a cercare il prompt giusto, il tool giusto o l’automazione giusta… quando magari il vero problema è altrove.</p>
+        <div class="hero-actions" style="margin-top:22px;">
+          <a class="btn btn-primary" href="https://buy.stripe.com/14AeVd7HQ8I6bdNdxHeUU02" target="_blank" rel="noopener noreferrer">Entra ora • 37€</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="section-tag">Testimonianze</div>
+        <h2>Spazi predisposti per 3 testimonianze</h2>
+        <p class="section-intro">Ho preparato tre card testimonial eleganti pronte per essere sostituite con contenuti reali e visual finali quando Riccardo li passerà.</p>
+      </div>
+      <div class="testimonials-grid">
+        <article class="testimonial-card">
+          <div class="testimonial-avatar">T1</div>
+          <blockquote>Placeholder testimonianza 1. Inserire qui risultato, contesto iniziale e trasformazione percepita dopo il lavoro.</blockquote>
+          <footer>
+            <strong>Nome Testimonial 1</strong>
+            <div class="testimonial-role">Ruolo / business / dettaglio credibilità</div>
+          </footer>
+        </article>
+        <article class="testimonial-card">
+          <div class="testimonial-avatar">T2</div>
+          <blockquote>Placeholder testimonianza 2. Inserire qui una frase più emotiva o concreta su tempo recuperato, chiarezza e continuità.</blockquote>
+          <footer>
+            <strong>Nome Testimonial 2</strong>
+            <div class="testimonial-role">Ruolo / business / dettaglio credibilità</div>
+          </footer>
+        </article>
+        <article class="testimonial-card">
+          <div class="testimonial-avatar">T3</div>
+          <blockquote>Placeholder testimonianza 3. Inserire qui outcome tangibile o percezione prima/dopo per chi arriva con troppo caos operativo.</blockquote>
+          <footer>
+            <strong>Nome Testimonial 3</strong>
+            <div class="testimonial-role">Ruolo / business / dettaglio credibilità</div>
+          </footer>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="guarantee">
+        <h3>Garanzia semplice</h3>
+        <p>Se vuoi, questa sezione è pronta anche come rassicurazione finale: promessa chiara, accesso semplice, nessuna complicazione inutile.</p>
+        <p>Qui può restare una garanzia lineare orientata alla fiducia e alla chiarezza dell’acquisto, senza formule aggressive.</p>
+      </div>
+
+      <div class="cta-box">
+        <div class="section-tag">CTA finale</div>
+        <h3>Accedi ora al workshop</h3>
+        <p>Se senti che l’AI potrebbe aiutarti molto più di quanto stia facendo oggi, ma non riesci ancora a trasformarla in tempo recuperato, lucidità e continuità reale nel tuo lavoro, questo workshop è il punto di partenza.</p>
+        <div class="hero-actions" style="justify-content:center; margin-top:0;">
+          <a class="btn btn-primary" href="https://buy.stripe.com/14AeVd7HQ8I6bdNdxHeUU02" target="_blank" rel="noopener noreferrer">Entra ora in “Perché l’AI non ti serve” • 37€</a>
+        </div>
+        <div class="footer-note">Slug predisposto: <strong>/wspaints</strong> • CTA Stripe già collegata su tutta la pagina.</div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
