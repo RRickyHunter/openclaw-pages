@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planner dei flussi di reddito</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0B1224;
+            color: #fff;
+            line-height: 1.8;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 { font-size: 2rem; margin-bottom: 10px; color: #fff; }
+        .back {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #888;
+            text-decoration: none;
+        }
+        .back:hover { color: #fff; }
+        .intro {
+            color: #888;
+            margin-bottom: 30px;
+        }
+        .input-section {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+            padding: 30px;
+            border-radius: 16px;
+            margin: 25px 0;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .input-group {
+            margin: 20px 0;
+        }
+        label {
+            display: block;
+            color: #ccc;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        input[type="number"], input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1.1rem;
+        }
+        input:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+        .stream-card {
+            background: rgba(255,255,255,0.03);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .stream-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .stream-inputs {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 10px;
+        }
+        .stream-inputs input {
+            padding: 10px;
+            font-size: 0.95rem;
+        }
+        .results-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.15));
+            padding: 30px;
+            border-radius: 16px;
+            margin: 30px 0;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            text-align: center;
+        }
+        .big-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 15px 0;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #2563eb);
+            transition: width 0.5s ease;
+        }
+        .strategy-box {
+            background: rgba(59, 130, 246, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 3px solid #3b82f6;
+        }
+    </style>
+</head>
+<body>
+    <a href="/vitadasogno-bonus/" class="back">← Torna a tutti i bonus</a>
+    
+    <h1>Planner dei flussi di reddito</h1>
+    <p class="intro">Mappa più flussi di reddito per raggiungere il numero della tua vita da sogno</p>
+
+    <div class="input-section">
+        <div class="input-group">
+            <label>Il tuo reddito mensile da sogno (€)</label>
+            <input type="number" id="dream-income" placeholder="10000" value="10000">
+        </div>
+    </div>
+
+    <h3 style="color: #3b82f6; margin: 30px 0 20px;">Mappa i tuoi flussi di reddito</h3>
+
+    <div class="stream-card">
+        <div class="stream-number">1</div>
+        <div class="stream-inputs">
+            <input type="text" placeholder="Nome flusso di reddito (es. copywriting freelance)" id="stream1-name">
+            <input type="number" placeholder="Mensile €" id="stream1-amount">
+            <input type="number" placeholder="Ore/settimana" id="stream1-hours">
+        </div>
+    </div>
+
+    <div class="stream-card">
+        <div class="stream-number">2</div>
+        <div class="stream-inputs">
+            <input type="text" placeholder="Nome flusso di reddito" id="stream2-name">
+            <input type="number" placeholder="Mensile €" id="stream2-amount">
+            <input type="number" placeholder="Ore/settimana" id="stream2-hours">
+        </div>
+    </div>
+
+    <div class="stream-card">
+        <div class="stream-number">3</div>
+        <div class="stream-inputs">
+            <input type="text" placeholder="Nome flusso di reddito" id="stream3-name">
+            <input type="number" placeholder="Mensile €" id="stream3-amount">
+            <input type="number" placeholder="Ore/settimana" id="stream3-hours">
+        </div>
+    </div>
+
+    <div class="stream-card">
+        <div class="stream-number">4</div>
+        <div class="stream-inputs">
+            <input type="text" placeholder="Nome flusso di reddito" id="stream4-name">
+            <input type="number" placeholder="Mensile €" id="stream4-amount">
+            <input type="number" placeholder="Ore/settimana" id="stream4-hours">
+        </div>
+    </div>
+
+    <div class="stream-card">
+        <div class="stream-number">5</div>
+        <div class="stream-inputs">
+            <input type="text" placeholder="Nome flusso di reddito" id="stream5-name">
+            <input type="number" placeholder="Mensile €" id="stream5-amount">
+            <input type="number" placeholder="Ore/settimana" id="stream5-hours">
+        </div>
+    </div>
+
+    <div class="results-box">
+        <div style="color: #888; font-size: 1rem;">Reddito mensile totale</div>
+        <div class="big-number" id="total-income">€0</div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-bar" style="width: 0%"></div>
+        </div>
+        <div style="color: #888; margin-top: 10px;">
+            <span id="progress-text">0%</span> del tuo obiettivo di reddito da sogno
+        </div>
+        <div style="margin-top: 20px; color: #ccc;">
+            Tempo totale: <span id="total-hours">0</span> ore/settimana
+        </div>
+    </div>
+
+    <div class="strategy-box" id="strategy" style="display: none;">
+        <strong style="color: #3b82f6;">💡 Raccomandazione strategica:</strong>
+        <p id="strategy-text" style="margin-top: 10px; color: #ccc;"></p>
+    </div>
+
+    <script>
+        function calculate() {
+            const dreamIncome = parseInt(document.getElementById('dream-income').value) || 10000;
+            let totalIncome = 0;
+            let totalHours = 0;
+            let streamCount = 0;
+
+            for (let i = 1; i <= 5; i++) {
+                const amount = parseInt(document.getElementById(`stream${i}-amount`).value) || 0;
+                const hours = parseInt(document.getElementById(`stream${i}-hours`).value) || 0;
+                
+                if (amount > 0) {
+                    totalIncome += amount;
+                    totalHours += hours;
+                    streamCount++;
+                }
+            }
+
+            const percentage = Math.min((totalIncome / dreamIncome) * 100, 100);
+            
+            document.getElementById('total-income').textContent = '€' + totalIncome.toLocaleString('it-IT');
+            document.getElementById('total-hours').textContent = totalHours;
+            document.getElementById('progress-bar').style.width = percentage + '%';
+            document.getElementById('progress-text').textContent = Math.round(percentage) + '%';
+
+            // Strategy recommendation
+            const strategyBox = document.getElementById('strategy');
+            const strategyText = document.getElementById('strategy-text');
+            
+            if (totalIncome >= dreamIncome) {
+                strategyBox.style.display = 'block';
+                strategyText.textContent = `🎉 Sei al 100%+ del tuo obiettivo! Concentrati sull’ottimizzazione di questi ${streamCount} flussi e valuta di aggiungere reddito passivo.`;
+            } else if (percentage >= 75) {
+                strategyBox.style.display = 'block';
+                strategyText.textContent = `Ci sei quasi! Ti servono ancora €${(dreamIncome - totalIncome).toLocaleString('it-IT')}. Aggiungi un altro flusso o scala quelli esistenti.`;
+            } else if (percentage >= 50) {
+                strategyBox.style.display = 'block';
+                strategyText.textContent = `Buona partenza! Ti servono ancora €${(dreamIncome - totalIncome).toLocaleString('it-IT')}. Concentrati prima sul flusso che paga di più.`;
+            } else if (streamCount > 0) {
+                strategyBox.style.display = 'block';
+                strategyText.textContent = `Ti servono ancora €${(dreamIncome - totalIncome).toLocaleString('it-IT')}. Valuta di aggiungere flussi che pagano di più o aumentare i prezzi.`;
+            } else {
+                strategyBox.style.display = 'none';
+            }
+        }
+
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', calculate);
+        });
+
+        calculate();
+    </script>
+</body>
+</html>

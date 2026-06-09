@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workbook di valutazione competenze</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0B1224;
+            color: #fff;
+            line-height: 1.8;
+            padding: 40px 20px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        h1 { font-size: 2rem; margin-bottom: 10px; color: #fff; }
+        .back {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #888;
+            text-decoration: none;
+        }
+        .back:hover { color: #fff; }
+        .section {
+            background: rgba(255,255,255,0.03);
+            padding: 30px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .section-title {
+            color: #3b82f6;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            padding: 15px;
+            color: #fff;
+            font-family: inherit;
+            font-size: 1rem;
+            margin: 10px 0;
+            resize: vertical;
+        }
+        textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+        .question {
+            margin: 20px 0;
+            color: #ccc;
+        }
+        .results-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.15));
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        button {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: #fff;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin: 20px 0;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <a href="/vitadasogno-bonus/" class="back">← Torna a tutti i bonus</a>
+    
+    <h1>Workbook di valutazione competenze</h1>
+    <p style="color: #888; margin-bottom: 30px;">Scopri in cosa sei bravo e per cosa potresti essere pagato</p>
+
+    <div class="section">
+        <div class="section-title">Parte 1: per cosa ti chiedono aiuto</div>
+        <p class="question">Per cosa amici, familiari o colleghi ti chiedono regolarmente aiuto?</p>
+        <textarea id="q1" placeholder="Esempio: sistemare il computer, correggere il CV, pianificare eventi, dare consigli..."></textarea>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Parte 2: cosa ti viene naturale</div>
+        <p class="question">Cosa impari più velocemente della maggior parte delle persone? Cosa ti viene naturale?</p>
+        <textarea id="q2" placeholder="Esempio: imparare nuovi software, organizzare spazi, scrivere, parlare con sconosciuti..."></textarea>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Parte 3: cosa faresti gratis</div>
+        <p class="question">Cosa faresti volentieri anche se nessuno ti pagasse?</p>
+        <textarea id="q3" placeholder="Esempio: fare ricerca su argomenti, creare grafiche, aiutare le persone a risolvere problemi..."></textarea>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Parte 4: lavori passati ed esperienza</div>
+        <p class="question">Elenca ogni lavoro che hai fatto e 2 competenze che hai imparato da ciascuno:</p>
+        <textarea id="q4" placeholder="Esempio: retail - servizio clienti, vendite. Amministrazione ufficio - organizzazione, comunicazione..."></textarea>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Parte 5: problemi che hai risolto</div>
+        <p class="question">Quali problemi hai risolto per te stesso che altri potrebbero pagarti per risolvere?</p>
+        <textarea id="q5" placeholder="Esempio: perdere peso, organizzare casa, sistemare il credito, imparare una lingua..."></textarea>
+    </div>
+
+    <button onclick="analyzeSkills()">Analizza le mie competenze</button>
+
+    <div class="results-box" id="results" style="display: none;">
+        <div class="section-title">💡 Le tue possibili idee business</div>
+        <div id="results-content"></div>
+    </div>
+
+    <script>
+        function analyzeSkills() {
+            const q1 = document.getElementById('q1').value;
+            const q2 = document.getElementById('q2').value;
+            const q3 = document.getElementById('q3').value;
+            const q4 = document.getElementById('q4').value;
+            const q5 = document.getElementById('q5').value;
+            
+            const allText = (q1 + ' ' + q2 + ' ' + q3 + ' ' + q4 + ' ' + q5).toLowerCase();
+            
+            const businessIdeas = [];
+            
+            if (allText.includes('write') || allText.includes('edit') || allText.includes('scriv') || allText.includes('corregg')) {
+                businessIdeas.push('✍️ Copywriter freelance - €0,10-1,00/parola');
+            }
+            if (allText.includes('design') || allText.includes('graphic') || allText.includes('photo') || allText.includes('graf') || allText.includes('foto')) {
+                businessIdeas.push('🎨 Designer grafico - €50-500/progetto');
+            }
+            if (allText.includes('organize') || allText.includes('admin') || allText.includes('schedule') || allText.includes('organizz') || allText.includes('agenda')) {
+                businessIdeas.push('📋 Assistente virtuale - €25-50/ora');
+            }
+            if (allText.includes('social') || allText.includes('instagram') || allText.includes('facebook')) {
+                businessIdeas.push('📱 Gestore social media - €500-2.000/mese');
+            }
+            if (allText.includes('teach') || allText.includes('tutor') || allText.includes('explain') || allText.includes('insegn') || allText.includes('spieg')) {
+                businessIdeas.push('👨‍🏫 Tutor online - €30-100/ora');
+            }
+            if (allText.includes('video') || allText.includes('edit') || allText.includes('film')) {
+                businessIdeas.push('🎬 Montatore video - €100-500/video');
+            }
+            if (allText.includes('number') || allText.includes('math') || allText.includes('account')) {
+                businessIdeas.push('📊 Contabile - €300-800/mese');
+            }
+            if (allText.includes('web') || allText.includes('site') || allText.includes('tech')) {
+                businessIdeas.push('💻 Creatore siti web - €1.000-3.000/sito');
+            }
+            if (allText.includes('talk') || allText.includes('speak') || allText.includes('sales') || allText.includes('parl') || allText.includes('vendit')) {
+                businessIdeas.push('🎤 Consulente vendite - €100-300/ora');
+            }
+            if (allText.includes('plan') || allText.includes('event') || allText.includes('coordinate') || allText.includes('pian') || allText.includes('coordin')) {
+                businessIdeas.push('🎉 Event Planner - €500-2.000/evento');
+            }
+            
+            if (businessIdeas.length === 0) {
+                businessIdeas.push('💡 Assistente virtuale - ottimo punto di partenza per qualunque set di skill');
+                businessIdeas.push('💡 Copywriter freelance - condividi la tua conoscenza attraverso i contenuti');
+                businessIdeas.push('💡 Tutor online - insegna ciò che sai');
+            }
+            
+            document.getElementById('results-content').innerHTML = businessIdeas.join('<br><br>');
+            document.getElementById('results').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

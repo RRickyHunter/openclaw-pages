@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Template budget Vita da Sogno</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0B1224;
+            color: #fff;
+            line-height: 1.8;
+            padding: 40px 20px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        h1 { font-size: 2rem; margin-bottom: 10px; color: #fff; }
+        .back {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #888;
+            text-decoration: none;
+        }
+        .back:hover { color: #fff; }
+        .category {
+            background: rgba(255,255,255,0.03);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .category-title {
+            font-size: 1.2rem;
+            color: #3b82f6;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .item:last-child { border-bottom: none; }
+        .item-name { color: #ccc; }
+        .item-cost { color: #fff; font-weight: 600; }
+        .total-row {
+            background: rgba(59, 130, 246, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .total-label { color: #3b82f6; font-weight: 600; }
+        .total-amount { color: #fff; font-weight: 700; font-size: 1.1rem; }
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.15));
+            padding: 30px;
+            border-radius: 12px;
+            margin: 40px 0;
+            text-align: center;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        .highlight-box h2 {
+            color: #3b82f6;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        .big-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 10px 0;
+        }
+        .breakdown {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .breakdown-item {
+            background: rgba(255,255,255,0.05);
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .breakdown-label { color: #888; font-size: 0.9rem; }
+        .breakdown-value { color: #fff; font-weight: 600; margin-top: 5px; }
+        input {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            padding: 8px 12px;
+            border-radius: 6px;
+            width: 100px;
+            text-align: right;
+        }
+        .instructions {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <a href="/vitadasogno-bonus/" class="back">← Torna a tutti i bonus</a>
+    
+    <h1>Template budget Vita da Sogno</h1>
+    <p style="color: #888; margin-bottom: 30px;">Calcola con precisione quanto devi guadagnare</p>
+
+    <div class="instructions">
+        <strong>Come usarlo:</strong> inserisci i tuoi costi mensili per ogni categoria. I totali verranno calcolati automaticamente.
+    </div>
+
+    <div class="category">
+        <div class="category-title">🏠 CASA DEI SOGNI</div>
+        <div class="item">
+            <span class="item-name">Mutuo/Affitto</span>
+            <input type="number" placeholder="0" id="home-rent">
+        </div>
+        <div class="item">
+            <span class="item-name">Tasse immobile</span>
+            <input type="number" placeholder="0" id="home-tax">
+        </div>
+        <div class="item">
+            <span class="item-name">Assicurazione</span>
+            <input type="number" placeholder="0" id="home-insurance">
+        </div>
+        <div class="item">
+            <span class="item-name">Manutenzione</span>
+            <input type="number" placeholder="0" id="home-maint">
+        </div>
+        <div class="item">
+            <span class="item-name">Utenze</span>
+            <input type="number" placeholder="0" id="home-utilities">
+        </div>
+        <div class="total-row">
+            <span class="total-label">TOTALE CASA</span>
+            <span class="total-amount" id="home-total">€0</span>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-title">🚗 VEICOLO DEI SOGNI</div>
+        <div class="item">
+            <span class="item-name">Rata auto</span>
+            <input type="number" placeholder="0" id="car-payment">
+        </div>
+        <div class="item">
+            <span class="item-name">Assicurazione</span>
+            <input type="number" placeholder="0" id="car-insurance">
+        </div>
+        <div class="item">
+            <span class="item-name">Carburante</span>
+            <input type="number" placeholder="0" id="car-gas">
+        </div>
+        <div class="item">
+            <span class="item-name">Manutenzione</span>
+            <input type="number" placeholder="0" id="car-maint">
+        </div>
+        <div class="total-row">
+            <span class="total-label">TOTALE VEICOLO</span>
+            <span class="total-amount" id="car-total">€0</span>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-title">✈️ VIAGGI ED ESPERIENZE</div>
+        <div class="item">
+            <span class="item-name">Vacanze</span>
+            <input type="number" placeholder="0" id="travel-vacations">
+        </div>
+        <div class="item">
+            <span class="item-name">Weekend fuori</span>
+            <input type="number" placeholder="0" id="travel-weekends">
+        </div>
+        <div class="item">
+            <span class="item-name">Voli</span>
+            <input type="number" placeholder="0" id="travel-flights">
+        </div>
+        <div class="item">
+            <span class="item-name">Hotel</span>
+            <input type="number" placeholder="0" id="travel-hotels">
+        </div>
+        <div class="total-row">
+            <span class="total-label">TOTALE VIAGGI</span>
+            <span class="total-amount" id="travel-total">€0</span>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-title">🍽️ CIBO E RISTORANTI</div>
+        <div class="item">
+            <span class="item-name">Spesa</span>
+            <input type="number" placeholder="0" id="food-groceries">
+        </div>
+        <div class="item">
+            <span class="item-name">Ristoranti</span>
+            <input type="number" placeholder="0" id="food-restaurants">
+        </div>
+        <div class="item">
+            <span class="item-name">Chef personale</span>
+            <input type="number" placeholder="0" id="food-chef">
+        </div>
+        <div class="total-row">
+            <span class="total-label">TOTALE CIBO</span>
+            <span class="total-amount" id="food-total">€0</span>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-title">💪 SALUTE E BENESSERE</div>
+        <div class="item">
+            <span class="item-name">Palestra/Trainer</span>
+            <input type="number" placeholder="0" id="health-gym">
+        </div>
+        <div class="item">
+            <span class="item-name">Spa/Benessere</span>
+            <input type="number" placeholder="0" id="health-spa">
+        </div>
+        <div class="item">
+            <span class="item-name">Medico</span>
+            <input type="number" placeholder="0" id="health-medical">
+        </div>
+        <div class="total-row">
+            <span class="total-label">TOTALE SALUTE</span>
+            <span class="total-amount" id="health-total">€0</span>
+        </div>
+    </div>
+
+    <div class="category">
+        <div class="category-title">🎭 INTRATTENIMENTO</div>
+        <div class="item">
+            <span class="item-name">Spettacoli/Eventi</span>
+            <input type="number" placeholder="0" id="fun-shows">
+        </div>
+        <div class="item">
+            <span class="item-name">Hobby</span>
+            <input type="number" placeholder="0" id="fun-hobbies">
+        </div>
+        <div class="item">
+            <span class="item-name">Abbonamenti</span>
+            <input type="number" placeholder="0" id="fun-subscriptions">
+        </div>
+        <div class="total-row">
+            <span class="total-label">TOTALE INTRATTENIMENTO</span>
+            <span class="total-amount" id="fun-total">€0</span>
+        </div>
+    </div>
+
+    <div class="highlight-box">
+        <h2>💰 IL NUMERO DELLA TUA VITA DA SOGNO</h2>
+        <div class="big-number" id="monthly-total">€0</div>
+        <p style="color: #aaa;">al mese</p>
+        
+        <div class="breakdown">
+            <div class="breakdown-item">
+                <div class="breakdown-label">Annuale</div>
+                <div class="breakdown-value" id="annual-income">€0</div>
+            </div>
+            <div class="breakdown-item">
+                <div class="breakdown-label">Mensile</div>
+                <div class="breakdown-value" id="monthly-income">€0</div>
+            </div>
+            <div class="breakdown-item">
+                <div class="breakdown-label">Settimanale</div>
+                <div class="breakdown-value" id="weekly-income">€0</div>
+            </div>
+            <div class="breakdown-item">
+                <div class="breakdown-label">Giornaliero</div>
+                <div class="breakdown-value" id="daily-income">€0</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function formatMoney(amount) {
+            return '€' + amount.toLocaleString('it-IT');
+        }
+        
+        function calculate() {
+            // Get all inputs
+            const categories = ['home', 'car', 'travel', 'food', 'health', 'fun'];
+            let monthlyTotal = 0;
+            
+            categories.forEach(cat => {
+                let catTotal = 0;
+                const inputs = document.querySelectorAll(`[id^="${cat}-"]`);
+                inputs.forEach(input => {
+                    catTotal += parseInt(input.value) || 0;
+                });
+                document.getElementById(`${cat}-total`).textContent = formatMoney(catTotal);
+                monthlyTotal += catTotal;
+            });
+            
+            // Update totals
+            document.getElementById('monthly-total').textContent = formatMoney(monthlyTotal);
+            document.getElementById('annual-income').textContent = formatMoney(monthlyTotal * 12);
+            document.getElementById('monthly-income').textContent = formatMoney(monthlyTotal);
+            document.getElementById('weekly-income').textContent = formatMoney(Math.round(monthlyTotal / 4.33));
+            document.getElementById('daily-income').textContent = formatMoney(Math.round(monthlyTotal / 30));
+        }
+        
+        // Add event listeners
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', calculate);
+        });
+    </script>
+</body>
+</html>

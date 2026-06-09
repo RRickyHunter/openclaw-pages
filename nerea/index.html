@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nerea · Entrenadora Bioenergética</title>
+  <meta name="description" content="Nerea acompaña a mujeres a superar sus miedos, sostener nuevos resultados y convertir hábitos conscientes en cambios reales y duraderos." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="/nerea/favicon.png" />
+  <style>
+    :root {
+      --gold: #ffb400;
+      --orange: #ff7a00;
+      --ink: #10203e;
+      --muted: #4b5b7a;
+      --radius: 24px;
+      --max: 1040px;
+      --card: rgba(255,255,255,.09);
+      --border: rgba(255,255,255,.14);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+      color: #fff;
+      background: radial-gradient(circle at top, #2e6bff 0%, #123c8f 28%, #07142d 76%);
+      min-height: 100vh;
+      line-height: 1.6;
+      padding: 2rem;
+    }
+
+    .container {
+      width: min(var(--max), 100%);
+      margin: 0 auto;
+    }
+
+    .hero {
+      min-height: calc(100vh - 4rem);
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: .5rem 1rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,.13);
+      font-weight: 700;
+      font-size: .85rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .logo {
+      width: 124px;
+      margin-bottom: 1.25rem;
+      filter: drop-shadow(0 10px 30px rgba(255,180,0,.18));
+    }
+
+    h1 {
+      font-size: clamp(2.4rem, 5vw, 4.3rem);
+      font-weight: 900;
+      line-height: 1.06;
+      letter-spacing: -.03em;
+      margin-bottom: 1rem;
+      max-width: 760px;
+    }
+
+    h1 em {
+      font-style: normal;
+      background: linear-gradient(90deg, var(--gold), var(--orange));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      font-size: 1.18rem;
+      color: rgba(255,255,255,.87);
+      max-width: 680px;
+      margin-bottom: 1.8rem;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .cta-button,
+    .secondary-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 62px;
+      padding: 0 2rem;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      border: 0;
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .cta-button {
+      background: linear-gradient(135deg, var(--gold), var(--orange));
+      color: var(--ink);
+      box-shadow: 0 14px 40px rgba(255,122,0,.35);
+    }
+
+    .secondary-button {
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.18);
+      color: #fff;
+    }
+
+    .cta-button:hover,
+    .secondary-button:hover {
+      transform: translateY(-3px);
+    }
+
+    .micro {
+      font-size: .92rem;
+      color: rgba(255,255,255,.62);
+      max-width: 620px;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06));
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 1.1rem;
+      box-shadow: 0 18px 60px rgba(0,0,0,.18);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-card img {
+      width: 100%;
+      display: block;
+      border-radius: 22px;
+      object-fit: cover;
+      aspect-ratio: 4 / 5;
+      object-position: center 22%;
+    }
+
+    .section {
+      margin-top: 4rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      font-weight: 900;
+      margin-bottom: .8rem;
+      letter-spacing: -.02em;
+    }
+
+    .section-copy {
+      color: rgba(255,255,255,.76);
+      max-width: 760px;
+      margin-bottom: 1.6rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.35rem;
+      backdrop-filter: blur(6px);
+    }
+
+    .card h3 {
+      font-size: 1.02rem;
+      font-weight: 800;
+      margin-bottom: .5rem;
+    }
+
+    .card p, .card li {
+      color: rgba(255,255,255,.75);
+      font-size: .95rem;
+    }
+
+    .card ul {
+      padding-left: 1.1rem;
+    }
+
+    .agenda-box {
+      background: linear-gradient(180deg, rgba(255,180,0,.16), rgba(255,255,255,.08));
+      border: 1px solid rgba(255,180,0,.28);
+      border-radius: 22px;
+      padding: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .agenda-box strong {
+      color: #fff;
+    }
+
+    .scheduler-summary {
+      margin-top: 1rem;
+      color: rgba(255,255,255,.76);
+      font-size: .95rem;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 10, 24, .72);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      z-index: 999;
+      backdrop-filter: blur(8px);
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-panel {
+      width: min(980px, 100%);
+      max-height: 92vh;
+      overflow: auto;
+      background: linear-gradient(180deg, rgba(14,29,61,.98), rgba(9,18,39,.98));
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 26px;
+      padding: 1.5rem;
+      box-shadow: 0 24px 80px rgba(0,0,0,.35);
+    }
+
+    .modal-top {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .close-btn {
+      background: rgba(255,255,255,.08);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 999px;
+      width: 42px;
+      height: 42px;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    .scheduler-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 1.2rem;
+    }
+
+    .slot-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .8rem;
+      margin-top: 1rem;
+    }
+
+    .slot-btn,
+    .date-btn {
+      width: 100%;
+      background: rgba(255,255,255,.06);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 14px;
+      padding: .95rem 1rem;
+      text-align: left;
+      cursor: pointer;
+      transition: .2s ease;
+      font-family: inherit;
+    }
+
+    .date-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .8rem;
+      margin-top: 1rem;
+    }
+
+    .slot-btn:hover,
+    .date-btn:hover,
+    .slot-btn.active,
+    .date-btn.active {
+      background: rgba(255,180,0,.16);
+      border-color: rgba(255,180,0,.45);
+      transform: translateY(-2px);
+    }
+
+    .slot-btn small,
+    .date-btn small {
+      display: block;
+      color: rgba(255,255,255,.62);
+      margin-top: .2rem;
+    }
+
+    .booking-form {
+      display: grid;
+      gap: .9rem;
+      margin-top: 1rem;
+    }
+
+    .booking-form label {
+      display: grid;
+      gap: .35rem;
+      font-size: .92rem;
+      color: rgba(255,255,255,.8);
+    }
+
+    .booking-form input {
+      width: 100%;
+      min-height: 52px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: #fff;
+      padding: 0 1rem;
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    .booking-note,
+    .success-box {
+      margin-top: .9rem;
+      padding: .95rem 1rem;
+      border-radius: 16px;
+      font-size: .92rem;
+    }
+
+    .booking-note {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      color: rgba(255,255,255,.72);
+    }
+
+    .success-box {
+      display: none;
+      background: rgba(34,197,94,.14);
+      border: 1px solid rgba(34,197,94,.35);
+      color: rgba(255,255,255,.9);
+    }
+
+    .success-box.show {
+      display: block;
+    }
+
+    footer {
+      margin-top: 4rem;
+      padding-bottom: 2rem;
+      font-size: .85rem;
+      color: rgba(255,255,255,.4);
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 1rem; }
+      .grid-3, .grid-2, .scheduler-grid, .date-list, .slot-grid { grid-template-columns: 1fr; }
+      body { padding: 1.2rem; }
+      .hero-card img { aspect-ratio: 4 / 4.7; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <section class="hero">
+      <div>
+        <img src="/nerea/logo-nerea.png" alt="Logo de Nerea" class="logo" />
+        <span class="eyebrow">Entrenadora Bioenergética</span>
+
+        <h1>Supera tus <em>miedos</em>, sostén tus nuevos resultados y convierte tus hábitos en cambios reales.</h1>
+
+        <p class="subtitle">
+          Nerea acompaña a mujeres que quieren dejar atrás bloqueos internos, reconectar con su energía
+          y construir una transformación que se mantenga en el tiempo.
+        </p>
+
+        <div class="cta-row">
+          <button type="button" class="cta-button" id="openBookingTop">Reservar una cita</button>
+          <a href="#proceso" class="secondary-button">Cómo te puede ayudar</a>
+        </div>
+
+        <p class="micro">
+          Página lista para recibir solicitudes de cita. Después conectamos el envío final con ActiveCampaign o Mailchimp.
+        </p>
+      </div>
+
+      <div class="hero-card">
+        <img src="/nerea/nerea-photo-800.png" alt="Nerea, entrenadora bioenergética" />
+      </div>
+    </section>
+
+    <section class="section" id="proceso">
+      <h2 class="section-title">¿En qué te ayuda Nerea?</h2>
+      <p class="section-copy">
+        Su trabajo une presencia, escucha y enfoque práctico para que el cambio no se quede en una emoción del momento,
+        sino que se traduzca en decisiones, hábitos y resultados sostenibles.
+      </p>
+
+      <div class="grid-3">
+        <div class="card">
+          <h3>🌿 Superar miedos</h3>
+          <p>Identifica bloqueos emocionales y patrones que te frenan para que puedas avanzar con más seguridad y claridad.</p>
+        </div>
+        <div class="card">
+          <h3>✨ Sostener resultados</h3>
+          <p>No se trata solo de sentirte mejor hoy, sino de mantener tus nuevos resultados en el tiempo con raíces reales.</p>
+        </div>
+        <div class="card">
+          <h3>💛 Crear hábitos duraderos</h3>
+          <p>Integra hábitos conscientes que acompañen tu nueva versión sin caer en ciclos de impulso y abandono.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">Ideal para mujeres que sienten que…</h2>
+      <div class="grid-2">
+        <div class="card">
+          <ul>
+            <li>repiten los mismos bloqueos aunque saben lo que deberían hacer;</li>
+            <li>quieren avanzar, pero el miedo las frena justo cuando más importa;</li>
+            <li>han intentado cambiar hábitos, pero no logran sostenerlos.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <ul>
+            <li>necesitan recuperar energía, centro y dirección;</li>
+            <li>quieren una transformación profunda, no solo motivación temporal;</li>
+            <li>buscan un acompañamiento humano, sensible y orientado a resultados reales.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="agenda">
+      <h2 class="section-title">Reserva tu cita</h2>
+      <p class="section-copy">
+        Este espacio ya está preparado para convertirse en su página de citas. Solo falta conectar el calendario.
+      </p>
+
+      <div class="agenda-box">
+        <p><strong>Agenda interactiva lista:</strong> la persona puede elegir día, horario, nombre y email desde esta misma página.</p>
+        <div class="scheduler-summary">Por ahora la solicitud queda preparada en la interfaz. En el siguiente paso la conectamos al sistema final de captación y seguimiento.</div>
+        <div class="cta-row" style="margin-top:1rem;">
+          <button type="button" class="cta-button" id="openBookingBottom">Abrir agenda</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="modal" id="bookingModal" aria-hidden="true">
+    <div class="modal-panel">
+      <div class="modal-top">
+        <div>
+          <span class="eyebrow">Reserva una cita</span>
+          <h2 class="section-title" style="margin-bottom:.35rem;">Elige tu día y tu horario</h2>
+          <p class="section-copy" style="margin-bottom:0;">Selecciona una fecha disponible, el horario que prefieras y deja tus datos.</p>
+        </div>
+        <button class="close-btn" id="closeBooking" aria-label="Cerrar">×</button>
+      </div>
+
+      <div class="scheduler-grid">
+        <div class="card">
+          <h3>1. Fecha disponible</h3>
+          <p>Se muestran los próximos días laborables para la reserva.</p>
+          <div class="date-list" id="dateList"></div>
+
+          <h3 style="margin-top:1.2rem;">2. Horario</h3>
+          <p>Escoge el momento que mejor encaje contigo.</p>
+          <div class="slot-grid" id="slotList"></div>
+        </div>
+
+        <div class="card">
+          <h3>3. Tus datos</h3>
+          <p>Déjanos tu nombre y tu email para confirmar la cita.</p>
+
+          <form class="booking-form" id="bookingForm">
+            <label>
+              Nombre
+              <input type="text" id="bookingName" name="name" placeholder="Tu nombre" required />
+            </label>
+
+            <label>
+              Email
+              <input type="email" id="bookingEmail" name="email" placeholder="tu@email.com" required />
+            </label>
+
+            <label>
+              Día seleccionado
+              <input type="text" id="bookingDate" name="date" readonly required />
+            </label>
+
+            <label>
+              Horario seleccionado
+              <input type="text" id="bookingTime" name="time" readonly required />
+            </label>
+
+            <button type="submit" class="cta-button">Enviar solicitud</button>
+          </form>
+
+          <div class="booking-note">
+            Estado actual: la experiencia ya está lista para el usuario. El siguiente paso es conectar este formulario al sistema final de automatización y seguimiento.
+          </div>
+
+          <div class="success-box" id="successBox"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 Nerea · Entrenadora Bioenergética
+  </footer>
+
+  <script>
+    const bookingConfig = {
+      slotDuration: 60,
+      dailySlots: ['10:00', '11:30', '13:00', '16:00', '17:30', '19:00'],
+      daysAhead: 14,
+      closedWeekdays: [0]
+    };
+
+    const modal = document.getElementById('bookingModal');
+    const openButtons = [document.getElementById('openBookingTop'), document.getElementById('openBookingBottom')];
+    const closeButton = document.getElementById('closeBooking');
+    const dateList = document.getElementById('dateList');
+    const slotList = document.getElementById('slotList');
+    const bookingDate = document.getElementById('bookingDate');
+    const bookingTime = document.getElementById('bookingTime');
+    const bookingForm = document.getElementById('bookingForm');
+    const successBox = document.getElementById('successBox');
+
+    let selectedDate = null;
+    let selectedTime = null;
+
+    function formatHumanDate(date) {
+      return new Intl.DateTimeFormat('es-ES', {
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long'
+      }).format(date);
+    }
+
+    function formatShortDate(date) {
+      return new Intl.DateTimeFormat('es-ES', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+      }).format(date);
+    }
+
+    function getAvailableDates() {
+      const dates = [];
+      const now = new Date();
+      for (let i = 0; i < bookingConfig.daysAhead; i++) {
+        const d = new Date(now);
+        d.setDate(now.getDate() + i);
+        if (!bookingConfig.closedWeekdays.includes(d.getDay())) {
+          dates.push(d);
+        }
+        if (dates.length >= 8) break;
+      }
+      return dates;
+    }
+
+    function renderDates() {
+      const dates = getAvailableDates();
+      dateList.innerHTML = '';
+      dates.forEach((date, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'date-btn' + (idx === 0 ? ' active' : '');
+        btn.innerHTML = `${formatHumanDate(date)}<small>${formatShortDate(date)}</small>`;
+        btn.addEventListener('click', () => {
+          selectedDate = date;
+          [...dateList.children].forEach(el => el.classList.remove('active'));
+          btn.classList.add('active');
+          bookingDate.value = `${formatHumanDate(date)} (${formatShortDate(date)})`;
+        });
+        dateList.appendChild(btn);
+        if (idx === 0) {
+          selectedDate = date;
+          bookingDate.value = `${formatHumanDate(date)} (${formatShortDate(date)})`;
+        }
+      });
+    }
+
+    function renderSlots() {
+      slotList.innerHTML = '';
+      bookingConfig.dailySlots.forEach((time, idx) => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'slot-btn' + (idx === 0 ? ' active' : '');
+        btn.innerHTML = `${time}<small>Sesión de ${bookingConfig.slotDuration} minutos</small>`;
+        btn.addEventListener('click', () => {
+          selectedTime = time;
+          [...slotList.children].forEach(el => el.classList.remove('active'));
+          btn.classList.add('active');
+          bookingTime.value = time;
+        });
+        slotList.appendChild(btn);
+        if (idx === 0) {
+          selectedTime = time;
+          bookingTime.value = time;
+        }
+      });
+    }
+
+    function openModal() {
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      successBox.classList.remove('show');
+      renderDates();
+      renderSlots();
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+    openButtons.forEach(btn => btn.addEventListener('click', openModal));
+    closeButton.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    bookingForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('bookingName').value.trim();
+      const email = document.getElementById('bookingEmail').value.trim();
+      if (!name || !email || !selectedDate || !selectedTime) return;
+
+      const payload = {
+        name,
+        email,
+        date: formatShortDate(selectedDate),
+        dateLabel: formatHumanDate(selectedDate),
+        time: selectedTime,
+        source: 'nerea-booking-page'
+      };
+
+      successBox.classList.add('show');
+      successBox.innerHTML = `Solicitud preparada para <strong>${payload.name}</strong> el <strong>${payload.dateLabel}</strong> a las <strong>${payload.time}</strong>.<br>Cuando conectemos la automatización, estos datos pasarán directamente al sistema final.`;
+      console.log('BOOKING_READY_PAYLOAD', payload);
+    });
+  </script>
+</body>
+</html>

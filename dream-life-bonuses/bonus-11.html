@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income Stream Planner</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0B1224;
+            color: #fff;
+            line-height: 1.8;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 { font-size: 2rem; margin-bottom: 10px; color: #fff; }
+        .back {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #888;
+            text-decoration: none;
+        }
+        .back:hover { color: #fff; }
+        .intro {
+            color: #888;
+            margin-bottom: 30px;
+        }
+        .input-section {
+            background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.02) 100%);
+            padding: 30px;
+            border-radius: 16px;
+            margin: 25px 0;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .input-group {
+            margin: 20px 0;
+        }
+        label {
+            display: block;
+            color: #ccc;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+        input[type="number"], input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1.1rem;
+        }
+        input:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+        .stream-card {
+            background: rgba(255,255,255,0.03);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+        .stream-number {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        .stream-inputs {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 10px;
+        }
+        .stream-inputs input {
+            padding: 10px;
+            font-size: 0.95rem;
+        }
+        .results-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.15));
+            padding: 30px;
+            border-radius: 16px;
+            margin: 30px 0;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            text-align: center;
+        }
+        .big-number {
+            font-size: 3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 15px 0;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #2563eb);
+            transition: width 0.5s ease;
+        }
+        .strategy-box {
+            background: rgba(59, 130, 246, 0.1);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 3px solid #3b82f6;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back">← Back to All Bonuses</a>
+    
+    <h1>Income Stream Planner</h1>
+    <p class="intro">Map multiple income streams to hit your dream life number</p>
+
+    <div class="input-section">
+        <div class="input-group">
+            <label>Your Dream Monthly Income ($)</label>
+            <input type="number" id="dream-income" placeholder="10000" value="10000">
+        </div>
+    </div>
+
+    <h3 style="color: #3b82f6; margin: 30px 0 20px;">Map Your Income Streams</h3>
+
+    <div class="stream-card">
+        <div class="stream-number">1</div>
+        <div class="stream-inputs">
+            <input type="text" placeholder="Income stream name (e.g., Freelance Writing)" id="stream1-name">
+            <input type="number" placeholder="Monthly $" id="stream1-amount">
+            <input type="number" placeholder="Hours/week" id="stream1-hours">
+        </div>
+    </div>
+
+    <div class="stream-card">
+        <div class="stream-number">2</div>
+        <div class="stream-inputs">
+            <input type="text" placeholder="Income stream name" id="stream2-name">
+            <input type="number" placeholder="Monthly $" id="stream2-amount">
+            <input type="number" placeholder="Hours/week" id="stream2-hours">
+        </div>
+    </div>
+
+    <div class="stream-card">
+        <div class="stream-number">3</div>
+        <div class="stream-inputs">
+            <input type="text" placeholder="Income stream name" id="stream3-name">
+            <input type="number" placeholder="Monthly $" id="stream3-amount">
+            <input type="number" placeholder="Hours/week" id="stream3-hours">
+        </div>
+    </div>
+
+    <div class="stream-card">
+        <div class="stream-number">4</div>
+        <div class="stream-inputs">
+            <input type="text" placeholder="Income stream name" id="stream4-name">
+            <input type="number" placeholder="Monthly $" id="stream4-amount">
+            <input type="number" placeholder="Hours/week" id="stream4-hours">
+        </div>
+    </div>
+
+    <div class="stream-card">
+        <div class="stream-number">5</div>
+        <div class="stream-inputs">
+            <input type="text" placeholder="Income stream name" id="stream5-name">
+            <input type="number" placeholder="Monthly $" id="stream5-amount">
+            <input type="number" placeholder="Hours/week" id="stream5-hours">
+        </div>
+    </div>
+
+    <div class="results-box">
+        <div style="color: #888; font-size: 1rem;">Total Monthly Income</div>
+        <div class="big-number" id="total-income">$0</div>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-bar" style="width: 0%"></div>
+        </div>
+        <div style="color: #888; margin-top: 10px;">
+            <span id="progress-text">0%</span> of your dream income goal
+        </div>
+        <div style="margin-top: 20px; color: #ccc;">
+            Total time: <span id="total-hours">0</span> hours/week
+        </div>
+    </div>
+
+    <div class="strategy-box" id="strategy" style="display: none;">
+        <strong style="color: #3b82f6;">💡 Strategy Recommendation:</strong>
+        <p id="strategy-text" style="margin-top: 10px; color: #ccc;"></p>
+    </div>
+
+    <script>
+        function calculate() {
+            const dreamIncome = parseInt(document.getElementById('dream-income').value) || 10000;
+            let totalIncome = 0;
+            let totalHours = 0;
+            let streamCount = 0;
+
+            for (let i = 1; i <= 5; i++) {
+                const amount = parseInt(document.getElementById(`stream${i}-amount`).value) || 0;
+                const hours = parseInt(document.getElementById(`stream${i}-hours`).value) || 0;
+                
+                if (amount > 0) {
+                    totalIncome += amount;
+                    totalHours += hours;
+                    streamCount++;
+                }
+            }
+
+            const percentage = Math.min((totalIncome / dreamIncome) * 100, 100);
+            
+            document.getElementById('total-income').textContent = '$' + totalIncome.toLocaleString();
+            document.getElementById('total-hours').textContent = totalHours;
+            document.getElementById('progress-bar').style.width = percentage + '%';
+            document.getElementById('progress-text').textContent = Math.round(percentage) + '%';
+
+            // Strategy recommendation
+            const strategyBox = document.getElementById('strategy');
+            const strategyText = document.getElementById('strategy-text');
+            
+            if (totalIncome >= dreamIncome) {
+                strategyBox.style.display = 'block';
+                strategyText.textContent = `🎉 You're at 100%+ of your goal! Focus on optimizing these ${streamCount} streams and consider adding passive income.`;
+            } else if (percentage >= 75) {
+                strategyBox.style.display = 'block';
+                strategyText.textContent = `You're close! You need $${(dreamIncome - totalIncome).toLocaleString()} more. Add one more stream or scale existing ones.`;
+            } else if (percentage >= 50) {
+                strategyBox.style.display = 'block';
+                strategyText.textContent = `Good start! You need $${(dreamIncome - totalIncome).toLocaleString()} more. Focus on your highest-paying stream first.`;
+            } else if (streamCount > 0) {
+                strategyBox.style.display = 'block';
+                strategyText.textContent = `You need $${(dreamIncome - totalIncome).toLocaleString()} more. Consider adding higher-paying streams or increasing prices.`;
+            } else {
+                strategyBox.style.display = 'none';
+            }
+        }
+
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', calculate);
+        });
+
+        calculate();
+    </script>
+</body>
+</html>

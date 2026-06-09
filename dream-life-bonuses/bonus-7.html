@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Freedom Calculator</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0B1224;
+            color: #fff;
+            line-height: 1.8;
+            padding: 40px 20px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        h1 { font-size: 2rem; margin-bottom: 10px; color: #fff; }
+        .back {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #888;
+            text-decoration: none;
+        }
+        .back:hover { color: #fff; }
+        .input-section {
+            background: rgba(255,255,255,0.03);
+            padding: 30px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .input-group {
+            margin: 20px 0;
+        }
+        label {
+            display: block;
+            color: #ccc;
+            margin-bottom: 8px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1.2rem;
+        }
+        input[type="number"]:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+        .results-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.15));
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        .big-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 15px 0;
+        }
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .comparison-box {
+            background: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .comparison-label {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        .comparison-value {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back">← Back to All Bonuses</a>
+    
+    <h1>Time Freedom Calculator</h1>
+    <p style="color: #888; margin-bottom: 30px;">See how much time your dream life actually requires</p>
+
+    <div class="input-section">
+        <div class="input-group">
+            <label>Your Current Work Hours Per Week</label>
+            <input type="number" id="current-hours" placeholder="40" value="40">
+        </div>
+        <div class="input-group">
+            <label>Your Dream Monthly Income ($)</label>
+            <input type="number" id="dream-income" placeholder="10000">
+        </div>
+        <div class="input-group">
+            <label>Your Hourly Rate Goal ($)</label>
+            <input type="number" id="hourly-rate" placeholder="100">
+        </div>
+    </div>
+
+    <div class="results-box" id="results">
+        <div style="color: #3b82f6; font-size: 1.2rem; margin-bottom: 10px;">Hours Needed Per Week</div>
+        <div class="big-number" id="hours-needed">0</div>
+        <p style="color: #aaa;">to hit your dream income at your target hourly rate</p>
+        
+        <div class="comparison">
+            <div class="comparison-box">
+                <div class="comparison-label">Current Schedule</div>
+                <div class="comparison-value" id="current-schedule">40 hrs</div>
+            </div>
+            <div class="comparison-box">
+                <div class="comparison-label">Dream Schedule</div>
+                <div class="comparison-value" id="dream-schedule">0 hrs</div>
+            </div>
+        </div>
+        
+        <div style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: 8px; margin-top: 20px;">
+            <div style="color: #3b82f6; font-weight: 600; margin-bottom: 10px;">Time Freedom Gained</div>
+            <div style="font-size: 1.5rem; color: #fff;" id="time-freed">0 hours per week</div>
+            <div style="color: #888; margin-top: 10px;" id="time-freed-daily">That's 0 extra hours per day</div>
+        </div>
+    </div>
+
+    <script>
+        function calculate() {
+            const currentHours = parseInt(document.getElementById('current-hours').value) || 40;
+            const dreamIncome = parseInt(document.getElementById('dream-income').value) || 0;
+            const hourlyRate = parseInt(document.getElementById('hourly-rate').value) || 100;
+            
+            const hoursNeeded = Math.round((dreamIncome / (hourlyRate * 4)));
+            const timeFreed = currentHours - hoursNeeded;
+            
+            document.getElementById('hours-needed').textContent = hoursNeeded;
+            document.getElementById('current-schedule').textContent = currentHours + ' hrs';
+            document.getElementById('dream-schedule').textContent = hoursNeeded + ' hrs';
+            document.getElementById('time-freed').textContent = timeFreed + ' hours per week';
+            document.getElementById('time-freed-daily').textContent = 'That\'s ' + Math.round(timeFreed / 7) + ' extra hours per day';
+        }
+        
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('input', calculate);
+        });
+        
+        calculate();
+    </script>
+</body>
+</html>

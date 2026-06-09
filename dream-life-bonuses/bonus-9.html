@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>50 Low-Cost Business Ideas</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0B1224;
+            color: #fff;
+            line-height: 1.8;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 { font-size: 2rem; margin-bottom: 10px; color: #fff; }
+        .back {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #888;
+            text-decoration: none;
+        }
+        .back:hover { color: #fff; }
+        .intro {
+            color: #888;
+            margin-bottom: 30px;
+        }
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        .filter-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            border-color: transparent;
+        }
+        .idea-card {
+            background: rgba(255,255,255,0.03);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: none;
+        }
+        .idea-card.visible {
+            display: block;
+        }
+        .idea-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .idea-title {
+            font-size: 1.2rem;
+            color: #fff;
+        }
+        .startup-cost {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        .idea-details {
+            color: #aaa;
+            margin-bottom: 15px;
+        }
+        .income-potential {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        .category-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.1);
+            color: #ccc;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back">← Back to All Bonuses</a>
+    
+    <h1>50 Low-Cost Business Ideas</h1>
+    <p class="intro">All under $500 to start. Filter by category:</p>
+
+    <div class="filter-buttons">
+        <button class="filter-btn active" onclick="filterIdeas('all')">All</button>
+        <button class="filter-btn" onclick="filterIdeas('creative')">Creative</button>
+        <button class="filter-btn" onclick="filterIdeas('tech')">Tech</button>
+        <button class="filter-btn" onclick="filterIdeas('service')">Service</button>
+        <button class="filter-btn" onclick="filterIdeas('teaching')">Teaching</button>
+    </div>
+
+    <div id="ideas-container"></div>
+
+    <script>
+        const ideas = [
+            { title: "Freelance Writer", cost: "$0", income: "$2k-10k/mo", details: "Write blog posts, website copy, emails for businesses", category: "creative" },
+            { title: "Virtual Assistant", cost: "$0", income: "$2k-5k/mo", details: "Help entrepreneurs with admin, email, scheduling", category: "service" },
+            { title: "Social Media Manager", cost: "$0", income: "$1k-3k/mo", details: "Manage Instagram, TikTok, Facebook for businesses", category: "creative" },
+            { title: "Graphic Designer", cost: "$0", income: "$2k-6k/mo", details: "Create logos, social graphics using Canva or free tools", category: "creative" },
+            { title: "Online Tutor", cost: "$0", income: "$2k-8k/mo", details: "Teach math, English, coding via Zoom", category: "teaching" },
+            { title: "Website Builder", cost: "$50", income: "$3k-10k/mo", details: "Build simple sites for local businesses using WordPress", category: "tech" },
+            { title: "Bookkeeper", cost: "$0", income: "$3k-8k/mo", details: "Track expenses, invoices for small businesses", category: "service" },
+            { title: "Podcast Editor", cost: "$0", income: "$2k-5k/mo", details: "Edit audio, remove mistakes, add music", category: "tech" },
+            { title: "Video Editor", cost: "$0", income: "$2k-8k/mo", details: "Edit YouTube videos, TikToks, reels", category: "tech" },
+            { title: "Course Creator", cost: "$0", income: "$5k-50k/mo", details: "Teach your skill in a digital course", category: "teaching" },
+            { title: "Resume Writer", cost: "$0", income: "$2k-6k/mo", details: "Help people land jobs with better resumes", category: "creative" },
+            { title: "Proofreader", cost: "$0", income: "$2k-5k/mo", details: "Check documents for errors and typos", category: "creative" },
+            { title: "Transcriptionist", cost: "$0", income: "$1.5k-4k/mo", details: "Type out audio files for businesses", category: "service" },
+            { title: "Data Entry", cost: "$0", income: "$1k-3k/mo", details: "Input data for companies", category: "service" },
+            { title: "Customer Support", cost: "$0", income: "$2k-4k/mo", details: "Handle emails and chats for online businesses", category: "service" },
+            { title: "Appointment Setter", cost: "$0", income: "$2k-5k/mo", details: "Book sales calls for coaches and agencies", category: "service" },
+            { title: "Lead Generation", cost: "$50", income: "$3k-8k/mo", details: "Find potential clients for businesses", category: "service" },
+            { title: "Email Marketing", cost: "$50", income: "$2k-7k/mo", details: "Write and send email campaigns", category: "creative" },
+            { title: "Copywriter", cost: "$0", income: "$3k-15k/mo", details: "Write sales pages and ads that convert", category: "creative" },
+            { title: "Content Creator", cost: "$100", income: "$1k-10k/mo", details: "Create content for brands on social media", category: "creative" },
+            { title: "Photographer", cost: "$500", income: "$3k-10k/mo", details: "Take photos for events, portraits, real estate", category: "creative" },
+            { title: "Photo Editor", cost: "$0", income: "$2k-6k/mo", details: "Edit and retouch photos for photographers", category: "creative" },
+            { title: "Voiceover Artist", cost: "$100", income: "$2k-8k/mo", details: "Record voice for videos, ads, audiobooks", category: "creative" },
+            { title: "Translator", cost: "$0", income: "$2k-6k/mo", details: "Translate documents between languages", category: "creative" },
+            { title: "Online Fitness Coach", cost: "$100", income: "$3k-15k/mo", details: "Create workout plans and coach via video", category: "teaching" },
+            { title: "Nutrition Consultant", cost: "$200", income: "$2k-8k/mo", details: "Create meal plans and help with diet", category: "teaching" },
+            { title: "Career Coach", cost: "$0", income: "$3k-12k/mo", details: "Help people find jobs and advance careers", category: "teaching" },
+            { title: "Life Coach", cost: "$0", income: "$3k-20k/mo", details: "Help clients achieve personal goals", category: "teaching" },
+            { title: "Business Coach", cost: "$0", income: "$5k-30k/mo", details: "Help entrepreneurs grow their businesses", category: "teaching" },
+            { title: "Language Tutor", cost: "$0", income: "$2k-8k/mo", details: "Teach English or other languages online", category: "teaching" },
+            { title: "Music Teacher", cost: "$0", income: "$2k-8k/mo", details: "Teach piano, guitar, singing via Zoom", category: "teaching" },
+            { title: "Art Teacher", cost: "$50", income: "$2k-6k/mo", details: "Teach drawing, painting online", category: "teaching" },
+            { title: "Coding Tutor", cost: "$0", income: "$3k-12k/mo", details: "Teach programming languages", category: "teaching" },
+            { title: "SEO Consultant", cost: "$100", income: "$3k-15k/mo", details: "Help websites rank on Google", category: "tech" },
+            { title: "Facebook Ads Manager", cost: "$100", income: "$3k-15k/mo", details: "Run ads for businesses", category: "tech" },
+            { title: "Shopify Store Builder", cost: "$100", income: "$3k-12k/mo", details: "Build ecommerce stores for clients", category: "tech" },
+            { title: "App Tester", cost: "$0", income: "$1k-3k/mo", details: "Test apps and websites for bugs", category: "tech" },
+            { title: "Chatbot Builder", cost: "$50", income: "$2k-8k/mo", details: "Create automated chatbots for businesses", category: "tech" },
+            { title: "Notion Consultant", cost: "$0", income: "$2k-8k/mo", details: "Build workspaces and systems in Notion", category: "tech" },
+            { title: "Event Planner", cost: "$200", income: "$3k-15k/mo", details: "Plan weddings, parties, corporate events", category: "service" },
+            { title: "Personal Shopper", cost: "$0", income: "$2k-8k/mo", details: "Help clients shop for clothes and gifts", category: "service" },
+            { title: "Travel Planner", cost: "$0", income: "$2k-10k/mo", details: "Plan dream vacations for busy people", category: "service" },
+            { title: "Pet Sitter", cost: "$50", income: "$1k-5k/mo", details: "Watch pets while owners travel", category: "service" },
+            { title: "House Cleaner", cost: "$200", income: "$2k-8k/mo", details: "Clean homes for busy professionals", category: "service" },
+            { title: "Organizer", cost: "$100", income: "$2k-8k/mo", details: "Help people declutter and organize", category: "service" },
+            { title: "Plant Care Service", cost: "$100", income: "$1k-4k/mo", details: "Care for plants while owners away", category: "service" },
+            { title: "Errand Runner", cost: "$0", income: "$1k-4k/mo", details: "Run errands for elderly or busy people", category: "service" },
+            { title: "Meal Prep Service", cost: "$200", income: "$2k-8k/mo", details: "Prepare healthy meals for clients", category: "service" },
+            { title: "Mobile Car Detailer", cost: "$300", income: "$3k-12k/mo", details: "Clean cars at client's location", category: "service" },
+            { title: "Pressure Washing", cost: "$500", income: "$3k-15k/mo", details: "Clean driveways, patios, houses", category: "service" },
+            { title: "Window Cleaning", cost: "$200", income: "$2k-10k/mo", details: "Clean windows for homes and businesses", category: "service" }
+        ];
+
+        function renderIdeas(filter = 'all') {
+            const container = document.getElementById('ideas-container');
+            container.innerHTML = '';
+            
+            ideas.forEach((idea, index) => {
+                if (filter === 'all' || idea.category === filter) {
+                    const card = document.createElement('div');
+                    card.className = 'idea-card visible';
+                    card.innerHTML = `
+                        <div class="idea-header">
+                            <div class="idea-title">${index + 1}. ${idea.title}</div>
+                            <div class="startup-cost">${idea.cost}</div>
+                        </div>
+                        <div class="idea-details">${idea.details}</div>
+                        <div class="income-potential">💰 Income Potential: ${idea.income}</div>
+                        <span class="category-tag">${idea.category}</span>
+                    `;
+                    container.appendChild(card);
+                }
+            });
+        }
+
+        function filterIdeas(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderIdeas(category);
+        }
+
+        renderIdeas();
+    </script>
+</body>
+</html>

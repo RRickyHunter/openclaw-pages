@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Life Workshop | Exclusive Bonus Collection</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg-primary: #0B1224;
+            --bg-secondary: #0F1625;
+            --accent: #3b82f6;
+            --accent-dark: #2563eb;
+            --text-primary: #ffffff;
+            --text-secondary: #9ca3af;
+            --border: rgba(59, 130, 246, 0.2);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        
+        .hero {
+            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            padding: 100px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 400px;
+            background: radial-gradient(ellipse, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .exclusive-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: #0B1224;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, #e8d5b7 50%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            max-width: 500px;
+            margin: 0 auto 40px;
+        }
+        
+        .value-prop {
+            display: inline-flex;
+            align-items: center;
+            gap: 40px;
+            background: rgba(255,255,255,0.03);
+            padding: 25px 50px;
+            border-radius: 100px;
+            border: 1px solid var(--border);
+        }
+        
+        .value-item {
+            text-align: center;
+        }
+        
+        .value-number {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .value-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 5px;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+        
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        .bonus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        
+        .bonus-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 35px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .bonus-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.4), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .bonus-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--border);
+            background: rgba(255,255,255,0.04);
+        }
+        
+        .bonus-card:hover::before {
+            opacity: 1;
+        }
+        
+        .bonus-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.5), rgba(37, 99, 235, 0.5));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            line-height: 1;
+        }
+        
+        .bonus-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .bonus-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+        
+        .bonus-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+        
+        .bonus-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .cta-section {
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            padding: 100px 40px;
+            text-align: center;
+        }
+        
+        .cta-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(59, 130, 246, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 50px;
+        }
+        
+        .cta-box h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+        
+        .cta-box p {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: #0B1224;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 50px 40px;
+            color: #4b5563;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .hero { padding: 60px 20px; }
+            .container { padding: 40px 20px; }
+            .bonus-grid { grid-template-columns: 1fr; }
+            .value-prop { flex-direction: column; gap: 20px; padding: 20px 30px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <div class="exclusive-badge">Exclusive Member Access</div>
+            <h1>The Dream Life<br>Bonus Collection</h1>
+            <p class="subtitle">A complete arsenal of tools, calculators, and guides to transform your income and build the life you deserve</p>
+            <div class="value-prop">
+                <div class="value-item">
+                    <div class="value-number">9</div>
+                    <div class="value-label">Premium Tools</div>
+                </div>
+                <div class="value-item">
+                    <div class="value-number">$2,268</div>
+                    <div class="value-label">Total Value</div>
+                </div>
+                <div class="value-item">
+                    <div class="value-number">$0</div>
+                    <div class="value-label">Your Cost</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section-header">
+            <h2>Your Complete Toolkit</h2>
+            <p>Every resource you need to go from dream to income</p>
+        </div>
+
+        <div class="bonus-grid">
+            <a href="bonus-1.html" class="bonus-card">
+                <div class="bonus-number">01</div>
+                <h3 class="bonus-title">Find Your Profitable Idea</h3>
+                <p class="bonus-desc">The 3-step system to discover exactly what business to start. No guessing, no overwhelm—just a clear path to your first income stream.</p>
+                <div class="bonus-meta">
+                    <span>📖 Guide</span>
+                    <span>⏱️ 15 min</span>
+                </div>
+            </a>
+
+            <a href="bonus-2.html" class="bonus-card">
+                <div class="bonus-number">02</div>
+                <h3 class="bonus-title">Side Hustle Starter Kit</h3>
+                <p class="bonus-desc">10 businesses you can start this weekend with $0. Complete with startup steps, pricing, and income potential for each.</p>
+                <div class="bonus-meta">
+                    <span>📖 Guide</span>
+                    <span>⏱️ 20 min</span>
+                </div>
+            </a>
+
+            <a href="bonus-6.html" class="bonus-card">
+                <div class="bonus-number">03</div>
+                <h3 class="bonus-title">Skill Assessment Workbook</h3>
+                <p class="bonus-desc">Discover what you're naturally good at that people will pay for. Interactive exercises with instant business ideas.</p>
+                <div class="bonus-meta">
+                    <span>🛠️ Interactive</span>
+                    <span>⏱️ 30 min</span>
+                </div>
+            </a>
+
+            <a href="bonus-3.html" class="bonus-card">
+                <div class="bonus-number">04</div>
+                <h3 class="bonus-title">First $1K Roadmap</h3>
+                <p class="bonus-desc">Your exact 30-day plan to go from zero to your first $1,000. Day-by-day actions, scripts, and trackers included.</p>
+                <div class="bonus-meta">
+                    <span>📖 Guide</span>
+                    <span>⏱️ 25 min</span>
+                </div>
+            </a>
+
+            <a href="bonus-7.html" class="bonus-card">
+                <div class="bonus-number">05</div>
+                <h3 class="bonus-title">Time Freedom Calculator</h3>
+                <p class="bonus-desc">See exactly how many hours you need to work to hit your dream income. Compare your current schedule vs. your dream schedule.</p>
+                <div class="bonus-meta">
+                    <span>🧮 Calculator</span>
+                    <span>⏱️ 5 min</span>
+                </div>
+            </a>
+
+            <a href="bonus-4.html" class="bonus-card">
+                <div class="bonus-number">06</div>
+                <h3 class="bonus-title">Dream Life Budget Calculator</h3>
+                <p class="bonus-desc">Interactive calculator to track your dream life expenses and see exactly what you need to earn. Updates automatically.</p>
+                <div class="bonus-meta">
+                    <span>🧮 Calculator</span>
+                    <span>⏱️ 10 min</span>
+                </div>
+            </a>
+
+            <a href="bonus-8.html" class="bonus-card">
+                <div class="bonus-number">07</div>
+                <h3 class="bonus-title">9-5 to Dream Life Transition Plan</h3>
+                <p class="bonus-desc">The safe way to quit your job without going broke. 12-month roadmap with checkpoints and safety rules.</p>
+                <div class="bonus-meta">
+                    <span>📖 Guide</span>
+                    <span>⏱️ 15 min</span>
+                </div>
+            </a>
+
+            <a href="bonus-9.html" class="bonus-card">
+                <div class="bonus-number">08</div>
+                <h3 class="bonus-title">50 Low-Cost Business Ideas</h3>
+                <p class="bonus-desc">Filterable database of 50 businesses under $500 to start. Filter by category, see startup costs and income potential.</p>
+                <div class="bonus-meta">
+                    <span>🗂️ Database</span>
+                    <span>⏱️ Browse</span>
+                </div>
+            </a>
+
+            <a href="bonus-11.html" class="bonus-card">
+                <div class="bonus-number">09</div>
+                <h3 class="bonus-title">Income Stream Planner</h3>
+                <p class="bonus-desc">Map multiple income streams to hit your dream life number. See progress bars and get strategy recommendations.</p>
+                <div class="bonus-meta">
+                    <span>🛠️ Interactive</span>
+                    <span>⏱️ 15 min</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <div class="cta-box">
+            <h2>Ready to Build Your Dream Life?</h2>
+            <p>Start with the calculator that reveals your exact income target</p>
+            <a href="/dream-life/" class="cta-button">Calculate Your Number →</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2024 Dream Life Workshop. All rights reserved.</p>
+    </div>
+</body>
+</html>

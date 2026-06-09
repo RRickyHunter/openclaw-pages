@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>50 idee business low-cost</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0B1224;
+            color: #fff;
+            line-height: 1.8;
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 { font-size: 2rem; margin-bottom: 10px; color: #fff; }
+        .back {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #888;
+            text-decoration: none;
+        }
+        .back:hover { color: #fff; }
+        .intro {
+            color: #888;
+            margin-bottom: 30px;
+        }
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        .filter-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            border-color: transparent;
+        }
+        .idea-card {
+            background: rgba(255,255,255,0.03);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 15px 0;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: none;
+        }
+        .idea-card.visible {
+            display: block;
+        }
+        .idea-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .idea-title {
+            font-size: 1.2rem;
+            color: #fff;
+        }
+        .startup-cost {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        .idea-details {
+            color: #aaa;
+            margin-bottom: 15px;
+        }
+        .income-potential {
+            color: #888;
+            font-size: 0.9rem;
+        }
+        .category-tag {
+            display: inline-block;
+            background: rgba(255,255,255,0.1);
+            color: #ccc;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <a href="/vitadasogno-bonus/" class="back">← Torna a tutti i bonus</a>
+    
+    <h1>50 idee business low-cost</h1>
+    <p class="intro">Tutte avviabili con meno di €500. Filtra per categoria:</p>
+
+    <div class="filter-buttons">
+        <button class="filter-btn active" onclick="filterIdeas('all')">Tutte</button>
+        <button class="filter-btn" onclick="filterIdeas('creative')">Creatività</button>
+        <button class="filter-btn" onclick="filterIdeas('tech')">Tecnologia</button>
+        <button class="filter-btn" onclick="filterIdeas('service')">Servizi</button>
+        <button class="filter-btn" onclick="filterIdeas('teaching')">Formazione</button>
+    </div>
+
+    <div id="ideas-container"></div>
+
+    <script>
+        const ideas = [
+            { title: "Copywriter freelance", cost: "€0", income: "€2.000-10.000/mese", details: "Scrivi articoli blog, testi per siti ed email per business", category: "creative" },
+            { title: "Assistente virtuale", cost: "€0", income: "€2.000-5.000/mese", details: "Aiuta imprenditori con amministrazione, email e agenda", category: "service" },
+            { title: "Gestore social media", cost: "€0", income: "€1.000-3.000/mese", details: "Gestisci Instagram, TikTok e Facebook per business", category: "creative" },
+            { title: "Designer grafico", cost: "€0", income: "€2.000-6.000/mese", details: "Crea loghi e grafiche social con Canva o tool gratuiti", category: "creative" },
+            { title: "Tutor online", cost: "€0", income: "€2.000-8.000/mese", details: "Insegna matematica, inglese o coding via Zoom", category: "teaching" },
+            { title: "Creatore siti web", cost: "€50", income: "€3.000-10.000/mese", details: "Crea siti semplici per attività locali usando WordPress", category: "tech" },
+            { title: "Contabile", cost: "€0", income: "€3.000-8.000/mese", details: "Tieni traccia di spese e fatture per piccoli business", category: "service" },
+            { title: "Editor podcast", cost: "€0", income: "€2.000-5.000/mese", details: "Monta audio, rimuovi errori e aggiungi musica", category: "tech" },
+            { title: "Montatore video", cost: "€0", income: "€2.000-8.000/mese", details: "Monta video YouTube, TikTok e reel", category: "tech" },
+            { title: "Creatore di corsi", cost: "€0", income: "€5.000-50.000/mese", details: "Insegna la tua skill in un corso digitale", category: "teaching" },
+            { title: "Scrittore CV", cost: "€0", income: "€2.000-6.000/mese", details: "Aiuta le persone a trovare lavoro con CV migliori", category: "creative" },
+            { title: "Correttore bozze", cost: "€0", income: "€2.000-5.000/mese", details: "Controlla documenti per errori e refusi", category: "creative" },
+            { title: "Trascrittore", cost: "€0", income: "€1.500-4.000/mese", details: "Trascrivi file audio per business", category: "service" },
+            { title: "Inserimento dati", cost: "€0", income: "€1.000-3.000/mese", details: "Inserisci dati per aziende", category: "service" },
+            { title: "Supporto clienti", cost: "€0", income: "€2.000-4.000/mese", details: "Gestisci email e chat per business online", category: "service" },
+            { title: "Setter appuntamenti", cost: "€0", income: "€2.000-5.000/mese", details: "Prenota call di vendita per coach e agenzie", category: "service" },
+            { title: "Generazione lead", cost: "€50", income: "€3.000-8.000/mese", details: "Trova potenziali clienti per i business", category: "service" },
+            { title: "Specialista email marketing", cost: "€50", income: "€2.000-7.000/mese", details: "Scrivi e invia campagne email", category: "creative" },
+            { title: "Copywriter", cost: "€0", income: "€3.000-15.000/mese", details: "Scrivi sales page e ads che convertono", category: "creative" },
+            { title: "Content creator", cost: "€100", income: "€1.000-10.000/mese", details: "Crea contenuti per brand sui social", category: "creative" },
+            { title: "Fotografo", cost: "€500", income: "€3.000-10.000/mese", details: "Scatta foto per eventi, ritratti e immobili", category: "creative" },
+            { title: "Editor fotografico", cost: "€0", income: "€2.000-6.000/mese", details: "Modifica e ritocca foto per fotografi", category: "creative" },
+            { title: "Voice artist", cost: "€100", income: "€2.000-8.000/mese", details: "Registra voce per video, ads e audiolibri", category: "creative" },
+            { title: "Traduttore", cost: "€0", income: "€2.000-6.000/mese", details: "Traduce documenti tra lingue diverse", category: "creative" },
+            { title: "Coach fitness online", cost: "€100", income: "€3.000-15.000/mese", details: "Crea piani di allenamento e fai coaching via video", category: "teaching" },
+            { title: "Consulente nutrizione", cost: "€200", income: "€2.000-8.000/mese", details: "Crea piani alimentari e aiuta con la dieta", category: "teaching" },
+            { title: "Career coach", cost: "€0", income: "€3.000-12.000/mese", details: "Aiuta le persone a trovare lavoro e crescere nella carriera", category: "teaching" },
+            { title: "Life coach", cost: "€0", income: "€3.000-20.000/mese", details: "Aiuta i clienti a raggiungere obiettivi personali", category: "teaching" },
+            { title: "Business coach", cost: "€0", income: "€5.000-30.000/mese", details: "Aiuta imprenditori a far crescere il loro business", category: "teaching" },
+            { title: "Tutor lingue", cost: "€0", income: "€2.000-8.000/mese", details: "Insegna inglese o altre lingue online", category: "teaching" },
+            { title: "Insegnante di musica", cost: "€0", income: "€2.000-8.000/mese", details: "Insegna piano, chitarra o canto via Zoom", category: "teaching" },
+            { title: "Insegnante d’arte", cost: "€50", income: "€2.000-6.000/mese", details: "Insegna disegno o pittura online", category: "teaching" },
+            { title: "Tutor coding", cost: "€0", income: "€3.000-12.000/mese", details: "Insegna linguaggi di programmazione", category: "teaching" },
+            { title: "Consulente SEO", cost: "€100", income: "€3.000-15.000/mese", details: "Aiuta i siti a posizionarsi su Google", category: "tech" },
+            { title: "Gestore Facebook Ads", cost: "€100", income: "€3.000-15.000/mese", details: "Gestisci ads per business", category: "tech" },
+            { title: "Creatore store Shopify", cost: "€100", income: "€3.000-12.000/mese", details: "Crea store ecommerce per clienti", category: "tech" },
+            { title: "Tester app", cost: "€0", income: "€1.000-3.000/mese", details: "Testa app e siti per bug", category: "tech" },
+            { title: "Creatore chatbot", cost: "€50", income: "€2.000-8.000/mese", details: "Crea chatbot automatizzati per business", category: "tech" },
+            { title: "Consulente Notion", cost: "€0", income: "€2.000-8.000/mese", details: "Crea workspace e sistemi in Notion", category: "tech" },
+            { title: "Organizzatore eventi", cost: "€200", income: "€3.000-15.000/mese", details: "Organizza matrimoni, feste ed eventi aziendali", category: "service" },
+            { title: "Personal shopper", cost: "€0", income: "€2.000-8.000/mese", details: "Aiuta i clienti a scegliere vestiti e regali", category: "service" },
+            { title: "Travel planner", cost: "€0", income: "€2.000-10.000/mese", details: "Pianifica vacanze da sogno per persone impegnate", category: "service" },
+            { title: "Pet sitter", cost: "€50", income: "€1.000-5.000/mese", details: "Accudisci animali mentre i proprietari viaggiano", category: "service" },
+            { title: "Addetto pulizie casa", cost: "€200", income: "€2.000-8.000/mese", details: "Pulisci case per professionisti impegnati", category: "service" },
+            { title: "Professional organizer", cost: "€100", income: "€2.000-8.000/mese", details: "Aiuta le persone a liberarsi del superfluo e organizzarsi", category: "service" },
+            { title: "Servizio cura piante", cost: "€100", income: "€1.000-4.000/mese", details: "Cura le piante mentre i proprietari sono via", category: "service" },
+            { title: "Runner commissioni", cost: "€0", income: "€1.000-4.000/mese", details: "Svolgi commissioni per anziani o persone impegnate", category: "service" },
+            { title: "Servizio meal prep", cost: "€200", income: "€2.000-8.000/mese", details: "Prepara pasti sani per i clienti", category: "service" },
+            { title: "Detailer auto mobile", cost: "€300", income: "€3.000-12.000/mese", details: "Pulisci auto presso il cliente", category: "service" },
+            { title: "Lavaggio ad alta pressione", cost: "€500", income: "€3.000-15.000/mese", details: "Pulisci vialetti, patii e case", category: "service" },
+            { title: "Pulizia vetri", cost: "€200", income: "€2.000-10.000/mese", details: "Pulisci vetri per case e business", category: "service" }
+        ];
+
+        function renderIdeas(filter = 'all') {
+            const container = document.getElementById('ideas-container');
+            container.innerHTML = '';
+            
+            ideas.forEach((idea, index) => {
+                if (filter === 'all' || idea.category === filter) {
+                    const card = document.createElement('div');
+                    card.className = 'idea-card visible';
+                    card.innerHTML = `
+                        <div class="idea-header">
+                            <div class="idea-title">${index + 1}. ${idea.title}</div>
+                            <div class="startup-cost">${idea.cost}</div>
+                        </div>
+                        <div class="idea-details">${idea.details}</div>
+                        <div class="income-potential">💰 Potenziale di guadagno: ${idea.income}</div>
+                        <span class="category-tag">${({all:"tutte",creative:"creatività",tech:"tecnologia",service:"servizi",teaching:"formazione"}[idea.category] || idea.category)}</span>
+                    `;
+                    container.appendChild(card);
+                }
+            });
+        }
+
+        function filterIdeas(category) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderIdeas(category);
+        }
+
+        renderIdeas();
+    </script>
+</body>
+</html>

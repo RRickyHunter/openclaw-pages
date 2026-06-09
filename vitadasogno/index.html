@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcolatore Vita da Sogno | Scopri il tuo numero</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0B1224;
+            --bg-secondary: #0F1625;
+            --accent: #3b82f6;
+            --accent-pink: #2563eb;
+            --text-primary: #ffffff;
+            --text-secondary: #a1a1aa;
+            --border: rgba(59, 130, 246, 0.2);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            min-height: 100vh;
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: rgba(255,255,255,0.05);
+            z-index: 100;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #2563eb);
+            transition: width 0.4s ease;
+        }
+
+        .step-counter {
+            position: fixed;
+            top: 20px;
+            right: 24px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            z-index: 100;
+            background: rgba(255,255,255,0.03);
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+
+        .step-counter span {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+
+        .hero {
+            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            padding: 100px 40px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 400px;
+            background: radial-gradient(ellipse, rgba(59, 130, 246, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .exclusive-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: #fff;
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #fff 0%, #c4b5fd 50%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        .wizard-step {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .wizard-step.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .visual-container {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .visual-emoji {
+            font-size: 80px;
+            display: inline-block;
+            animation: float 5s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(59, 130, 246, 0.3));
+            line-height: 1;
+        }
+
+        .content-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+        }
+
+        .content-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+        }
+
+        .step-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #3b82f6;
+            margin-bottom: 12px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 10px;
+            color: var(--text-primary);
+        }
+
+        .step-description {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 35px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #3b82f6;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .input-group input,
+        .input-group select {
+            width: 100%;
+            padding: 18px 22px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-size: 1rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .input-group input:focus,
+        .input-group select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.15);
+        }
+
+        .input-group input::placeholder {
+            color: rgba(255,255,255,0.25);
+        }
+
+        .input-group select option {
+            background: var(--bg-secondary);
+            color: var(--text-primary);
+        }
+
+        .input-hint {
+            font-size: 0.85rem;
+            color: #71717a;
+            margin-top: 8px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 35px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 16px 28px;
+            border: none;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: #fff;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.05);
+            color: var(--text-secondary);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.08);
+            color: var(--text-primary);
+        }
+
+        /* Results Section */
+        .results-hero {
+            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            padding: 100px 40px 60px;
+            text-align: center;
+        }
+
+        .results-hero h1 {
+            font-size: 2.5rem;
+        }
+
+        .main-number {
+            font-size: 4rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff 0%, #c4b5fd 50%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 25px 0;
+        }
+
+        .breakdown-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 15px;
+            margin: 40px auto;
+            max-width: 700px;
+        }
+
+        .breakdown-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 12px;
+            padding: 25px 15px;
+            text-align: center;
+        }
+
+        .breakdown-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #71717a;
+            margin-bottom: 8px;
+        }
+
+        .breakdown-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .prompt-section {
+            background: var(--bg-primary);
+            padding: 60px 24px;
+        }
+
+        .prompt-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 800px;
+            position: relative;
+        }
+
+        .prompt-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent);
+        }
+
+        .prompt-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+
+        .prompt-text {
+            background: rgba(0,0,0,0.3);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 10px;
+            padding: 20px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.85rem;
+            line-height: 1.7;
+            color: #a1a1aa;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .copy-btn {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: #fff;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.25);
+        }
+
+        .cta-section {
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            padding: 80px 24px;
+            text-align: center;
+        }
+
+        .cta-box {
+            max-width: 500px;
+            margin: 0 auto;
+            background: rgba(59, 130, 246, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 40px;
+        }
+
+        .cta-box h2 {
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+        }
+
+        .cta-box p {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: #fff;
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 24px;
+            color: #52525b;
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .hero { padding: 80px 20px 40px; }
+            .main-number { font-size: 2.5rem; }
+            .content-card { padding: 30px 24px; }
+            .breakdown-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    
+    <div class="step-counter">
+        Step <span id="currentStep">1</span> di <span id="totalSteps">11</span>
+    </div>
+
+    <!-- Wizard Steps -->
+    <div id="wizard">
+        <div class="hero">
+            <div class="hero-content">
+                <div class="exclusive-badge">Workshop Vita da Sogno</div>
+                <h1>Scopri il tuo numero</h1>
+                <p class="subtitle">Calcola con precisione quanto devi guadagnare per vivere la tua vita da sogno</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Step 1: Name -->
+            <div class="wizard-step active" data-step="1">
+                <div class="content-card">
+                    <div class="step-label">Step 1 di 11</div>
+                    <h2>Come ti chiami?</h2>
+                    <p class="step-description">Personalizziamo la visione della tua vita da sogno</p>
+                    <div class="input-group">
+                        <label>Il tuo nome</label>
+                        <input type="text" id="name" placeholder="Inserisci il tuo nome">
+                    </div>
+                    <div class="button-group">
+                        <button class="btn btn-primary" onclick="nextStep()">Continua →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Gender -->
+            <div class="wizard-step" data-step="2">
+                <div class="content-card">
+                    <div class="step-label">Step 2 di 11</div>
+                    <h2>Scegli lo stile della tua visione</h2>
+                    <p class="step-description">Questo ci aiuta a creare il layout perfetto per l’immagine della tua vita da sogno</p>
+                    <div class="input-group">
+                        <label>Stile preferito</label>
+                        <select id="gender">
+                            <option value="">Seleziona...</option>
+                            <option value="masculine">Energia maschile</option>
+                            <option value="feminine">Energia femminile</option>
+                            <option value="neutral">Bilanciato/Neutro</option>
+                        </select>
+                    </div>
+                    <div class="button-group">
+                        <button class="btn btn-secondary" onclick="prevStep()">← Indietro</button>
+                        <button class="btn btn-primary" onclick="nextStep()">Continua →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: House -->
+            <div class="wizard-step" data-step="3">
+                <div class="visual-container">
+                    <div class="visual-emoji">🏡</div>
+                </div>
+                <div class="content-card">
+                    <div class="step-label">Step 3 di 11</div>
+                    <h2>La tua casa da sogno</h2>
+                    <p class="step-description">Descrivi la casa in cui vuoi vivere</p>
+                    <div class="input-group">
+                        <label>Casa dei sogni</label>
+                        <input type="text" id="house" placeholder="es. Villa moderna fronte mare con piscina a sfioro">
+                        <p class="input-hint">Sii specifico: stile, posizione, caratteristiche</p>
+                    </div>
+                    <div class="button-group">
+                        <button class="btn btn-secondary" onclick="prevStep()">← Indietro</button>
+                        <button class="btn btn-primary" onclick="nextStep()">Continua →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Car -->
+            <div class="wizard-step" data-step="4">
+                <div class="visual-container">
+                    <div class="visual-emoji">🚗</div>
+                </div>
+                <div class="content-card">
+                    <div class="step-label">Step 4 di 11</div>
+                    <h2>La tua auto da sogno</h2>
+                    <p class="step-description">Cosa guiderai nella tua vita da sogno?</p>
+                    <div class="input-group">
+                        <label>Auto dei sogni</label>
+                        <input type="text" id="car" placeholder="es. Tesla Model S Plaid, nera opaca">
+                        <p class="input-hint">Includi marca, modello, colore ed eventuali dettagli personalizzati</p>
+                    </div>
+                    <div class="button-group">
+                        <button class="btn btn-secondary" onclick="prevStep()">← Indietro</button>
+                        <button class="btn btn-primary" onclick="nextStep()">Continua →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5: Travel -->
+            <div class="wizard-step" data-step="5">
+                <div class="visual-container">
+                    <div class="visual-emoji">✈️</div>
+                </div>
+                <div class="content-card">
+                    <div class="step-label">Step 5 di 11</div>
+                    <h2>I tuoi viaggi da sogno</h2>
+                    <p class="step-description">Dove viaggi con regolarità?</p>
+                    <div class="input-group">
+                        <label>Destinazioni da sogno</label>
+                        <input type="text" id="travel" placeholder="es. Bali, Parigi, Tokyo - viaggi internazionali trimestrali">
+                        <p class="input-hint">Elenca le tue destinazioni principali e la frequenza</p>
+                    </div>
+                    <div class="button-group">
+                        <button class="btn btn-secondary" onclick="prevStep()">← Indietro</button>
+                        <button class="btn btn-primary" onclick="nextStep()">Continua →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 6: Dining -->
+            <div class="wizard-step" data-step="6">
+                <div class="visual-container">
+                    <div class="visual-emoji">🍽️</div>
+                </div>
+                <div class="content-card">
+                    <div class="step-label">Step 6 di 11</div>
+                    <h2>Ristoranti e intrattenimento</h2>
+                    <p class="step-description">Quanto spesso mangi fuori e vai a eventi o spettacoli?</p>
+                    <div class="input-group">
+                        <label>Budget mensile ristoranti/spettacoli (€)</label>
+                        <input type="number" id="dining" placeholder="2000">
+                    </div>
+                    <div class="button-group">
+                        <button class="btn btn-secondary" onclick="prevStep()">← Indietro</button>
+                        <button class="btn btn-primary" onclick="nextStep()">Continua →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 7: Health -->
+            <div class="wizard-step" data-step="7">
+                <div class="visual-container">
+                    <div class="visual-emoji">💪</div>
+                </div>
+                <div class="content-card">
+                    <div class="step-label">Step 7 di 11</div>
+                    <h2>Salute e benessere</h2>
+                    <p class="step-description">Personal trainer, nutrizionista, budget benessere</p>
+                    <div class="input-group">
+                        <label>Budget mensile salute (€)</label>
+                        <input type="number" id="health" placeholder="1500">
+                    </div>
+                    <div class="button-group">
+                        <button class="btn btn-secondary" onclick="prevStep()">← Indietro</button>
+                        <button class="btn btn-primary" onclick="nextStep()">Continua →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 8: Shopping -->
+            <div class="wizard-step" data-step="8">
+                <div class="visual-container">
+                    <div class="visual-emoji">🛍️</div>
+                </div>
+                <div class="content-card">
+                    <div class="step-label">Step 8 di 11</div>
+                    <h2>Shopping e spese personali</h2>
+                    <p class="step-description">Vestiti, gadget, oggetti personali</p>
+                    <div class="input-group">
+                        <label>Budget mensile shopping (€)</label>
+                        <input type="number" id="shopping" placeholder="1000">
+                    </div>
+                    <div class="button-group">
+                        <button class="btn btn-secondary" onclick="prevStep()">← Indietro</button>
+                        <button class="btn btn-primary" onclick="nextStep()">Continua →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 9: Family -->
+            <div class="wizard-step" data-step="9">
+                <div class="visual-container">
+                    <div class="visual-emoji">👨‍👩‍👧‍👦</div>
+                </div>
+                <div class="content-card">
+                    <div class="step-label">Step 9 di 11</div>
+                    <h2>Famiglia e donazioni</h2>
+                    <p class="step-description">Supporto alla famiglia, beneficenza, regali</p>
+                    <div class="input-group">
+                        <label>Budget mensile famiglia/donazioni (€)</label>
+                        <input type="number" id="family" placeholder="1000">
+                    </div>
+                    <div class="button-group">
+                        <button class="btn btn-secondary" onclick="prevStep()">← Indietro</button>
+                        <button class="btn btn-primary" onclick="nextStep()">Continua →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 10: Savings -->
+            <div class="wizard-step" data-step="10">
+                <div class="visual-container">
+                    <div class="visual-emoji">💰</div>
+                </div>
+                <div class="content-card">
+                    <div class="step-label">Step 10 di 11</div>
+                    <h2>Risparmi e investimenti</h2>
+                    <p class="step-description">Costruire ricchezza per il futuro</p>
+                    <div class="input-group">
+                        <label>Obiettivo mensile di risparmio (€)</label>
+                        <input type="number" id="savings" placeholder="3000">
+                    </div>
+                    <div class="button-group">
+                        <button class="btn btn-secondary" onclick="prevStep()">← Indietro</button>
+                        <button class="btn btn-primary" onclick="nextStep()">Continua →</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 11: Custom -->
+            <div class="wizard-step" data-step="11">
+                <div class="visual-container">
+                    <div class="visual-emoji">✨</div>
+                </div>
+                <div class="content-card">
+                    <div class="step-label">Step 11 di 11</div>
+                    <h2>C’è altro?</h2>
+                    <p class="step-description">Aggiungi qualsiasi altra spesa della tua vita da sogno</p>
+                    <div class="input-group">
+                        <label>Spese mensili aggiuntive (€)</label>
+                        <input type="number" id="custom" placeholder="0" value="0">
+                        <p class="input-hint">Lascia 0 se non c’è altro</p>
+                    </div>
+                    <div class="button-group">
+                        <button class="btn btn-secondary" onclick="prevStep()">← Indietro</button>
+                        <button class="btn btn-primary" onclick="calculateResults()">Calcola il mio numero →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results Section -->
+    <div id="results" style="display: none;">
+        <div class="results-hero">
+            <div class="exclusive-badge">Il numero della tua vita da sogno</div>
+            <h1 id="resultName">La tua vita da sogno</h1>
+            <div class="main-number" id="monthlyTotal">€0</div>
+            <p style="color: var(--text-secondary); font-size: 1.1rem;">al mese</p>
+            
+            <div class="breakdown-grid">
+                <div class="breakdown-card">
+                    <div class="breakdown-label">Annuale</div>
+                    <div class="breakdown-value" id="annualTotal">€0</div>
+                </div>
+                <div class="breakdown-card">
+                    <div class="breakdown-label">Settimanale</div>
+                    <div class="breakdown-value" id="weeklyTotal">€0</div>
+                </div>
+                <div class="breakdown-card">
+                    <div class="breakdown-label">Giornaliero</div>
+                    <div class="breakdown-value" id="dailyTotal">€0</div>
+                </div>
+                <div class="breakdown-card">
+                    <div class="breakdown-label">Orario</div>
+                    <div class="breakdown-value" id="hourlyTotal">€0</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="prompt-section">
+            <div style="max-width: 850px; margin: 0 auto;">
+                <h2 style="text-align: center; margin-bottom: 15px; font-size: 1.75rem; font-weight: 600;">I tuoi prompt AI per le immagini</h2>
+                <p style="text-align: center; color: var(--text-secondary); margin-bottom: 40px; font-size: 0.95rem;">Copia questi prompt e incollali in ChatGPT, Midjourney o DALL-E</p>
+                
+                <div class="prompt-card">
+                    <h3 class="prompt-title">🖥️ Wallpaper desktop (1920x1080)</h3>
+                    <div class="prompt-text" id="desktopPrompt"></div>
+                    <button class="copy-btn" onclick="copyPrompt('desktopPrompt')">Copia prompt</button>
+                </div>
+
+                <div class="prompt-card">
+                    <h3 class="prompt-title">📱 Wallpaper telefono (1080x1920)</h3>
+                    <div class="prompt-text" id="phonePrompt"></div>
+                    <button class="copy-btn" onclick="copyPrompt('phonePrompt')">Copia prompt</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <div class="cta-box">
+                <h2>Pronto a renderlo reale?</h2>
+                <p>Ottieni il toolkit completo per costruire il reddito della tua vita da sogno</p>
+                <a href="/vitadasogno-bonus/" class="cta-button">Accedi ai tuoi bonus →</a>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>© 2026 Riccardo Romano. Tutti i diritti riservati.</p>
+        </div>
+    </div>
+
+    <script>
+        let currentStepNum = 1;
+        const totalSteps = 11;
+
+        function updateProgress() {
+            const progress = (currentStepNum / totalSteps) * 100;
+            document.getElementById('progressBar').style.width = progress + '%';
+            document.getElementById('currentStep').textContent = currentStepNum;
+        }
+
+        function showStep(step) {
+            document.querySelectorAll('.wizard-step').forEach(s => s.classList.remove('active'));
+            document.querySelector(`.wizard-step[data-step="${step}"]`).classList.add('active');
+            currentStepNum = step;
+            updateProgress();
+            window.scrollTo(0, 0);
+        }
+
+        function nextStep() {
+            if (currentStepNum < totalSteps) {
+                showStep(currentStepNum + 1);
+            }
+        }
+
+        function prevStep() {
+            if (currentStepNum > 1) {
+                showStep(currentStepNum - 1);
+            }
+        }
+
+        function formatMoney(amount) {
+            return '€' + amount.toLocaleString('it-IT');
+        }
+
+        function calculateResults() {
+            const name = document.getElementById('name').value || 'La tua';
+            const house = document.getElementById('house').value || 'casa dei sogni';
+            const car = document.getElementById('car').value || 'auto dei sogni';
+            const travel = document.getElementById('travel').value || 'destinazioni incredibili';
+            
+            const dining = parseInt(document.getElementById('dining').value) || 0;
+            const health = parseInt(document.getElementById('health').value) || 0;
+            const shopping = parseInt(document.getElementById('shopping').value) || 0;
+            const family = parseInt(document.getElementById('family').value) || 0;
+            const savings = parseInt(document.getElementById('savings').value) || 0;
+            const custom = parseInt(document.getElementById('custom').value) || 0;
+            
+            const monthlyTotal = dining + health + shopping + family + savings + custom;
+            const annualTotal = monthlyTotal * 12;
+            const weeklyTotal = monthlyTotal / 4.33;
+            const dailyTotal = monthlyTotal / 30;
+            const hourlyTotal = weeklyTotal / 40;
+            
+            document.getElementById('resultName').textContent = `La vita da sogno di ${name}`;
+            document.getElementById('monthlyTotal').textContent = formatMoney(monthlyTotal);
+            document.getElementById('annualTotal').textContent = formatMoney(annualTotal);
+            document.getElementById('weeklyTotal').textContent = formatMoney(Math.round(weeklyTotal));
+            document.getElementById('dailyTotal').textContent = formatMoney(Math.round(dailyTotal));
+            document.getElementById('hourlyTotal').textContent = formatMoney(Math.round(hourlyTotal));
+            
+            // Generate prompts
+            const layouts = [
+                `${name} in piedi con fierezza davanti a ${house}, con ${car} visibile nel vialetto e i bagagli per ${travel} lì accanto`,
+                `${name} sul balcone di ${house}, con vista panoramica, ${car} parcheggiata sotto e atmosfera da viaggio`,
+                `${name} nel grande ingresso di ${house}, con ${car} visibile dalle finestre, mentre si prepara per ${travel}`,
+                `${name} che si rilassa a bordo piscina di ${house}, con ${car} sullo sfondo, in modalità vacanza per ${travel}`,
+                `${name} nel soggiorno di ${house}, con ${car} visibile nel garage, mentre pianifica ${travel}`,
+                `${name} al cancello principale di ${house}, con ${car} che arriva, pronto per ${travel}`,
+                `${name} sulla terrazza di ${house}, con ${car} sotto e vibes da destinazione ${travel}`,
+                `${name} nella suite principale di ${house}, con ${car} visibile dalla finestra e ispirazione per ${travel}`
+            ];
+            
+            const layout = layouts[Math.floor(Math.random() * layouts.length)];
+            
+            const desktopPrompt = `Genera un'immagine fotorealistica per wallpaper desktop (1920x1080, formato 16:9 orizzontale) di ${name} mentre vive la propria vita da sogno. IMMAGINE PRINCIPALE: ${house} di ${name} - punto focale dominante, grande e ben visibile, che occupa gran parte dell'inquadratura. Nella scena: ${car} visibile e integrata in modo naturale. ${name} si prepara per ${travel}. Includi elementi di lifestyle: lusso, successo, abbondanza. Luce naturale e realistica, non cupa né cyberpunk. Toni di sfondo scuri/neri. Un'unica scena lifestyle coerente, non riquadri separati o collage. Nessuna cornice attorno agli elementi. Nessun effetto pittorico, pennellata o evidenziazione colorata - stile fotografico fotorealistico pulito. Testo sovrapposto: "La vita da sogno di ${name}" in alto, Reddito mensile ${formatMoney(monthlyTotal)} in testo grande e in grassetto, testo più piccolo con Annuale ${formatMoney(annualTotal)}, Mensile ${formatMoney(monthlyTotal)}, Settimanale ${formatMoney(Math.round(weeklyTotal))}, Giornaliero ${formatMoney(Math.round(dailyTotal))}. Assegno realistico intestato a ${name} per ${formatMoney(annualTotal)} posizionato in evidenza vicino all'obiettivo mensile. Layout: ${layout}. Fotorealistico, fotografia lifestyle di alto livello.`;
+            
+            const phonePrompt = `Genera un'immagine fotorealistica per wallpaper telefono (1080x1920, formato 9:16 verticale) di ${name} mentre vive la propria vita da sogno. IMMAGINE PRINCIPALE: ${house} di ${name} - punto focale dominante, grande e ben visibile, che occupa gran parte dell'inquadratura. Nella scena: ${car} visibile e integrata in modo naturale. ${name} si prepara per ${travel}. Includi elementi di lifestyle: lusso, successo, abbondanza. Luce naturale e realistica, non cupa né cyberpunk. Toni di sfondo scuri/neri. Un'unica scena lifestyle coerente, non riquadri separati o collage. Nessuna cornice attorno agli elementi. Nessun effetto pittorico, pennellata o evidenziazione colorata - stile fotografico fotorealistico pulito. Testo sovrapposto: "La vita da sogno di ${name}" in alto, Reddito mensile ${formatMoney(monthlyTotal)} in testo grande e in grassetto, testo più piccolo con Annuale ${formatMoney(annualTotal)}, Mensile ${formatMoney(monthlyTotal)}, Settimanale ${formatMoney(Math.round(weeklyTotal))}, Giornaliero ${formatMoney(Math.round(dailyTotal))}. Assegno realistico intestato a ${name} per ${formatMoney(annualTotal)} posizionato in evidenza vicino all'obiettivo mensile. Layout: ${layout}. Fotorealistico, fotografia lifestyle di alto livello.`;
+            
+            document.getElementById('desktopPrompt').textContent = desktopPrompt;
+            document.getElementById('phonePrompt').textContent = phonePrompt;
+            
+            document.getElementById('wizard').style.display = 'none';
+            document.getElementById('results').style.display = 'block';
+            window.scrollTo(0, 0);
+        }
+
+        function copyPrompt(elementId) {
+            const text = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                const btn = event.target;
+                const originalText = btn.textContent;
+                btn.textContent = 'Copiato!';
+                setTimeout(() => btn.textContent = originalText, 2000);
+            });
+        }
+
+        // Initialize
+        updateProgress();
+    </script>
+</body>
+</html>

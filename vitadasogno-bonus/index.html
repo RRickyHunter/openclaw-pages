@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workshop Vita da Sogno | Collezione Bonus Esclusiva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        :root {
+            --bg-primary: #0B1224;
+            --bg-secondary: #0F1625;
+            --accent: #3b82f6;
+            --accent-dark: #2563eb;
+            --text-primary: #ffffff;
+            --text-secondary: #9ca3af;
+            --border: rgba(59, 130, 246, 0.2);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+        
+        .hero {
+            background: linear-gradient(180deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            padding: 100px 40px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 400px;
+            background: radial-gradient(ellipse, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .exclusive-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: #0B1224;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff 0%, #e8d5b7 50%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            max-width: 500px;
+            margin: 0 auto 40px;
+        }
+        
+        .value-prop {
+            display: inline-flex;
+            align-items: center;
+            gap: 40px;
+            background: rgba(255,255,255,0.03);
+            padding: 25px 50px;
+            border-radius: 100px;
+            border: 1px solid var(--border);
+        }
+        
+        .value-item {
+            text-align: center;
+        }
+        
+        .value-number {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .value-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 5px;
+        }
+        
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+        
+        .section-header p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+        }
+        
+        .bonus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        
+        .bonus-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 35px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+        
+        .bonus-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.4), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .bonus-card:hover {
+            transform: translateY(-3px);
+            border-color: var(--border);
+            background: rgba(255,255,255,0.04);
+        }
+        
+        .bonus-card:hover::before {
+            opacity: 1;
+        }
+        
+        .bonus-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.5), rgba(37, 99, 235, 0.5));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            line-height: 1;
+        }
+        
+        .bonus-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text-primary);
+        }
+        
+        .bonus-desc {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+        
+        .bonus-meta {
+            display: flex;
+            gap: 20px;
+            font-size: 0.8rem;
+            color: #6b7280;
+        }
+        
+        .bonus-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .cta-section {
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            padding: 100px 40px;
+            text-align: center;
+        }
+        
+        .cta-box {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(59, 130, 246, 0.05);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 50px;
+        }
+        
+        .cta-box h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+        
+        .cta-box p {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: #0B1224;
+            padding: 16px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 50px 40px;
+            color: #4b5563;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .hero { padding: 60px 20px; }
+            .container { padding: 40px 20px; }
+            .bonus-grid { grid-template-columns: 1fr; }
+            .value-prop { flex-direction: column; gap: 20px; padding: 20px 30px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <div class="exclusive-badge">Accesso esclusivo membri</div>
+            <h1>La collezione bonus<br>Vita da Sogno</h1>
+            <p class="subtitle">Un arsenale completo di strumenti, calcolatori e guide per trasformare il tuo reddito e costruire la vita che meriti</p>
+            <div class="value-prop">
+                <div class="value-item">
+                    <div class="value-number">9</div>
+                    <div class="value-label">Strumenti premium</div>
+                </div>
+                <div class="value-item">
+                    <div class="value-number">€2.268</div>
+                    <div class="value-label">Valore totale</div>
+                </div>
+                <div class="value-item">
+                    <div class="value-number">€0</div>
+                    <div class="value-label">Il tuo costo</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section-header">
+            <h2>Il tuo toolkit completo</h2>
+            <p>Tutte le risorse che ti servono per passare dal sogno al reddito</p>
+        </div>
+
+        <div class="bonus-grid">
+            <a href="/vitadasogno-bonus/bonus-1.html" class="bonus-card">
+                <div class="bonus-number">01</div>
+                <h3 class="bonus-title">Trova la tua idea profittevole</h3>
+                <p class="bonus-desc">Il sistema in 3 step per scoprire esattamente quale business iniziare. Niente supposizioni, niente sovraccarico: solo un percorso chiaro verso il tuo primo flusso di reddito.</p>
+                <div class="bonus-meta">
+                    <span>📖 Guida</span>
+                    <span>⏱️ 15 min</span>
+                </div>
+            </a>
+
+            <a href="/vitadasogno-bonus/bonus-2.html" class="bonus-card">
+                <div class="bonus-number">02</div>
+                <h3 class="bonus-title">Kit iniziale Side Hustle</h3>
+                <p class="bonus-desc">10 business che puoi iniziare questo weekend con €0. Completi di step iniziali, pricing e potenziale di guadagno per ciascuno.</p>
+                <div class="bonus-meta">
+                    <span>📖 Guida</span>
+                    <span>⏱️ 20 min</span>
+                </div>
+            </a>
+
+            <a href="/vitadasogno-bonus/bonus-6.html" class="bonus-card">
+                <div class="bonus-number">03</div>
+                <h3 class="bonus-title">Workbook di valutazione competenze</h3>
+                <p class="bonus-desc">Scopri in cosa sei naturalmente bravo e per cosa le persone pagherebbero. Esercizi interattivi con idee business immediate.</p>
+                <div class="bonus-meta">
+                    <span>🛠️ Interattivo</span>
+                    <span>⏱️ 30 min</span>
+                </div>
+            </a>
+
+            <a href="/vitadasogno-bonus/bonus-3.html" class="bonus-card">
+                <div class="bonus-number">04</div>
+                <h3 class="bonus-title">Roadmap per i primi €1.000</h3>
+                <p class="bonus-desc">Il tuo piano esatto di 30 giorni per passare da zero ai tuoi primi €1.000. Include azioni giornaliere, script e tracker.</p>
+                <div class="bonus-meta">
+                    <span>📖 Guida</span>
+                    <span>⏱️ 25 min</span>
+                </div>
+            </a>
+
+            <a href="/vitadasogno-bonus/bonus-7.html" class="bonus-card">
+                <div class="bonus-number">05</div>
+                <h3 class="bonus-title">Calcolatore della libertà di tempo</h3>
+                <p class="bonus-desc">Vedi esattamente quante ore devi lavorare per raggiungere il tuo reddito da sogno. Confronta il tuo programma attuale con quello ideale.</p>
+                <div class="bonus-meta">
+                    <span>🧮 Calcolatore</span>
+                    <span>⏱️ 5 min</span>
+                </div>
+            </a>
+
+            <a href="/vitadasogno-bonus/bonus-4.html" class="bonus-card">
+                <div class="bonus-number">06</div>
+                <h3 class="bonus-title">Calcolatore budget Vita da Sogno</h3>
+                <p class="bonus-desc">Calcolatore interattivo per tracciare le spese della tua vita da sogno e vedere con precisione quanto devi guadagnare. Si aggiorna automaticamente.</p>
+                <div class="bonus-meta">
+                    <span>🧮 Calcolatore</span>
+                    <span>⏱️ 10 min</span>
+                </div>
+            </a>
+
+            <a href="/vitadasogno-bonus/bonus-8.html" class="bonus-card">
+                <div class="bonus-number">07</div>
+                <h3 class="bonus-title">Piano di transizione dal 9-5 alla Vita da Sogno</h3>
+                <p class="bonus-desc">Il modo sicuro per lasciare il lavoro senza finire al verde. Roadmap di 12 mesi con checkpoint e regole di sicurezza.</p>
+                <div class="bonus-meta">
+                    <span>📖 Guida</span>
+                    <span>⏱️ 15 min</span>
+                </div>
+            </a>
+
+            <a href="/vitadasogno-bonus/bonus-9.html" class="bonus-card">
+                <div class="bonus-number">08</div>
+                <h3 class="bonus-title">50 idee business low-cost</h3>
+                <p class="bonus-desc">Database filtrabile di 50 business avviabili con meno di €500. Filtra per categoria, vedi costi iniziali e potenziale di guadagno.</p>
+                <div class="bonus-meta">
+                    <span>🗂️ Database</span>
+                    <span>⏱️ Sfoglia</span>
+                </div>
+            </a>
+
+            <a href="/vitadasogno-bonus/bonus-11.html" class="bonus-card">
+                <div class="bonus-number">09</div>
+                <h3 class="bonus-title">Planner dei flussi di reddito</h3>
+                <p class="bonus-desc">Mappa più flussi di reddito per raggiungere il numero della tua vita da sogno. Vedi barre di avanzamento e ricevi raccomandazioni strategiche.</p>
+                <div class="bonus-meta">
+                    <span>🛠️ Interattivo</span>
+                    <span>⏱️ 15 min</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <div class="cta-box">
+            <h2>Pronto a costruire la tua vita da sogno?</h2>
+            <p>Inizia dal calcolatore che ti mostra il tuo obiettivo di reddito esatto</p>
+            <a href="/vitadasogno/" class="cta-button">Calcola il tuo numero →</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2026 Riccardo Romano. Tutti i diritti riservati.</p>
+    </div>
+</body>
+</html>

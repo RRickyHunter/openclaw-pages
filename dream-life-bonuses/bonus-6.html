@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skill Assessment Workbook</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #0B1224;
+            color: #fff;
+            line-height: 1.8;
+            padding: 40px 20px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        h1 { font-size: 2rem; margin-bottom: 10px; color: #fff; }
+        .back {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: #888;
+            text-decoration: none;
+        }
+        .back:hover { color: #fff; }
+        .section {
+            background: rgba(255,255,255,0.03);
+            padding: 30px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .section-title {
+            color: #3b82f6;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+        }
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            padding: 15px;
+            color: #fff;
+            font-family: inherit;
+            font-size: 1rem;
+            margin: 10px 0;
+            resize: vertical;
+        }
+        textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+        }
+        .question {
+            margin: 20px 0;
+            color: #ccc;
+        }
+        .results-box {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(37, 99, 235, 0.15));
+            padding: 30px;
+            border-radius: 12px;
+            margin: 30px 0;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        button {
+            background: linear-gradient(135deg, #3b82f6, #2563eb);
+            color: #fff;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin: 20px 0;
+        }
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="back">← Back to All Bonuses</a>
+    
+    <h1>Skill Assessment Workbook</h1>
+    <p style="color: #888; margin-bottom: 30px;">Discover what you're good at that pays</p>
+
+    <div class="section">
+        <div class="section-title">Part 1: What People Ask You For</div>
+        <p class="question">What do friends, family, or coworkers regularly ask you to help with?</p>
+        <textarea id="q1" placeholder="Example: Fixing their computer, editing their resume, planning events, giving advice..."></textarea>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Part 2: What Comes Easy</div>
+        <p class="question">What do you learn faster than most people? What feels natural to you?</p>
+        <textarea id="q2" placeholder="Example: Picking up new software, organizing spaces, writing, talking to strangers..."></textarea>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Part 3: What You'd Do For Free</div>
+        <p class="question">What would you happily do even if nobody paid you?</p>
+        <textarea id="q3" placeholder="Example: Researching topics, designing graphics, helping people solve problems..."></textarea>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Part 4: Past Jobs & Experience</div>
+        <p class="question">List every job you've had and 2 skills you learned from each:</p>
+        <textarea id="q4" placeholder="Example: Retail - customer service, sales. Office admin - organization, communication..."></textarea>
+    </div>
+
+    <div class="section">
+        <div class="section-title">Part 5: Problems You've Solved</div>
+        <p class="question">What problems have you solved for yourself that others might pay to have solved?</p>
+        <textarea id="q5" placeholder="Example: Lost weight, organized my home, fixed my credit, learned a language..."></textarea>
+    </div>
+
+    <button onclick="analyzeSkills()">Analyze My Skills</button>
+
+    <div class="results-box" id="results" style="display: none;">
+        <div class="section-title">💡 Your Potential Business Ideas</div>
+        <div id="results-content"></div>
+    </div>
+
+    <script>
+        function analyzeSkills() {
+            const q1 = document.getElementById('q1').value;
+            const q2 = document.getElementById('q2').value;
+            const q3 = document.getElementById('q3').value;
+            const q4 = document.getElementById('q4').value;
+            const q5 = document.getElementById('q5').value;
+            
+            const allText = (q1 + ' ' + q2 + ' ' + q3 + ' ' + q4 + ' ' + q5).toLowerCase();
+            
+            const businessIdeas = [];
+            
+            if (allText.includes('write') || allText.includes('edit')) {
+                businessIdeas.push('✍️ Freelance Writer - $0.10-1.00/word');
+            }
+            if (allText.includes('design') || allText.includes('graphic') || allText.includes('photo')) {
+                businessIdeas.push('🎨 Graphic Designer - $50-500/project');
+            }
+            if (allText.includes('organize') || allText.includes('admin') || allText.includes('schedule')) {
+                businessIdeas.push('📋 Virtual Assistant - $25-50/hr');
+            }
+            if (allText.includes('social') || allText.includes('instagram') || allText.includes('facebook')) {
+                businessIdeas.push('📱 Social Media Manager - $500-2k/month');
+            }
+            if (allText.includes('teach') || allText.includes('tutor') || allText.includes('explain')) {
+                businessIdeas.push('👨‍🏫 Online Tutor - $30-100/hr');
+            }
+            if (allText.includes('video') || allText.includes('edit') || allText.includes('film')) {
+                businessIdeas.push('🎬 Video Editor - $100-500/video');
+            }
+            if (allText.includes('number') || allText.includes('math') || allText.includes('account')) {
+                businessIdeas.push('📊 Bookkeeper - $300-800/month');
+            }
+            if (allText.includes('web') || allText.includes('site') || allText.includes('tech')) {
+                businessIdeas.push('💻 Website Builder - $1k-3k/site');
+            }
+            if (allText.includes('talk') || allText.includes('speak') || allText.includes('sales')) {
+                businessIdeas.push('🎤 Sales Consultant - $100-300/hr');
+            }
+            if (allText.includes('plan') || allText.includes('event') || allText.includes('coordinate')) {
+                businessIdeas.push('🎉 Event Planner - $500-2k/event');
+            }
+            
+            if (businessIdeas.length === 0) {
+                businessIdeas.push('💡 Virtual Assistant - Great starting point for any skill set');
+                businessIdeas.push('💡 Freelance Writer - Share your knowledge through content');
+                businessIdeas.push('💡 Online Tutor - Teach what you know');
+            }
+            
+            document.getElementById('results-content').innerHTML = businessIdeas.join('<br><br>');
+            document.getElementById('results').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
