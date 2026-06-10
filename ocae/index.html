@@ -206,6 +206,10 @@
     .xmark li { color:var(--muted); }
     .xmark li::marker { color: var(--danger); }
     .mini-note { color: var(--muted); font-size: .92rem; }
+    .testimonials-section { padding: 90px 0; background: var(--bg-alt); }
+    .testimonials-grid { display: grid; grid-template-columns: 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; }
+    .testimonial-full { width: 100%; border-radius: 24px; overflow: hidden; box-shadow: var(--shadow); }
+    .testimonial-full img { width: 100%; height: auto; display: block; }
     .footer-cta {
       text-align:center;
       padding: 42px 28px;
@@ -433,6 +437,30 @@
       <div class="card" style="text-align: left;">
         <p>Ma posso garantirti questo: <strong>se segui il programma, partecipi ai workshop, applichi ciò che ti mostro e alla fine non hai almeno 3 workflow automatizzati che ti fanno risparmiare ore ogni settimana, ti rimango accanto finché non ce la fai.</strong></p>
         <p style="margin-bottom: 0;">Perché il mio obiettivo non è venderti un corso. È che tu abbia un sistema che funziona.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE TESTIMONIANZE -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div style="text-align:center; margin-bottom: 48px;">
+        <div class="eyebrow">Testimonianze</div>
+        <h2 class="section-title">Cosa dicono chi ha attivato il sistema</h2>
+      </div>
+      <div class="testimonials-grid">
+        <!-- Testimonianza 1 -->
+        <div class="testimonial-full">
+          <img src="/ocae/testimonial-1.jpg" alt="Testimonianza 1" />
+        </div>
+        <!-- Testimonianza 2 -->
+        <div class="testimonial-full">
+          <img src="/ocae/testimonial-2.jpg" alt="Testimonianza 2" />
+        </div>
+        <!-- Testimonianza 3 -->
+        <div class="testimonial-full">
+          <img src="/ocae/testimonial-3.jpg" alt="Testimonianza 3" />
+        </div>
       </div>
     </div>
   </section>
