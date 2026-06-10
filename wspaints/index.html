@@ -512,15 +512,29 @@
       pointer-events: none;
     }
     .testimonial-avatar {
-      width: 54px;
-      height: 54px;
-      border-radius: 18px;
-      border: 1px dashed rgba(255,255,255,0.2);
-      display: grid;
-      place-items: center;
-      color: #c4b5fd;
-      font-weight: 800;
-      background: rgba(15, 23, 42, 0.76);
+      width: 80px;
+      height: 80px;
+      border-radius: 22px;
+      object-fit: cover;
+      display: block;
+      flex-shrink: 0;
+      border: 2px solid rgba(255, 255, 255, 0.55);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.35), 0 0 0 4px rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.08);
+      position: relative;
+      z-index: 1;
+    }
+    .testimonial-photo {
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      border-radius: 22px;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto;
+      border: 2px solid rgba(255, 255, 255, 0.55);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.35), 0 0 0 4px rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.08);
       position: relative;
       z-index: 1;
     }
@@ -816,34 +830,25 @@
       </div>
       <div class="testimonials-grid">
         <div class="testimonial-card">
-          <div style="display:flex;align-items:center;gap:14px;">
-            <img src="./assets/julia.png" alt="Julia Maklakova" style="width:54px;height:54px;border-radius:18px;object-fit:cover;border:1px solid rgba(148,163,184,0.2);" />
-            <div>
-              <strong style="color:#fff;">Julia Maklakova</strong>
-              <div class="testimonial-role">Consulente digitale</div>
-            </div>
+          <img src="./assets/sarah.png" alt="Sarah Zama" class="testimonial-photo" />
+          <div style="text-align:center;margin-top:14px;">
+            <strong style="color:#fff;">Sarah Zama</strong>
+            <div class="testimonial-role">Autrice e imprenditrice</div>
           </div>
-          <blockquote>"Finalmente ho capito perché usavo l'AI ma non vedevo risultati concreti. Il workshop mi ha dato la mappa per sistemare il mio flusso di lavoro prima di aggiungere altri tool."</blockquote>
         </div>
         <div class="testimonial-card">
-          <div style="display:flex;align-items:center;gap:14px;">
-            <img src="./assets/fabio.png" alt="Fabio Ruwett" style="width:54px;height:54px;border-radius:18px;object-fit:cover;border:1px solid rgba(148,163,184,0.2);" />
-            <div>
-              <strong style="color:#fff;">Fabio Ruwett</strong>
-              <div class="testimonial-role">Freelancer marketing</div>
-            </div>
+          <img src="./assets/julia.png" alt="Julia Maklakova" class="testimonial-photo" />
+          <div style="text-align:center;margin-top:14px;">
+            <strong style="color:#fff;">Julia Maklakova</strong>
+            <div class="testimonial-role">Insegnante di lingue</div>
           </div>
-          <blockquote>"Non è il solito corso sui prompt. Qui si parla di come organizzare il lavoro per far sì che l'AI possa davvero aiutarti. Ho recuperato ore ogni settimana."</blockquote>
         </div>
         <div class="testimonial-card">
-          <div style="display:flex;align-items:center;gap:14px;">
-            <img src="./assets/sarah.png" alt="Sarah Zama" style="width:54px;height:54px;border-radius:18px;object-fit:cover;border:1px solid rgba(148,163,184,0.2);" />
-            <div>
-              <strong style="color:#fff;">Sarah Zama</strong>
-              <div class="testimonial-role">Imprenditrice</div>
-            </div>
+          <img src="./assets/fabio.png" alt="Fabio Ruwett" class="testimonial-photo" />
+          <div style="text-align:center;margin-top:14px;">
+            <strong style="color:#fff;">Fabio Ruwett</strong>
+            <div class="testimonial-role">Designer e illustratore freelance</div>
           </div>
-          <blockquote>"Il workbook incluso è oro. Ho fatto gli esercizi e ho scoperto che stavo usando l'AI su processi che andavano prima semplificati. Consigliatissimo."</blockquote>
         </div>
       </div>
     </section>
