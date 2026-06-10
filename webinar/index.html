@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Webinar Gratuito: Come smettere di fare tutto da solo con OpenClaw</title>
+  <meta name="description" content="Scopri come costruire un sistema AI che lavora al posto tuo. Webinar gratuito per professionisti e piccoli imprenditori.">
+  <style>
+    :root {
+      --primary: #00d4ff;
+      --primary-dark: #00a8cc;
+      --accent: #7c3aed;
+      --bg: #07080d;
+      --bg-alt: #0d1018;
+      --bg-card: #121621;
+      --text: #eef4ff;
+      --muted: #98a2b7;
+      --border: #232a3a;
+      --success: #22c55e;
+      --shadow: 0 25px 80px rgba(0,0,0,.45);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { width: min(900px, calc(100% - 40px)); margin: 0 auto; }
+    .hero {
+      padding: 80px 0 60px;
+      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
+      text-align: center;
+    }
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 16px;
+      border: 1px solid rgba(0,212,255,.2);
+      border-radius: 999px;
+      color: var(--primary);
+      background: rgba(0,212,255,.07);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    h1 {
+      margin: 0 0 20px;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.1;
+      letter-spacing: -.03em;
+      font-weight: 900;
+    }
+    .highlight { color: var(--primary); }
+    .hero-sub {
+      font-size: clamp(1.1rem, 2vw, 1.35rem);
+      color: var(--muted);
+      max-width: 700px;
+      margin: 0 auto 32px;
+    }
+    .date-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 28px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      margin-bottom: 32px;
+    }
+    .date-badge strong {
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+    .section { padding: 60px 0; }
+    .section.dark { background: var(--bg-alt); }
+    h2 {
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      margin: 0 0 24px;
+      font-weight: 800;
+      letter-spacing: -.02em;
+    }
+    .problem-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px;
+      margin-bottom: 24px;
+    }
+    .problem-box h3 {
+      margin: 0 0 16px;
+      color: var(--primary);
+      font-size: 1.2rem;
+    }
+    .problem-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .problem-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .problem-list li:last-child { border-bottom: none; }
+    .problem-list li::before {
+      content: "✕";
+      color: #ff5d5d;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .solution-box {
+      background: linear-gradient(135deg, rgba(0,212,255,.08), rgba(124,58,237,.08));
+      border: 1px solid rgba(0,212,255,.2);
+      border-radius: 20px;
+      padding: 32px;
+    }
+    .solution-box h3 {
+      margin: 0 0 16px;
+      color: var(--success);
+      font-size: 1.2rem;
+    }
+    .solution-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .solution-list li {
+      padding: 12px 0;
+      color: var(--text);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .solution-list li::before {
+      content: "✓";
+      color: var(--success);
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .what-learn {
+      display: grid;
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .learn-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .learn-item .number {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      color: var(--bg);
+      flex-shrink: 0;
+    }
+    .learn-item h4 {
+      margin: 0 0 8px;
+      font-size: 1.1rem;
+    }
+    .learn-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .form-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 40px;
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .form-box h2 {
+      margin-bottom: 12px;
+    }
+    .form-box p {
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 18px 32px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 1.1rem;
+      transition: .18s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #00d4ff, #4fe2ff);
+      color: #051019;
+      box-shadow: 0 0 20px rgba(0,212,255,.2);
+    }
+    .btn-primary:hover { transform: translateY(-2px); }
+    .for-who {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 32px;
+    }
+    .for-who-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+    }
+    .for-who-item .icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+    .for-who-item h4 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+    }
+    .for-who-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    footer {
+      padding: 40px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid var(--border);
+    }
+    @media (max-width: 768px) {
+      .for-who { grid-template-columns: 1fr; }
+      .hero { padding: 60px 0 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <div class="eyebrow">Webinar Gratuito</div>
+      <h1>Come smettere di fare<br><span class="highlight">tutto da solo</span></h1>
+      <p class="hero-sub">
+        Scopri come costruire un sistema AI che lavora al posto tuo — 
+        anche se oggi usi ChatGPT "a mano" e non sai da dove iniziare.
+      </p>
+      <div class="date-badge">
+        <span>📅</span>
+        <div>
+          <div style="font-size: 0.85rem; color: var(--muted);">Prossima data</div>
+          <strong>Da definire</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEMA / SOLUZIONE -->
+  <section class="section dark">
+    <div class="container">
+      <div class="problem-box">
+        <h3>Se ti riconosci in questa situazione...</h3>
+        <ul class="problem-list">
+          <li>Passi ore a scrivere contenuti, email, proposte — ogni giorno da capo</li>
+          <li>Hai provato l'AI ma finisci sempre per fare tutto manualmente</li>
+          <li>Non hai un team che ti supporta e senti di dover gestire tutto da solo</li>
+          <li>Produci molto ma avanzi poco: il tuo tempo viene divorato da task ripetitivi</li>
+          <li>Sai che l'AI può aiutarti, ma non hai un sistema per usarla davvero</li>
+        </ul>
+      </div>
+      <div class="solution-box">
+        <h3>...esiste un modo diverso di lavorare</h3>
+        <ul class="solution-list">
+          <li>Un sistema che prepara i tuoi contenenti mentre tu fai altro</li>
+          <li>Un assistente AI che conosce il tuo business e risponde al posto tuo</li>
+          <li>Workflow automatici che qualificano i lead e gestiscono le richieste</li>
+          <li>Più ore libere per ciò che conta davvero: strategia, clienti, crescita</li>
+          <li>Nessun bisogno di assumere — un sistema che lavora 24/7 al posto tuo</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- COSA IMPARERAI -->
+  <section class="section">
+    <div class="container">
+      <h2 style="text-align: center;">Cosa scoprirai nel webinar</h2>
+      <div class="what-learn">
+        <div class="learn-item">
+          <div class="number">1</div>
+          <div>
+            <h4>Perché l'AI "a mano" non basta più</h4>
+            <p>Il vero problema non è la tecnologia — è l'assenza di un sistema. Ti mostro cosa cambia quando smetti di usare l'AI come tool e inizi a usarla come asset.</p>
+          </div>
+        </div>
+        <div class="learn-item">
+          <div class="number">2</div>
+          <div>
+            <h4>I 3 workflow che ogni professionista dovrebbe automatizzare</h4>
+            <p>Content creation, risposta alle email, qualifica lead. Esempi concreti di come questi processi possono girare in automatico senza perdere la tua voce.</p>
+          </div>
+        </div>
+        <div class="learn-item">
+          <div class="number">3</div>
+          <div>
+            <h4>Come costruire il tuo primo sistema in 3-5 giorni</h4>
+            <p>Nessuna competenza tecnica richiesta. Il metodo passo-passo per passare da "uso l'AI a caso" a "ho un sistema che lavora per me".</p>
+          </div>
+        </div>
+        <div class="learn-item">
+          <div class="number">4</div>
+          <div>
+            <h4>La demo live: vedere OpenClaw in azione</h4>
+            <p>Mostro un sistema reale che risponde alle email, crea contenuti e gestisce lead — tutto in automatico, con la voce del proprietario.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PER CHI È -->
+  <section class="section dark">
+    <div class="container">
+      <h2 style="text-align: center;">Per chi è questo webinar</h2>
+      <div class="for-who">
+        <div class="for-who-item">
+          <div class="icon">💼</div>
+          <h4>Professionisti</h4>
+          <p>Consulenti, avvocati, commercialisti, architetti che vogliono scalare senza assumere</p>
+        </div>
+        <div class="for-who-item">
+          <div class="icon">🚀</div>
+          <h4>Piccoli imprenditori</h4>
+          <p>Chi gestisce tutto da solo e ha bisogno di un sistema che lo supporti</p>
+        </div>
+        <div class="for-who-item">
+          <div class="icon">🎯</div>
+          <h4>Coach & Formatori</h4>
+          <p>Chi crea contenuti, gestisce clienti e vuole automatizzare senza perdere autenticità</p>
+        </div>
+        <div class="for-who-item">
+          <div class="icon">⚡</div>
+          <h4>Action Taker</h4>
+          <p>Chi è stanco di "sperimentare" e vuole costruire qualcosa di concreto ora</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM ISCRIZIONE -->
+  <section class="section">
+    <div class="container">
+      <div class="form-box">
+        <h2>Riserva il tuo posto gratuito</h2>
+        <p>Posti limitati per garantire interazione e domande. Ti invieremo il link Zoom prima dell'evento.</p>
+        <a href="#" class="btn btn-primary">Voglio iscrivermi al webinar</a>
+        <p style="margin-top: 20px; font-size: 0.9rem; color: var(--muted);">
+          🔒 I tuoi dati sono al sicuro. Nessuno spam, solo il webinar.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p><strong>Riccardo Romano</strong> — Business Architect & OpenClaw Ecosystem Founder</p>
+    </div>
+  </footer>
+
+</body>
+</html>
