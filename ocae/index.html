@@ -212,7 +212,7 @@
     .testimonial-full img { width: 100%; height: auto; display: block; }
     .chi-sono-section {
       position: relative;
-      min-height: 600px;
+      min-height: 500px;
       display: flex;
       align-items: center;
       background: url('/wspaints/assets/riccardo-chi-sono.png');
@@ -220,7 +220,8 @@
       background-position: center;
       border-radius: 24px;
       overflow: hidden;
-      margin: 40px 0;
+      margin: 40px auto;
+      max-width: 1200px;
     }
     .chi-sono-content {
       max-width: 500px;
@@ -228,7 +229,7 @@
       background: rgba(13, 16, 24, 0.9);
       backdrop-filter: blur(12px);
       border-radius: 18px;
-      margin-left: 48px;
+      margin: 48px;
     }
     .chi-sono-content h2 {
       font-size: clamp(2rem, 4vw, 3rem);
@@ -278,6 +279,7 @@
       color: var(--primary);
     }
     @media (max-width: 768px) {
+      .chi-sono-section { margin: 24px; }
       .chi-sono-content { margin: 24px; padding: 32px; }
     }
     .footer-cta {
@@ -514,7 +516,7 @@
     <div class="container">
       <div style="text-align:center; margin-bottom: 48px;">
         <div class="eyebrow">Testimonianze</div>
-        <h2 class="section-title">Cosa dicono chi ha attivato il sistema</h2>
+        <h2 class="section-title">Cosa dice chi ha lavorato con me</h2>
       </div>
       <div class="testimonials-grid">
         <!-- Testimonianza 1 - Golia Pezzulla -->
