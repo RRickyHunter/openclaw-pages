@@ -46,12 +46,6 @@ export default async function handler(req, res) {
     // Tag unificato
     const tags = ['RR-Acquisto-OC-Workshop'];
 
-    // Prepara dati contatto
-    const contactData = {
-      email: customerEmail,
-      firstName: customerName
-    };
-
     // Aggiungi contatto a ActiveCampaign
     const acResponse = await fetch(`${AC_API_URL}/contacts`, {
       method: 'POST',
@@ -60,7 +54,11 @@ export default async function handler(req, res) {
         'Api-Token': AC_API_KEY
       },
       body: JSON.stringify({
-        contact: contactData
+        contact: {
+          email: customerEmail,
+          firstName: customerName,
+          tags: ['RR-Acquisto-OC-Workshop']
+        }
       })
     });
 
@@ -72,25 +70,6 @@ export default async function handler(req, res) {
 
     const contactResult = await acResponse.json();
     const contactId = contactResult.contact?.id;
-
-    // Aggiungi tag al contatto
-    if (contactId) {
-      for (const tag of tags) {
-        await fetch(`${AC_API_URL}/contactTags`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Api-Token': AC_API_KEY
-          },
-          body: JSON.stringify({
-            contactTag: {
-              contact: contactId,
-              tag: tag
-            }
-          })
-        });
-      }
-    }
 
     // Aggiungi contatto alla lista RR-Cliente
     if (contactId) {
