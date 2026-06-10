@@ -4,6 +4,7 @@
 const AC_API_KEY = process.env.ACTIVECAMPAIGN_API_KEY;
 const AC_API_URL = 'https://riccardoromano.api-us1.com/api/3';
 const WORKSHOP_PRODUCT_ID = 'prod_USjzUEhQTIuPyJ';
+const LIST_ID = 14; // ID lista RR-Cliente
 
 export default async function handler(req, res) {
   // Solo POST
@@ -21,6 +22,7 @@ export default async function handler(req, res) {
 
     const session = event.data.object;
     const customerEmail = session.customer_details?.email;
+    const customerName = session.customer_details?.name || '';
     
     // Determina se live o test mode
     const isLiveMode = session.livemode === true;
@@ -41,10 +43,15 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'No customer email' });
     }
 
-    // Tag diversi per live vs test
-    const tags = isLiveMode 
-      ? ['Workshop 37€', 'Acquisto Workshop AI']
-      : ['Workshop 37€', 'TEST - Acquisto Workshop AI'];
+    // Tag unificato
+    const tags = ['RR-Acquisto-OC-Workshop'];
+
+    // Prepara dati contatto
+    const contactData = {
+      email: customerEmail,
+      firstName: customerName,
+      tags: tags
+    };
 
     // Aggiungi contatto a ActiveCampaign
     const acResponse = await fetch(`${AC_API_URL}/contacts`, {
@@ -54,10 +61,7 @@ export default async function handler(req, res) {
         'Api-Token': AC_API_KEY
       },
       body: JSON.stringify({
-        contact: {
-          email: customerEmail,
-          tags: tags
-        }
+        contact: contactData
       })
     });
 
@@ -67,13 +71,33 @@ export default async function handler(req, res) {
       return res.status(500).json({ error: 'Failed to create contact' });
     }
 
-    const contactData = await acResponse.json();
+    const contactResult = await acResponse.json();
+    const contactId = contactResult.contact?.id;
+
+    // Aggiungi contatto alla lista RR-Cliente
+    if (contactId) {
+      await fetch(`${AC_API_URL}/contactLists`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Api-Token': AC_API_KEY
+        },
+        body: JSON.stringify({
+          contactList: {
+            list: LIST_ID,
+            contact: contactId,
+            status: 1 // Active
+          }
+        })
+      });
+    }
 
     return res.status(200).json({
       success: true,
       mode: isLiveMode ? 'live' : 'test',
       contact: customerEmail,
-      ac_contact_id: contactData.contact?.id
+      name: customerName,
+      ac_contact_id: contactId
     });
 
   } catch (error) {
