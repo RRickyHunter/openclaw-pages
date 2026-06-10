@@ -565,6 +565,87 @@
       position: relative;
       z-index: 1;
     }
+    .chi-sono-section {
+      position: relative;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(8, 15, 28, 0.9)),
+                  url('/wspaints/assets/riccardo-chi-sono.png');
+      background-size: cover;
+      background-position: center;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      margin: 40px 0;
+    }
+    .chi-sono-content {
+      max-width: 500px;
+      padding: 48px;
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius-lg);
+      margin-left: 48px;
+    }
+    .chi-sono-content h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 24px;
+      background: linear-gradient(90deg, #ffffff 0%, #c4b5fd 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .chi-sono-content p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .faq-section {
+      padding: 60px 0;
+    }
+    .faq-item {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(148, 163, 184, 0.15);
+      border-radius: var(--radius-md);
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .faq-question {
+      padding: 24px 28px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s;
+    }
+    .faq-question:hover {
+      background: rgba(124, 58, 237, 0.1);
+    }
+    .faq-answer {
+      padding: 0 28px 24px;
+      color: var(--muted);
+      line-height: 1.7;
+      display: none;
+    }
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+    .faq-item.active .faq-question::after {
+      transform: rotate(180deg);
+    }
+    .faq-question::after {
+      content: "▼";
+      font-size: 0.8rem;
+      transition: transform 0.3s;
+    }
+    @media (max-width: 768px) {
+      .chi-sono-content {
+        margin: 24px;
+        padding: 32px;
+      }
+    }
     .testimonial-card blockquote,
     .testimonial-card footer {
       position: relative;
@@ -820,6 +901,50 @@
       </div>
     </section>
 
+    <!-- SEZIONE CHI SONO -->
+    <section class="chi-sono-section">
+      <div class="chi-sono-content">
+        <h2>Io sono Riccardo Romano</h2>
+        <p>Da anni lavoro con professionisti, imprenditori e aziende.</p>
+        <p>Comunicazione, marketing, customer experience, organizzazione e processi.</p>
+        <p>Il filo comune:<br>aiutare persone e aziende<br>a funzionare meglio.</p>
+      </div>
+    </section>
+
+    <!-- SEZIONE FAQ -->
+    <section class="faq-section section">
+      <div class="section-header">
+        <div class="section-tag">FAQ</div>
+        <h2>Domande frequenti</h2>
+      </div>
+      <div class="container">
+        <div class="faq-item">
+          <div class="faq-question">A chi è rivolto questo workshop?</div>
+          <div class="faq-answer">A professionisti, freelancer, imprenditori e piccole aziende che usano già l'AI ma sentono di non ottenere i risultati sperati. Se hai la sensazione di produrre di più ma avanzare meno, questo workshop ti aiuta a capire dove sta il problema.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Cosa mi serve per partecipare?</div>
+          <div class="faq-answer">Solo una connessione internet e un computer. Il workshop è accessibile immediatamente dopo l'acquisto e puoi seguirlo quando vuoi, nel tuo ritmo.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Quanto dura il workshop?</div>
+          <div class="faq-answer">Il contenuto video dura circa 60 minuti. Tuttavia, ti consiglio di dedicare almeno 2-3 ore totali per fare gli esercizi del workbook e applicare subito ciò che impari.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Il workbook è incluso?</div>
+          <div class="faq-answer">Sì, il workbook in PDF è incluso nell'acquisto. Contiene esercizi pratici, checklist e domande di autovalutazione per applicare subito i concetti del workshop.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Ho una garanzia?</div>
+          <div class="faq-answer">Sì, hai 14 giorni per richiedere il rimborso se il workshop non ti soddisfa. Scrivimi a info@riccardoromano.biz e ti rimborserò senza fare domande.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">Posso fare domande dopo il workshop?</div>
+          <div class="faq-answer">Certo! Una volta acquistato il workshop, hai accesso al mio supporto via email per chiarimenti sul contenuto. Se cerchi un accompagnamento più strutturato, ti consiglio di esplorare OpenClaw Activation Experience.</div>
+        </div>
+      </div>
+    </section>
+
     <section class="section">
       <div class="section-header">
         <div class="section-tag">Testimonianze</div>
@@ -876,5 +1001,22 @@
       <p class="footer-note">Accesso immediato • Workbook incluso • Garanzia 14 giorni</p>
     </section>
   </main>
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const item = question.parentElement;
+        const isActive = item.classList.contains('active');
+        
+        // Chiudi tutti
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        
+        // Apri questo se non era già attivo
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
