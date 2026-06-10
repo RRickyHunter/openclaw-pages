@@ -1,419 +1,720 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webinar Gratuito: Come smettere di fare tutto da solo con OpenClaw</title>
-  <meta name="description" content="Scopri come costruire un sistema AI che lavora al posto tuo. Webinar gratuito per professionisti e piccoli imprenditori.">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Webinar Gratuito: Come smettere di fare tutto da solo | OpenClaw</title>
+  <meta name="description" content="Scopri come costruire un sistema AI che lavora al posto tuo. Webinar gratuito per professionisti, piccoli imprenditori e coach." />
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '998401136465722');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none" 
+         src="https://www.facebook.com/tr?id=998401136465722&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --primary: #00d4ff;
-      --primary-dark: #00a8cc;
+      --bg: #070b14;
+      --bg-soft: #0e1525;
+      --panel: rgba(15, 23, 42, 0.88);
+      --panel-strong: #0f172a;
+      --line: rgba(148, 163, 184, 0.18);
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --muted-2: #94a3b8;
       --accent: #7c3aed;
-      --bg: #07080d;
-      --bg-alt: #0d1018;
-      --bg-card: #121621;
-      --text: #eef4ff;
-      --muted: #98a2b7;
-      --border: #232a3a;
-      --success: #22c55e;
-      --shadow: 0 25px 80px rgba(0,0,0,.45);
+      --accent-2: #22d3ee;
+      --accent-3: #f59e0b;
+      --success: #34d399;
+      --danger: #fb7185;
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --shadow: 0 30px 80px rgba(2, 6, 23, 0.6);
+      --max: 1160px;
     }
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
-      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: var(--bg);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
       line-height: 1.65;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(124, 58, 237, 0.32), transparent 28%),
+        radial-gradient(circle at 85% 10%, rgba(34, 211, 238, 0.22), transparent 24%),
+        radial-gradient(circle at 50% 55%, rgba(245, 158, 11, 0.1), transparent 32%),
+        linear-gradient(180deg, #04070f 0%, #090d17 38%, #05070c 100%);
       -webkit-font-smoothing: antialiased;
     }
-    .container { width: min(900px, calc(100% - 40px)); margin: 0 auto; }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: radial-gradient(circle at center, black 45%, transparent 88%);
+      opacity: 0.28;
+    }
+    a { color: inherit; }
+    .wrap {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 96px;
+      position: relative;
+      z-index: 1;
+    }
     .hero {
-      padding: 60px 0 40px;
-      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
-      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(124, 58, 237, 0.22);
+      border-radius: var(--radius-xl);
+      padding: 32px;
+      background:
+        linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(8, 15, 28, 0.9)),
+        rgba(15, 23, 42, 0.8);
+      box-shadow: var(--shadow);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -12% -30% auto;
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.35), transparent 68%);
+      filter: blur(12px);
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(34, 211, 238, 0.22);
+      background: rgba(15, 23, 42, 0.72);
+      color: #c4b5fd;
+      font-weight: 800;
+      font-size: 0.76rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 22px;
     }
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      gap: 32px;
       align-items: center;
-      text-align: left;
     }
-    .hero-image-box {
-      border-radius: 20px;
+    .hero-content {
+      position: relative;
+      padding: 32px;
+      border-radius: var(--radius-lg);
+      background: 
+        linear-gradient(135deg, rgba(15, 23, 42, 0.35), rgba(8, 15, 28, 0.45));
+      background-size: cover;
+      background-position: center;
+      border: 1px solid rgba(124, 58, 237, 0.18);
+    }
+    .hero-visual {
+      position: relative;
+      border-radius: var(--radius-lg);
       overflow: hidden;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
+      border: 1px solid rgba(124, 58, 237, 0.22);
     }
-    .hero-image-box img {
+    .hero-visual img {
       width: 100%;
       height: auto;
       display: block;
     }
-    .eyebrow {
-      display: inline-block;
-      padding: 8px 16px;
-      border: 1px solid rgba(0,212,255,.2);
-      border-radius: 999px;
-      color: var(--primary);
-      background: rgba(0,212,255,.07);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      margin-bottom: 20px;
-    }
     h1 {
-      margin: 0 0 20px;
-      font-size: clamp(2rem, 5vw, 3.2rem);
-      line-height: 1.1;
-      letter-spacing: -.03em;
+      margin: 0;
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
       font-weight: 900;
     }
-    .highlight { color: var(--primary); }
-    .hero-sub {
-      font-size: clamp(1.1rem, 2vw, 1.35rem);
-      color: var(--muted);
-      max-width: 700px;
-      margin: 0 auto 32px;
+    .subtitle-kicker {
+      display: block;
+      margin-top: 12px;
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      line-height: 1.3;
+      font-weight: 700;
+      color: #cbd5e1;
+      letter-spacing: -0.02em;
     }
-    .date-badge {
-      display: inline-flex;
+    .headline-accent {
+      background: linear-gradient(90deg, #ffffff 0%, #c4b5fd 36%, #67e8f9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-copy {
+      margin: 24px 0 0;
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1.08rem;
+    }
+    .hero-copy strong { color: #fff; }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 26px;
       align-items: center;
-      gap: 12px;
-      padding: 16px 28px;
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      margin-bottom: 32px;
-    }
-    .date-badge strong {
-      color: var(--primary);
-      font-size: 1.2rem;
-    }
-    .section { padding: 60px 0; }
-    .section.dark { background: var(--bg-alt); }
-    h2 {
-      font-size: clamp(1.6rem, 3vw, 2.2rem);
-      margin: 0 0 24px;
-      font-weight: 800;
-      letter-spacing: -.02em;
-    }
-    .problem-box {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 32px;
-      margin-bottom: 24px;
-    }
-    .problem-box h3 {
-      margin: 0 0 16px;
-      color: var(--primary);
-      font-size: 1.2rem;
-    }
-    .problem-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .problem-list li {
-      padding: 12px 0;
-      border-bottom: 1px solid var(--border);
-      color: var(--muted);
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-    .problem-list li:last-child { border-bottom: none; }
-    .problem-list li::before {
-      content: "✕";
-      color: #ff5d5d;
-      font-weight: 800;
-      flex-shrink: 0;
-    }
-    .solution-box {
-      background: linear-gradient(135deg, rgba(0,212,255,.08), rgba(124,58,237,.08));
-      border: 1px solid rgba(0,212,255,.2);
-      border-radius: 20px;
-      padding: 32px;
-    }
-    .solution-box h3 {
-      margin: 0 0 16px;
-      color: var(--success);
-      font-size: 1.2rem;
-    }
-    .solution-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .solution-list li {
-      padding: 12px 0;
-      color: var(--text);
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-    }
-    .solution-list li::before {
-      content: "✓";
-      color: var(--success);
-      font-weight: 800;
-      flex-shrink: 0;
-    }
-    .what-learn {
-      display: grid;
-      gap: 16px;
-      margin-top: 32px;
-    }
-    .learn-item {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px;
-      display: flex;
-      align-items: flex-start;
-      gap: 16px;
-    }
-    .learn-item .number {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      color: var(--bg);
-      flex-shrink: 0;
-    }
-    .learn-item h4 {
-      margin: 0 0 8px;
-      font-size: 1.1rem;
-    }
-    .learn-item p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-    .form-box {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 24px;
-      padding: 40px;
-      max-width: 600px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .form-box h2 {
-      margin-bottom: 12px;
-    }
-    .form-box p {
-      color: var(--muted);
-      margin-bottom: 28px;
     }
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 100%;
-      padding: 18px 32px;
-      border-radius: 12px;
+      gap: 10px;
+      min-height: 60px;
+      padding: 0 26px;
+      border-radius: 999px;
       text-decoration: none;
-      font-weight: 800;
-      font-size: 1.1rem;
-      transition: .18s ease;
-      border: none;
+      font-weight: 900;
+      transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+      border: 0;
       cursor: pointer;
     }
     .btn-primary {
-      background: linear-gradient(135deg, #00d4ff, #4fe2ff);
-      color: #051019;
-      box-shadow: 0 0 20px rgba(0,212,255,.2);
+      color: #08111f;
+      background: linear-gradient(135deg, #67e8f9 0%, #a78bfa 42%, #f59e0b 100%);
+      box-shadow: 0 18px 45px rgba(124, 58, 237, 0.35);
     }
-    .btn-primary:hover { transform: translateY(-2px); }
-    .for-who {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin-top: 32px;
+    .btn-primary:hover,
+    .btn-secondary:hover { transform: translateY(-2px); }
+    .btn-secondary {
+      color: #e2e8f0;
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid rgba(148, 163, 184, 0.24);
     }
-    .for-who-item {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 24px;
-      text-align: center;
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 18px;
+      color: var(--muted-2);
+      font-size: 0.94rem;
     }
-    .for-who-item .icon {
-      font-size: 2rem;
+    .hero-meta span,
+    .stat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+    }
+    .section {
+      margin-top: 22px;
+      padding: 32px;
+      border-radius: var(--radius-xl);
+      background: linear-gradient(180deg, rgba(7, 11, 20, 0.92), rgba(9, 13, 23, 0.88));
+      border: 1px solid rgba(148, 163, 184, 0.12);
+      box-shadow: 0 22px 60px rgba(2, 6, 23, 0.45);
+    }
+    .section-header {
+      max-width: 760px;
+      margin-bottom: 24px;
+    }
+    .section-tag {
+      display: inline-block;
       margin-bottom: 12px;
+      color: #67e8f9;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
     }
-    .for-who-item h4 {
-      margin: 0 0 8px;
-      font-size: 1rem;
-    }
-    .for-who-item p {
+    h2 {
       margin: 0;
-      color: var(--muted);
-      font-size: 0.9rem;
+      font-size: clamp(1.7rem, 3vw, 2.8rem);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
     }
-    footer {
-      padding: 40px 0;
-      text-align: center;
+    .section-intro {
+      margin: 14px 0 0;
       color: var(--muted);
-      font-size: 0.9rem;
-      border-top: 1px solid var(--border);
+      font-size: 1.03rem;
+    }
+    p { margin: 0 0 16px; }
+    .lead {
+      font-size: 1.08rem;
+      color: #e2e8f0;
+    }
+    .text-stack p:last-child,
+    .bullet-list li:last-child,
+    .testimonial-card p:last-child { margin-bottom: 0; }
+    .problem-grid,
+    .discover-grid,
+    .fit-grid,
+    .gain-grid,
+    .testimonials-grid {
+      display: grid;
+      gap: 18px;
+    }
+    .problem-grid { grid-template-columns: 1.1fr 0.9fr; }
+    .discover-grid,
+    .gain-grid,
+    .testimonials-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .fit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .panel {
+      border-radius: var(--radius-lg);
+      padding: 24px;
+    }
+    .panel h3,
+    .pricing-box h3,
+    .guarantee h3,
+    .cta-box h3 {
+      margin: 0 0 14px;
+      font-size: 1.24rem;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+    }
+    .bullet-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 14px;
+    }
+    .bullet-list li {
+      position: relative;
+      padding-left: 20px;
+      color: var(--muted);
+      margin: 0;
+    }
+    .bullet-list li::before {
+      content: "";
+      position: absolute;
+      top: 11px;
+      left: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent-2), var(--accent));
+      box-shadow: 0 0 18px rgba(34, 211, 238, 0.45);
+    }
+    .quote-card {
+      border-radius: 28px;
+      padding: 26px;
+      position: relative;
+      overflow: hidden;
+    }
+    .quote-card::after {
+      content: "";
+      position: absolute;
+      inset: auto -40px -50px auto;
+      width: 160px;
+      height: 160px;
+      background: radial-gradient(circle, rgba(245,158,11,0.25), transparent 70%);
+    }
+    .quote-card strong {
+      display: block;
+      font-size: 1.18rem;
+      line-height: 1.45;
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      max-width: 100%;
+    }
+    .fit-card,
+    .gain-card,
+    .discover-card,
+    .testimonial-card {
+      border-radius: 22px;
+      padding: 22px;
+      background: rgba(8, 15, 28, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.12);
+    }
+    .fit-card.good { border-color: rgba(52, 211, 153, 0.22); }
+    .fit-card.bad { border-color: rgba(251, 113, 133, 0.22); }
+    .fit-card h3,
+    .gain-card h3,
+    .discover-card h3,
+    .testimonial-card h3 {
+      margin: 0 0 12px;
+      font-size: 1.1rem;
+    }
+    .check-list,
+    .cross-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 12px;
+    }
+    .check-list li,
+    .cross-list li {
+      position: relative;
+      padding-left: 28px;
+      color: var(--muted);
+    }
+    .check-list li::before,
+    .cross-list li::before {
+      position: absolute;
+      left: 0;
+      top: 1px;
+      font-weight: 900;
+    }
+    .check-list li::before { content: "✓"; color: var(--success); }
+    .cross-list li::before { content: "×"; color: var(--danger); }
+    .bonus-layout {
+      display: grid;
+      grid-template-columns: minmax(290px, 0.95fr) minmax(0, 1.05fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+    .workbook-card {
+      border-radius: 28px;
+      padding: 18px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(160deg, rgba(124,58,237,0.24), rgba(15,23,42,0.92) 48%, rgba(34,211,238,0.08));
+      border: 1px solid rgba(124, 58, 237, 0.22);
+      box-shadow: var(--shadow);
+    }
+    .workbook-mock {
+      min-height: 360px;
+      border-radius: 22px;
+      border: 1px dashed rgba(255,255,255,0.18);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
+        rgba(2, 6, 23, 0.42);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 28px;
+    }
+    .workbook-mock strong {
+      font-size: 1.2rem;
+      line-height: 1.2;
+      max-width: 220px;
+    }
+    .workbook-mock small {
+      color: var(--muted-2);
+      margin-top: 10px;
+      max-width: 220px;
+      display: block;
+    }
+    .pricing-box,
+    .guarantee,
+    .cta-box {
+      border-radius: 28px;
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .pricing-box {
+      background: linear-gradient(160deg, rgba(103,232,249,0.12), rgba(15,23,42,0.88) 38%, rgba(124,58,237,0.18));
+    }
+    .price {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      margin: 8px 0 18px;
+    }
+    .price strong {
+      font-size: clamp(3rem, 6vw, 4.5rem);
+      line-height: 0.9;
+      letter-spacing: -0.06em;
+    }
+    .price span {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .testimonial-card {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 18px;
+      position: relative;
+      overflow: hidden;
+    }
+    .testimonial-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(124,58,237,0.08), transparent 50%, rgba(34,211,238,0.06));
+      pointer-events: none;
+    }
+    .testimonial-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 22px;
+      object-fit: cover;
+      display: block;
+      flex-shrink: 0;
+      border: 2px solid rgba(255, 255, 255, 0.55);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.35), 0 0 0 4px rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.08);
+      position: relative;
+      z-index: 1;
+    }
+    .testimonial-photo {
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      border-radius: 22px;
+      object-fit: cover;
+      display: block;
+      margin: 0 auto;
+      border: 2px solid rgba(255, 255, 255, 0.55);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.35), 0 0 0 4px rgba(255,255,255,0.06);
+      background: rgba(255,255,255,0.08);
+      position: relative;
+      z-index: 1;
+    }
+    .chi-sono-section {
+      position: relative;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      background: url('/wspaints/assets/riccardo-chi-sono.png');
+      background-size: cover;
+      background-position: center;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      margin: 40px 0;
+    }
+    .chi-sono-content {
+      max-width: 500px;
+      padding: 48px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      border-radius: var(--radius-lg);
+      margin-left: 48px;
+    }
+    .chi-sono-content h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 24px;
+      background: linear-gradient(90deg, #ffffff 0%, #c4b5fd 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .chi-sono-content p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .faq-section { padding: 60px 0; }
+    .faq-item {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(148, 163, 184, 0.15);
+      border-radius: var(--radius-md);
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .faq-question {
+      padding: 24px 28px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s;
+    }
+    .faq-question:hover {
+      background: rgba(124, 58, 237, 0.1);
+    }
+    .faq-answer {
+      padding: 0 28px 24px;
+      color: var(--muted);
+      line-height: 1.7;
+      display: none;
+    }
+    .faq-item.active .faq-answer {
+      display: block;
+    }
+    .faq-item.active .faq-question::after {
+      transform: rotate(180deg);
+    }
+    .faq-question::after {
+      content: "▼";
+      font-size: 0.8rem;
+      transition: transform 0.3s;
+    }
+    @media (max-width: 980px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .hero-visual { order: -1; max-width: 500px; margin: 0 auto; }
     }
     @media (max-width: 768px) {
-      .for-who { grid-template-columns: 1fr; }
-      .hero { padding: 60px 0 40px; }
-      .hero-grid { grid-template-columns: 1fr; text-align: center; }
-      .hero-image-box { order: -1; }
+      .problem-grid, .discover-grid, .gain-grid, .testimonials-grid, .fit-grid { grid-template-columns: 1fr; }
+      .bonus-layout { grid-template-columns: 1fr; }
+      .chi-sono-content { margin: 24px; padding: 32px; }
     }
   </style>
 </head>
 <body>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container">
+  <main class="wrap">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="eyebrow">Webinar Gratuito</div>
       <div class="hero-grid">
-        <div>
-          <div class="eyebrow">Webinar Gratuito</div>
-          <h1>Come smettere di fare<br><span class="highlight">tutto da solo</span></h1>
-          <p class="hero-sub" style="margin: 0 0 24px;">
-            Scopri come costruire un sistema AI che lavora al posto tuo — 
-            anche se oggi usi ChatGPT "a mano" e non sai da dove iniziare.
+        <div class="hero-content">
+          <h1>Come smettere di fare<br><span class="headline-accent">tutto da solo</span></h1>
+          <p class="subtitle-kicker">Scopri come costruire un sistema AI che lavora al posto tuo</p>
+          <p class="hero-copy">
+            Se oggi usi ChatGPT, Claude o altri tool AI "a mano" ma non hai ancora un sistema che lavora per te, questo webinar ti mostra cosa cambia quando smetti di fare tutto da solo.
           </p>
-          <div class="date-badge" style="margin-bottom: 0;">
-            <span>📅</span>
-            <div>
-              <div style="font-size: 0.85rem; color: var(--muted);">Prossima data</div>
-              <strong>Da definire</strong>
-            </div>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#iscrizione">Voglio iscrivermi gratuitamente</a>
+          </div>
+          <div class="hero-meta">
+            <span>📅 Data: da definire</span>
+            <span>⏱️ Durata: 60 minuti</span>
+            <span>💻 Online su Zoom</span>
           </div>
         </div>
-        <div class="hero-image-box">
+        <div class="hero-visual">
           <img src="/webinar/assets/hero-bg.png" alt="Riccardo Romano e i bot OpenClaw">
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PROBLEMA / SOLUZIONE -->
-  <section class="section dark">
-    <div class="container">
-      <div class="problem-box">
-        <h3>Se ti riconosci in questa situazione...</h3>
-        <ul class="problem-list">
-          <li>Passi ore a scrivere contenuti, email, proposte — ogni giorno da capo</li>
-          <li>Hai provato l'AI ma finisci sempre per fare tutto manualmente</li>
-          <li>Non hai un team che ti supporta e senti di dover gestire tutto da solo</li>
-          <li>Produci molto ma avanzi poco: il tuo tempo viene divorato da task ripetitivi</li>
-          <li>Sai che l'AI può aiutarti, ma non hai un sistema per usarla davvero</li>
-        </ul>
+    <!-- SEZIONE 1: IL PROBLEMA -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-tag">Il problema</div>
+        <h2>La frustrazione di chi lavora da solo</h2>
       </div>
-      <div class="solution-box">
-        <h3>...esiste un modo diverso di lavorare</h3>
-        <ul class="solution-list">
-          <li>Un sistema che prepara i tuoi contenenti mentre tu fai altro</li>
-          <li>Un assistente AI che conosce il tuo business e risponde al posto tuo</li>
-          <li>Workflow automatici che qualificano i lead e gestiscono le richieste</li>
-          <li>Più ore libere per ciò che conta davvero: strategia, clienti, crescita</li>
-          <li>Nessun bisogno di assumere — un sistema che lavora 24/7 al posto tuo</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- COSA IMPARERAI -->
-  <section class="section">
-    <div class="container">
-      <h2 style="text-align: center;">Cosa scoprirai nel webinar</h2>
-      <div class="what-learn">
-        <div class="learn-item">
-          <div class="number">1</div>
-          <div>
-            <h4>Perché l'AI "a mano" non basta più</h4>
-            <p>Il vero problema non è la tecnologia — è l'assenza di un sistema. Ti mostro cosa cambia quando smetti di usare l'AI come tool e inizi a usarla come asset.</p>
-          </div>
+      <div class="problem-grid">
+        <div class="panel text-stack" style="display:flex;flex-direction:column;gap:18px;">
+          <p class="lead">Se ti riconosci in questa situazione, questo webinar è per te:</p>
+          <ul class="bullet-list">
+            <li>Passi ore a scrivere contenuti, email, proposte — ogni giorno da capo</li>
+            <li>Hai provato l'AI ma finisci sempre per fare tutto manualmente</li>
+            <li>Non hai un team che ti supporta e senti di dover gestire tutto da solo</li>
+            <li>Produci molto ma avanzi poco: il tuo tempo viene divorato da task ripetitivi</li>
+            <li>Sai che l'AI può aiutarti, ma non hai un sistema per usarla davvero</li>
+          </ul>
         </div>
-        <div class="learn-item">
-          <div class="number">2</div>
-          <div>
-            <h4>I 3 workflow che ogni professionista dovrebbe automatizzare</h4>
-            <p>Content creation, risposta alle email, qualifica lead. Esempi concreti di come questi processi possono girare in automatico senza perdere la tua voce.</p>
-          </div>
-        </div>
-        <div class="learn-item">
-          <div class="number">3</div>
-          <div>
-            <h4>Come costruire il tuo primo sistema in 3-5 giorni</h4>
-            <p>Nessuna competenza tecnica richiesta. Il metodo passo-passo per passare da "uso l'AI a caso" a "ho un sistema che lavora per me".</p>
-          </div>
-        </div>
-        <div class="learn-item">
-          <div class="number">4</div>
-          <div>
-            <h4>La demo live: vedere OpenClaw in azione</h4>
-            <p>Mostro un sistema reale che risponde alle email, crea contenuti e gestisce lead — tutto in automatico, con la voce del proprietario.</p>
-          </div>
+        <div class="quote-card">
+          <strong>"Non è che l'AI non funziona. È che non hai un sistema. Hai i pezzi del puzzle sparsi sul tavolo, ma nessuno ti ha mai mostrato come assemblarli."</strong>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- PER CHI È -->
-  <section class="section dark">
-    <div class="container">
-      <h2 style="text-align: center;">Per chi è questo webinar</h2>
-      <div class="for-who">
-        <div class="for-who-item">
-          <div class="icon">💼</div>
-          <h4>Professionisti</h4>
+    <!-- SEZIONE 2: LA SVOLTA -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-tag">La soluzione</div>
+        <h2>Esiste un modo diverso di lavorare</h2>
+      </div>
+      <div class="fit-grid">
+        <div class="fit-card good">
+          <h3>✓ Un sistema che prepara i tuoi contenuti mentre tu fai altro</h3>
+          <p>Non devi più inventarti cosa scrivere ogni giorno. Il sistema lo fa per te, nel tuo tono.</p>
+        </div>
+        <div class="fit-card good">
+          <h3>✓ Un assistente AI che conosce il tuo business</h3>
+          <p>Risponde alle email, qualifica i lead, gestisce le richieste — 24/7, senza stancarsi.</p>
+        </div>
+        <div class="fit-card good">
+          <h3>✓ Workflow automatici che ti fanno risparmiare ore</h3>
+          <p>I task ripetitivi girano in background. Tu ti occupi di ciò che conta davvero.</p>
+        </div>
+        <div class="fit-card good">
+          <h3>✓ Più tempo per strategia, clienti, crescita</h3>
+          <p>Non serve assumere. Un sistema che lavora al posto tuo, sempre disponibile.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEZIONE 3: COSA IMPARERAI -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-tag">Contenuti</div>
+        <h2>Cosa scoprirai nel webinar</h2>
+      </div>
+      <div class="discover-grid">
+        <div class="discover-card">
+          <h3>1. Perché l'AI "a mano" non basta più</h3>
+          <p>Il vero problema non è la tecnologia — è l'assenza di un sistema. Ti mostro cosa cambia quando smetti di usare l'AI come tool e inizi a usarla come asset.</p>
+        </div>
+        <div class="discover-card">
+          <h3>2. I 3 workflow da automatizzare subito</h3>
+          <p>Content creation, risposta email, qualifica lead. Esempi concreti di come questi processi possono girare in automatico senza perdere la tua voce.</p>
+        </div>
+        <div class="discover-card">
+          <h3>3. Come costruire il tuo primo sistema</h3>
+          <p>Nessuna competenza tecnica richiesta. Il metodo passo-passo per passare da "uso l'AI a caso" a "ho un sistema che lavora per me".</p>
+        </div>
+      </div>
+      <div class="card quote-card" style="margin-top: 22px;">
+        <strong>4. Demo live: vedere OpenClaw in azione</strong>
+        <p style="margin: 0; color: var(--muted);">Mostro un sistema reale che risponde alle email, crea contenuti e gestisce lead — tutto in automatico, con la voce del proprietario.</p>
+      </div>
+    </section>
+
+    <!-- SEZIONE 4: PER CHI È -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-tag">Destinatari</div>
+        <h2>Per chi è questo webinar</h2>
+      </div>
+      <div class="fit-grid">
+        <div class="fit-card good">
+          <h3>Professionisti</h3>
           <p>Consulenti, avvocati, commercialisti, architetti che vogliono scalare senza assumere</p>
         </div>
-        <div class="for-who-item">
-          <div class="icon">🚀</div>
-          <h4>Piccoli imprenditori</h4>
+        <div class="fit-card good">
+          <h3>Piccoli imprenditori</h3>
           <p>Chi gestisce tutto da solo e ha bisogno di un sistema che lo supporti</p>
         </div>
-        <div class="for-who-item">
-          <div class="icon">🎯</div>
-          <h4>Coach & Formatori</h4>
+        <div class="fit-card good">
+          <h3>Coach & Formatori</h3>
           <p>Chi crea contenuti, gestisce clienti e vuole automatizzare senza perdere autenticità</p>
         </div>
-        <div class="for-who-item">
-          <div class="icon">⚡</div>
-          <h4>Action Taker</h4>
+        <div class="fit-card good">
+          <h3>Action Taker</h3>
           <p>Chi è stanco di "sperimentare" e vuole costruire qualcosa di concreto ora</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FORM ISCRIZIONE -->
-  <section class="section">
-    <div class="container">
-      <div class="form-box">
-        <h2>Riserva il tuo posto gratuito</h2>
-        <p>Posti limitati per garantire interazione e domande. Ti invieremo il link Zoom prima dell'evento.</p>
-        <a href="#" class="btn btn-primary">Voglio iscrivermi al webinar</a>
-        <p style="margin-top: 20px; font-size: 0.9rem; color: var(--muted);">
-          🔒 I tuoi dati sono al sicuro. Nessuno spam, solo il webinar.
-        </p>
+    <!-- SEZIONE CHI SONO -->
+    <section class="chi-sono-section">
+      <div class="chi-sono-content">
+        <h2>Io sono Riccardo Romano</h2>
+        <p>Da anni lavoro con professionisti, imprenditori e aziende.</p>
+        <p>Comunicazione, marketing, customer experience, organizzazione e processi.</p>
+        <p>Il filo comune:<br>aiutare persone e aziende<br>a funzionare meglio.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="container">
-      <p><strong>Riccardo Romano</strong> — Business Architect & OpenClaw Ecosystem Founder</p>
-    </div>
-  </footer>
-
-</body>
-</html>
+    <!-- SEZIONE ISCRIZIONE -->
+    <section class="section" id="iscrizione">
+      <div class="section-header" style="max-width: 100%; text-align: center;">
+        <div class="section-tag">Iscrizione</div>
+        <h2>Riserva il tuo posto gratuito</h2>
+        <p class="section-intro" style="max-width: 600px; margin: 14px auto 0;">Posti limitati per garantire interazione e domande. Ti invieremo il link Zoom prima dell'evento.</p>
+      </div>
+      <div class="hero-actions" style="justify-content: center; margin-top: 32px;">
+        <a class="btn btn-primary" href="#">Voglio iscrivermi al webinar</a>
+      </div>
+      <p style="text-align: center; margin-top: 28px; color: var(--muted-2); font-size
