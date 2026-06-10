@@ -1,7 +1,6 @@
 // Stripe Webhook → ActiveCampaign
 // Trigger: checkout.session.completed per workshop €37
 
-const STRIPE_SECRET = process.env.STRIPE_SECRET_KEY;
 const AC_API_KEY = process.env.ACTIVECAMPAIGN_API_KEY;
 const AC_API_URL = 'https://riccardoromano.api-us1.com/api/3';
 const WORKSHOP_PRODUCT_ID = 'prod_USjzUEhQTIuPyJ';
@@ -23,19 +22,29 @@ export default async function handler(req, res) {
     const session = event.data.object;
     const customerEmail = session.customer_details?.email;
     
-    // Verifica product workshop €37
-    const lineItems = session.line_items?.data || [];
-    const hasWorkshop = lineItems.some(item => 
-      item.price?.product === WORKSHOP_PRODUCT_ID
-    );
+    // Determina se live o test mode
+    const isLiveMode = session.livemode === true;
+    
+    // Verifica product workshop €37 (solo in live mode)
+    if (isLiveMode) {
+      const lineItems = session.line_items?.data || [];
+      const hasWorkshop = lineItems.some(item => 
+        item.price?.product === WORKSHOP_PRODUCT_ID
+      );
 
-    if (!hasWorkshop) {
-      return res.status(200).json({ received: true, ignored: 'Not workshop product' });
+      if (!hasWorkshop) {
+        return res.status(200).json({ received: true, ignored: 'Not workshop product' });
+      }
     }
 
     if (!customerEmail) {
       return res.status(400).json({ error: 'No customer email' });
     }
+
+    // Tag diversi per live vs test
+    const tags = isLiveMode 
+      ? ['Workshop 37€', 'Acquisto Workshop AI']
+      : ['Workshop 37€', 'TEST - Acquisto Workshop AI'];
 
     // Aggiungi contatto a ActiveCampaign
     const acResponse = await fetch(`${AC_API_URL}/contacts`, {
@@ -47,7 +56,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         contact: {
           email: customerEmail,
-          tags: ['Workshop 37€', 'Acquisto Workshop AI']
+          tags: tags
         }
       })
     });
@@ -62,6 +71,7 @@ export default async function handler(req, res) {
 
     return res.status(200).json({
       success: true,
+      mode: isLiveMode ? 'live' : 'test',
       contact: customerEmail,
       ac_contact_id: contactData.contact?.id
     });
