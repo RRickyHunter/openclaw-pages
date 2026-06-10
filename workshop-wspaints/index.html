@@ -216,6 +216,24 @@
       visibility: visible;
     }
 
+    .step-hidden {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(20px);
+      visibility: hidden;
+      max-height: 0;
+      overflow: hidden;
+      transition: opacity .4s ease, transform .4s ease, visibility .4s ease, max-height .4s ease;
+    }
+
+    .step-visible {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+      visibility: visible;
+      max-height: 1000px;
+    }
+
     .tiny-note {
       margin-top: 14px;
       text-align: center;
@@ -284,13 +302,20 @@
           <a
             id="ctaButton"
             class="cta-button cta-hidden"
-            href="https://form.jotform.com/261314999423161"
-            target="_blank"
-            rel="noopener noreferrer"
-          >Vai alla candidatura</a>
+            href="https://pages.riccardoromano.biz/ocae"
+          >Vai alla pagina</a>
         </div>
+      </div>
+    </section>
 
-        <div class="tiny-note">Il pulsante si sblocca dopo 1 minuto di visione del video.</div>
+    <section id="step3" class="step-section step-hidden">
+      <div class="step-header">
+        <div class="section-tag">Step 3</div>
+      </div>
+      <div class="step-content" style="text-align: center; display: block;">
+        <h2 style="margin-bottom: 16px;">Hai completato il percorso!</h2>
+        <p style="color: var(--muted); margin-bottom: 24px;">Ora sei pronto per scoprire come attivare il tuo sistema AI personalizzato.</p>
+        <a href="https://pages.riccardoromano.biz/ocae" class="cta-button">Vai alla pagina</a>
       </div>
     </section>
   </main>
@@ -321,12 +346,19 @@
       return `${mins}:${secs}`;
     }
 
+    const step3 = document.getElementById('step3');
+
     function revealCTA() {
       unlocked = true;
       sessionStorage.setItem(STORAGE_UNLOCK_KEY, 'true');
       ctaButton.classList.remove('cta-hidden');
       ctaButton.classList.add('cta-visible');
       countdown.textContent = 'Pulsante sbloccato';
+      
+      if (step3) {
+        step3.classList.remove('step-hidden');
+        step3.classList.add('step-visible');
+      }
     }
 
     function updateUI() {
