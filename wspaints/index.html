@@ -104,6 +104,17 @@
       gap: 28px;
       align-items: center;
     }
+    .hero-content {
+      position: relative;
+      padding: 32px;
+      border-radius: var(--radius-lg);
+      background: 
+        linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(8, 15, 28, 0.9)),
+        url('./assets/hero-bg.png');
+      background-size: cover;
+      background-position: center;
+      border: 1px solid rgba(124, 58, 237, 0.18);
+    }
     h1 {
       margin: 0;
       font-size: clamp(2.6rem, 6vw, 5.4rem);
@@ -649,7 +660,7 @@
     <section class="hero" id="top">
       <div class="eyebrow">Workshop pratico • Accesso immediato</div>
       <div class="hero-grid">
-        <div>
+        <div class="hero-content">
           <h1>
             <span class="headline-accent">Perché l'AI non ti serve</span>
             <span class="subtitle-kicker">(se non hai questo prima)</span>
