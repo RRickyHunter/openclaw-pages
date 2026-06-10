@@ -49,8 +49,7 @@ export default async function handler(req, res) {
     // Prepara dati contatto
     const contactData = {
       email: customerEmail,
-      firstName: customerName,
-      tags: tags
+      firstName: customerName
     };
 
     // Aggiungi contatto a ActiveCampaign
