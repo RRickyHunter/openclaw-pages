@@ -17,6 +17,12 @@
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '998401136465722');
     fbq('track', 'PageView');
+    fbq('track', 'Purchase', {
+      value: 37.00,
+      currency: 'EUR',
+      content_name: 'Workshop - Perché l\'AI non ti serve',
+      content_type: 'product'
+    });
   </script>
   <noscript>
     <img height="1" width="1" style="display:none" 
