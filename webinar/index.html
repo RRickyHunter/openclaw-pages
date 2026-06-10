@@ -30,9 +30,20 @@
     }
     .container { width: min(900px, calc(100% - 40px)); margin: 0 auto; }
     .hero {
+      position: relative;
       padding: 80px 0 60px;
-      background: linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
+      background: linear-gradient(180deg, rgba(7,8,13,0.85) 0%, rgba(13,16,24,0.9) 100%),
+                  url('/webinar/assets/hero-bg.png');
+      background-size: cover;
+      background-position: center;
       text-align: center;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+    }
+    .hero .container {
+      position: relative;
+      z-index: 1;
     }
     .eyebrow {
       display: inline-block;
