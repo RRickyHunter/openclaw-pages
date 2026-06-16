@@ -19,8 +19,7 @@
     fbq('track', 'PageView');
   </script>
   <noscript>
-    <img height="1" width="1" style="display:none" 
-         src="https://www.facebook.com/tr?id=998401136465722&ev=PageView&noscript=1"/>
+    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=998401136465722&ev=PageView&noscript=1" alt=""/>
   </noscript>
   <!-- End Meta Pixel Code -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -75,9 +74,9 @@
     }
     a { color: inherit; }
     .wrap {
-      width: min(var(--max), calc(100% - 32px));
+      width: min(var(--max), calc(100% - 24px));
       margin: 0 auto;
-      padding: 24px 0 96px;
+      padding: 16px 0 96px;
       position: relative;
       z-index: 1;
     }
@@ -86,7 +85,7 @@
       overflow: hidden;
       border: 1px solid rgba(124, 58, 237, 0.22);
       border-radius: var(--radius-xl);
-      padding: 32px;
+      padding: 18px;
       background:
         linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(8, 15, 28, 0.9)),
         rgba(15, 23, 42, 0.8);
@@ -114,42 +113,41 @@
       font-size: 0.76rem;
       letter-spacing: 0.16em;
       text-transform: uppercase;
-      margin-bottom: 22px;
+      margin-bottom: 18px;
     }
-    .hero-grid {
-      display: block;
-      width: 100%;
-    }
+    .hero-grid { display: block; width: 100%; }
     .hero-content {
       position: relative;
-      padding: 32px;
+      padding: 24px 18px;
       border-radius: var(--radius-lg);
-      background: 
-        linear-gradient(135deg, rgba(15, 23, 42, 0.35), rgba(8, 15, 28, 0.45)),
+      background:
+        linear-gradient(135deg, rgba(15, 23, 42, 0.45), rgba(8, 15, 28, 0.55)),
         url('/webinar/assets/hero-bg.png');
       background-size: cover;
       background-position: center;
       border: 1px solid rgba(124, 58, 237, 0.18);
-      min-height: 400px;
+      min-height: 360px;
       display: flex;
       flex-direction: column;
       justify-content: center;
     }
     h1 {
       margin: 0;
-      font-size: clamp(2.2rem, 5vw, 4rem);
-      line-height: 1;
-      letter-spacing: -0.04em;
+      font-size: clamp(2rem, 8vw, 4rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
       font-weight: 900;
+      max-width: 11ch;
     }
     .subtitle-kicker {
       display: block;
-      margin-top: 12px;
-      font-size: clamp(1rem, 2vw, 1.35rem);
+      margin-top: 14px;
+      font-size: clamp(1rem, 3.8vw, 1.35rem);
       line-height: 1.3;
       font-weight: 700;
       color: #cbd5e1;
       letter-spacing: -0.02em;
+      max-width: 28ch;
     }
     .headline-accent {
       background: linear-gradient(90deg, #ffffff 0%, #c4b5fd 36%, #67e8f9 100%);
@@ -158,55 +156,47 @@
       background-clip: text;
     }
     .hero-copy {
-      margin: 24px 0 0;
+      margin: 22px 0 0;
       max-width: 720px;
       color: var(--muted);
-      font-size: 1.08rem;
+      font-size: 1.02rem;
     }
-    .hero-copy strong { color: #fff; }
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 26px;
-      align-items: center;
-    }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:14px; margin-top:24px; align-items:center; }
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 10px;
-      min-height: 60px;
-      padding: 0 26px;
+      min-height: 58px;
+      padding: 0 24px;
       border-radius: 999px;
       text-decoration: none;
       font-weight: 900;
       transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
       border: 0;
       cursor: pointer;
+      width: 100%;
     }
     .btn-primary {
       color: #08111f;
       background: linear-gradient(135deg, #67e8f9 0%, #a78bfa 42%, #f59e0b 100%);
       box-shadow: 0 18px 45px rgba(124, 58, 237, 0.35);
     }
-    .btn-primary:hover,
-    .btn-secondary:hover { transform: translateY(-2px); }
     .btn-secondary {
       color: #e2e8f0;
       background: rgba(15, 23, 42, 0.72);
       border: 1px solid rgba(148, 163, 184, 0.24);
     }
+    .btn:hover { transform: translateY(-2px); }
     .hero-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
       margin-top: 18px;
       color: var(--muted-2);
       font-size: 0.94rem;
     }
-    .hero-meta span,
-    .stat-pill {
+    .hero-meta span {
       display: inline-flex;
       align-items: center;
       gap: 8px;
@@ -216,16 +206,21 @@
       border: 1px solid rgba(148, 163, 184, 0.16);
     }
     .section {
-      margin-top: 22px;
-      padding: 32px;
+      margin-top: 20px;
+      padding: 24px 18px;
       border-radius: var(--radius-xl);
       background: linear-gradient(180deg, rgba(7, 11, 20, 0.92), rgba(9, 13, 23, 0.88));
       border: 1px solid rgba(148, 163, 184, 0.12);
       box-shadow: 0 22px 60px rgba(2, 6, 23, 0.45);
     }
-    .section-header {
-      max-width: 760px;
-      margin-bottom: 24px;
+    .section-header { max-width: 860px; margin-bottom: 22px; }
+    .section-header.problem-header { max-width: 100%; }
+    .problem-header h2 {
+      max-width: none;
+      font-size: clamp(1.8rem, 4.2vw, 3.35rem);
+      line-height: 0.95;
+      letter-spacing: -0.055em;
+      text-wrap: nowrap;
     }
     .section-tag {
       display: inline-block;
@@ -238,63 +233,40 @@
     }
     h2 {
       margin: 0;
-      font-size: clamp(1.7rem, 3vw, 2.8rem);
-      line-height: 1.08;
-      letter-spacing: -0.04em;
+      font-size: clamp(1.65rem, 6vw, 2.8rem);
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+      text-wrap: balance;
+      max-width: 14ch;
     }
-    .section-intro {
-      margin: 14px 0 0;
-      color: var(--muted);
-      font-size: 1.03rem;
-    }
+    .section-intro { margin: 14px 0 0; color: var(--muted); font-size: 1.03rem; }
     p { margin: 0 0 16px; }
-    .lead {
-      font-size: 1.08rem;
-      color: #e2e8f0;
-    }
-    .text-stack p:last-child,
-    .bullet-list li:last-child,
-    .testimonial-card p:last-child { margin-bottom: 0; }
-    .problem-grid,
-    .discover-grid,
-    .fit-grid,
-    .gain-grid,
-    .testimonials-grid {
+    .lead { font-size: 1.08rem; color: #e2e8f0; }
+    .problem-grid, .discover-grid, .fit-grid, .faq-grid {
       display: grid;
       gap: 18px;
+      grid-template-columns: 1fr;
     }
-    .problem-grid { grid-template-columns: 1.1fr 0.9fr; }
-    .discover-grid,
-    .gain-grid,
-    .testimonials-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .fit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .panel {
-      border-radius: var(--radius-lg);
-      padding: 24px;
+    .panel, .fit-card, .discover-card, .quote-card, .video-feature, .cta-inline, .faq-item {
+      border-radius: 22px;
+      padding: 22px;
+      background: rgba(8, 15, 28, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.12);
     }
-    .panel h3,
-    .pricing-box h3,
-    .guarantee h3,
-    .cta-box h3 {
-      margin: 0 0 14px;
-      font-size: 1.24rem;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-    }
-    .bullet-list {
+    .bullet-list, .check-list, .x-list {
       list-style: none;
       padding: 0;
       margin: 0;
       display: grid;
       gap: 14px;
     }
-    .bullet-list li {
+    .bullet-list li, .check-list li, .x-list li {
       position: relative;
       padding-left: 20px;
       color: var(--muted);
       margin: 0;
     }
-    .bullet-list li::before {
+    .bullet-list li::before, .check-list li::before, .x-list li::before {
       content: "";
       position: absolute;
       top: 11px;
@@ -305,179 +277,21 @@
       background: linear-gradient(135deg, var(--accent-2), var(--accent));
       box-shadow: 0 0 18px rgba(34, 211, 238, 0.45);
     }
-    .quote-card {
-      border-radius: 28px;
-      padding: 26px;
-      position: relative;
-      overflow: hidden;
-    }
-    .quote-card::after {
-      content: "";
-      position: absolute;
-      inset: auto -40px -50px auto;
-      width: 160px;
-      height: 160px;
-      background: radial-gradient(circle, rgba(245,158,11,0.25), transparent 70%);
+    .x-list li::before {
+      background: linear-gradient(135deg, #fb7185, #f59e0b);
+      box-shadow: 0 0 18px rgba(251, 113, 133, 0.32);
     }
     .quote-card strong {
       display: block;
       font-size: 1.18rem;
       line-height: 1.45;
       letter-spacing: -0.02em;
-      margin-bottom: 16px;
+      margin-bottom: 12px;
       max-width: 100%;
-    }
-    .fit-card,
-    .gain-card,
-    .discover-card,
-    .testimonial-card {
-      border-radius: 22px;
-      padding: 22px;
-      background: rgba(8, 15, 28, 0.8);
-      border: 1px solid rgba(148, 163, 184, 0.12);
     }
     .fit-card.good { border-color: rgba(52, 211, 153, 0.22); }
     .fit-card.bad { border-color: rgba(251, 113, 133, 0.22); }
-    .fit-card h3,
-    .gain-card h3,
-    .discover-card h3,
-    .testimonial-card h3 {
-      margin: 0 0 12px;
-      font-size: 1.1rem;
-    }
-    .check-list,
-    .cross-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: grid;
-      gap: 12px;
-    }
-    .check-list li,
-    .cross-list li {
-      position: relative;
-      padding-left: 28px;
-      color: var(--muted);
-    }
-    .check-list li::before,
-    .cross-list li::before {
-      position: absolute;
-      left: 0;
-      top: 1px;
-      font-weight: 900;
-    }
-    .check-list li::before { content: "✓"; color: var(--success); }
-    .cross-list li::before { content: "×"; color: var(--danger); }
-    .bonus-layout {
-      display: grid;
-      grid-template-columns: minmax(290px, 0.95fr) minmax(0, 1.05fr);
-      gap: 22px;
-      align-items: stretch;
-    }
-    .workbook-card {
-      border-radius: 28px;
-      padding: 18px;
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(160deg, rgba(124,58,237,0.24), rgba(15,23,42,0.92) 48%, rgba(34,211,238,0.08));
-      border: 1px solid rgba(124, 58, 237, 0.22);
-      box-shadow: var(--shadow);
-    }
-    .workbook-mock {
-      min-height: 360px;
-      border-radius: 22px;
-      border: 1px dashed rgba(255,255,255,0.18);
-      background:
-        linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
-        rgba(2, 6, 23, 0.42);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 28px;
-    }
-    .workbook-mock strong {
-      font-size: 1.2rem;
-      line-height: 1.2;
-      max-width: 220px;
-    }
-    .workbook-mock small {
-      color: var(--muted-2);
-      margin-top: 10px;
-      max-width: 220px;
-      display: block;
-    }
-    .pricing-box,
-    .guarantee,
-    .cta-box {
-      border-radius: 28px;
-      padding: 28px;
-      position: relative;
-      overflow: hidden;
-    }
-    .pricing-box {
-      background: linear-gradient(160deg, rgba(103,232,249,0.12), rgba(15,23,42,0.88) 38%, rgba(124,58,237,0.18));
-    }
-    .price {
-      display: flex;
-      align-items: flex-end;
-      gap: 10px;
-      margin: 8px 0 18px;
-    }
-    .price strong {
-      font-size: clamp(3rem, 6vw, 4.5rem);
-      line-height: 0.9;
-      letter-spacing: -0.06em;
-    }
-    .price span {
-      font-size: 1rem;
-      color: var(--muted);
-      margin-bottom: 8px;
-    }
-    .testimonial-card {
-      min-height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 18px;
-      position: relative;
-      overflow: hidden;
-    }
-    .testimonial-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(160deg, rgba(124,58,237,0.08), transparent 50%, rgba(34,211,238,0.06));
-      pointer-events: none;
-    }
-    .testimonial-avatar {
-      width: 80px;
-      height: 80px;
-      border-radius: 22px;
-      object-fit: cover;
-      display: block;
-      flex-shrink: 0;
-      border: 2px solid rgba(255, 255, 255, 0.55);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.35), 0 0 0 4px rgba(255,255,255,0.06);
-      background: rgba(255,255,255,0.08);
-      position: relative;
-      z-index: 1;
-    }
-    .testimonial-photo {
-      width: 100%;
-      max-width: 280px;
-      height: auto;
-      border-radius: 22px;
-      object-fit: cover;
-      display: block;
-      margin: 0 auto;
-      border: 2px solid rgba(255, 255, 255, 0.55);
-      box-shadow: 0 12px 32px rgba(0,0,0,0.35), 0 0 0 4px rgba(255,255,255,0.06);
-      background: rgba(255,255,255,0.08);
-      position: relative;
-      z-index: 1;
-    }
+    .fit-card h3, .discover-card h3, .video-feature h3, .faq-item h3 { margin: 0 0 12px; font-size: 1.1rem; }
     .chi-sono-section {
       position: relative;
       min-height: 500px;
@@ -488,83 +302,214 @@
       background-position: center;
       border-radius: var(--radius-xl);
       overflow: hidden;
-      margin: 40px auto;
+      margin: 24px auto 0;
       max-width: 1200px;
     }
     .chi-sono-content {
       max-width: 500px;
-      padding: 48px;
+      padding: 32px 24px;
       background: rgba(15, 23, 42, 0.85);
       backdrop-filter: blur(12px);
       border-radius: var(--radius-lg);
-      margin: 48px;
+      margin: 24px;
     }
     .chi-sono-content h2 {
       font-size: clamp(2rem, 4vw, 3rem);
       margin-bottom: 24px;
+      max-width: none;
       background: linear-gradient(90deg, #ffffff 0%, #c4b5fd 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    .chi-sono-content p {
-      font-size: 1.1rem;
-      line-height: 1.8;
-      color: var(--muted);
-      margin-bottom: 16px;
+    .chi-sono-content p { font-size: 1.04rem; line-height: 1.8; color: var(--muted); margin-bottom: 16px; }
+    .video-feature {
+      margin-top: 22px;
+      background: linear-gradient(160deg, rgba(103,232,249,0.1), rgba(8,15,28,0.92) 40%, rgba(124,58,237,0.18));
+      border-color: rgba(103, 232, 249, 0.22);
     }
-    .faq-section { padding: 60px 0; }
+    .video-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 18px;
+      align-items: stretch;
+    }
+    .video-copy {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+    .video-copy p:last-child { margin-bottom: 0; }
+    .video-embed {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(196, 181, 253, 0.35);
+      box-shadow: 0 18px 42px rgba(2, 6, 23, 0.45);
+      background: #020617;
+    }
+    .video-embed iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .cta-inline {
+      margin-top: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      align-items: center;
+      text-align: center;
+      background: rgba(15, 23, 42, 0.76);
+      border-color: rgba(124, 58, 237, 0.22);
+    }
+    .cta-inline p { margin: 0; color: var(--muted); }
+    .testimonials-section { margin-top: 20px; }
+    .testimonials-grid { display: grid; grid-template-columns: 1fr; gap: 24px; }
+    .testimonial-full {
+      width: 100%;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(148, 163, 184, 0.12);
+      background: rgba(8, 15, 28, 0.82);
+    }
+    .testimonial-full img { width: 100%; height: auto; display: block; }
     .faq-item {
-      background: rgba(15, 23, 42, 0.6);
-      border: 1px solid rgba(148, 163, 184, 0.15);
-      border-radius: var(--radius-md);
-      margin-bottom: 16px;
+      padding: 0;
       overflow: hidden;
     }
     .faq-question {
-      padding: 24px 28px;
-      font-weight: 700;
-      font-size: 1.1rem;
-      cursor: pointer;
+      width: 100%;
+      padding: 22px;
+      font: inherit;
+      font-weight: 800;
+      text-align: left;
+      color: var(--text);
+      background: transparent;
+      border: 0;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      transition: background 0.2s;
-    }
-    .faq-question:hover {
-      background: rgba(124, 58, 237, 0.1);
-    }
-    .faq-answer {
-      padding: 0 28px 24px;
-      color: var(--muted);
-      line-height: 1.7;
-      display: none;
-    }
-    .faq-item.active .faq-answer {
-      display: block;
-    }
-    .faq-item.active .faq-question::after {
-      transform: rotate(180deg);
+      justify-content: space-between;
+      gap: 12px;
+      cursor: pointer;
     }
     .faq-question::after {
-      content: "▼";
-      font-size: 0.8rem;
-      transition: transform 0.3s;
+      content: '▾';
+      color: #67e8f9;
+      font-size: 1rem;
+      transition: transform .2s ease;
+      flex-shrink: 0;
     }
-    @media (max-width: 980px) {
-      .hero-content { min-height: 350px; }
+    .faq-item.active .faq-question::after { transform: rotate(180deg); }
+    .faq-answer {
+      display: none;
+      padding: 0 22px 22px;
+      color: var(--muted);
     }
-    @media (max-width: 768px) {
-      .problem-grid, .discover-grid, .gain-grid, .testimonials-grid, .fit-grid { grid-template-columns: 1fr; }
-      .bonus-layout { grid-template-columns: 1fr; }
-      .chi-sono-section { margin: 24px; }
-      .chi-sono-content { margin: 24px; padding: 32px; }
+    .faq-item.active .faq-answer { display: block; }
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 6, 23, 0.72);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      z-index: 100;
+    }
+    .modal-backdrop.is-open { display: flex; }
+    .modal {
+      width: min(100%, 520px);
+      background: linear-gradient(180deg, rgba(15, 23, 42, 0.98), rgba(8, 15, 28, 0.96));
+      border: 1px solid rgba(124, 58, 237, 0.22);
+      border-radius: 28px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      background: rgba(15, 23, 42, 0.8);
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+    .modal h3 { margin: 0 0 10px; font-size: 1.6rem; letter-spacing: -0.03em; }
+    .modal p { color: var(--muted); }
+    .form-stack { display: grid; gap: 14px; margin-top: 18px; }
+    .field {
+      width: 100%;
+      border-radius: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      background: rgba(15, 23, 42, 0.82);
+      padding: 16px 18px;
+      color: #fff;
+      font: inherit;
+    }
+    .field:focus {
+      outline: none;
+      border-color: rgba(103, 232, 249, 0.8);
+      box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.12);
+    }
+    .form-note, .form-status {
+      font-size: 0.94rem;
+      color: var(--muted-2);
+      margin: 0;
+    }
+    .form-note {
+      color: #cbd5e1;
+    }
+    .consent-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.94rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .consent-check input {
+      margin-top: 4px;
+      flex: 0 0 auto;
+    }
+    .consent-check a {
+      color: #67e8f9;
+      text-decoration: underline;
+    }
+    .form-status.error { color: #fda4af; }
+    .form-status.success { color: #86efac; }
+    footer { text-align:center; padding:28px 16px 8px; color:var(--muted-2); font-size:0.92rem; }
+
+    @media (min-width: 769px) {
+      .wrap { width: min(var(--max), calc(100% - 40px)); padding-top: 24px; }
+      .hero { padding: 32px; }
+      .hero-content { padding: 32px; min-height: 400px; }
+      .btn { width: auto; }
+      .problem-grid { grid-template-columns: 1.05fr 0.95fr; }
+      .discover-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .fit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .video-layout { grid-template-columns: 1fr; }
+      .section { padding: 32px; }
+      h2 { max-width: none; }
+      .section-header.compact-title h2 { max-width: 22ch; }
+      .problem-header h2 {
+        font-size: clamp(2.4rem, 3.35vw, 3.5rem);
+      }
     }
   </style>
 </head>
 <body>
   <main class="wrap">
-    <!-- HERO -->
     <section class="hero">
       <div class="eyebrow">Webinar Gratuito</div>
       <div class="hero-grid">
@@ -572,28 +517,27 @@
           <h1>Come smettere di fare<br><span class="headline-accent">tutto da solo</span></h1>
           <p class="subtitle-kicker">Scopri come costruire un sistema AI che lavora al posto tuo</p>
           <p class="hero-copy">
-            Se oggi usi ChatGPT, Claude o altri tool AI "a mano" ma non hai ancora un sistema che lavora per te, questo webinar ti mostra cosa cambia quando smetti di fare tutto da solo.
+            Se oggi usi ChatGPT, Gemini o altri tool AI "a mano" ma non hai ancora un sistema che lavora per te, questo webinar ti mostra cosa cambia quando smetti di fare tutto da solo.
           </p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#iscrizione">Voglio iscrivermi gratuitamente</a>
+            <button class="btn btn-primary" type="button" data-open-modal>Voglio iscrivermi gratuitamente</button>
           </div>
           <div class="hero-meta">
-            <span>📅 Data: da definire</span>
+            <span>📅 Data: Venerdì 19 Giugno ore 18.15</span>
             <span>⏱️ Durata: 60 minuti</span>
-            <span>💻 Online su Zoom</span>
+            <span>💻 Online su Google Meet</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SEZIONE 1: IL PROBLEMA -->
     <section class="section">
-      <div class="section-header">
+      <div class="section-header compact-title problem-header">
         <div class="section-tag">Il problema</div>
         <h2>La frustrazione di chi lavora da solo</h2>
       </div>
       <div class="problem-grid">
-        <div class="panel text-stack" style="display:flex;flex-direction:column;gap:18px;">
+        <div class="panel" style="display:flex;flex-direction:column;gap:18px;">
           <p class="lead">Se ti riconosci in questa situazione, questo webinar è per te:</p>
           <ul class="bullet-list">
             <li>Passi ore a scrivere contenuti, email, proposte — ogni giorno da capo</li>
@@ -609,7 +553,6 @@
       </div>
     </section>
 
-    <!-- SEZIONE 2: LA SVOLTA -->
     <section class="section">
       <div class="section-header">
         <div class="section-tag">La soluzione</div>
@@ -617,25 +560,24 @@
       </div>
       <div class="fit-grid">
         <div class="fit-card good">
-          <h3>✓ Un sistema che prepara i tuoi contenuti mentre tu fai altro</h3>
-          <p>Non devi più inventarti cosa scrivere ogni giorno. Il sistema lo fa per te, nel tuo tono.</p>
+          <h3>✓ Un assistente AI costruito attorno al tuo business</h3>
+          <p>Non un tool generico, ma un supporto che può aiutarti a gestire meglio informazioni, priorità e operatività.</p>
         </div>
         <div class="fit-card good">
-          <h3>✓ Un assistente AI che conosce il tuo business</h3>
-          <p>Risponde alle email, qualifica i lead, gestisce le richieste — 24/7, senza stancarsi.</p>
+          <h3>✓ Più chiarezza su cosa fare e cosa smettere di fare</h3>
+          <p>Quando tutto passa da te, il problema non è solo il tempo: è il caos decisionale. Qui inizi a ridurlo.</p>
         </div>
         <div class="fit-card good">
-          <h3>✓ Workflow automatici che ti fanno risparmiare ore</h3>
-          <p>I task ripetitivi girano in background. Tu ti occupi di ciò che conta davvero.</p>
+          <h3>✓ Esecuzione più rapida su contenuti, task e attività ripetitive</h3>
+          <p>Molte cose che oggi ti portano via energia possono diventare più semplici, più veloci e meno pesanti.</p>
         </div>
         <div class="fit-card good">
-          <h3>✓ Più tempo per strategia, clienti, crescita</h3>
-          <p>Non serve assumere. Un sistema che lavora al posto tuo, sempre disponibile.</p>
+          <h3>✓ Le basi di un sistema che ti alleggerisce davvero</h3>
+          <p>Il punto non è automatizzare tutto in un giorno. Il punto è iniziare a costruire un modo di lavorare più intelligente.</p>
         </div>
       </div>
     </section>
 
-    <!-- SEZIONE 3: COSA IMPARERAI -->
     <section class="section">
       <div class="section-header">
         <div class="section-tag">Contenuti</div>
@@ -643,25 +585,39 @@
       </div>
       <div class="discover-grid">
         <div class="discover-card">
-          <h3>1. Perché l'AI "a mano" non basta più</h3>
-          <p>Il vero problema non è la tecnologia — è l'assenza di un sistema. Ti mostro cosa cambia quando smetti di usare l'AI come tool e inizi a usarla come asset.</p>
+          <h3>1. Perché l’AI “a mano” non basta più</h3>
+          <p>Il limite non è l’AI. Il limite è usarla senza struttura. Ti mostrerò cosa cambia quando passi dal tool al sistema.</p>
         </div>
         <div class="discover-card">
-          <h3>2. I 3 workflow da automatizzare subito</h3>
-          <p>Content creation, risposta email, qualifica lead. Esempi concreti di come questi processi possono girare in automatico senza perdere la tua voce.</p>
+          <h3>2. Una demo concreta di cosa puoi iniziare a fare già oggi</h3>
+          <p>Vedrai dal vivo come può funzionare un assistente AI costruito attorno al tuo business e perché questo può alleggerire davvero la tua operatività.</p>
         </div>
         <div class="discover-card">
-          <h3>3. Come costruire il tuo primo sistema</h3>
-          <p>Nessuna competenza tecnica richiesta. Il metodo passo-passo per passare da "uso l'AI a caso" a "ho un sistema che lavora per me".</p>
+          <h3>3. Come iniziare a costruire il tuo sistema senza complicarti la vita</h3>
+          <p>Ti farò vedere un approccio pratico per partire in modo semplice, utile e coerente con il tuo business.</p>
         </div>
       </div>
-      <div class="card quote-card" style="margin-top: 22px;">
-        <strong>4. Demo live: vedere OpenClaw in azione</strong>
-        <p style="margin: 0; color: var(--muted);">Mostro un sistema reale che risponde alle email, crea contenuti e gestisce lead — tutto in automatico, con la voce del proprietario.</p>
+
+      <div class="video-feature" id="demo-video-webinar">
+        <div class="section-tag" style="margin-bottom:10px;">Demo pratica</div>
+        <h3 style="margin:0; font-size:clamp(1.6rem, 4.4vw, 2.45rem); letter-spacing:-0.03em;">Acquisizione Lead Automatica</h3>
+        <p style="margin:8px 0 18px; font-size:0.95rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:#cbd5e1;">ORE operative risparmiate</p>
+        <div class="video-layout">
+          <div class="video-embed">
+            <iframe src="https://player.vimeo.com/video/1201590048?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;dnt=1" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media" title="Demo webinar OpenClaw"></iframe>
+          </div>
+        </div>
+        <div class="video-copy" style="margin-top:18px;">
+          <p>Qui non vedi teoria: vedi una demo pratica in cui parte la ricerca lead, i contatti entrano in ActiveCampaign, viene separato cosa riceve email e cosa riceve SMS, e diventa evidente quante ore operative puoi risparmiare togliendo il lavoro manuale ripetitivo.</p>
+          <p>È il punto in cui capisci cosa succede quando l'AI smette di essere usata “a mano” e inizia a produrre output reale nel tuo flusso di lavoro.</p>
+        </div>
+        <div class="cta-inline">
+          <p>Se questa è la parte che vuoi vedere applicata al tuo business, blocca subito il posto.</p>
+          <button class="btn btn-primary" type="button" data-open-modal>Partecipo al webinar</button>
+        </div>
       </div>
     </section>
 
-    <!-- SEZIONE 4: PER CHI È -->
     <section class="section">
       <div class="section-header">
         <div class="section-tag">Destinatari</div>
@@ -677,7 +633,7 @@
           <p>Chi gestisce tutto da solo e ha bisogno di un sistema che lo supporti</p>
         </div>
         <div class="fit-card good">
-          <h3>Coach & Formatori</h3>
+          <h3>Coach &amp; Formatori</h3>
           <p>Chi crea contenuti, gestisce clienti e vuole automatizzare senza perdere autenticità</p>
         </div>
         <div class="fit-card good">
@@ -687,7 +643,31 @@
       </div>
     </section>
 
-    <!-- SEZIONE CHI SONO -->
+    <section class="section">
+      <div class="section-header">
+        <div class="section-tag">Filtro</div>
+        <h2>Per chi non è</h2>
+      </div>
+      <div class="fit-grid">
+        <div class="fit-card bad">
+          <h3>Non è per chi cerca il trucco magico</h3>
+          <p>Se vuoi una scorciatoia senza mettere ordine nel tuo business, questo webinar non ti serve.</p>
+        </div>
+        <div class="fit-card bad">
+          <h3>Non è per chi vuole solo teoria</h3>
+          <p>Qui si parla di sistemi applicati, non di contenuti da consumare e lasciare lì.</p>
+        </div>
+        <div class="fit-card bad">
+          <h3>Non è per chi non agisce</h3>
+          <p>Se preferisci continuare a guardare tool e prompt senza implementare nulla, non è il momento giusto.</p>
+        </div>
+        <div class="fit-card bad">
+          <h3>Non è per chi non ha un contesto reale</h3>
+          <p>Il webinar è pensato per chi ha già un’attività, clienti o un flusso di lavoro da rendere più efficiente.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="chi-sono-section">
       <div class="chi-sono-content">
         <h2>Io sono Riccardo Romano</h2>
@@ -697,14 +677,262 @@
       </div>
     </section>
 
-    <!-- SEZIONE ISCRIZIONE -->
+    <section class="section testimonials-section">
+      <div class="section-header" style="max-width:none; text-align:center;">
+        <div class="section-tag">Testimonianze</div>
+        <h2 style="max-width:none;">Cosa dice chi ha lavorato con me</h2>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-full">
+          <img src="/ocae/assets/testimonial-1.png" alt="Testimonianza 1 - Golia Pezzulla" />
+        </div>
+        <div class="testimonial-full">
+          <img src="/ocae/assets/testimonial-2.png" alt="Testimonianza 2 - Sarah Zama" />
+        </div>
+        <div class="testimonial-full">
+          <img src="/ocae/assets/testimonial-3.png" alt="Testimonianza 3 - Giovanni Drago" />
+        </div>
+        <div class="testimonial-full">
+          <img src="/ocae/assets/testimonial-4.png" alt="Testimonianza 4 - Marco Coltro" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <div class="section-tag">FAQ</div>
+        <h2>Domande frequenti</h2>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-item active">
+          <button class="faq-question" type="button">Serve essere tecnici per seguire il webinar?</button>
+          <div class="faq-answer">
+            <p>No. Il webinar è pensato per chi usa già tool AI ma non ha ancora un sistema. Ti faccio vedere i passaggi in modo pratico e comprensibile.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">Vedrò esempi concreti o solo spiegazioni?</button>
+          <div class="faq-answer">
+            <p>Vedrai una demo pratica con ricerca lead, invio in ActiveCampaign, distinzione tra email e SMS e impatto diretto sul tempo operativo risparmiato.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">Quanto dura il webinar?</button>
+          <div class="faq-answer">
+            <p>60 minuti. Abbastanza per mostrarti il sistema senza perdere tempo in teoria inutile.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">Dove ricevo il link per partecipare?</button>
+          <div class="faq-answer">
+            <p>Riceverai il link Google Meet via email un’ora prima dell’evento, insieme al reminder finale.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section" id="iscrizione">
       <div class="section-header" style="max-width: 100%; text-align: center;">
         <div class="section-tag">Iscrizione</div>
-        <h2>Riserva il tuo posto gratuito</h2>
-        <p class="section-intro" style="max-width: 600px; margin: 14px auto 0;">Posti limitati per garantire interazione e domande. Ti invieremo il link Zoom prima dell'evento.</p>
+        <h2 style="max-width:none;">Riserva il tuo posto gratuito</h2>
+        <p class="section-intro" style="max-width: 600px; margin: 14px auto 0;">Posti limitati per garantire interazione e domande. Ti invieremo il link Google Meet un'ora prima dell'evento.</p>
       </div>
       <div class="hero-actions" style="justify-content: center; margin-top: 32px;">
-        <a class="btn btn-primary" href="#">Voglio iscrivermi al webinar</a>
+        <button class="btn btn-primary" type="button" data-open-modal>Voglio iscrivermi al webinar</button>
       </div>
-      <p style="text-align: center; margin-top: 28px; color: var(--muted-2); font-size
+      <p style="text-align: center; margin-top: 28px; color: var(--muted-2); font-size: 0.95rem;">Compila il modulo e blocca il tuo posto. Riceverai conferma e istruzioni direttamente via email.</p>
+    </section>
+
+    <footer>©2026 Riccardo Romano. Tutti i diritti riservati.</footer>
+  </main>
+
+  <div class="modal-backdrop" id="webinar-modal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="webinar-modal-title">
+      <button class="modal-close" type="button" id="close-modal" aria-label="Chiudi">×</button>
+      <h3 id="webinar-modal-title">Iscriviti al webinar</h3>
+      <p>Inserisci il nome e la tua migliore mail</p>
+      <form class="form-stack" id="webinar-form" novalidate>
+        <input class="field" type="text" name="name" placeholder="Nome" autocomplete="name" required data-required-message="Inserisci il tuo nome." />
+        <input class="field" type="email" name="email" placeholder="Email" autocomplete="email" required data-required-message="Inserisci la tua email." data-email-message="Inserisci un indirizzo email valido." />
+        <label class="consent-check">
+          <input type="checkbox" name="privacyAccepted" required data-required-message="Devi accettare l’informativa privacy per iscriverti." />
+          <span>Ho letto l’<a href="https://pages.riccardoromano.biz/privacy-policy" target="_blank" rel="noopener noreferrer">Informativa Privacy</a> e acconsento al trattamento dei miei dati personali per gestire la mia iscrizione al webinar.</span>
+        </label>
+        <label class="consent-check">
+          <input type="checkbox" name="updatesAccepted" />
+          <span>Acconsento a ricevere via email contenuti, aggiornamenti e comunicazioni promozionali relative ai servizi di Riccardo Romano.</span>
+        </label>
+        <button class="btn btn-primary" type="submit">Conferma iscrizione</button>
+        <p class="form-note">I tuoi dati saranno trattati nel rispetto della normativa privacy vigente. Potrai disiscriverti in qualsiasi momento dalle comunicazioni promozionali.</p>
+        <p class="form-status" id="form-status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const modal = document.getElementById('webinar-modal');
+    const openButtons = document.querySelectorAll('[data-open-modal]');
+    const closeButton = document.getElementById('close-modal');
+    const form = document.getElementById('webinar-form');
+    const formStatus = document.getElementById('form-status');
+    const faqButtons = document.querySelectorAll('.faq-question');
+    const requiredFields = form.querySelectorAll('[required]');
+    const submitButton = form.querySelector('button[type="submit"]');
+    const webinarRegisterUrl = new URL('/api/webinar-register', window.location.origin).toString();
+    let hasTrackedFormOpen = false;
+
+    function trackMetaEvent(name, params) {
+      if (typeof window.fbq !== 'function') return;
+      try {
+        window.fbq('trackCustom', name, params || {});
+      } catch (error) {
+        console.warn('[webinar] meta tracking error', error);
+      }
+    }
+
+    function openModal() {
+      modal.classList.add('is-open');
+      modal.setAttribute('aria-hidden', 'false');
+      if (!hasTrackedFormOpen) {
+        trackMetaEvent('WebinarFormOpen');
+        hasTrackedFormOpen = true;
+      }
+      const firstInput = form.querySelector('input');
+      if (firstInput) firstInput.focus();
+    }
+
+    function closeModal() {
+      modal.classList.remove('is-open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+    openButtons.forEach((button) => {
+      button.addEventListener('click', openModal);
+    });
+
+    closeButton.addEventListener('click', closeModal);
+
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+    });
+
+    faqButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const item = button.closest('.faq-item');
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach((entry) => entry.classList.remove('active'));
+        if (!isActive) item.classList.add('active');
+      });
+    });
+
+    function getValidationMessage(field) {
+      if (field.validity.valueMissing) {
+        return field.dataset.requiredMessage || 'Compila questo campo.';
+      }
+
+      if (field.validity.typeMismatch && field.type === 'email') {
+        return field.dataset.emailMessage || 'Inserisci un indirizzo email valido.';
+      }
+
+      return '';
+    }
+
+    function applyFieldError(field) {
+      const message = getValidationMessage(field);
+      field.setCustomValidity(message);
+      return message;
+    }
+
+    function clearFieldError(field) {
+      field.setCustomValidity('');
+    }
+
+    requiredFields.forEach((field) => {
+      field.addEventListener('invalid', () => {
+        applyFieldError(field);
+      });
+
+      field.addEventListener('input', () => {
+        clearFieldError(field);
+      });
+
+      field.addEventListener('change', () => {
+        clearFieldError(field);
+      });
+    });
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const invalidField = Array.from(requiredFields).find((field) => {
+        clearFieldError(field);
+        const message = applyFieldError(field);
+        return Boolean(message);
+      });
+
+      if (invalidField) {
+        invalidField.reportValidity();
+        formStatus.textContent = getValidationMessage(invalidField);
+        formStatus.className = 'form-status error';
+        invalidField.focus();
+        return;
+      }
+
+      formStatus.textContent = 'Invio in corso...';
+      formStatus.className = 'form-status';
+      submitButton.disabled = true;
+
+      try {
+        const payload = {
+          name: form.name.value.trim(),
+          email: form.email.value.trim(),
+          privacyAccepted: form.privacyAccepted.checked,
+          updatesAccepted: form.updatesAccepted.checked
+        };
+
+        const response = await fetch(webinarRegisterUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload),
+          credentials: 'same-origin'
+        });
+
+        const contentType = response.headers.get('content-type') || '';
+        const result = contentType.includes('application/json')
+          ? await response.json().catch(() => null)
+          : null;
+
+        if (!response.ok) {
+          throw new Error(result?.message || 'Non sono riuscito a completare l’iscrizione. Riprova tra poco.');
+        }
+
+        if (!result?.ok) {
+          throw new Error(result?.message || 'Iscrizione non completata. Riprova tra poco.');
+        }
+
+        formStatus.textContent = 'Iscrizione completata. Reindirizzamento...';
+        formStatus.className = 'form-status success';
+        form.reset();
+        hasTrackedFormOpen = false;
+        setTimeout(() => {
+          window.location.href = '/webinar/thank-you';
+        }, 500);
+      } catch (error) {
+        const isNetworkError = error instanceof TypeError;
+        formStatus.textContent = isNetworkError
+          ? 'Connessione momentaneamente non disponibile. Controlla la rete e riprova tra pochi secondi.'
+          : (error.message || 'Errore temporaneo. Riprova tra poco.');
+        formStatus.className = 'form-status error';
+      } finally {
+        submitButton.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
