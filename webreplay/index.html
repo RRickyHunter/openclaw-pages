@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Replay Webinar | Guarda fino alla fine</title>
+  <meta name="description" content="Rivedi il replay del webinar e guarda fino alla fine per capire quali problemi evitare oggi e se questo approccio è il passo giusto per smettere di fare tutto da solo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #070b14;
+      --bg-soft: #0e1525;
+      --panel: rgba(15, 23, 42, 0.88);
+      --panel-strong: #0f172a;
+      --line: rgba(148, 163, 184, 0.18);
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --muted-2: #94a3b8;
+      --accent: #7c3aed;
+      --accent-2: #22d3ee;
+      --accent-3: #f59e0b;
+      --success: #34d399;
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --shadow: 0 30px 80px rgba(2, 6, 23, 0.6);
+      --max: 1160px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      line-height: 1.65;
+      background:
+        radial-gradient(circle at 15% 15%, rgba(124, 58, 237, 0.32), transparent 28%),
+        radial-gradient(circle at 85% 10%, rgba(34, 211, 238, 0.22), transparent 24%),
+        radial-gradient(circle at 50% 55%, rgba(245, 158, 11, 0.1), transparent 32%),
+        linear-gradient(180deg, #04070f 0%, #090d17 38%, #05070c 100%);
+      -webkit-font-smoothing: antialiased;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 34px 34px;
+      mask-image: radial-gradient(circle at center, black 45%, transparent 88%);
+      opacity: 0.28;
+    }
+    a { color: inherit; }
+    .wrap {
+      width: min(var(--max), calc(100% - 24px));
+      margin: 0 auto;
+      padding: 10px 0 88px;
+      position: relative;
+      z-index: 1;
+    }
+    .hero, .section {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(124, 58, 237, 0.18);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.92), rgba(8, 15, 28, 0.9));
+      box-shadow: var(--shadow);
+    }
+    .hero { padding: 14px; }
+    .hero::after, .section::after {
+      content: "";
+      position: absolute;
+      inset: auto -12% -30% auto;
+      width: 380px;
+      height: 380px;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.28), transparent 68%);
+      filter: blur(12px);
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      padding: 22px 20px 24px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(15, 23, 42, 0.5), rgba(8, 15, 28, 0.68));
+      border: 1px solid rgba(124, 58, 237, 0.16);
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(34, 211, 238, 0.22);
+      background: rgba(15, 23, 42, 0.72);
+      color: #c4b5fd;
+      font-weight: 800;
+      font-size: 0.76rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2.2rem, 7vw, 4.4rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+      font-weight: 900;
+      max-width: 13ch;
+    }
+    .headline-accent {
+      background: linear-gradient(90deg, #ffffff 0%, #c4b5fd 36%, #67e8f9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-copy {
+      margin: 18px 0 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+    .hero-note {
+      margin-top: 16px;
+      color: #e2e8f0;
+      font-size: 0.98rem;
+      font-weight: 600;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 60px;
+      padding: 0 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 900;
+      font-size: 1.05rem;
+      line-height: 1.15;
+      text-align: center;
+      transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+      border: 0;
+      cursor: pointer;
+      width: 100%;
+      max-width: 460px;
+    }
+    .btn-primary {
+      color: #08111f;
+      background: linear-gradient(135deg, #67e8f9 0%, #a78bfa 42%, #f59e0b 100%);
+      box-shadow: 0 18px 45px rgba(124, 58, 237, 0.35);
+    }
+    .btn-secondary {
+      color: #e2e8f0;
+      background: rgba(15, 23, 42, 0.72);
+      border: 1px solid rgba(148, 163, 184, 0.24);
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .hero-actions, .cta-stack { display:flex; flex-wrap:wrap; gap:14px; margin-top:24px; justify-content:center; width:100%; }
+    .section { margin-top: 20px; padding: 28px 22px; }
+    .section-header { max-width: 860px; margin: 0 auto 22px; text-align: center; position: relative; z-index: 1; }
+    .section-tag {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: #67e8f9;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    h2 {
+      margin: 0;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      line-height: 1.02;
+      letter-spacing: -0.045em;
+      text-wrap: balance;
+    }
+    .section-intro { margin: 14px 0 0; color: var(--muted); font-size: 1.03rem; }
+    .video-shell {
+      position: relative;
+      z-index: 1;
+      max-width: 920px;
+      margin: 0 auto;
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(148, 163, 184, 0.15);
+      background: rgba(8, 15, 28, 0.88);
+      box-shadow: 0 25px 70px rgba(2, 6, 23, 0.5);
+    }
+    .video-shell iframe {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border: 0;
+    }
+    .video-caption {
+      margin: 0;
+      padding: 16px 18px 0;
+      text-align: center;
+      font-size: 0.98rem;
+      color: var(--muted);
+      position: relative;
+      z-index: 1;
+    }
+    .cta-note { margin: 0; color: var(--muted); }
+    .sticky-cta {
+      position: sticky;
+      bottom: 14px;
+      z-index: 8;
+      max-width: 920px;
+      margin: 18px auto 0;
+      padding: 14px;
+      border-radius: 24px;
+      background: rgba(7, 11, 20, 0.82);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(103, 232, 249, 0.22);
+      box-shadow: 0 20px 50px rgba(2, 6, 23, 0.45);
+    }
+    .sticky-cta-inner {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+      text-align: center;
+    }
+    .sticky-cta p { margin: 0; color: #e2e8f0; font-weight: 700; }
+    .points {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: 1fr;
+      position: relative;
+      z-index: 1;
+    }
+    .card {
+      border-radius: 22px;
+      padding: 22px;
+      background: rgba(8, 15, 28, 0.8);
+      border: 1px solid rgba(148, 163, 184, 0.12);
+    }
+    .card h3 { margin: 0 0 10px; font-size: 1.15rem; }
+    .card p { margin: 0; color: var(--muted); }
+    .cta-panel {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+      border-radius: 28px;
+      padding: 26px 22px;
+      background: linear-gradient(180deg, rgba(103, 232, 249, 0.08), rgba(167, 139, 250, 0.08));
+      border: 1px solid rgba(103, 232, 249, 0.2);
+    }
+    .cta-panel h3 { margin: 0 0 12px; font-size: clamp(1.4rem, 3vw, 2rem); }
+    .footer {
+      margin-top: 24px;
+      text-align: center;
+      color: var(--muted-2);
+      font-size: 0.92rem;
+      padding-bottom: 12px;
+    }
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 8px;
+    }
+    .footer-links a {
+      text-decoration: none;
+      color: #cbd5e1;
+    }
+    .footer-links a:hover { text-decoration: underline; }
+    @media (min-width: 768px) {
+      .wrap { padding-top: 12px; }
+      .hero { padding: 18px; }
+      .hero-content { padding: 30px 46px 34px; }
+      .section { padding: 34px 30px; }
+      .points { grid-template-columns: repeat(3, 1fr); }
+      .sticky-cta-inner { flex-direction: row; justify-content: space-between; text-align: left; }
+      .btn { width: auto; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="hero">
+      <div class="hero-content">
+        <div class="eyebrow">Replay webinar</div>
+        <h1>Riguarda il webinar e <span class="headline-accent">arriva fino alla fine</span></h1>
+        <p class="hero-copy">Qui trovi il replay del webinar: una visione chiara, concreta e senza fronzoli su quali siano le problematiche da evitare oggigiorno per poter smettere di fare tutto da solo.</p>
+        <p class="hero-note">Ti consiglio di guardarlo tutto: le parti finali sono quelle che aiutano davvero a capire come applicarlo nel tuo caso.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://pages.riccardoromano.biz/ocaeckout/">Voglio essere un FOUNDER</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="replay">
+      <div class="section-header">
+        <span class="section-tag">Il replay del webinar</span>
+        <h2>Il replay del webinar</h2>
+        <p class="section-intro">Premi play, segui il webinar fino alla fine: è il modo migliore per capire se questo approccio è adatto a te.</p>
+      </div>
+      <div class="video-shell">
+        <iframe
+          src="https://player.vimeo.com/video/1202953045?title=0&byline=0&portrait=0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+          loading="lazy"
+          title="Il replay del webinar"
+        ></iframe>
+      </div>
+      <p class="video-caption">Guardalo fino in fondo: nella parte finale il messaggio si completa e diventa molto più facile capire se questo percorso ha davvero senso per te.</p>
+      <div class="sticky-cta">
+        <div class="sticky-cta-inner">
+          <p>Se mentre guardi ti riconosci nel problema, puoi passare subito allo step successivo.</p>
+          <a class="btn btn-primary" href="https://pages.riccardoromano.biz/ocaeckout/">Sì, il progetto mi piace</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <span class="section-tag">Perché guardarlo tutto</span>
+        <h2>Le risposte utili arrivano quando il quadro si chiude</h2>
+        <p class="section-intro">Questo replay è pensato per portarti da una sensazione confusa a una comprensione concreta di cosa delegare, cosa automatizzare e cosa semplificare davvero.</p>
+      </div>
+      <div class="points">
+        <article class="card">
+          <h3>Capisci il problema reale</h3>
+          <p>Non è “manca l'AI”. Spesso manca un sistema che trasformi tutto in continuità operativa, senza aggiungere caos.</p>
+        </article>
+        <article class="card">
+          <h3>Vedi come il modello prende forma</h3>
+          <p>Il webinar mette ordine tra idee, strumenti e priorità, così puoi capire cosa ha senso implementare davvero.</p>
+        </article>
+        <article class="card">
+          <h3>Arrivi a capire se è il passo giusto per te adesso</h3>
+          <p>Niente pressione inutile: solo abbastanza chiarezza per decidere se OpenClaw Activation Experience è il passo giusto per te adesso.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header">
+        <span class="section-tag">Se vuoi andare avanti</span>
+        <h2>Quando hai finito il replay, il passo successivo è già pronto</h2>
+        <p class="section-intro">Se il webinar ti parla davvero, puoi usare la CTA qui sotto per entrare direttamente in OpenClaw Activation Experience senza passaggi superflui.</p>
+      </div>
+      <div class="cta-panel">
+        <h3>Guarda. Capisci. Poi decidi.</h3>
+        <div class="cta-stack">
+          <a class="btn btn-primary" href="https://pages.riccardoromano.biz/ocaeckout/">Vai alla pagina di attivazione</a>
+          <a class="btn btn-secondary" href="#replay">Torna al video</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="footer">
+      <div>© 2026 Riccardo Romano. Tutti i diritti riservati.</div>
+      <div class="footer-links">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/termini-di-servizio/">Termini</a>
+      </div>
+    </div>
+  </main>
+</body>
+</html>
