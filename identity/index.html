@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IDENTITY Builder | Definisci l’identità del tuo bot</title>
+  <meta name="description" content="Crea il file IDENTITY.md del tuo bot in italiano: scegli il livello di profondità, rispondi alle domande guidate e scarica subito il file finale pronto da usare." />
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg-soft: #0d1728;
+      --panel: rgba(12, 22, 38, 0.78);
+      --panel-strong: rgba(9, 17, 31, 0.96);
+      --line: rgba(255, 255, 255, 0.12);
+      --line-strong: rgba(255, 255, 255, 0.18);
+      --text: #f7f9fc;
+      --muted: #a7b5ca;
+      --accent: #8b5cf6;
+      --accent-2: #22d3ee;
+      --accent-3: #f59e0b;
+      --success: #34d399;
+      --danger: #f87171;
+      --shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(139, 92, 246, 0.18), transparent 32%),
+        radial-gradient(circle at top right, rgba(34, 211, 238, 0.16), transparent 24%),
+        linear-gradient(180deg, #06101d 0%, #0a1322 42%, #07111f 100%);
+      color: var(--text);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    a { color: inherit; }
+    .page { width: min(var(--max), calc(100% - 28px)); margin: 0 auto; padding: 28px 0 72px; }
+    .hero {
+      position: relative; overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid var(--line); border-radius: 32px; box-shadow: var(--shadow);
+      padding: clamp(28px, 5vw, 56px);
+      display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr); gap: 26px; align-items: center;
+    }
+    .hero::before,.hero::after { content:""; position:absolute; border-radius:999px; filter:blur(10px); opacity:.75; pointer-events:none; }
+    .hero::before { width:240px; height:240px; right:-60px; top:-60px; background: radial-gradient(circle, rgba(139, 92, 246, 0.3), transparent 70%); }
+    .hero::after { width:220px; height:220px; left:35%; bottom:-120px; background: radial-gradient(circle, rgba(34, 211, 238, 0.25), transparent 70%); }
+    .eyebrow {
+      display:inline-flex; align-items:center; gap:8px; padding:8px 14px; border-radius:999px;
+      border:1px solid rgba(139, 92, 246, 0.32); background: rgba(139, 92, 246, 0.1); color:#d8c4ff;
+      font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:.12em; margin-bottom:18px;
+    }
+    h1 { margin:0 0 14px; font-size:clamp(2.2rem, 5vw, 4.4rem); line-height:.98; letter-spacing:-.04em; }
+    .hero-subtitle { margin:0 0 16px; color:#dbe6f7; font-size:clamp(1.02rem, 2vw, 1.35rem); line-height:1.35; max-width:58ch; }
+    .hero-copy { margin:0 0 24px; color:var(--muted); max-width:58ch; font-size:1rem; }
+    .hero-actions { display:flex; flex-wrap:wrap; gap:12px; margin-bottom:18px; }
+    .button,.button-secondary,.download-button {
+      appearance:none; border:0; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      border-radius:999px; font-weight:800; transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease, background .18s ease;
+    }
+    .button,.download-button { padding:15px 22px; color:#06101d; background:linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow:0 18px 42px rgba(34, 211, 238, 0.2); }
+    .button:hover,.button-secondary:hover,.download-button:hover { transform:translateY(-2px); }
+    .button-secondary { padding:14px 20px; color:var(--text); background:rgba(255,255,255,0.04); border:1px solid var(--line); }
+    .hero-points { margin:0; padding:0; list-style:none; display:grid; gap:10px; color:#d8e3f4; font-size:.96rem; }
+    .hero-points li { display:flex; align-items:flex-start; gap:10px; }
+    .hero-points li::before { content:"✦"; color:var(--accent-2); margin-top:1px; flex:0 0 auto; }
+    .hero-card { position:relative; z-index:1; background:linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03)); border:1px solid var(--line); border-radius:24px; padding:22px; box-shadow: inset 0 1px 0 rgba(255,255,255,0.04); }
+    .hero-card-label { color:var(--muted); font-size:.84rem; text-transform:uppercase; letter-spacing:.12em; font-weight:800; margin-bottom:10px; }
+    .hero-card-title { margin:0 0 12px; font-size:1.32rem; line-height:1.2; }
+    .hero-card-copy { margin:0 0 18px; color:var(--muted); font-size:.96rem; }
+    .preview-shell { border-radius:18px; border:1px solid rgba(255,255,255,0.08); background:rgba(4, 10, 20, 0.76); padding:16px; font-family:"SFMono-Regular", ui-monospace, Menlo, Monaco, Consolas, monospace; color:#d3f7ff; font-size:.78rem; line-height:1.6; white-space:pre-wrap; min-height:240px; }
+    .section { margin-top:26px; display:grid; grid-template-columns:minmax(0, 0.84fr) minmax(320px, 0.76fr); gap:24px; align-items:start; }
+    .panel { background:var(--panel); border:1px solid var(--line); border-radius:var(--radius-xl); box-shadow:var(--shadow); backdrop-filter:blur(10px); }
+    .builder,.output,.guide,.faq { padding:24px; }
+    .section-heading { margin:0 0 8px; font-size:1.6rem; letter-spacing:-.03em; }
+    .section-copy,.guide p,.faq p,.output-copy { margin:0 0 22px; color:var(--muted); max-width:64ch; }
+    .mode-grid { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:12px; margin-bottom:22px; }
+    .mode-card { position:relative; width:100%; text-align:left; background:rgba(255,255,255,0.03); border:1px solid var(--line); border-radius:18px; padding:16px; color:var(--text); cursor:pointer; transition:border-color .18s ease, transform .18s ease, background .18s ease; }
+    .mode-card:hover { transform:translateY(-2px); border-color:rgba(255,255,255,0.2); }
+    .mode-card.active { background:linear-gradient(180deg, rgba(139,92,246,0.16), rgba(34,211,238,0.08)); border-color:rgba(34,211,238,0.5); box-shadow:inset 0 0 0 1px rgba(255,255,255,0.06); }
+    .mode-card small { display:block; color:var(--muted); margin-bottom:8px; text-transform:uppercase; letter-spacing:.1em; font-size:.72rem; font-weight:800; }
+    .mode-card strong { display:block; margin-bottom:8px; font-size:1rem; }
+    .mode-card span { display:block; color:#d6e1f2; font-size:.92rem; line-height:1.4; }
+    .form-meta { display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; align-items:center; margin-bottom:18px; padding:14px 16px; border-radius:16px; border:1px solid var(--line); background:rgba(255,255,255,0.025); }
+    .form-meta p { margin:0; color:var(--muted); font-size:.92rem; }
+    .question-list { display:grid; gap:16px; }
+    .question-card { border:1px solid var(--line); border-radius:18px; padding:16px; background:rgba(255,255,255,0.025); }
+    .question-card label { display:block; font-weight:700; margin-bottom:10px; font-size:.96rem; letter-spacing:-.01em; }
+    .question-card textarea,.question-card input[type="text"] { width:100%; border-radius:14px; border:1px solid rgba(255,255,255,0.12); background:rgba(5, 11, 21, 0.82); color:var(--text); padding:14px; font:inherit; resize:vertical; min-height:116px; outline:none; transition:border-color .18s ease, box-shadow .18s ease; }
+    .question-card input[type="text"] { min-height:0; }
+    .question-card textarea:focus,.question-card input[type="text"]:focus { border-color:rgba(34, 211, 238, 0.7); box-shadow:0 0 0 4px rgba(34, 211, 238, 0.08); }
+    .question-card textarea::placeholder,.question-card input[type="text"]::placeholder { color:#7e8ba0; }
+    .choices { display:flex; flex-wrap:wrap; gap:10px; }
+    .choice-pill { position:relative; display:inline-flex; align-items:center; gap:8px; padding:11px 14px; border-radius:999px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.1); cursor:pointer; transition:border-color .18s ease, background .18s ease, transform .18s ease; color:#e7effc; font-size:.92rem; }
+    .choice-pill:hover { transform:translateY(-1px); border-color:rgba(255,255,255,0.2); }
+    .choice-pill input { position:absolute; opacity:0; inset:0; cursor:pointer; }
+    .choice-pill.active { border-color:rgba(34, 211, 238, 0.6); background:rgba(34, 211, 238, 0.12); color:#f2fbff; }
+    .helper { margin-top:8px; color:#8fa1bb; font-size:.83rem; }
+    .builder-actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:22px; }
+    .ghost-button { appearance:none; border-radius:999px; padding:14px 18px; border:1px solid var(--line); background:transparent; color:var(--text); font-weight:700; cursor:pointer; }
+    .output { position:sticky; top:18px; }
+    .status-pill { display:inline-flex; align-items:center; gap:8px; border-radius:999px; padding:8px 12px; font-size:.78rem; font-weight:800; text-transform:uppercase; letter-spacing:.12em; background:rgba(52, 211, 153, 0.12); color:#9cf0cd; border:1px solid rgba(52, 211, 153, 0.22); margin-bottom:16px; }
+    .status-pill.pending { background:rgba(245, 158, 11, 0.12); color:#f9d28b; border-color:rgba(245, 158, 11, 0.25); }
+    .markdown-output { background:rgba(4, 10, 20, 0.84); border:1px solid rgba(255,255,255,0.08); border-radius:20px; padding:18px; min-height:420px; max-height:720px; overflow:auto; white-space:pre-wrap; color:#eef4ff; font-family:"SFMono-Regular", ui-monospace, Menlo, Monaco, Consolas, monospace; font-size:.8rem; line-height:1.66; box-shadow:inset 0 1px 0 rgba(255,255,255,0.03); }
+    .download-button { width:100%; margin-top:16px; text-align:center; }
+    .download-button[aria-disabled="true"] { opacity:.55; cursor:not-allowed; pointer-events:none; }
+    .instructions { margin-top:16px; padding:18px; border-radius:18px; border:1px solid rgba(52, 211, 153, 0.22); background:rgba(52, 211, 153, 0.08); color:#eafef5; }
+    .instructions h3,.guide h2,.faq h2 { margin:0 0 10px; font-size:1.1rem; letter-spacing:-.02em; }
+    .instructions ol,.guide ol,.faq ul { margin:0; padding-left:18px; }
+    .instructions li,.guide li,.faq li { margin-bottom:8px; color:#d9efe5; }
+    .grid-2 { margin-top:24px; display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:24px; }
+    .note { margin-top:16px; border:1px dashed rgba(255,255,255,0.18); border-radius:16px; padding:14px 16px; color:#d4def0; background:rgba(255,255,255,0.03); font-size:.92rem; }
+    .hidden { display:none !important; }
+    @media (max-width:980px) { .hero,.section,.grid-2 { grid-template-columns:1fr; } .output { position:static; } }
+    @media (max-width:760px) { .page { width:min(var(--max), calc(100% - 20px)); padding-top:18px; } .hero,.builder,.output,.guide,.faq { padding:20px; } .mode-grid { grid-template-columns:1fr; } .hero-actions,.builder-actions { flex-direction:column; } .button,.button-secondary,.ghost-button,.download-button { width:100%; } }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div>
+        <div class="eyebrow">IDENTITY Builder</div>
+        <h1>Definisci l’identità del tuo bot</h1>
+        <p class="hero-subtitle">Scegli chi è, che ruolo ha e che tipo di presenza deve incarnare nel tuo lavoro.</p>
+        <p class="hero-copy">Questa pagina crea il file <strong>IDENTITY.md</strong>: raccoglie le tue risposte, le trasforma in istruzioni coerenti e ti permette di scaricare subito la versione finale pronta da inserire nella root del workspace OpenClaw.</p>
+        <div class="hero-actions">
+          <a class="button" href="#builder">Inizia ora</a>
+          <a class="button-secondary" href="#guida">Come funziona</a>
+        </div>
+        <ul class="hero-points">
+          <li>3 modalità guidate: Avvio Rapido, Completa, Dettagliata.</li>
+          <li>Output finale già scritto come un vero <strong>IDENTITY.md</strong>, non come un semplice questionario esportato.</li>
+          <li>Download diretto del file e istruzioni finali corrette per salvarlo nella root del workspace OpenClaw.</li>
+        </ul>
+      </div>
+
+      <aside class="hero-card" aria-label="Anteprima del file IDENTITY.md">
+        <div class="hero-card-label">Anteprima risultato</div>
+        <h2 class="hero-card-title">Un file pronto da usare, chiaro e allineato</h2>
+        <p class="hero-card-copy">Ogni modalità produce una sintesi strutturata con nome, ruolo, presenza, qualità centrali e posizionamento del bot.</p>
+        <div class="preview-shell"># IDENTITY.md
+
+## Nome
+Orione
+
+## Ruolo
+Partner di lavoro
+
+## Presenza
+Lucida, affidabile e vicina.
+
+## Posizionamento
+Un braccio destro fidato che aiuta a tenere ordine, priorità e qualità.
+
+## Frase guida
+Sei una presenza concreta che rende il lavoro più chiaro, ordinato e sostenibile.</div>
+      </aside>
+    </section>
+
+    <section class="section" id="builder">
+      <div class="panel builder">
+        <h2 class="section-heading">Scegli la profondità giusta e compila il builder</h2>
+        <p class="section-copy">Puoi partire veloce oppure definire l’identità in modo più profondo. Le risposte vengono rielaborate per generare un file coerente, utile e leggibile.</p>
+
+        <div class="mode-grid" id="modeGrid" role="tablist" aria-label="Modalità builder IDENTITY">
+          <button class="mode-card active" type="button" data-mode="quick" role="tab" aria-selected="true">
+            <small>4 domande</small>
+            <strong>Avvio Rapido</strong>
+            <span>Per definire velocemente nome, ruolo e presenza del bot.</span>
+          </button>
+          <button class="mode-card" type="button" data-mode="complete" role="tab" aria-selected="false">
+            <small>7 domande</small>
+            <strong>Completa</strong>
+            <span>Per chiarire posizione, qualità e impressione che deve trasmettere.</span>
+          </button>
+          <button class="mode-card" type="button" data-mode="detailed" role="tab" aria-selected="false">
+            <small>15 domande</small>
+            <strong>Dettagliata</strong>
+            <span>Per costruire un’identità più precisa, simbolica e relazionale.</span>
+          </button>
+        </div>
+
+        <div class="form-meta">
+          <p id="modeLabel">Modalità attiva: <strong>Avvio Rapido</strong></p>
+          <p id="questionCount">4 domande</p>
+        </div>
+
+        <form id="identityForm">
+          <div id="questionList" class="question-list"></div>
+          <div class="builder-actions">
+            <button class="button" type="submit">Genera IDENTITY.md</button>
+            <button class="ghost-button" type="button" id="resetButton">Resetta risposte</button>
+          </div>
+        </form>
+      </div>
+
+      <aside class="panel output">
+        <div class="status-pill pending" id="statusPill">In attesa di generazione</div>
+        <p class="output-copy">Quando completi il builder, qui vedrai il file finale <strong>IDENTITY.md</strong> già pronto da scaricare.</p>
+        <pre class="markdown-output" id="markdownOutput"># IDENTITY.md
+
+Compila il builder qui a sinistra e clicca “Genera IDENTITY.md” per vedere il file finale.</pre>
+        <a id="downloadButton" class="download-button" href="#" download="IDENTITY.md" aria-disabled="true">Scarica IDENTITY.md</a>
+
+        <div class="instructions hidden" id="instructionsBox">
+          <h3>Come inserirlo correttamente</h3>
+          <ol>
+            <li>Salva il file scaricato nella <strong>root del workspace OpenClaw</strong> con nome esatto <strong>IDENTITY.md</strong>.</li>
+            <li>Se esiste già un file <strong>IDENTITY.md</strong>, <strong>sostituiscilo</strong> con questa nuova versione.</li>
+            <li>Apri una <strong>nuova sessione</strong> oppure <strong>riavvia il bot</strong> per far rileggere la nuova identità operativa.</li>
+          </ol>
+        </div>
+      </aside>
+    </section>
+
+    <section class="grid-2" id="guida">
+      <div class="panel guide">
+        <h2>Come lavora questo builder</h2>
+        <p>Non esporta semplicemente le tue risposte una sotto l’altra. Le interpreta e le ricompone in un file più ordinato, con sezioni utili per guidare davvero posizione, presenza e ruolo del bot.</p>
+        <ol>
+          <li>Scegli la modalità più adatta al tuo livello di chiarezza.</li>
+          <li>Rispondi alle domande aperte e seleziona le opzioni dove presenti.</li>
+          <li>Genera il file, rileggilo, scaricalo e usalo come <strong>IDENTITY.md</strong> nella root del tuo workspace.</li>
+        </ol>
+        <div class="note">Suggerimento: descrizioni semplici ma specifiche rendono l’identità finale più credibile e utilizzabile.</div>
+      </div>
+
+      <div class="panel faq">
+        <h2>Cosa ottieni alla fine</h2>
+        <p>Il file generato include sempre una struttura leggibile, in italiano, con istruzioni credibili e utili per orientare chi è il bot, come si presenta e che tipo di rapporto deve avere con te.</p>
+        <ul>
+          <li>Nome e ruolo del bot</li>
+          <li>Posizionamento rispetto a te</li>
+          <li>Presenza, energia e qualità centrali</li>
+          <li>Confini identitari e impressione desiderata</li>
+          <li>Frase finale che sintetizza la sua identità</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const modes = {
+      quick: {
+        name: 'Avvio Rapido',
+        questions: [
+          { id: 'name', label: 'Come si chiama il tuo bot?', type: 'text', placeholder: 'Es. Orione' },
+          { id: 'role', label: 'Che ruolo deve avere per te?', type: 'choice', options: ['Assistente operativo', 'Partner di lavoro', 'Organizzatore personale', 'Stratega di supporto', 'Braccio destro esecutivo'] },
+          { id: 'presence', label: 'Che tipo di presenza deve trasmettere?', type: 'choice', options: ['Professionale e affidabile', 'Umana e vicina', 'Lucida e strategica', 'Forte e autorevole', 'Calma e rassicurante'] },
+          { id: 'one_line', label: 'In una frase: chi deve essere questo bot per te?', type: 'textarea', placeholder: 'Es. una presenza concreta che mi aiuta a lavorare meglio senza dispersione.' }
+        ]
+      },
+      complete: {
+        name: 'Completa',
+        questions: [
+          { id: 'name', label: 'Come si chiama il tuo bot?', type: 'text', placeholder: 'Es. Orione' },
+          { id: 'role_life', label: 'Che ruolo deve avere nella tua vita o nel tuo lavoro?', type: 'textarea', placeholder: 'Es. aiutarmi a tenere ordine, priorità e decisioni operative.' },
+          { id: 'positioning', label: 'Come vuoi che si posizioni rispetto a te?', type: 'choice', options: ['Assistente che esegue', 'Collaboratore alla pari', 'Braccio destro fidato', 'Presenza di supporto e guida', 'Figura autonoma ma allineata'] },
+          { id: 'first_impression', label: 'Che impressione deve dare fin dal primo messaggio?', type: 'textarea', placeholder: 'Es. chiarezza, affidabilità e calma operativa.' },
+          { id: 'quality', label: 'Che qualità deve incarnare di più?', type: 'choice', options: ['Affidabilità', 'Chiarezza', 'Precisione', 'Calore umano', 'Autorevolezza', 'Concretezza', 'Visione'] },
+          { id: 'never_seem', label: 'Cosa non deve sembrare mai?', type: 'textarea', placeholder: 'Es. confuso, freddo, finto amichevole o troppo teorico.' },
+          { id: 'figure', label: 'Se dovessi descriverlo come una figura, chi è?', type: 'textarea', placeholder: 'Es. un braccio destro lucido che sa stare sul pezzo senza pesare.' }
+        ]
+      },
+      detailed: {
+        name: 'Dettagliata',
+        questions: [
+          { id: 'name', label: 'Come si chiama il tuo bot?', type: 'text', placeholder: 'Es. Orione' },
+          { id: 'name_reason', label: 'Perché questo nome è giusto per lui?', type: 'textarea', placeholder: 'Es. perché richiama orientamento, visione e presenza stabile.' },
+          { id: 'figure', label: 'Se fosse una figura precisa, chi sarebbe?', type: 'textarea', placeholder: 'Es. un consigliere operativo lucido, presente ma senza ego.' },
+          { id: 'ecosystem_role', label: 'Qual è il suo ruolo reale nel tuo ecosistema?', type: 'textarea', placeholder: 'Es. tenere insieme chiarezza, esecuzione e continuità operativa.' },
+          { id: 'positioning', label: 'Come deve posizionarsi rispetto a te?', type: 'textarea', placeholder: 'Es. vicino, affidabile, capace di agire ma senza invadere.' },
+          { id: 'authority', label: 'Che grado di autorità simbolica vuoi che abbia?', type: 'choice', options: ['Presenza leggera', 'Supporto autorevole', 'Braccio destro forte', 'Figura direttiva ma al servizio', 'Presenza quasi istituzionale'] },
+          { id: 'feeling', label: 'Che sensazione deve lasciare quando appare?', type: 'textarea', placeholder: 'Es. ordine mentale, sollievo e fiducia.' },
+          { id: 'main_quality', label: 'Quale qualità deve rappresentare più di tutte?', type: 'textarea', placeholder: 'Es. chiarezza affidabile.' },
+          { id: 'energy', label: 'Che energia deve avere?', type: 'choice', options: ['Calma', 'Lucida', 'Solida', 'Elegante', 'Intensa', 'Essenziale', 'Protettiva'] },
+          { id: 'relationship', label: 'Che tipo di rapporto deve avere con te?', type: 'textarea', placeholder: 'Es. fidato, diretto, stabile e senza giochi di ruolo inutili.' },
+          { id: 'understand', label: 'Cosa deve capire profondamente di te?', type: 'textarea', placeholder: 'Es. come lavoro, cosa mi blocca e cosa conta davvero per me.' },
+          { id: 'remember', label: 'Quando ti rivolgi a lui, cosa deve ricordarsi sempre?', type: 'textarea', placeholder: 'Es. che deve essere utile, chiaro e orientato al prossimo passo concreto.' },
+          { id: 'not_presence', label: 'Che tipo di presenza non vuoi assolutamente?', type: 'textarea', placeholder: 'Es. paternalista, fumosa, teatrale o passiva.' },
+          { id: 'wrong_now', label: 'Cosa lo renderebbe subito sbagliato ai tuoi occhi?', type: 'textarea', placeholder: 'Es. mancanza di chiarezza, tono artefatto o disallineamento col mio modo di lavorare.' },
+          { id: 'final_identity', label: 'Se dovessi riassumere la sua identità in una frase finale, quale sarebbe?', type: 'textarea', placeholder: 'Es. una presenza lucida e concreta che mi aiuta a lavorare meglio con meno attrito.' }
+        ]
+      }
+    };
+
+    const form = document.getElementById('identityForm');
+    const questionList = document.getElementById('questionList');
+    const modeGrid = document.getElementById('modeGrid');
+    const modeLabel = document.getElementById('modeLabel');
+    const questionCount = document.getElementById('questionCount');
+    const markdownOutput = document.getElementById('markdownOutput');
+    const downloadButton = document.getElementById('downloadButton');
+    const statusPill = document.getElementById('statusPill');
+    const instructionsBox = document.getElementById('instructionsBox');
+    const resetButton = document.getElementById('resetButton');
+
+    let currentMode = 'quick';
+    const answers = { quick: {}, complete: {}, detailed: {} };
+
+    function escapeMarkdown(value) {
+      return String(value || '').replace(/\r/g, '').replace(/\t/g, ' ').replace(/\n{3,}/g, '\n\n').trim();
+    }
+    function sentence(value, fallback = '') {
+      const text = escapeMarkdown(value);
+      if (!text) return fallback;
+      const normalized = text.charAt(0).toUpperCase() + text.slice(1);
+      return /[.!?…]$/.test(normalized) ? normalized : `${normalized}.`;
+    }
+    function bulletLines(items) { return items.filter(Boolean).map(item => `- ${item}`).join('\n'); }
+    function slugText(value, fallback) { const text = escapeMarkdown(value); return text || fallback; }
+    function updateChoiceVisuals(scope) {
+      scope.querySelectorAll('.choice-pill').forEach((pill) => {
+        const input = pill.querySelector('input');
+        pill.classList.toggle('active', Boolean(input && input.checked));
+      });
+    }
+
+    function renderQuestions() {
+      const mode = modes[currentMode];
+      modeLabel.innerHTML = `Modalità attiva: <strong>${mode.name}</strong>`;
+      questionCount.textContent = `${mode.questions.length} domande`;
+      questionList.innerHTML = '';
+
+      mode.questions.forEach((question, index) => {
+        const card = document.createElement('div');
+        card.className = 'question-card';
+        const label = document.createElement('label');
+        label.setAttribute('for', question.id);
+        label.textContent = `${index + 1}. ${question.label}`;
+        card.appendChild(label);
+
+        if (question.type === 'textarea') {
+          const textarea = document.createElement('textarea');
+          textarea.id = question.id; textarea.name = question.id; textarea.placeholder = question.placeholder || '';
+          textarea.value = answers[currentMode][question.id] || '';
+          textarea.addEventListener('input', (event) => { answers[currentMode][question.id] = event.target.value; });
+          card.appendChild(textarea);
+        }
+        if (question.type === 'text') {
+          const input = document.createElement('input');
+          input.type = 'text'; input.id = question.id; input.name = question.id; input.placeholder = question.placeholder || '';
+          input.value = answers[currentMode][question.id] || '';
+          input.addEventListener('input', (event) => { answers[currentMode][question.id] = event.target.value; });
+          card.appendChild(input);
+        }
+        if (question.type === 'choice') {
+          const choices = document.createElement('div');
+          choices.className = 'choices';
+          question.options.forEach((option, optionIndex) => {
+            const choiceId = `${question.id}-${optionIndex}`;
+            const pill = document.createElement('label');
+            pill.className = 'choice-pill';
+            pill.setAttribute('for', choiceId);
+            const input = document.createElement('input');
+            input.type = 'radio'; input.name = question.id; input.id = choiceId; input.value = option;
+            input.checked = answers[currentMode][question.id] === option;
+            input.addEventListener('change', () => { answers[currentMode][question.id] = option; updateChoiceVisuals(choices); });
+            const text = document.createElement('span'); text.textContent = option;
+            pill.appendChild(input); pill.appendChild(text); choices.appendChild(pill);
+          });
+          card.appendChild(choices);
+          const helper = document.createElement('div'); helper.className = 'helper'; helper.textContent = 'Seleziona una sola opzione.';
+          card.appendChild(helper);
+          requestAnimationFrame(() => updateChoiceVisuals(choices));
+        }
+        questionList.appendChild(card);
+      });
+    }
+
+    function synthesizeQuick(data) {
+      const name = slugText(data.name, 'Il bot');
+      const role = slugText(data.role, 'Partner di lavoro');
+      const presence = slugText(data.presence, 'Professionale e affidabile');
+      const oneLine = sentence(data.one_line, 'Sei una presenza concreta che rende il lavoro più chiaro, ordinato e sostenibile.');
+      return `# IDENTITY.md\n\n## Nome\n${name}\n\n## Ruolo\n${role}\n\n## Presenza\n${presence}.\n\n## Chi deve essere per me\n${oneLine}\n\n## Posizionamento rapido\nSei ${name === 'Il bot' ? 'un bot' : name}, ${role.toLowerCase()} con una presenza ${presence.toLowerCase()} che deve aiutarmi a lavorare meglio senza creare attrito o confusione.\n\n## Nota finale\nMantieni questa identità in modo coerente in ogni interazione.`;
+    }
+
+    function synthesizeComplete(data) {
+      const name = slugText(data.name, 'Il bot');
+      const roleLife = sentence(data.role_life, 'Il tuo ruolo è aiutarmi a tenere ordine, priorità e qualità nel lavoro.');
+      const positioning = slugText(data.positioning, 'Braccio destro fidato');
+      const firstImpression = sentence(data.first_impression, 'Devi dare subito un’impressione di chiarezza, solidità e utilità concreta.');
+      const quality = slugText(data.quality, 'Chiarezza');
+      const neverSeem = sentence(data.never_seem, 'Non devi sembrare confuso, artificiale o scollegato dal contesto reale.');
+      const figure = sentence(data.figure, 'Sei una figura affidabile, presente e concreta, capace di stare sul pezzo senza pesare.');
+      const bullets = bulletLines([
+        `Posizionati come ${positioning.toLowerCase()}.`,
+        `Incarna soprattutto ${quality.toLowerCase()}.`,
+        `Lascia fin dal primo messaggio questa impressione: ${firstImpression.charAt(0).toLowerCase()}${firstImpression.slice(1)}`,
+        `Non devi sembrare mai così: ${neverSeem.charAt(0).toLowerCase()}${neverSeem.slice(1)}`
+      ]);
+      return `# IDENTITY.md\n\n## Nome\n${name}\n\n## Ruolo\n${roleLife}\n\n## Posizionamento rispetto a me\n${positioning}.\n\n## Impressione iniziale desiderata\n${firstImpression}\n\n## Qualità dominante\n${quality}.\n\n## Cosa non deve sembrare mai\n${neverSeem}\n\n## Figura simbolica\n${figure}\n\n## Coordinate identitarie\n${bullets}\n\n## Sintesi finale\nSei ${name === 'Il bot' ? 'una presenza' : name}, costruito per essere ${positioning.toLowerCase()}, esprimere ${quality.toLowerCase()} e rendere ogni scambio più utile, chiaro e affidabile.`;
+    }
+
+    function synthesizeDetailed(data) {
+      const name = slugText(data.name, 'Il bot');
+      const nameReason = sentence(data.name_reason, 'Questo nome deve evocare chiarezza, orientamento e presenza coerente.');
+      const figure = sentence(data.figure, 'Sei una figura precisa, affidabile e capace di generare ordine senza imporsi inutilmente.');
+      const ecosystemRole = sentence(data.ecosystem_role, 'Il tuo ruolo reale è tenere insieme chiarezza, esecuzione e continuità operativa.');
+      const positioning = sentence(data.positioning, 'Devi posizionarti in modo vicino, affidabile e allineato, senza diventare invadente.');
+      const authority = slugText(data.authority, 'Supporto autorevole');
+      const feeling = sentence(data.feeling, 'Devi lasciare una sensazione di ordine mentale, fiducia e sollievo operativo.');
+      const mainQuality = sentence(data.main_quality, 'La qualità che devi rappresentare più di tutte è una chiarezza affidabile e concreta.');
+      const energy = slugText(data.energy, 'Lucida');
+      const relationship = sentence(data.relationship, 'Il rapporto con me deve essere fidato, diretto e stabile.');
+      const understand = sentence(data.understand, 'Devi capire profondamente come lavoro, cosa mi blocca e cosa conta davvero per me.');
+      const remember = sentence(data.remember, 'Quando ti attivo, ricordati sempre di essere utile, chiaro e orientato al passo concreto successivo.');
+      const notPresence = sentence(data.not_presence, 'Non devi mai diventare una presenza teatrale, paternalista, fumosa o passiva.');
+      const wrongNow = sentence(data.wrong_now, 'Diventi sbagliato se perdi chiarezza, sembri artefatto o ti disallinei dal mio modo reale di lavorare.');
+      const finalIdentity = sentence(data.final_identity, 'Sei una presenza lucida e concreta che mi aiuta a lavorare meglio con meno attrito.');
+      const bullets = bulletLines([
+        `Nome: ${name}.`,
+        `Autorità simbolica: ${authority}.`,
+        `Energia prevalente: ${energy.toLowerCase()}.`,
+        relationship,
+        understand,
+        remember,
+        notPresence,
+        wrongNow
+      ]);
+      return `# IDENTITY.md\n\n## Nome\n${name}\n\n## Perché questo nome\n${nameReason}\n\n## Figura simbolica\n${figure}\n\n## Ruolo reale nel mio ecosistema\n${ecosystemRole}\n\n## Posizionamento rispetto a me\n${positioning}\n\n## Autorità simbolica\n${authority}.\n\n## Sensazione che deve lasciare\n${feeling}\n\n## Qualità centrale\n${mainQuality}\n\n## Energia\n${energy}.\n\n## Coordinate identitarie\n${bullets}\n\n## Frase finale di identità\n${finalIdentity}`;
+    }
+
+    function buildMarkdown() {
+      const data = answers[currentMode];
+      if (currentMode === 'quick') return synthesizeQuick(data);
+      if (currentMode === 'complete') return synthesizeComplete(data);
+      return synthesizeDetailed(data);
+    }
+
+    function updateDownload(markdown) {
+      const blob = new Blob([markdown], { type: 'text/markdown;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      if (downloadButton.dataset.url) URL.revokeObjectURL(downloadButton.dataset.url);
+      downloadButton.href = url;
+      downloadButton.dataset.url = url;
+      downloadButton.setAttribute('aria-disabled', 'false');
+      statusPill.textContent = 'IDENTITY.md pronto';
+      statusPill.classList.remove('pending');
+      instructionsBox.classList.remove('hidden');
+    }
+
+    modeGrid.querySelectorAll('[data-mode]').forEach((button) => {
+      button.addEventListener('click', () => {
+        currentMode = button.dataset.mode;
+        modeGrid.querySelectorAll('[data-mode]').forEach((btn) => {
+          const active = btn === button;
+          btn.classList.toggle('active', active);
+          btn.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+        renderQuestions();
+      });
+    });
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const markdown = buildMarkdown();
+      markdownOutput.textContent = markdown;
+      updateDownload(markdown);
+    });
+
+    resetButton.addEventListener('click', () => { answers[currentMode] = {}; renderQuestions(); });
+    renderQuestions();
+  </script>
+</body>
+</html>
