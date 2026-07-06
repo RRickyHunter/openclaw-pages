@@ -3,327 +3,1114 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Soul</title>
-  <meta name="description" content="Scopri il Sistema che Ti Permette di Usare l’AI per Alleggerire Davvero il Tuo Lavoro e candidarti dopo la visione del training." />
+  <title>SOUL Builder | Costruisci l’anima del tuo bot</title>
+  <meta name="description" content="Crea il file SOUL.md del tuo bot in italiano: scegli il livello di profondità, rispondi alle domande guidate e scarica subito il file finale pronto da usare." />
   <style>
     :root {
-      --bg: #0f1115;
-      --panel: #161a21;
-      --panel-2: #1b2029;
-      --text: #ffffff;
-      --muted: #b9c0cc;
-      --line: rgba(255,255,255,.1);
-      --accent: #f2b84b;
-      --accent-2: #f59e0b;
-      --shadow: 0 24px 70px rgba(0,0,0,.35);
-      --radius: 24px;
-      --max: 1100px;
+      --bg: #07111f;
+      --bg-soft: #0d1728;
+      --panel: rgba(12, 22, 38, 0.78);
+      --panel-strong: rgba(9, 17, 31, 0.96);
+      --line: rgba(255, 255, 255, 0.12);
+      --line-strong: rgba(255, 255, 255, 0.18);
+      --text: #f7f9fc;
+      --muted: #a7b5ca;
+      --accent: #8b5cf6;
+      --accent-2: #22d3ee;
+      --accent-3: #f59e0b;
+      --success: #34d399;
+      --danger: #f87171;
+      --shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+      --max: 1180px;
     }
 
     * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at top, rgba(242,184,75,.12), transparent 30%),
-        linear-gradient(180deg, #0e1014 0%, #12161d 100%);
+        radial-gradient(circle at top left, rgba(139, 92, 246, 0.18), transparent 32%),
+        radial-gradient(circle at top right, rgba(34, 211, 238, 0.16), transparent 24%),
+        linear-gradient(180deg, #06101d 0%, #0a1322 42%, #07111f 100%);
       color: var(--text);
+      line-height: 1.55;
       -webkit-font-smoothing: antialiased;
-      line-height: 1.5;
+      min-height: 100vh;
     }
 
-    .wrap {
-      width: min(var(--max), calc(100% - 32px));
+    a { color: inherit; }
+
+    .page {
+      width: min(var(--max), calc(100% - 28px));
       margin: 0 auto;
-      padding: 32px 0 64px;
+      padding: 28px 0 72px;
     }
 
     .hero {
-      text-align: center;
-      margin: 0 auto 32px;
-      max-width: 980px;
-    }
-
-    .eyebrow {
-      display: inline-block;
-      padding: 8px 14px;
-      border: 1px solid rgba(242,184,75,.35);
-      background: rgba(242,184,75,.08);
-      border-radius: 999px;
-      color: var(--accent);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      margin-bottom: 18px;
-    }
-
-    .title-3 {
-      margin: 0;
-      line-height: 1.02;
-      letter-spacing: -.03em;
-      font-weight: 900;
-      font-size: clamp(2rem, 4vw, 4.2rem);
-    }
-
-    .title-3 .line {
-      display: block;
-    }
-
-    .line-1 { color: #ffffff; }
-    .line-2 { color: var(--accent); margin-top: 8px; }
-    .line-3 {
-      color: #f5f7fb;
-      margin-top: 14px;
-      font-size: clamp(1rem, 1.7vw, 1.28rem);
-      line-height: 1.35;
-      font-weight: 600;
-      letter-spacing: -.01em;
-    }
-
-    .video-card {
-      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: 18px;
-      max-width: 980px;
-      margin: 0 auto;
-    }
-
-    .video-shell {
-      overflow: hidden;
-      border-radius: 18px;
-      background: #000;
-      aspect-ratio: 16 / 9;
       position: relative;
-      box-shadow: inset 0 0 0 1px rgba(255,255,255,.04);
-    }
-
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: 0;
-      display: block;
-    }
-
-    .status-box {
-      margin-top: 18px;
-      background: var(--panel-2);
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
       border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 18px 20px;
-      text-align: center;
-    }
-
-    .status-label {
-      color: var(--muted);
-      font-size: .95rem;
-      margin-bottom: 8px;
-    }
-
-    .countdown {
-      font-size: clamp(1.2rem, 2vw, 1.6rem);
-      font-weight: 800;
-      letter-spacing: -.02em;
-    }
-
-    .cta-wrap {
-      margin-top: 22px;
-      text-align: center;
-      min-height: 74px;
-      display: flex;
-      justify-content: center;
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+      padding: clamp(28px, 5vw, 56px);
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
+      gap: 26px;
       align-items: center;
     }
 
-    .cta-button {
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(10px);
+      opacity: 0.75;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      width: 240px;
+      height: 240px;
+      right: -60px;
+      top: -60px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.3), transparent 70%);
+    }
+
+    .hero::after {
+      width: 220px;
+      height: 220px;
+      left: 35%;
+      bottom: -120px;
+      background: radial-gradient(circle, rgba(34, 211, 238, 0.25), transparent 70%);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(139, 92, 246, 0.32);
+      background: rgba(139, 92, 246, 0.1);
+      color: #d8c4ff;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2.2rem, 5vw, 4.4rem);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+    }
+
+    .hero-subtitle {
+      margin: 0 0 16px;
+      color: #dbe6f7;
+      font-size: clamp(1.02rem, 2vw, 1.35rem);
+      line-height: 1.35;
+      max-width: 58ch;
+    }
+
+    .hero-copy {
+      margin: 0 0 24px;
+      color: var(--muted);
+      max-width: 58ch;
+      font-size: 1rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+
+    .button,
+    .button-secondary,
+    .download-button {
       appearance: none;
       border: 0;
-      border-radius: 999px;
-      padding: 18px 30px;
-      background: linear-gradient(180deg, var(--accent), var(--accent-2));
-      color: #111111;
-      font-size: 1rem;
-      font-weight: 900;
+      cursor: pointer;
       text-decoration: none;
-      box-shadow: 0 16px 38px rgba(242,184,75,.24);
-      transition: transform .18s ease, opacity .18s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
     }
 
-    .cta-button:hover { transform: translateY(-2px); }
-
-    .cta-hidden {
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(8px);
-      visibility: hidden;
+    .button,
+    .download-button {
+      padding: 15px 22px;
+      color: #06101d;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 18px 42px rgba(34, 211, 238, 0.2);
     }
 
-    .cta-visible {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-      visibility: visible;
+    .button:hover,
+    .button-secondary:hover,
+    .download-button:hover {
+      transform: translateY(-2px);
     }
 
-    .tiny-note {
-      margin-top: 14px;
-      text-align: center;
+    .button-secondary {
+      padding: 14px 20px;
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--line);
+    }
+
+    .hero-points {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      color: #d8e3f4;
+      font-size: 0.96rem;
+    }
+
+    .hero-points li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .hero-points li::before {
+      content: "✦";
+      color: var(--accent-2);
+      margin-top: 1px;
+      flex: 0 0 auto;
+    }
+
+    .hero-card {
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 22px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+
+    .hero-card-label {
       color: var(--muted);
-      font-size: .88rem;
+      font-size: 0.84rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 800;
+      margin-bottom: 10px;
     }
 
-    .config-note {
-      margin: 26px auto 0;
-      max-width: 980px;
+    .hero-card-title {
+      margin: 0 0 12px;
+      font-size: 1.32rem;
+      line-height: 1.2;
+    }
+
+    .hero-card-copy {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .preview-shell {
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(4, 10, 20, 0.76);
+      padding: 16px;
+      font-family: "SFMono-Regular", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      color: #d3f7ff;
+      font-size: 0.78rem;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      min-height: 240px;
+    }
+
+    .section {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.84fr) minmax(320px, 0.76fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .builder {
+      padding: 24px;
+    }
+
+    .section-heading {
+      margin: 0 0 8px;
+      font-size: 1.6rem;
+      letter-spacing: -0.03em;
+    }
+
+    .section-copy {
+      margin: 0 0 22px;
+      color: var(--muted);
+      max-width: 64ch;
+    }
+
+    .mode-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .mode-card {
+      position: relative;
+      width: 100%;
+      text-align: left;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      color: var(--text);
+      cursor: pointer;
+      transition: border-color 0.18s ease, transform 0.18s ease, background 0.18s ease;
+    }
+
+    .mode-card:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    .mode-card.active {
+      background: linear-gradient(180deg, rgba(139,92,246,0.16), rgba(34,211,238,0.08));
+      border-color: rgba(34,211,238,0.5);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.06);
+    }
+
+    .mode-card small {
+      display: block;
+      color: var(--muted);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.72rem;
+      font-weight: 800;
+    }
+
+    .mode-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .mode-card span {
+      display: block;
+      color: #d6e1f2;
+      font-size: 0.92rem;
+      line-height: 1.4;
+    }
+
+    .form-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 18px;
       padding: 14px 16px;
       border-radius: 16px;
-      border: 1px dashed rgba(255,255,255,.18);
-      color: #d6dbe4;
-      background: rgba(255,255,255,.03);
-      font-size: .88rem;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.025);
     }
 
-    @media (max-width: 640px) {
-      .wrap { padding-top: 22px; }
-      .video-card { padding: 12px; }
-      .status-box { padding: 14px; }
-      .cta-button { width: 100%; }
+    .form-meta p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .question-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .question-card {
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
+      background: rgba(255,255,255,0.025);
+    }
+
+    .question-card label {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 10px;
+      font-size: 0.96rem;
+      letter-spacing: -0.01em;
+    }
+
+    .question-card textarea,
+    .question-card input[type="text"] {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(5, 11, 21, 0.82);
+      color: var(--text);
+      padding: 14px 14px;
+      font: inherit;
+      resize: vertical;
+      min-height: 116px;
+      outline: none;
+      transition: border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .question-card input[type="text"] {
+      min-height: 0;
+    }
+
+    .question-card textarea:focus,
+    .question-card input[type="text"]:focus {
+      border-color: rgba(34, 211, 238, 0.7);
+      box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.08);
+    }
+
+    .question-card textarea::placeholder,
+    .question-card input[type="text"]::placeholder {
+      color: #7e8ba0;
+    }
+
+    .choices {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .choice-pill {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      cursor: pointer;
+      transition: border-color 0.18s ease, background 0.18s ease, transform 0.18s ease;
+      color: #e7effc;
+      font-size: 0.92rem;
+    }
+
+    .choice-pill:hover {
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,0.2);
+    }
+
+    .choice-pill input {
+      position: absolute;
+      opacity: 0;
+      inset: 0;
+      cursor: pointer;
+    }
+
+    .choice-pill.active {
+      border-color: rgba(34, 211, 238, 0.6);
+      background: rgba(34, 211, 238, 0.12);
+      color: #f2fbff;
+    }
+
+    .helper {
+      margin-top: 8px;
+      color: #8fa1bb;
+      font-size: 0.83rem;
+    }
+
+    .builder-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .ghost-button {
+      appearance: none;
+      border-radius: 999px;
+      padding: 14px 18px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--text);
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .output {
+      padding: 24px;
+      position: sticky;
+      top: 18px;
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      background: rgba(52, 211, 153, 0.12);
+      color: #9cf0cd;
+      border: 1px solid rgba(52, 211, 153, 0.22);
+      margin-bottom: 16px;
+    }
+
+    .status-pill.pending {
+      background: rgba(245, 158, 11, 0.12);
+      color: #f9d28b;
+      border-color: rgba(245, 158, 11, 0.25);
+    }
+
+    .output-copy {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .markdown-output {
+      background: rgba(4, 10, 20, 0.84);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 18px;
+      min-height: 420px;
+      max-height: 720px;
+      overflow: auto;
+      white-space: pre-wrap;
+      color: #eef4ff;
+      font-family: "SFMono-Regular", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 0.8rem;
+      line-height: 1.66;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+    }
+
+    .download-button {
+      width: 100%;
+      margin-top: 16px;
+      text-align: center;
+    }
+
+    .download-button[aria-disabled="true"] {
+      opacity: 0.55;
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    .instructions {
+      margin-top: 16px;
+      padding: 18px;
+      border-radius: 18px;
+      border: 1px solid rgba(52, 211, 153, 0.22);
+      background: rgba(52, 211, 153, 0.08);
+      color: #eafef5;
+    }
+
+    .instructions h3,
+    .guide h2,
+    .faq h2 {
+      margin: 0 0 10px;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .instructions ol,
+    .guide ol,
+    .faq ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    .instructions li,
+    .guide li,
+    .faq li {
+      margin-bottom: 8px;
+      color: #d9efe5;
+    }
+
+    .grid-2 {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .guide,
+    .faq {
+      padding: 24px;
+    }
+
+    .guide p,
+    .faq p {
+      margin: 0 0 12px;
+      color: var(--muted);
+    }
+
+    .note {
+      margin-top: 16px;
+      border: 1px dashed rgba(255,255,255,0.18);
+      border-radius: 16px;
+      padding: 14px 16px;
+      color: #d4def0;
+      background: rgba(255,255,255,0.03);
+      font-size: 0.92rem;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .section,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .output {
+        position: static;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .page {
+        width: min(var(--max), calc(100% - 20px));
+        padding-top: 18px;
+      }
+
+      .hero,
+      .builder,
+      .output,
+      .guide,
+      .faq {
+        padding: 20px;
+      }
+
+      .mode-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-actions,
+      .builder-actions {
+        flex-direction: column;
+      }
+
+      .button,
+      .button-secondary,
+      .ghost-button,
+      .download-button {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
-  <main class="wrap">
+  <main class="page">
     <section class="hero">
-      <div class="eyebrow">Soul</div>
-      <h1 class="title-3">
-        <span class="line line-1">Scopri il Sistema che Ti Permette</span>
-        <span class="line line-2">di Usare l’AI per Alleggerire Davvero il Tuo Lavoro…</span>
-        <span class="line line-3">SENZA Cercare il Prompt Perfetto, SENZA Rincorrere Ogni Nuovo Tool e SENZA Automatizzare il Caos<br>Perfetto per Professionisti, Freelancer, Solopreneur e Piccoli Imprenditori che Hanno Tutto sulle Proprie Spalle e Vogliono Recuperare Tempo, Chiarezza e Controllo Operativo</span>
-      </h1>
+      <div>
+        <div class="eyebrow">SOUL Builder</div>
+        <h1>Costruisci l’anima del tuo bot</h1>
+        <p class="hero-subtitle">Definisci il suo mindset, il suo modo di lavorare e il tono con cui ti supporta ogni giorno.</p>
+        <p class="hero-copy">Questa pagina crea il file <strong>SOUL.md</strong>: raccoglie le tue risposte, le trasforma in istruzioni coerenti e ti permette di scaricare subito la versione finale pronta da inserire nel workspace OpenClaw.</p>
+        <div class="hero-actions">
+          <a class="button" href="#builder">Inizia ora</a>
+          <a class="button-secondary" href="#guida">Come funziona</a>
+        </div>
+        <ul class="hero-points">
+          <li>3 modalità guidate: Avvio Rapido, Completa, Dettagliata.</li>
+          <li>Output finale già scritto come un vero <strong>SOUL.md</strong>, non come un semplice questionario esportato.</li>
+          <li>Download diretto del file e istruzioni pratiche corrette per attivarlo sul bot.</li>
+        </ul>
+      </div>
+
+      <aside class="hero-card" aria-label="Anteprima del file SOUL.md">
+        <div class="hero-card-label">Anteprima risultato</div>
+        <h2 class="hero-card-title">Un file pronto da usare, chiaro e plausibile</h2>
+        <p class="hero-card-copy">Ogni modalità produce una sintesi strutturata con identità, principi operativi, tono, limiti e comportamenti attesi del bot.</p>
+        <div class="preview-shell"># SOUL.md
+
+## Identità operativa
+Sei un partner operativo lucido, concreto e affidabile.
+
+## Missione
+Aiutami ogni giorno a mantenere chiarezza, focus e avanzamento reale.
+
+## Principi guida
+- Agisci con criterio sulle cose chiare.
+- Proteggi la qualità senza rallentare inutilmente.
+- Semplifica quando sto complicando il lavoro.
+- Comunicami sempre il prossimo passo utile.
+
+## Tono
+Diretto, umano e orientato ai risultati.</div>
+      </aside>
     </section>
 
-    <section class="video-card">
-      <div class="video-shell">
-        <iframe
-          id="vimeo-player"
-          src="https://player.vimeo.com/video/1177200368?badge=0&autopause=0&player_id=0&app_id=58479"
-          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
-          title="Training video"
-        ></iframe>
+    <section class="section" id="builder">
+      <div class="panel builder">
+        <h2 class="section-heading">Scegli la profondità giusta e compila il builder</h2>
+        <p class="section-copy">Puoi partire veloce oppure definire tutto nel dettaglio. Le risposte vengono rielaborate per generare un file coerente, utile e leggibile.</p>
+
+        <div class="mode-grid" id="modeGrid" role="tablist" aria-label="Modalità builder SOUL">
+          <button class="mode-card active" type="button" data-mode="quick" role="tab" aria-selected="true">
+            <small>4 domande</small>
+            <strong>Avvio Rapido</strong>
+            <span>Per creare l’ossatura mentale del bot in pochi minuti.</span>
+          </button>
+          <button class="mode-card" type="button" data-mode="complete" role="tab" aria-selected="false">
+            <small>7 domande</small>
+            <strong>Completa</strong>
+            <span>Per definire ruolo, autonomia, limiti e priorità operative.</span>
+          </button>
+          <button class="mode-card" type="button" data-mode="detailed" role="tab" aria-selected="false">
+            <small>15 domande</small>
+            <strong>Dettagliata</strong>
+            <span>Per costruire un’anima più precisa, sfumata e allineata al tuo lavoro.</span>
+          </button>
+        </div>
+
+        <div class="form-meta">
+          <p id="modeLabel">Modalità attiva: <strong>Avvio Rapido</strong></p>
+          <p id="questionCount">4 domande</p>
+        </div>
+
+        <form id="soulForm">
+          <div id="questionList" class="question-list"></div>
+          <div class="builder-actions">
+            <button class="button" type="submit">Genera SOUL.md</button>
+            <button class="ghost-button" type="button" id="resetButton">Resetta risposte</button>
+          </div>
+        </form>
       </div>
 
-      <div class="status-box" id="statusBox">
-        <div class="status-label" id="statusLabel">Guarda il training: il pulsante candidatura comparirà dopo 5 minuti reali di visione.</div>
-        <div class="countdown" id="countdown">Tempo rimanente: 05:00</div>
-      </div>
+      <aside class="panel output">
+        <div class="status-pill pending" id="statusPill">In attesa di generazione</div>
+        <p class="output-copy">Quando completi il builder, qui vedrai il file finale <strong>SOUL.md</strong> già pronto da scaricare.</p>
+        <pre class="markdown-output" id="markdownOutput"># SOUL.md
 
-      <div class="cta-wrap">
-        <a
-          id="ctaButton"
-          class="cta-button cta-hidden"
-          href="https://form.jotform.com/261314999423161"
-          target="_blank"
-          rel="noopener noreferrer"
-        >Vai alla candidatura</a>
-      </div>
+Compila il builder qui a sinistra e clicca “Genera SOUL.md” per vedere il file finale.</pre>
+        <a id="downloadButton" class="download-button" href="#" download="SOUL.md" aria-disabled="true">Scarica SOUL.md</a>
 
-      <div class="tiny-note">Il pulsante si sblocca dopo il tempo di visione impostato sul player Vimeo.</div>
+        <div class="instructions hidden" id="instructionsBox">
+          <h3>Come inserirlo correttamente</h3>
+          <ol>
+            <li>Salva il file scaricato nella <strong>root del workspace OpenClaw</strong> con nome esatto <strong>SOUL.md</strong>.</li>
+            <li>Se esiste già un file <strong>SOUL.md</strong>, <strong>sostituiscilo</strong> con questa nuova versione.</li>
+            <li>Apri una <strong>nuova sessione</strong> oppure <strong>riavvia il bot</strong> per far rileggere la nuova anima operativa.</li>
+          </ol>
+        </div>
+      </aside>
     </section>
 
-    <div class="config-note">
-      Video test aggiornato con un Vimeo reale da circa 8 minuti. Il link candidatura è ancora un placeholder e va sostituito quando vuoi.
-    </div>
+    <section class="grid-2" id="guida">
+      <div class="panel guide">
+        <h2>Come lavora questo builder</h2>
+        <p>Non esporta semplicemente le tue risposte una sotto l’altra. Le interpreta e le ricompone in un file più ordinato, con sezioni utili per guidare davvero il comportamento del bot.</p>
+        <ol>
+          <li>Scegli la modalità più adatta al tuo livello di chiarezza.</li>
+          <li>Rispondi alle domande aperte e seleziona le opzioni dove presenti.</li>
+          <li>Genera il file, rileggilo, scaricalo e usalo come <strong>SOUL.md</strong> del tuo workspace.</li>
+        </ol>
+        <div class="note">Suggerimento: risposte brevi ma specifiche funzionano meglio di testi lunghi e vaghi.</div>
+      </div>
+
+      <div class="panel faq">
+        <h2>Cosa ottieni alla fine</h2>
+        <p>Il file generato include sempre una struttura leggibile, in italiano, con istruzioni credibili e utili per orientare tono, priorità, autonomia e criteri decisionali del bot.</p>
+        <ul>
+          <li>Identità e ruolo del bot</li>
+          <li>Missione quotidiana e priorità</li>
+          <li>Principi guida e limiti</li>
+          <li>Tono di voce e comportamento sotto pressione</li>
+          <li>Regole operative per task chiari, ambigui o bloccati</li>
+        </ul>
+      </div>
+    </section>
   </main>
 
-  <script src="https://player.vimeo.com/api/player.js"></script>
   <script>
-    const WATCH_SECONDS_REQUIRED = 300;
-    const STORAGE_KEY = 'movie-page-watch-seconds-v1';
-    const STORAGE_UNLOCK_KEY = 'movie-page-cta-unlocked-v1';
-
-    const iframe = document.getElementById('vimeo-player');
-    const player = new Vimeo.Player(iframe);
-    const ctaButton = document.getElementById('ctaButton');
-    const countdown = document.getElementById('countdown');
-    const statusLabel = document.getElementById('statusLabel');
-
-    let accumulatedWatchSeconds = Number(sessionStorage.getItem(STORAGE_KEY) || 0);
-    let unlocked = sessionStorage.getItem(STORAGE_UNLOCK_KEY) === 'true';
-    let lastSecondTracked = null;
-
-    function formatSeconds(totalSeconds) {
-      const safe = Math.max(0, Math.ceil(totalSeconds));
-      const mins = String(Math.floor(safe / 60)).padStart(2, '0');
-      const secs = String(safe % 60).padStart(2, '0');
-      return `${mins}:${secs}`;
-    }
-
-    function revealCTA() {
-      unlocked = true;
-      sessionStorage.setItem(STORAGE_UNLOCK_KEY, 'true');
-      ctaButton.classList.remove('cta-hidden');
-      ctaButton.classList.add('cta-visible');
-      countdown.textContent = 'Pulsante sbloccato';
-      statusLabel.textContent = 'Perfetto. Hai visto abbastanza del training: ora puoi candidarti.';
-    }
-
-    function updateUI() {
-      if (unlocked || accumulatedWatchSeconds >= WATCH_SECONDS_REQUIRED) {
-        revealCTA();
-        return;
+    const modes = {
+      quick: {
+        name: 'Avvio Rapido',
+        intro: 'Per definire velocemente il mindset di base del bot.',
+        questions: [
+          {
+            id: 'daily_help',
+            label: 'In cosa deve aiutarti questo bot, ogni giorno?',
+            type: 'textarea',
+            placeholder: 'Es. aiutarmi a mantenere chiarezza, eseguire task operativi, organizzare priorità e non perdere tempo...'
+          },
+          {
+            id: 'work_style',
+            label: 'Come vuoi che lavori, in generale?',
+            type: 'choice',
+            options: ['Prudente e attento', 'Bilanciato e lucido', 'Veloce e orientato all’azione']
+          },
+          {
+            id: 'voice',
+            label: 'Come vuoi che ti parli?',
+            type: 'choice',
+            options: ['Diretto e concreto', 'Caldo e umano', 'Strategico e lucido', 'Essenziale e senza fronzoli', 'Energico e motivante']
+          },
+          {
+            id: 'mental_rule',
+            label: 'Qual è la regola mentale più importante che deve seguire?',
+            type: 'textarea',
+            placeholder: 'Es. non complicare mai ciò che può essere reso chiaro e utile.'
+          }
+        ]
+      },
+      complete: {
+        name: 'Completa',
+        intro: 'Per definire ruolo, margine d’azione e criteri da proteggere.',
+        questions: [
+          {
+            id: 'building_now',
+            label: 'Cosa stai costruendo davvero in questa fase?',
+            type: 'textarea',
+            placeholder: 'Es. un sistema operativo personale, un business più ordinato, un’offerta più chiara...'
+          },
+          {
+            id: 'role',
+            label: 'Che ruolo deve avere il bot per te?',
+            type: 'choice',
+            options: ['Esecutore affidabile', 'Partner operativo', 'Organizzatore e coordinatore', 'Challenger che mi tiene sul pezzo', 'Braccio destro orientato ai risultati']
+          },
+          {
+            id: 'autonomy',
+            label: 'Quanto deve muoversi da solo?',
+            type: 'choice',
+            options: ['Chiedi prima di agire', 'Agisci sulle cose chiare e poi aggiorna', 'Prendi iniziativa ogni volta che puoi dentro i limiti dati']
+          },
+          {
+            id: 'never_do',
+            label: 'Cosa non deve fare mai?',
+            type: 'textarea',
+            placeholder: 'Es. inventare dati, riempire di parole, farmi perdere focus o agire fuori perimetro...'
+          },
+          {
+            id: 'under_stress',
+            label: 'Quando sei sotto stress, bloccato o disperso, come deve comportarsi?',
+            type: 'textarea',
+            placeholder: 'Es. calmarmi, ridurre opzioni, darmi il prossimo passo utile e tenermi ancorato al concreto...'
+          },
+          {
+            id: 'protect',
+            label: 'Cosa deve proteggere sopra ogni cosa?',
+            type: 'choice',
+            options: ['Chiarezza', 'Momentum', 'Qualità', 'Revenue', 'Semplicità', 'Reputazione', 'Focus']
+          },
+          {
+            id: 'energy',
+            label: 'Che energia deve avere?',
+            type: 'choice',
+            options: ['Calma e stabile', 'Lucida e concreta', 'Alta performance', 'Incisiva e incalzante', 'Sobria e affidabile']
+          }
+        ]
+      },
+      detailed: {
+        name: 'Dettagliata',
+        intro: 'Per definire una presenza più precisa, relazionale e operativa.',
+        questions: [
+          { id: 'presence', label: 'Che tipo di presenza deve essere questo bot per te?', type: 'textarea', placeholder: 'Es. una presenza lucida che alleggerisce il caos e mi rimette subito sulle cose importanti...' },
+          { id: 'feel', label: 'Come vuoi sentirti quando interagisci con lui?', type: 'textarea', placeholder: 'Es. compreso, più leggero, più focalizzato e subito operativo...' },
+          { id: 'true_role', label: 'Qual è il suo vero ruolo nella tua vita o nel tuo lavoro?', type: 'textarea', placeholder: 'Es. tenere insieme esecuzione, chiarezza e decisioni pratiche nei momenti intensi...' },
+          { id: 'principles', label: 'Quali principi deve seguire sempre?', type: 'textarea', placeholder: 'Es. dire la verità operativa, semplificare, proteggere il focus, evitare rumore...' },
+          { id: 'speed_accuracy', label: 'Come deve bilanciare velocità e accuratezza?', type: 'choice', options: ['Meglio prudente che veloce', 'Equilibrio tra velocità e controllo', 'Meglio muoversi e correggere strada facendo'] },
+          { id: 'simplify_deepen', label: 'Quando deve semplificare e quando invece approfondire?', type: 'textarea', placeholder: 'Es. semplificare quando serve sbloccare, approfondire quando una scelta impatta davvero...' },
+          { id: 'clear_task', label: 'Come deve muoversi quando il task è chiaro?', type: 'textarea', placeholder: 'Es. agire con decisione, propormi il piano essenziale ed eseguire senza rallentare...' },
+          { id: 'ambiguous_task', label: 'Come deve reagire quando il task è ambiguo?', type: 'textarea', placeholder: 'Es. fare ordine, evidenziare l’incertezza vera e propormi le 2-3 strade migliori...' },
+          { id: 'self_complication', label: 'Come deve comportarsi se vede che ti stai complicando la vita da solo?', type: 'textarea', placeholder: 'Es. fermarmi con gentilezza, tagliare il superfluo e riportarmi alla leva più utile...' },
+          { id: 'block', label: 'Come deve reagire quando incontra un blocco tecnico o operativo?', type: 'textarea', placeholder: 'Es. non bloccarsi mentalmente, cercare workaround, chiarire il blocker reale e proporre il prossimo passo...' },
+          { id: 'communication', label: 'Come vuoi che comunichi con te?', type: 'textarea', placeholder: 'Es. in modo sintetico, umano, pratico, con chiarezza su rischi, decisioni e prossimo passo...' },
+          { id: 'empathy_directness', label: 'Quanto deve essere empatico e quanto diretto?', type: 'choice', options: ['Molto diretto, poca morbidezza', 'Bilanciato tra empatia e chiarezza', 'Più umano e accompagnante, ma sempre concreto'] },
+          { id: 'challenge', label: 'Vuoi che ti sfidi quando ti stai sabotando o stai evitando l’importante?', type: 'choice', options: ['Sì, in modo chiaro', 'Sì, ma con tatto', 'Solo in casi evidenti', 'No, preferisco che resti più neutro'] },
+          { id: 'perfect_answer', label: 'Per te, com’è una risposta perfetta?', type: 'textarea', placeholder: 'Es. breve ma completa, concreta, orientata al passo successivo e senza rumore...' },
+          { id: 'not_wanted', label: 'Che tipo di bot non vuoi assolutamente?', type: 'textarea', placeholder: 'Es. paternalista, fumoso, troppo timido, prolisso o sempre neutro quando servirebbe prendere posizione...' }
+        ]
       }
-      const remaining = WATCH_SECONDS_REQUIRED - accumulatedWatchSeconds;
-      countdown.textContent = `Tempo rimanente: ${formatSeconds(remaining)}`;
+    };
+
+    const form = document.getElementById('soulForm');
+    const questionList = document.getElementById('questionList');
+    const modeGrid = document.getElementById('modeGrid');
+    const modeLabel = document.getElementById('modeLabel');
+    const questionCount = document.getElementById('questionCount');
+    const markdownOutput = document.getElementById('markdownOutput');
+    const downloadButton = document.getElementById('downloadButton');
+    const statusPill = document.getElementById('statusPill');
+    const instructionsBox = document.getElementById('instructionsBox');
+    const resetButton = document.getElementById('resetButton');
+
+    let currentMode = 'quick';
+    const answers = {
+      quick: {},
+      complete: {},
+      detailed: {}
+    };
+
+    function escapeMarkdown(value) {
+      return String(value || '')
+        .replace(/\r/g, '')
+        .replace(/\t/g, ' ')
+        .replace(/\n{3,}/g, '\n\n')
+        .trim();
     }
 
-    if (unlocked) {
-      revealCTA();
-    } else {
-      updateUI();
+    function sentence(value, fallback = '') {
+      const text = escapeMarkdown(value);
+      if (!text) return fallback;
+      const normalized = text.charAt(0).toUpperCase() + text.slice(1);
+      return /[.!?…]$/.test(normalized) ? normalized : `${normalized}.`;
     }
 
-    player.on('timeupdate', (data) => {
-      if (unlocked) return;
+    function bulletLines(items) {
+      return items.filter(Boolean).map(item => `- ${item}`).join('\n');
+    }
 
-      const currentSecond = Math.floor(data.seconds);
+    function slugText(value, fallback) {
+      const text = escapeMarkdown(value);
+      return text || fallback;
+    }
 
-      if (lastSecondTracked === null) {
-        lastSecondTracked = currentSecond;
-        return;
-      }
+    function modeCardLabel(modeKey) {
+      return `${modes[modeKey].questions.length} domande`;
+    }
 
-      if (currentSecond !== lastSecondTracked) {
-        const diff = currentSecond - lastSecondTracked;
+    function updateChoiceVisuals(scope) {
+      scope.querySelectorAll('.choice-pill').forEach((pill) => {
+        const input = pill.querySelector('input');
+        pill.classList.toggle('active', Boolean(input && input.checked));
+      });
+    }
 
-        if (diff > 0 && diff <= 2) {
-          accumulatedWatchSeconds += diff;
-          sessionStorage.setItem(STORAGE_KEY, String(accumulatedWatchSeconds));
+    function renderQuestions() {
+      const mode = modes[currentMode];
+      modeLabel.innerHTML = `Modalità attiva: <strong>${mode.name}</strong>`;
+      questionCount.textContent = `${mode.questions.length} domande`;
+      questionList.innerHTML = '';
+
+      mode.questions.forEach((question, index) => {
+        const card = document.createElement('div');
+        card.className = 'question-card';
+
+        const label = document.createElement('label');
+        label.setAttribute('for', question.id);
+        label.textContent = `${index + 1}. ${question.label}`;
+        card.appendChild(label);
+
+        if (question.type === 'textarea') {
+          const textarea = document.createElement('textarea');
+          textarea.id = question.id;
+          textarea.name = question.id;
+          textarea.placeholder = question.placeholder || '';
+          textarea.value = answers[currentMode][question.id] || '';
+          textarea.addEventListener('input', (event) => {
+            answers[currentMode][question.id] = event.target.value;
+          });
+          card.appendChild(textarea);
         }
 
-        lastSecondTracked = currentSecond;
-        updateUI();
+        if (question.type === 'text') {
+          const input = document.createElement('input');
+          input.type = 'text';
+          input.id = question.id;
+          input.name = question.id;
+          input.placeholder = question.placeholder || '';
+          input.value = answers[currentMode][question.id] || '';
+          input.addEventListener('input', (event) => {
+            answers[currentMode][question.id] = event.target.value;
+          });
+          card.appendChild(input);
+        }
+
+        if (question.type === 'choice') {
+          const choices = document.createElement('div');
+          choices.className = 'choices';
+
+          question.options.forEach((option, optionIndex) => {
+            const choiceId = `${question.id}-${optionIndex}`;
+            const pill = document.createElement('label');
+            pill.className = 'choice-pill';
+            pill.setAttribute('for', choiceId);
+
+            const input = document.createElement('input');
+            input.type = 'radio';
+            input.name = question.id;
+            input.id = choiceId;
+            input.value = option;
+            input.checked = answers[currentMode][question.id] === option;
+            input.addEventListener('change', () => {
+              answers[currentMode][question.id] = option;
+              updateChoiceVisuals(choices);
+            });
+
+            const text = document.createElement('span');
+            text.textContent = option;
+
+            pill.appendChild(input);
+            pill.appendChild(text);
+            choices.appendChild(pill);
+          });
+
+          card.appendChild(choices);
+          const helper = document.createElement('div');
+          helper.className = 'helper';
+          helper.textContent = 'Seleziona una sola opzione.';
+          card.appendChild(helper);
+
+          requestAnimationFrame(() => updateChoiceVisuals(choices));
+        }
+
+        questionList.appendChild(card);
+      });
+    }
+
+    function synthesizeQuick(data) {
+      const mission = sentence(data.daily_help, 'Aiutami ogni giorno a lavorare meglio, con più chiarezza e meno attrito.');
+      const workStyle = slugText(data.work_style, 'Bilanciato e lucido');
+      const voice = slugText(data.voice, 'Diretto e concreto');
+      const rule = sentence(data.mental_rule, 'Cerca sempre la soluzione più chiara, utile e sostenibile.');
+
+      const bullets = bulletLines([
+        `Lavora in modo ${workStyle.toLowerCase()} senza perdere il senso pratico.`,
+        `Comunica con tono ${voice.toLowerCase()} e resta sempre utile.`,
+        `Segui come regola mentale centrale: ${rule.charAt(0).toLowerCase()}${rule.slice(1)}`,
+        'Trasforma richieste vaghe in prossimo passo concreto quando possibile.'
+      ]);
+
+      return `# SOUL.md\n\n## Identità operativa\nSei un assistente che mi supporta ogni giorno con presenza solida, orientata al lavoro reale e alla chiarezza.\n\n## Missione\n${mission}\n\n## Stile di lavoro\nPreferisco che tu lavori in modo ${workStyle.toLowerCase()}. Muoviti con criterio, mantieni lucidità e punta a generare avanzamento utile.\n\n## Tono di voce\nParlami in modo ${voice.toLowerCase()}. Voglio sentirmi guidato senza rumore inutile.\n\n## Regola mentale principale\n${rule}\n\n## Principi guida\n${bullets}\n\n## Nota finale\nSe puoi aiutarmi a scegliere, semplificare o avanzare, fallo in modo chiaro e immediatamente utilizzabile.`;
+    }
+
+    function synthesizeComplete(data) {
+      const building = sentence(data.building_now, 'Sto costruendo qualcosa che richiede ordine, continuità e decisioni più pulite.');
+      const role = slugText(data.role, 'Partner operativo');
+      const autonomy = slugText(data.autonomy, 'Agisci sulle cose chiare e poi aggiorna');
+      const neverDo = sentence(data.never_do, 'Non inventare, non creare rumore e non farmi deviare da ciò che conta.');
+      const stress = sentence(data.under_stress, 'Quando sono sotto pressione, aiutami a ridurre complessità e a vedere il prossimo passo utile.');
+      const protect = slugText(data.protect, 'Chiarezza');
+      const energy = slugText(data.energy, 'Lucida e concreta');
+
+      const principles = bulletLines([
+        `Ricorda che in questa fase sto costruendo: ${building.charAt(0).toLowerCase()}${building.slice(1)}`,
+        `Assumi il ruolo di ${role.toLowerCase()} e comportati di conseguenza.`,
+        `Autonomia desiderata: ${autonomy}.`,
+        `Proteggi sopra ogni cosa: ${protect.toLowerCase()}.`,
+        `Mantieni un’energia ${energy.toLowerCase()} in ogni interazione.`
+      ]);
+
+      return `# SOUL.md\n\n## Identità operativa\nSei il mio ${role.toLowerCase()}, pensato per aiutarmi a trasformare complessità in azione utile.\n\n## Fase attuale\n${building}\n\n## Margine d’azione\nMuoviti con questa regola: ${autonomy}. Se qualcosa è ambiguo o rischioso, fermati e chiarisci il nodo vero.\n\n## Cose da non fare mai\n${neverDo}\n\n## Comportamento quando sono sotto stress\n${stress}\n\n## Priorità da proteggere\nProteggi sopra ogni cosa ${protect.toLowerCase()}. Se serve, sacrifica il superfluo per difendere questo criterio.\n\n## Energia relazionale\nMantieni un’energia ${energy.toLowerCase()}: stabile, credibile e orientata all’esecuzione.\n\n## Principi guida\n${principles}\n\n## Standard di lavoro\n- Se il task è chiaro, procedi con ordine e aggiornami senza creare attrito.\n- Se c’è rumore, semplifica.\n- Se c’è incertezza reale, esplicitala e proponi una via utile.\n- Se puoi tutelare focus, qualità o avanzamento, fallo attivamente.`;
+    }
+
+    function synthesizeDetailed(data) {
+      const presence = sentence(data.presence, 'Voglio che tu sia una presenza stabile, intelligente e davvero utile.');
+      const feel = sentence(data.feel, 'Voglio sentirmi più chiaro, sostenuto e immediatamente operativo.');
+      const trueRole = sentence(data.true_role, 'Il tuo ruolo è aiutarmi a tenere insieme direzione, esecuzione e lucidità.');
+      const principlesRaw = escapeMarkdown(data.principles);
+      const principles = principlesRaw
+        ? principlesRaw.split(/\n+/).map((line) => sentence(line)).filter(Boolean)
+        : [
+            'Dire la verità operativa anche quando è scomoda.',
+            'Semplificare senza banalizzare.',
+            'Proteggere il focus e ridurre il rumore.',
+            'Restare concreto, utile e orientato al passo successivo.'
+          ];
+      const speedAccuracy = slugText(data.speed_accuracy, 'Equilibrio tra velocità e controllo');
+      const simplifyDeepen = sentence(data.simplify_deepen, 'Semplifica quando serve sbloccare e approfondisci quando una decisione ha impatto reale.');
+      const clearTask = sentence(data.clear_task, 'Quando il task è chiaro, muoviti con decisione e porta avanti ciò che è già definito.');
+      const ambiguousTask = sentence(data.ambiguous_task, 'Quando il task è ambiguo, fai ordine, isola le incognite e proponi poche strade sensate.');
+      const selfComplication = sentence(data.self_complication, 'Se mi sto complicando la vita, aiutami a tornare all’essenziale con tatto e fermezza.');
+      const block = sentence(data.block, 'Quando trovi un blocco, chiariscilo, cerca workaround e mantieni l’inerzia del lavoro.');
+      const communication = sentence(data.communication, 'Comunica in modo chiaro, sintetico e concreto, senza perdere umanità.');
+      const empathy = slugText(data.empathy_directness, 'Bilanciato tra empatia e chiarezza');
+      const challenge = slugText(data.challenge, 'Solo in casi evidenti');
+      const perfectAnswer = sentence(data.perfect_answer, 'Una risposta perfetta è chiara, concreta, ben orientata e immediatamente utile.');
+      const notWanted = sentence(data.not_wanted, 'Non voglio un bot fumoso, neutro per abitudine o incapace di prendere una posizione utile.');
+
+      const principleBullets = bulletLines(principles);
+      const behaviors = bulletLines([
+        `Bilancia velocità e accuratezza così: ${speedAccuracy}.`,
+        simplifyDeepen,
+        clearTask,
+        ambiguousTask,
+        selfComplication,
+        block
+      ]);
+
+      return `# SOUL.md\n\n## Presenza desiderata\n${presence}\n\n## Effetto che deve generare\n${feel}\n\n## Ruolo reale\n${trueRole}\n\n## Principi non negoziabili\n${principleBullets}\n\n## Bilanciamento operativo\n${speedAccuracy}. Non farti sedurre né dalla prudenza sterile né dalla fretta cieca: lavora con discernimento.\n\n## Regole di comportamento\n${behaviors}\n\n## Comunicazione\n${communication}\n\n## Equilibrio relazionale\nMantieni uno stile ${empathy.toLowerCase()}.\n\n## Coraggio nel confronto\nSe mi sto sabotando o sto evitando l’importante, regolati così: ${challenge}.\n\n## Standard di risposta perfetta\n${perfectAnswer}\n\n## Bot da evitare assolutamente\n${notWanted}\n\n## Sintesi finale\nSii una presenza che alleggerisce il caos, mantiene lucidità, tutela il focus e rende ogni interazione più utile del punto di partenza.`;
+    }
+
+    function buildMarkdown() {
+      const data = answers[currentMode];
+      if (currentMode === 'quick') return synthesizeQuick(data);
+      if (currentMode === 'complete') return synthesizeComplete(data);
+      return synthesizeDetailed(data);
+    }
+
+    function updateDownload(markdown) {
+      const blob = new Blob([markdown], { type: 'text/markdown;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      if (downloadButton.dataset.url) {
+        URL.revokeObjectURL(downloadButton.dataset.url);
       }
+      downloadButton.href = url;
+      downloadButton.dataset.url = url;
+      downloadButton.setAttribute('aria-disabled', 'false');
+      statusPill.textContent = 'SOUL.md pronto';
+      statusPill.classList.remove('pending');
+      instructionsBox.classList.remove('hidden');
+    }
+
+    modeGrid.querySelectorAll('[data-mode]').forEach((button) => {
+      button.addEventListener('click', () => {
+        currentMode = button.dataset.mode;
+        modeGrid.querySelectorAll('[data-mode]').forEach((btn) => {
+          const active = btn === button;
+          btn.classList.toggle('active', active);
+          btn.setAttribute('aria-selected', active ? 'true' : 'false');
+        });
+        renderQuestions();
+      });
     });
 
-    player.on('seeked', () => {
-      lastSecondTracked = null;
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const markdown = buildMarkdown();
+      markdownOutput.textContent = markdown;
+      updateDownload(markdown);
     });
 
-    player.on('play', async () => {
-      if (lastSecondTracked === null) {
-        try {
-          const seconds = await player.getCurrentTime();
-          lastSecondTracked = Math.floor(seconds);
-        } catch (_) {}
-      }
+    resetButton.addEventListener('click', () => {
+      answers[currentMode] = {};
+      renderQuestions();
     });
 
-    player.on('ended', () => {
-      lastSecondTracked = null;
-      updateUI();
-    });
+    renderQuestions();
   </script>
 </body>
 </html>
