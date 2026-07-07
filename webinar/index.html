@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Webinar Gratuito: Come smettere di fare tutto da solo | OpenClaw</title>
   <meta name="description" content="Scopri come costruire un sistema AI che lavora al posto tuo. Webinar gratuito per professionisti, piccoli imprenditori e coach." />
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <!-- Meta Pixel Code -->
   <script>
     !function(f,b,e,v,n,t,s)
@@ -167,11 +168,14 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      min-height: 58px;
+      min-height: 64px;
       padding: 0 24px;
       border-radius: 999px;
       text-decoration: none;
       font-weight: 900;
+      font-size: 1.12rem;
+      line-height: 1.15;
+      text-align: center;
       transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
       border: 0;
       cursor: pointer;
@@ -220,10 +224,10 @@
       font-size: clamp(1.8rem, 4.2vw, 3.35rem);
       line-height: 0.95;
       letter-spacing: -0.055em;
-      text-wrap: nowrap;
+      text-wrap: balance;
     }
     .section-tag {
-      display: inline-block;
+      display: none;
       margin-bottom: 12px;
       color: #67e8f9;
       font-size: 0.76rem;
@@ -246,6 +250,9 @@
       display: grid;
       gap: 18px;
       grid-template-columns: 1fr;
+    }
+    .problem-followup {
+      margin-top: 18px;
     }
     .panel, .fit-card, .discover-card, .quote-card, .video-feature, .cta-inline, .faq-item {
       border-radius: 22px;
@@ -297,7 +304,7 @@
       min-height: 500px;
       display: flex;
       align-items: center;
-      background: url('/wspaints/assets/riccardo-chi-sono.png');
+      background-image: url('/wspaints/assets/riccardo-chi-sono.png');
       background-size: cover;
       background-position: center;
       border-radius: var(--radius-xl);
@@ -312,6 +319,39 @@
       backdrop-filter: blur(12px);
       border-radius: var(--radius-lg);
       margin: 24px;
+    }
+    @media (max-width: 768px) {
+      .hero-actions .btn,
+      .cta-inline .btn,
+      #iscrizione .btn,
+      #webinar-form .btn {
+        min-height: 72px;
+        padding: 16px 24px;
+        font-size: 1.32rem;
+        line-height: 1.18;
+      }
+      .problem-header h2 {
+        max-width: 14ch;
+        font-size: clamp(1.65rem, 8vw, 2.55rem);
+        line-height: 1.02;
+        letter-spacing: -0.04em;
+        text-wrap: balance;
+      }
+      .chi-sono-section {
+        min-height: 700px;
+        background-image: url('/webinar/assets/riccardo-chi-sono-mobile.jpg');
+        background-position: center top;
+        background-size: cover;
+        align-items: flex-end;
+        padding-top: 300px;
+      }
+      .chi-sono-content {
+        max-width: none;
+        width: calc(100% - 24px);
+        margin: 0 12px 12px;
+        padding: 24px 18px;
+        background: linear-gradient(180deg, rgba(15, 23, 42, 0.52), rgba(15, 23, 42, 0.94) 28%);
+      }
     }
     .chi-sono-content h2 {
       font-size: clamp(2rem, 4vw, 3rem);
@@ -467,6 +507,12 @@
       color: var(--muted-2);
       margin: 0;
     }
+    .turnstile-wrap {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      min-height: 70px;
+    }
     .form-note {
       color: #cbd5e1;
     }
@@ -495,16 +541,39 @@
       .hero { padding: 32px; }
       .hero-content { padding: 32px; min-height: 400px; }
       .btn { width: auto; }
-      .problem-grid { grid-template-columns: 1.05fr 0.95fr; }
+      .problem-grid { grid-template-columns: 1fr; width: 100%; }
+      .problem-followup {
+        max-width: 100%;
+        width: 100%;
+        display: block;
+        margin-top: 42px;
+      }
+      .problem-followup strong {
+        width: 100%;
+        max-width: 100%;
+        display: block;
+        font-size: 1.6rem;
+        line-height: 1.5;
+      }
       .discover-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .section-header.compact-title.problem-header {
+        max-width: 100%;
+        width: 100%;
+      }
+      .section-header.compact-title.problem-header h2 {
+        width: auto;
+        max-width: none;
+        font-size: clamp(1.65rem, 6vw, 2.8rem);
+        line-height: 1.02;
+        letter-spacing: -0.045em;
+        white-space: nowrap;
+        text-wrap: initial;
+      }
       .fit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .video-layout { grid-template-columns: 1fr; }
       .section { padding: 32px; }
       h2 { max-width: none; }
       .section-header.compact-title h2 { max-width: 22ch; }
-      .problem-header h2 {
-        font-size: clamp(2.4rem, 3.35vw, 3.5rem);
-      }
     }
   </style>
 </head>
@@ -523,11 +592,37 @@
             <button class="btn btn-primary" type="button" data-open-modal>Voglio iscrivermi gratuitamente</button>
           </div>
           <div class="hero-meta">
-            <span>📅 Data: Venerdì 19 Giugno ore 18.15</span>
-            <span>⏱️ Durata: 60 minuti</span>
+            <span>📅 Data: mercoledì 15 luglio ore 18.15</span>
+            <span>⏱️ Durata: 90 minuti</span>
             <span>💻 Online su Google Meet</span>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-header compact-title">
+        <div class="section-tag">La situazione reale</div>
+        <h2>La situazione reale</h2>
+      </div>
+      <div class="panel">
+        <p>Per anni ci hanno detto che il problema degli imprenditori è trovare più clienti.</p>
+        <p>Eppure, quando si analizzano le principali cause di stress e burnout tra titolari di aziende e professionisti, emergono sempre gli stessi problemi:</p>
+        <ul class="bullet-list">
+          <li>Troppe cose da fare.</li>
+          <li>Troppe responsabilità concentrate su una sola persona.</li>
+          <li>Troppe decisioni da prendere ogni giorno.</li>
+          <li>Troppo poco tempo per tutto.</li>
+        </ul>
+        <div style="height:16px" aria-hidden="true"></div>
+        <p>Oggi quasi <strong>3 imprenditori su 4</strong> dichiarano sintomi di <strong>burnout</strong>.</p>
+        <p>Più di un terzo <strong>lavora oltre 50 ore</strong> alla settimana.</p>
+        <p>E la maggior parte si ritrova a <strong>ricoprire</strong> contemporaneamente ruoli diversi: <strong>marketing, vendite, amministrazione, assistenza clienti, gestione operativa e direzione.</strong></p>
+        <p>Non perché lo voglia.</p>
+        <p>Perché <strong>nessuno</strong> ha costruito <strong>il sistema</strong> che dovrebbe <strong>supportarlo</strong>.</p>
+        <p>Il risultato è che l'azienda continua ad andare avanti...</p>
+        <p>...ma solo finché c'è qualcuno che si occupa di ricordare tutto, controllare tutto e decidere tutto.</p>
+        <p>E molto spesso <strong>quel qualcuno sei tu</strong>.</p>
       </div>
     </section>
 
@@ -540,16 +635,17 @@
         <div class="panel" style="display:flex;flex-direction:column;gap:18px;">
           <p class="lead">Se ti riconosci in questa situazione, questo webinar è per te:</p>
           <ul class="bullet-list">
-            <li>Passi ore a scrivere contenuti, email, proposte — ogni giorno da capo</li>
-            <li>Hai provato l'AI ma finisci sempre per fare tutto manualmente</li>
-            <li>Non hai un team che ti supporta e senti di dover gestire tutto da solo</li>
-            <li>Produci molto ma avanzi poco: il tuo tempo viene divorato da task ripetitivi</li>
-            <li>Sai che l'AI può aiutarti, ma non hai un sistema per usarla davvero</li>
+            <li>Passi ore a scrivere contenuti, email e proposte che sembrano sempre ripartire da zero.</li>
+            <li>Hai provato ChatGPT o altri strumenti AI, ma alla fine il lavoro ricade comunque su di te.</li>
+            <li>Se non controlli personalmente una cosa, hai la sensazione che si bloccherà.</li>
+            <li>Hai decine di attività aperte contemporaneamente e fai fatica a capire qual è davvero la priorità.</li>
+            <li>Produci molto, ma a fine giornata ti chiedi dove sia finito tutto il tempo.</li>
+            <li>Sai che dovrebbero esistere modi più intelligenti di lavorare, ma non hai ancora trovato un sistema che funzioni davvero.</li>
           </ul>
         </div>
-        <div class="quote-card">
-          <strong>"Non è che l'AI non funziona. È che non hai un sistema. Hai i pezzi del puzzle sparsi sul tavolo, ma nessuno ti ha mai mostrato come assemblarli."</strong>
-        </div>
+      </div>
+      <div class="quote-card problem-followup">
+        <strong>"Non è che l'AI non funziona. È che non hai un sistema. Hai i pezzi del puzzle sparsi sul tavolo, ma nessuno ti ha mai mostrato come assemblarli."</strong>
       </div>
     </section>
 
@@ -585,7 +681,7 @@
       </div>
       <div class="discover-grid">
         <div class="discover-card">
-          <h3>1. Perché l’AI “a mano” non basta più</h3>
+          <h3>1. Perché l'AI "a mano" non basta più</h3>
           <p>Il limite non è l’AI. Il limite è usarla senza struttura. Ti mostrerò cosa cambia quando passi dal tool al sistema.</p>
         </div>
         <div class="discover-card">
@@ -719,13 +815,19 @@
         <div class="faq-item">
           <button class="faq-question" type="button">Quanto dura il webinar?</button>
           <div class="faq-answer">
-            <p>60 minuti. Abbastanza per mostrarti il sistema senza perdere tempo in teoria inutile.</p>
+            <p>90 minuti. Abbastanza per mostrarti il sistema senza perdere tempo in teoria inutile.</p>
           </div>
         </div>
         <div class="faq-item">
           <button class="faq-question" type="button">Dove ricevo il link per partecipare?</button>
           <div class="faq-answer">
             <p>Riceverai il link Google Meet via email un’ora prima dell’evento, insieme al reminder finale.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" type="button">E se non posso partecipare nella data proposta?</button>
+          <div class="faq-answer">
+            <p>Nessun problema, una volta iscritto riceverai il link alla registrazione.</p>
           </div>
         </div>
       </div>
@@ -760,8 +862,11 @@
         </label>
         <label class="consent-check">
           <input type="checkbox" name="updatesAccepted" />
-          <span>Acconsento a ricevere via email contenuti, aggiornamenti e comunicazioni promozionali relative ai servizi di Riccardo Romano.</span>
+          <span>Acconsento a ricevere via email contenuti e aggiornamenti sulle attività di Riccardo Romano</span>
         </label>
+        <div class="turnstile-wrap">
+          <div class="cf-turnstile" data-sitekey="0x4AAAAAADoozULU4eecn7bG" data-theme="dark" data-size="flexible"></div>
+        </div>
         <button class="btn btn-primary" type="submit">Conferma iscrizione</button>
         <p class="form-note">I tuoi dati saranno trattati nel rispetto della normativa privacy vigente. Potrai disiscriverti in qualsiasi momento dalle comunicazioni promozionali.</p>
         <p class="form-status" id="form-status" aria-live="polite"></p>
@@ -779,6 +884,7 @@
     const requiredFields = form.querySelectorAll('[required]');
     const submitButton = form.querySelector('button[type="submit"]');
     const webinarRegisterUrl = new URL('/api/webinar-register', window.location.origin).toString();
+    const turnstileSiteKey = '0x4AAAAAADoozULU4eecn7bG';
     let hasTrackedFormOpen = false;
 
     function trackMetaEvent(name, params) {
@@ -881,6 +987,19 @@
         return;
       }
 
+      if (!turnstileSiteKey || turnstileSiteKey === '%NEXT_PUBLIC_TURNSTILE_SITE_KEY%' || turnstileSiteKey === '__TURNSTILE_SITE_KEY__') {
+        formStatus.textContent = 'Captcha non configurato. Inserisci la site key Cloudflare Turnstile.';
+        formStatus.className = 'form-status error';
+        return;
+      }
+
+      const turnstileToken = window.turnstile?.getResponse?.() || '';
+      if (!turnstileToken) {
+        formStatus.textContent = 'Completa il captcha prima di inviare il modulo.';
+        formStatus.className = 'form-status error';
+        return;
+      }
+
       formStatus.textContent = 'Invio in corso...';
       formStatus.className = 'form-status';
       submitButton.disabled = true;
@@ -890,7 +1009,8 @@
           name: form.name.value.trim(),
           email: form.email.value.trim(),
           privacyAccepted: form.privacyAccepted.checked,
-          updatesAccepted: form.updatesAccepted.checked
+          updatesAccepted: form.updatesAccepted.checked,
+          turnstileToken
         };
 
         const response = await fetch(webinarRegisterUrl, {
@@ -919,6 +1039,7 @@
         formStatus.textContent = 'Iscrizione completata. Reindirizzamento...';
         formStatus.className = 'form-status success';
         form.reset();
+        window.turnstile?.reset?.();
         hasTrackedFormOpen = false;
         setTimeout(() => {
           window.location.href = '/webinar/thank-you';
@@ -929,6 +1050,7 @@
           ? 'Connessione momentaneamente non disponibile. Controlla la rete e riprova tra pochi secondi.'
           : (error.message || 'Errore temporaneo. Riprova tra poco.');
         formStatus.className = 'form-status error';
+        window.turnstile?.reset?.();
       } finally {
         submitButton.disabled = false;
       }
