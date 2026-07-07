@@ -397,6 +397,12 @@
       width: 100%;
       height: auto;
       border-radius: 14px;
+      cursor: zoom-in;
+      transition: transform .18s ease, opacity .18s ease;
+    }
+    .proof-card img:hover {
+      transform: translateY(-2px);
+      opacity: 0.96;
     }
     .proof-card figcaption {
       margin-top: 10px;
@@ -571,6 +577,54 @@
     }
     .form-status.error { color: #fda4af; }
     .form-status.success { color: #86efac; }
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: rgba(2, 6, 23, 0.84);
+      backdrop-filter: blur(6px);
+      z-index: 1200;
+    }
+    .lightbox.is-open { display: flex; }
+    .lightbox-dialog {
+      position: relative;
+      width: min(1100px, 100%);
+      max-height: calc(100vh - 36px);
+      padding: 14px;
+      border-radius: 24px;
+      background: rgba(8, 15, 28, 0.96);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      box-shadow: 0 24px 70px rgba(2, 6, 23, 0.55);
+    }
+    .lightbox-image {
+      display: block;
+      width: 100%;
+      max-height: calc(100vh - 120px);
+      object-fit: contain;
+      border-radius: 18px;
+    }
+    .lightbox-caption {
+      margin-top: 10px;
+      text-align: center;
+      color: #e2e8f0;
+      font-weight: 700;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 42px;
+      height: 42px;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.92);
+      color: #fff;
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
     footer { text-align:center; padding:28px 16px 8px; color:var(--muted-2); font-size:0.92rem; }
 
     @media (min-width: 769px) {
@@ -738,15 +792,15 @@
         <p class="social-proof-intro">Tre feedback reali che fanno vedere bene l’effetto del webinar: più chiarezza, più visione di sistema e una percezione concreta del valore.</p>
         <div class="proof-grid">
           <figure class="proof-card">
-            <img src="/webinar/assets/testimonianza-writing-pathfinder.jpg" alt="Commento testimonianza Writing Pathfinder" loading="lazy" />
+            <img src="/webinar/assets/testimonianza-writing-pathfinder.jpg" alt="Commento testimonianza Writing Pathfinder" loading="lazy" data-lightbox-image data-caption="Writing Pathfinder" />
             <figcaption>Writing Pathfinder</figcaption>
           </figure>
           <figure class="proof-card">
-            <img src="/webinar/assets/testimonianza-gaetano.jpg" alt="Commento testimonianza Gaetano" loading="lazy" />
+            <img src="/webinar/assets/testimonianza-gaetano.jpg" alt="Commento testimonianza Gaetano" loading="lazy" data-lightbox-image data-caption="Gaetano" />
             <figcaption>Gaetano</figcaption>
           </figure>
           <figure class="proof-card">
-            <img src="/webinar/assets/testimonianza-claudia.jpg" alt="Commento testimonianza Claudia" loading="lazy" />
+            <img src="/webinar/assets/testimonianza-claudia.jpg" alt="Commento testimonianza Claudia" loading="lazy" data-lightbox-image data-caption="Claudia" />
             <figcaption>Claudia</figcaption>
           </figure>
         </div>
@@ -906,6 +960,14 @@
     <footer>©2026 Riccardo Romano. Tutti i diritti riservati.</footer>
   </main>
 
+  <div class="lightbox" id="testimonial-lightbox" aria-hidden="true">
+    <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-labelledby="lightbox-caption">
+      <button class="lightbox-close" type="button" id="close-lightbox" aria-label="Chiudi immagine">×</button>
+      <img class="lightbox-image" id="lightbox-image" src="" alt="" />
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+  </div>
+
   <div class="modal-backdrop" id="webinar-modal" aria-hidden="true">
     <div class="modal" role="dialog" aria-modal="true" aria-labelledby="webinar-modal-title">
       <button class="modal-close" type="button" id="close-modal" aria-label="Chiudi">×</button>
@@ -934,6 +996,11 @@
 
   <script>
     const modal = document.getElementById('webinar-modal');
+    const lightbox = document.getElementById('testimonial-lightbox');
+    const lightboxImage = document.getElementById('lightbox-image');
+    const lightboxCaption = document.getElementById('lightbox-caption');
+    const lightboxCloseButton = document.getElementById('close-lightbox');
+    const lightboxTriggers = document.querySelectorAll('[data-lightbox-image]');
     const openButtons = document.querySelectorAll('[data-open-modal]');
     const closeButton = document.getElementById('close-modal');
     const form = document.getElementById('webinar-form');
@@ -970,18 +1037,44 @@
       modal.setAttribute('aria-hidden', 'true');
     }
 
+    function openLightbox(image) {
+      lightboxImage.src = image.src;
+      lightboxImage.alt = image.alt;
+      lightboxCaption.textContent = image.dataset.caption || image.alt || '';
+      lightbox.classList.add('is-open');
+      lightbox.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('is-open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      lightboxImage.src = '';
+      lightboxImage.alt = '';
+      lightboxCaption.textContent = '';
+    }
+
     openButtons.forEach((button) => {
       button.addEventListener('click', openModal);
     });
 
     closeButton.addEventListener('click', closeModal);
+    lightboxCloseButton.addEventListener('click', closeLightbox);
+
+    lightboxTriggers.forEach((image) => {
+      image.addEventListener('click', () => openLightbox(image));
+    });
 
     modal.addEventListener('click', (event) => {
       if (event.target === modal) closeModal();
     });
 
+    lightbox.addEventListener('click', (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+
     document.addEventListener('keydown', (event) => {
       if (event.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+      if (event.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
     });
 
     faqButtons.forEach((button) => {
