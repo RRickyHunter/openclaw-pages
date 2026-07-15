@@ -95,6 +95,22 @@
     .hero-bullets li { color: var(--text); display:flex; gap:10px; align-items:flex-start; justify-content:center; text-align:center; }
     .hero-bullets li span { color: var(--primary); font-weight:800; }
     .cta-row { display:flex; flex-wrap:wrap; gap:14px; margin-top:12px; justify-content:center; }
+    .price-stack {
+      display:flex; flex-wrap:wrap; align-items:baseline; gap:12px; margin-top:18px; margin-bottom:10px; justify-content:center;
+    }
+    .price-current { font-size:clamp(34px, 6vw, 56px); font-weight:800; line-height:1; color:var(--text); }
+    .price-compare { font-size:18px; color:var(--muted); text-decoration:line-through; }
+    .price-note { margin:0; color:var(--muted); font-size:14px; text-align:center; }
+    .deadline-box {
+      margin:18px auto 0; padding:16px 18px; border:1px solid rgba(255,255,255,.08); border-radius:18px;
+      background:rgba(255,255,255,.03); max-width:540px;
+    }
+    .deadline-label { margin:0 0 10px; font-size:13px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); text-align:center; }
+    .countdown { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+    .countdown-item { min-width:84px; padding:10px 12px; border-radius:14px; background:rgba(0,0,0,.18); border:1px solid rgba(255,255,255,.06); text-align:center; }
+    .countdown-value { display:block; font-size:28px; font-weight:800; line-height:1; color:var(--text); }
+    .countdown-unit { display:block; margin-top:4px; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+    .countdown-expired { color:var(--danger); font-weight:700; text-align:center; }
     .btn {
       display:inline-flex; align-items:center; justify-content:center;
       min-width:220px;
@@ -116,6 +132,15 @@
       box-shadow: 0 0 20px var(--primary-glow), 0 10px 30px rgba(0,212,255,.18);
     }
     .btn:hover { transform: translateY(-2px); }
+    .is-hidden-temporarily { display: none !important; }
+    .simple-footer {
+      padding: 22px 20px 34px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255,255,255,.06);
+      background: var(--bg);
+    }
     .hero-visual {
       display:flex; align-items:center; justify-content:center;
       margin-top: 8px;
@@ -207,6 +232,48 @@
     .xmark li::marker { color: var(--danger); }
     .mini-note { color: var(--muted); font-size: .92rem; }
     .testimonials-section { padding: 90px 0; background: var(--bg-alt); }
+    .testimonials-video-feature {
+      max-width: 960px;
+      margin: 0 auto 40px;
+      padding: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+    .testimonials-video-label {
+      display: inline-block;
+      margin-bottom: 12px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(0,212,255,.1);
+      border: 1px solid rgba(0,212,255,.18);
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .testimonials-video-title {
+      margin: 0 0 14px;
+      font-size: clamp(1.35rem, 2vw, 1.8rem);
+      line-height: 1.2;
+    }
+    .testimonials-video-frame {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #000;
+    }
+    .testimonials-video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
     .testimonials-grid { display: grid; grid-template-columns: 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; }
     .testimonial-full { width: 100%; border-radius: 24px; overflow: hidden; box-shadow: var(--shadow); }
     .testimonial-full img { width: 100%; height: auto; display: block; }
@@ -314,6 +381,15 @@
       .btn { width:100%; }
     }
   </style>
+  <script>
+    window.OCAE_DEFAULT_PRICING = {
+      active: {
+        ctaLabel: 'Accedi subito',
+        endsAt: '2026-07-04T23:59:59+02:00'
+      },
+      timezone: 'Europe/Rome'
+    };
+  </script>
 </head>
 <body>
 
@@ -338,9 +414,22 @@
           <li><span>•</span> Attivi un sistema reale in pochi giorni</li>
           <li><span>•</span> Meno dispersione, più output concreto</li>
         </ul>
+        <div class="price-stack">
+          <span class="price-current" data-ocae-price>—</span>
+          <span class="price-compare" data-ocae-compare></span>
+        </div>
+        <div class="deadline-box" data-ocae-deadline>
+          <p class="deadline-label">Il prezzo attuale scade tra</p>
+          <div class="countdown" data-ocae-countdown>
+            <div class="countdown-item"><span class="countdown-value" data-unit="days">00</span><span class="countdown-unit">giorni</span></div>
+            <div class="countdown-item"><span class="countdown-value" data-unit="hours">00</span><span class="countdown-unit">ore</span></div>
+            <div class="countdown-item"><span class="countdown-value" data-unit="minutes">00</span><span class="countdown-unit">minuti</span></div>
+            <div class="countdown-item"><span class="countdown-value" data-unit="seconds">00</span><span class="countdown-unit">secondi</span></div>
+          </div>
+        </div>
         <div class="cta-row">
-          <a class="btn btn-primary" href="https://quiz.riccardoromano.biz/oce">Candidati / Prenota una call</a>
-          <a class="btn btn-secondary" href="https://buy.stripe.com/6oU28r3rAcYmfu30KVeUU00">Accedi subito — €497</a>
+          <a class="btn btn-primary is-hidden-temporarily" href="https://quiz.riccardoromano.biz/oce">Candidati / Prenota una call</a>
+          <a class="btn btn-secondary" href="/ocaeckout" data-ocae-cta>Accedi subito</a>
         </div>
       </div>
     </div>
@@ -458,7 +547,7 @@
       <div class="card offer" id="call">
         <h3>OpenClaw Activation Experience</h3>
         <div class="price-old">Valore totale: €1.088</div>
-        <div class="price">€497</div>
+        <div class="price" data-ocae-price>—</div>
         <p class="mini-note">Una tantum — nessun abbonamento nascosto</p>
         <div style="text-align: left; margin: 22px 0;">
           <ul class="includes-list">
@@ -469,8 +558,8 @@
           </ul>
         </div>
         <div class="cta-row" style="flex-direction: column;">
-          <a class="btn btn-primary" href="https://quiz.riccardoromano.biz/oce">Candidati / Prenota una call</a>
-          <a class="btn btn-secondary" href="https://buy.stripe.com/6oU28r3rAcYmfu30KVeUU00">Accedi subito — €497</a>
+          <a class="btn btn-primary is-hidden-temporarily" href="https://quiz.riccardoromano.biz/oce">Candidati / Prenota una call</a>
+          <a class="btn btn-secondary" href="/ocaeckout" data-ocae-cta>Accedi subito</a>
         </div>
       </div>
     </div>
@@ -517,6 +606,13 @@
       <div style="text-align:center; margin-bottom: 48px;">
         <div class="eyebrow">Testimonianze</div>
         <h2 class="section-title">Cosa dice chi ha lavorato con me</h2>
+      </div>
+      <div class="testimonials-video-feature">
+        <div class="testimonials-video-label">Nuova testimonianza video</div>
+        <h3 class="testimonials-video-title">Guido racconta cosa ha visto dentro OCAE</h3>
+        <div class="testimonials-video-frame">
+          <iframe src="https://player.vimeo.com/video/1210332152?h=12d527b98e&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=521397" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" title="Testimonianza Guido OCAE"></iframe>
+        </div>
       </div>
       <div class="testimonials-grid">
         <!-- Testimonianza 1 - Golia Pezzulla -->
@@ -591,17 +687,131 @@
       <h2 class="section-title" style="font-size:2.4rem; margin-bottom:12px;">Da strumenti sparsi a sistema attivo</h2>
       <p class="section-sub" style="margin:0 auto 18px;">Se oggi stai usando l'AI in modo confuso, sparso e manuale, questa esperienza serve a fare un passaggio netto.</p>
       <div class="quote" style="text-align:left; max-width:640px; margin:18px auto;">Non impari OpenClaw. Lo attivi e lo fai lavorare per te.</div>
-      <div class="cta-row" style="justify-content:center;">
-        <a class="btn btn-primary" href="https://quiz.riccardoromano.biz/oce">Candidati / Prenota una call</a>
-        <a class="btn btn-secondary" href="https://buy.stripe.com/6oU28r3rAcYmfu30KVeUU00">Accedi subito — €497</a>
+      <div class="deadline-box" data-ocae-deadline-secondary>
+        <p class="deadline-label">Il prezzo attuale scade tra</p>
+        <div class="countdown" data-ocae-countdown-secondary>
+          <div class="countdown-item"><span class="countdown-value" data-unit-secondary="days">00</span><span class="countdown-unit">giorni</span></div>
+          <div class="countdown-item"><span class="countdown-value" data-unit-secondary="hours">00</span><span class="countdown-unit">ore</span></div>
+          <div class="countdown-item"><span class="countdown-value" data-unit-secondary="minutes">00</span><span class="countdown-unit">minuti</span></div>
+          <div class="countdown-item"><span class="countdown-value" data-unit-secondary="seconds">00</span><span class="countdown-unit">secondi</span></div>
+        </div>
       </div>
-      <p class="mini-note" id="accesso" style="margin-top:18px;">Call primaria per traffico freddo. Accesso diretto disponibile per chi è già convinto.</p>
+      <div class="cta-row" style="justify-content:center;">
+        <a class="btn btn-primary is-hidden-temporarily" href="https://quiz.riccardoromano.biz/oce">Candidati / Prenota una call</a>
+        <a class="btn btn-secondary" href="/ocaeckout" data-ocae-cta>Accedi subito</a>
+      </div>
       <p style="margin-top: 28px; color: var(--muted); font-size: 0.9rem;">
         <strong>Riccardo Romano</strong><br>
         Business Architect & OpenClaw Ecosystem Founder
       </p>
     </div>
   </section>
+
+  <footer class="simple-footer">
+    Copyright 2026 Riccardo Romano, tutti i diritti riservati.
+  </footer>
+
+  <script>
+    (function () {
+      const fallback = window.OCAE_DEFAULT_PRICING || {};
+      const state = {
+        active: fallback.active || { ctaLabel: 'Accedi subito', endsAt: null },
+        timezone: fallback.timezone || 'Europe/Rome'
+      };
+      const priceEls = document.querySelectorAll('[data-ocae-price]');
+      const compareEl = document.querySelector('[data-ocae-compare]');
+      const ctaEls = document.querySelectorAll('[data-ocae-cta]');
+      const deadlineEls = document.querySelectorAll('[data-ocae-deadline], [data-ocae-deadline-secondary]');
+      const countdownEls = document.querySelectorAll('[data-ocae-countdown], [data-ocae-countdown-secondary]');
+      const unitGroups = [
+        {
+          days: document.querySelector('[data-unit="days"]'),
+          hours: document.querySelector('[data-unit="hours"]'),
+          minutes: document.querySelector('[data-unit="minutes"]'),
+          seconds: document.querySelector('[data-unit="seconds"]')
+        },
+        {
+          days: document.querySelector('[data-unit-secondary="days"]'),
+          hours: document.querySelector('[data-unit-secondary="hours"]'),
+          minutes: document.querySelector('[data-unit-secondary="minutes"]'),
+          seconds: document.querySelector('[data-unit-secondary="seconds"]')
+        }
+      ];
+
+      function formatMoney(value) {
+        return new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(value);
+      }
+
+      function renderPrice() {
+        const hasPrice = typeof state.active.price === 'number';
+        priceEls.forEach((priceEl) => {
+          priceEl.textContent = hasPrice ? formatMoney(state.active.price) : '—';
+        });
+        if (compareEl) {
+          compareEl.textContent = typeof state.active.compareAtPrice === 'number' ? formatMoney(state.active.compareAtPrice) : '';
+        }
+        ctaEls.forEach((ctaEl) => {
+          ctaEl.textContent = hasPrice
+            ? `${state.active.ctaLabel || 'Accedi subito'} — ${formatMoney(state.active.price)}`
+            : (state.active.ctaLabel || 'Accedi subito');
+          ctaEl.setAttribute('href', '/ocaeckout');
+        });
+      }
+
+      function hideCountdown() {
+        deadlineEls.forEach((el) => {
+          if (el) el.style.display = 'none';
+        });
+      }
+
+      function showCountdown() {
+        deadlineEls.forEach((el) => {
+          if (el) el.style.display = '';
+        });
+      }
+
+      function updateCountdown() {
+        if (state.active.timerVisible === false || !state.active.endsAt) {
+          hideCountdown();
+          return false;
+        }
+        const diff = new Date(state.active.endsAt).getTime() - Date.now();
+        if (diff <= 0) {
+          hideCountdown();
+          return false;
+        }
++        showCountdown();
+        const totalSeconds = Math.floor(diff / 1000);
+        const values = {
+          days: Math.floor(totalSeconds / 86400),
+          hours: Math.floor((totalSeconds % 86400) / 3600),
+          minutes: Math.floor((totalSeconds % 3600) / 60),
+          seconds: totalSeconds % 60
+        };
+        unitGroups.forEach((units) => {
+          Object.entries(values).forEach(([key, value]) => {
+            if (units[key]) units[key].textContent = String(value).padStart(2, '0');
+          });
+        });
+        return true;
+      }
+
+      renderPrice();
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      fetch('/api/ocae-pricing', { cache: 'no-store' })
+        .then((res) => (res.ok ? res.json() : null))
+        .then((data) => {
+          if (!data || !data.active) return;
+          state.active = data.active;
+          state.timezone = data.timezone || state.timezone;
+          renderPrice();
+          updateCountdown();
+        })
+        .catch(() => {});
+    })();
+  </script>
 
   <script>
     // FAQ Accordion
