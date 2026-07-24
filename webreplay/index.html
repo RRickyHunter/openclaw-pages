@@ -5,6 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Replay Webinar | Guarda fino alla fine</title>
   <meta name="description" content="Rivedi il replay del webinar e guarda fino alla fine per capire quali problemi evitare oggi e se questo approccio è il passo giusto per smettere di fare tutto da solo." />
+  <script>
+    (function () {
+      var cutoffRomeDate = '2026-07-25';
+      var cutoffRomeTime = '23:59';
+      var redirectTarget = '/webreplayover';
+      var parts = new Intl.DateTimeFormat('en-CA', {
+        timeZone: 'Europe/Rome',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        hourCycle: 'h23'
+      }).formatToParts(new Date()).reduce(function (acc, part) {
+        if (part.type !== 'literal') acc[part.type] = part.value;
+        return acc;
+      }, {});
+      var nowRome = parts.year + '-' + parts.month + '-' + parts.day + ' ' + parts.hour + ':' + parts.minute;
+      var cutoffRome = cutoffRomeDate + ' ' + cutoffRomeTime;
+      if (nowRome >= cutoffRome) {
+        window.location.replace(redirectTarget);
+      }
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -58,7 +82,7 @@
     .wrap {
       width: min(var(--max), calc(100% - 24px));
       margin: 0 auto;
-      padding: 10px 0 88px;
+      padding: 6px 0 88px;
       position: relative;
       z-index: 1;
     }
@@ -280,7 +304,7 @@
     }
     .footer-links a:hover { text-decoration: underline; }
     @media (min-width: 768px) {
-      .wrap { padding-top: 12px; }
+      .wrap { padding-top: 6px; }
       .hero { padding: 18px; }
       .hero-content { padding: 30px 46px 34px; }
       .section { padding: 34px 30px; }
@@ -295,6 +319,8 @@
     <section class="hero">
       <div class="hero-content">
         <div class="eyebrow">Replay webinar</div>
+
+        <noscript><meta http-equiv="refresh" content="0; url=/webreplayover" /></noscript>
         <h1>Riguarda il webinar e <span class="headline-accent">arriva fino alla fine</span></h1>
         <p class="hero-copy">Qui trovi il replay del webinar: una visione chiara, concreta e senza fronzoli su quali siano le problematiche da evitare oggigiorno per poter smettere di fare tutto da solo.</p>
         <p class="hero-note">Ti consiglio di guardarlo tutto: le parti finali sono quelle che aiutano davvero a capire come applicarlo nel tuo caso.</p>
@@ -312,7 +338,7 @@
       </div>
       <div class="video-shell">
         <iframe
-          src="https://player.vimeo.com/video/1202953045?title=0&byline=0&portrait=0"
+          src="https://player.vimeo.com/video/1206650428"
           allow="autoplay; fullscreen; picture-in-picture"
           allowfullscreen
           loading="lazy"
@@ -337,11 +363,11 @@
       <div class="points">
         <article class="card">
           <h3>Capisci il problema reale</h3>
-          <p>Non è “manca l'AI”. Spesso manca un sistema che trasformi tutto in continuità operativa, senza aggiungere caos.</p>
+          <p>Questo replay ti aiuta a vedere dove oggi si crea il collo di bottiglia: non nel singolo strumento, ma nel fatto che tutto continua a dipendere da te.</p>
         </article>
         <article class="card">
           <h3>Vedi come il modello prende forma</h3>
-          <p>Il webinar mette ordine tra idee, strumenti e priorità, così puoi capire cosa ha senso implementare davvero.</p>
+          <p>Il webinar mette ordine tra idee, strumenti e priorità, così puoi capire come potrebbe prendere forma OpenClaw Activation Experience nel tuo caso concreto.</p>
         </article>
         <article class="card">
           <h3>Arrivi a capire se è il passo giusto per te adesso</h3>
@@ -369,7 +395,8 @@
       <div>© 2026 Riccardo Romano. Tutti i diritti riservati.</div>
       <div class="footer-links">
         <a href="/privacy-policy/">Privacy Policy</a>
-        <a href="/termini-di-servizio/">Termini</a>
+        <a href="/termini-di-servizio/">Termini di Servizio</a>
+        <a href="/disclaimer-ocae/">Disclaimer</a>
       </div>
     </div>
   </main>
