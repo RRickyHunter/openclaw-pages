@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Centro di Conoscenza</title>
+  <meta name="description" content="Dashboard pubblica MVP per consultare rapidamente le lezioni del Centro di Conoscenza." />
+  <meta name="robots" content="noindex, nofollow" />
+  <style>
+    :root {
+      --bg: #081120;
+      --bg-soft: #0f1b31;
+      --panel: rgba(16, 28, 50, 0.82);
+      --panel-strong: #132340;
+      --line: rgba(160, 187, 255, 0.14);
+      --text: #f5f7fb;
+      --muted: #9fb0cf;
+      --accent: #7cc7ff;
+      --accent-2: #9b8cff;
+      --success: #7ef0ba;
+      --shadow: 0 20px 60px rgba(0, 0, 0, 0.28);
+      --radius: 22px;
+      --radius-sm: 16px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(124, 199, 255, 0.15), transparent 28%),
+        radial-gradient(circle at top right, rgba(155, 140, 255, 0.16), transparent 24%),
+        linear-gradient(180deg, #07101d 0%, #09172c 50%, #071120 100%);
+    }
+
+    a { color: inherit; }
+
+    .shell {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 20px 0 48px;
+    }
+
+    .hero {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: linear-gradient(180deg, rgba(7, 16, 29, 0.92), rgba(7, 16, 29, 0.72));
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .hero-inner {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+      padding: 18px 0 16px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      padding: 8px 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 3.8rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+    }
+
+    .subtitle {
+      max-width: 760px;
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.08rem);
+      line-height: 1.55;
+    }
+
+    .toolbar {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: 1fr;
+    }
+
+    .search {
+      position: relative;
+    }
+
+    .search input {
+      width: 100%;
+      min-height: 56px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      background: rgba(255,255,255,0.06);
+      color: var(--text);
+      padding: 0 54px 0 18px;
+      font-size: 16px;
+      outline: none;
+      transition: border-color .18s ease, background .18s ease, box-shadow .18s ease;
+    }
+
+    .search input:focus {
+      border-color: rgba(124, 199, 255, 0.54);
+      background: rgba(255,255,255,0.08);
+      box-shadow: 0 0 0 4px rgba(124, 199, 255, 0.12);
+    }
+
+    .search-icon {
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--muted);
+      pointer-events: none;
+      font-size: 18px;
+    }
+
+    .stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .stat {
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .stat strong { color: var(--text); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .card {
+      display: grid;
+      gap: 16px;
+      padding: 18px;
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(19, 35, 64, 0.94), rgba(12, 23, 44, 0.96));
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .card-top {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: flex-start;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .chip--ok {
+      color: #072415;
+      background: var(--success);
+      border-color: transparent;
+      font-weight: 700;
+    }
+
+    .title {
+      margin: 0;
+      font-size: clamp(1.12rem, 2vw, 1.35rem);
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+    }
+
+    .module {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+      line-height: 1.5;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .lesson-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 16px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: #071120;
+      font-weight: 800;
+      text-decoration: none;
+      letter-spacing: -0.01em;
+      transition: transform .18s ease, opacity .18s ease;
+    }
+
+    .lesson-link:hover,
+    .lesson-link:focus-visible {
+      transform: translateY(-1px);
+      opacity: .95;
+    }
+
+    .lesson-id {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .empty {
+      display: none;
+      padding: 22px;
+      margin-top: 16px;
+      border-radius: var(--radius-sm);
+      border: 1px dashed rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.03);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      text-align: center;
+    }
+
+    @media (min-width: 760px) {
+      .toolbar {
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: center;
+      }
+
+      .grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 1080px) {
+      .grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 759px) {
+      .shell { width: min(var(--max), calc(100% - 20px)); }
+      .hero-inner { width: min(var(--max), calc(100% - 20px)); }
+      .card { padding: 16px; }
+      .cta-row { align-items: stretch; }
+      .lesson-link { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">Centro di Conoscenza · MVP pubblica</span>
+      <div>
+        <h1>Lezioni pronte da aprire.</h1>
+        <p class="subtitle">Dashboard pubblica, rapida e mobile-first. Ogni card porta direttamente alla lezione su CourseSprout. Ricerca testuale client-side inclusa, senza dipendenze esterne.</p>
+      </div>
+      <div class="toolbar">
+        <label class="search" aria-label="Cerca lezioni">
+          <input id="searchInput" type="search" placeholder="Cerca per titolo, modulo o raccolta…" autocomplete="off" />
+          <span class="search-icon">⌕</span>
+        </label>
+        <div class="stats" aria-live="polite">
+          <div class="stat"><strong id="visibleCount">13</strong> lezioni visibili</div>
+          <div class="stat"><strong id="collectionCount">2</strong> raccolte</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section id="lessonGrid" class="grid" aria-label="Elenco lezioni"></section>
+    <div id="emptyState" class="empty">Nessuna lezione trovata con questa ricerca.</div>
+    <p class="footer-note">Fonte contenuti: Centro di Conoscenza. Link lezione deterministico: <code>https://coursesprout.com/lesson/&lt;lesson_id&gt;</code>.</p>
+  </main>
+
+  <script>
+    const lessons = [
+      { title: 'Skill per titolare video e classificare contenuti in modo riutilizzabile', date: '2026-07-19', collection: 'Dietro le quinte', module: 'Creazione di skill e automazioni', lessonId: '9610', url: 'https://coursesprout.com/lesson/9610' },
+      { title: 'OpenClaw usa il motore sbagliato? Come verificare modello, credito e restart', date: '2026-07-19', collection: 'Dietro le quinte', module: 'Debug e correzioni', lessonId: '9606', url: 'https://coursesprout.com/lesson/9606' },
+      { title: 'Mantenere la direzione quando l’AI apre troppi rami di lavoro', date: '2026-07-19', collection: 'Dietro le quinte', module: 'Creazione di skill e automazioni', lessonId: '9609', url: 'https://coursesprout.com/lesson/9609' },
+      { title: 'ChatGPT Work: cosa cambia quando ChatGPT passa dalla risposta al lavoro strutturato', date: '2026-07-19', collection: 'Dietro le quinte', module: 'Uso reale del sistema', lessonId: '9611', url: 'https://coursesprout.com/lesson/9611' },
+      { title: 'ChatGPT 5.5 ragiona di più e restituisce skill già strutturate: primo test reale', date: '2026-07-18', collection: 'Dietro le quinte', module: 'Creazione di skill e automazioni', lessonId: '9605', url: 'https://coursesprout.com/lesson/9605' },
+      { title: 'OCAE 1.0 — Giorno 5: Visione, continuità e opportunità dopo il workshop', date: '2026-07-14', collection: 'OCAE 1.0 - Sessioni', module: 'Sessioni workshop', lessonId: '9008', url: 'https://coursesprout.com/lesson/9008' },
+      { title: 'OCAE 1.0 — Giorno 4: Creare skill utili partendo da software e problemi reali', date: '2026-07-10', collection: 'OCAE 1.0 - Sessioni', module: 'Sessioni workshop', lessonId: '8994', url: 'https://coursesprout.com/lesson/8994' },
+      { title: 'OCAE 1.0 — Giorno 3: Skill, API e workflow per automatizzare il lavoro', date: '2026-07-09', collection: 'OCAE 1.0 - Sessioni', module: 'Sessioni workshop', lessonId: '8985', url: 'https://coursesprout.com/lesson/8985' },
+      { title: 'OCAE 1.0 — Giorno 2: Dal bot generico al sistema operativo', date: '2026-07-08', collection: 'OCAE 1.0 - Sessioni', module: 'Sessioni workshop', lessonId: '8980', url: 'https://coursesprout.com/lesson/8980' },
+      { title: 'OCAE 1.0 — Giorno 1: Introduzione pratica a OpenClaw', date: '2026-07-07', collection: 'OCAE 1.0 - Sessioni', module: 'Sessioni workshop', lessonId: '8979', url: 'https://coursesprout.com/lesson/8979' },
+      { title: 'OpenClaw non invia più file su Telegram: diagnosi e ripristino da ClawLauncher', date: '2026-05-08', collection: 'Dietro le quinte', module: 'Debug e correzioni', lessonId: '9618', url: 'https://coursesprout.com/lesson/9618' },
+      { title: 'La strategia per acquisire clienti locali', date: '2026-04-13', collection: 'Dietro le quinte', module: 'Contenuti, marketing e social', lessonId: '9616', url: 'https://coursesprout.com/lesson/9616' },
+      { title: 'Perché non testare OpenClaw direttamente in produzione: il caso CourseSprout', date: '2026-03-20', collection: 'Dietro le quinte', module: 'Debug e correzioni', lessonId: '9615', url: 'https://coursesprout.com/lesson/9615' }
+    ];
+
+    const grid = document.getElementById('lessonGrid');
+    const searchInput = document.getElementById('searchInput');
+    const visibleCount = document.getElementById('visibleCount');
+    const collectionCount = document.getElementById('collectionCount');
+    const emptyState = document.getElementById('emptyState');
+
+    const formatDate = (value) => {
+      const date = new Date(value + 'T00:00:00');
+      return new Intl.DateTimeFormat('it-IT', { day: '2-digit', month: 'short', year: 'numeric' }).format(date);
+    };
+
+    const cardTemplate = (lesson) => `
+      <article class="card" data-search="${[lesson.title, lesson.collection, lesson.module, lesson.lessonId].join(' ').toLowerCase()}">
+        <div class="card-top">
+          <div class="meta">
+            <span class="chip chip--ok">Pubblicata</span>
+            <span class="chip">${lesson.collection}</span>
+          </div>
+          <span class="chip">${formatDate(lesson.date)}</span>
+        </div>
+        <div>
+          <h2 class="title">${lesson.title}</h2>
+          <p class="module">${lesson.module}</p>
+        </div>
+        <div class="cta-row">
+          <span class="lesson-id">Lesson ID: ${lesson.lessonId}</span>
+          <a class="lesson-link" href="${lesson.url}" target="_blank" rel="noopener noreferrer">Apri lezione</a>
+        </div>
+      </article>
+    `;
+
+    const render = (query = '') => {
+      const term = query.trim().toLowerCase();
+      const filtered = !term
+        ? lessons
+        : lessons.filter((lesson) => [lesson.title, lesson.collection, lesson.module, lesson.lessonId].join(' ').toLowerCase().includes(term));
+
+      grid.innerHTML = filtered.map(cardTemplate).join('');
+      visibleCount.textContent = String(filtered.length);
+      collectionCount.textContent = String(new Set(filtered.map(item => item.collection)).size);
+      emptyState.style.display = filtered.length ? 'none' : 'block';
+    };
+
+    searchInput.addEventListener('input', (event) => render(event.target.value));
+    render();
+  </script>
+</body>
+</html>
