@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pizzeria Luna Nera | Pizza nera leggera e digeribile</title>
+  <meta name="description" content="Pizzeria Luna Nera è una demo live per una pizzeria italiana che mette al centro pizza nera e impasto nero, raccontati come opzione distintiva e più facile da digerire per chi teme gonfiore e pesantezza." />
+  <meta property="og:title" content="Pizzeria Luna Nera | Pizza nera leggera e digeribile" />
+  <meta property="og:description" content="Demo live di pagina vendita per pizzeria: impasto nero, focus digestione e mockup prenotazione tavolo non attivo." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pages.riccardoromano.biz/test-pizzeria/" />
+  <link rel="canonical" href="https://pages.riccardoromano.biz/test-pizzeria/" />
+  <style>
+    :root {
+      --bg: #05070b;
+      --bg-alt: #0d1117;
+      --card: rgba(18, 24, 32, 0.92);
+      --card-soft: rgba(255,255,255,0.04);
+      --text: #f6f3ee;
+      --muted: #b9b2a8;
+      --line: rgba(255,255,255,0.08);
+      --gold: #d6b36a;
+      --gold-soft: rgba(214,179,106,0.12);
+      --accent: #efe5cf;
+      --ok: #9ed8b6;
+      --shadow: 0 28px 80px rgba(0,0,0,.34);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(214,179,106,0.14), transparent 28%),
+        linear-gradient(180deg, #05070b 0%, #0a0d12 42%, #05070b 100%);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    img { display: block; max-width: 100%; }
+    .container { width: min(1140px, calc(100% - 40px)); margin: 0 auto; }
+    .container-narrow { width: min(780px, calc(100% - 40px)); margin: 0 auto; }
+    .hero {
+      padding: 68px 0 84px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,.02), transparent 50%, rgba(214,179,106,.08));
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 32px;
+      align-items: center;
+    }
+    .hero-logo {
+      display: inline-flex;
+      margin-bottom: 18px;
+      padding: 10px 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.96);
+      box-shadow: 0 16px 38px rgba(0,0,0,.22);
+    }
+    .hero-logo img {
+      width: min(340px, 100%);
+      border-radius: 10px;
+      height: auto;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(214,179,106,.26);
+      background: var(--gold-soft);
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 18px 0 18px;
+      font-size: clamp(2.6rem, 5vw, 4.8rem);
+      line-height: .98;
+      letter-spacing: -.05em;
+      font-weight: 900;
+    }
+    .highlight { color: var(--gold); }
+    .hero-sub {
+      margin: 0 0 26px;
+      max-width: 720px;
+      color: var(--muted);
+      font-size: clamp(1.03rem, 1.8vw, 1.18rem);
+    }
+    .bullet-list {
+      display: grid;
+      gap: 12px;
+      margin: 0 0 30px;
+      padding: 0;
+      list-style: none;
+    }
+    .bullet-list li { display: flex; gap: 12px; align-items: flex-start; }
+    .bullet-list li span { color: var(--ok); font-weight: 900; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 24px;
+      border-radius: 14px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: .18s ease;
+      min-width: 220px;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      color: #15110a;
+      background: linear-gradient(135deg, var(--gold), #eed7a1);
+      box-shadow: 0 14px 34px rgba(214,179,106,.18);
+    }
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+    }
+    .hero-card, .card, .booking-box, .faq-item {
+      background: var(--card);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+    .hero-card {
+      border-radius: 24px;
+      padding: 28px;
+    }
+    .hero-card h2, .card h3 { margin: 0 0 12px; }
+    .hero-card p, .card p, .faq-item p { color: var(--muted); }
+    .meta-list {
+      display: grid;
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .meta-list li {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: var(--card-soft);
+      border: 1px solid rgba(255,255,255,.05);
+    }
+    .meta-list strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: .95rem;
+      color: var(--gold);
+    }
+    .section { padding: 78px 0; }
+    .section.alt { background: var(--bg-alt); }
+    .section-title {
+      margin: 0 0 16px;
+      text-align: center;
+      font-size: clamp(1.95rem, 3.5vw, 3rem);
+      line-height: 1.08;
+      letter-spacing: -.04em;
+      font-weight: 900;
+    }
+    .section-sub {
+      margin: 0 auto 38px;
+      max-width: 760px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+    .grid-3, .grid-2, .story { display: grid; gap: 22px; }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-2, .story { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .card {
+      padding: 28px;
+      border-radius: 22px;
+    }
+    .quote {
+      display: block;
+      margin-top: 18px;
+      padding-left: 18px;
+      border-left: 2px solid rgba(214,179,106,.42);
+      color: var(--text);
+      font-size: 1.04rem;
+    }
+    .booking-box {
+      padding: 30px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(214,179,106,.08), rgba(255,255,255,.03));
+    }
+    .booking-visual { display: grid; gap: 14px; }
+    .booking-step {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 16px 18px;
+      border-radius: 16px;
+      background: rgba(5,7,11,.48);
+      border: 1px solid rgba(255,255,255,.06);
+    }
+    .step-num {
+      width: 34px;
+      height: 34px;
+      flex: 0 0 34px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(214,179,106,.18);
+      color: var(--gold);
+      font-weight: 800;
+    }
+    .booking-note {
+      margin: 18px 0 0;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(255,255,255,.04);
+      border: 1px dashed rgba(214,179,106,.28);
+      color: var(--accent);
+      font-size: .95rem;
+    }
+    .faq-item {
+      padding: 22px 24px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .faq-item h3 { margin: 0 0 8px; font-size: 1.02rem; }
+    footer {
+      padding: 30px 20px 44px;
+      border-top: 1px solid rgba(255,255,255,.06);
+      text-align: center;
+      color: var(--muted);
+      font-size: .92rem;
+      background: var(--bg);
+    }
+    @media (max-width: 920px) {
+      .hero-grid, .story, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+      .hero { padding-top: 56px; }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-logo">
+          <img src="/test-pizzeria/logo.jpg" alt="Logo Pizzeria Luna Nera" />
+        </div>
+        <div class="eyebrow">Pizzeria Luna Nera • demo live</div>
+        <h1>Pizza nera che incuriosisce.<br><span class="highlight">Impasto nero pensato per chi cerca più leggerezza.</span></h1>
+        <p class="hero-sub">
+          Una pagina demo in italiano per presentare una pizzeria inventata con una promessa chiara: trasformare la pizza nera in una scelta desiderabile,
+          distintiva e particolarmente adatta a chi teme gonfiore, pesantezza o digestione lenta.
+        </p>
+        <ul class="bullet-list">
+          <li><span>✓</span> Posizionamento semplice: gusto deciso, estetica memorabile, percezione di maggiore digeribilità.</li>
+          <li><span>✓</span> Esperienza serale calda e raccolta, senza tono gourmet complicato o marketing rumoroso.</li>
+          <li><span>✓</span> Mockup di prenotazione tavolo incluso sotto, solo visivo e non attivo.</li>
+        </ul>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#menu">Scopri la proposta Luna Nera</a>
+          <a class="btn btn-secondary" href="#prenotazione">Vedi il mockup tavolo</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <h2>Una demo pensata per vendere subito l’idea</h2>
+        <p>
+          Il focus non è il menu completo: è far capire in pochi secondi perché questa pizza è diversa e perché può attirare proprio chi cerca più comfort digestivo.
+        </p>
+        <ul class="meta-list">
+          <li>
+            <strong>Prodotto protagonista</strong>
+            Pizza nera / impasto nero come elemento distintivo della proposta.
+          </li>
+          <li>
+            <strong>Angolo di conversione</strong>
+            Messaggio orientato a chi ama la pizza ma non vuole uscire dal tavolo sentendosi appesantito.
+          </li>
+          <li>
+            <strong>Prenotazione tavolo</strong>
+            Presente come sezione visuale demo, con nota esplicita: nessuna funzione reale attiva.
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section id="menu" class="section alt">
+    <div class="container">
+      <h2 class="section-title">Cosa rende Luna Nera diversa</h2>
+      <p class="section-sub">
+        La pagina vende una promessa precisa: pizza scenica, impasto memorabile e comunicazione centrata su leggerezza percepita e comfort dopo cena.
+      </p>
+      <div class="grid-3">
+        <article class="card">
+          <h3>Impasto nero come firma</h3>
+          <p>Il carbone vegetale diventa il simbolo della casa: visivo forte, gusto riconoscibile e una storia facile da ricordare e raccontare.</p>
+        </article>
+        <article class="card">
+          <h3>Focus su digestione e comfort</h3>
+          <p>La proposta parla a chi rinuncia spesso alla pizza per paura di gonfiore o pesantezza e vuole una sensazione più leggera.</p>
+        </article>
+        <article class="card">
+          <h3>Atmosfera semplice ma premium</h3>
+          <p>Palette scura, dettagli dorati e tono ordinato aiutano la demo a sembrare già presentabile in live senza fare overdesign.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container story">
+      <div class="card">
+        <h2 style="margin-top:0; font-size:2rem; letter-spacing:-.03em;">Per chi è pensata questa proposta</h2>
+        <p style="color:var(--muted); margin:0;">
+          Per adulti che amano la pizza ma sono diventati più selettivi: vogliono gusto, esperienza gradevole e una promessa chiara di maggiore leggerezza percepita.
+        </p>
+        <span class="quote">“Voglio godermi la pizza senza quella sensazione di pesantezza che mi rovina il dopo serata.”</span>
+      </div>
+      <div class="card">
+        <h2 style="margin-top:0; font-size:2rem; letter-spacing:-.03em;">Come viene raccontata</h2>
+        <p style="color:var(--muted); margin:0 0 16px;">
+          La demo accompagna il visitatore in modo diretto: promessa, differenza percepita, credibilità minima e punto prenotazione già visualizzato.
+        </p>
+        <ul class="bullet-list" style="margin-bottom:0;">
+          <li><span>•</span> Hero con claim chiaro e beneficio leggibile.</li>
+          <li><span>•</span> Sezione vantaggi centrata su impasto nero e digestione.</li>
+          <li><span>•</span> Mockup prenotazione tavolo per far vedere subito il passaggio successivo.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="prenotazione" class="section alt">
+    <div class="container">
+      <h2 class="section-title">Prenotazione tavolo — demo visiva</h2>
+      <p class="section-sub">
+        Mockup dimostrativo non attivo. Nessuna prenotazione reale viene inviata: questa sezione serve solo a mostrare come potrebbe apparire il flusso tavolo.
+      </p>
+      <div class="grid-2">
+        <div class="booking-box">
+          <h3>Come apparirebbe il flusso</h3>
+          <p>Un percorso breve, rassicurante e leggibile pensato per una demo live presentabile.</p>
+          <div class="booking-visual">
+            <div class="booking-step">
+              <div class="step-num">1</div>
+              <div>
+                <strong>Scegli giorno e orario</strong><br />
+                Layout demo per visualizzare disponibilità e fascia serale, senza dati reali collegati.
+              </div>
+            </div>
+            <div class="booking-step">
+              <div class="step-num">2</div>
+              <div>
+                <strong>Aggiungi note digestive o richieste</strong><br />
+                Spazio visivo per esigenze alimentari o preferenze, mostrato solo come esempio UX.
+              </div>
+            </div>
+            <div class="booking-step">
+              <div class="step-num">3</div>
+              <div>
+                <strong>Conferma manuale del team</strong><br />
+                Nella versione reale questa parte verrebbe collegata a WhatsApp o a un gestionale esterno.
+              </div>
+            </div>
+          </div>
+          <p class="booking-note">Nota esplicita: sezione mockup non attiva. Nessun form live, nessun invio dati, nessuna prenotazione reale.</p>
+        </div>
+        <div class="card">
+          <h3 style="font-size:1.35rem;">Perché questa sezione aiuta anche da demo</h3>
+          <p>
+            Fa vedere subito dove andrebbe l’azione finale, senza dover integrare ora un sistema di booking. Così la pagina resta minimale ma più credibile in presentazione live.
+          </p>
+          <p style="margin-top:16px; color:var(--muted);">
+            È utile soprattutto quando vuoi mostrare il funnel completo: promessa, differenza, prova e punto di conversione, anche se l’ultimo step è ancora mockup.
+          </p>
+          <div class="cta-row" style="margin-top:22px;">
+            <a class="btn btn-primary" href="#faq">Leggi le FAQ</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="section">
+    <div class="container-narrow">
+      <h2 class="section-title">Domande frequenti sulla pizza nera</h2>
+      <div class="faq-item">
+        <h3>La pizza nera è davvero più digeribile?</h3>
+        <p>In questa demo viene posizionata così. In un progetto reale andrebbero aggiunte prove, ingredienti precisi, eventuali disclaimer e validazione del claim.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Che cos’è l’impasto nero?</h3>
+        <p>Qui è presentato come impasto speciale al carbone vegetale: un elemento distintivo che unisce immagine forte, gusto e percezione di leggerezza.</p>
+      </div>
+      <div class="faq-item">
+        <h3>La prenotazione tavolo funziona davvero?</h3>
+        <p>No. La sezione è volutamente solo visiva: serve per demo live e mostra il punto in cui inserire un sistema reale di booking.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Pizzeria Luna Nera — Demo live per pizza nera e impasto nero orientati alla digestione.</p>
+  </footer>
+</body>
+</html>
