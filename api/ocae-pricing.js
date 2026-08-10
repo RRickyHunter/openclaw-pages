@@ -30,14 +30,14 @@ const SCHEDULE = [
     ctaLabel: 'Accedi subito',
   },
   {
-    key: 'webinar-offer-597',
+    key: 'webinar-offer-647',
     startsAt: '2026-07-14T00:00:00+02:00',
-    endsAt: '2026-08-02T23:59:59+02:00',
-    price: 597,
+    endsAt: '2026-08-15T23:59:59+02:00',
+    price: 647,
     compareAtPrice: 1497,
     timerVisible: true,
     stripePriceId: {
-      live: 'price_1To5bFEnlub9vBJK9uQnk4a5',
+      live: 'price_1U2w6kEnlub9vBJKKZ1oRohJ',
       test: 'price_1TjdxJEnlub9vBJKYaxJO8tc',
     },
     ctaLabel: 'Accedi subito',
@@ -46,7 +46,7 @@ const SCHEDULE = [
 
 const POST_OFFER_DEFAULT = {
   key: 'post-offer-full-1497',
-  startsAt: '2026-08-03T00:00:00+02:00',
+  startsAt: '2026-08-16T00:00:00+02:00',
   endsAt: null,
   price: 1497,
   compareAtPrice: null,
