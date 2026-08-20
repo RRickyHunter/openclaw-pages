@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Checkout — OpenClaw Activation Experience</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.css" />
+  <script src="https://js.stripe.com/v3/"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/intlTelInput.min.js"></script>
+  <style>
+    :root {
+      --bg: #06070b;
+      --bg-2: #0e1118;
+      --panel: rgba(15, 19, 29, 0.96);
+      --panel-alt: rgba(20, 26, 39, 0.92);
+      --text: #f5f7fb;
+      --muted: #b0b8c9;
+      --line: rgba(255,255,255,.1);
+      --accent: #f3c84b;
+      --accent-2: #ffd867;
+      --accent-dark: #1f2b44;
+      --success: #67d49c;
+      --danger: #ff8f8f;
+      --shadow: 0 28px 80px rgba(0,0,0,.45);
+      --radius: 22px;
+      --radius-sm: 14px;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(243,200,75,.16), transparent 28%),
+        radial-gradient(circle at top right, rgba(81,113,255,.14), transparent 26%),
+        linear-gradient(180deg, #05060a 0%, #0b0f17 52%, #06070b 100%);
+      color: var(--text);
+    }
+    body { min-height: 100vh; }
+    a { color: inherit; }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 28px 16px 56px; position: relative; }
+    .wrap::before {
+      content: '';
+      position: absolute;
+      inset: 12px 16px auto;
+      height: 220px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(243,200,75,.12), rgba(255,255,255,.02));
+      filter: blur(2px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .wrap > * { position: relative; z-index: 1; }
+    .topbar {
+      margin-bottom: 18px;
+      padding: 12px 16px;
+      border: 1px solid rgba(243,200,75,.35);
+      background: rgba(243,200,75,.12);
+      color: #f7d978;
+      border-radius: 999px;
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    .grid { display: grid; grid-template-columns: minmax(0, 1.02fr) minmax(360px, .98fr); gap: 24px; align-items: start; }
+    .card {
+      background: linear-gradient(180deg, rgba(13, 17, 26, .98), rgba(9, 12, 18, .98));
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+    .left { padding: 28px; position: sticky; top: 20px; }
+    .right { padding: 28px; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #f3cf73;
+      background: rgba(243,200,75,.12);
+      border: 1px solid rgba(243,200,75,.22);
+    }
+    .hero-media {
+      margin: 22px 0 26px;
+      width: 100%;
+      max-width: 360px;
+      min-height: 0;
+      aspect-ratio: 16 / 10;
+      border-radius: 24px;
+      border: 1px solid rgba(243,200,75,.22);
+      background: linear-gradient(180deg, rgba(21,26,39,.98), rgba(10,13,20,.98));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+      isolation: isolate;
+      box-shadow: 0 28px 60px rgba(0,0,0,.42), 0 0 0 6px rgba(243,200,75,.08);
+    }
+    .hero-media::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(243,200,75,.16), transparent 40%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero-media img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      padding: 12px;
+      background: transparent;
+      transform: none;
+      filter: saturate(1.06) contrast(1.04) brightness(1.02);
+    }
+    h1 { margin: 0 0 10px; font-size: 38px; line-height: 1.04; letter-spacing: -.03em; }
+    .sub { margin: 0 0 22px; font-size: 16px; line-height: 1.65; color: var(--muted); }
+    .pricebox { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: end; margin: 18px 0 24px; }
+    .price { font-size: 50px; font-weight: 900; letter-spacing: -.04em; }
+    .compare { font-size: 22px; color: #8f99af; text-decoration: line-through; min-height: 27px; }
+    .deadline { color: #f3cf73; font-size: 14px; }
+    .bullets, .mini-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+    .bullets li, .mini-list li { display: flex; gap: 10px; align-items: flex-start; color: var(--muted); line-height: 1.55; }
+    .check { color: var(--success); font-weight: 900; }
+    .divider { height: 1px; background: var(--line); margin: 24px 0; }
+    .section-title { margin: 0 0 6px; font-size: 30px; letter-spacing: -.02em; }
+    .section-copy { margin: 0 0 24px; color: var(--muted); line-height: 1.6; }
+    .subsection-head { margin: 0 0 16px; font-size: 18px; font-weight: 800; letter-spacing: -.01em; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .field { display: grid; gap: 7px; margin-bottom: 14px; }
+    .field.full { grid-column: 1 / -1; }
+    label { font-size: 13px; font-weight: 700; color: var(--text); }
+    input, select {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      border-radius: var(--radius-sm);
+      padding: 14px 14px;
+      font: inherit;
+      outline: none;
+      transition: border-color .15s ease, box-shadow .15s ease;
+    }
+    input::placeholder { color: #7f8aa1; }
+    input:focus, select:focus {
+      border-color: rgba(243,200,75,.9);
+      box-shadow: 0 0 0 3px rgba(243,200,75,.16);
+    }
+    .phone-wrap {
+      width: 100%;
+      display: block;
+      align-items: center;
+    }
+    .phone-wrap .iti {
+      width: 100%;
+      display: block;
+    }
+    .phone-wrap .iti input,
+    .phone-wrap input[type="tel"] {
+      width: 100%;
+      min-width: 100%;
+      padding-left: 74px !important;
+    }
+    .phone-wrap .iti__flag-container {
+      padding: 6px;
+    }
+    .phone-wrap .iti__selected-flag {
+      border-radius: 12px;
+      background: rgba(255,255,255,.06);
+      border-right: 1px solid rgba(255,255,255,.08);
+      padding: 0 14px 0 12px;
+    }
+    .phone-wrap .iti--separate-dial-code .iti__selected-dial-code {
+      display: none;
+    }
+    .phone-wrap .iti__country-list {
+      max-width: min(92vw, 360px);
+      background: #0f1420;
+      border: 1px solid rgba(255,255,255,.14);
+      color: var(--text);
+    }
+    .phone-prefix {
+      display: none;
+    }
+    .summary {
+      margin: 24px 0 18px;
+      padding: 22px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      border: 1px solid rgba(243,200,75,.14);
+      display: grid;
+      gap: 12px;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
+    }
+    .summary-head { display: flex; justify-content: space-between; gap: 16px; align-items: center; margin-bottom: 4px; }
+    .summary-title-main { font-size: 18px; font-weight: 800; }
+    .summary-badge {
+      font-size: 12px;
+      font-weight: 800;
+      color: #f3cf73;
+      background: rgba(243,200,75,.14);
+      border-radius: 999px;
+      padding: 6px 10px;
+    }
+    .row { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; }
+    .row .muted { color: var(--muted); }
+    .total { padding-top: 12px; border-top: 1px solid var(--line); font-size: 20px; font-weight: 900; }
+    .notice, .error, .success {
+      border-radius: 16px;
+      padding: 14px 16px;
+      font-size: 14px;
+      line-height: 1.55;
+      margin-top: 14px;
+    }
+    .notice { background: rgba(255,255,255,.04); border: 1px solid var(--line); color: var(--muted); }
+    .error { background: rgba(200,65,65,.08); border: 1px solid rgba(200,65,65,.22); color: var(--danger); display: none; }
+    .success { background: rgba(31,157,98,.08); border: 1px solid rgba(31,157,98,.2); color: var(--success); display: none; }
+    .cta {
+      appearance: none;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+      border-radius: 16px;
+      padding: 18px 22px;
+      margin-top: 18px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: var(--accent-dark);
+      font-size: 17px;
+      font-weight: 900;
+      box-shadow: 0 14px 28px rgba(243,200,75,.28);
+    }
+    .cta[disabled] { opacity: .7; cursor: wait; }
+    .fine { margin-top: 14px; color: var(--muted); font-size: 12px; line-height: 1.55; }
+    .tiny { font-size: 12px; color: var(--muted); }
+    code {
+      color: #f7d978;
+      background: rgba(243,200,75,.08);
+      border: 1px solid rgba(243,200,75,.16);
+      padding: 2px 6px;
+      border-radius: 8px;
+    }
+    @media (max-width: 960px) {
+      .grid { grid-template-columns: 1fr; }
+      .left { position: static; }
+      h1 { font-size: 32px; }
+      .price { font-size: 42px; }
+    }
+    @media (max-width: 640px) {
+      .form-grid, .phone-wrap { grid-template-columns: 1fr; }
+      .left, .right { padding: 22px; }
+      .topbar { border-radius: 18px; display: flex; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="grid">
+      <aside class="card left">
+        <div class="eyebrow">Offerta limitata</div>
+        <div class="hero-media">
+          <img src="/ocaeckout/assets/offer-image.jpg" alt="OpenClaw Activation Experience" width="1200" height="1500" loading="eager" fetchpriority="high" decoding="async" onerror="this.onerror=null;this.src='./assets/offer-image.jpg';this.closest('.hero-media').setAttribute('data-image-fallback','1');" />
+        </div>
+        <h1>Completa l'accesso a OpenClaw Activation Experience</h1>
+
+        <div class="pricebox">
+          <div>
+            <div class="price" id="hero-price">€—</div>
+            <div class="compare" id="hero-compare">€1497</div>
+          </div>
+          <div class="deadline" id="hero-deadline">Aggiornamento finestra prezzo in corso…</div>
+        </div>
+
+        <ul class="bullets">
+          <li><span class="check">✓</span><span>Accesso OCAE</span></li>
+          <li><span class="check">✓</span><span>Un mese di accesso a ClawRoot</span></li>
+          <li><span class="check">✓</span><span>Minicorso: OpenClaw 2.1-ATTIVAZIONE!</span></li>
+          <li><span class="check">✓</span><span>Accesso a gruppo VIP su Telegram</span></li>
+          <li><span class="check">✓</span><span>Gruppo Founders: ogni ulteriore percorso OpenClaw sarà per te gratuito</span></li>
+        </ul>
+
+        <div class="divider"></div>
+
+        <ul class="mini-list">
+          <li><span class="check">•</span><span>Pagamento sicuro tramite server Stripe.</span></li>
+          <li><span class="check">•</span><span>Pagamento unico.</span></li>
+        </ul>
+      </aside>
+
+      <main class="card right">
+        <h2 class="section-title">Modulo d'ordine</h2>
+        <p class="section-copy">Compila i dati qui sotto per completare il tuo ordine</p>
+
+        <form id="checkout-form">
+          <h3 class="subsection-head">I tuoi dati</h3>
+          <div class="form-grid">
+            <div class="field">
+              <label for="firstName">Nome</label>
+              <input id="firstName" name="firstName" autocomplete="given-name" placeholder="Mario" required />
+            </div>
+            <div class="field">
+              <label for="lastName">Cognome</label>
+              <input id="lastName" name="lastName" autocomplete="family-name" placeholder="Rossi" required />
+            </div>
+            <div class="field full">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="mario@email.it" required />
+            </div>
+            <input id="phone" name="phone" type="hidden" autocomplete="tel" value="" />
+          </div>
+
+          <h3 class="subsection-head">Spedizione</h3>
+          <div class="form-grid">
+            <div class="field full">
+              <label for="country">Paese</label>
+              <select id="country" name="country" required>
+                <option value="" disabled selected>Seleziona paese</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="address">Indirizzo</label>
+              <input id="address" name="address" autocomplete="address-line1" placeholder="Via Roma 10" />
+            </div>
+            <div class="field full">
+              <label for="postalCode">CAP</label>
+              <input id="postalCode" name="postalCode" autocomplete="postal-code" placeholder="20100" inputmode="numeric" />
+            </div>
+            <div class="field">
+              <label for="city">Città</label>
+              <input id="city" name="city" autocomplete="address-level2" placeholder="Milano" />
+            </div>
+            <div class="field">
+              <label for="state">Provincia</label>
+              <input id="state" name="state" autocomplete="address-level1" placeholder="Provincia / Stato" />
+              <select id="state-select" name="stateSelect" autocomplete="address-level1" style="display:none">
+                <option value="" disabled selected>Seleziona provincia</option>
+              </select>
+            </div>
+          </div>
+
+          <h3 class="subsection-head">Pagamento</h3>
+          <div class="notice">
+            Questo checkout non raccoglie i dati carta direttamente qui: dopo il click verrai portato nella pagina Stripe generata dal backend per completare il pagamento in sicurezza.
+          </div>
+
+          <div class="summary">
+            <div class="summary-head">
+              <div class="summary-title-main">Riepilogo ordine</div>
+              <div class="summary-badge">OCAE</div>
+            </div>
+            <div class="row"><span class="muted">Prodotto</span><strong>OpenClaw Activation Experience</strong></div>
+            <div class="row"><span class="muted">Prezzo attivo</span><strong id="summary-price">€—</strong></div>
+            <div class="row"><span class="muted">Spedizione</span><span>Inclusa</span></div>
+            <div class="row total"><span>Totale</span><span id="summary-total">€—</span></div>
+          </div>
+
+          <div id="form-error" class="error"></div>
+          <div id="form-success" class="success"></div>
+
+          <button class="cta" id="submit-button" type="submit">Vai al pagamento sicuro</button>
+        </form>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    const ITALIAN_PROVINCES = [{ code: 'AG', name: 'Agrigento' },{ code: 'AL', name: 'Alessandria' },{ code: 'AN', name: 'Ancona' },{ code: 'AO', name: 'Aosta' },{ code: 'AR', name: 'Arezzo' },{ code: 'AP', name: 'Ascoli Piceno' },{ code: 'AT', name: 'Asti' },{ code: 'AV', name: 'Avellino' },{ code: 'BA', name: 'Bari' },{ code: 'BT', name: 'Barletta-Andria-Trani' },{ code: 'BL', name: 'Belluno' },{ code: 'BN', name: 'Benevento' },{ code: 'BG', name: 'Bergamo' },{ code: 'BI', name: 'Biella' },{ code: 'BO', name: 'Bologna' },{ code: 'BZ', name: 'Bolzano' },{ code: 'BS', name: 'Brescia' },{ code: 'BR', name: 'Brindisi' },{ code: 'CA', name: 'Cagliari' },{ code: 'CL', name: 'Caltanissetta' },{ code: 'CB', name: 'Campobasso' },{ code: 'CE', name: 'Caserta' },{ code: 'CT', name: 'Catania' },{ code: 'CZ', name: 'Catanzaro' },{ code: 'CH', name: 'Chieti' },{ code: 'CO', name: 'Como' },{ code: 'CS', name: 'Cosenza' },{ code: 'CR', name: 'Cremona' },{ code: 'KR', name: 'Crotone' },{ code: 'CN', name: 'Cuneo' },{ code: 'EN', name: 'Enna' },{ code: 'FM', name: 'Fermo' },{ code: 'FE', name: 'Ferrara' },{ code: 'FI', name: 'Firenze' },{ code: 'FG', name: 'Foggia' },{ code: 'FC', name: 'Forlì-Cesena' },{ code: 'FR', name: 'Frosinone' },{ code: 'GE', name: 'Genova' },{ code: 'GO', name: 'Gorizia' },{ code: 'GR', name: 'Grosseto' },{ code: 'IM', name: 'Imperia' },{ code: 'IS', name: 'Isernia' },{ code: 'SP', name: 'La Spezia' },{ code: 'AQ', name: 'L\'Aquila' },{ code: 'LT', name: 'Latina' },{ code: 'LE', name: 'Lecce' },{ code: 'LC', name: 'Lecco' },{ code: 'LI', name: 'Livorno' },{ code: 'LO', name: 'Lodi' },{ code: 'LU', name: 'Lucca' },{ code: 'MC', name: 'Macerata' },{ code: 'MN', name: 'Mantova' },{ code: 'MS', name: 'Massa-Carrara' },{ code: 'MT', name: 'Matera' },{ code: 'ME', name: 'Messina' },{ code: 'MI', name: 'Milano' },{ code: 'MO', name: 'Modena' },{ code: 'MB', name: 'Monza e Brianza' },{ code: 'NA', name: 'Napoli' },{ code: 'NO', name: 'Novara' },{ code: 'NU', name: 'Nuoro' },{ code: 'OR', name: 'Oristano' },{ code: 'PD', name: 'Padova' },{ code: 'PA', name: 'Palermo' },{ code: 'PR', name: 'Parma' },{ code: 'PV', name: 'Pavia' },{ code: 'PG', name: 'Perugia' },{ code: 'PU', name: 'Pesaro e Urbino' },{ code: 'PE', name: 'Pescara' },{ code: 'PC', name: 'Piacenza' },{ code: 'PI', name: 'Pisa' },{ code: 'PT', name: 'Pistoia' },{ code: 'PN', name: 'Pordenone' },{ code: 'PZ', name: 'Potenza' },{ code: 'PO', name: 'Prato' },{ code: 'RG', name: 'Ragusa' },{ code: 'RA', name: 'Ravenna' },{ code: 'RC', name: 'Reggio Calabria' },{ code: 'RE', name: 'Reggio Emilia' },{ code: 'RI', name: 'Rieti' },{ code: 'RN', name: 'Rimini' },{ code: 'RM', name: 'Roma' },{ code: 'RO', name: 'Rovigo' },{ code: 'SA', name: 'Salerno' },{ code: 'SS', name: 'Sassari' },{ code: 'SV', name: 'Savona' },{ code: 'SI', name: 'Siena' },{ code: 'SR', name: 'Siracusa' },{ code: 'SO', name: 'Sondrio' },{ code: 'SU', name: 'Sud Sardegna' },{ code: 'TA', name: 'Taranto' },{ code: 'TE', name: 'Teramo' },{ code: 'TR', name: 'Terni' },{ code: 'TO', name: 'Torino' },{ code: 'TP', name: 'Trapani' },{ code: 'TN', name: 'Trento' },{ code: 'TV', name: 'Treviso' },{ code: 'TS', name: 'Trieste' },{ code: 'UD', name: 'Udine' },{ code: 'VA', name: 'Varese' },{ code: 'VE', name: 'Venezia' },{ code: 'VB', name: 'Verbano-Cusio-Ossola' },{ code: 'VC', name: 'Vercelli' },{ code: 'VR', name: 'Verona' },{ code: 'VV', name: 'Vibo Valentia' },{ code: 'VI', name: 'Vicenza' },{ code: 'VT', name: 'Viterbo' }];
+
+    const COUNTRIES = [
+      "Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antartide","Antigua e Barbuda","Arabia Saudita","Argentina","Armenia","Aruba","Australia","Austria","Azerbaigian","Bahamas","Bahrein","Bangladesh","Barbados","Belgio","Belize","Benin","Bermuda","Bhutan","Bielorussia","Birmania","Bolivia","Bosnia ed Erzegovina","Botswana","Brasile","Brunei","Bulgaria","Burkina Faso","Burundi","Cambogia","Camerun","Canada","Capo Verde","Ceuta","Ciad","Cile","Cina","Cipro","Città del Vaticano","Colombia","Comore","Congo","Corea del Nord","Corea del Sud","Costa d'Avorio","Costa Rica","Croazia","Cuba","Curaçao","Danimarca","Dominica","Ecuador","Egitto","El Salvador","Emirati Arabi Uniti","Eritrea","Estonia","Etiopia","Figi","Filippine","Finlandia","Francia","Gabon","Gambia","Georgia","Georgia del Sud e Isole Sandwich Meridionali","Germania","Ghana","Giamaica","Giappone","Gibilterra","Gibuti","Giordania","Grecia","Grenada","Groenlandia","Guadalupa","Guam","Guatemala","Guernsey","Guinea","Guinea Equatoriale","Guinea-Bissau","Guyana","Guyana Francese","Haiti","Honduras","Hong Kong","India","Indonesia","Iran","Iraq","Irlanda","Islanda","Isola Christmas","Isola di Man","Isola Norfolk","Isole Åland","Isole Canarie","Isole Cayman","Isole Cocos (Keeling)","Isole Cook","Isole Falkland","Isole Faroe","Isole Marianne Settentrionali","Isole Marshall","Isole Pitcairn","Isole Salomone","Isole Turks e Caicos","Isole Vergini Britanniche","Isole Vergini Statunitensi","Israele","Italia","Jersey","Kazakistan","Kenya","Kirghizistan","Kiribati","Kosovo","Kuwait","Laos","Lesotho","Lettonia","Libano","Liberia","Libia","Liechtenstein","Lituania","Lussemburgo","Macao","Macedonia del Nord","Madagascar","Malawi","Malesia","Maldive","Mali","Malta","Marocco","Martinica","Mauritania","Mauritius","Mayotte","Melilla","Messico","Micronesia","Moldavia","Monaco","Mongolia","Montenegro","Montserrat","Mozambico","Namibia","Nauru","Nepal","Nicaragua","Niger","Nigeria","Niue","Norvegia","Nuova Caledonia","Nuova Zelanda","Oman","Paesi Bassi","Pakistan","Palau","Palestina","Panama","Papua Nuova Guinea","Paraguay","Perù","Polinesia Francese","Polonia","Portogallo","Porto Rico","Qatar","Regno Unito","Repubblica Ceca","Repubblica Centrafricana","Repubblica Democratica del Congo","Repubblica Dominicana","Réunion","Romania","Ruanda","Russia","Sahara Occidentale","Saint Kitts e Nevis","Saint Lucia","Saint Vincent e Grenadine","Saint-Barthélemy","Saint-Martin","Saint-Pierre e Miquelon","Samoa","Samoa Americane","San Marino","São Tomé e Príncipe","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovacchia","Slovenia","Somalia","Spagna","Sri Lanka","Stati Uniti","Sudafrica","Sudan","Sudan del Sud","Suriname","Svalbard e Jan Mayen","Svezia","Svizzera","Tagikistan","Taiwan","Tanzania","Territori Francesi del Sud","Territorio Britannico dell'Oceano Indiano","Thailandia","Timor Est","Togo","Tokelau","Tonga","Trinidad e Tobago","Tunisia","Turchia","Turkmenistan","Tuvalu","Ucraina","Uganda","Ungheria","Uruguay","Uzbekistan","Vanuatu","Venezuela","Vietnam","Wallis e Futuna","Yemen","Zambia","Zimbabwe"
+    ];
+
+    const CAP_AUTOFILL = {
+      '20100': [{ city: 'Milano', province: 'MI' }],
+      '00100': [{ city: 'Roma', province: 'RM' }],
+      '10100': [{ city: 'Torino', province: 'TO' }],
+      '80100': [{ city: 'Napoli', province: 'NA' }],
+      '40100': [{ city: 'Bologna', province: 'BO' }],
+      '16100': [{ city: 'Genova', province: 'GE' }],
+      '50100': [{ city: 'Firenze', province: 'FI' }],
+      '70100': [{ city: 'Bari', province: 'BA' }],
+      '90100': [{ city: 'Palermo', province: 'PA' }],
+      '09100': [{ city: 'Cagliari', province: 'CA' }],
+      '34100': [{ city: 'Trieste', province: 'TS' }],
+      '37100': [{ city: 'Verona', province: 'VR' }],
+      '22100': [{ city: 'Como', province: 'CO' }],
+      '24100': [{ city: 'Bergamo', province: 'BG' }],
+      '35100': [{ city: 'Padova', province: 'PD' }]
+    };
+
+    const COMUNI_JSON_URL = 'https://raw.githubusercontent.com/matteocontrini/comuni-json/master/comuni.json';
+
+    const state = {
+      pricing: null,
+      creating: false,
+      phoneInput: null,
+      comuniPromise: null,
+      lastCapLookup: '',
+    };
+
+    const els = {
+      banner: document.getElementById('pricing-banner'),
+      heroPrice: document.getElementById('hero-price'),
+      heroCompare: document.getElementById('hero-compare'),
+      heroDeadline: document.getElementById('hero-deadline'),
+      summaryPrice: document.getElementById('summary-price'),
+      summaryPriceId: document.getElementById('summary-price-id'),
+      summaryTotal: document.getElementById('summary-total'),
+      form: document.getElementById('checkout-form'),
+      error: document.getElementById('form-error'),
+      success: document.getElementById('form-success'),
+      submit: document.getElementById('submit-button'),
+      country: document.getElementById('country'),
+      phone: document.getElementById('phone'),
+      phonePrefix: document.getElementById('phone-prefix'),
+      stateInput: document.getElementById('state'),
+      stateSelect: document.getElementById('state-select'),
+    };
+
+    function populateCountries() {
+      const frag = document.createDocumentFragment();
+      COUNTRIES.forEach((country) => {
+        const option = document.createElement('option');
+        option.value = country;
+        option.textContent = country;
+        option.selected = country === 'Italia';
+        frag.appendChild(option);
+      });
+      els.country.innerHTML = '';
+      const placeholder = document.createElement('option');
+      placeholder.value = '';
+      placeholder.textContent = 'Seleziona paese';
+      placeholder.disabled = true;
+      placeholder.selected = false;
+      els.country.appendChild(placeholder);
+      els.country.appendChild(frag);
+      els.country.value = 'Italia';
+    }
+
+    function initPhoneInput() {
+      if (!window.intlTelInput) return;
+      state.phoneInput = window.intlTelInput(els.phone, {
+        initialCountry: 'it',
+        preferredCountries: ['it', 'ch', 'sm', 'us', 'gb'],
+        separateDialCode: true,
+        autoPlaceholder: 'polite',
+        nationalMode: true,
+        utilsScript: 'https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/js/utils.js',
+      });
+      const syncPrefix = () => {
+        try {
+          const data = state.phoneInput.getSelectedCountryData();
+          els.phonePrefix.textContent = data && data.dialCode ? `+${data.dialCode}` : '+';
+        } catch {
+          els.phonePrefix.textContent = '+39';
+        }
+      };
+      syncPrefix();
+      els.phone.addEventListener('countrychange', syncPrefix);
+    }
+
+    function eur(value) {
+      return new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(value);
+    }
+
+    function calculateTax() {
+      return 0;
+    }
+
+    function populateProvinceSelect() {
+      if (!els.stateSelect) return;
+      const placeholder = '<option value="" disabled selected>Seleziona provincia</option>';
+      els.stateSelect.innerHTML = placeholder + ITALIAN_PROVINCES.map((province) => (
+        `<option value="${province.code}">${province.code} — ${province.name}</option>`
+      )).join('');
+    }
+
+    function getProvinceCode(value) {
+      const normalized = String(value || '').trim().toUpperCase();
+      if (!normalized) return '';
+      const exact = ITALIAN_PROVINCES.find((province) => province.code === normalized || province.name.toUpperCase() === normalized);
+      return exact ? exact.code : normalized;
+    }
+
+    function setProvinceValue(value) {
+      const normalized = getProvinceCode(value);
+      if (els.stateInput) els.stateInput.value = normalized;
+      if (els.stateSelect) els.stateSelect.value = normalized || '';
+    }
+
+    function syncProvinceField() {
+      if (!els.stateInput || !els.stateSelect) return;
+      els.stateInput.style.display = 'block';
+      els.stateInput.required = false;
+      els.stateSelect.style.display = 'none';
+      els.stateSelect.required = false;
+      if (els.stateSelect.value && !els.stateInput.value) els.stateInput.value = els.stateSelect.value;
+    }
+
+    function getProvinceValue(formData) {
+      return getProvinceCode(formData.get('state') || formData.get('stateSelect') || '');
+    }
+
+    async function loadComuniDataset() {
+      if (!state.comuniPromise) {
+        state.comuniPromise = fetch(COMUNI_JSON_URL, { cache: 'force-cache' })
+          .then((response) => {
+            if (!response.ok) throw new Error('Dataset CAP non disponibile');
+            return response.json();
+          })
+          .catch(() => []);
+      }
+      return state.comuniPromise;
+    }
+
+    async function maybeAutofillFromCap() {
+      const postalCode = String(document.getElementById('postalCode')?.value || '').replace(/\D/g, '').trim();
+      if (postalCode.length !== 5) return;
+      state.lastCapLookup = postalCode;
+
+      let matches = CAP_AUTOFILL[postalCode];
+      if (!Array.isArray(matches) || !matches.length) {
+        const comuni = await loadComuniDataset();
+        if (state.lastCapLookup !== postalCode) return;
+        matches = comuni
+          .filter((item) => Array.isArray(item.cap) && item.cap.includes(postalCode))
+          .map((item) => ({ city: item.nome, province: item.sigla }));
+      }
+
+      if (!Array.isArray(matches) || !matches.length) return;
+
+      const normalizedProvince = [...new Set(matches.map((item) => getProvinceCode(item.province)).filter(Boolean))];
+      if (normalizedProvince.length === 1) {
+        setProvinceValue(normalizedProvince[0]);
+      }
+
+      const normalizedCities = [...new Set(matches.map((item) => String(item.city || '').trim()).filter(Boolean))];
+      if (normalizedCities.length === 1) {
+        document.getElementById('city').value = normalizedCities[0];
+      }
+    }
+
+    function getFieldLabel(field) {
+      if (!field) return 'Questo campo';
+      const label = field.id ? document.querySelector(`label[for="${field.id}"]`) : null;
+      return label?.textContent?.trim() || field.getAttribute('aria-label') || field.name || 'Questo campo';
+    }
+
+    function getItalianValidationMessage(field) {
+      if (!field || !field.validity) return 'Controlla i dati inseriti.';
+      const label = getFieldLabel(field);
+      const validity = field.validity;
+
+      if (validity.valueMissing) {
+        if (field.tagName === 'SELECT') return `Seleziona ${label.toLowerCase()}.`;
+        return `${label} è obbligatorio.`;
+      }
+
+      if (validity.typeMismatch) {
+        if (field.type === 'email') return 'Inserisci un indirizzo email valido.';
+        return `${label} non è valido.`;
+      }
+
+      if (validity.patternMismatch) return `${label} non è nel formato corretto.`;
+      if (validity.tooShort) return `${label} è troppo corto.`;
+      if (validity.tooLong) return `${label} è troppo lungo.`;
+      if (validity.rangeUnderflow || validity.rangeOverflow) return `${label} non è valido.`;
+      if (validity.stepMismatch) return `${label} non è valido.`;
+      if (validity.badInput) return `${label} non è valido.`;
+      if (validity.customError) return field.validationMessage || `${label} non è valido.`;
+
+      return 'Controlla i dati inseriti.';
+    }
+
+    function setFieldValidation(field, message = '') {
+      if (!field || typeof field.setCustomValidity !== 'function') return;
+      field.setCustomValidity(message);
+    }
+
+    function clearFieldValidation(field) {
+      setFieldValidation(field, '');
+    }
+
+    function clearAllFieldValidations() {
+      Array.from(els.form.elements || []).forEach((field) => clearFieldValidation(field));
+    }
+
+    function showFieldValidation(field) {
+      const message = getItalianValidationMessage(field);
+      setFieldValidation(field, message);
+      if (typeof field.reportValidity === 'function') field.reportValidity();
+      setError(message);
+      return false;
+    }
+
+    function validateFormFields() {
+      clearAllFieldValidations();
+      const fields = Array.from(els.form.querySelectorAll('input, select, textarea'));
+      const invalidField = fields.find((field) => !field.checkValidity());
+      if (invalidField) {
+        return showFieldValidation(invalidField);
+      }
+      return true;
+    }
+
+    function formatDate(value) {
+      if (!value) return null;
+      try {
+        return new Intl.DateTimeFormat('it-IT', {
+          dateStyle: 'full',
+          timeStyle: 'medium',
+          timeZone: 'Europe/Rome',
+        }).format(new Date(value));
+      } catch {
+        return value;
+      }
+    }
+
+    function setError(message) {
+      els.error.textContent = message;
+      els.error.style.display = message ? 'block' : 'none';
+    }
+
+    function setSuccess(message) {
+      els.success.textContent = message;
+      els.success.style.display = message ? 'block' : 'none';
+    }
+
+    function renderPricing(pricing) {
+      state.pricing = pricing;
+      const active = pricing.active;
+      const priceValue = Number(active.price || 0);
+      const selectedCountry = String(els.country?.value || '').trim();
+      const totalValue = priceValue;
+
+      els.heroPrice.textContent = eur(priceValue);
+      els.heroCompare.textContent = active.compareAtPrice ? eur(active.compareAtPrice) : '';
+      els.summaryPrice.textContent = eur(priceValue);
+      els.summaryTotal.textContent = eur(totalValue);
+      if (els.summaryPriceId) els.summaryPriceId.textContent = active.stripePriceId || 'non disponibile';
+
+      if (active.endsAt) {
+        els.heroDeadline.textContent = `Prezzo valido fino a ${formatDate(active.endsAt)}.`;
+      } else if (pricing.next && pricing.next.startsAt) {
+        els.heroDeadline.textContent = `Prossimo cambio prezzo previsto da ${formatDate(pricing.next.startsAt)}.`;
+      } else {
+        els.heroDeadline.textContent = 'Prezzo attivo senza scadenza immediata.';
+      }
+    }
+
+    async function loadPricing() {
+      const res = await fetch('/api/ocae-pricing', { cache: 'no-store' });
+      if (!res.ok) throw new Error('Impossibile leggere il pricing attivo');
+      const pricing = await res.json();
+      if (!pricing?.active?.price) throw new Error('Risposta pricing incompleta');
+      renderPricing(pricing);
+    }
+
+    async function createCheckoutSession(payload) {
+      const res = await fetch('/api/ocae-create-checkout-session', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      });
+
+      let data = null;
+      try { data = await res.json(); } catch {}
+
+      if (res.status === 404) {
+        throw new Error('Manca ancora /api/ocae-create-checkout-session: backend payment da creare.');
+      }
+
+      if (!res.ok) {
+        throw new Error(data?.error || 'Creazione checkout fallita');
+      }
+
+      return data;
+    }
+
+    function getPhoneValue() {
+      if (state.phoneInput) {
+        const full = state.phoneInput.getNumber();
+        if (full) return full;
+      }
+      return String(els.phone?.value || '').trim();
+    }
+
+    els.form.setAttribute('novalidate', 'novalidate');
+
+    Array.from(els.form.querySelectorAll('input, select, textarea')).forEach((field) => {
+      field.addEventListener('invalid', (event) => {
+        event.preventDefault();
+        showFieldValidation(field);
+      });
+      field.addEventListener('input', () => {
+        clearFieldValidation(field);
+        if (els.error.style.display === 'block') setError('');
+      });
+      field.addEventListener('change', () => {
+        clearFieldValidation(field);
+        if (els.error.style.display === 'block') setError('');
+      });
+    });
+
+    els.form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      setError('');
+      setSuccess('');
+      if (state.creating) return;
+      if (!validateFormFields()) return;
+      if (!state.pricing?.active?.stripePriceId) {
+        setError('Pricing non pronto: impossibile avviare il pagamento.');
+        return;
+      }
+
+      state.creating = true;
+      els.submit.disabled = true;
+      els.submit.textContent = 'Sto preparando il pagamento…';
+
+      const formData = new FormData(els.form);
+
+      try {
+        const country = String(formData.get('country') || '').trim();
+        const priceValue = Number(state.pricing?.active?.price || 0);
+        const payload = {
+          customer: {
+            firstName: String(formData.get('firstName') || '').trim(),
+            lastName: String(formData.get('lastName') || '').trim(),
+            email: String(formData.get('email') || '').trim(),
+            phone: getPhoneValue(),
+            country,
+            address: String(formData.get('address') || '').trim(),
+            city: String(formData.get('city') || '').trim(),
+            state: getProvinceValue(formData),
+            postalCode: String(formData.get('postalCode') || '').trim(),
+          },
+          product: 'ocae',
+          sourcePath: '/ocaeckout',
+          pricing: {
+            productName: 'OCAE',
+            basePrice: priceValue,
+            taxAmount: 0,
+            taxLabel: '0',
+            total: priceValue,
+          },
+        };
+        const result = await createCheckoutSession(payload);
+        if (result?.url) {
+          setSuccess('Checkout creato. Reindirizzamento verso il pagamento sicuro…');
+          window.location.href = result.url;
+          return;
+        }
+        if (result?.sessionId && window.Stripe && result.publishableKey) {
+          const stripe = window.Stripe(result.publishableKey);
+          const { error } = await stripe.redirectToCheckout({ sessionId: result.sessionId });
+          if (error) throw new Error(error.message || 'Redirect Stripe fallito');
+          return;
+        }
+        throw new Error('Risposta backend valida ma incompleta: manca url o sessionId.');
+      } catch (error) {
+        setError(error.message || 'Errore imprevisto nel checkout');
+      } finally {
+        state.creating = false;
+        els.submit.disabled = false;
+        els.submit.textContent = 'Vai al pagamento sicuro';
+      }
+    });
+
+    populateCountries();
+    populateProvinceSelect();
+    syncProvinceField();
+    els.country.addEventListener('change', () => {
+      syncProvinceField();
+      if (state.pricing) renderPricing(state.pricing);
+    });
+    if (els.stateSelect) {
+      els.stateSelect.addEventListener('change', () => {
+        setProvinceValue(els.stateSelect.value);
+      });
+    }
+    document.getElementById('postalCode')?.addEventListener('input', maybeAutofillFromCap);
+
+    loadPricing().catch((error) => {
+      els.banner.textContent = 'Errore nel caricamento del pricing';
+      els.heroDeadline.textContent = 'Controlla /api/ocae-pricing';
+      setError(error.message || 'Errore pricing');
+    });
+  </script>
+</body>
+</html>

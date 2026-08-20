@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenClaw Activation Experience</title>
+  <meta name="description" content="Attiva un sistema che lavora al posto tuo. OpenClaw Activation Experience per coach, consulenti e formatori." />
+  <style>
+    :root {
+      --primary: #00d4ff;
+      --primary-dark: #00a8cc;
+      --primary-glow: rgba(0, 212, 255, 0.32);
+      --accent: #7c3aed;
+      --bg: #07080d;
+      --bg-alt: #0d1018;
+      --bg-card: #121621;
+      --text: #eef4ff;
+      --muted: #98a2b7;
+      --border: #232a3a;
+      --danger: #ff5d5d;
+      --success: #22c55e;
+      --shadow: 0 25px 80px rgba(0,0,0,.45);
+      --hero-grad: linear-gradient(180deg, #07080d 0%, #0b0f18 45%, #07111a 75%, #07080d 100%);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .container-narrow { width: min(760px, calc(100% - 40px)); margin: 0 auto; }
+    .hero {
+      position: relative;
+      padding: 54px 0 96px;
+      background: var(--hero-grad);
+      overflow: hidden;
+    }
+    .hero:before {
+      content:"";
+      position:absolute; inset:0;
+      background: radial-gradient(circle at 50% 18%, rgba(0,212,255,.12), transparent 30%), radial-gradient(circle at 85% 25%, rgba(124,58,237,.12), transparent 18%), radial-gradient(circle at 10% 35%, rgba(0,212,255,.08), transparent 16%);
+      pointer-events:none;
+    }
+    .hero-grid {
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      align-items:center;
+      position:relative;
+      z-index:1;
+    }
+    .eyebrow {
+      display:inline-block;
+      margin-bottom:4px;
+      padding:8px 14px;
+      border:1px solid rgba(0,212,255,.2);
+      border-radius:999px;
+      color:var(--primary);
+      background:rgba(0,212,255,.07);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    h1 {
+      margin:0 0 18px;
+      font-size: clamp(2rem, 4.5vw, 3.8rem);
+      line-height: 1.02;
+      letter-spacing:-.04em;
+      font-weight:900;
+    }
+    .highlight { color: var(--primary); }
+    .hero-sub {
+      font-size: clamp(1.05rem, 1.6vw, 1.26rem);
+      color: var(--muted);
+      max-width: 760px;
+      margin: 0 auto 24px;
+      text-align: center;
+    }
+    .hero-bullets {
+      display:grid;
+      gap:10px;
+      margin: 0 auto 28px;
+      padding:0;
+      list-style:none;
+      max-width: 760px;
+    }
+    .hero-bullets li { color: var(--text); display:flex; gap:10px; align-items:flex-start; justify-content:center; text-align:center; }
+    .hero-bullets li span { color: var(--primary); font-weight:800; }
+    .cta-row { display:flex; flex-wrap:wrap; gap:14px; margin-top:12px; justify-content:center; }
+    .price-stack {
+      display:flex; flex-wrap:wrap; align-items:baseline; gap:12px; margin-top:18px; margin-bottom:10px; justify-content:center;
+    }
+    .price-current { font-size:clamp(34px, 6vw, 56px); font-weight:800; line-height:1; color:var(--text); }
+    .price-compare { font-size:18px; color:var(--muted); text-decoration:line-through; }
+    .price-note { margin:0; color:var(--muted); font-size:14px; text-align:center; }
+    .deadline-box {
+      margin:18px auto 0; padding:16px 18px; border:1px solid rgba(255,255,255,.08); border-radius:18px;
+      background:rgba(255,255,255,.03); max-width:540px;
+    }
+    .deadline-label { margin:0 0 10px; font-size:13px; text-transform:uppercase; letter-spacing:.08em; color:var(--muted); text-align:center; }
+    .countdown { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+    .countdown-item { min-width:84px; padding:10px 12px; border-radius:14px; background:rgba(0,0,0,.18); border:1px solid rgba(255,255,255,.06); text-align:center; }
+    .countdown-value { display:block; font-size:28px; font-weight:800; line-height:1; color:var(--text); }
+    .countdown-unit { display:block; margin-top:4px; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+    .countdown-expired { color:var(--danger); font-weight:700; text-align:center; }
+    .btn {
+      display:inline-flex; align-items:center; justify-content:center;
+      min-width:220px;
+      padding:16px 24px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:800;
+      transition:.18s ease;
+      border:1px solid transparent;
+    }
+    .btn-primary {
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      border-color: rgba(255,255,255,.1);
+    }
+    .btn-secondary {
+      background: linear-gradient(135deg, #00d4ff, #4fe2ff);
+      color: #051019;
+      box-shadow: 0 0 20px var(--primary-glow), 0 10px 30px rgba(0,212,255,.18);
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .is-hidden-temporarily { display: none !important; }
+    .simple-footer {
+      padding: 22px 20px 34px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255,255,255,.06);
+      background: var(--bg);
+    }
+    .hero-visual {
+      display:flex; align-items:center; justify-content:center;
+      margin-top: 8px;
+    }
+    .hero-card {
+      position:relative;
+      border:1px solid rgba(0,212,255,.16);
+      border-radius:22px;
+      overflow:hidden;
+      background: rgba(255,255,255,.02);
+      box-shadow: var(--shadow);
+      width: min(980px, 100%);
+    }
+    .hero-card img { width:100%; height:auto; }
+    .hero-card:after {
+      content:"";
+      position:absolute; inset:auto 0 0 0; height:30%;
+      background: linear-gradient(180deg, rgba(0,0,0,0), rgba(0,0,0,.38));
+      pointer-events:none;
+    }
+    .section { padding: 90px 0; }
+    .section.dark { background: var(--bg-alt); }
+    .section-title {
+      font-size: clamp(1.9rem, 3.8vw, 3rem);
+      line-height:1.08;
+      letter-spacing:-.03em;
+      margin:0 0 18px;
+      font-weight:900;
+    }
+    .section-sub {
+      color:var(--muted);
+      font-size:1.08rem;
+      max-width:720px;
+      margin:0 0 40px;
+    }
+    .grid-2 { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+    .grid-3 { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; }
+    .card {
+      background: var(--bg-card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:28px;
+      box-shadow: var(--shadow);
+    }
+    .card h3 { margin:0 0 10px; font-size:1.15rem; }
+    .card p { margin:0 0 10px; color:var(--muted); }
+    .pain-card { border-color: rgba(255,93,93,.16); position:relative; }
+    .pain-card:before {
+      content:""; position:absolute; left:0; top:0; bottom:0; width:3px;
+      background: linear-gradient(180deg, #ff5d5d, #ff9b6b);
+      border-radius:18px 0 0 18px;
+    }
+    .solution-card { border-color: rgba(34,197,94,.16); position:relative; }
+    .solution-card:before {
+      content:""; position:absolute; left:0; top:0; bottom:0; width:3px;
+      background: linear-gradient(180deg, #22c55e, #4ade80);
+      border-radius:18px 0 0 18px;
+    }
+    .quote {
+      border-left: 3px solid var(--primary);
+      padding-left: 18px;
+      margin: 22px 0;
+      font-size: clamp(1.15rem, 2vw, 1.45rem);
+      font-weight: 800;
+      line-height: 1.35;
+      color: var(--text);
+    }
+    .offer {
+      text-align:center;
+      background: linear-gradient(180deg, rgba(0,212,255,.05), rgba(124,58,237,.05));
+      border:1px solid rgba(0,212,255,.16);
+    }
+    .price {
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight:900;
+      margin: 10px 0 2px;
+      color:#fff;
+    }
+    .price-old {
+      text-decoration: line-through;
+      color: var(--muted);
+      font-size: 1.2rem;
+    }
+    .list { margin:0; padding-left:18px; }
+    .list li { margin-bottom:10px; color:var(--muted); }
+    .check li { color:var(--text); }
+    .check li::marker { color: var(--success); }
+    .xmark li { color:var(--muted); }
+    .xmark li::marker { color: var(--danger); }
+    .mini-note { color: var(--muted); font-size: .92rem; }
+    .testimonials-section { padding: 90px 0; background: var(--bg-alt); }
+    .testimonials-grid { display: grid; grid-template-columns: 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; }
+    .testimonial-full { width: 100%; border-radius: 24px; overflow: hidden; box-shadow: var(--shadow); }
+    .testimonial-full img { width: 100%; height: auto; display: block; }
+    .chi-sono-section {
+      position: relative;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+      background: url('/wspaints/assets/riccardo-chi-sono.png');
+      background-size: cover;
+      background-position: center;
+      border-radius: 24px;
+      overflow: hidden;
+      margin: 40px auto;
+      max-width: 1200px;
+    }
+    .chi-sono-content {
+      max-width: 500px;
+      padding: 48px;
+      background: rgba(13, 16, 24, 0.9);
+      backdrop-filter: blur(12px);
+      border-radius: 18px;
+      margin: 48px;
+    }
+    .chi-sono-content h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 24px;
+      background: linear-gradient(90deg, #ffffff 0%, #00d4ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .chi-sono-content p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .faq-section { padding: 90px 0; }
+    .faq-item {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .faq-question {
+      padding: 24px 28px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background 0.2s;
+    }
+    .faq-question:hover { background: rgba(0, 212, 255, 0.05); }
+    .faq-answer {
+      padding: 0 28px 24px;
+      color: var(--muted);
+      line-height: 1.7;
+      display: none;
+    }
+    .faq-item.active .faq-answer { display: block; }
+    .faq-item.active .faq-question::after { transform: rotate(180deg); }
+    .faq-question::after {
+      content: "▼";
+      font-size: 0.8rem;
+      transition: transform 0.3s;
+      color: var(--primary);
+    }
+    @media (max-width: 768px) {
+      .chi-sono-section { margin: 24px; }
+      .chi-sono-content { margin: 24px; padding: 32px; }
+    }
+    .footer-cta {
+      text-align:center;
+      padding: 42px 28px;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:24px;
+      background: linear-gradient(180deg, rgba(0,212,255,.05), rgba(255,255,255,.02));
+    }
+    .includes-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .includes-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .includes-list li:last-child { border-bottom: none; }
+    .includes-list .icon {
+      color: var(--primary);
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    @media (max-width: 920px) {
+      .hero-grid, .grid-2, .grid-3 { grid-template-columns:1fr; }
+      .hero { padding-top: 54px; }
+      .cta-row { flex-direction:column; }
+      .btn { width:100%; }
+    }
+  </style>
+  <script>
+    window.OCAE_DEFAULT_PRICING = {
+      active: {
+        ctaLabel: 'Accedi subito',
+        endsAt: '2026-06-28T23:59:59+02:00'
+      },
+      timezone: 'Europe/Rome'
+    };
+  </script>
+</head>
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div style="text-align:center;">
+        <div class="eyebrow">OpenClaw Activation Experience</div>
+        <h1>Hai già provato l'AI.<br>Ma non hai ancora un <span class="highlight">sistema</span> che lavora per te.</h1>
+        <p class="hero-sub">
+          Per professionisti, coach, consulenti e formatori che usano ChatGPT, Claude o altri tool AI ogni giorno — ma tra caos, troppi prompt e dispersione continua, non hanno ancora costruito un sistema reale dentro il loro business.
+        </p>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <img src="/ocae/hero.jpg" alt="OpenClaw Activation Experience hero image" />
+        </div>
+      </div>
+      <div style="text-align:center;">
+        <ul class="hero-bullets">
+          <li><span>•</span> Smetti di usare l'AI "a mano"</li>
+          <li><span>•</span> Attivi un sistema reale in pochi giorni</li>
+          <li><span>•</span> Meno dispersione, più output concreto</li>
+        </ul>
+        <div class="price-stack">
+          <span class="price-current" data-ocae-price>—</span>
+          <span class="price-compare" data-ocae-compare></span>
+        </div>
+        <div class="deadline-box" data-ocae-deadline>
+          <p class="deadline-label">Il prezzo attuale scade tra</p>
+          <div class="countdown" data-ocae-countdown>
+            <div class="countdown-item"><span class="countdown-value" data-unit="days">00</span><span class="countdown-unit">giorni</span></div>
+            <div class="countdown-item"><span class="countdown-value" data-unit="hours">00</span><span class="countdown-unit">ore</span></div>
+            <div class="countdown-item"><span class="countdown-value" data-unit="minutes">00</span><span class="countdown-unit">minuti</span></div>
+            <div class="countdown-item"><span class="countdown-value" data-unit="seconds">00</span><span class="countdown-unit">secondi</span></div>
+          </div>
+        </div>
+        <div class="cta-row">
+          <a class="btn btn-primary is-hidden-temporarily" href="https://quiz.riccardoromano.biz/oce">Candidati / Prenota una call</a>
+          <a class="btn btn-secondary" href="/ocaeckout" data-ocae-cta>Accedi subito</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE 1: IL PROBLEMA -->
+  <section class="section dark">
+    <div class="container">
+      <div class="container-narrow" style="text-align:center; margin-bottom: 38px;">
+        <h2 class="section-title">La frustrazione silenziosa</h2>
+        <p class="section-sub" style="margin:0 auto;">Lo sai che l'AI può cambiare il tuo business. Lo senti. Lo vedi ovunque. Eppure, ogni giorno...</p>
+      </div>
+      <div class="grid-2">
+        <div class="card pain-card">
+          <h3>Apri ChatGPT, scrivi un prompt...</h3>
+          <p>Ottieni una risposta... e poi devi rifare tutto da capo la volta dopo. Stesso lavoro, stessa fatica, zero accumulo.</p>
+        </div>
+        <div class="card pain-card">
+          <h3>Hai provato 15 tool diversi</h3>
+          <p>Ma nessuno si integra davvero con il tuo flusso di lavoro. Ogni tool è un'isola, e tu fai da ponte.</p>
+        </div>
+        <div class="card pain-card">
+          <h3>Passi ore a "sperimentare"</h3>
+          <p>A fine giornata l'unico risultato concreto è che hai perso tempo. Movimento senza progresso.</p>
+        </div>
+        <div class="card pain-card">
+          <h3>Corri dietro alla tecnologia</h3>
+          <p>Invece di farla lavorare per te. Sempre in reazione, mai in controllo.</p>
+        </div>
+      </div>
+      <div class="container-narrow">
+        <div class="quote">Non è che l'AI non funziona. È che non hai un sistema. Hai i pezzi del puzzle sparsi sul tavolo, ma nessuno ti ha mai mostrato come assemblarli.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE 2: LA SVOLTA -->
+  <section class="section">
+    <div class="container">
+      <div class="container-narrow" style="text-align:center; margin-bottom: 38px;">
+        <h2 class="section-title">Dallo sperimentatore al sistemista</h2>
+        <p class="section-sub" style="margin:0 auto;">Immagina di svegliarti domani mattina e sapere che...</p>
+      </div>
+      <div class="grid-2">
+        <div class="card solution-card">
+          <h3>I tuoi contenuti social sono già pronti</h3>
+          <p>Pianificati e pronti da pubblicare. Non devi più inventarti cosa postare ogni giorno.</p>
+        </div>
+        <div class="card solution-card">
+          <h3>Le risposte alle email si scrivono da sole</h3>
+          <p>Nel tuo tono, con la tua voce. Le domande frequenti non ti rubano più tempo.</p>
+        </div>
+        <div class="card solution-card">
+          <h3>I lead vengono qualificati automaticamente</h3>
+          <p>Senza screening manuale. Solo le opportunità giuste arrivano sul tuo tavolo.</p>
+        </div>
+        <div class="card solution-card">
+          <h3>Hai un assistente AI che conosce il tuo business</h3>
+          <p>I tuoi clienti, il tuo metodo. Lavora 24/7 senza mai stancarsi.</p>
+        </div>
+      </div>
+      <div class="container-narrow">
+        <div class="quote">Non è fantascienza. È quello che succede quando smetti di usare l'AI "a mano" e attivi un sistema.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE 3: COS'È -->
+  <section class="section dark">
+    <div class="container">
+      <div class="container-narrow" style="text-align:center; margin-bottom: 38px;">
+        <h2 class="section-title">Cos'è OpenClaw Activation Experience</h2>
+        <p class="section-sub" style="margin:0 auto;">Non è un corso. Non è un tool. Non è un altro tutorial da guardare e dimenticare.</p>
+      </div>
+      <div class="card" style="max-width: 900px; margin: 0 auto 28px;">
+        <div class="quote" style="margin: 0;">È un programma di attivazione sistemica che in 3-5 giorni ti porta da "uso l'AI a caso" a "ho un sistema che lavora al posto mio".</div>
+      </div>
+      <div style="text-align:center; margin-bottom: 34px;">
+        <h3 style="font-size: 1.4rem; margin-bottom: 8px;">Cosa include:</h3>
+      </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>1. Attivazione Sistema OpenClaw</h3>
+          <p>1 mese incluso. Accesso completo alla piattaforma con il tuo agente AI personale configurato e pronto all'uso. Non devi installare nulla, configurare server, o imparare linguaggi di programmazione.</p>
+        </div>
+        <div class="card">
+          <h3>2. Workshop Guidato 3-5 Giorni</h3>
+          <p>Live + Replay. Ti guido passo dopo passo: come strutturare il tuo primo workflow automatizzato, creare prompt consistenti, collegare OpenClaw ai tuoi strumenti esistenti.</p>
+        </div>
+        <div class="card">
+          <h3>3. Gruppo Telegram VIP</h3>
+          <p>Accesso diretto a me e agli altri partecipanti. Domande rapide, feedback sui tuoi workflow, condivisione di best practice. Non è un gruppo "teorico" — è dove risolviamo problemi concreti.</p>
+        </div>
+        <div class="card">
+          <h3>4. 3 Sessioni Q&A Live</h3>
+          <p>Tre incontri dedicati dove porti i tuoi casi specifici e li risolviamo insieme. Non genericità: il tuo business, i tuoi clienti, i tuoi processi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE 4: COSA CAMBIA -->
+  <section class="section">
+    <div class="container grid-2">
+      <div>
+        <h2 class="section-title" style="margin-bottom: 22px;">Cosa cambia dopo</h2>
+        <ul class="list check">
+          <li><strong>Un sistema attivo che lavora per te</strong> — non una lista di "cose da provare"</li>
+          <li><strong>Workflow automatizzati</strong> per almeno 3 task ricorrenti del tuo business</li>
+          <li><strong>Un agente AI che conosce il tuo metodo</strong> e risponde al posto tuo in modo coerente</li>
+          <li><strong>Chiarezza totale</strong> su cosa automatizzare subito e cosa delegare più avanti</li>
+          <li><strong>1 mese di OpenClaw attivo</strong> per consolidare e espandere il tuo sistema</li>
+        </ul>
+      </div>
+      <div class="card offer" id="call">
+        <h3>OpenClaw Activation Experience</h3>
+        <div class="price-old">Valore totale: €1.088</div>
+        <div class="price" data-ocae-price>—</div>
+        <p class="mini-note">Una tantum — nessun abbonamento nascosto</p>
+        <div style="text-align: left; margin: 22px 0;">
+          <ul class="includes-list">
+            <li><span class="icon">✓</span> Attivazione sistema OpenClaw (1 mese)</li>
+            <li><span class="icon">✓</span> Workshop guidato 3-5 giorni</li>
+            <li><span class="icon">✓</span> Gruppo Telegram VIP</li>
+            <li><span class="icon">✓</span> 3 Sessioni Q&A Live</li>
+          </ul>
+        </div>
+        <div class="cta-row" style="flex-direction: column;">
+          <a class="btn btn-primary is-hidden-temporarily" href="https://quiz.riccardoromano.biz/oce">Candidati / Prenota una call</a>
+          <a class="btn btn-secondary" href="/ocaeckout" data-ocae-cta>Accedi subito</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE 5: PER CHI È -->
+  <section class="section dark">
+    <div class="container">
+      <div class="grid-2">
+        <div class="card">
+          <h3 style="color: var(--success);">È per te se:</h3>
+          <ul class="list check">
+            <li>Sei coach, consulente, formatore o professionista con un business esistente</li>
+            <li>Già usi l'AI ma senti di non sfruttarne nemmeno il 10% del potenziale</li>
+            <li>Vuoi velocità e risultati, non teoria e concetti astratti</li>
+            <li>Sei disposto a investire 3-5 giorni intensivi per costruire un asset che ti serve per i prossimi anni</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3 style="color: var(--danger);">NON è per te se:</h3>
+          <ul class="list xmark">
+            <li>Cerci "trucchi magici" senza voler mettere mano al tuo business</li>
+            <li>Non hai ancora un'offerta o un cliente</li>
+            <li>Preferisci guardare contenuti gratuiti per mesi senza mai agire</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE CHI SONO -->
+  <section class="chi-sono-section">
+    <div class="chi-sono-content">
+      <h2>Io sono Riccardo Romano</h2>
+      <p>Da anni lavoro con professionisti, imprenditori e aziende.</p>
+      <p>Comunicazione, marketing, customer experience, organizzazione e processi.</p>
+      <p>Il filo comune:<br>aiutare persone e aziende<br>a funzionare meglio.</p>
+    </div>
+  </section>
+
+  <!-- SEZIONE TESTIMONIANZE -->
+  <section class="testimonials-section">
+    <div class="container">
+      <div style="text-align:center; margin-bottom: 48px;">
+        <div class="eyebrow">Testimonianze</div>
+        <h2 class="section-title">Cosa dice chi ha lavorato con me</h2>
+      </div>
+      <div class="testimonials-grid">
+        <!-- Testimonianza 1 - Golia Pezzulla -->
+        <div class="testimonial-full">
+          <img src="/ocae/assets/testimonial-1.png" alt="Testimonianza 1 - Golia Pezzulla" />
+        </div>
+        <!-- Testimonianza 2 - Sarah Zama -->
+        <div class="testimonial-full">
+          <img src="/ocae/assets/testimonial-2.png" alt="Testimonianza 2 - Sarah Zama" />
+        </div>
+        <!-- Testimonianza 3 - Giovanni Drago -->
+        <div class="testimonial-full">
+          <img src="/ocae/assets/testimonial-3.png" alt="Testimonianza 3 - Giovanni Drago" />
+        </div>
+        <!-- Testimonianza 4 - Marco Coltro -->
+        <div class="testimonial-full">
+          <img src="/ocae/assets/testimonial-4.png" alt="Testimonianza 4 - Marco Coltro" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE GARANZIA -->
+  <section class="section">
+    <div class="container-narrow" style="text-align: center;">
+      <h2 class="section-title">La mia "garanzia"</h2>
+      <p class="section-sub" style="margin: 0 auto 22px;">Non offro "soddisfazione garantita o rimborsati" perché non vendo promesse — vendo un sistema da costruire insieme.</p>
+      <div class="card" style="text-align: left;">
+        <p>Ma posso garantirti questo: <strong>se segui il programma, partecipi ai workshop, applichi ciò che ti mostro e alla fine non hai almeno 3 workflow automatizzati che ti fanno risparmiare ore ogni settimana, ti rimango accanto finché non ce la fai.</strong></p>
+        <p style="margin-bottom: 0;">Perché il mio obiettivo non è venderti un corso. È che tu abbia un sistema che funziona.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SEZIONE FAQ -->
+  <section class="faq-section section dark">
+    <div class="container">
+      <div style="text-align:center; margin-bottom: 48px;">
+        <div class="eyebrow">FAQ</div>
+        <h2 class="section-title">Domande frequenti</h2>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">A chi è rivolto OpenClaw Activation Experience?</div>
+        <div class="faq-answer">A coach, consulenti, formatori e professionisti che già usano l'AI ma sentono di non sfruttarne il pieno potenziale. Se hai un business esistente e vuoi trasformare l'AI da tool sporadico a sistema strutturato, questa esperienza è per te.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Cosa mi serve per partecipare?</div>
+        <div class="faq-answer">Un computer, una connessione internet e il desiderio di costruire un sistema. Non serve esperienza tecnica: ti guido passo dopo passo nella configurazione e nell'uso di OpenClaw.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Quanto dura il programma?</div>
+        <div class="faq-answer">Il workshop intensivo dura 3-5 giorni. Hai poi 1 mese di accesso completo al sistema OpenClaw per consolidare e espandere i tuoi workflow. Le sessioni Q&A live sono distribuite nel mese per supportarti continuamente.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Cosa succede dopo il mese incluso?</div>
+        <div class="faq-answer">Puoi decidere di continuare con OpenClaw con un abbonamento mensile, oppure mantenere ciò che hai costruito e usarlo autonomamente. Nessun vincolo, nessuna sorpresa.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">E se non riesco a partecipare alle live?</div>
+        <div class="faq-answer">Tutte le sessioni vengono registrate e rese disponibili nel gruppo VIP. Puoi rivederle quando vuoi e fare domande in differita nel gruppo Telegram.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Qual è la differenza con un corso online?</div>
+        <div class="faq-answer">Non è un corso da guardare passivamente. È un'attivazione pratica dove costruiamo insieme il TUO sistema, con il TUO business, i TUOI clienti. Hai accesso diretto a me e al gruppo per risolvere i tuoi casi specifici.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER CTA -->
+  <section class="section dark">
+    <div class="container-narrow footer-cta">
+      <h2 class="section-title" style="font-size:2.4rem; margin-bottom:12px;">Da strumenti sparsi a sistema attivo</h2>
+      <p class="section-sub" style="margin:0 auto 18px;">Se oggi stai usando l'AI in modo confuso, sparso e manuale, questa esperienza serve a fare un passaggio netto.</p>
+      <div class="quote" style="text-align:left; max-width:640px; margin:18px auto;">Non impari OpenClaw. Lo attivi e lo fai lavorare per te.</div>
+      <div class="deadline-box" data-ocae-deadline-secondary>
+        <p class="deadline-label">Il prezzo attuale scade tra</p>
+        <div class="countdown" data-ocae-countdown-secondary>
+          <div class="countdown-item"><span class="countdown-value" data-unit-secondary="days">00</span><span class="countdown-unit">giorni</span></div>
+          <div class="countdown-item"><span class="countdown-value" data-unit-secondary="hours">00</span><span class="countdown-unit">ore</span></div>
+          <div class="countdown-item"><span class="countdown-value" data-unit-secondary="minutes">00</span><span class="countdown-unit">minuti</span></div>
+          <div class="countdown-item"><span class="countdown-value" data-unit-secondary="seconds">00</span><span class="countdown-unit">secondi</span></div>
+        </div>
+      </div>
+      <div class="cta-row" style="justify-content:center;">
+        <a class="btn btn-primary is-hidden-temporarily" href="https://quiz.riccardoromano.biz/oce">Candidati / Prenota una call</a>
+        <a class="btn btn-secondary" href="/ocaeckout" data-ocae-cta>Accedi subito</a>
+      </div>
+      <p style="margin-top: 28px; color: var(--muted); font-size: 0.9rem;">
+        <strong>Riccardo Romano</strong><br>
+        Business Architect & OpenClaw Ecosystem Founder
+      </p>
+    </div>
+  </section>
+
+  <footer class="simple-footer">
+    Copyright 2026 Riccardo Romano, tutti i diritti riservati.
+  </footer>
+
+  <script>
+    (function () {
+      const fallback = window.OCAE_DEFAULT_PRICING || {};
+      const state = {
+        active: fallback.active || { ctaLabel: 'Accedi subito', endsAt: null },
+        timezone: fallback.timezone || 'Europe/Rome'
+      };
+      const priceEls = document.querySelectorAll('[data-ocae-price]');
+      const compareEl = document.querySelector('[data-ocae-compare]');
+      const ctaEls = document.querySelectorAll('[data-ocae-cta]');
+      const deadlineEls = document.querySelectorAll('[data-ocae-deadline], [data-ocae-deadline-secondary]');
+      const countdownEls = document.querySelectorAll('[data-ocae-countdown], [data-ocae-countdown-secondary]');
+      const unitGroups = [
+        {
+          days: document.querySelector('[data-unit="days"]'),
+          hours: document.querySelector('[data-unit="hours"]'),
+          minutes: document.querySelector('[data-unit="minutes"]'),
+          seconds: document.querySelector('[data-unit="seconds"]')
+        },
+        {
+          days: document.querySelector('[data-unit-secondary="days"]'),
+          hours: document.querySelector('[data-unit-secondary="hours"]'),
+          minutes: document.querySelector('[data-unit-secondary="minutes"]'),
+          seconds: document.querySelector('[data-unit-secondary="seconds"]')
+        }
+      ];
+
+      function formatMoney(value) {
+        return new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(value);
+      }
+
+      function renderPrice() {
+        const hasPrice = typeof state.active.price === 'number';
+        priceEls.forEach((priceEl) => {
+          priceEl.textContent = hasPrice ? formatMoney(state.active.price) : '—';
+        });
+        if (compareEl) {
+          compareEl.textContent = typeof state.active.compareAtPrice === 'number' ? formatMoney(state.active.compareAtPrice) : '';
+        }
+        ctaEls.forEach((ctaEl) => {
+          ctaEl.textContent = hasPrice
+            ? `${state.active.ctaLabel || 'Accedi subito'} — ${formatMoney(state.active.price)}`
+            : (state.active.ctaLabel || 'Accedi subito');
+          ctaEl.setAttribute('href', '/ocaeckout');
+        });
+      }
+
+      function stopCountdown(message) {
+        countdownEls.forEach((wrap) => {
+          if (wrap) wrap.innerHTML = `<span class="countdown-expired">${message}</span>`;
+        });
+      }
+
+      function updateCountdown() {
+        if (!state.active.endsAt) {
+          deadlineEls.forEach((el) => {
+            if (el) el.style.display = 'none';
+          });
+          return false;
+        }
+        const diff = new Date(state.active.endsAt).getTime() - Date.now();
+        if (diff <= 0) {
+          stopCountdown('Prezzo aggiornato. Il checkout mostra già il nuovo importo.');
+          return false;
+        }
+        const totalSeconds = Math.floor(diff / 1000);
+        const values = {
+          days: Math.floor(totalSeconds / 86400),
+          hours: Math.floor((totalSeconds % 86400) / 3600),
+          minutes: Math.floor((totalSeconds % 3600) / 60),
+          seconds: totalSeconds % 60
+        };
+        unitGroups.forEach((units) => {
+          Object.entries(values).forEach(([key, value]) => {
+            if (units[key]) units[key].textContent = String(value).padStart(2, '0');
+          });
+        });
+        return true;
+      }
+
+      renderPrice();
+      updateCountdown();
+      setInterval(updateCountdown, 1000);
+
+      fetch('/api/ocae-pricing', { cache: 'no-store' })
+        .then((res) => (res.ok ? res.json() : null))
+        .then((data) => {
+          if (!data || !data.active) return;
+          state.active = data.active;
+          state.timezone = data.timezone || state.timezone;
+          renderPrice();
+          updateCountdown();
+        })
+        .catch(() => {});
+    })();
+  </script>
+
+  <script>
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const item = question.parentElement;
+        const isActive = item.classList.contains('active');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

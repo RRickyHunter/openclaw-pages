@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Marquee - Solo Testo</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 0;
+            overflow-x: hidden;
+        }
+        .text-marquee {
+            width: 100%;
+            padding: 40px 0;
+            overflow: hidden;
+            position: relative;
+        }
+        /* Fade ai lati */
+        .text-marquee::before,
+        .text-marquee::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100px;
+            z-index: 10;
+            pointer-events: none;
+        }
+        .text-marquee::before {
+            left: 0;
+            background: linear-gradient(to right, #0a0a0a 0%, transparent 100%);
+        }
+        .text-marquee::after {
+            right: 0;
+            background: linear-gradient(to left, #0a0a0a 0%, transparent 100%);
+        }
+        .text-marquee-track {
+            display: flex;
+            gap: 60px;
+            animation: marqueeText 20s linear infinite;
+            white-space: nowrap;
+        }
+        .text-marquee-track:hover {
+            animation-play-state: paused;
+        }
+        .text-marquee-track.reverse {
+            animation-direction: reverse;
+        }
+        @keyframes marqueeText {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+        .text-marquee-item {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 800;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+            flex-shrink: 0;
+            transition: all 0.3s;
+        }
+        .text-marquee-item:hover {
+            color: #fff;
+            -webkit-text-stroke: 0;
+        }
+        /* Controlli */
+        .demo-controls {
+            display: flex;
+            gap: 15px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            background: rgba(228, 34, 83, 0.9);
+            color: #fff;
+            transition: all 0.3s;
+        }
+        .btn:hover { transform: scale(1.05); }
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="text-marquee">
+        <div class="text-marquee-track" id="text-track-1">
+            <span class="text-marquee-item">Pubblicità. Marketing. Automazioni. IA.</span>
+            <span class="text-marquee-item">Pubblicità. Marketing. Automazioni. Intelligenza Artificiale.</span>
+            <span class="text-marquee-item">Pubblicità. Marketing. Automazioni. IA.</span>
+            <span class="text-marquee-item">Pubblicità. Marketing. Automazioni. Intelligenza Artificiale.</span>
+        </div>
+    </div>
+
+    <div class="text-marquee">
+        <div class="text-marquee-track reverse" id="text-track-2">
+            <span class="text-marquee-item">Sviluppo. Strategia. IA.</span>
+            <span class="text-marquee-item">Sviluppo. Strategia. Intelligenza Artificiale.</span>
+            <span class="text-marquee-item">Sviluppo. Strategia. IA.</span>
+            <span class="text-marquee-item">Sviluppo. Strategia. Intelligenza Artificiale.</span>
+        </div>
+    </div>
+
+    <div class="demo-controls">
+        <button class="btn" onclick="toggleSpeed()">Cambia velocità</button>
+        <button class="btn btn-secondary" onclick="toggleDirection()">Inverti direzione</button>
+        <button class="btn btn-secondary" onclick="togglePause()">Pausa</button>
+    </div>
+
+    <script>
+        const tracks = document.querySelectorAll('.text-marquee-track');
+        let currentSpeed = 20;
+        let isPaused = false;
+
+        function toggleSpeed() {
+            currentSpeed = currentSpeed === 20 ? 10 : currentSpeed === 10 ? 30 : 20;
+            tracks.forEach(track => {
+                track.style.animationDuration = `${currentSpeed}s`;
+            });
+        }
+
+        function toggleDirection() {
+            tracks.forEach(track => track.classList.toggle('reverse'));
+        }
+
+        function togglePause() {
+            isPaused = !isPaused;
+            tracks.forEach(track => {
+                track.style.animationPlayState = isPaused ? 'paused' : 'running';
+            });
+        }
+    </script>
+</body>
+</html>

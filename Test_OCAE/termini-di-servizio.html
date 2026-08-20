@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Termini di Servizio - OpenClaw Activation Experience</title>
+    <style>
+        :root {
+            --bg: #0b1120;
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --accent: #38bdf8;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        h1 { color: var(--accent); margin-bottom: 1.5rem; }
+        h2 { margin-top: 2rem; margin-bottom: 1rem; font-size: 1.3rem; }
+        p { margin-bottom: 1rem; color: var(--muted); }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        ul { margin-left: 1.5rem; margin-bottom: 1rem; color: var(--muted); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Termini di Servizio</h1>
+        
+        <h2>Accettazione dei Termini</h2>
+        <p>Utilizzando questo sito e i servizi offerti, accetti i presenti termini di servizio.</p>
+        
+        <h2>Descrizione del Servizio</h2>
+        <p>OpenClaw Activation Experience è un servizio di consulenza e formazione per l'automazione dei processi aziendali.</p>
+        
+        <h2>Prezzi e Pagamenti</h2>
+        <p>
+            <strong>Investimento:</strong> {{PREZZO}}<br>
+            <strong>Metodi di pagamento:</strong> Carta di credito, PayPal, Bonifico
+        </p>
+        
+        <h2>Politica di Rimborso</h2>
+        <p>Offriamo garanzia di rimborso entro 30 giorni dall'acquisto.</p>
+        
+        <h2>Obblighi dell'Utente</h2>
+        <p>L'utente si impegna a:</p>
+        <ul>
+            <li>Fornire informazioni accurate e veritiere</li>
+            <li>Mantenere riservate le proprie credenziali di accesso</li>
+            <li>Non utilizzare il servizio per scopi illeciti</li>
+        </ul>
+        
+        <h2>Limitazioni di Responsabilità</h2>
+        <p>Il servizio viene fornito "così com'è". Non garantiamo risultati specifici e non siamo responsabili per eventuali danni derivanti dall'utilizzo del servizio.</p>
+        
+        <h2>Modifiche ai Termini</h2>
+        <p>Ci riserviamo il diritto di modificare questi termini in qualsiasi momento. Le modifiche saranno pubblicate su questa pagina.</p>
+        
+        <h2>Contatti</h2>
+        <p>
+            <strong>Riccardo Romano</strong><br>
+            <strong>Email:</strong> supporto@marketingpanorama.it<br>
+            {{#if TELEFONO}}<strong>Telefono:</strong> +34 XXX XXX XXX{{/if}}
+        </p>
+        
+        <p style="margin-top: 2rem;"><a href="/Test_OCAE">← Torna alla pagina principale</a></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parallax Numbers - Preview</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+        }
+        .section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 60px 20px;
+        }
+        .section-content {
+            max-width: 800px;
+            text-align: center;
+            z-index: 2;
+        }
+        .section:nth-child(odd) { background: #0a0a0a; }
+        .section:nth-child(even) { background: #111; }
+        .parallax-number {
+            position: absolute;
+            font-size: clamp(8rem, 20vw, 15rem);
+            font-weight: 900;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(228, 34, 83, 0.3);
+            z-index: 1;
+            pointer-events: none;
+            transition: transform 0.1s ease-out;
+        }
+        .parallax-number.left { left: -5%; top: 20%; }
+        .parallax-number.right { right: -5%; bottom: 20%; }
+        h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        p {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+        }
+        .scroll-indicator {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
+            animation: bounce 2s infinite;
+            color: #E42253;
+            font-size: 2rem;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-indicator">↓</div>
+
+    <section class="section">
+        <span class="parallax-number left" data-speed="0.5">01</span>
+        <div class="section-content">
+            <h2>Scopri il potenziale</h2>
+            <p>Scorri verso il basso per vedere l'effetto parallax sui numeri. Ogni sezione ha un numero grande che si muove a velocità diverse rispetto al contenuto.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <span class="parallax-number right" data-speed="-0.3">02</span>
+        <div class="section-content">
+            <h2>Profondità visiva</h2>
+            <p>L'effetto parallax crea una sensazione di profondità. I numeri sembrano fluttuare nello spazio mentre scorri la pagina.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <span class="parallax-number left" data-speed="0.4">03</span>
+        <div class="section-content">
+            <h2>Design moderno</h2>
+            <p>Perfetto per landing page, portfolio e siti aziendali. Attira l'attenzione senza distrarre dal contenuto principale.</p>
+        </div>
+    </section>
+
+    <script>
+        // Parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxElements = document.querySelectorAll('.parallax-number');
+            
+            parallaxElements.forEach(el => {
+                const speed = parseFloat(el.dataset.speed) || 0.5;
+                const rect = el.parentElement.getBoundingClientRect();
+                const sectionTop = rect.top + scrolled;
+                const relativeScroll = scrolled - sectionTop + window.innerHeight;
+                const yPos = relativeScroll * speed;
+                
+                el.style.transform = `translateY(${yPos}px)`;
+            });
+        });
+
+        // Hide scroll indicator after first scroll
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 100) {
+                document.querySelector('.scroll-indicator').style.opacity = '0';
+            }
+        }, { once: true });
+    </script>
+</body>
+</html>

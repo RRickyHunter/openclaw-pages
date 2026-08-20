@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Scroller Vertical - Preview</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+        .scroller-section {
+            width: 100%;
+            max-width: 1200px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            min-height: 60vh;
+        }
+        /* Testo fisso a sinistra */
+        .scroller-static {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 600;
+            line-height: 1.4;
+            color: rgba(255,255,255,0.9);
+        }
+        .scroller-static .line {
+            display: block;
+        }
+        .scroller-static .line:nth-child(2) {
+            color: #E42253;
+        }
+        /* Scroller verticale a destra */
+        .scroller-container {
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+            mask-image: linear-gradient(
+                to bottom,
+                transparent 0%,
+                black 20%,
+                black 80%,
+                transparent 100%
+            );
+            -webkit-mask-image: linear-gradient(
+                to bottom,
+                transparent 0%,
+                black 20%,
+                black 80%,
+                transparent 100%
+            );
+        }
+        .scroller-track {
+            animation: scrollVertical 8s linear infinite;
+        }
+        .scroller-track:hover {
+            animation-play-state: paused;
+        }
+        .scroller-item {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.2;
+            padding: 20px 0;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .scroller-item:hover {
+            color: #fff;
+            -webkit-text-stroke: 0;
+            transform: translateX(10px);
+        }
+        .scroller-item.active {
+            color: #E42253;
+            -webkit-text-stroke: 0;
+        }
+        @keyframes scrollVertical {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+        /* Controlli */
+        .demo-controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 100;
+        }
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            background: rgba(228, 34, 83, 0.9);
+            color: #fff;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+        .btn:hover { transform: scale(1.05); }
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .scroller-section {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .scroller-container {
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="scroller-section">
+        <div class="scroller-static">
+            <span class="line">Tutti i servizi digitali</span>
+            <span class="line">per il successo</span>
+            <span class="line">del tuo progetto</span>
+        </div>
+        
+        <div class="scroller-container">
+            <div class="scroller-track" id="scroller-track">
+                <div class="scroller-item">Siti Web</div>
+                <div class="scroller-item">E-commerce</div>
+                <div class="scroller-item">Marketing</div>
+                <div class="scroller-item">Chatbot AI</div>
+                <div class="scroller-item">Automazioni</div>
+                <div class="scroller-item">Branding</div>
+                <div class="scroller-item">SEO</div>
+                <div class="scroller-item">Social Media</div>
+                <!-- Duplicato per loop infinito -->
+                <div class="scroller-item">Siti Web</div>
+                <div class="scroller-item">E-commerce</div>
+                <div class="scroller-item">Marketing</div>
+                <div class="scroller-item">Chatbot AI</div>
+                <div class="scroller-item">Automazioni</div>
+                <div class="scroller-item">Branding</div>
+                <div class="scroller-item">SEO</div>
+                <div class="scroller-item">Social Media</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="demo-controls">
+        <button class="btn" onclick="changeSpeed()">Cambia velocità</button>
+        <button class="btn btn-secondary" onclick="changeWords()">Cambia parole</button>
+        <button class="btn btn-secondary" onclick="toggleDirection()">Inverti direzione</button>
+    </div>
+
+    <script>
+        const track = document.getElementById('scroller-track');
+        const items = document.querySelectorAll('.scroller-item');
+        
+        const wordSets = [
+            ['Siti Web', 'E-commerce', 'Marketing', 'Chatbot AI', 'Automazioni', 'Branding', 'SEO', 'Social Media'],
+            ['Strategy', 'Design', 'Development', 'Analytics', 'Growth', 'Conversion', 'Retention', 'Scale'],
+            ['Consulenza', 'Progettazione', 'Sviluppo', 'Testing', 'Deploy', 'Monitoraggio', ' Ottimizzazione', 'Supporto']
+        ];
+        let currentSet = 0;
+        let currentSpeed = 8;
+        let isReversed = false;
+
+        // Evidenzia item centrale
+        function highlightCenter() {
+            const containerRect = track.parentElement.getBoundingClientRect();
+            const centerY = containerRect.top + containerRect.height / 2;
+            
+            items.forEach(item => {
+                const itemRect = item.getBoundingClientRect();
+                const itemCenterY = itemRect.top + itemRect.height / 2;
+                const distance = Math.abs(centerY - itemCenterY);
+                
+                if (distance < 40) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+            
+            requestAnimationFrame(highlightCenter);
+        }
+        highlightCenter();
+
+        function changeSpeed() {
+            currentSpeed = currentSpeed === 8 ? 4 : currentSpeed === 4 ? 12 : 8;
+            track.style.animationDuration = `${currentSpeed}s`;
+        }
+
+        function changeWords() {
+            currentSet = (currentSet + 1) % wordSets.length;
+            const words = wordSets[currentSet];
+            const allItems = track.querySelectorAll('.scroller-item');
+            
+            allItems.forEach((item, i) => {
+                item.textContent = words[i % words.length];
+            });
+        }
+
+        function toggleDirection() {
+            isReversed = !isReversed;
+            track.style.animationDirection = isReversed ? 'reverse' : 'normal';
+        }
+    </script>
+</body>
+</html>

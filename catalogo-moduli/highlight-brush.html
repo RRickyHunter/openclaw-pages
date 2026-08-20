@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Highlight Brush - Preview</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+        .demo-container {
+            max-width: 900px;
+            width: 100%;
+        }
+        .hero-demo {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .highlight-brush {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.5;
+            color: #1a1a2e;
+        }
+        .highlight-brush .word {
+            position: relative;
+            display: inline;
+            z-index: 1;
+        }
+        .highlight-brush .brush {
+            position: absolute;
+            bottom: 0;
+            left: -4px;
+            right: -4px;
+            height: 35%;
+            background: linear-gradient(120deg, #E42253 0%, #ff6b6b 100%);
+            opacity: 0.25;
+            z-index: -1;
+            border-radius: 3px;
+            transform: skewX(-3deg) rotate(-1deg);
+            transform-origin: left;
+            animation: brushStroke 1.2s ease-out forwards;
+        }
+        .highlight-brush .word:hover .brush {
+            opacity: 0.4;
+            transition: opacity 0.3s;
+        }
+        @keyframes brushStroke {
+            0% { transform: scaleX(0) skewX(-3deg) rotate(-1deg); opacity: 0; }
+            30% { opacity: 0.4; }
+            100% { transform: scaleX(1) skewX(-3deg) rotate(-1deg); opacity: 0.25; }
+        }
+        
+        /* Variante con SVG brush più realistico */
+        .highlight-svg {
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            font-weight: 700;
+            line-height: 1.5;
+            color: #1a1a2e;
+            margin-top: 40px;
+        }
+        .highlight-svg .word {
+            position: relative;
+            display: inline;
+        }
+        .highlight-svg svg {
+            position: absolute;
+            bottom: -5px;
+            left: -10px;
+            width: calc(100% + 20px);
+            height: 20px;
+            z-index: -1;
+        }
+        .highlight-svg path {
+            stroke: #E42253;
+            stroke-width: 12;
+            stroke-linecap: round;
+            fill: none;
+            opacity: 0.3;
+            stroke-dasharray: 300;
+            stroke-dashoffset: 300;
+            animation: drawBrush 1s ease-out forwards;
+        }
+        @keyframes drawBrush {
+            to { stroke-dashoffset: 0; }
+        }
+        
+        .variants {
+            display: grid;
+            gap: 25px;
+            margin-top: 50px;
+        }
+        .variant {
+            background: #fff;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .variant h4 {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Colori alternativi */
+        .highlight-blue .brush { background: linear-gradient(120deg, #4facfe 0%, #00f2fe 100%); }
+        .highlight-green .brush { background: linear-gradient(120deg, #43e97b 0%, #38f9d7 100%); }
+        .highlight-purple .brush { background: linear-gradient(120deg, #a855f7 0%, #ec4899 100%); }
+        .highlight-orange .brush { background: linear-gradient(120deg, #f97316 0%, #fbbf24 100%); }
+        
+        .controls {
+            margin-top: 40px;
+            text-align: center;
+        }
+        .btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            background: #E42253;
+            color: #fff;
+            transition: all 0.3s;
+        }
+        .btn:hover { background: #c41d47; transform: scale(1.05); }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="hero-demo">
+            <div class="highlight-brush" id="main-text">
+                Soluzioni <span class="word"><span class="brush"></span>innovative</span> per il tuo business
+            </div>
+            
+            <!-- Variante SVG -->
+            <div class="highlight-svg" id="svg-text">
+                Tecnologia <span class="word">
+                    <svg viewBox="0 0 200 20" preserveAspectRatio="none">
+                        <path d="M5,15 Q50,5 100,12 T195,10" />
+                    </svg>
+                    avanzata
+                </span> per crescere
+            </div>
+        </div>
+        
+        <div class="variants">
+            <div class="variant">
+                <h4>🔵 Blu - Tecnologia</h4>
+                <div class="highlight-brush highlight-blue">
+                    Piattaforma <span class="word"><span class="brush"></span>scalabile</span> e sicura
+                </div>
+            </div>
+            <div class="variant">
+                <h4>🟢 Verde - Crescita</h4>
+                <div class="highlight-brush highlight-green">
+                    Risultati <span class="word"><span class="brush"></span>sostenibili</span> nel tempo
+                </div>
+            </div>
+            <div class="variant">
+                <h4>🟣 Purple - Creatività</h4>
+                <div class="highlight-brush highlight-purple">
+                    Design <span class="word"><span class="brush"></span>unico</span> e memorabile
+                </div>
+            </div>
+            <div class="variant">
+                <h4>🟠 Arancione - Energia</h4>
+                <div class="highlight-brush highlight-orange">
+                    Performance <span class="word"><span class="brush"></span>eccezionali</span> sempre
+                </div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="btn" onclick="replayAnimation()">🔄 Riproduci animazione</button>
+        </div>
+    </div>
+
+    <script>
+        function replayAnimation() {
+            // Ritrigger CSS animations rimuovendo e riaggiungendo gli elementi
+            const brushes = document.querySelectorAll('.brush');
+            brushes.forEach(brush => {
+                const parent = brush.parentElement;
+                const newBrush = brush.cloneNode(true);
+                brush.remove();
+                parent.insertBefore(newBrush, parent.firstChild);
+            });
+            
+            // Ritrigger anche le SVG
+            const svgs = document.querySelectorAll('.highlight-svg svg');
+            svgs.forEach(svg => {
+                const parent = svg.parentElement;
+                const newSvg = svg.cloneNode(true);
+                svg.remove();
+                parent.insertBefore(newSvg, parent.firstChild);
+            });
+        }
+    </script>
+</body>
+</html>

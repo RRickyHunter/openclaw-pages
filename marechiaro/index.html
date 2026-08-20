@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MareChiaro | Esperienza culinaria di pesce</title>
+  <meta name="description" content="MareChiaro è l’esperienza culinaria dedicata a chi cerca una cena di pesce elegante, curata e accogliente, con attenzione concreta ad allergie, intolleranze ed esigenze alimentari." />
+  <style>
+    :root {
+      --bg: #061018;
+      --bg-alt: #0b1721;
+      --bg-card: rgba(13, 27, 40, 0.88);
+      --text: #f3f7fb;
+      --muted: #a8bac7;
+      --line: rgba(255,255,255,0.08);
+      --primary: #7dd3fc;
+      --primary-strong: #38bdf8;
+      --accent: #f5d089;
+      --accent-soft: rgba(245, 208, 137, 0.12);
+      --success: #8de7c6;
+      --shadow: 0 28px 90px rgba(0,0,0,.42);
+      --hero: radial-gradient(circle at top, rgba(56,189,248,.16), transparent 32%), radial-gradient(circle at 85% 10%, rgba(245,208,137,.1), transparent 24%), linear-gradient(180deg, #061018 0%, #09141f 42%, #061018 100%);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    .container { width: min(1140px, calc(100% - 40px)); margin: 0 auto; }
+    .container-narrow { width: min(780px, calc(100% - 40px)); margin: 0 auto; }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 72px 0 88px;
+      background: var(--hero);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(125,211,252,.05), transparent 46%, rgba(245,208,137,.05));
+      pointer-events: none;
+    }
+    .hero-logo {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 18px;
+      padding: 10px 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.96);
+      box-shadow: 0 16px 38px rgba(0,0,0,.22);
+    }
+    .hero-logo img {
+      display: block;
+      width: min(360px, 100%);
+      height: auto;
+      border-radius: 10px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(125,211,252,.22);
+      background: rgba(125,211,252,.08);
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 32px;
+      align-items: center;
+    }
+    h1 {
+      margin: 18px 0 18px;
+      font-size: clamp(2.4rem, 5vw, 4.6rem);
+      line-height: 1.02;
+      letter-spacing: -.05em;
+      font-weight: 900;
+    }
+    .highlight { color: var(--accent); }
+    .hero-sub {
+      margin: 0 0 26px;
+      max-width: 720px;
+      color: var(--muted);
+      font-size: clamp(1.02rem, 1.7vw, 1.2rem);
+    }
+    .bullet-list {
+      display: grid;
+      gap: 12px;
+      margin: 0 0 30px;
+      padding: 0;
+      list-style: none;
+    }
+    .bullet-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      color: var(--text);
+    }
+    .bullet-list li span {
+      color: var(--success);
+      font-weight: 900;
+    }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px 24px;
+      border-radius: 14px;
+      font-weight: 800;
+      text-decoration: none;
+      transition: .18s ease;
+      min-width: 220px;
+    }
+    .btn-primary {
+      color: #041018;
+      background: linear-gradient(135deg, var(--accent), #f7e2b1);
+      box-shadow: 0 14px 34px rgba(245,208,137,.18);
+    }
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .hero-card {
+      background: linear-gradient(180deg, rgba(13,27,40,.92), rgba(8,18,28,.92));
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+    .hero-card h2 {
+      margin: 0 0 12px;
+      font-size: 1.3rem;
+      letter-spacing: -.02em;
+    }
+    .hero-card p { margin: 0 0 18px; color: var(--muted); }
+    .meta-list {
+      display: grid;
+      gap: 14px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .meta-list li {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.05);
+    }
+    .meta-list strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: .95rem;
+      color: var(--primary);
+    }
+    .section { padding: 78px 0; }
+    .section.alt { background: var(--bg-alt); }
+    .section-title {
+      margin: 0 0 16px;
+      text-align: center;
+      font-size: clamp(1.9rem, 3.5vw, 3rem);
+      line-height: 1.08;
+      letter-spacing: -.04em;
+      font-weight: 900;
+    }
+    .section-sub {
+      margin: 0 auto 38px;
+      max-width: 760px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+    .grid-3, .grid-2 {
+      display: grid;
+      gap: 22px;
+    }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .card {
+      padding: 28px;
+      border-radius: 22px;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+    .card h3 {
+      margin: 0 0 12px;
+      font-size: 1.12rem;
+      letter-spacing: -.02em;
+    }
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: .98rem;
+    }
+    .story {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+    .quote {
+      display: block;
+      margin-top: 18px;
+      padding-left: 18px;
+      border-left: 2px solid rgba(245,208,137,.4);
+      color: var(--text);
+      font-size: 1.04rem;
+    }
+    .booking-box {
+      padding: 30px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(245,208,137,.09), rgba(255,255,255,.03));
+      border: 1px solid rgba(245,208,137,.22);
+      box-shadow: var(--shadow);
+    }
+    .booking-box h3 {
+      margin: 0 0 10px;
+      font-size: 1.35rem;
+      letter-spacing: -.03em;
+    }
+    .booking-box p {
+      margin: 0 0 22px;
+      color: var(--muted);
+    }
+    .booking-visual {
+      display: grid;
+      gap: 14px;
+    }
+    .booking-step {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 16px 18px;
+      border-radius: 16px;
+      background: rgba(6,16,24,.55);
+      border: 1px solid rgba(255,255,255,.06);
+    }
+    .step-num {
+      width: 34px;
+      height: 34px;
+      flex: 0 0 34px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      color: #041018;
+      background: var(--accent);
+    }
+    .booking-note {
+      margin-top: 18px;
+      font-size: .92rem;
+      color: var(--muted);
+    }
+    .faq-item + .faq-item { margin-top: 14px; }
+    .faq-item {
+      padding: 22px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.02);
+    }
+    .faq-item h3 { margin: 0 0 8px; font-size: 1.02rem; }
+    .faq-item p { margin: 0; color: var(--muted); }
+    footer {
+      padding: 30px 20px 44px;
+      border-top: 1px solid rgba(255,255,255,.06);
+      text-align: center;
+      color: var(--muted);
+      font-size: .92rem;
+      background: var(--bg);
+    }
+    @media (max-width: 920px) {
+      .hero-grid, .story, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+      .hero { padding-top: 56px; }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-logo">
+          <img src="/marechiaro/logo.jpg" alt="Logo MareChiaro" />
+        </div>
+        <div class="eyebrow">MareChiaro • esperienza culinaria</div>
+        <h1>Il piacere del pesce<br><span class="highlight">in un’atmosfera intima, curata, memorabile</span></h1>
+        <p class="hero-sub">
+          MareChiaro nasce per chi ama mangiare bene senza rinunciare alla tranquillità: selezione di pesce, cucina elegante,
+          attenzione ai dettagli e ascolto reale di allergie, intolleranze ed esigenze alimentari.
+        </p>
+        <ul class="bullet-list">
+          <li><span>✓</span> Percorso gastronomico pensato per una clientela che cerca qualità, ritmo lento e accoglienza autentica.</li>
+          <li><span>✓</span> Menu e proposte adattabili con cura per esigenze specifiche, senza improvvisazioni.</li>
+          <li><span>✓</span> Prenotazione semplice e discreta, con conferma personalizzata e senza integrazioni esterne invasive.</li>
+        </ul>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#prenotazione">Scopri l’esperienza</a>
+          <a class="btn btn-secondary" href="#menu">Come funziona la serata</a>
+        </div>
+      </div>
+      <aside class="hero-card">
+        <h2>Un invito a rallentare</h2>
+        <p>
+          Tavoli raccolti, luce soffusa, cucina di mare contemporanea e un servizio attento anche quando ci sono richieste alimentari delicate.
+        </p>
+        <ul class="meta-list">
+          <li>
+            <strong>Per chi è pensato</strong>
+            Coppie, piccoli gruppi e ospiti 40–50+ che cercano una cena di pesce curata, senza rumore e senza fretta.
+          </li>
+          <li>
+            <strong>Attenzione speciale</strong>
+            Allergie, intolleranze e preferenze alimentari vengono raccolte con anticipo per costruire un’esperienza serena.
+          </li>
+          <li>
+            <strong>Prenotazione</strong>
+            Solo visuale in questa pagina: trovi qui il percorso e l’atmosfera della prenotazione, senza moduli o sistemi esterni.
+          </li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section id="menu" class="section alt">
+    <div class="container">
+      <h2 class="section-title">Cosa rende MareChiaro diverso</h2>
+      <p class="section-sub">
+        Non solo cucina di pesce: un’esperienza costruita per far sentire ogni ospite seguito, ascoltato e libero di godersi la serata.
+      </p>
+      <div class="grid-3">
+        <article class="card">
+          <h3>Pesce selezionato con criterio</h3>
+          <p>Materie prime scelte per freschezza, equilibrio e stagionalità, con piatti che valorizzano il mare senza appesantire.</p>
+        </article>
+        <article class="card">
+          <h3>Ambiente elegante ma rilassato</h3>
+          <p>Un dark theme sofisticato anche online per raccontare la stessa atmosfera che si vive a tavola: intima, calda, raffinata.</p>
+        </article>
+        <article class="card">
+          <h3>Cura reale delle esigenze alimentari</h3>
+          <p>Allergie, intolleranze o preferenze non sono una nota a margine: diventano parte della preparazione dell’esperienza.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container story">
+      <div class="card">
+        <h2 style="margin-top:0; font-size:2rem; letter-spacing:-.03em;">Una cena che mette a proprio agio</h2>
+        <p style="color:var(--muted); margin:0;">
+          MareChiaro è pensato per chi desidera un ristorante di pesce capace di unire gusto, eleganza e ascolto.
+          Ogni dettaglio vuole ridurre attrito e incertezza, soprattutto quando il benessere a tavola dipende da attenzioni precise.
+        </p>
+        <span class="quote">“Mangiare fuori dovrebbe essere un piacere pieno, non un compromesso da spiegare ogni volta.”</span>
+      </div>
+      <div class="card">
+        <h2 style="margin-top:0; font-size:2rem; letter-spacing:-.03em;">Come immaginiamo la serata</h2>
+        <p style="color:var(--muted); margin:0 0 16px;">
+          Accoglienza, tempo giusto tra una portata e l’altra, proposte di mare bilanciate e una cucina capace di adattarsi con discrezione.
+        </p>
+        <ul class="bullet-list" style="margin-bottom:0;">
+          <li><span>•</span> Accoglienza dedicata e ritmo rilassato.</li>
+          <li><span>•</span> Piatti di pesce con identità chiara e presentazione elegante.</li>
+          <li><span>•</span> Comunicazione preventiva su esigenze alimentari per vivere la cena con serenità.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="prenotazione" class="section alt">
+    <div class="container">
+      <h2 class="section-title">Prenotazione visuale, semplice e rassicurante</h2>
+      <p class="section-sub">
+        Nessuna integrazione esterna in questa fase: solo una rappresentazione chiara del percorso che l’ospite vivrà per riservare il proprio tavolo.
+      </p>
+      <div class="grid-2">
+        <div class="booking-box">
+          <h3>Come funziona</h3>
+          <p>Una sequenza essenziale che comunica ordine, cura e attenzione prima ancora di arrivare in sala.</p>
+          <div class="booking-visual">
+            <div class="booking-step">
+              <div class="step-num">1</div>
+              <div>
+                <strong>Scegli la serata</strong><br />
+                Visualizza disponibilità e tipologia di esperienza, in modo semplice e leggibile.
+              </div>
+            </div>
+            <div class="booking-step">
+              <div class="step-num">2</div>
+              <div>
+                <strong>Segnala esigenze alimentari</strong><br />
+                Allergie, intolleranze o richieste specifiche vengono raccolte con anticipo e trattate con attenzione.
+              </div>
+            </div>
+            <div class="booking-step">
+              <div class="step-num">3</div>
+              <div>
+                <strong>Ricevi conferma personalizzata</strong><br />
+                L’ospite viene accompagnato con un tono discreto e rassicurante, coerente con l’esperienza MareChiaro.
+              </div>
+            </div>
+          </div>
+          <p class="booking-note">Questa sezione è volutamente solo visiva: nessun form live, nessun servizio esterno collegato.</p>
+        </div>
+        <div class="card">
+          <h3 style="font-size:1.35rem;">Pensata per chi vuole sentirsi considerato</h3>
+          <p>
+            Tra i 40 e i 50 anni — e oltre — spesso si cerca qualcosa di più di una semplice cena: comfort, affidabilità e la certezza di non dover rincorrere attenzioni basilari.
+          </p>
+          <p style="margin-top:16px; color:var(--muted);">
+            Per questo la comunicazione di MareChiaro mette al centro il benessere dell’ospite: dalla qualità del pesce fino alla gestione concreta delle esigenze alimentari.
+          </p>
+          <div class="cta-row" style="margin-top:22px;">
+            <a class="btn btn-primary" href="#faq">Leggi le domande frequenti</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq" class="section">
+    <div class="container-narrow">
+      <h2 class="section-title">Domande frequenti</h2>
+      <div class="faq-item">
+        <h3>MareChiaro è adatto a chi ha allergie o intolleranze?</h3>
+        <p>Sì. La pagina e l’esperienza sono costruite proprio per comunicare attenzione preventiva, ascolto e gestione seria delle esigenze alimentari.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Questa pagina permette di prenotare davvero?</h3>
+        <p>No. La sezione prenotazione è intenzionalmente solo visiva: serve a raccontare il flusso senza collegamenti o integrazioni esterne.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Che atmosfera propone il ristorante?</h3>
+        <p>Un contesto elegante, raccolto e contemporaneo, ideale per una cena di pesce vissuta con calma, gusto e attenzione ai dettagli.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 MareChiaro — Esperienza culinaria di pesce</p>
+  </footer>
+</body>
+</html>

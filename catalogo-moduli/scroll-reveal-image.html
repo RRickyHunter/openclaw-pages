@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Reveal Image - Preview</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        .spacer {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1.2rem;
+        }
+        .scroll-reveal-section {
+            min-height: 200vh;
+            position: relative;
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a2e 100%);
+        }
+        .reveal-container {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .reveal-image-wrapper {
+            position: relative;
+            width: 90vw;
+            height: 80vh;
+            transform-origin: center center;
+            transition: transform 0.1s linear;
+        }
+        .reveal-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.5);
+        }
+        .reveal-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                transparent 0%,
+                rgba(10,10,10,0.3) 50%,
+                rgba(10,10,10,0.8) 100%
+            );
+            border-radius: 20px;
+        }
+        .reveal-text-container {
+            position: absolute;
+            bottom: 10%;
+            left: 5%;
+            right: 5%;
+            z-index: 10;
+        }
+        .reveal-text {
+            font-size: clamp(2.5rem, 8vw, 6rem);
+            font-weight: 800;
+            line-height: 1.1;
+            overflow: hidden;
+        }
+        .reveal-text .line {
+            display: block;
+            transform: translateY(100%);
+            opacity: 0;
+            transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s;
+        }
+        .reveal-text .line.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .reveal-text .line:nth-child(1) { transition-delay: 0s; }
+        .reveal-text .line:nth-child(2) { transition-delay: 0.15s; }
+        .reveal-text .accent {
+            color: #E42253;
+        }
+        .reveal-subtext {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: rgba(255,255,255,0.7);
+            margin-top: 20px;
+            max-width: 500px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s;
+        }
+        .reveal-subtext.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .scroll-progress {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 3px;
+            height: 100px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+            z-index: 100;
+        }
+        .scroll-progress-bar {
+            width: 100%;
+            background: #E42253;
+            border-radius: 3px;
+            transition: height 0.1s;
+        }
+        .demo-controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 100;
+        }
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            background: rgba(228, 34, 83, 0.9);
+            color: #fff;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+        .btn:hover { transform: scale(1.05); }
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="spacer">
+        <span>↓ Scorri per vedere l'effetto</span>
+    </div>
+
+    <section class="scroll-reveal-section" id="reveal-section">
+        <div class="reveal-container">
+            <div class="reveal-image-wrapper" id="image-wrapper">
+                <img 
+                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=800&fit=crop" 
+                    alt="Office workspace" 
+                    class="reveal-image"
+                >
+                <div class="reveal-overlay"></div>
+            </div>
+            
+            <div class="reveal-text-container">
+                <div class="reveal-text">
+                    <span class="line">Per la tua</span>
+                    <span class="line"><span class="accent">attività</span></span>
+                </div>
+                <div class="reveal-subtext">
+                    Un vero partner che ti accompagna nella crescita digitale del tuo business
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="scroll-progress">
+        <div class="scroll-progress-bar" id="progress-bar"></div>
+    </div>
+
+    <div class="demo-controls">
+        <button class="btn" onclick="scrollToEffect()">Vai all'effetto</button>
+        <button class="btn btn-secondary" onclick="changeImage()">Cambia immagine</button>
+    </div>
+
+    <div class="spacer">
+        <span>Effetto completato ↑</span>
+    </div>
+
+    <script>
+        const section = document.getElementById('reveal-section');
+        const imageWrapper = document.getElementById('image-wrapper');
+        const progressBar = document.getElementById('progress-bar');
+        const lines = document.querySelectorAll('.reveal-text .line');
+        const subtext = document.querySelector('.reveal-subtext');
+
+        const images = [
+            'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=800&fit=crop',
+            'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=800&fit=crop',
+            'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&h=800&fit=crop'
+        ];
+        let currentImage = 0;
+
+        function updateScrollEffect() {
+            const rect = section.getBoundingClientRect();
+            const sectionHeight = section.offsetHeight;
+            const viewportHeight = window.innerHeight;
+            
+            // Calcola progresso dello scroll nella sezione (0 a 1)
+            const scrollProgress = Math.max(0, Math.min(1, 
+                (-rect.top + viewportHeight * 0.5) / (sectionHeight - viewportHeight)
+            ));
+            
+            // Aggiorna barra progresso
+            progressBar.style.height = `${scrollProgress * 100}%`;
+            
+            // Scala immagine: da 1 (grande) a 0.6 (piccola)
+            const scale = 1 - (scrollProgress * 0.4);
+            imageWrapper.style.transform = `scale(${scale})`;
+            
+            // Mostra testo quando l'immagine è sufficientemente piccola
+            if (scrollProgress > 0.3) {
+                lines.forEach(line => line.classList.add('visible'));
+                subtext.classList.add('visible');
+            } else {
+                lines.forEach(line => line.classList.remove('visible'));
+                subtext.classList.remove('visible');
+            }
+        }
+
+        window.addEventListener('scroll', updateScrollEffect, { passive: true });
+        window.addEventListener('resize', updateScrollEffect);
+
+        function scrollToEffect() {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function changeImage() {
+            currentImage = (currentImage + 1) % images.length;
+            document.querySelector('.reveal-image').src = images[currentImage];
+        }
+
+        // Init
+        updateScrollEffect();
+    </script>
+</body>
+</html>

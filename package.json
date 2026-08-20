@@ -1,0 +1,14 @@
+{
+  "name": "openclaw-pages",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Static pages + Vercel API endpoints for Riccardo Romano",
+  "license": "UNLICENSED",
+  "scripts": {
+    "build:public-lessons": "node ../scripts/build-public-lessons.js",
+    "test:public-lessons": "node ../scripts/test-public-lessons.js"
+  },
+  "dependencies": {
+    "stripe": "^22.2.1"
+  }
+}

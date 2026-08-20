@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Extension Premium e Hair Analysis | Atelier Parrucchiera</title>
+  <meta name="description" content="Prenota un'analisi professionale di capello e colore e scopri extension premium pensate per trasformare capelli stressati, spenti o danneggiati in una chioma elegante, piena e luminosa." />
+  <meta property="og:title" content="Extension Premium e Hair Analysis | Atelier Parrucchiera" />
+  <meta property="og:description" content="Analisi professionale di capello e colore, extension premium e percorso su misura per una trasformazione elegante e naturale." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pages.riccardoromano.biz/parrucchiera/" />
+  <link rel="canonical" href="https://pages.riccardoromano.biz/parrucchiera/" />
+  <style>
+    :root {
+      --bg: #fff8fc;
+      --bg-soft: #fff1f7;
+      --panel: rgba(255,255,255,0.82);
+      --panel-strong: rgba(255,255,255,0.95);
+      --text: #342631;
+      --muted: #775f6f;
+      --rose: #d66f98;
+      --rose-dark: #b84f79;
+      --rose-light: #f7d9e7;
+      --champagne: #f4e8dc;
+      --line: rgba(116, 79, 99, 0.12);
+      --shadow: 0 24px 70px rgba(155, 95, 126, 0.16);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(247, 217, 231, 0.8), transparent 34%),
+        radial-gradient(circle at top right, rgba(244, 232, 220, 0.9), transparent 22%),
+        linear-gradient(180deg, #fffafc 0%, #fff6fb 42%, #fff 100%);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    .container {
+      width: min(1160px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 28px 0 72px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(10px);
+      pointer-events: none;
+    }
+
+    .hero::before {
+      width: 280px;
+      height: 280px;
+      top: -80px;
+      right: -40px;
+      background: rgba(214, 111, 152, 0.14);
+    }
+
+    .hero::after {
+      width: 220px;
+      height: 220px;
+      left: -60px;
+      bottom: 40px;
+      background: rgba(244, 232, 220, 0.9);
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 8px 0 28px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand {
+      font-size: 0.92rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: var(--rose-dark);
+    }
+
+    .top-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(214,111,152,0.16);
+      box-shadow: 0 10px 28px rgba(184, 79, 121, 0.08);
+      font-weight: 700;
+      color: var(--rose-dark);
+      white-space: nowrap;
+    }
+
+    .hero-card {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+      gap: 28px;
+      align-items: stretch;
+      padding: 28px;
+      border-radius: var(--radius-xl);
+      background: rgba(255,255,255,0.62);
+      border: 1px solid rgba(255,255,255,0.7);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(214,111,152,0.1);
+      color: var(--rose-dark);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 5vw, 4.7rem);
+      line-height: 0.96;
+      letter-spacing: -0.05em;
+      max-width: 11ch;
+    }
+
+    .hero p.lead {
+      margin: 18px 0 0;
+      font-size: clamp(1.04rem, 1.8vw, 1.22rem);
+      color: var(--muted);
+      max-width: 58ch;
+    }
+
+    .hero-list {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0 0;
+      display: grid;
+      gap: 12px;
+    }
+
+    .hero-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .hero-list li span {
+      flex: 0 0 28px;
+      width: 28px;
+      height: 28px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--rose-light);
+      color: var(--rose-dark);
+      font-size: 0.82rem;
+      font-weight: 800;
+      margin-top: 2px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 56px;
+      padding: 15px 24px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--rose), var(--rose-dark));
+      box-shadow: 0 16px 30px rgba(184, 79, 121, 0.26);
+    }
+
+    .btn-secondary {
+      color: var(--rose-dark);
+      background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(184, 79, 121, 0.14);
+    }
+
+    .hero-note {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .booking-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,246,251,0.92));
+      border-radius: 28px;
+      padding: 24px;
+      border: 1px solid rgba(214,111,152,0.16);
+      box-shadow: 0 18px 50px rgba(181, 102, 136, 0.12);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .booking-card h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      line-height: 1.1;
+    }
+
+    .booking-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .mini-badge {
+      align-self: flex-start;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: var(--champagne);
+      color: var(--rose-dark);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .day-btn {
+      border: 1px solid rgba(184,79,121,0.14);
+      background: #fff;
+      color: var(--text);
+      border-radius: 18px;
+      padding: 14px 10px;
+      cursor: pointer;
+      text-align: left;
+      font: inherit;
+      transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+
+    .day-btn strong,
+    .time-chip strong { display: block; font-size: 0.98rem; }
+    .day-btn span,
+    .time-chip span { display: block; font-size: 0.82rem; color: var(--muted); margin-top: 4px; }
+
+    .day-btn:hover,
+    .time-chip:hover { transform: translateY(-1px); }
+
+    .day-btn.active,
+    .time-chip.active {
+      border-color: transparent;
+      background: linear-gradient(135deg, #f9d7e6, #f4e8dc);
+      box-shadow: 0 12px 24px rgba(214,111,152,0.18);
+    }
+
+    .times {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .time-chip {
+      border: 1px solid rgba(184,79,121,0.14);
+      background: #fff;
+      border-radius: 16px;
+      padding: 12px 10px;
+      cursor: pointer;
+      text-align: center;
+      font: inherit;
+    }
+
+    .booking-summary {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: var(--bg-soft);
+      color: var(--text);
+      font-size: 0.96rem;
+      border: 1px solid rgba(184,79,121,0.1);
+      min-height: 68px;
+    }
+
+    .booking-summary strong { color: var(--rose-dark); }
+
+    .section {
+      padding: 78px 0;
+    }
+
+    .section.alt {
+      background: linear-gradient(180deg, rgba(255,241,247,0.82), rgba(255,255,255,0));
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .section-label {
+      margin: 0 0 12px;
+      color: var(--rose-dark);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+
+    .section h2 {
+      margin: 0;
+      font-size: clamp(1.9rem, 4vw, 3.3rem);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+    }
+
+    .section-intro {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 1.04rem;
+      max-width: 62ch;
+    }
+
+    .grid-2,
+    .grid-3 {
+      display: grid;
+      gap: 20px;
+    }
+
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .card {
+      background: var(--panel-strong);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      border: 1px solid var(--line);
+      box-shadow: 0 16px 45px rgba(153, 98, 126, 0.08);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      font-size: 1.18rem;
+      line-height: 1.2;
+    }
+
+    .card p,
+    .card li {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .problem {
+      border-top: 4px solid rgba(184,79,121,0.2);
+    }
+
+    .transformation {
+      border-top: 4px solid rgba(214,111,152,0.45);
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,242,247,0.96));
+    }
+
+    .method-steps {
+      counter-reset: step;
+    }
+
+    .step {
+      position: relative;
+      padding-left: 76px;
+      min-height: 68px;
+    }
+
+    .step + .step { margin-top: 18px; }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #f8dce8, #f4e8dc);
+      color: var(--rose-dark);
+      font-weight: 900;
+      font-size: 1.1rem;
+    }
+
+    .services-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      height: 100%;
+    }
+
+    .service-tag {
+      align-self: flex-start;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(214,111,152,0.1);
+      color: var(--rose-dark);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .benefits-list,
+    .testimonial-meta {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .benefits-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .benefits-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 16px 18px;
+      background: rgba(255,255,255,0.86);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+    }
+
+    .benefits-list li span {
+      flex: 0 0 30px;
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--rose-light);
+      color: var(--rose-dark);
+      font-weight: 800;
+      font-size: 0.88rem;
+      margin-top: 2px;
+    }
+
+    .testimonial {
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,246,250,0.92));
+    }
+
+    .testimonial blockquote {
+      margin: 0;
+      font-size: 1.02rem;
+      color: var(--text);
+    }
+
+    .testimonial-meta {
+      margin-top: 18px;
+      display: grid;
+      gap: 4px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .cta-section {
+      padding-bottom: 96px;
+    }
+
+    .cta-panel {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 22px;
+      align-items: center;
+      padding: 30px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, rgba(255,255,255,0.96), rgba(249,221,233,0.85));
+      border: 1px solid rgba(214,111,152,0.18);
+      box-shadow: var(--shadow);
+    }
+
+    .cta-panel h2 { margin: 0; }
+    .cta-panel p { margin: 14px 0 0; color: var(--muted); }
+
+    .cta-aside {
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.72);
+      border: 1px solid rgba(184,79,121,0.12);
+    }
+
+    .cta-aside ul {
+      margin: 14px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 26px 0 44px;
+      color: var(--muted);
+      text-align: center;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 960px) {
+      .hero-card,
+      .cta-panel,
+      .grid-2,
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      h1 { max-width: 100%; }
+      .calendar-grid,
+      .times { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 20px, 1160px); }
+      .hero { padding-top: 18px; padding-bottom: 54px; }
+      .topbar { padding-bottom: 20px; }
+      .top-cta { display: none; }
+      .hero-card,
+      .booking-card,
+      .card,
+      .cta-panel,
+      .cta-aside { padding: 22px 18px; }
+      .cta-row { flex-direction: column; }
+      .btn { width: 100%; }
+      .calendar-grid,
+      .times { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .step { padding-left: 64px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <div class="topbar">
+        <div class="brand">Atelier Hair Extension</div>
+        <a class="top-cta" href="#prenota">Prenota la tua analisi</a>
+      </div>
+
+      <div class="hero-card">
+        <div>
+          <div class="eyebrow">Analisi professionale · extension premium · colore su misura</div>
+          <h1>Ridona pienezza, luce e armonia ai tuoi capelli.</h1>
+          <p class="lead">Se i tuoi capelli sono stressati, svuotati o visibilmente rovinati, qui trovi un percorso premium pensato per capire davvero cosa serve alla tua chioma e trasformarla con naturalezza, eleganza e zero improvvisazione.</p>
+          <ul class="hero-list">
+            <li><span>01</span><div>Analisi tecnica di struttura, cute, lunghezze e tono per scegliere il percorso corretto.</div></li>
+            <li><span>02</span><div>Extension di alto livello selezionate per integrarsi in modo invisibile e raffinato.</div></li>
+            <li><span>03</span><div>Risultato studiato su viso, stile di vita e colore per una bellezza credibile, non artificiale.</div></li>
+          </ul>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#prenota">Prenota un appuntamento</a>
+            <a class="btn btn-secondary" href="#metodo">Scopri il metodo</a>
+          </div>
+          <div class="hero-note">Sessione demo elegante, nessun collegamento esterno: scegli il giorno e simula la prenotazione direttamente qui sotto.</div>
+        </div>
+
+        <aside class="booking-card" id="prenota">
+          <div class="mini-badge">Prenotazione simulata</div>
+          <h2>Scegli il giorno migliore per la tua consulenza beauty.</h2>
+          <p>Seleziona una data, scegli l'orario e conferma la tua richiesta di appuntamento per ricevere una prima analisi personalizzata in salone.</p>
+
+          <div>
+            <p style="margin-bottom:10px;font-weight:700;color:var(--text);">Giorni disponibili</p>
+            <div class="calendar-grid" id="dayGrid">
+              <button class="day-btn active" data-day="Lunedì 8 luglio"><strong>Lun 8</strong><span>Analisi & extension</span></button>
+              <button class="day-btn" data-day="Martedì 9 luglio"><strong>Mar 9</strong><span>Color match</span></button>
+              <button class="day-btn" data-day="Mercoledì 10 luglio"><strong>Mer 10</strong><span>Hair repair</span></button>
+              <button class="day-btn" data-day="Giovedì 11 luglio"><strong>Gio 11</strong><span>Luxury fitting</span></button>
+              <button class="day-btn" data-day="Venerdì 12 luglio"><strong>Ven 12</strong><span>Glow session</span></button>
+              <button class="day-btn" data-day="Sabato 13 luglio"><strong>Sab 13</strong><span>Styling premium</span></button>
+            </div>
+          </div>
+
+          <div>
+            <p style="margin-bottom:10px;font-weight:700;color:var(--text);">Orari consigliati</p>
+            <div class="times" id="timeGrid">
+              <button class="time-chip active" data-time="10:00"><strong>10:00</strong><span>Consulenza</span></button>
+              <button class="time-chip" data-time="12:30"><strong>12:30</strong><span>Check colore</span></button>
+              <button class="time-chip" data-time="15:00"><strong>15:00</strong><span>Hair fitting</span></button>
+              <button class="time-chip" data-time="17:30"><strong>17:30</strong><span>Glow finish</span></button>
+              <button class="time-chip" data-time="18:30"><strong>18:30</strong><span>Sessione serale</span></button>
+              <button class="time-chip" data-time="19:30"><strong>19:30</strong><span>Prima visita</span></button>
+            </div>
+          </div>
+
+          <div class="booking-summary" id="bookingSummary">
+            <strong>Appuntamento selezionato:</strong> Lunedì 8 luglio alle 10:00. Premi il pulsante per simulare la prenotazione.
+          </div>
+
+          <button class="btn btn-primary" id="bookButton" type="button">Prenota il tuo appuntamento</button>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-label">Problema & trasformazione</p>
+          <h2>Quando i capelli perdono forza, anche il modo in cui ti senti cambia.</h2>
+          <p class="section-intro">Spesso dietro a lunghezze svuotate, colore spento, rotture o extension deludenti c'è un approccio frettoloso. Il nostro obiettivo è invertire quel processo con osservazione, tecnica e soluzioni davvero all'altezza.</p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card problem">
+            <h3>Quello che molte donne vivono prima di arrivare qui</h3>
+            <p>Capelli che si spezzano, punte fragili, volume assente, nuance che non valorizzano l'incarnato e paura di peggiorare la situazione con trattamenti standardizzati.</p>
+          </article>
+          <article class="card transformation">
+            <h3>La trasformazione che vogliamo costruire con te</h3>
+            <p>Una chioma piena, morbida e coerente con i tuoi colori naturali, ottenuta con un piano premium che rispetta lo stato reale del capello e crea un risultato elegante, luminoso e credibile.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="metodo">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-label">Metodo & analisi</p>
+          <h2>Prima capiamo il capello. Poi progettiamo la bellezza.</h2>
+          <p class="section-intro">Ogni consulenza parte da una lettura tecnica precisa: struttura, resistenza, sottotono, storico trattamenti, stile personale e obiettivo finale. È questo che rende la trasformazione davvero premium.</p>
+        </div>
+
+        <div class="card method-steps">
+          <div class="step">
+            <h3>Diagnosi professionale di cute, lunghezze e densità</h3>
+            <p>Valutiamo le aree più stressate, la tenuta del capello e il margine reale di intervento, così da proteggere la struttura naturale.</p>
+          </div>
+          <div class="step">
+            <h3>Analisi cromatica e progettazione del blend</h3>
+            <p>Studiamo il colore giusto per ottenere sfumature sofisticate e un'integrazione invisibile tra capelli naturali ed extension.</p>
+          </div>
+          <div class="step">
+            <h3>Scelta del protocollo premium più adatto</h3>
+            <p>Definiamo tecnica, quantità, manutenzione e styling in base alla tua routine, al tuo obiettivo e al livello di trasformazione desiderato.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-label">Servizi premium extension</p>
+          <h2>Soluzioni di alto livello per chi non vuole compromessi.</h2>
+          <p class="section-intro">Non proponiamo extension come scorciatoia, ma come parte di un progetto completo di immagine, protezione e valorizzazione dei tuoi capelli.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card services-card">
+            <div class="service-tag">Invisible blend</div>
+            <h3>Extension effetto naturale e densità controllata</h3>
+            <p>Per aggiungere corpo e lunghezza in modo elegante, senza stacchi visibili e con una resa fluida in movimento.</p>
+          </article>
+          <article class="card services-card">
+            <div class="service-tag">Color couture</div>
+            <h3>Correzione colore e armonizzazione della chioma</h3>
+            <p>Per spegnere riflessi indesiderati, ritrovare luminosità e costruire una palette raffinata che valorizzi il viso.</p>
+          </article>
+          <article class="card services-card">
+            <div class="service-tag">Hair recovery</div>
+            <h3>Percorso ricostruzione + styling premium</h3>
+            <p>Per capelli segnati da stress termico o trattamenti aggressivi che hanno bisogno di recuperare texture, lucentezza e morbidezza.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-label">Benefici</p>
+          <h2>Cosa ottieni quando il lavoro è fatto con criterio.</h2>
+        </div>
+
+        <ul class="benefits-list">
+          <li><span>✓</span><div><strong>Risultato naturale e sofisticato</strong><br />Ogni dettaglio è studiato per valorizzare te, non per farsi notare da solo.</div></li>
+          <li><span>✓</span><div><strong>Capelli visivamente più sani e pieni</strong><br />Struttura, luce e volume tornano ad avere presenza e armonia.</div></li>
+          <li><span>✓</span><div><strong>Percorso personalizzato e manutenzione chiara</strong><br />Sai esattamente cosa è stato fatto, come mantenerlo e quando intervenire.</div></li>
+          <li><span>✓</span><div><strong>Maggiore sicurezza davanti allo specchio</strong><br />Ti senti ordinata, curata e coerente con l'immagine che vuoi trasmettere.</div></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-label">Testimonianze</p>
+          <h2>Feedback credibili da chi cercava un cambio vero, non un effetto temporaneo.</h2>
+        </div>
+
+        <div class="grid-3">
+          <article class="card testimonial">
+            <blockquote>“Arrivavo da mesi di capelli spenti e extension che si vedevano subito. Qui mi hanno fatto un'analisi precisa e il risultato finale è stato elegante, morbido e finalmente naturale.”</blockquote>
+            <ul class="testimonial-meta">
+              <li><strong>Elena, 37 anni</strong></li>
+              <li>Consulenza extension invisible blend</li>
+            </ul>
+          </article>
+          <article class="card testimonial">
+            <blockquote>“La parte che mi ha colpita di più è stata la cura nel capire il colore giusto per il mio viso. Non mi sono sentita trattata 'a pacchetto', ma seguita con attenzione vera.”</blockquote>
+            <ul class="testimonial-meta">
+              <li><strong>Martina, 42 anni</strong></li>
+              <li>Percorso color couture + hair repair</li>
+            </ul>
+          </article>
+          <article class="card testimonial">
+            <blockquote>“Cercavo un salone capace di lavorare in modo premium senza farmi sentire a disagio. Ho ritrovato volume, luminosità e una sicurezza che mi mancava da tempo.”</blockquote>
+            <ul class="testimonial-meta">
+              <li><strong>Chiara, 34 anni</strong></li>
+              <li>Prima analisi professionale e piano personalizzato</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-section">
+      <div class="container">
+        <div class="cta-panel">
+          <div>
+            <p class="section-label">Prenotazione</p>
+            <h2>Il prossimo passo è semplice: scegli il giorno e blocca il tuo momento in salone.</h2>
+            <p>Se vuoi capire quali extension, colore e protocollo sono davvero adatti a te, prenota ora la tua consulenza premium. Il pulsante qui sotto simula la richiesta di appuntamento per la demo live.</p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="#prenota">Prenota un appuntamento</a>
+            </div>
+          </div>
+          <aside class="cta-aside">
+            <strong style="font-size:1.05rem;">Cosa succede durante l'appuntamento</strong>
+            <ul>
+              <li>Analisi iniziale di capello, lunghezze e colore</li>
+              <li>Definizione del risultato desiderato e delle priorità</li>
+              <li>Proposta di percorso premium su misura</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Demo live parrucchiera premium · Pagina dimostrativa con UI di prenotazione simulata non collegata a servizi esterni.
+  </footer>
+
+  <script>
+    (function () {
+      const dayButtons = Array.from(document.querySelectorAll('.day-btn'));
+      const timeButtons = Array.from(document.querySelectorAll('.time-chip'));
+      const summary = document.getElementById('bookingSummary');
+      const bookingButton = document.getElementById('bookButton');
+
+      let selectedDay = dayButtons.find(btn => btn.classList.contains('active'))?.dataset.day || '';
+      let selectedTime = timeButtons.find(btn => btn.classList.contains('active'))?.dataset.time || '';
+
+      function renderSummary(confirmed) {
+        summary.innerHTML = confirmed
+          ? '<strong>Richiesta inviata:</strong> appuntamento simulato per ' + selectedDay + ' alle ' + selectedTime + '. Per la demo, nessun dato viene realmente inviato.'
+          : '<strong>Appuntamento selezionato:</strong> ' + selectedDay + ' alle ' + selectedTime + '. Premi il pulsante per simulare la prenotazione.';
+      }
+
+      dayButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          dayButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          selectedDay = button.dataset.day;
+          renderSummary(false);
+        });
+      });
+
+      timeButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          timeButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+          selectedTime = button.dataset.time;
+          renderSummary(false);
+        });
+      });
+
+      bookingButton.addEventListener('click', () => {
+        renderSummary(true);
+        bookingButton.textContent = 'Prenotazione simulata confermata';
+      });
+    })();
+  </script>
+</body>
+</html>

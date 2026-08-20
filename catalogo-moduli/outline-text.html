@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outline Text - Preview</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #0a0a0a;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+        .demo-container {
+            text-align: center;
+            max-width: 900px;
+        }
+        .outline-text {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 1;
+            color: transparent;
+            -webkit-text-stroke: 2px #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .outline-text.filled {
+            background: linear-gradient(135deg, #E42253 0%, #ff6b6b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke: 0;
+        }
+        .outline-text.mixed span {
+            color: transparent;
+            -webkit-text-stroke: 2px #E42253;
+        }
+        .outline-text.mixed span.filled {
+            background: linear-gradient(135deg, #E42253 0%, #ff6b6b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke: 0;
+        }
+        .variants {
+            margin-top: 60px;
+            display: grid;
+            gap: 40px;
+        }
+        .variant {
+            padding: 40px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .variant h4 {
+            color: #888;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .glow {
+            text-shadow: 0 0 40px rgba(228, 34, 83, 0.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="outline-text">
+            INNOVAZIONE
+        </div>
+        
+        <div class="variants">
+            <div class="variant">
+                <h4>✨ Con Riempimento</h4>
+                <div class="outline-text filled">
+                    DIGITALE
+                </div>
+            </div>
+            <div class="variant">
+                <h4>🎨 Mix Outline + Filled</h4>
+                <div class="outline-text mixed">
+                    <span>FUTURO</span> <span class="filled">NOW</span>
+                </div>
+            </div>
+            <div class="variant">
+                <h4>💫 Con Glow Effect</h4>
+                <div class="outline-text glow" style="-webkit-text-stroke: 2px #E42253;">
+                    CREATIVITÀ
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

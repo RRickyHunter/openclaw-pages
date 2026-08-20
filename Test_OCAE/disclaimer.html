@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disclaimer - OpenClaw Activation Experience</title>
+    <style>
+        :root {
+            --bg: #0b1120;
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --accent: #38bdf8;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        h1 { color: var(--accent); margin-bottom: 1.5rem; }
+        h2 { margin-top: 2rem; margin-bottom: 1rem; font-size: 1.3rem; }
+        p { margin-bottom: 1rem; color: var(--muted); }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .warning { background: rgba(255, 193, 7, 0.1); border-left: 3px solid #ffc107; padding: 1rem; margin: 1rem 0; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Disclaimer</h1>
+        
+        <h2>Informazioni Generali</h2>
+        <p>Le informazioni contenute in questo sito sono fornite a scopo informativo generale e non costituiscono consulenza professionale, legale o finanziaria.</p>
+        
+        <h2>Risultati</h2>
+        <p>I risultati mostrati sono esempi e non costituiscono garanzia di risultati futuri. Il successo dipende da molteplici fattori individuali.</p>
+        
+        <h2>Responsabilità</h2>
+        <p>L'utilizzo delle informazioni è a proprio rischio. Riccardo Romano non si assume responsabilità per danni derivanti dall'uso delle informazioni fornite.</p>
+        
+        <h2>Contatti</h2>
+        <p>
+            <strong>Titolare:</strong> Riccardo Romano<br>
+            <strong>Email:</strong> supporto@marketingpanorama.it<br>
+            {{#if TELEFONO}}<strong>Telefono:</strong> +34 XXX XXX XXX<br>{{/if}}
+            {{#if INDIRIZZO_TITOLARE}}<strong>Indirizzo:</strong> Calle Feijoo de Sotomayor, 6 bj izq, 35118 Agüimes (Las Palmas), España{{/if}}
+        </p>
+        
+        <p style="margin-top: 2rem;"><a href="/Test_OCAE">← Torna alla pagina principale</a></p>
+    </div>
+</body>
+</html>

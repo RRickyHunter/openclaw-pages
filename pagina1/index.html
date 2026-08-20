@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Workshop Automazione Intelligente — Da zero a sistema</title>
+  <meta name="description" content="Workshop pratico: usa l'AI + organizza i tuoi processi + ricevi il workbook. Per chi non sa da dove iniziare ad automatizzare." />
+  <style>
+    :root {
+      --primary: #00d4ff;
+      --primary-dark: #00a8cc;
+      --primary-glow: rgba(0, 212, 255, 0.32);
+      --accent: #7c3aed;
+      --bg: #07080d;
+      --bg-alt: #0d1018;
+      --bg-card: #121621;
+      --text: #eef4ff;
+      --muted: #98a2b7;
+      --border: #232a3a;
+      --success: #22c55e;
+      --shadow: 0 25px 80px rgba(0,0,0,.45);
+      --hero-grad: linear-gradient(180deg, #07080d 0%, #0b0f18 45%, #07111a 75%, #07080d 100%);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .container-narrow { width: min(760px, calc(100% - 40px)); margin: 0 auto; }
+    .hero {
+      position: relative;
+      padding: 64px 0 96px;
+      background: var(--hero-grad);
+      overflow: hidden;
+    }
+    .hero:before {
+      content:"";
+      position:absolute; inset:0;
+      background: radial-gradient(circle at 50% 18%, rgba(0,212,255,.12), transparent 30%), radial-gradient(circle at 85% 25%, rgba(124,58,237,.12), transparent 18%);
+      pointer-events:none;
+    }
+    .eyebrow {
+      display:inline-block;
+      margin-bottom:8px;
+      padding:8px 14px;
+      border:1px solid rgba(0,212,255,.2);
+      border-radius:999px;
+      color:var(--primary);
+      background:rgba(0,212,255,.07);
+      font-size:12px;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+    }
+    h1 {
+      margin:0 0 18px;
+      font-size: clamp(2rem, 4.5vw, 3.4rem);
+      line-height: 1.08;
+      letter-spacing:-.04em;
+      font-weight:900;
+    }
+    .highlight { color: var(--primary); }
+    .hero-sub {
+      font-size: clamp(1.05rem, 1.6vw, 1.26rem);
+      color: var(--muted);
+      max-width: 720px;
+      margin: 0 auto 28px;
+      text-align: center;
+    }
+    .hero-bullets {
+      display:grid;
+      gap:10px;
+      margin: 0 auto 28px;
+      padding:0;
+      list-style:none;
+      max-width: 720px;
+    }
+    .hero-bullets li { color: var(--text); display:flex; gap:10px; align-items:flex-start; justify-content:center; text-align:center; }
+    .hero-bullets li span { color: var(--primary); font-weight:800; }
+    .price-stack {
+      display:flex; flex-wrap:wrap; align-items:baseline; gap:12px; margin:18px 0 10px; justify-content:center;
+    }
+    .price-current { font-size:clamp(34px, 6vw, 56px); font-weight:800; line-height:1; color:var(--text); }
+    .price-compare { font-size:18px; color:var(--muted); text-decoration:line-through; }
+    .price-note { margin:0; color:var(--muted); font-size:14px; text-align:center; }
+    .btn {
+      display:inline-flex; align-items:center; justify-content:center;
+      min-width:260px;
+      padding:18px 28px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:800;
+      font-size:16px;
+      transition:.18s ease;
+      border:1px solid transparent;
+      cursor:pointer;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #00d4ff, #4fe2ff);
+      color: #051019;
+      box-shadow: 0 0 20px var(--primary-glow), 0 10px 30px rgba(0,212,255,.18);
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .section { padding: 72px 0; }
+    .section.dark { background: var(--bg-alt); }
+    .section-title {
+      font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+      line-height:1.12;
+      letter-spacing:-.03em;
+      margin:0 0 16px;
+      font-weight:900;
+      text-align:center;
+    }
+    .section-sub {
+      color:var(--muted);
+      font-size:1.08rem;
+      max-width:720px;
+      margin:0 auto 36px;
+      text-align:center;
+    }
+    .grid-3 { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; }
+    @media (max-width: 900px) { .grid-3 { grid-template-columns: 1fr; } }
+    .card {
+      background: var(--bg-card);
+      border:1px solid var(--border);
+      border-radius:18px;
+      padding:26px;
+      box-shadow: var(--shadow);
+    }
+    .card h3 { margin:0 0 10px; font-size:1.1rem; }
+    .card p { margin:0; color:var(--muted); font-size:0.98rem; }
+    .simple-footer {
+      padding: 28px 20px 40px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      border-top: 1px solid rgba(255,255,255,.06);
+      background: var(--bg);
+    }
+    .simple-footer a { color: var(--primary); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="container" style="text-align:center;">
+      <div class="eyebrow">Workshop pratico</div>
+      <h1>Automazione Intelligente:<br><span class="highlight">Da zero a sistema in 3 ore</span></h1>
+      <p class="hero-sub">
+        Per chi non sa da dove iniziare. Nessun codice. Nessuna confusione.<br>
+        Solo un metodo testato per usare l'AI e organizzare i tuoi processi — con workbook incluso.
+      </p>
+      <ul class="hero-bullets">
+        <li><span>✓</span> Scopri come l'AI può lavorare per te (non il contrario)</li>
+        <li><span>✓</span> Organizza i tuoi processi in modo semplice e replicabile</li>
+        <li><span>✓</span> Ricevi il workbook pratico per mettere subito in pratica</li>
+      </ul>
+      <div class="price-stack">
+        <span class="price-current">€37</span>
+        <span class="price-compare">€97</span>
+      </div>
+      <p class="price-note">Offerta lancio — posti limitati</p>
+      <div style="margin-top:22px;">
+        <a href="/pagina2/" class="btn btn-primary">Voglio partecipare →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark">
+    <div class="container">
+      <h2 class="section-title">Cosa imparerai nel workshop</h2>
+      <p class="section-sub">Tre pilastri per passare da sovraccarico a chiarezza operativa.</p>
+      <div class="grid-3">
+        <div class="card">
+          <h3>🤖 AI come alleata</h3>
+          <p>Come usare l'intelligenza artificiale per velocizzare task ripetitivi senza perdere il controllo qualitativo.</p>
+        </div>
+        <div class="card">
+          <h3>📋 Processi organizzati</h3>
+          <p>Un framework semplice per mappare, ordinare e automatizzare i tuoi flussi di lavoro quotidiani.</p>
+        </div>
+        <div class="card">
+          <h3>📘 Workbook allegato</h3>
+          <p>Template e checklist pronte da usare per implementare subito ciò che impari durante il workshop.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-narrow" style="text-align:center;">
+      <h2 class="section-title">Pronto per iniziare?</h2>
+      <p class="section-sub">Un'opportunità concreta per chi vuole smettere di procrastinare e iniziare a costruire il proprio sistema.</p>
+      <a href="/pagina2/" class="btn btn-primary">Prenota il tuo posto — €37</a>
+      <p style="margin-top:14px; color:var(--muted); font-size:13px;">Garanzia 14 giorni: se non trovi valore, ti rimborsiamo.</p>
+    </div>
+  </section>
+
+  <footer class="simple-footer">
+    <p>© 2026 — Tutti i diritti riservati</p>
+  </footer>
+</body>
+</html>

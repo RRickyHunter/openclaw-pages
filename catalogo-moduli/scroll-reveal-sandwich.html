@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scroll Reveal Sandwich - Preview</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        .spacer {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1.2rem;
+        }
+        .scroll-sandwich-section {
+            min-height: 250vh;
+            position: relative;
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+        }
+        .sandwich-container {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+        /* Testo superiore che scende dall'alto */
+        .sandwich-top-text {
+            position: absolute;
+            top: 5%;
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 5;
+            transform: translateY(-200%);
+            opacity: 0;
+            transition: transform 0.1s linear, opacity 0.1s linear;
+        }
+        .sandwich-top-text.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .sandwich-top-text h2 {
+            font-size: clamp(1.5rem, 4vw, 3rem);
+            font-weight: 700;
+            color: rgba(255,255,255,0.6);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+        /* Immagine centrale */
+        .sandwich-image-wrapper {
+            position: relative;
+            width: 85vw;
+            height: 60vh;
+            z-index: 10;
+            transform-origin: center center;
+            transition: transform 0.1s linear;
+        }
+        .sandwich-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+        }
+        .sandwich-image-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(10,10,10,0.4) 0%,
+                transparent 30%,
+                transparent 70%,
+                rgba(10,10,10,0.6) 100%
+            );
+            border-radius: 16px;
+        }
+        /* Testo inferiore che sale dal basso */
+        .sandwich-bottom-text {
+            position: absolute;
+            bottom: 8%;
+            left: 5%;
+            right: 5%;
+            text-align: center;
+            z-index: 15;
+            transform: translateY(200%);
+            opacity: 0;
+            transition: transform 0.1s linear, opacity 0.1s linear;
+        }
+        .sandwich-bottom-text.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .sandwich-bottom-text h2 {
+            font-size: clamp(2rem, 6vw, 5rem);
+            font-weight: 800;
+            line-height: 1.1;
+        }
+        .sandwich-bottom-text .accent {
+            color: #E42253;
+            display: block;
+        }
+        .sandwich-bottom-text .sub {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            color: rgba(255,255,255,0.7);
+            margin-top: 15px;
+            font-weight: 400;
+        }
+        /* Controlli */
+        .demo-controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 100;
+        }
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            background: rgba(228, 34, 83, 0.9);
+            color: #fff;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+        .btn:hover { transform: scale(1.05); }
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+        }
+        /* Indicatore scroll */
+        .scroll-hint {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            z-index: 100;
+        }
+        .scroll-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            transition: all 0.3s;
+        }
+        .scroll-dot.active {
+            background: #E42253;
+            transform: scale(1.5);
+        }
+    </style>
+</head>
+<body>
+    <div class="spacer">
+        <span>↓ Scorri per vedere l'effetto sandwich</span>
+    </div>
+
+    <section class="scroll-sandwich-section" id="sandwich-section">
+        <div class="sandwich-container">
+            <!-- Testo che scende dall'alto -->
+            <div class="sandwich-top-text" id="top-text">
+                <h2>La soluzione perfetta</h2>
+            </div>
+            
+            <!-- Immagine centrale -->
+            <div class="sandwich-image-wrapper" id="image-wrapper">
+                <img 
+                    src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=800&fit=crop" 
+                    alt="Workspace" 
+                    class="sandwich-image"
+                    id="main-image"
+                >
+                <div class="sandwich-image-overlay"></div>
+            </div>
+            
+            <!-- Testo che sale dal basso -->
+            <div class="sandwich-bottom-text" id="bottom-text">
+                <h2>
+                    Per la tua
+                    <span class="accent">attività</span>
+                </h2>
+                <p class="sub">Un vero partner per la crescita digitale</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="scroll-hint">
+        <div class="scroll-dot" data-phase="0"></div>
+        <div class="scroll-dot" data-phase="1"></div>
+        <div class="scroll-dot" data-phase="2"></div>
+        <div class="scroll-dot" data-phase="3"></div>
+    </div>
+
+    <div class="demo-controls">
+        <button class="btn" onclick="scrollToEffect()">Vai all'effetto</button>
+        <button class="btn btn-secondary" onclick="changeImage()">Cambia immagine</button>
+        <button class="btn btn-secondary" onclick="changeText()">Cambia testo</button>
+    </div>
+
+    <div class="spacer">
+        <span>Effetto completato ↑</span>
+    </div>
+
+    <script>
+        const section = document.getElementById('sandwich-section');
+        const imageWrapper = document.getElementById('image-wrapper');
+        const topText = document.getElementById('top-text');
+        const bottomText = document.getElementById('bottom-text');
+        const dots = document.querySelectorAll('.scroll-dot');
+
+        const images = [
+            'https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=800&fit=crop',
+            'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&h=800&fit=crop',
+            'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1200&h=800&fit=crop',
+            'https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1200&h=800&fit=crop'
+        ];
+
+        const textVariants = [
+            { top: 'La soluzione perfetta', bottom: 'Per la tua', accent: 'attività', sub: 'Un vero partner per la crescita digitale' },
+            { top: 'Trasforma il tuo', bottom: 'Business con', accent: 'innovazione', sub: 'Tecnologia avanzata per risultati concreti' },
+            { top: 'Cresci con noi', bottom: 'Scopri il', accent: 'futuro', sub: 'Soluzioni su misura per ogni esigenza' }
+        ];
+
+        let currentImage = 0;
+        let currentText = 0;
+
+        function updateScrollEffect() {
+            const rect = section.getBoundingClientRect();
+            const sectionHeight = section.offsetHeight;
+            const viewportHeight = window.innerHeight;
+            
+            // Progresso nello scroll della sezione (0 a 1)
+            const scrollProgress = Math.max(0, Math.min(1, 
+                (-rect.top) / (sectionHeight - viewportHeight)
+            ));
+
+            // Fasi dell'animazione
+            // 0-0.25: Immagine grande, nessun testo
+            // 0.25-0.45: Testo superiore scende
+            // 0.45-0.65: Immagine si rimpicciolisce
+            // 0.65-0.85: Testo inferiore sale
+            // 0.85-1: Tutto fermo
+
+            // Testo superiore (scende dall'alto)
+            if (scrollProgress < 0.2) {
+                topText.style.transform = 'translateY(-200%)';
+                topText.style.opacity = '0';
+            } else if (scrollProgress < 0.4) {
+                const p = (scrollProgress - 0.2) / 0.2;
+                topText.style.transform = `translateY(${-200 + (p * 200)}%)`;
+                topText.style.opacity = p;
+            } else {
+                topText.style.transform = 'translateY(0)';
+                topText.style.opacity = '1';
+            }
+
+            // Immagine (si scala)
+            let scale = 1;
+            if (scrollProgress > 0.3 && scrollProgress < 0.7) {
+                const p = (scrollProgress - 0.3) / 0.4;
+                scale = 1 - (p * 0.35);
+            } else if (scrollProgress >= 0.7) {
+                scale = 0.65;
+            }
+            imageWrapper.style.transform = `scale(${scale})`;
+
+            // Testo inferiore (sale dal basso)
+            if (scrollProgress < 0.6) {
+                bottomText.style.transform = 'translateY(200%)';
+                bottomText.style.opacity = '0';
+            } else if (scrollProgress < 0.8) {
+                const p = (scrollProgress - 0.6) / 0.2;
+                bottomText.style.transform = `translateY(${200 - (p * 200)}%)`;
+                bottomText.style.opacity = p;
+            } else {
+                bottomText.style.transform = 'translateY(0)';
+                bottomText.style.opacity = '1';
+            }
+
+            // Aggiorna dots indicator
+            const phase = Math.min(3, Math.floor(scrollProgress * 4));
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('active', i === phase);
+            });
+        }
+
+        window.addEventListener('scroll', updateScrollEffect, { passive: true });
+        window.addEventListener('resize', updateScrollEffect);
+
+        function scrollToEffect() {
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function changeImage() {
+            currentImage = (currentImage + 1) % images.length;
+            document.getElementById('main-image').src = images[currentImage];
+        }
+
+        function changeText() {
+            currentText = (currentText + 1) % textVariants.length;
+            const t = textVariants[currentText];
+            topText.querySelector('h2').textContent = t.top;
+            bottomText.querySelector('h2').innerHTML = `${t.bottom}<span class="accent">${t.accent}</span>`;
+            bottomText.querySelector('.sub').textContent = t.sub;
+        }
+
+        // Init
+        updateScrollEffect();
+    </script>
+</body>
+</html>

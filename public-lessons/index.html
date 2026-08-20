@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lezioni pubbliche · Centro di Conoscenza</title>
+  <meta name="description" content="Archivio pubblico delle lezioni pubblicate dal Centro di Conoscenza." />
+  <style>
+    :root {
+      --bg: #081120;
+      --panel: #101b31;
+      --panel-2: #162443;
+      --text: #f4f7fb;
+      --muted: #a8b4cc;
+      --accent: #7cc4ff;
+      --border: rgba(255,255,255,.08);
+      --max: 1100px;
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: linear-gradient(180deg, #07101d 0%, #0e1730 100%);
+      color: var(--text);
+    }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 32px 20px 64px; }
+    h1 { font-size: clamp(2rem, 4vw, 3rem); margin: 0 0 12px; }
+    .lead { color: var(--muted); max-width: 760px; margin-bottom: 24px; }
+    .toolbar {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: 1fr;
+      margin-bottom: 20px;
+    }
+    input[type="search"] {
+      width: 100%;
+      padding: 14px 16px;
+      font-size: 1rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: var(--panel);
+      color: var(--text);
+    }
+    .meta { color: var(--muted); font-size: .95rem; margin-bottom: 18px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .card h2 { font-size: 1.15rem; margin: 0; line-height: 1.35; }
+    .eyebrow { color: var(--accent); font-size: .85rem; text-transform: uppercase; letter-spacing: .04em; }
+    .summary { color: var(--muted); font-size: .96rem; line-height: 1.55; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip {
+      font-size: .8rem;
+      color: #d9ecff;
+      background: rgba(124,196,255,.14);
+      border: 1px solid rgba(124,196,255,.16);
+      padding: 6px 9px;
+      border-radius: 999px;
+    }
+    .actions { margin-top: auto; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .link {
+      display: inline-block;
+      text-decoration: none;
+      color: #06101e;
+      background: var(--accent);
+      font-weight: 700;
+      padding: 10px 14px;
+      border-radius: 10px;
+    }
+    .empty { display: none; color: var(--muted); padding: 24px 0; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1>Lezioni pubbliche</h1>
+    <p class="lead">Vista derivata dal Centro di Conoscenza. Il JSON resta una cache build-time: la fonte ufficiale rimane <code>data/centro-conoscenza</code>.</p>
+    <div class="toolbar">
+      <input id="search" type="search" placeholder="Cerca per titolo, modulo, tema, tag o tool…" aria-label="Cerca lezioni" />
+    </div>
+    <div id="meta" class="meta">Caricamento…</div>
+    <div id="empty" class="empty">Nessuna lezione corrisponde alla ricerca.</div>
+    <section id="grid" class="grid"></section>
+  </main>
+
+  <template id="card-template">
+    <article class="card">
+      <div class="eyebrow" data-role="module"></div>
+      <h2 data-role="title"></h2>
+      <div class="summary" data-role="summary"></div>
+      <div class="chips" data-role="chips"></div>
+      <div class="actions">
+        <span data-role="date" class="meta"></span>
+        <a data-role="link" class="link" target="_blank" rel="noreferrer">Apri lezione</a>
+      </div>
+    </article>
+  </template>
+
+  <script>
+    const state = { items: [], filtered: [] };
+    const grid = document.getElementById('grid');
+    const empty = document.getElementById('empty');
+    const meta = document.getElementById('meta');
+    const template = document.getElementById('card-template');
+    const search = document.getElementById('search');
+
+    function formatDate(value) {
+      if (!value) return '';
+      try {
+        return new Intl.DateTimeFormat('it-IT', { dateStyle: 'medium' }).format(new Date(value));
+      } catch {
+        return value;
+      }
+    }
+
+    function render(items) {
+      grid.innerHTML = '';
+      empty.style.display = items.length ? 'none' : 'block';
+      meta.textContent = `${items.length} lezioni visibili su ${state.items.length}`;
+      for (const item of items) {
+        const node = template.content.firstElementChild.cloneNode(true);
+        node.querySelector('[data-role="module"]').textContent = item.moduleName || item.collection || 'Lezione';
+        node.querySelector('[data-role="title"]').textContent = item.title;
+        node.querySelector('[data-role="summary"]').textContent = item.summary || item.theme || item.outcome || 'Nessun riassunto disponibile.';
+        node.querySelector('[data-role="date"]').textContent = formatDate(item.contentDate);
+        const link = node.querySelector('[data-role="link"]');
+        link.href = item.lessonUrl;
+        const chips = node.querySelector('[data-role="chips"]');
+        [item.contentType, ...(item.tags || []).slice(0, 3), ...(item.tools || []).slice(0, 2)].filter(Boolean).forEach(value => {
+          const chip = document.createElement('span');
+          chip.className = 'chip';
+          chip.textContent = value;
+          chips.appendChild(chip);
+        });
+        grid.appendChild(node);
+      }
+    }
+
+    function applyFilter() {
+      const q = search.value.trim().toLowerCase();
+      state.filtered = q ? state.items.filter(item => item.searchText.includes(q)) : [...state.items];
+      render(state.filtered);
+    }
+
+    fetch('/public-lessons/index.json')
+      .then(res => res.json())
+      .then(data => {
+        state.items = data.items || [];
+        state.filtered = [...state.items];
+        meta.textContent = `${state.items.length} lezioni pubbliche · aggiornato ${formatDate(data.generatedAt)}`;
+        render(state.items);
+      })
+      .catch(err => {
+        meta.textContent = 'Errore nel caricamento della vista pubblica';
+        console.error(err);
+      });
+
+    search.addEventListener('input', applyFilter);
+  </script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo Moduli UI - Orione</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            line-height: 1.6;
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
+        header { text-align: center; margin-bottom: 60px; }
+        h1 { font-size: 3rem; font-weight: 700; margin-bottom: 10px; }
+        h1 span { color: #E42253; }
+        .subtitle { color: #888; font-size: 1.1rem; }
+        .filters { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+        .filter-btn {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: #E42253;
+            border-color: #E42253;
+        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
+        .modulo-card {
+            background: #141414;
+            border: 1px solid #222;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .modulo-card:hover {
+            transform: translateY(-5px);
+            border-color: #E42253;
+        }
+        .preview-area {
+            height: 200px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .preview-placeholder {
+            font-size: 4rem;
+            opacity: 0.3;
+        }
+        .modulo-content { padding: 24px; }
+        .modulo-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px; }
+        .modulo-title { font-size: 1.3rem; font-weight: 600; }
+        .modulo-formats { display: flex; gap: 6px; }
+        .format-badge {
+            background: #E42253;
+            color: #fff;
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+        .modulo-desc { color: #888; font-size: 0.95rem; margin-bottom: 16px; }
+        .modulo-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+        .tag {
+            background: #1a1a1a;
+            color: #666;
+            font-size: 0.8rem;
+            padding: 4px 12px;
+            border-radius: 12px;
+        }
+        .modulo-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #222;
+        }
+        .btn {
+            flex: 1;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+        }
+        .btn-primary {
+            background: #E42253;
+            color: #fff;
+        }
+        .btn-primary:hover { background: #c41d47; }
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 1px solid #333;
+        }
+        .btn-secondary:hover { border-color: #E42253; }
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            color: #666;
+        }
+        .empty-state-icon { font-size: 4rem; margin-bottom: 20px; }
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Catalogo <span>Moduli</span></h1>
+            <p class="subtitle">Componenti UI pronti all'uso per i tuoi progetti</p>
+        </header>
+        
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">Tutti</button>
+            <button class="filter-btn" data-filter="testo">Testo</button>
+            <button class="filter-btn" data-filter="animazione">Animazione</button>
+            <button class="filter-btn" data-filter="hero">Hero</button>
+            <button class="filter-btn" data-filter="sfondo">Sfondo</button>
+        </div>
+        
+        <div class="grid" id="moduli-grid">
+            <!-- I moduli verranno caricati qui via JS -->
+        </div>
+    </div>
+    
+    <script>
+        // Dati moduli (in produzione verranno da catalogo.json)
+        const moduli = [
+            {
+                id: "text-rotator",
+                nome: "Text Rotator",
+                descrizione: "Parole che si alternano con effetto fade o slide. Ideale per headline dinamiche.",
+                tag: ["testo", "animazione", "hero"],
+                formati: ["vanilla", "react", "wordpress"],
+                icon: "🔄"
+            },
+            {
+                id: "highlight-brush",
+                nome: "Highlight Brush",
+                descrizione: "Sottolineatura a effetto pennellata su testo. Stile disegnato a mano.",
+                tag: ["testo", "decorazione", "titolo"],
+                formati: ["vanilla", "react", "wordpress"],
+                icon: "🖌️"
+            },
+            {
+                id: "outline-text",
+                nome: "Outline Text",
+                descrizione: "Testo con solo bordo, senza riempimento. Effetto moderno e leggero.",
+                tag: ["testo", "decorazione", "hero"],
+                formati: ["vanilla", "react", "wordpress"],
+                icon: "◯"
+            },
+            {
+                id: "particles-bg",
+                nome: "Particles Background",
+                descrizione: "Sfondo animato con particelle che si muovono e reagiscono al mouse.",
+                tag: ["sfondo", "animazione", "hero"],
+                formati: ["vanilla", "react"],
+                icon: "✨"
+            },
+            {
+                id: "parallax-numbers",
+                nome: "Parallax Numbers",
+                descrizione: "Numeri grandi con effetto parallax allo scroll.",
+                tag: ["scroll", "animazione", "sezione"],
+                formati: ["vanilla", "react"],
+                icon: "01"
+            }
+        ];
+        
+        function renderModuli(filter = 'all') {
+            const grid = document.getElementById('moduli-grid');
+            const filtered = filter === 'all' 
+                ? moduli 
+                : moduli.filter(m => m.tag.includes(filter));
+            
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state" style="grid-column: 1/-1;">
+                        <div class="empty-state-icon">🔍</div>
+                        <p>Nessun modulo trovato per questo filtro</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            grid.innerHTML = filtered.map(m => `
+                <div class="modulo-card" data-tags="${m.tag.join(',')}">
+                    <div class="preview-area">
+                        <span class="preview-placeholder">${m.icon}</span>
+                    </div>
+                    <div class="modulo-content">
+                        <div class="modulo-header">
+                            <h3 class="modulo-title">${m.nome}</h3>
+                            <div class="modulo-formats">
+                                ${m.formati.slice(0, 3).map(f => `<span class="format-badge">${f}</span>`).join('')}
+                            </div>
+                        </div>
+                        <p class="modulo-desc">${m.descrizione}</p>
+                        <div class="modulo-tags">
+                            ${m.tag.map(t => `<span class="tag">${t}</span>`).join('')}
+                        </div>
+                        <div class="modulo-actions">
+                            <button class="btn btn-primary" onclick="usaModulo('${m.id}')">Usa</button>
+                            <a href="https://pages.riccardoromano.biz/catalogo-moduli/${m.id}.html" class="btn btn-secondary" target="_blank">Preview</a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function usaModulo(id) {
+            // In futuro: aprire modal con selezione formato
+            alert(`Modulo ${id} selezionato!\n\nFormati disponibili: vanilla, react, wordpress`);
+        }
+        
+        // Filter handlers
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderModuli(btn.dataset.filter);
+            });
+        });
+        
+        // Init
+        renderModuli();
+    </script>
+</body>
+</html>

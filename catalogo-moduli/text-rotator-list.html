@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Rotator List - MetaDigitale Exact</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: "Golos Text", system-ui, -apple-system, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+        .rotator-section {
+            width: 100%;
+            max-width: 1400px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        /* Testo fisso a sinistra */
+        .rotator-static {
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 600;
+            line-height: 1.3;
+            color: #fff;
+        }
+        .rotator-static .highlight {
+            position: relative;
+            display: inline;
+        }
+        .rotator-static .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background: linear-gradient(120deg, #E42253 0%, #ff6b6b 100%);
+            opacity: 0.25;
+            z-index: -1;
+            transform: skewX(-3deg);
+        }
+        /* Rotator a destra */
+        .rotator-container {
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+            mask-image: linear-gradient(
+                to bottom,
+                transparent 0%,
+                black 15%,
+                black 85%,
+                transparent 100%
+            );
+            -webkit-mask-image: linear-gradient(
+                to bottom,
+                transparent 0%,
+                black 15%,
+                black 85%,
+                transparent 100%
+            );
+        }
+        .rotator-list {
+            animation: scrollList 20s linear infinite;
+        }
+        .rotator-list:hover {
+            animation-play-state: paused;
+        }
+        .rotator-item {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 600;
+            padding: 15px 0;
+            color: rgba(255,255,255,0.4);
+            transition: all 0.4s ease;
+            cursor: default;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .rotator-item .emoji {
+            font-size: 0.9em;
+            opacity: 0.6;
+            transition: all 0.4s ease;
+        }
+        .rotator-item.active {
+            color: #fff;
+            transform: scale(1.05);
+            padding-left: 20px;
+        }
+        .rotator-item.active .emoji {
+            opacity: 1;
+            transform: scale(1.2);
+        }
+        @keyframes scrollList {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-50%); }
+        }
+        /* Responsive */
+        @media (max-width: 900px) {
+            .rotator-section {
+                grid-template-columns: 1fr;
+                gap: 50px;
+                text-align: center;
+            }
+            .rotator-container {
+                height: 300px;
+            }
+            .rotator-item {
+                justify-content: center;
+            }
+            .rotator-item.active {
+                padding-left: 0;
+            }
+        }
+        /* Controlli */
+        .demo-controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 100;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            background: rgba(228, 34, 83, 0.9);
+            color: #fff;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s;
+        }
+        .btn:hover { transform: scale(1.05); }
+        .btn-secondary {
+            background: rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body>
+    <section class="rotator-section">
+        <div class="rotator-static">
+            <span class="highlight">tutti i servizi digitali</span><br>
+            per il successo<br>
+            del tuo progetto
+        </div>
+        
+        <div class="rotator-container">
+            <div class="rotator-list" id="rotator-list">
+                <div class="rotator-item"><span class="emoji">🌐</span> Sito web</div>
+                <div class="rotator-item"><span class="emoji">🧠</span> Intelligenza Artificiale</div>
+                <div class="rotator-item"><span class="emoji">💡</span> Strategia</div>
+                <div class="rotator-item"><span class="emoji">🎨</span> Design</div>
+                <div class="rotator-item"><span class="emoji">🤖</span> Automazioni</div>
+                <div class="rotator-item"><span class="emoji">🛒</span> eCommerce</div>
+                <div class="rotator-item"><span class="emoji">🎯</span> Lead generation</div>
+                <div class="rotator-item"><span class="emoji">⚡</span> Facebook Ads</div>
+                <div class="rotator-item"><span class="emoji">📢</span> Google Ads</div>
+                <div class="rotator-item"><span class="emoji">🔍</span> SEO</div>
+                <div class="rotator-item"><span class="emoji">📊</span> Tracciamento dati</div>
+                <div class="rotator-item"><span class="emoji">📧</span> Email marketing</div>
+                <div class="rotator-item"><span class="emoji">🚀</span> Sviluppo web</div>
+                <div class="rotator-item"><span class="emoji">🤝</span> Affiliazioni</div>
+                <div class="rotator-item"><span class="emoji">🌟</span> Influencer</div>
+                <div class="rotator-item"><span class="emoji">📸</span> Foto e video</div>
+                <div class="rotator-item"><span class="emoji">👓</span> Realtà aumentata</div>
+                <div class="rotator-item"><span class="emoji">📊</span> Social media</div>
+                <div class="rotator-item"><span class="emoji">🖊️</span> Blog</div>
+                <!-- Duplicato per loop -->
+                <div class="rotator-item"><span class="emoji">🌐</span> Sito web</div>
+                <div class="rotator-item"><span class="emoji">🧠</span> Intelligenza Artificiale</div>
+                <div class="rotator-item"><span class="emoji">💡</span> Strategia</div>
+                <div class="rotator-item"><span class="emoji">🎨</span> Design</div>
+                <div class="rotator-item"><span class="emoji">🤖</span> Automazioni</div>
+                <div class="rotator-item"><span class="emoji">🛒</span> eCommerce</div>
+                <div class="rotator-item"><span class="emoji">🎯</span> Lead generation</div>
+                <div class="rotator-item"><span class="emoji">⚡</span> Facebook Ads</div>
+                <div class="rotator-item"><span class="emoji">📢</span> Google Ads</div>
+                <div class="rotator-item"><span class="emoji">🔍</span> SEO</div>
+                <div class="rotator-item"><span class="emoji">📊</span> Tracciamento dati</div>
+                <div class="rotator-item"><span class="emoji">📧</span> Email marketing</div>
+                <div class="rotator-item"><span class="emoji">🚀</span> Sviluppo web</div>
+                <div class="rotator-item"><span class="emoji">🤝</span> Affiliazioni</div>
+                <div class="rotator-item"><span class="emoji">🌟</span> Influencer</div>
+                <div class="rotator-item"><span class="emoji">📸</span> Foto e video</div>
+                <div class="rotator-item"><span class="emoji">👓</span> Realtà aumentata</div>
+                <div class="rotator-item"><span class="emoji">📊</span> Social media</div>
+                <div class="rotator-item"><span class="emoji">🖊️</span> Blog</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="demo-controls">
+        <button class="btn" onclick="changeSpeed()">Cambia velocità</button>
+        <button class="btn btn-secondary" onclick="togglePause()">Pausa/Riprendi</button>
+    </div>
+
+    <script>
+        const list = document.getElementById('rotator-list');
+        const items = document.querySelectorAll('.rotator-item');
+        let currentSpeed = 20;
+        let isPaused = false;
+
+        // Evidenzia item centrale
+        function highlightCenter() {
+            const containerRect = list.parentElement.getBoundingClientRect();
+            const centerY = containerRect.top + containerRect.height / 2;
+            
+            items.forEach(item => {
+                const itemRect = item.getBoundingClientRect();
+                const itemCenterY = itemRect.top + itemRect.height / 2;
+                const distance = Math.abs(centerY - itemCenterY);
+                
+                item.classList.toggle('active', distance < 30);
+            });
+            
+            requestAnimationFrame(highlightCenter);
+        }
+        highlightCenter();
+
+        function changeSpeed() {
+            currentSpeed = currentSpeed === 20 ? 10 : currentSpeed === 10 ? 30 : 20;
+            list.style.animationDuration = `${currentSpeed}s`;
+        }
+
+        function togglePause() {
+            isPaused = !isPaused;
+            list.style.animationPlayState = isPaused ? 'paused' : 'running';
+        }
+    </script>
+</body>
+</html>

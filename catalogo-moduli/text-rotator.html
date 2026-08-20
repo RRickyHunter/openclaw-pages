@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Rotator - Preview</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        .demo-container {
+            text-align: center;
+            max-width: 800px;
+        }
+        .text-rotator {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.2;
+            color: #fff;
+        }
+        .text-rotator-prefix {
+            display: block;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+        .text-rotator-word {
+            display: inline-block;
+            color: #E42253;
+            min-width: 400px;
+            text-shadow: 0 0 40px rgba(228, 34, 83, 0.5);
+        }
+        .text-rotator-word::after {
+            content: '|';
+            animation: blink 1s infinite;
+            margin-left: 5px;
+        }
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .controls {
+            margin-top: 60px;
+            padding: 30px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+        .controls h3 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .btn {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+        .btn-primary {
+            background: #E42253;
+            color: #fff;
+        }
+        .btn-primary:hover { background: #c41d47; transform: scale(1.05); }
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .btn-secondary:hover { border-color: #E42253; }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="text-rotator" data-words="CHATBOT,AGENTI VOCALI,AVATAR,AUTOMAZIONI,WEB APP">
+            <span class="text-rotator-prefix">Trasforma il tuo business con</span>
+            <span class="text-rotator-word"></span>
+        </div>
+        
+        <div class="controls">
+            <h3>🎛️ Controlli Demo</h3>
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="cambiaVelocita()">Cambia velocità</button>
+                <button class="btn btn-secondary" onclick="pausa()">Pausa/Riprendi</button>
+                <button class="btn btn-secondary" onclick="prossimaParola()">Prossima parola</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const rotator = document.querySelector('.text-rotator');
+        const wordEl = rotator.querySelector('.text-rotator-word');
+        const words = rotator.dataset.words.split(',');
+        let index = 0;
+        let interval = 2500;
+        let timer = null;
+        let isPaused = false;
+
+        function rotate() {
+            wordEl.classList.remove('fade-in');
+            void wordEl.offsetWidth;
+            wordEl.textContent = words[index];
+            wordEl.classList.add('fade-in');
+            index = (index + 1) % words.length;
+        }
+
+        function start() {
+            if (timer) clearInterval(timer);
+            timer = setInterval(rotate, interval);
+        }
+
+        function cambiaVelocita() {
+            interval = interval === 2500 ? 1000 : interval === 1000 ? 4000 : 2500;
+            start();
+            alert(`Velocità cambiata: ${interval}ms`);
+        }
+
+        function pausa() {
+            if (isPaused) {
+                start();
+                isPaused = false;
+            } else {
+                clearInterval(timer);
+                isPaused = true;
+            }
+        }
+
+        function prossimaParola() {
+            rotate();
+        }
+
+        // Init
+        rotate();
+        start();
+    </script>
+</body>
+</html>

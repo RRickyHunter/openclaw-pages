@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nucleo del Bot</title>
+  <meta name="description" content="Costruisci il nucleo del tuo bot" />
+  <style>
+    :root {
+      --bg: #08121a;
+      --panel: #10212c;
+      --panel-2: #152b38;
+      --text: #eefbff;
+      --muted: #b4cad6;
+      --accent: #2dd4bf;
+      --accent-2: #38bdf8;
+      --border: rgba(255,255,255,.08);
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(45,212,191,.16), transparent 32%),
+        linear-gradient(180deg, #0b1820, #09131a 52%, #071017);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    .container { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 42px 0 64px; }
+    .header { text-align: center; margin-bottom: 28px; }
+    .emoji-badge {
+      width: auto; height: auto; margin: 0 auto 18px; display: grid; place-items: center;
+      font-size: 68px; background: transparent; border: 0; box-shadow: none; line-height: 1;
+      animation: floatCore 2.4s ease-in-out infinite;
+    }
+    @keyframes floatCore { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
+    h1 { margin: 0 0 14px; font-size: clamp(40px, 5.2vw, 62px); line-height: 1.02; color: #9cf7eb; letter-spacing: -0.03em; }
+    .subtitle { margin: 0; color: var(--muted); font-size: clamp(20px, 2.4vw, 28px); line-height: 1.35; }
+    .intro-box, .guide-box, .choice-card, .closing-box {
+      background: linear-gradient(180deg, rgba(255,255,255,.035), rgba(255,255,255,.02));
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+    }
+    .intro-box, .guide-box, .closing-box { padding: 24px 28px; }
+    .intro-box { margin: 28px 0 22px; }
+    .guide-box { margin: 0 0 28px; }
+    .intro-box p, .guide-box p, .closing-box p { margin: 0; color: #dcf2f8; font-size: clamp(18px, 2vw, 23px); line-height: 1.5; }
+    .guide-box h2 { margin: 0 0 16px; font-size: 28px; }
+    .guide-box ul { margin: 0 0 14px; padding-left: 22px; color: var(--muted); line-height: 1.8; font-size: 17px; }
+    .guide-box strong { color: var(--text); }
+    .choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+    .choice-card { padding: 26px; display: flex; flex-direction: column; min-height: 290px; }
+    .choice-icon { font-size: 42px; margin-bottom: 16px; line-height: 1; }
+    .choice-card h3 { margin: 0 0 12px; font-size: 30px; }
+    .choice-card p { margin: 0 0 18px; color: var(--muted); line-height: 1.6; font-size: 17px; }
+    .choice-button {
+      margin-top: auto; display: inline-flex; justify-content: center; align-items: center; gap: 10px;
+      text-decoration: none; color: #0f2431; font-weight: 800; font-size: 15px;
+      background: linear-gradient(180deg, var(--accent), var(--accent-2)); border-radius: 14px;
+      padding: 14px 18px; box-shadow: var(--shadow);
+    }
+    .choice-card:hover { transform: translateY(-3px); border-color: rgba(45,212,191,.45); transition: .18s ease; }
+    .closing-box { margin-top: 28px; text-align: center; }
+    .closing-box p { font-size: clamp(19px, 2vw, 24px); }
+    footer {
+      margin-top: 30px;
+      padding: 24px 12px 8px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer-links {
+      margin-top: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-links a {
+      color: #d7eef6;
+      text-decoration: none;
+    }
+    .footer-links a:hover { text-decoration: underline; }
+    .mini-points { margin-top: 14px; display: grid; gap: 10px; }
+    .mini-point { padding: 12px 14px; border-radius: 16px; background: rgba(255,255,255,.04); border: 1px solid var(--border); color: #d9eef5; }
+    @media (max-width: 860px) {
+      .choices { grid-template-columns: 1fr; }
+      .choice-card { min-height: unset; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="emoji-badge" aria-hidden="true">🧩</div>
+      <h1>Costruisci il nucleo del tuo bot</h1>
+      <p class="subtitle">Qualunque bot efficace parte da <strong>alcuni elementi fondamentali</strong>. Qui puoi iniziare a definire i più importanti.</p>
+    </div>
+
+    <div class="intro-box">
+      <p>Prima di chiedere al tuo bot di lavorare bene, devi chiarire almeno questo:</p>
+      <div class="mini-points">
+        <div class="mini-point"><strong>chi è</strong></div>
+        <div class="mini-point"><strong>come lavora</strong></div>
+      </div>
+      <p style="margin-top:16px;">Da qui puoi costruire entrambe le parti.</p>
+    </div>
+
+    <div class="guide-box">
+      <h2>Da dove conviene partire?</h2>
+      <ul>
+        <li>Parti da <strong>IDENTITY</strong> se vuoi prima definire la presenza del tuo bot.</li>
+        <li>Parti da <strong>SOUL</strong> se vuoi prima definire il suo comportamento operativo.</li>
+      </ul>
+      <p>Se vuoi un ordine consigliato, fai prima <strong>IDENTITY</strong> e poi <strong>SOUL</strong>.</p>
+    </div>
+
+    <div class="choices">
+      <div class="choice-card">
+        <div class="choice-icon">
+          <svg viewBox="0 0 64 64" width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 8c-8.8 0-16 7.2-16 16 0 11.2 10.2 18.7 14.9 21.7.7.4 1.5.4 2.2 0C37.8 42.7 48 35.2 48 24c0-8.8-7.2-16-16-16Z" fill="rgba(255,208,137,0.9)"/>
+            <circle cx="26" cy="24" r="3.5" fill="#1a1208"/>
+            <circle cx="38" cy="24" r="3.5" fill="#1a1208"/>
+            <path d="M25 33c2.5 2.6 11.5 2.6 14 0" stroke="#1a1208" stroke-width="3" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>IDENTITY</h3>
+        <p>Definisci chi è il tuo bot, che ruolo ha e che tipo di presenza deve avere.</p>
+        <a class="choice-button" href="/identity">Apri IDENTITY</a>
+      </div>
+
+      <div class="choice-card">
+        <div class="choice-icon">
+          <svg viewBox="0 0 64 64" width="46" height="46" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M32 6C20.4 6 11 15.4 11 27v24.5c0 1.2 1.4 1.9 2.4 1.2l6.1-4.4 6.1 4.4c.8.6 2 .6 2.8 0l4.6-3.3 4.6 3.3c.8.6 2 .6 2.8 0l6.1-4.4 6.1 4.4c1 .7 2.4 0 2.4-1.2V27C53 15.4 43.6 6 32 6Z" fill="rgba(255,255,255,0.72)"/>
+            <circle cx="25" cy="26" r="4" fill="#0B1020"/>
+            <circle cx="39" cy="26" r="4" fill="#0B1020"/>
+            <path d="M24 37c2.8 2.2 13.2 2.2 16 0" stroke="#0B1020" stroke-width="3.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <h3>SOUL</h3>
+        <p>Definisci il suo mindset, il suo modo di lavorare e il tono con cui ti supporta ogni giorno.</p>
+        <a class="choice-button" href="/soul">Apri SOUL</a>
+      </div>
+    </div>
+
+    <div class="closing-box">
+      <p><strong>Quando hai completato entrambe, il nucleo del tuo bot è pronto.</strong></p>
+    </div>
+
+    <footer>
+      <div>Copyright 2026 Riccardo Romano · Tutti i diritti riservati</div>
+      <div class="footer-links">
+        <a href="/privacy-policy">Privacy Policy</a>
+        <a href="/termini-di-servizio">Termini di Servizio</a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

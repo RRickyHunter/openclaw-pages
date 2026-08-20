@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Scroll - Icione che si muovono allo scroll</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+        }
+        .spacer {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 1.2rem;
+        }
+        .social-section {
+            min-height: 150vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, #0a0a0a 0%, #1a1a2e 50%, #0a0a0a 100%);
+        }
+        .social-container {
+            position: sticky;
+            top: 40%;
+            width: 100%;
+            overflow: hidden;
+            padding: 40px 0;
+        }
+        .social-track {
+            display: flex;
+            gap: 40px;
+            padding: 0 40px;
+            will-change: transform;
+        }
+        .social-item {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .social-item:hover {
+            background: rgba(228, 34, 83, 0.2);
+            border-color: #E42253;
+            transform: scale(1.1);
+        }
+        .social-item a {
+            color: #fff;
+            text-decoration: none;
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .social-item {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="spacer">
+        <span>↓ Scorri per muovere le icone</span>
+    </div>
+
+    <section class="social-section" id="social-section">
+        <div class="social-container">
+            <div class="social-track" id="social-track">
+                <div class="social-item"><a href="#">📘</a></div>
+                <div class="social-item"><a href="#">📸</a></div>
+                <div class="social-item"><a href="#">💼</a></div>
+                <div class="social-item"><a href="#">🐦</a></div>
+                <div class="social-item"><a href="#">▶️</a></div>
+                <div class="social-item"><a href="#">💬</a></div>
+                <div class="social-item"><a href="#">📧</a></div>
+                <div class="social-item"><a href="#">🌐</a></div>
+                <!-- Duplicato per loop visivo -->
+                <div class="social-item"><a href="#">📘</a></div>
+                <div class="social-item"><a href="#">📸</a></div>
+                <div class="social-item"><a href="#">💼</a></div>
+                <div class="social-item"><a href="#">🐦</a></div>
+                <div class="social-item"><a href="#">▶️</a></div>
+                <div class="social-item"><a href="#">💬</a></div>
+                <div class="social-item"><a href="#">📧</a></div>
+                <div class="social-item"><a href="#">🌐</a></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="spacer">
+        <span>Effetto completato ↑</span>
+    </div>
+
+    <script>
+        const section = document.getElementById('social-section');
+        const track = document.getElementById('social-track');
+
+        function updateScrollPosition() {
+            const rect = section.getBoundingClientRect();
+            const sectionHeight = section.offsetHeight;
+            const viewportHeight = window.innerHeight;
+            
+            // Calcola progresso nello scroll della sezione (0 a 1)
+            const scrollProgress = Math.max(0, Math.min(1, 
+                (-rect.top) / (sectionHeight - viewportHeight)
+            ));
+
+            // Muovi le icone da dx a sx in base allo scroll
+            // Inizia da destra (translateX positivo) e va a sinistra (translateX negativo)
+            const maxTranslate = track.scrollWidth / 2;
+            const translateX = maxTranslate - (scrollProgress * maxTranslate * 1.5);
+            
+            track.style.transform = `translateX(${translateX}px)`;
+        }
+
+        window.addEventListener('scroll', updateScrollPosition, { passive: true });
+        window.addEventListener('resize', updateScrollPosition);
+
+        // Init
+        updateScrollPosition();
+    </script>
+</body>
+</html>

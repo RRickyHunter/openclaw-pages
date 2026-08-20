@@ -1,0 +1,342 @@
+[
+  {
+    "route": "/webinar/",
+    "origin": "KEEP",
+    "git_state": "A  webinar/assets/riccardo-chi-sono-mobile.jpg\n M webinar/index.html\n M webinar/openclaw-webinar.ics\n M webinar/thank-you.html",
+    "source_path": "webinar",
+    "presence": "dir",
+    "assets": "8 files",
+    "live_status": "known-mixed",
+    "criticality": "BUSINESS CRITICAL"
+  },
+  {
+    "route": "/webreplay/",
+    "origin": "KEEP",
+    "git_state": "tracked-clean",
+    "source_path": "webreplay",
+    "presence": "dir",
+    "assets": "1 files",
+    "live_status": "known-mixed",
+    "criticality": "BUSINESS CRITICAL"
+  },
+  {
+    "route": "/webreplayover/",
+    "origin": "TRACK",
+    "git_state": "A  webreplayover/index.html",
+    "source_path": "webreplayover",
+    "presence": "dir",
+    "assets": "1 files",
+    "live_status": "known-mixed",
+    "criticality": "BUSINESS CRITICAL"
+  },
+  {
+    "route": "/catalogo-moduli/",
+    "origin": "TRACK",
+    "git_state": "A  catalogo-moduli/catalogo.html\nA  catalogo-moduli/highlight-brush.html\nA  catalogo-moduli/image-marquee.html\nA  catalogo-moduli/index.html\nA  catalogo-moduli/outline-text.html\nA  catalogo-moduli/parallax-numbers.html\nA  catalogo-moduli/particles-bg.html\nA  catalogo-moduli/scroll-reveal-image.html\nA  catalogo-moduli/scroll-reveal-sandwich.html\nA  catalogo-moduli/social-scroll.html\nA  catalogo-moduli/text-marquee.html\nA  catalogo-moduli/text-rotator-list.html\nA  catalogo-moduli/text-rotator.html\nA  catalogo-moduli/text-scroller-vertical.html",
+    "source_path": "catalogo-moduli",
+    "presence": "dir",
+    "assets": "14 files",
+    "live_status": "known-mixed",
+    "criticality": "OPERATIVA"
+  },
+  {
+    "route": "/centro-conoscenza/",
+    "origin": "KEEP",
+    "git_state": "tracked-clean",
+    "source_path": "centro-conoscenza",
+    "presence": "dir",
+    "assets": "1 files",
+    "live_status": "known-mixed",
+    "criticality": "OPERATIVA"
+  },
+  {
+    "route": "/metadigitale/",
+    "origin": "TRACK",
+    "git_state": "A  metadigitale/index.html",
+    "source_path": "metadigitale",
+    "presence": "dir",
+    "assets": "1 files",
+    "live_status": "known-mixed",
+    "criticality": "LAB/TEST"
+  },
+  {
+    "route": "/public-lessons/",
+    "origin": "TRACK",
+    "git_state": "A  public-lessons/index.html\nA  public-lessons/index.json",
+    "source_path": "public-lessons",
+    "presence": "dir",
+    "assets": "2 files",
+    "live_status": "known-mixed",
+    "criticality": "OPERATIVA"
+  },
+  {
+    "route": "/template1-blocco-lite/",
+    "origin": "TRACK",
+    "git_state": "A  template1-blocco-lite/index.html",
+    "source_path": "template1-blocco-lite",
+    "presence": "dir",
+    "assets": "1 files",
+    "live_status": "known-mixed",
+    "criticality": "LAB/TEST"
+  },
+  {
+    "route": "/template1-visual-mvp/",
+    "origin": "TRACK",
+    "git_state": "A  template1-visual-mvp/index.html",
+    "source_path": "template1-visual-mvp",
+    "presence": "dir",
+    "assets": "1 files",
+    "live_status": "known-mixed",
+    "criticality": "LAB/TEST"
+  },
+  {
+    "route": "/template1-visual-preservation-test/",
+    "origin": "TRACK",
+    "git_state": "A  template1-visual-preservation-test/index.html",
+    "source_path": "template1-visual-preservation-test",
+    "presence": "dir",
+    "assets": "1 files",
+    "live_status": "known-mixed",
+    "criticality": "LAB/TEST"
+  },
+  {
+    "route": "/ocaeckout/",
+    "origin": "TRACK",
+    "git_state": "A  ocaeckout/assets/offer-image.jpg\nA  ocaeckout/index.html\nA  ocaeckout/index.html.bak",
+    "source_path": "ocaeckout",
+    "presence": "dir",
+    "assets": "3 files",
+    "live_status": "known-mixed",
+    "criticality": "BUSINESS CRITICAL"
+  },
+  {
+    "route": "/ocaetyorder/",
+    "origin": "TRACK",
+    "git_state": "A  ocaetyorder/index.html",
+    "source_path": "ocaetyorder",
+    "presence": "dir",
+    "assets": "1 files",
+    "live_status": "known-mixed",
+    "criticality": "BUSINESS CRITICAL"
+  },
+  {
+    "route": "/alimentazione/",
+    "origin": "TRACK",
+    "git_state": "A  alimentazione/index.html",
+    "source_path": "alimentazione",
+    "presence": "dir",
+    "assets": "1 files",
+    "live_status": "known-mixed",
+    "criticality": "ARCHIVIO/RIFERIMENTO"
+  },
+  {
+    "route": "/disclaimer-ocae/",
+    "origin": "TRACK",
+    "git_state": "A  disclaimer-ocae/index.html",
+    "source_path": "disclaimer-ocae",
+    "presence": "dir",
+    "assets": "1 files",
+    "live_status": "known-mixed",
+    "criticality": "BUSINESS CRITICAL"
+  },
+  {
+    "route": "/marechiaro/",
+    "origin": "TRACK",
+    "git_state": "A  marechiaro/index.html\nA  marechiaro/logo.jpg",
+    "source_path": "marechiaro",
+    "presence": "dir",
+    "assets": "2 files",
+    "live_status": "known-mixed",
+    "criticality": "ARCHIVIO/RIFERIMENTO"
+  },
+  {
+    "route": "/parrucchiera/",
+    "origin": "TRACK",
+    "git_state": "A  parrucchiera/index.html",
+    "source_path": "parrucchiera",
+    "presence": "dir",
+    "assets": "1 files",
+    "live_status": "known-mixed",
+    "criticality": "ARCHIVIO/RIFERIMENTO"
+  },
+  {
+    "route": "/scrittura/",
+    "origin": "TRACK",
+    "git_state": "A  scrittura/index.html",
+    "source_path": "scrittura",
+    "presence": "dir",
+    "assets": "1 files",
+    "live_status": "known-mixed",
+    "criticality": "ARCHIVIO/RIFERIMENTO"
+  },
+  {
+    "route": "/vision/",
+    "origin": "TRACK",
+    "git_state": "A  vision/index.html",
+    "source_path": "vision",
+    "presence": "dir",
+    "assets": "1 files",
+    "live_status": "known-mixed",
+    "criticality": "ARCHIVIO/RIFERIMENTO"
+  },
+  {
+    "route": "/OCAE/",
+    "origin": "IMPORT",
+    "git_state": "A  OCAE/disclaimer.html\nA  OCAE/disclaimer/index.html\nA  OCAE/index.html\nA  OCAE/privacy-policy.html\nA  OCAE/privacy-policy/index.html\nA  OCAE/termini-di-servizio.html\nA  OCAE/termini-di-servizio/index.html",
+    "source_path": "OCAE",
+    "presence": "dir",
+    "assets": "7 files",
+    "live_status": "known-mixed",
+    "criticality": "BUSINESS CRITICAL"
+  },
+  {
+    "route": "/OCAE/disclaimer/",
+    "origin": "IMPORT",
+    "git_state": "A  OCAE/disclaimer/index.html",
+    "source_path": "OCAE/disclaimer",
+    "presence": "dir",
+    "assets": "1 files",
+    "live_status": "known-mixed",
+    "criticality": "BUSINESS CRITICAL"
+  },
+  {
+    "route": "/OCAE/privacy-policy/",
+    "origin": "IMPORT",
+    "git_state": "A  OCAE/privacy-policy/index.html",
+    "source_path": "OCAE/privacy-policy",
+    "presence": "dir",
+    "assets": "1 files",
+    "live_status": "known-mixed",
+    "criticality": "BUSINESS CRITICAL"
+  },
+  {
+    "route": "/OCAE/termini-di-servizio/",
+    "origin": "IMPORT",
+    "git_state": "A  OCAE/termini-di-servizio/index.html",
+    "source_path": "OCAE/termini-di-servizio",
+    "presence": "dir",
+    "assets": "1 files",
+    "live_status": "known-mixed",
+    "criticality": "BUSINESS CRITICAL"
+  },
+  {
+    "route": "/nucleo/",
+    "origin": "IMPORT",
+    "git_state": "A  nucleo/index.html",
+    "source_path": "nucleo",
+    "presence": "dir",
+    "assets": "1 files",
+    "live_status": "known-mixed",
+    "criticality": "OPERATIVA"
+  },
+  {
+    "route": "/CustomOCAE/",
+    "origin": "IMPORT",
+    "git_state": "A  CustomOCAE/disclaimer.html\nA  CustomOCAE/index.html\nA  CustomOCAE/privacy-policy.html\nA  CustomOCAE/termini-di-servizio.html",
+    "source_path": "CustomOCAE",
+    "presence": "dir",
+    "assets": "4 files",
+    "live_status": "known-mixed",
+    "criticality": "LAB/TEST"
+  },
+  {
+    "route": "/CustomOCAE2/",
+    "origin": "IMPORT",
+    "git_state": "A  CustomOCAE2/disclaimer.html\nA  CustomOCAE2/index.html\nA  CustomOCAE2/privacy-policy.html\nA  CustomOCAE2/termini-di-servizio.html",
+    "source_path": "CustomOCAE2",
+    "presence": "dir",
+    "assets": "4 files",
+    "live_status": "known-mixed",
+    "criticality": "LAB/TEST"
+  },
+  {
+    "route": "/CustomOCAE3/",
+    "origin": "IMPORT",
+    "git_state": "A  CustomOCAE3/disclaimer.html\nA  CustomOCAE3/index.html\nA  CustomOCAE3/privacy-policy.html\nA  CustomOCAE3/termini-di-servizio.html",
+    "source_path": "CustomOCAE3",
+    "presence": "dir",
+    "assets": "4 files",
+    "live_status": "known-mixed",
+    "criticality": "LAB/TEST"
+  },
+  {
+    "route": "/TestOCAE/",
+    "origin": "IMPORT",
+    "git_state": "A  TestOCAE/disclaimer.html\nA  TestOCAE/index.html\nA  TestOCAE/privacy-policy.html\nA  TestOCAE/termini-di-servizio.html",
+    "source_path": "TestOCAE",
+    "presence": "dir",
+    "assets": "4 files",
+    "live_status": "known-mixed",
+    "criticality": "LAB/TEST"
+  },
+  {
+    "route": "/Test_OCAE/",
+    "origin": "IMPORT",
+    "git_state": "A  Test_OCAE/disclaimer.html\nA  Test_OCAE/index.html\nA  Test_OCAE/privacy-policy.html\nA  Test_OCAE/termini-di-servizio.html",
+    "source_path": "Test_OCAE",
+    "presence": "dir",
+    "assets": "4 files",
+    "live_status": "known-mixed",
+    "criticality": "LAB/TEST"
+  },
+  {
+    "route": "/ai-client-system/",
+    "origin": "IMPORT",
+    "git_state": "A  ai-client-system/checkout.html\nA  ai-client-system/disclaimer.html\nA  ai-client-system/index.html\nA  ai-client-system/privacy.html\nA  ai-client-system/terms.html",
+    "source_path": "ai-client-system",
+    "presence": "dir",
+    "assets": "5 files",
+    "live_status": "known-mixed",
+    "criticality": "ARCHIVIO/RIFERIMENTO"
+  },
+  {
+    "route": "/ai-client-system-old/",
+    "origin": "IMPORT",
+    "git_state": "A  ai-client-system-old/.gitignore\nA  ai-client-system-old/checkout.html\nA  ai-client-system-old/disclaimer.html\nA  ai-client-system-old/index.html\nA  ai-client-system-old/privacy.html\nA  ai-client-system-old/terms.html",
+    "source_path": "ai-client-system-old",
+    "presence": "dir",
+    "assets": "8 files",
+    "live_status": "known-mixed",
+    "criticality": "ARCHIVIO/RIFERIMENTO"
+  },
+  {
+    "route": "/demo3-1-bridge-light-patched/",
+    "origin": "IMPORT",
+    "git_state": "A  demo3-1-bridge-light-patched/.gitignore\nA  demo3-1-bridge-light-patched/disclaimer.html\nA  demo3-1-bridge-light-patched/index.html\nA  demo3-1-bridge-light-patched/privacy-policy.html\nA  demo3-1-bridge-light-patched/termini-di-servizio.html\nA  demo3-1-bridge-light-patched/vercel.json",
+    "source_path": "demo3-1-bridge-light-patched",
+    "presence": "dir",
+    "assets": "8 files",
+    "live_status": "known-mixed",
+    "criticality": "LAB/TEST"
+  },
+  {
+    "route": "/test/",
+    "origin": "IMPORT",
+    "git_state": "A  test/hero.jpg\nA  test/index.html",
+    "source_path": "test",
+    "presence": "dir",
+    "assets": "2 files",
+    "live_status": "known-mixed",
+    "criticality": "LAB/TEST"
+  },
+  {
+    "route": "/identity/",
+    "origin": "RESOLVE",
+    "git_state": "M  identity/index.html",
+    "source_path": "identity",
+    "presence": "dir",
+    "assets": "1 files",
+    "live_status": "known-mixed",
+    "criticality": "OPERATIVA"
+  },
+  {
+    "route": "/soul/",
+    "origin": "RESOLVE",
+    "git_state": "M  soul/index.html",
+    "source_path": "soul",
+    "presence": "dir",
+    "assets": "1 files",
+    "live_status": "known-mixed",
+    "criticality": "OPERATIVA"
+  }
+]

@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catalogo Moduli UI - Orione</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            line-height: 1.6;
+        }
+        .container { max-width: 1400px; margin: 0 auto; padding: 40px 20px; }
+        header { text-align: center; margin-bottom: 60px; }
+        h1 { font-size: 3rem; font-weight: 700; margin-bottom: 10px; }
+        h1 span { color: #E42253; }
+        .subtitle { color: #888; font-size: 1.1rem; }
+        .filters { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 40px; }
+        .filter-btn {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            color: #fff;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .filter-btn:hover, .filter-btn.active {
+            background: #E42253;
+            border-color: #E42253;
+        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 30px; }
+        .modulo-card {
+            background: #141414;
+            border: 1px solid #222;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .modulo-card:hover {
+            transform: translateY(-5px);
+            border-color: #E42253;
+        }
+        .preview-area {
+            height: 200px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .preview-area {
+            height: 200px;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .preview-placeholder {
+            font-size: 4rem;
+            opacity: 0.3;
+            transition: opacity 0.3s;
+            position: absolute;
+        }
+        /* Mini preview animations */
+        .mini-preview {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .modulo-card:hover .preview-placeholder {
+            opacity: 0;
+        }
+        .modulo-card:hover .mini-preview {
+            opacity: 1;
+        }
+        /* Text Rotator mini preview */
+        .mini-text-rotator {
+            font-family: system-ui, sans-serif;
+            text-align: center;
+        }
+        .mini-text-rotator .prefix {
+            font-size: 12px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 8px;
+        }
+        .mini-text-rotator .word {
+            font-size: 24px;
+            font-weight: 700;
+            color: #E42253;
+            min-height: 32px;
+        }
+        .mini-text-rotator .word::after {
+            content: 'CHATBOT';
+            animation: miniRotateWords 3s linear infinite;
+        }
+        @keyframes miniRotateWords {
+            0%, 20% { content: 'CHATBOT'; }
+            25%, 45% { content: 'AI'; }
+            50%, 70% { content: 'WEB'; }
+            75%, 95% { content: 'ADS'; }
+            100% { content: 'CHATBOT'; }
+        }
+        /* Highlight Brush mini preview */
+        .mini-highlight {
+            font-family: system-ui, sans-serif;
+            text-align: center;
+            font-size: 20px;
+            font-weight: 700;
+            color: #fff;
+        }
+        .mini-highlight .word {
+            position: relative;
+            display: inline;
+        }
+        .mini-highlight .word::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -2px;
+            right: -2px;
+            height: 30%;
+            background: linear-gradient(120deg, #E42253 0%, #ff6b6b 100%);
+            opacity: 0.3;
+            z-index: -1;
+            border-radius: 2px;
+            transform: skewX(-3deg) rotate(-1deg) scaleX(0);
+            transform-origin: left;
+            animation: miniBrush 2s ease-out infinite;
+        }
+        @keyframes miniBrush {
+            0% { transform: skewX(-3deg) rotate(-1deg) scaleX(0); }
+            50% { transform: skewX(-3deg) rotate(-1deg) scaleX(1); }
+            100% { transform: skewX(-3deg) rotate(-1deg) scaleX(1); }
+        }
+        /* Outline Text mini preview */
+        .mini-outline {
+            font-size: 36px;
+            font-weight: 900;
+            color: transparent;
+            -webkit-text-stroke: 1.5px rgba(255,255,255,0.5);
+            animation: miniOutline 2s ease-in-out infinite;
+        }
+        @keyframes miniOutline {
+            0%, 100% { -webkit-text-stroke: 1.5px rgba(255,255,255,0.5); color: transparent; }
+            50% { -webkit-text-stroke: 0; color: #E42253; }
+        }
+        /* Particles mini preview */
+        .mini-particles {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .mini-particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #E42253;
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+        .mini-particle:nth-child(1) { top: 30%; left: 20%; animation: miniFloat1 3s ease-in-out infinite; }
+        .mini-particle:nth-child(2) { top: 50%; left: 50%; animation: miniFloat2 2.5s ease-in-out infinite; }
+        .mini-particle:nth-child(3) { top: 40%; left: 70%; animation: miniFloat3 3.5s ease-in-out infinite; }
+        .mini-particle:nth-child(4) { top: 60%; left: 30%; animation: miniFloat1 4s ease-in-out infinite; }
+        .mini-particle:nth-child(5) { top: 25%; left: 60%; animation: miniFloat2 2s ease-in-out infinite; }
+        @keyframes miniFloat1 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(10px, -10px); } }
+        @keyframes miniFloat2 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-8px, 8px); } }
+        @keyframes miniFloat3 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(5px, 5px); } }
+        /* Parallax Numbers mini preview */
+        .mini-parallax {
+            font-size: 48px;
+            font-weight: 900;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(228, 34, 83, 0.3);
+            animation: miniParallax 2s ease-in-out infinite;
+        }
+        @keyframes miniParallax {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        /* Scroll Reveal Image mini preview */
+        .mini-reveal {
+            position: relative;
+            width: 120px;
+            height: 80px;
+            background: linear-gradient(135deg, #2a2a4e 0%, #36213e 100%);
+            border-radius: 8px;
+            animation: miniReveal 2s ease-in-out infinite;
+        }
+        @keyframes miniReveal {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(0.7); }
+        }
+        /* Scroll Reveal Sandwich mini preview */
+        .mini-sandwich {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+        .mini-sandwich .top {
+            font-size: 12px;
+            color: rgba(255,255,255,0.5);
+            animation: miniSandwichTop 2s ease-in-out infinite;
+        }
+        .mini-sandwich .img {
+            width: 80px;
+            height: 50px;
+            background: linear-gradient(135deg, #2a2a4e 0%, #36213e 100%);
+            border-radius: 6px;
+            animation: miniSandwichImg 2s ease-in-out infinite;
+        }
+        .mini-sandwich .bottom {
+            font-size: 14px;
+            font-weight: 700;
+            color: #E42253;
+            animation: miniSandwichBottom 2s ease-in-out infinite;
+        }
+        @keyframes miniSandwichTop { 0%, 100% { transform: translateY(0); opacity: 0.5; } 50% { transform: translateY(-5px); opacity: 1; } }
+        @keyframes miniSandwichImg { 0%, 100% { transform: scale(1); } 50% { transform: scale(0.85); } }
+        @keyframes miniSandwichBottom { 0%, 100% { transform: translateY(0); opacity: 0.5; } 50% { transform: translateY(5px); opacity: 1; } }
+        /* Text Scroller Vertical mini preview */
+        .mini-scroller-v {
+            height: 60px;
+            overflow: hidden;
+            mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+        }
+        .mini-scroller-v .track {
+            animation: miniScrollV 2s linear infinite;
+        }
+        .mini-scroller-v .item {
+            font-size: 16px;
+            padding: 4px 0;
+            color: rgba(255,255,255,0.4);
+            text-align: center;
+        }
+        .mini-scroller-v .item.active {
+            color: #fff;
+            font-weight: 600;
+        }
+        @keyframes miniScrollV { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
+        /* Text Rotator List mini preview */
+        .mini-rotator-list {
+            font-size: 14px;
+            text-align: center;
+        }
+        .mini-rotator-list .static {
+            font-size: 11px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 4px;
+        }
+        .mini-rotator-list .word {
+            color: #E42253;
+            font-weight: 600;
+        }
+        .mini-rotator-list .word::after {
+            content: '🌐 Sito web';
+            animation: miniRotatorList 4s linear infinite;
+        }
+        @keyframes miniRotatorList {
+            0%, 15% { content: '🌐 Sito web'; }
+            20%, 35% { content: '🧠 AI'; }
+            40%, 55% { content: '💡 Strategia'; }
+            60%, 75% { content: '🎨 Design'; }
+            80%, 95% { content: '🤖 Automazioni'; }
+            100% { content: '🌐 Sito web'; }
+        }
+        /* Image Marquee mini preview */
+        .mini-img-marquee {
+            display: flex;
+            gap: 8px;
+            animation: miniImgMarquee 3s linear infinite;
+        }
+        .mini-img-marquee .img {
+            width: 60px;
+            height: 45px;
+            background: linear-gradient(135deg, #2a2a4e 0%, #36213e 100%);
+            border-radius: 6px;
+            flex-shrink: 0;
+        }
+        @keyframes miniImgMarquee { 0% { transform: translateX(0); } 100% { transform: translateX(-68px); } }
+        /* Text Marquee mini preview */
+        .mini-text-marquee {
+            font-size: 18px;
+            font-weight: 800;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,0.3);
+            white-space: nowrap;
+            animation: miniTextMarquee 2s linear infinite;
+        }
+        @keyframes miniTextMarquee { 0% { transform: translateX(20px); } 100% { transform: translateX(-20px); } }
+        /* Social Scroll mini preview */
+        .mini-social {
+            display: flex;
+            gap: 12px;
+        }
+        .mini-social .icon {
+            width: 32px;
+            height: 32px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            animation: miniSocial 2s ease-in-out infinite;
+        }
+        .mini-social .icon:nth-child(1) { animation-delay: 0s; }
+        .mini-social .icon:nth-child(2) { animation-delay: 0.1s; }
+        .mini-social .icon:nth-child(3) { animation-delay: 0.2s; }
+        .mini-social .icon:nth-child(4) { animation-delay: 0.3s; }
+        @keyframes miniSocial { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(-15px); } }
+        .modulo-content { padding: 24px; }
+        .modulo-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 12px; }
+        .modulo-title { font-size: 1.3rem; font-weight: 600; }
+        .modulo-formats { display: flex; gap: 6px; }
+        .format-badge {
+            background: #E42253;
+            color: #fff;
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+        .modulo-desc { color: #888; font-size: 0.95rem; margin-bottom: 16px; }
+        .modulo-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+        .tag {
+            background: #1a1a1a;
+            color: #666;
+            font-size: 0.8rem;
+            padding: 4px 12px;
+            border-radius: 12px;
+        }
+        .modulo-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #222;
+        }
+        .btn {
+            flex: 1;
+            padding: 12px 20px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+        }
+        .btn-primary {
+            background: #E42253;
+            color: #fff;
+        }
+        .btn-primary:hover { background: #c41d47; }
+        .btn-secondary {
+            background: transparent;
+            color: #fff;
+            border: 1px solid #333;
+        }
+        .btn-secondary:hover { border-color: #E42253; }
+        .empty-state {
+            text-align: center;
+            padding: 80px 20px;
+            color: #666;
+        }
+        .empty-state-icon { font-size: 4rem; margin-bottom: 20px; }
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Catalogo <span>Moduli</span></h1>
+            <p class="subtitle">Componenti UI pronti all'uso per i tuoi progetti</p>
+        </header>
+        
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">Tutti</button>
+            <button class="filter-btn" data-filter="testo">Testo</button>
+            <button class="filter-btn" data-filter="animazione">Animazione</button>
+            <button class="filter-btn" data-filter="hero">Hero</button>
+            <button class="filter-btn" data-filter="sfondo">Sfondo</button>
+        </div>
+        
+        <div class="grid" id="moduli-grid">
+            <!-- I moduli verranno caricati qui via JS -->
+        </div>
+    </div>
+    
+    <script>
+        // Dati moduli (in produzione verranno da catalogo.json)
+        const moduli = [
+            {
+                id: "text-rotator",
+                nome: "Text Rotator",
+                descrizione: "Parole che si alternano con effetto fade o slide. Ideale per headline dinamiche.",
+                tag: ["testo", "animazione", "hero"],
+                formati: ["vanilla", "react", "wordpress"],
+                icon: "🔄"
+            },
+            {
+                id: "highlight-brush",
+                nome: "Highlight Brush",
+                descrizione: "Sottolineatura a effetto pennellata su testo. Stile disegnato a mano.",
+                tag: ["testo", "decorazione", "titolo"],
+                formati: ["vanilla", "react", "wordpress"],
+                icon: "🖌️"
+            },
+            {
+                id: "outline-text",
+                nome: "Outline Text",
+                descrizione: "Testo con solo bordo, senza riempimento. Effetto moderno e leggero.",
+                tag: ["testo", "decorazione", "hero"],
+                formati: ["vanilla", "react", "wordpress"],
+                icon: "◯"
+            },
+            {
+                id: "particles-bg",
+                nome: "Particles Background",
+                descrizione: "Sfondo animato con particelle che si muovono e reagiscono al mouse.",
+                tag: ["sfondo", "animazione", "hero"],
+                formati: ["vanilla", "react"],
+                icon: "✨"
+            },
+            {
+                id: "parallax-numbers",
+                nome: "Parallax Numbers",
+                descrizione: "Numeri grandi con effetto parallax allo scroll.",
+                tag: ["scroll", "animazione", "sezione"],
+                formati: ["vanilla", "react"],
+                icon: "01"
+            },
+            {
+                id: "scroll-reveal-image",
+                nome: "Scroll Reveal Image",
+                descrizione: "Immagine che si rimpicciolisce allo scroll con testo che entra da sotto. Effetto MetaDigitale-style.",
+                tag: ["scroll", "immagine", "reveal", "hero"],
+                formati: ["vanilla", "react"],
+                icon: "🖼️"
+            },
+            {
+                id: "scroll-reveal-sandwich",
+                nome: "Scroll Reveal Sandwich",
+                descrizione: "Effetto sandwich: testo dall'alto, immagine centrale che scala, testo dal basso. 3 strati animati.",
+                tag: ["scroll", "immagine", "reveal", "hero"],
+                formati: ["vanilla", "react"],
+                icon: "🥪"
+            },
+            {
+                id: "text-scroller-vertical",
+                nome: "Text Scroller Vertical",
+                descrizione: "Testo fisso a sinistra, parole che scorrono verticalmente a destra. Effetto MetaDigitale-style.",
+                tag: ["testo", "animazione", "scroll", "servizi"],
+                formati: ["vanilla", "react"],
+                icon: "📜"
+            },
+            {
+                id: "text-rotator-list",
+                nome: "Text Rotator List (MetaDigitale Exact)",
+                descrizione: "Replica ESATTA del modulo MetaDigitale: 'tutti i servizi digitali' + lista verticale con emoji.",
+                tag: ["testo", "animazione", "servizi", "metadigitale"],
+                formati: ["vanilla", "react"],
+                icon: "🎯"
+            },
+            {
+                id: "image-marquee",
+                nome: "Image Marquee",
+                descrizione: "Immagini grandi che scorrono orizzontalmente in loop infinito. Fade ai lati, caption su hover.",
+                tag: ["immagine", "animazione", "marquee", "servizi"],
+                formati: ["vanilla", "react"],
+                icon: "🎞️"
+            },
+            {
+                id: "text-marquee",
+                nome: "Text Marquee",
+                descrizione: "Testo outline che scorre orizzontalmente. Effetto MetaDigitale con fade ai lati.",
+                tag: ["testo", "animazione", "marquee"],
+                formati: ["vanilla", "react"],
+                icon: "📝"
+            },
+            {
+                id: "social-scroll",
+                nome: "Social Scroll",
+                descrizione: "Icone social che si muovono da dx a sx solo quando scrolli la pagina. Ferme di default.",
+                tag: ["scroll", "social", "icone"],
+                formati: ["vanilla", "react"],
+                icon: "🔗"
+            }
+        ];
+        
+        function renderModuli(filter = 'all') {
+            const grid = document.getElementById('moduli-grid');
+            const filtered = filter === 'all' 
+                ? moduli 
+                : moduli.filter(m => m.tag.includes(filter));
+            
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="empty-state" style="grid-column: 1/-1;">
+                        <div class="empty-state-icon">🔍</div>
+                        <p>Nessun modulo trovato per questo filtro</p>
+                    </div>
+                `;
+                return;
+            }
+            
+            grid.innerHTML = filtered.map(m => `
+                <div class="modulo-card" data-tags="${m.tag.join(',')}">
+                    <div class="preview-area">
+                        <span class="preview-placeholder">${m.icon}</span>
+                        ${m.id === 'text-rotator' ? `
+                        <div class="mini-preview mini-text-rotator">
+                            <div class="prefix">Trasforma con</div>
+                            <div class="word"></div>
+                        </div>
+                        ` : m.id === 'highlight-brush' ? `
+                        <div class="mini-preview mini-highlight">
+                            Testo <span class="word">evidenziato</span>
+                        </div>
+                        ` : m.id === 'outline-text' ? `
+                        <div class="mini-preview mini-outline">
+                            OUTLINE
+                        </div>
+                        ` : m.id === 'particles-bg' ? `
+                        <div class="mini-preview mini-particles">
+                            <div class="mini-particle"></div>
+                            <div class="mini-particle"></div>
+                            <div class="mini-particle"></div>
+                            <div class="mini-particle"></div>
+                            <div class="mini-particle"></div>
+                        </div>
+                        ` : m.id === 'parallax-numbers' ? `
+                        <div class="mini-preview mini-parallax">
+                            01
+                        </div>
+                        ` : m.id === 'scroll-reveal-image' ? `
+                        <div class="mini-preview mini-reveal"></div>
+                        ` : m.id === 'scroll-reveal-sandwich' ? `
+                        <div class="mini-preview mini-sandwich">
+                            <div class="top">Testo alto</div>
+                            <div class="img"></div>
+                            <div class="bottom">Testo basso</div>
+                        </div>
+                        ` : m.id === 'text-scroller-vertical' ? `
+                        <div class="mini-preview mini-scroller-v">
+                            <div class="track">
+                                <div class="item">Web 🌐</div>
+                                <div class="item active">AI 🧠</div>
+                                <div class="item">SEO 🔍</div>
+                                <div class="item">Web 🌐</div>
+                                <div class="item active">AI 🧠</div>
+                                <div class="item">SEO 🔍</div>
+                            </div>
+                        </div>
+                        ` : m.id === 'text-rotator-list' ? `
+                        <div class="mini-preview mini-rotator-list">
+                            <div class="static">tutti i servizi</div>
+                            <div class="word"></div>
+                        </div>
+                        ` : m.id === 'image-marquee' ? `
+                        <div class="mini-preview mini-img-marquee">
+                            <div class="img"></div>
+                            <div class="img"></div>
+                        </div>
+                        ` : m.id === 'text-marquee' ? `
+                        <div class="mini-preview mini-text-marquee">
+                            TEXT →
+                        </div>
+                        ` : m.id === 'social-scroll' ? `
+                        <div class="mini-preview mini-social">
+                            <div class="icon">f</div>
+                            <div class="icon">in</div>
+                            <div class="icon">ig</div>
+                            <div class="icon">yt</div>
+                        </div>
+                        ` : ''}
+                    </div>
+                    <div class="modulo-content">
+                        <div class="modulo-header">
+                            <h3 class="modulo-title">${m.nome}</h3>
+                            <div class="modulo-formats">
+                                ${m.formati.slice(0, 3).map(f => `<span class="format-badge">${f}</span>`).join('')}
+                            </div>
+                        </div>
+                        <p class="modulo-desc">${m.descrizione}</p>
+                        <div class="modulo-tags">
+                            ${m.tag.map(t => `<span class="tag">${t}</span>`).join('')}
+                        </div>
+                        <div class="modulo-actions">
+                            <button class="btn btn-primary" onclick="usaModulo('${m.id}')">Usa</button>
+                            <a href="https://pages.riccardoromano.biz/catalogo-moduli/${m.id}.html" class="btn btn-secondary" target="_blank">Preview</a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        
+        function usaModulo(id) {
+            // In futuro: aprire modal con selezione formato
+            alert(`Modulo ${id} selezionato!\n\nFormati disponibili: vanilla, react, wordpress`);
+        }
+        
+        // Filter handlers
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                renderModuli(btn.dataset.filter);
+            });
+        });
+        
+        // Init
+        renderModuli();
+    </script>
+</body>
+</html>

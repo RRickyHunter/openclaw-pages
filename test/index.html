@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenClaw Activation Experience</title>
+  <meta name="description" content="Attiva il tuo primo sistema che lavora per te. OpenClaw Activation Experience per coach, consulenti e formatori che vogliono trasformare AI e strumenti in un sistema reale." />
+  <style>
+    :root {
+      --bg: #f5f6f8;
+      --surface: #ffffff;
+      --text: #0f1728;
+      --muted: #586174;
+      --line: #dde3ec;
+      --primary: #0f7cff;
+      --primary-dark: #0a61ca;
+      --accent: #111827;
+      --success: #0c8a5b;
+      --shadow: 0 18px 50px rgba(17,24,39,.08);
+      --radius: 22px;
+      --max: 1180px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; }
+    .container { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+    .section { padding: 88px 0; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: #eef5ff;
+      color: var(--primary-dark);
+      border: 1px solid #cfe0ff;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 { margin: 0; line-height: 1.05; letter-spacing: -.03em; }
+    h1 { font-size: clamp(2.4rem, 5vw, 5.3rem); font-weight: 900; }
+    h2 { font-size: clamp(1.9rem, 3vw, 3.3rem); font-weight: 850; }
+    h3 { font-size: 1.18rem; font-weight: 800; }
+    p { margin: 0; }
+    .muted { color: var(--muted); }
+    .hero {
+      padding: 34px 0 76px;
+      background: linear-gradient(180deg, #f8fbff 0%, #f5f6f8 100%);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 48px;
+    }
+    .brand {
+      font-size: 1rem;
+      font-weight: 900;
+      letter-spacing: -.02em;
+    }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 18px;
+      text-decoration: none;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 38px;
+      align-items: center;
+    }
+    .hero-copy { display: grid; gap: 20px; }
+    .hero-copy .sub {
+      font-size: clamp(1.02rem, 1.5vw, 1.18rem);
+      color: var(--muted);
+      max-width: 760px;
+    }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 8px;
+    }
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-width: 220px;
+      padding: 16px 24px;
+      text-decoration: none;
+      border-radius: 16px;
+      font-weight: 800;
+      transition: .18s ease;
+      border: 1px solid transparent;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 14px 30px rgba(15,124,255,.18);
+    }
+    .btn-secondary {
+      background: var(--surface);
+      color: var(--text);
+      border-color: var(--line);
+    }
+    .microcopy {
+      font-size: .93rem;
+      color: var(--muted);
+    }
+    .hero-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .hero-card .visual-wrap {
+      padding: 16px;
+      border-bottom: 1px solid var(--line);
+      background: #fbfcfe;
+    }
+    .hero-card img { border-radius: 18px; }
+    .hero-card .card-copy {
+      padding: 26px;
+      display: grid;
+      gap: 14px;
+    }
+    .bullet-list, .plain-list {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+    .bullet-list li {
+      display: grid;
+      grid-template-columns: 20px 1fr;
+      gap: 10px;
+      align-items: start;
+      color: var(--text);
+    }
+    .bullet-list li span { color: var(--success); font-weight: 900; }
+    .section-head {
+      display: grid;
+      gap: 16px;
+      margin-bottom: 34px;
+      max-width: 760px;
+    }
+    .cards-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 20px;
+    }
+    .cards-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 12px;
+    }
+    .problem {
+      background: #ffffff;
+    }
+    .process-steps {
+      display: grid;
+      gap: 18px;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 18px;
+      align-items: start;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+    .step-num {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      background: #eef5ff;
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 900;
+    }
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .offer-box {
+      background: linear-gradient(180deg, #fff 0%, #f7faff 100%);
+      border: 1px solid #d7e5ff;
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 34px;
+      display: grid;
+      gap: 18px;
+    }
+    .price-row {
+      display: flex;
+      align-items: end;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .price-old {
+      color: var(--muted);
+      text-decoration: line-through;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+    .price-now {
+      font-size: clamp(2.6rem, 4vw, 4.4rem);
+      font-weight: 900;
+      line-height: 1;
+    }
+    .faq { display: grid; gap: 16px; }
+    .faq-item {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+      display: grid;
+      gap: 10px;
+    }
+    .final-cta {
+      background: #0f1728;
+      color: white;
+      border-radius: 32px;
+      padding: 42px;
+      display: grid;
+      gap: 16px;
+      box-shadow: var(--shadow);
+    }
+    .final-cta .muted { color: #c2cad8; }
+    @media (max-width: 980px) {
+      .hero-grid, .cards-3, .cards-2, .split { grid-template-columns: 1fr; }
+      .hero { padding-top: 24px; }
+      .nav { margin-bottom: 34px; }
+      .step { grid-template-columns: 1fr; }
+      .step-num { width: 56px; height: 56px; }
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <div class="container">
+      <div class="nav">
+        <div class="brand">OpenClaw Activation Experience</div>
+        <a class="nav-cta" href="https://quiz.riccardoromano.biz/oce">Candidati</a>
+      </div>
+
+      <div class="hero-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">Experience guidata di attivazione</div>
+          <h1>Attiva il tuo primo sistema<br> che lavora per te</h1>
+          <p class="sub">
+            Per coach, consulenti e formatori che stanno già costruendo qualcosa, usano AI e strumenti, ma sono ancora bloccati operativamente perché manca un sistema integrato che lavori davvero per loro.
+          </p>
+          <p class="sub">
+            In pochi giorni entri nell’OpenClaw Activation Experience e inizi ad attivare un sistema reale, senza dover capire tutto OpenClaw da solo.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="https://buy.stripe.com/6oU28r3rAcYmfu30KVeUU00">Attiva il tuo sistema</a>
+            <a class="btn btn-secondary" href="https://quiz.riccardoromano.biz/oce">Candidati</a>
+          </div>
+          <div class="microcopy">Accesso diretto per chi è già convinto. Call per chi vuole chiarire prima se è il passo giusto.</div>
+        </div>
+
+        <div class="hero-card">
+          <div class="visual-wrap">
+            <img src="/test/hero.jpg" alt="OpenClaw Activation Experience" />
+          </div>
+          <div class="card-copy">
+            <h3>Entro pochi giorni</h3>
+            <ul class="bullet-list">
+              <li><span>✓</span><div>attivi il sistema OpenClaw</div></li>
+              <li><span>✓</span><div>hai almeno un asset operativo funzionante</div></li>
+              <li><span>✓</span><div>esci con una struttura chiara per continuare</div></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section problem">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">La frustrazione silenziosa</div>
+        <h2>Il problema non è che ti mancano strumenti</h2>
+        <p class="muted">Il problema è che stai ancora lavorando a mano. Hai tool, hai AI, hai idee. Ma continui a tenere tutto insieme con la testa, con passaggi manuali e con pezzi sparsi che non lavorano come sistema.</p>
+      </div>
+      <div class="cards-3">
+        <div class="card">
+          <h3>Più strumenti, più caos</h3>
+          <p class="muted">Ogni tool aggiunge possibilità, ma senza struttura aumenta solo il rumore operativo.</p>
+        </div>
+        <div class="card">
+          <h3>L’AI resta manuale</h3>
+          <p class="muted">Usi prompt, test e strumenti, ma ogni volta devi ancora far partire tu il lavoro.</p>
+        </div>
+        <div class="card">
+          <h3>Nessuna vera leva</h3>
+          <p class="muted">Stai costruendo, ma senza un sistema integrato che esegue per te una parte del lavoro.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Cosa cambia</div>
+        <h2>Da strumenti sparsi a sistema attivo</h2>
+        <p class="muted">L’obiettivo non è farti studiare OpenClaw in teoria. L’obiettivo è portarti rapidamente a un sistema strutturato che esegue per te una parte del lavoro.</p>
+      </div>
+      <div class="cards-2">
+        <div class="card">
+          <h3>Prima</h3>
+          <ul class="plain-list muted">
+            <li>• strumenti separati</li>
+            <li>• AI usata a mano</li>
+            <li>• passaggi manuali continui</li>
+            <li>• tutto dipende ancora troppo da te</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Dopo</h3>
+          <ul class="plain-list muted">
+            <li>• sistema OpenClaw attivo</li>
+            <li>• primo asset operativo funzionante</li>
+            <li>• struttura base pronta</li>
+            <li>• impostazione chiara per continuare in autonomia</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Come funziona</div>
+        <h2>Dall’accesso all’asset operativo</h2>
+      </div>
+      <div class="process-steps">
+        <div class="step">
+          <div class="step-num">01</div>
+          <div>
+            <h3>Accedi all’experience</h3>
+            <p class="muted">Entri subito nell’OpenClaw Activation Experience e lavori dentro una struttura già impostata.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">02</div>
+          <div>
+            <h3>Inizi il workshop guidato</h3>
+            <p class="muted">Nei primi 3–5 giorni attivi il sistema passo dopo passo, senza dover capire tutto OpenClaw da solo.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">03</div>
+          <div>
+            <h3>Lavori dentro l’ambiente di attivazione</h3>
+            <p class="muted">Porti domande, idee, casi e blocchi dentro il gruppo condiviso e li trasformi in materiale utile per le Office Hour.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">04</div>
+          <div>
+            <h3>Esci con un primo asset operativo</h3>
+            <p class="muted">Pagina, funnel o automazione base: non teoria, ma una base reale e funzionante da cui continuare.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div class="card">
+        <div class="eyebrow">Cosa include</div>
+        <h2 style="font-size:2.3rem;">Dentro OCAE trovi tutto ciò che serve per partire con struttura</h2>
+        <ul class="bullet-list" style="margin-top:10px;">
+          <li><span>✓</span><div>workshop guidato 3–5 giorni</div></li>
+          <li><span>✓</span><div>attivazione del sistema OpenClaw</div></li>
+          <li><span>✓</span><div>1 mese di accesso alla piattaforma incluso (valore 97€/mese, destinato a salire fino a 297€/mese)</div></li>
+          <li><span>✓</span><div>setup iniziale funzionante</div></li>
+          <li><span>✓</span><div>minicorso di attivazione</div></li>
+          <li><span>✓</span><div>struttura base pronta</div></li>
+          <li><span>✓</span><div>skill iniziali già utilizzabili</div></li>
+        </ul>
+      </div>
+      <div class="offer-box">
+        <div class="eyebrow">Prezzo</div>
+        <h2 style="font-size:2.2rem;">OpenClaw Activation Experience</h2>
+        <div class="price-row">
+          <div class="price-old">997€</div>
+          <div class="price-now">497€</div>
+        </div>
+        <p class="muted">Offerta lancio. Accesso immediato all’experience guidata di un mese.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://buy.stripe.com/6oU28r3rAcYmfu30KVeUU00">Attiva il tuo sistema</a>
+          <a class="btn btn-secondary" href="https://quiz.riccardoromano.biz/oce">Candidati</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div class="card">
+        <div class="eyebrow">Execution Environment</div>
+        <h2 style="font-size:2.2rem;">Lavori dentro un ambiente dedicato</h2>
+        <p class="muted">Durante il mese di attivazione non entri solo in una piattaforma. Entri in un contesto condiviso in cui costruisci, porti casi reali e prepari ciò che verrà lavorato nelle sessioni live.</p>
+        <ul class="bullet-list" style="margin-top:10px;">
+          <li><span>✓</span><div>gruppo Telegram riservato ai partecipanti</div></li>
+          <li><span>✓</span><div>3 Office Hour live per analizzare progetti, domande e blocchi</div></li>
+          <li><span>✓</span><div>pacchetto di skill iniziali per partire subito</div></li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Come funziona davvero il gruppo</h3>
+        <p class="muted">Il gruppo Telegram non è un canale di supporto personale uno-a-uno.</p>
+        <p class="muted">È il posto in cui condividi ciò che stai costruendo, fai emergere dubbi, idee, casi e punti bloccanti.</p>
+        <p class="muted">Questi elementi vengono raccolti e poi portati dentro le Office Hour settimanali, così ogni call diventa utile per tutti e l’esperienza resta concreta, applicata e condivisa.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Deliverable</div>
+        <h2>Cosa ti porti a casa</h2>
+      </div>
+      <div class="cards-3">
+        <div class="card">
+          <h3>Sistema attivo</h3>
+          <p class="muted">Esci con OpenClaw attivo e funzionante, non con sola teoria o setup incompleto.</p>
+        </div>
+        <div class="card">
+          <h3>Primo asset operativo</h3>
+          <p class="muted">Pagina, funnel o automazione base: un asset reale su cui continuare a costruire.</p>
+        </div>
+        <div class="card">
+          <h3>Impostazione chiara</h3>
+          <p class="muted">Hai la struttura giusta per portare avanti i tuoi progetti senza ripartire da zero.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div class="eyebrow">Obiezioni</div>
+        <h2>Le domande che bloccano quasi tutti</h2>
+      </div>
+      <div class="faq">
+        <div class="faq-item">
+          <h3>Non sono tecnico</h3>
+          <p class="muted">Non serve diventare tecnico. Serve attivare il primo sistema giusto, guidato passo dopo passo.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Ho già troppi tool</h3>
+          <p class="muted">Proprio per questo. OCAE non aggiunge caos: trasforma strumenti sparsi in un sistema più integrato e più utile.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Non ho tempo</h3>
+          <p class="muted">Il problema è che oggi stai già consumando tempo in passaggi manuali, dispersione e frammentazione. L’experience serve a ridurre quel tipo di attrito.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Non so se fa per il mio business</h3>
+          <p class="muted">Se il tuo problema è operativo e troppo ancora dipende da te, è probabile che sia il passaggio giusto. Se vuoi chiarirlo prima, puoi candidarti.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0;">
+    <div class="container">
+      <div class="final-cta">
+        <div class="eyebrow" style="background:rgba(255,255,255,.08); color:#d4e4ff; border-color:rgba(255,255,255,.12);">CTA finale</div>
+        <h2>Non ti serve capire tutto OpenClaw.<br>Ti serve attivare il primo sistema giusto.</h2>
+        <p class="muted">Accesso diretto per chi vuole partire subito. Call per chi vuole un confronto prima di entrare.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://buy.stripe.com/6oU28r3rAcYmfu30KVeUU00">Attiva il tuo sistema</a>
+          <a class="btn btn-secondary" href="https://quiz.riccardoromano.biz/oce">Candidati</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

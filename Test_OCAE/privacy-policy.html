@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - OpenClaw Activation Experience</title>
+    <style>
+        :root {
+            --bg: #0b1120;
+            --text: #e5e7eb;
+            --muted: #9ca3af;
+            --accent: #38bdf8;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        h1 { color: var(--accent); margin-bottom: 1.5rem; }
+        h2 { margin-top: 2rem; margin-bottom: 1rem; font-size: 1.3rem; }
+        p { margin-bottom: 1rem; color: var(--muted); }
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        ul { margin-left: 1.5rem; margin-bottom: 1rem; color: var(--muted); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Privacy Policy</h1>
+        
+        <h2>Titolare del Trattamento</h2>
+        <p>
+            <strong>Riccardo Romano</strong><br>
+            {{#if NIE_TITOLARE}}NIE: Y4027460J<br>{{/if}}
+            {{#if INDIRIZZO_TITOLARE}}Calle Feijoo de Sotomayor, 6 bj izq, 35118 Agüimes (Las Palmas), España<br>{{/if}}
+            <strong>Email:</strong> supporto@marketingpanorama.it<br>
+            {{#if TELEFONO}}<strong>Telefono:</strong> +34 XXX XXX XXX{{/if}}
+        </p>
+        
+        <h2>Raccolta Dati</h2>
+        <p>Raccogliamo i seguenti dati personali:</p>
+        <ul>
+            <li>Nome e cognome</li>
+            <li>Indirizzo email</li>
+            <li>Informazioni di contatto fornite volontariamente</li>
+        </ul>
+        
+        <h2>Utilizzo dei Dati</h2>
+        <p>I dati personali vengono utilizzati per:</p>
+        <ul>
+            <li>Fornire i servizi richiesti</li>
+            <li>Comunicazioni relative ai servizi</li>
+            <li>Invio di informazioni commerciali (con consenso)</li>
+        </ul>
+        
+        <h2>Conservazione</h2>
+        <p>I dati vengono conservati per 5 anni o per il tempo necessario a fornire i servizi richiesti.</p>
+        
+        <h2>Diritti dell'Utente</h2>
+        <p>Hai diritto di accedere, rettificare o cancellare i tuoi dati personali in qualsiasi momento contattandoci all'indirizzo supporto@marketingpanorama.it.</p>
+        
+        <h2>Cookie</h2>
+        <p>Questo sito utilizza cookie tecnici necessari al funzionamento. Non utilizziamo cookie di profilazione.</p>
+        
+        <p style="margin-top: 2rem;"><a href="/Test_OCAE">← Torna alla pagina principale</a></p>
+    </div>
+</body>
+</html>
