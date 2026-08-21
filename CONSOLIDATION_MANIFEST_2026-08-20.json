@@ -1,342 +1,2782 @@
-[
-  {
-    "route": "/webinar/",
-    "origin": "KEEP",
-    "git_state": "A  webinar/assets/riccardo-chi-sono-mobile.jpg\n M webinar/index.html\n M webinar/openclaw-webinar.ics\n M webinar/thank-you.html",
-    "source_path": "webinar",
-    "presence": "dir",
-    "assets": "8 files",
-    "live_status": "known-mixed",
-    "criticality": "BUSINESS CRITICAL"
+{
+  "MANIFEST_DATE": "2026-08-20",
+  "SOURCE_REPOSITORY": "/root/.openclaw/workspace/openclaw-pages",
+  "CONSOLIDATION_COMMIT": "940c1fc492dab2d6f0c4f515dee572c014786ab5",
+  "CANDIDATE_SOURCE": "/root/.openclaw/workspace/openclaw-pages/.vercel/output",
+  "CANDIDATE_COHERENCE": {
+    "status": "COHERENT",
+    "checked_against_current_canonical_source": true,
+    "method": "case-sensitive deterministic route derivation + route-equivalent html hash comparison",
+    "stale_routes": []
   },
-  {
-    "route": "/webreplay/",
-    "origin": "KEEP",
-    "git_state": "tracked-clean",
-    "source_path": "webreplay",
-    "presence": "dir",
-    "assets": "1 files",
-    "live_status": "known-mixed",
-    "criticality": "BUSINESS CRITICAL"
-  },
-  {
-    "route": "/webreplayover/",
-    "origin": "TRACK",
-    "git_state": "A  webreplayover/index.html",
-    "source_path": "webreplayover",
-    "presence": "dir",
-    "assets": "1 files",
-    "live_status": "known-mixed",
-    "criticality": "BUSINESS CRITICAL"
-  },
-  {
-    "route": "/catalogo-moduli/",
-    "origin": "TRACK",
-    "git_state": "A  catalogo-moduli/catalogo.html\nA  catalogo-moduli/highlight-brush.html\nA  catalogo-moduli/image-marquee.html\nA  catalogo-moduli/index.html\nA  catalogo-moduli/outline-text.html\nA  catalogo-moduli/parallax-numbers.html\nA  catalogo-moduli/particles-bg.html\nA  catalogo-moduli/scroll-reveal-image.html\nA  catalogo-moduli/scroll-reveal-sandwich.html\nA  catalogo-moduli/social-scroll.html\nA  catalogo-moduli/text-marquee.html\nA  catalogo-moduli/text-rotator-list.html\nA  catalogo-moduli/text-rotator.html\nA  catalogo-moduli/text-scroller-vertical.html",
-    "source_path": "catalogo-moduli",
-    "presence": "dir",
-    "assets": "14 files",
-    "live_status": "known-mixed",
-    "criticality": "OPERATIVA"
-  },
-  {
-    "route": "/centro-conoscenza/",
-    "origin": "KEEP",
-    "git_state": "tracked-clean",
-    "source_path": "centro-conoscenza",
-    "presence": "dir",
-    "assets": "1 files",
-    "live_status": "known-mixed",
-    "criticality": "OPERATIVA"
-  },
-  {
-    "route": "/metadigitale/",
-    "origin": "TRACK",
-    "git_state": "A  metadigitale/index.html",
-    "source_path": "metadigitale",
-    "presence": "dir",
-    "assets": "1 files",
-    "live_status": "known-mixed",
-    "criticality": "LAB/TEST"
-  },
-  {
-    "route": "/public-lessons/",
-    "origin": "TRACK",
-    "git_state": "A  public-lessons/index.html\nA  public-lessons/index.json",
-    "source_path": "public-lessons",
-    "presence": "dir",
-    "assets": "2 files",
-    "live_status": "known-mixed",
-    "criticality": "OPERATIVA"
-  },
-  {
-    "route": "/template1-blocco-lite/",
-    "origin": "TRACK",
-    "git_state": "A  template1-blocco-lite/index.html",
-    "source_path": "template1-blocco-lite",
-    "presence": "dir",
-    "assets": "1 files",
-    "live_status": "known-mixed",
-    "criticality": "LAB/TEST"
-  },
-  {
-    "route": "/template1-visual-mvp/",
-    "origin": "TRACK",
-    "git_state": "A  template1-visual-mvp/index.html",
-    "source_path": "template1-visual-mvp",
-    "presence": "dir",
-    "assets": "1 files",
-    "live_status": "known-mixed",
-    "criticality": "LAB/TEST"
-  },
-  {
-    "route": "/template1-visual-preservation-test/",
-    "origin": "TRACK",
-    "git_state": "A  template1-visual-preservation-test/index.html",
-    "source_path": "template1-visual-preservation-test",
-    "presence": "dir",
-    "assets": "1 files",
-    "live_status": "known-mixed",
-    "criticality": "LAB/TEST"
-  },
-  {
-    "route": "/ocaeckout/",
-    "origin": "TRACK",
-    "git_state": "A  ocaeckout/assets/offer-image.jpg\nA  ocaeckout/index.html\nA  ocaeckout/index.html.bak",
-    "source_path": "ocaeckout",
-    "presence": "dir",
-    "assets": "3 files",
-    "live_status": "known-mixed",
-    "criticality": "BUSINESS CRITICAL"
-  },
-  {
-    "route": "/ocaetyorder/",
-    "origin": "TRACK",
-    "git_state": "A  ocaetyorder/index.html",
-    "source_path": "ocaetyorder",
-    "presence": "dir",
-    "assets": "1 files",
-    "live_status": "known-mixed",
-    "criticality": "BUSINESS CRITICAL"
-  },
-  {
-    "route": "/alimentazione/",
-    "origin": "TRACK",
-    "git_state": "A  alimentazione/index.html",
-    "source_path": "alimentazione",
-    "presence": "dir",
-    "assets": "1 files",
-    "live_status": "known-mixed",
-    "criticality": "ARCHIVIO/RIFERIMENTO"
-  },
-  {
-    "route": "/disclaimer-ocae/",
-    "origin": "TRACK",
-    "git_state": "A  disclaimer-ocae/index.html",
-    "source_path": "disclaimer-ocae",
-    "presence": "dir",
-    "assets": "1 files",
-    "live_status": "known-mixed",
-    "criticality": "BUSINESS CRITICAL"
-  },
-  {
-    "route": "/marechiaro/",
-    "origin": "TRACK",
-    "git_state": "A  marechiaro/index.html\nA  marechiaro/logo.jpg",
-    "source_path": "marechiaro",
-    "presence": "dir",
-    "assets": "2 files",
-    "live_status": "known-mixed",
-    "criticality": "ARCHIVIO/RIFERIMENTO"
-  },
-  {
-    "route": "/parrucchiera/",
-    "origin": "TRACK",
-    "git_state": "A  parrucchiera/index.html",
-    "source_path": "parrucchiera",
-    "presence": "dir",
-    "assets": "1 files",
-    "live_status": "known-mixed",
-    "criticality": "ARCHIVIO/RIFERIMENTO"
-  },
-  {
-    "route": "/scrittura/",
-    "origin": "TRACK",
-    "git_state": "A  scrittura/index.html",
-    "source_path": "scrittura",
-    "presence": "dir",
-    "assets": "1 files",
-    "live_status": "known-mixed",
-    "criticality": "ARCHIVIO/RIFERIMENTO"
-  },
-  {
-    "route": "/vision/",
-    "origin": "TRACK",
-    "git_state": "A  vision/index.html",
-    "source_path": "vision",
-    "presence": "dir",
-    "assets": "1 files",
-    "live_status": "known-mixed",
-    "criticality": "ARCHIVIO/RIFERIMENTO"
-  },
-  {
-    "route": "/OCAE/",
-    "origin": "IMPORT",
-    "git_state": "A  OCAE/disclaimer.html\nA  OCAE/disclaimer/index.html\nA  OCAE/index.html\nA  OCAE/privacy-policy.html\nA  OCAE/privacy-policy/index.html\nA  OCAE/termini-di-servizio.html\nA  OCAE/termini-di-servizio/index.html",
-    "source_path": "OCAE",
-    "presence": "dir",
-    "assets": "7 files",
-    "live_status": "known-mixed",
-    "criticality": "BUSINESS CRITICAL"
-  },
-  {
-    "route": "/OCAE/disclaimer/",
-    "origin": "IMPORT",
-    "git_state": "A  OCAE/disclaimer/index.html",
-    "source_path": "OCAE/disclaimer",
-    "presence": "dir",
-    "assets": "1 files",
-    "live_status": "known-mixed",
-    "criticality": "BUSINESS CRITICAL"
-  },
-  {
-    "route": "/OCAE/privacy-policy/",
-    "origin": "IMPORT",
-    "git_state": "A  OCAE/privacy-policy/index.html",
-    "source_path": "OCAE/privacy-policy",
-    "presence": "dir",
-    "assets": "1 files",
-    "live_status": "known-mixed",
-    "criticality": "BUSINESS CRITICAL"
-  },
-  {
-    "route": "/OCAE/termini-di-servizio/",
-    "origin": "IMPORT",
-    "git_state": "A  OCAE/termini-di-servizio/index.html",
-    "source_path": "OCAE/termini-di-servizio",
-    "presence": "dir",
-    "assets": "1 files",
-    "live_status": "known-mixed",
-    "criticality": "BUSINESS CRITICAL"
-  },
-  {
-    "route": "/nucleo/",
-    "origin": "IMPORT",
-    "git_state": "A  nucleo/index.html",
-    "source_path": "nucleo",
-    "presence": "dir",
-    "assets": "1 files",
-    "live_status": "known-mixed",
-    "criticality": "OPERATIVA"
-  },
-  {
-    "route": "/CustomOCAE/",
-    "origin": "IMPORT",
-    "git_state": "A  CustomOCAE/disclaimer.html\nA  CustomOCAE/index.html\nA  CustomOCAE/privacy-policy.html\nA  CustomOCAE/termini-di-servizio.html",
-    "source_path": "CustomOCAE",
-    "presence": "dir",
-    "assets": "4 files",
-    "live_status": "known-mixed",
-    "criticality": "LAB/TEST"
-  },
-  {
-    "route": "/CustomOCAE2/",
-    "origin": "IMPORT",
-    "git_state": "A  CustomOCAE2/disclaimer.html\nA  CustomOCAE2/index.html\nA  CustomOCAE2/privacy-policy.html\nA  CustomOCAE2/termini-di-servizio.html",
-    "source_path": "CustomOCAE2",
-    "presence": "dir",
-    "assets": "4 files",
-    "live_status": "known-mixed",
-    "criticality": "LAB/TEST"
-  },
-  {
-    "route": "/CustomOCAE3/",
-    "origin": "IMPORT",
-    "git_state": "A  CustomOCAE3/disclaimer.html\nA  CustomOCAE3/index.html\nA  CustomOCAE3/privacy-policy.html\nA  CustomOCAE3/termini-di-servizio.html",
-    "source_path": "CustomOCAE3",
-    "presence": "dir",
-    "assets": "4 files",
-    "live_status": "known-mixed",
-    "criticality": "LAB/TEST"
-  },
-  {
-    "route": "/TestOCAE/",
-    "origin": "IMPORT",
-    "git_state": "A  TestOCAE/disclaimer.html\nA  TestOCAE/index.html\nA  TestOCAE/privacy-policy.html\nA  TestOCAE/termini-di-servizio.html",
-    "source_path": "TestOCAE",
-    "presence": "dir",
-    "assets": "4 files",
-    "live_status": "known-mixed",
-    "criticality": "LAB/TEST"
-  },
-  {
-    "route": "/Test_OCAE/",
-    "origin": "IMPORT",
-    "git_state": "A  Test_OCAE/disclaimer.html\nA  Test_OCAE/index.html\nA  Test_OCAE/privacy-policy.html\nA  Test_OCAE/termini-di-servizio.html",
-    "source_path": "Test_OCAE",
-    "presence": "dir",
-    "assets": "4 files",
-    "live_status": "known-mixed",
-    "criticality": "LAB/TEST"
-  },
-  {
-    "route": "/ai-client-system/",
-    "origin": "IMPORT",
-    "git_state": "A  ai-client-system/checkout.html\nA  ai-client-system/disclaimer.html\nA  ai-client-system/index.html\nA  ai-client-system/privacy.html\nA  ai-client-system/terms.html",
-    "source_path": "ai-client-system",
-    "presence": "dir",
-    "assets": "5 files",
-    "live_status": "known-mixed",
-    "criticality": "ARCHIVIO/RIFERIMENTO"
-  },
-  {
-    "route": "/ai-client-system-old/",
-    "origin": "IMPORT",
-    "git_state": "A  ai-client-system-old/.gitignore\nA  ai-client-system-old/checkout.html\nA  ai-client-system-old/disclaimer.html\nA  ai-client-system-old/index.html\nA  ai-client-system-old/privacy.html\nA  ai-client-system-old/terms.html",
-    "source_path": "ai-client-system-old",
-    "presence": "dir",
-    "assets": "8 files",
-    "live_status": "known-mixed",
-    "criticality": "ARCHIVIO/RIFERIMENTO"
-  },
-  {
-    "route": "/demo3-1-bridge-light-patched/",
-    "origin": "IMPORT",
-    "git_state": "A  demo3-1-bridge-light-patched/.gitignore\nA  demo3-1-bridge-light-patched/disclaimer.html\nA  demo3-1-bridge-light-patched/index.html\nA  demo3-1-bridge-light-patched/privacy-policy.html\nA  demo3-1-bridge-light-patched/termini-di-servizio.html\nA  demo3-1-bridge-light-patched/vercel.json",
-    "source_path": "demo3-1-bridge-light-patched",
-    "presence": "dir",
-    "assets": "8 files",
-    "live_status": "known-mixed",
-    "criticality": "LAB/TEST"
-  },
-  {
-    "route": "/test/",
-    "origin": "IMPORT",
-    "git_state": "A  test/hero.jpg\nA  test/index.html",
-    "source_path": "test",
-    "presence": "dir",
-    "assets": "2 files",
-    "live_status": "known-mixed",
-    "criticality": "LAB/TEST"
-  },
-  {
-    "route": "/identity/",
-    "origin": "RESOLVE",
-    "git_state": "M  identity/index.html",
-    "source_path": "identity",
-    "presence": "dir",
-    "assets": "1 files",
-    "live_status": "known-mixed",
-    "criticality": "OPERATIVA"
-  },
-  {
-    "route": "/soul/",
-    "origin": "RESOLVE",
-    "git_state": "M  soul/index.html",
-    "source_path": "soul",
-    "presence": "dir",
-    "assets": "1 files",
-    "live_status": "known-mixed",
-    "criticality": "OPERATIVA"
+  "ROUTE_INVENTORY": [
+    {
+      "route": "/",
+      "origin": "KEEP",
+      "git_state": "M index.html",
+      "source_path": "index.html",
+      "presence": "file",
+      "assets": "1 files",
+      "live_status": "known-mixed",
+      "criticality": "BUSINESS CRITICAL"
+    },
+    {
+      "route": "/CustomOCAE/",
+      "origin": "IMPORT",
+      "git_state": "A  CustomOCAE/disclaimer.html\nA  CustomOCAE/index.html\nA  CustomOCAE/privacy-policy.html\nA  CustomOCAE/termini-di-servizio.html",
+      "source_path": "CustomOCAE",
+      "presence": "dir",
+      "assets": "4 files",
+      "live_status": "known-mixed",
+      "criticality": "LAB/TEST"
+    },
+    {
+      "route": "/CustomOCAE2/",
+      "origin": "IMPORT",
+      "git_state": "A  CustomOCAE2/disclaimer.html\nA  CustomOCAE2/index.html\nA  CustomOCAE2/privacy-policy.html\nA  CustomOCAE2/termini-di-servizio.html",
+      "source_path": "CustomOCAE2",
+      "presence": "dir",
+      "assets": "4 files",
+      "live_status": "known-mixed",
+      "criticality": "LAB/TEST"
+    },
+    {
+      "route": "/CustomOCAE3/",
+      "origin": "IMPORT",
+      "git_state": "A  CustomOCAE3/disclaimer.html\nA  CustomOCAE3/index.html\nA  CustomOCAE3/privacy-policy.html\nA  CustomOCAE3/termini-di-servizio.html",
+      "source_path": "CustomOCAE3",
+      "presence": "dir",
+      "assets": "4 files",
+      "live_status": "known-mixed",
+      "criticality": "LAB/TEST"
+    },
+    {
+      "route": "/OCAE/",
+      "origin": "IMPORT",
+      "git_state": "A  OCAE/disclaimer.html\nA  OCAE/disclaimer/index.html\nA  OCAE/index.html\nA  OCAE/privacy-policy.html\nA  OCAE/privacy-policy/index.html\nA  OCAE/termini-di-servizio.html\nA  OCAE/termini-di-servizio/index.html",
+      "source_path": "OCAE",
+      "presence": "dir",
+      "assets": "7 files",
+      "live_status": "known-mixed",
+      "criticality": "BUSINESS CRITICAL"
+    },
+    {
+      "route": "/OCAE/disclaimer/",
+      "origin": "IMPORT",
+      "git_state": "A  OCAE/disclaimer/index.html",
+      "source_path": "OCAE/disclaimer",
+      "presence": "dir",
+      "assets": "1 files",
+      "live_status": "known-mixed",
+      "criticality": "BUSINESS CRITICAL"
+    },
+    {
+      "route": "/OCAE/privacy-policy/",
+      "origin": "IMPORT",
+      "git_state": "A  OCAE/privacy-policy/index.html",
+      "source_path": "OCAE/privacy-policy",
+      "presence": "dir",
+      "assets": "1 files",
+      "live_status": "known-mixed",
+      "criticality": "BUSINESS CRITICAL"
+    },
+    {
+      "route": "/OCAE/termini-di-servizio/",
+      "origin": "IMPORT",
+      "git_state": "A  OCAE/termini-di-servizio/index.html",
+      "source_path": "OCAE/termini-di-servizio",
+      "presence": "dir",
+      "assets": "1 files",
+      "live_status": "known-mixed",
+      "criticality": "BUSINESS CRITICAL"
+    },
+    {
+      "route": "/TestOCAE/",
+      "origin": "IMPORT",
+      "git_state": "A  TestOCAE/disclaimer.html\nA  TestOCAE/index.html\nA  TestOCAE/privacy-policy.html\nA  TestOCAE/termini-di-servizio.html",
+      "source_path": "TestOCAE",
+      "presence": "dir",
+      "assets": "4 files",
+      "live_status": "known-mixed",
+      "criticality": "LAB/TEST"
+    },
+    {
+      "route": "/Test_OCAE/",
+      "origin": "IMPORT",
+      "git_state": "A  Test_OCAE/disclaimer.html\nA  Test_OCAE/index.html\nA  Test_OCAE/privacy-policy.html\nA  Test_OCAE/termini-di-servizio.html",
+      "source_path": "Test_OCAE",
+      "presence": "dir",
+      "assets": "4 files",
+      "live_status": "known-mixed",
+      "criticality": "LAB/TEST"
+    },
+    {
+      "route": "/ai-client-system-old/",
+      "origin": "IMPORT",
+      "git_state": "A  ai-client-system-old/.gitignore\nA  ai-client-system-old/checkout.html\nA  ai-client-system-old/disclaimer.html\nA  ai-client-system-old/index.html\nA  ai-client-system-old/privacy.html\nA  ai-client-system-old/terms.html",
+      "source_path": "ai-client-system-old",
+      "presence": "dir",
+      "assets": "8 files",
+      "live_status": "known-mixed",
+      "criticality": "ARCHIVIO/RIFERIMENTO"
+    },
+    {
+      "route": "/ai-client-system/",
+      "origin": "IMPORT",
+      "git_state": "A  ai-client-system/checkout.html\nA  ai-client-system/disclaimer.html\nA  ai-client-system/index.html\nA  ai-client-system/privacy.html\nA  ai-client-system/terms.html",
+      "source_path": "ai-client-system",
+      "presence": "dir",
+      "assets": "5 files",
+      "live_status": "known-mixed",
+      "criticality": "ARCHIVIO/RIFERIMENTO"
+    },
+    {
+      "route": "/alimentazione/",
+      "origin": "TRACK",
+      "git_state": "A  alimentazione/index.html",
+      "source_path": "alimentazione",
+      "presence": "dir",
+      "assets": "1 files",
+      "live_status": "known-mixed",
+      "criticality": "ARCHIVIO/RIFERIMENTO"
+    },
+    {
+      "route": "/catalogo-moduli/",
+      "origin": "TRACK",
+      "git_state": "A  catalogo-moduli/catalogo.html\nA  catalogo-moduli/highlight-brush.html\nA  catalogo-moduli/image-marquee.html\nA  catalogo-moduli/index.html\nA  catalogo-moduli/outline-text.html\nA  catalogo-moduli/parallax-numbers.html\nA  catalogo-moduli/particles-bg.html\nA  catalogo-moduli/scroll-reveal-image.html\nA  catalogo-moduli/scroll-reveal-sandwich.html\nA  catalogo-moduli/social-scroll.html\nA  catalogo-moduli/text-marquee.html\nA  catalogo-moduli/text-rotator-list.html\nA  catalogo-moduli/text-rotator.html\nA  catalogo-moduli/text-scroller-vertical.html",
+      "source_path": "catalogo-moduli",
+      "presence": "dir",
+      "assets": "14 files",
+      "live_status": "known-mixed",
+      "criticality": "OPERATIVA"
+    },
+    {
+      "route": "/centro-conoscenza/",
+      "origin": "KEEP",
+      "git_state": "tracked-clean",
+      "source_path": "centro-conoscenza",
+      "presence": "dir",
+      "assets": "1 files",
+      "live_status": "known-mixed",
+      "criticality": "OPERATIVA"
+    },
+    {
+      "route": "/demo3-1-bridge-light-patched/",
+      "origin": "IMPORT",
+      "git_state": "A  demo3-1-bridge-light-patched/.gitignore\nA  demo3-1-bridge-light-patched/disclaimer.html\nA  demo3-1-bridge-light-patched/index.html\nA  demo3-1-bridge-light-patched/privacy-policy.html\nA  demo3-1-bridge-light-patched/termini-di-servizio.html\nA  demo3-1-bridge-light-patched/vercel.json",
+      "source_path": "demo3-1-bridge-light-patched",
+      "presence": "dir",
+      "assets": "8 files",
+      "live_status": "known-mixed",
+      "criticality": "LAB/TEST"
+    },
+    {
+      "route": "/disclaimer-ocae/",
+      "origin": "TRACK",
+      "git_state": "A  disclaimer-ocae/index.html",
+      "source_path": "disclaimer-ocae",
+      "presence": "dir",
+      "assets": "1 files",
+      "live_status": "known-mixed",
+      "criticality": "BUSINESS CRITICAL"
+    },
+    {
+      "route": "/identity/",
+      "origin": "RESOLVE",
+      "git_state": "M  identity/index.html",
+      "source_path": "identity",
+      "presence": "dir",
+      "assets": "1 files",
+      "live_status": "known-mixed",
+      "criticality": "OPERATIVA"
+    },
+    {
+      "route": "/marechiaro/",
+      "origin": "TRACK",
+      "git_state": "A  marechiaro/index.html\nA  marechiaro/logo.jpg",
+      "source_path": "marechiaro",
+      "presence": "dir",
+      "assets": "2 files",
+      "live_status": "known-mixed",
+      "criticality": "ARCHIVIO/RIFERIMENTO"
+    },
+    {
+      "route": "/metadigitale/",
+      "origin": "TRACK",
+      "git_state": "A  metadigitale/index.html",
+      "source_path": "metadigitale",
+      "presence": "dir",
+      "assets": "1 files",
+      "live_status": "known-mixed",
+      "criticality": "LAB/TEST"
+    },
+    {
+      "route": "/nucleo/",
+      "origin": "IMPORT",
+      "git_state": "A  nucleo/index.html",
+      "source_path": "nucleo",
+      "presence": "dir",
+      "assets": "1 files",
+      "live_status": "known-mixed",
+      "criticality": "OPERATIVA"
+    },
+    {
+      "route": "/ocae/",
+      "origin": "KEEP",
+      "git_state": "tracked-clean",
+      "source_path": "ocae",
+      "presence": "dir",
+      "assets": "10 files",
+      "live_status": "known-mixed",
+      "criticality": "BUSINESS CRITICAL"
+    },
+    {
+      "route": "/ocaeckout/",
+      "origin": "TRACK",
+      "git_state": "A  ocaeckout/assets/offer-image.jpg\nA  ocaeckout/index.html\nA  ocaeckout/index.html.bak",
+      "source_path": "ocaeckout",
+      "presence": "dir",
+      "assets": "3 files",
+      "live_status": "known-mixed",
+      "criticality": "BUSINESS CRITICAL"
+    },
+    {
+      "route": "/ocaetyorder/",
+      "origin": "TRACK",
+      "git_state": "A  ocaetyorder/index.html",
+      "source_path": "ocaetyorder",
+      "presence": "dir",
+      "assets": "1 files",
+      "live_status": "known-mixed",
+      "criticality": "BUSINESS CRITICAL"
+    },
+    {
+      "route": "/parrucchiera/",
+      "origin": "TRACK",
+      "git_state": "A  parrucchiera/index.html",
+      "source_path": "parrucchiera",
+      "presence": "dir",
+      "assets": "1 files",
+      "live_status": "known-mixed",
+      "criticality": "ARCHIVIO/RIFERIMENTO"
+    },
+    {
+      "route": "/public-lessons/",
+      "origin": "TRACK",
+      "git_state": "A  public-lessons/index.html\nA  public-lessons/index.json",
+      "source_path": "public-lessons",
+      "presence": "dir",
+      "assets": "2 files",
+      "live_status": "known-mixed",
+      "criticality": "OPERATIVA"
+    },
+    {
+      "route": "/scrittura/",
+      "origin": "TRACK",
+      "git_state": "A  scrittura/index.html",
+      "source_path": "scrittura",
+      "presence": "dir",
+      "assets": "1 files",
+      "live_status": "known-mixed",
+      "criticality": "ARCHIVIO/RIFERIMENTO"
+    },
+    {
+      "route": "/soul/",
+      "origin": "RESOLVE",
+      "git_state": "M  soul/index.html",
+      "source_path": "soul",
+      "presence": "dir",
+      "assets": "1 files",
+      "live_status": "known-mixed",
+      "criticality": "OPERATIVA"
+    },
+    {
+      "route": "/template1-blocco-lite/",
+      "origin": "TRACK",
+      "git_state": "A  template1-blocco-lite/index.html",
+      "source_path": "template1-blocco-lite",
+      "presence": "dir",
+      "assets": "1 files",
+      "live_status": "known-mixed",
+      "criticality": "LAB/TEST"
+    },
+    {
+      "route": "/template1-visual-mvp/",
+      "origin": "TRACK",
+      "git_state": "A  template1-visual-mvp/index.html",
+      "source_path": "template1-visual-mvp",
+      "presence": "dir",
+      "assets": "1 files",
+      "live_status": "known-mixed",
+      "criticality": "LAB/TEST"
+    },
+    {
+      "route": "/template1-visual-preservation-test/",
+      "origin": "TRACK",
+      "git_state": "A  template1-visual-preservation-test/index.html",
+      "source_path": "template1-visual-preservation-test",
+      "presence": "dir",
+      "assets": "1 files",
+      "live_status": "known-mixed",
+      "criticality": "LAB/TEST"
+    },
+    {
+      "route": "/test/",
+      "origin": "IMPORT",
+      "git_state": "A  test/hero.jpg\nA  test/index.html",
+      "source_path": "test",
+      "presence": "dir",
+      "assets": "2 files",
+      "live_status": "known-mixed",
+      "criticality": "LAB/TEST"
+    },
+    {
+      "route": "/vision/",
+      "origin": "TRACK",
+      "git_state": "A  vision/index.html",
+      "source_path": "vision",
+      "presence": "dir",
+      "assets": "1 files",
+      "live_status": "known-mixed",
+      "criticality": "ARCHIVIO/RIFERIMENTO"
+    },
+    {
+      "route": "/webinar/",
+      "origin": "KEEP",
+      "git_state": "A  webinar/assets/riccardo-chi-sono-mobile.jpg\n M webinar/index.html\n M webinar/openclaw-webinar.ics\n M webinar/thank-you.html",
+      "source_path": "webinar",
+      "presence": "dir",
+      "assets": "8 files",
+      "live_status": "known-mixed",
+      "criticality": "BUSINESS CRITICAL"
+    },
+    {
+      "route": "/webreplay/",
+      "origin": "KEEP",
+      "git_state": "tracked-clean",
+      "source_path": "webreplay",
+      "presence": "dir",
+      "assets": "1 files",
+      "live_status": "known-mixed",
+      "criticality": "BUSINESS CRITICAL"
+    },
+    {
+      "route": "/webreplayover/",
+      "origin": "TRACK",
+      "git_state": "A  webreplayover/index.html",
+      "source_path": "webreplayover",
+      "presence": "dir",
+      "assets": "1 files",
+      "live_status": "known-mixed",
+      "criticality": "BUSINESS CRITICAL"
+    }
+  ],
+  "EXPECTED_ROUTE_COUNT": 79,
+  "FOUND_IN_CANDIDATE_COUNT": 142,
+  "MISSING_COUNT": 0,
+  "EXTRA_COUNT": 63,
+  "EXPECTED_ROUTES": [
+    "/",
+    "/CustomOCAE/",
+    "/CustomOCAE/disclaimer/",
+    "/CustomOCAE/privacy-policy/",
+    "/CustomOCAE/termini-di-servizio/",
+    "/CustomOCAE2/",
+    "/CustomOCAE2/disclaimer/",
+    "/CustomOCAE2/privacy-policy/",
+    "/CustomOCAE2/termini-di-servizio/",
+    "/CustomOCAE3/",
+    "/CustomOCAE3/disclaimer/",
+    "/CustomOCAE3/privacy-policy/",
+    "/CustomOCAE3/termini-di-servizio/",
+    "/OCAE/",
+    "/OCAE/disclaimer/",
+    "/OCAE/privacy-policy/",
+    "/OCAE/termini-di-servizio/",
+    "/TestOCAE/",
+    "/TestOCAE/disclaimer/",
+    "/TestOCAE/privacy-policy/",
+    "/TestOCAE/termini-di-servizio/",
+    "/Test_OCAE/",
+    "/Test_OCAE/disclaimer/",
+    "/Test_OCAE/privacy-policy/",
+    "/Test_OCAE/termini-di-servizio/",
+    "/ai-client-system-old/",
+    "/ai-client-system-old/checkout/",
+    "/ai-client-system-old/disclaimer/",
+    "/ai-client-system-old/privacy/",
+    "/ai-client-system-old/terms/",
+    "/ai-client-system/",
+    "/ai-client-system/checkout/",
+    "/ai-client-system/disclaimer/",
+    "/ai-client-system/privacy/",
+    "/ai-client-system/terms/",
+    "/alimentazione/",
+    "/catalogo-moduli/",
+    "/catalogo-moduli/catalogo/",
+    "/catalogo-moduli/highlight-brush/",
+    "/catalogo-moduli/image-marquee/",
+    "/catalogo-moduli/outline-text/",
+    "/catalogo-moduli/parallax-numbers/",
+    "/catalogo-moduli/particles-bg/",
+    "/catalogo-moduli/scroll-reveal-image/",
+    "/catalogo-moduli/scroll-reveal-sandwich/",
+    "/catalogo-moduli/social-scroll/",
+    "/catalogo-moduli/text-marquee/",
+    "/catalogo-moduli/text-rotator-list/",
+    "/catalogo-moduli/text-rotator/",
+    "/catalogo-moduli/text-scroller-vertical/",
+    "/centro-conoscenza/",
+    "/demo3-1-bridge-light-patched/",
+    "/demo3-1-bridge-light-patched/disclaimer/",
+    "/demo3-1-bridge-light-patched/privacy-policy/",
+    "/demo3-1-bridge-light-patched/termini-di-servizio/",
+    "/disclaimer-ocae/",
+    "/identity/",
+    "/marechiaro/",
+    "/metadigitale/",
+    "/nucleo/",
+    "/ocae/",
+    "/ocae/disclaimer/",
+    "/ocae/privacy-policy/",
+    "/ocae/termini-di-servizio/",
+    "/ocaeckout/",
+    "/ocaetyorder/",
+    "/parrucchiera/",
+    "/public-lessons/",
+    "/scrittura/",
+    "/soul/",
+    "/template1-blocco-lite/",
+    "/template1-visual-mvp/",
+    "/template1-visual-preservation-test/",
+    "/test/",
+    "/vision/",
+    "/webinar/",
+    "/webinar/thank-you/",
+    "/webreplay/",
+    "/webreplayover/"
+  ],
+  "FOUND_ROUTES": [
+    "/",
+    "/CustomOCAE/",
+    "/CustomOCAE/disclaimer/",
+    "/CustomOCAE/privacy-policy/",
+    "/CustomOCAE/termini-di-servizio/",
+    "/CustomOCAE2/",
+    "/CustomOCAE2/disclaimer/",
+    "/CustomOCAE2/privacy-policy/",
+    "/CustomOCAE2/termini-di-servizio/",
+    "/CustomOCAE3/",
+    "/CustomOCAE3/disclaimer/",
+    "/CustomOCAE3/privacy-policy/",
+    "/CustomOCAE3/termini-di-servizio/",
+    "/L-OCAE/",
+    "/L-OCAE/disclaimer/",
+    "/L-OCAE/privacy-policy/",
+    "/L-OCAE/termini-di-servizio/",
+    "/OCAE/",
+    "/OCAE/disclaimer/",
+    "/OCAE/privacy-policy/",
+    "/OCAE/termini-di-servizio/",
+    "/TestOCAE/",
+    "/TestOCAE/disclaimer/",
+    "/TestOCAE/privacy-policy/",
+    "/TestOCAE/termini-di-servizio/",
+    "/Test_OCAE/",
+    "/Test_OCAE/disclaimer/",
+    "/Test_OCAE/privacy-policy/",
+    "/Test_OCAE/termini-di-servizio/",
+    "/ai-client-system-old/",
+    "/ai-client-system-old/checkout/",
+    "/ai-client-system-old/disclaimer/",
+    "/ai-client-system-old/privacy/",
+    "/ai-client-system-old/terms/",
+    "/ai-client-system/",
+    "/ai-client-system/checkout/",
+    "/ai-client-system/disclaimer/",
+    "/ai-client-system/privacy/",
+    "/ai-client-system/terms/",
+    "/alimentazione/",
+    "/bdiag/",
+    "/catalogo-moduli/",
+    "/catalogo-moduli/catalogo/",
+    "/catalogo-moduli/highlight-brush/",
+    "/catalogo-moduli/image-marquee/",
+    "/catalogo-moduli/outline-text/",
+    "/catalogo-moduli/parallax-numbers/",
+    "/catalogo-moduli/particles-bg/",
+    "/catalogo-moduli/scroll-reveal-image/",
+    "/catalogo-moduli/scroll-reveal-sandwich/",
+    "/catalogo-moduli/social-scroll/",
+    "/catalogo-moduli/text-marquee/",
+    "/catalogo-moduli/text-rotator-list/",
+    "/catalogo-moduli/text-rotator/",
+    "/catalogo-moduli/text-scroller-vertical/",
+    "/centro-conoscenza/",
+    "/check-inv-sost/",
+    "/crea-blog/",
+    "/demo3-1-bridge-light-patched/",
+    "/demo3-1-bridge-light-patched/disclaimer/",
+    "/demo3-1-bridge-light-patched/privacy-policy/",
+    "/demo3-1-bridge-light-patched/termini-di-servizio/",
+    "/demo4ocae/",
+    "/demo4ocae/disclaimer/",
+    "/demo4ocae/privacy-policy/",
+    "/demo4ocae/termini-di-servizio/",
+    "/disclaimer-ocae/",
+    "/disclaimer/",
+    "/dlorder/",
+    "/dream-life-bonuses/",
+    "/dream-life-bonuses/bonus-1/",
+    "/dream-life-bonuses/bonus-11/",
+    "/dream-life-bonuses/bonus-2/",
+    "/dream-life-bonuses/bonus-3/",
+    "/dream-life-bonuses/bonus-4/",
+    "/dream-life-bonuses/bonus-6/",
+    "/dream-life-bonuses/bonus-7/",
+    "/dream-life-bonuses/bonus-8/",
+    "/dream-life-bonuses/bonus-9/",
+    "/dream-life/",
+    "/dreamlife/",
+    "/giftcalculator/",
+    "/home/",
+    "/identity/",
+    "/marechiaro/",
+    "/metadigitale/",
+    "/metodo-dec/",
+    "/movie/",
+    "/nerea/",
+    "/nucleo/",
+    "/ocae/",
+    "/ocae/disclaimer/",
+    "/ocae/privacy-policy/",
+    "/ocae/termini-di-servizio/",
+    "/ocaeckout/",
+    "/ocaetyorder/",
+    "/pagina1/",
+    "/pagina2/",
+    "/pagina3/",
+    "/parrucchiera/",
+    "/privacy-policy/",
+    "/public-lessons/",
+    "/scrittura/",
+    "/skill-template/",
+    "/soul/",
+    "/template-checkout/",
+    "/template-upsell1/",
+    "/template-upsell2/",
+    "/template1-blocco-lite/",
+    "/template1-visual-mvp/",
+    "/template1-visual-preservation-test/",
+    "/template1/",
+    "/template2/",
+    "/template2/bonus-1/",
+    "/template2/bonus-2/",
+    "/template2/bonus-3/",
+    "/template3/",
+    "/templates/template1/",
+    "/templates/template2/",
+    "/templates/template2/bonus-1/",
+    "/templates/template2/bonus-2/",
+    "/templates/template2/bonus-3/",
+    "/termini-di-servizio/",
+    "/test/",
+    "/vision/",
+    "/vitadasogno-bonus/",
+    "/vitadasogno-bonus/bonus-1/",
+    "/vitadasogno-bonus/bonus-11/",
+    "/vitadasogno-bonus/bonus-2/",
+    "/vitadasogno-bonus/bonus-3/",
+    "/vitadasogno-bonus/bonus-4/",
+    "/vitadasogno-bonus/bonus-6/",
+    "/vitadasogno-bonus/bonus-7/",
+    "/vitadasogno-bonus/bonus-8/",
+    "/vitadasogno-bonus/bonus-9/",
+    "/vitadasogno/",
+    "/webinar/",
+    "/webinar/thank-you/",
+    "/webreplay/",
+    "/webreplayover/",
+    "/workshop-wspaints/",
+    "/wspaints/"
+  ],
+  "MISSING_ROUTES": [],
+  "EXTRA_ROUTES": [
+    "/L-OCAE/",
+    "/L-OCAE/disclaimer/",
+    "/L-OCAE/privacy-policy/",
+    "/L-OCAE/termini-di-servizio/",
+    "/bdiag/",
+    "/check-inv-sost/",
+    "/crea-blog/",
+    "/demo4ocae/",
+    "/demo4ocae/disclaimer/",
+    "/demo4ocae/privacy-policy/",
+    "/demo4ocae/termini-di-servizio/",
+    "/disclaimer/",
+    "/dlorder/",
+    "/dream-life-bonuses/",
+    "/dream-life-bonuses/bonus-1/",
+    "/dream-life-bonuses/bonus-11/",
+    "/dream-life-bonuses/bonus-2/",
+    "/dream-life-bonuses/bonus-3/",
+    "/dream-life-bonuses/bonus-4/",
+    "/dream-life-bonuses/bonus-6/",
+    "/dream-life-bonuses/bonus-7/",
+    "/dream-life-bonuses/bonus-8/",
+    "/dream-life-bonuses/bonus-9/",
+    "/dream-life/",
+    "/dreamlife/",
+    "/giftcalculator/",
+    "/home/",
+    "/metodo-dec/",
+    "/movie/",
+    "/nerea/",
+    "/pagina1/",
+    "/pagina2/",
+    "/pagina3/",
+    "/privacy-policy/",
+    "/skill-template/",
+    "/template-checkout/",
+    "/template-upsell1/",
+    "/template-upsell2/",
+    "/template1/",
+    "/template2/",
+    "/template2/bonus-1/",
+    "/template2/bonus-2/",
+    "/template2/bonus-3/",
+    "/template3/",
+    "/templates/template1/",
+    "/templates/template2/",
+    "/templates/template2/bonus-1/",
+    "/templates/template2/bonus-2/",
+    "/templates/template2/bonus-3/",
+    "/termini-di-servizio/",
+    "/vitadasogno-bonus/",
+    "/vitadasogno-bonus/bonus-1/",
+    "/vitadasogno-bonus/bonus-11/",
+    "/vitadasogno-bonus/bonus-2/",
+    "/vitadasogno-bonus/bonus-3/",
+    "/vitadasogno-bonus/bonus-4/",
+    "/vitadasogno-bonus/bonus-6/",
+    "/vitadasogno-bonus/bonus-7/",
+    "/vitadasogno-bonus/bonus-8/",
+    "/vitadasogno-bonus/bonus-9/",
+    "/vitadasogno/",
+    "/workshop-wspaints/",
+    "/wspaints/"
+  ],
+  "EXTRA_ROUTE_CLASSIFICATION": [
+    {
+      "route": "/L-OCAE/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "L-OCAE/index.html"
+      ],
+      "source_files": [
+        "L-OCAE/index.html"
+      ]
+    },
+    {
+      "route": "/L-OCAE/disclaimer/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "L-OCAE/disclaimer/index.html",
+        "L-OCAE/disclaimer.html"
+      ],
+      "source_files": [
+        "L-OCAE/disclaimer/index.html",
+        "L-OCAE/disclaimer.html"
+      ]
+    },
+    {
+      "route": "/L-OCAE/privacy-policy/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "L-OCAE/privacy-policy/index.html",
+        "L-OCAE/privacy-policy.html"
+      ],
+      "source_files": [
+        "L-OCAE/privacy-policy/index.html",
+        "L-OCAE/privacy-policy.html"
+      ]
+    },
+    {
+      "route": "/L-OCAE/termini-di-servizio/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "L-OCAE/termini-di-servizio/index.html",
+        "L-OCAE/termini-di-servizio.html"
+      ],
+      "source_files": [
+        "L-OCAE/termini-di-servizio/index.html",
+        "L-OCAE/termini-di-servizio.html"
+      ]
+    },
+    {
+      "route": "/bdiag/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "bdiag/index.html"
+      ],
+      "source_files": [
+        "bdiag/index.html"
+      ]
+    },
+    {
+      "route": "/check-inv-sost/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "check-inv-sost/index.html"
+      ],
+      "source_files": [
+        "check-inv-sost/index.html"
+      ]
+    },
+    {
+      "route": "/crea-blog/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "crea-blog/index.html"
+      ],
+      "source_files": [
+        "crea-blog/index.html"
+      ]
+    },
+    {
+      "route": "/demo4ocae/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "demo4ocae/index.html"
+      ],
+      "source_files": [
+        "demo4ocae/index.html"
+      ]
+    },
+    {
+      "route": "/demo4ocae/disclaimer/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "demo4ocae/disclaimer/index.html"
+      ],
+      "source_files": [
+        "demo4ocae/disclaimer/index.html"
+      ]
+    },
+    {
+      "route": "/demo4ocae/privacy-policy/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "demo4ocae/privacy-policy/index.html"
+      ],
+      "source_files": [
+        "demo4ocae/privacy-policy/index.html"
+      ]
+    },
+    {
+      "route": "/demo4ocae/termini-di-servizio/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "demo4ocae/termini-di-servizio/index.html"
+      ],
+      "source_files": [
+        "demo4ocae/termini-di-servizio/index.html"
+      ]
+    },
+    {
+      "route": "/disclaimer/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "disclaimer/index.html"
+      ],
+      "source_files": [
+        "disclaimer/index.html"
+      ]
+    },
+    {
+      "route": "/dlorder/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "dlorder/index.html"
+      ],
+      "source_files": [
+        "dlorder/index.html"
+      ]
+    },
+    {
+      "route": "/dream-life-bonuses/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "dream-life-bonuses/index.html"
+      ],
+      "source_files": [
+        "dream-life-bonuses/index.html"
+      ]
+    },
+    {
+      "route": "/dream-life-bonuses/bonus-1/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "dream-life-bonuses/bonus-1.html"
+      ],
+      "source_files": [
+        "dream-life-bonuses/bonus-1.html"
+      ]
+    },
+    {
+      "route": "/dream-life-bonuses/bonus-11/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "dream-life-bonuses/bonus-11.html"
+      ],
+      "source_files": [
+        "dream-life-bonuses/bonus-11.html"
+      ]
+    },
+    {
+      "route": "/dream-life-bonuses/bonus-2/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "dream-life-bonuses/bonus-2.html"
+      ],
+      "source_files": [
+        "dream-life-bonuses/bonus-2.html"
+      ]
+    },
+    {
+      "route": "/dream-life-bonuses/bonus-3/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "dream-life-bonuses/bonus-3.html"
+      ],
+      "source_files": [
+        "dream-life-bonuses/bonus-3.html"
+      ]
+    },
+    {
+      "route": "/dream-life-bonuses/bonus-4/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "dream-life-bonuses/bonus-4.html"
+      ],
+      "source_files": [
+        "dream-life-bonuses/bonus-4.html"
+      ]
+    },
+    {
+      "route": "/dream-life-bonuses/bonus-6/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "dream-life-bonuses/bonus-6.html"
+      ],
+      "source_files": [
+        "dream-life-bonuses/bonus-6.html"
+      ]
+    },
+    {
+      "route": "/dream-life-bonuses/bonus-7/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "dream-life-bonuses/bonus-7.html"
+      ],
+      "source_files": [
+        "dream-life-bonuses/bonus-7.html"
+      ]
+    },
+    {
+      "route": "/dream-life-bonuses/bonus-8/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "dream-life-bonuses/bonus-8.html"
+      ],
+      "source_files": [
+        "dream-life-bonuses/bonus-8.html"
+      ]
+    },
+    {
+      "route": "/dream-life-bonuses/bonus-9/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "dream-life-bonuses/bonus-9.html"
+      ],
+      "source_files": [
+        "dream-life-bonuses/bonus-9.html"
+      ]
+    },
+    {
+      "route": "/dream-life/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "dream-life/index.html"
+      ],
+      "source_files": [
+        "dream-life/index.html"
+      ]
+    },
+    {
+      "route": "/dreamlife/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "dreamlife/index.html"
+      ],
+      "source_files": [
+        "dreamlife/index.html"
+      ]
+    },
+    {
+      "route": "/giftcalculator/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "giftcalculator/index.html"
+      ],
+      "source_files": [
+        "giftcalculator/index.html"
+      ]
+    },
+    {
+      "route": "/home/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "home/index.html"
+      ],
+      "source_files": [
+        "home/index.html"
+      ]
+    },
+    {
+      "route": "/metodo-dec/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "metodo-dec/index.html"
+      ],
+      "source_files": [
+        "metodo-dec/index.html"
+      ]
+    },
+    {
+      "route": "/movie/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "movie/index.html"
+      ],
+      "source_files": [
+        "movie/index.html"
+      ]
+    },
+    {
+      "route": "/nerea/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "nerea/index.html"
+      ],
+      "source_files": [
+        "nerea/index.html"
+      ]
+    },
+    {
+      "route": "/pagina1/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "pagina1/index.html"
+      ],
+      "source_files": [
+        "pagina1/index.html"
+      ]
+    },
+    {
+      "route": "/pagina2/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "pagina2/index.html"
+      ],
+      "source_files": [
+        "pagina2/index.html"
+      ]
+    },
+    {
+      "route": "/pagina3/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "pagina3/index.html"
+      ],
+      "source_files": [
+        "pagina3/index.html"
+      ]
+    },
+    {
+      "route": "/privacy-policy/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "privacy-policy/index.html"
+      ],
+      "source_files": [
+        "privacy-policy/index.html"
+      ]
+    },
+    {
+      "route": "/skill-template/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "skill-template/index.html"
+      ],
+      "source_files": [
+        "skill-template/index.html"
+      ]
+    },
+    {
+      "route": "/template-checkout/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "template-checkout/index.html"
+      ],
+      "source_files": [
+        "template-checkout/index.html"
+      ]
+    },
+    {
+      "route": "/template-upsell1/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "template-upsell1/index.html"
+      ],
+      "source_files": [
+        "template-upsell1/index.html"
+      ]
+    },
+    {
+      "route": "/template-upsell2/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "template-upsell2/index.html"
+      ],
+      "source_files": [
+        "template-upsell2/index.html"
+      ]
+    },
+    {
+      "route": "/template1/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "template1/index.html"
+      ],
+      "source_files": [
+        "template1/index.html"
+      ]
+    },
+    {
+      "route": "/template2/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "template2/index.html"
+      ],
+      "source_files": [
+        "template2/index.html"
+      ]
+    },
+    {
+      "route": "/template2/bonus-1/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "template2/bonus-1/index.html"
+      ],
+      "source_files": [
+        "template2/bonus-1/index.html"
+      ]
+    },
+    {
+      "route": "/template2/bonus-2/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "template2/bonus-2/index.html"
+      ],
+      "source_files": [
+        "template2/bonus-2/index.html"
+      ]
+    },
+    {
+      "route": "/template2/bonus-3/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "template2/bonus-3/index.html"
+      ],
+      "source_files": [
+        "template2/bonus-3/index.html"
+      ]
+    },
+    {
+      "route": "/template3/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "template3/index.html"
+      ],
+      "source_files": [
+        "template3/index.html"
+      ]
+    },
+    {
+      "route": "/templates/template1/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "templates/template1/index.html"
+      ],
+      "source_files": [
+        "templates/template1/index.html"
+      ]
+    },
+    {
+      "route": "/templates/template2/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "templates/template2/index.html"
+      ],
+      "source_files": [
+        "templates/template2/index.html"
+      ]
+    },
+    {
+      "route": "/templates/template2/bonus-1/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "templates/template2/bonus-1/index.html"
+      ],
+      "source_files": [
+        "templates/template2/bonus-1/index.html"
+      ]
+    },
+    {
+      "route": "/templates/template2/bonus-2/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "templates/template2/bonus-2/index.html"
+      ],
+      "source_files": [
+        "templates/template2/bonus-2/index.html"
+      ]
+    },
+    {
+      "route": "/templates/template2/bonus-3/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "templates/template2/bonus-3/index.html"
+      ],
+      "source_files": [
+        "templates/template2/bonus-3/index.html"
+      ]
+    },
+    {
+      "route": "/termini-di-servizio/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "termini-di-servizio/index.html"
+      ],
+      "source_files": [
+        "termini-di-servizio/index.html"
+      ]
+    },
+    {
+      "route": "/vitadasogno-bonus/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "vitadasogno-bonus/index.html"
+      ],
+      "source_files": [
+        "vitadasogno-bonus/index.html"
+      ]
+    },
+    {
+      "route": "/vitadasogno-bonus/bonus-1/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "vitadasogno-bonus/bonus-1.html"
+      ],
+      "source_files": [
+        "vitadasogno-bonus/bonus-1.html"
+      ]
+    },
+    {
+      "route": "/vitadasogno-bonus/bonus-11/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "vitadasogno-bonus/bonus-11.html"
+      ],
+      "source_files": [
+        "vitadasogno-bonus/bonus-11.html"
+      ]
+    },
+    {
+      "route": "/vitadasogno-bonus/bonus-2/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "vitadasogno-bonus/bonus-2.html"
+      ],
+      "source_files": [
+        "vitadasogno-bonus/bonus-2.html"
+      ]
+    },
+    {
+      "route": "/vitadasogno-bonus/bonus-3/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "vitadasogno-bonus/bonus-3.html"
+      ],
+      "source_files": [
+        "vitadasogno-bonus/bonus-3.html"
+      ]
+    },
+    {
+      "route": "/vitadasogno-bonus/bonus-4/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "vitadasogno-bonus/bonus-4.html"
+      ],
+      "source_files": [
+        "vitadasogno-bonus/bonus-4.html"
+      ]
+    },
+    {
+      "route": "/vitadasogno-bonus/bonus-6/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "vitadasogno-bonus/bonus-6.html"
+      ],
+      "source_files": [
+        "vitadasogno-bonus/bonus-6.html"
+      ]
+    },
+    {
+      "route": "/vitadasogno-bonus/bonus-7/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "vitadasogno-bonus/bonus-7.html"
+      ],
+      "source_files": [
+        "vitadasogno-bonus/bonus-7.html"
+      ]
+    },
+    {
+      "route": "/vitadasogno-bonus/bonus-8/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "vitadasogno-bonus/bonus-8.html"
+      ],
+      "source_files": [
+        "vitadasogno-bonus/bonus-8.html"
+      ]
+    },
+    {
+      "route": "/vitadasogno-bonus/bonus-9/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "vitadasogno-bonus/bonus-9.html"
+      ],
+      "source_files": [
+        "vitadasogno-bonus/bonus-9.html"
+      ]
+    },
+    {
+      "route": "/vitadasogno/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "vitadasogno/index.html"
+      ],
+      "source_files": [
+        "vitadasogno/index.html"
+      ]
+    },
+    {
+      "route": "/workshop-wspaints/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "workshop-wspaints/index.html"
+      ],
+      "source_files": [
+        "workshop-wspaints/index.html"
+      ]
+    },
+    {
+      "route": "/wspaints/",
+      "classification": "PUBLIC_SOURCE_UNMANIFESTED",
+      "candidate_files": [
+        "wspaints/index.html"
+      ],
+      "source_files": [
+        "wspaints/index.html"
+      ]
+    }
+  ],
+  "CANDIDATE_ROUTE_GATE": "PASS",
+  "ROUTE_CONTENT_CHECKS": [
+    {
+      "route": "/",
+      "status": "match",
+      "source_files": [
+        "index.html"
+      ],
+      "candidate_files": [
+        "index.html"
+      ]
+    },
+    {
+      "route": "/CustomOCAE/",
+      "status": "match",
+      "source_files": [
+        "CustomOCAE/index.html"
+      ],
+      "candidate_files": [
+        "CustomOCAE/index.html"
+      ]
+    },
+    {
+      "route": "/CustomOCAE/disclaimer/",
+      "status": "match",
+      "source_files": [
+        "CustomOCAE/disclaimer.html"
+      ],
+      "candidate_files": [
+        "CustomOCAE/disclaimer.html"
+      ]
+    },
+    {
+      "route": "/CustomOCAE/privacy-policy/",
+      "status": "match",
+      "source_files": [
+        "CustomOCAE/privacy-policy.html"
+      ],
+      "candidate_files": [
+        "CustomOCAE/privacy-policy.html"
+      ]
+    },
+    {
+      "route": "/CustomOCAE/termini-di-servizio/",
+      "status": "match",
+      "source_files": [
+        "CustomOCAE/termini-di-servizio.html"
+      ],
+      "candidate_files": [
+        "CustomOCAE/termini-di-servizio.html"
+      ]
+    },
+    {
+      "route": "/CustomOCAE2/",
+      "status": "match",
+      "source_files": [
+        "CustomOCAE2/index.html"
+      ],
+      "candidate_files": [
+        "CustomOCAE2/index.html"
+      ]
+    },
+    {
+      "route": "/CustomOCAE2/disclaimer/",
+      "status": "match",
+      "source_files": [
+        "CustomOCAE2/disclaimer.html"
+      ],
+      "candidate_files": [
+        "CustomOCAE2/disclaimer.html"
+      ]
+    },
+    {
+      "route": "/CustomOCAE2/privacy-policy/",
+      "status": "match",
+      "source_files": [
+        "CustomOCAE2/privacy-policy.html"
+      ],
+      "candidate_files": [
+        "CustomOCAE2/privacy-policy.html"
+      ]
+    },
+    {
+      "route": "/CustomOCAE2/termini-di-servizio/",
+      "status": "match",
+      "source_files": [
+        "CustomOCAE2/termini-di-servizio.html"
+      ],
+      "candidate_files": [
+        "CustomOCAE2/termini-di-servizio.html"
+      ]
+    },
+    {
+      "route": "/CustomOCAE3/",
+      "status": "match",
+      "source_files": [
+        "CustomOCAE3/index.html"
+      ],
+      "candidate_files": [
+        "CustomOCAE3/index.html"
+      ]
+    },
+    {
+      "route": "/CustomOCAE3/disclaimer/",
+      "status": "match",
+      "source_files": [
+        "CustomOCAE3/disclaimer.html"
+      ],
+      "candidate_files": [
+        "CustomOCAE3/disclaimer.html"
+      ]
+    },
+    {
+      "route": "/CustomOCAE3/privacy-policy/",
+      "status": "match",
+      "source_files": [
+        "CustomOCAE3/privacy-policy.html"
+      ],
+      "candidate_files": [
+        "CustomOCAE3/privacy-policy.html"
+      ]
+    },
+    {
+      "route": "/CustomOCAE3/termini-di-servizio/",
+      "status": "match",
+      "source_files": [
+        "CustomOCAE3/termini-di-servizio.html"
+      ],
+      "candidate_files": [
+        "CustomOCAE3/termini-di-servizio.html"
+      ]
+    },
+    {
+      "route": "/OCAE/",
+      "status": "match",
+      "source_files": [
+        "OCAE/index.html"
+      ],
+      "candidate_files": [
+        "OCAE/index.html"
+      ]
+    },
+    {
+      "route": "/OCAE/disclaimer/",
+      "status": "match",
+      "source_files": [
+        "OCAE/disclaimer.html",
+        "OCAE/disclaimer/index.html"
+      ],
+      "candidate_files": [
+        "OCAE/disclaimer.html",
+        "OCAE/disclaimer/index.html"
+      ]
+    },
+    {
+      "route": "/OCAE/privacy-policy/",
+      "status": "match",
+      "source_files": [
+        "OCAE/privacy-policy.html",
+        "OCAE/privacy-policy/index.html"
+      ],
+      "candidate_files": [
+        "OCAE/privacy-policy.html",
+        "OCAE/privacy-policy/index.html"
+      ]
+    },
+    {
+      "route": "/OCAE/termini-di-servizio/",
+      "status": "match",
+      "source_files": [
+        "OCAE/termini-di-servizio.html",
+        "OCAE/termini-di-servizio/index.html"
+      ],
+      "candidate_files": [
+        "OCAE/termini-di-servizio.html",
+        "OCAE/termini-di-servizio/index.html"
+      ]
+    },
+    {
+      "route": "/TestOCAE/",
+      "status": "match",
+      "source_files": [
+        "TestOCAE/index.html"
+      ],
+      "candidate_files": [
+        "TestOCAE/index.html"
+      ]
+    },
+    {
+      "route": "/TestOCAE/disclaimer/",
+      "status": "match",
+      "source_files": [
+        "TestOCAE/disclaimer.html"
+      ],
+      "candidate_files": [
+        "TestOCAE/disclaimer.html"
+      ]
+    },
+    {
+      "route": "/TestOCAE/privacy-policy/",
+      "status": "match",
+      "source_files": [
+        "TestOCAE/privacy-policy.html"
+      ],
+      "candidate_files": [
+        "TestOCAE/privacy-policy.html"
+      ]
+    },
+    {
+      "route": "/TestOCAE/termini-di-servizio/",
+      "status": "match",
+      "source_files": [
+        "TestOCAE/termini-di-servizio.html"
+      ],
+      "candidate_files": [
+        "TestOCAE/termini-di-servizio.html"
+      ]
+    },
+    {
+      "route": "/Test_OCAE/",
+      "status": "match",
+      "source_files": [
+        "Test_OCAE/index.html"
+      ],
+      "candidate_files": [
+        "Test_OCAE/index.html"
+      ]
+    },
+    {
+      "route": "/Test_OCAE/disclaimer/",
+      "status": "match",
+      "source_files": [
+        "Test_OCAE/disclaimer.html"
+      ],
+      "candidate_files": [
+        "Test_OCAE/disclaimer.html"
+      ]
+    },
+    {
+      "route": "/Test_OCAE/privacy-policy/",
+      "status": "match",
+      "source_files": [
+        "Test_OCAE/privacy-policy.html"
+      ],
+      "candidate_files": [
+        "Test_OCAE/privacy-policy.html"
+      ]
+    },
+    {
+      "route": "/Test_OCAE/termini-di-servizio/",
+      "status": "match",
+      "source_files": [
+        "Test_OCAE/termini-di-servizio.html"
+      ],
+      "candidate_files": [
+        "Test_OCAE/termini-di-servizio.html"
+      ]
+    },
+    {
+      "route": "/ai-client-system-old/",
+      "status": "match",
+      "source_files": [
+        "ai-client-system-old/index.html"
+      ],
+      "candidate_files": [
+        "ai-client-system-old/index.html"
+      ]
+    },
+    {
+      "route": "/ai-client-system-old/checkout/",
+      "status": "match",
+      "source_files": [
+        "ai-client-system-old/checkout.html"
+      ],
+      "candidate_files": [
+        "ai-client-system-old/checkout.html"
+      ]
+    },
+    {
+      "route": "/ai-client-system-old/disclaimer/",
+      "status": "match",
+      "source_files": [
+        "ai-client-system-old/disclaimer.html"
+      ],
+      "candidate_files": [
+        "ai-client-system-old/disclaimer.html"
+      ]
+    },
+    {
+      "route": "/ai-client-system-old/privacy/",
+      "status": "match",
+      "source_files": [
+        "ai-client-system-old/privacy.html"
+      ],
+      "candidate_files": [
+        "ai-client-system-old/privacy.html"
+      ]
+    },
+    {
+      "route": "/ai-client-system-old/terms/",
+      "status": "match",
+      "source_files": [
+        "ai-client-system-old/terms.html"
+      ],
+      "candidate_files": [
+        "ai-client-system-old/terms.html"
+      ]
+    },
+    {
+      "route": "/ai-client-system/",
+      "status": "match",
+      "source_files": [
+        "ai-client-system/index.html"
+      ],
+      "candidate_files": [
+        "ai-client-system/index.html"
+      ]
+    },
+    {
+      "route": "/ai-client-system/checkout/",
+      "status": "match",
+      "source_files": [
+        "ai-client-system/checkout.html"
+      ],
+      "candidate_files": [
+        "ai-client-system/checkout.html"
+      ]
+    },
+    {
+      "route": "/ai-client-system/disclaimer/",
+      "status": "match",
+      "source_files": [
+        "ai-client-system/disclaimer.html"
+      ],
+      "candidate_files": [
+        "ai-client-system/disclaimer.html"
+      ]
+    },
+    {
+      "route": "/ai-client-system/privacy/",
+      "status": "match",
+      "source_files": [
+        "ai-client-system/privacy.html"
+      ],
+      "candidate_files": [
+        "ai-client-system/privacy.html"
+      ]
+    },
+    {
+      "route": "/ai-client-system/terms/",
+      "status": "match",
+      "source_files": [
+        "ai-client-system/terms.html"
+      ],
+      "candidate_files": [
+        "ai-client-system/terms.html"
+      ]
+    },
+    {
+      "route": "/alimentazione/",
+      "status": "match",
+      "source_files": [
+        "alimentazione/index.html"
+      ],
+      "candidate_files": [
+        "alimentazione/index.html"
+      ]
+    },
+    {
+      "route": "/catalogo-moduli/",
+      "status": "match",
+      "source_files": [
+        "catalogo-moduli/index.html"
+      ],
+      "candidate_files": [
+        "catalogo-moduli/index.html"
+      ]
+    },
+    {
+      "route": "/catalogo-moduli/catalogo/",
+      "status": "match",
+      "source_files": [
+        "catalogo-moduli/catalogo.html"
+      ],
+      "candidate_files": [
+        "catalogo-moduli/catalogo.html"
+      ]
+    },
+    {
+      "route": "/catalogo-moduli/highlight-brush/",
+      "status": "match",
+      "source_files": [
+        "catalogo-moduli/highlight-brush.html"
+      ],
+      "candidate_files": [
+        "catalogo-moduli/highlight-brush.html"
+      ]
+    },
+    {
+      "route": "/catalogo-moduli/image-marquee/",
+      "status": "match",
+      "source_files": [
+        "catalogo-moduli/image-marquee.html"
+      ],
+      "candidate_files": [
+        "catalogo-moduli/image-marquee.html"
+      ]
+    },
+    {
+      "route": "/catalogo-moduli/outline-text/",
+      "status": "match",
+      "source_files": [
+        "catalogo-moduli/outline-text.html"
+      ],
+      "candidate_files": [
+        "catalogo-moduli/outline-text.html"
+      ]
+    },
+    {
+      "route": "/catalogo-moduli/parallax-numbers/",
+      "status": "match",
+      "source_files": [
+        "catalogo-moduli/parallax-numbers.html"
+      ],
+      "candidate_files": [
+        "catalogo-moduli/parallax-numbers.html"
+      ]
+    },
+    {
+      "route": "/catalogo-moduli/particles-bg/",
+      "status": "match",
+      "source_files": [
+        "catalogo-moduli/particles-bg.html"
+      ],
+      "candidate_files": [
+        "catalogo-moduli/particles-bg.html"
+      ]
+    },
+    {
+      "route": "/catalogo-moduli/scroll-reveal-image/",
+      "status": "match",
+      "source_files": [
+        "catalogo-moduli/scroll-reveal-image.html"
+      ],
+      "candidate_files": [
+        "catalogo-moduli/scroll-reveal-image.html"
+      ]
+    },
+    {
+      "route": "/catalogo-moduli/scroll-reveal-sandwich/",
+      "status": "match",
+      "source_files": [
+        "catalogo-moduli/scroll-reveal-sandwich.html"
+      ],
+      "candidate_files": [
+        "catalogo-moduli/scroll-reveal-sandwich.html"
+      ]
+    },
+    {
+      "route": "/catalogo-moduli/social-scroll/",
+      "status": "match",
+      "source_files": [
+        "catalogo-moduli/social-scroll.html"
+      ],
+      "candidate_files": [
+        "catalogo-moduli/social-scroll.html"
+      ]
+    },
+    {
+      "route": "/catalogo-moduli/text-marquee/",
+      "status": "match",
+      "source_files": [
+        "catalogo-moduli/text-marquee.html"
+      ],
+      "candidate_files": [
+        "catalogo-moduli/text-marquee.html"
+      ]
+    },
+    {
+      "route": "/catalogo-moduli/text-rotator-list/",
+      "status": "match",
+      "source_files": [
+        "catalogo-moduli/text-rotator-list.html"
+      ],
+      "candidate_files": [
+        "catalogo-moduli/text-rotator-list.html"
+      ]
+    },
+    {
+      "route": "/catalogo-moduli/text-rotator/",
+      "status": "match",
+      "source_files": [
+        "catalogo-moduli/text-rotator.html"
+      ],
+      "candidate_files": [
+        "catalogo-moduli/text-rotator.html"
+      ]
+    },
+    {
+      "route": "/catalogo-moduli/text-scroller-vertical/",
+      "status": "match",
+      "source_files": [
+        "catalogo-moduli/text-scroller-vertical.html"
+      ],
+      "candidate_files": [
+        "catalogo-moduli/text-scroller-vertical.html"
+      ]
+    },
+    {
+      "route": "/centro-conoscenza/",
+      "status": "match",
+      "source_files": [
+        "centro-conoscenza/index.html"
+      ],
+      "candidate_files": [
+        "centro-conoscenza/index.html"
+      ]
+    },
+    {
+      "route": "/demo3-1-bridge-light-patched/",
+      "status": "match",
+      "source_files": [
+        "demo3-1-bridge-light-patched/index.html"
+      ],
+      "candidate_files": [
+        "demo3-1-bridge-light-patched/index.html"
+      ]
+    },
+    {
+      "route": "/demo3-1-bridge-light-patched/disclaimer/",
+      "status": "match",
+      "source_files": [
+        "demo3-1-bridge-light-patched/disclaimer.html"
+      ],
+      "candidate_files": [
+        "demo3-1-bridge-light-patched/disclaimer.html"
+      ]
+    },
+    {
+      "route": "/demo3-1-bridge-light-patched/privacy-policy/",
+      "status": "match",
+      "source_files": [
+        "demo3-1-bridge-light-patched/privacy-policy.html"
+      ],
+      "candidate_files": [
+        "demo3-1-bridge-light-patched/privacy-policy.html"
+      ]
+    },
+    {
+      "route": "/demo3-1-bridge-light-patched/termini-di-servizio/",
+      "status": "match",
+      "source_files": [
+        "demo3-1-bridge-light-patched/termini-di-servizio.html"
+      ],
+      "candidate_files": [
+        "demo3-1-bridge-light-patched/termini-di-servizio.html"
+      ]
+    },
+    {
+      "route": "/disclaimer-ocae/",
+      "status": "match",
+      "source_files": [
+        "disclaimer-ocae/index.html"
+      ],
+      "candidate_files": [
+        "disclaimer-ocae/index.html"
+      ]
+    },
+    {
+      "route": "/identity/",
+      "status": "match",
+      "source_files": [
+        "identity/index.html"
+      ],
+      "candidate_files": [
+        "identity/index.html"
+      ]
+    },
+    {
+      "route": "/marechiaro/",
+      "status": "match",
+      "source_files": [
+        "marechiaro/index.html"
+      ],
+      "candidate_files": [
+        "marechiaro/index.html"
+      ]
+    },
+    {
+      "route": "/metadigitale/",
+      "status": "match",
+      "source_files": [
+        "metadigitale/index.html"
+      ],
+      "candidate_files": [
+        "metadigitale/index.html"
+      ]
+    },
+    {
+      "route": "/nucleo/",
+      "status": "match",
+      "source_files": [
+        "nucleo/index.html"
+      ],
+      "candidate_files": [
+        "nucleo/index.html"
+      ]
+    },
+    {
+      "route": "/ocae/",
+      "status": "match",
+      "source_files": [
+        "ocae/index.html"
+      ],
+      "candidate_files": [
+        "ocae/index.html"
+      ]
+    },
+    {
+      "route": "/ocae/disclaimer/",
+      "status": "match",
+      "source_files": [
+        "ocae/disclaimer.html"
+      ],
+      "candidate_files": [
+        "ocae/disclaimer.html"
+      ]
+    },
+    {
+      "route": "/ocae/privacy-policy/",
+      "status": "match",
+      "source_files": [
+        "ocae/privacy-policy.html"
+      ],
+      "candidate_files": [
+        "ocae/privacy-policy.html"
+      ]
+    },
+    {
+      "route": "/ocae/termini-di-servizio/",
+      "status": "match",
+      "source_files": [
+        "ocae/termini-di-servizio.html"
+      ],
+      "candidate_files": [
+        "ocae/termini-di-servizio.html"
+      ]
+    },
+    {
+      "route": "/ocaeckout/",
+      "status": "match",
+      "source_files": [
+        "ocaeckout/index.html"
+      ],
+      "candidate_files": [
+        "ocaeckout/index.html"
+      ]
+    },
+    {
+      "route": "/ocaetyorder/",
+      "status": "match",
+      "source_files": [
+        "ocaetyorder/index.html"
+      ],
+      "candidate_files": [
+        "ocaetyorder/index.html"
+      ]
+    },
+    {
+      "route": "/parrucchiera/",
+      "status": "match",
+      "source_files": [
+        "parrucchiera/index.html"
+      ],
+      "candidate_files": [
+        "parrucchiera/index.html"
+      ]
+    },
+    {
+      "route": "/public-lessons/",
+      "status": "match",
+      "source_files": [
+        "public-lessons/index.html"
+      ],
+      "candidate_files": [
+        "public-lessons/index.html"
+      ]
+    },
+    {
+      "route": "/scrittura/",
+      "status": "match",
+      "source_files": [
+        "scrittura/index.html"
+      ],
+      "candidate_files": [
+        "scrittura/index.html"
+      ]
+    },
+    {
+      "route": "/soul/",
+      "status": "match",
+      "source_files": [
+        "soul/index.html"
+      ],
+      "candidate_files": [
+        "soul/index.html"
+      ]
+    },
+    {
+      "route": "/template1-blocco-lite/",
+      "status": "match",
+      "source_files": [
+        "template1-blocco-lite/index.html"
+      ],
+      "candidate_files": [
+        "template1-blocco-lite/index.html"
+      ]
+    },
+    {
+      "route": "/template1-visual-mvp/",
+      "status": "match",
+      "source_files": [
+        "template1-visual-mvp/index.html"
+      ],
+      "candidate_files": [
+        "template1-visual-mvp/index.html"
+      ]
+    },
+    {
+      "route": "/template1-visual-preservation-test/",
+      "status": "match",
+      "source_files": [
+        "template1-visual-preservation-test/index.html"
+      ],
+      "candidate_files": [
+        "template1-visual-preservation-test/index.html"
+      ]
+    },
+    {
+      "route": "/test/",
+      "status": "match",
+      "source_files": [
+        "test/index.html"
+      ],
+      "candidate_files": [
+        "test/index.html"
+      ]
+    },
+    {
+      "route": "/vision/",
+      "status": "match",
+      "source_files": [
+        "vision/index.html"
+      ],
+      "candidate_files": [
+        "vision/index.html"
+      ]
+    },
+    {
+      "route": "/webinar/",
+      "status": "match",
+      "source_files": [
+        "webinar/index.html"
+      ],
+      "candidate_files": [
+        "webinar/index.html"
+      ]
+    },
+    {
+      "route": "/webinar/thank-you/",
+      "status": "match",
+      "source_files": [
+        "webinar/thank-you.html"
+      ],
+      "candidate_files": [
+        "webinar/thank-you.html"
+      ]
+    },
+    {
+      "route": "/webreplay/",
+      "status": "match",
+      "source_files": [
+        "webreplay/index.html"
+      ],
+      "candidate_files": [
+        "webreplay/index.html"
+      ]
+    },
+    {
+      "route": "/webreplayover/",
+      "status": "match",
+      "source_files": [
+        "webreplayover/index.html"
+      ],
+      "candidate_files": [
+        "webreplayover/index.html"
+      ]
+    }
+  ],
+  "PREEXISTING_TRACKED_MODIFICATIONS": [
+    {
+      "path": "L-OCAE/disclaimer.html",
+      "status": "M",
+      "classification": "PREEXISTING_RELEVANT",
+      "preceded_consolidation": true,
+      "introduced_by_consolidation_commit": false,
+      "related_to_consolidation": true,
+      "evidence": [
+        "present in backup status snapshot captured immediately after consolidation run"
+      ]
+    },
+    {
+      "path": "L-OCAE/disclaimer/index.html",
+      "status": "M",
+      "classification": "PREEXISTING_RELEVANT",
+      "preceded_consolidation": true,
+      "introduced_by_consolidation_commit": false,
+      "related_to_consolidation": true,
+      "evidence": [
+        "present in backup status snapshot captured immediately after consolidation run"
+      ]
+    },
+    {
+      "path": "L-OCAE/privacy-policy/index.html",
+      "status": "M",
+      "classification": "PREEXISTING_RELEVANT",
+      "preceded_consolidation": true,
+      "introduced_by_consolidation_commit": false,
+      "related_to_consolidation": true,
+      "evidence": [
+        "present in backup status snapshot captured immediately after consolidation run"
+      ]
+    },
+    {
+      "path": "L-OCAE/termini-di-servizio.html",
+      "status": "M",
+      "classification": "PREEXISTING_RELEVANT",
+      "preceded_consolidation": true,
+      "introduced_by_consolidation_commit": false,
+      "related_to_consolidation": true,
+      "evidence": [
+        "present in backup status snapshot captured immediately after consolidation run"
+      ]
+    },
+    {
+      "path": "L-OCAE/termini-di-servizio/index.html",
+      "status": "M",
+      "classification": "PREEXISTING_RELEVANT",
+      "preceded_consolidation": true,
+      "introduced_by_consolidation_commit": false,
+      "related_to_consolidation": true,
+      "evidence": [
+        "present in backup status snapshot captured immediately after consolidation run"
+      ]
+    },
+    {
+      "path": "api/stripe-webhook.js",
+      "status": "M",
+      "classification": "PREEXISTING_RELEVANT",
+      "preceded_consolidation": true,
+      "introduced_by_consolidation_commit": false,
+      "related_to_consolidation": true,
+      "evidence": [
+        "present in backup status snapshot captured immediately after consolidation run"
+      ]
+    },
+    {
+      "path": "demo4ocae/disclaimer/index.html",
+      "status": "M",
+      "classification": "PREEXISTING_RELEVANT",
+      "preceded_consolidation": true,
+      "introduced_by_consolidation_commit": false,
+      "related_to_consolidation": true,
+      "evidence": [
+        "present in backup status snapshot captured immediately after consolidation run"
+      ]
+    },
+    {
+      "path": "demo4ocae/termini-di-servizio/index.html",
+      "status": "M",
+      "classification": "PREEXISTING_RELEVANT",
+      "preceded_consolidation": true,
+      "introduced_by_consolidation_commit": false,
+      "related_to_consolidation": true,
+      "evidence": [
+        "present in backup status snapshot captured immediately after consolidation run"
+      ]
+    },
+    {
+      "path": "disclaimer/index.html",
+      "status": "M",
+      "classification": "PREEXISTING_RELEVANT",
+      "preceded_consolidation": true,
+      "introduced_by_consolidation_commit": false,
+      "related_to_consolidation": true,
+      "evidence": [
+        "present in backup status snapshot captured immediately after consolidation run"
+      ]
+    },
+    {
+      "path": "home/index.html",
+      "status": "M",
+      "classification": "PREEXISTING_RELEVANT",
+      "preceded_consolidation": true,
+      "introduced_by_consolidation_commit": false,
+      "related_to_consolidation": true,
+      "evidence": [
+        "present in backup status snapshot captured immediately after consolidation run"
+      ]
+    },
+    {
+      "path": "index.html",
+      "status": "M",
+      "classification": "PREEXISTING_RELEVANT",
+      "preceded_consolidation": true,
+      "introduced_by_consolidation_commit": false,
+      "related_to_consolidation": true,
+      "evidence": [
+        "present in backup status snapshot captured immediately after consolidation run"
+      ]
+    },
+    {
+      "path": "privacy-policy/index.html",
+      "status": "M",
+      "classification": "PREEXISTING_RELEVANT",
+      "preceded_consolidation": true,
+      "introduced_by_consolidation_commit": false,
+      "related_to_consolidation": true,
+      "evidence": [
+        "present in backup status snapshot captured immediately after consolidation run"
+      ]
+    },
+    {
+      "path": "termini-di-servizio/index.html",
+      "status": "M",
+      "classification": "PREEXISTING_RELEVANT",
+      "preceded_consolidation": true,
+      "introduced_by_consolidation_commit": false,
+      "related_to_consolidation": true,
+      "evidence": [
+        "present in backup status snapshot captured immediately after consolidation run"
+      ]
+    },
+    {
+      "path": "vercel.json",
+      "status": "M",
+      "classification": "PREEXISTING_RELEVANT",
+      "preceded_consolidation": true,
+      "introduced_by_consolidation_commit": false,
+      "related_to_consolidation": true,
+      "evidence": [
+        "present in backup status snapshot captured immediately after consolidation run"
+      ]
+    },
+    {
+      "path": "webinar/index.html",
+      "status": "M",
+      "classification": "PREEXISTING_RELEVANT",
+      "preceded_consolidation": true,
+      "introduced_by_consolidation_commit": false,
+      "related_to_consolidation": true,
+      "evidence": [
+        "present in backup status snapshot captured immediately after consolidation run"
+      ]
+    },
+    {
+      "path": "webinar/openclaw-webinar.ics",
+      "status": "M",
+      "classification": "PREEXISTING_RELEVANT",
+      "preceded_consolidation": true,
+      "introduced_by_consolidation_commit": false,
+      "related_to_consolidation": true,
+      "evidence": [
+        "present in backup status snapshot captured immediately after consolidation run"
+      ]
+    },
+    {
+      "path": "webinar/thank-you.html",
+      "status": "M",
+      "classification": "PREEXISTING_RELEVANT",
+      "preceded_consolidation": true,
+      "introduced_by_consolidation_commit": false,
+      "related_to_consolidation": true,
+      "evidence": [
+        "present in backup status snapshot captured immediately after consolidation run"
+      ]
+    }
+  ],
+  "CONSOLIDATION_VERSIONED_CHANGES": [
+    {
+      "path": ".gitignore",
+      "status": "M",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "CONSOLIDATION_MANIFEST_2026-08-20.json",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "CONSOLIDATION_MANIFEST_2026-08-20.md",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "CustomOCAE/disclaimer.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "CustomOCAE/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "CustomOCAE/privacy-policy.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "CustomOCAE/termini-di-servizio.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "CustomOCAE2/disclaimer.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "CustomOCAE2/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "CustomOCAE2/privacy-policy.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "CustomOCAE2/termini-di-servizio.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "CustomOCAE3/disclaimer.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "CustomOCAE3/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "CustomOCAE3/privacy-policy.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "CustomOCAE3/termini-di-servizio.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "OCAE/disclaimer.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "OCAE/disclaimer/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "OCAE/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "OCAE/privacy-policy.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "OCAE/privacy-policy/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "OCAE/termini-di-servizio.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "OCAE/termini-di-servizio/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "TestOCAE/disclaimer.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "TestOCAE/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "TestOCAE/privacy-policy.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "TestOCAE/termini-di-servizio.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "Test_OCAE/disclaimer.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "Test_OCAE/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "Test_OCAE/privacy-policy.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "Test_OCAE/termini-di-servizio.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "ai-client-system-old/.gitignore",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "ai-client-system-old/checkout.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "ai-client-system-old/disclaimer.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "ai-client-system-old/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "ai-client-system-old/privacy.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "ai-client-system-old/terms.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "ai-client-system/checkout.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "ai-client-system/disclaimer.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "ai-client-system/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "ai-client-system/privacy.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "ai-client-system/terms.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "alimentazione/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "api/ocae-create-checkout-session.js",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "catalogo-moduli/catalogo.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "catalogo-moduli/highlight-brush.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "catalogo-moduli/image-marquee.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "catalogo-moduli/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "catalogo-moduli/outline-text.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "catalogo-moduli/parallax-numbers.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "catalogo-moduli/particles-bg.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "catalogo-moduli/scroll-reveal-image.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "catalogo-moduli/scroll-reveal-sandwich.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "catalogo-moduli/social-scroll.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "catalogo-moduli/text-marquee.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "catalogo-moduli/text-rotator-list.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "catalogo-moduli/text-rotator.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "catalogo-moduli/text-scroller-vertical.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "demo3-1-bridge-light-patched/.gitignore",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "demo3-1-bridge-light-patched/disclaimer.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "demo3-1-bridge-light-patched/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "demo3-1-bridge-light-patched/privacy-policy.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "demo3-1-bridge-light-patched/termini-di-servizio.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "demo3-1-bridge-light-patched/vercel.json",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "disclaimer-ocae/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "favicon-riccardo.png",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "identity/index.html",
+      "status": "M",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "marechiaro/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "marechiaro/logo.jpg",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "metadigitale/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "nucleo/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "ocaeckout/assets/offer-image.jpg",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "ocaeckout/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "ocaeckout/index.html.bak",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "ocaetyorder/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "package-lock.json",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "package.json",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "pagina1/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "pagina2/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "pagina3/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "parrucchiera/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "public-lessons/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "public-lessons/index.json",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "scrittura/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "soul/index.html",
+      "status": "M",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "stripe-assets/ocae-stripe-product.jpg",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "template1-blocco-lite/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "template1-visual-mvp/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "template1-visual-preservation-test/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "test/hero.jpg",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "test/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "vision/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "webinar/assets/riccardo-chi-sono-mobile.jpg",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    },
+    {
+      "path": "webreplayover/index.html",
+      "status": "A",
+      "classification": "CONSOLIDATION_CHANGE"
+    }
+  ],
+  "CONSOLIDATION_GIT_STATE": "PASS",
+  "CONSOLIDATION_GIT_REASON": "no preserved public content remains untracked; consolidation commit 940c1fc versions the consolidation-produced changes; preexisting tracked modifications enumerated and classified; current tracked preexisting diff matches backup snapshot working.diff exactly",
+  "GIT_GATE_DETAILS": {
+    "A_no_preserved_public_content_untracked": {
+      "pass": true,
+      "untracked_paths": []
+    },
+    "B_consolidation_changes_versioned_or_covered": {
+      "pass": true,
+      "commit": "940c1fc492dab2d6f0c4f515dee572c014786ab5"
+    },
+    "C_preexisting_changes_enumerated_and_documented": {
+      "pass": true,
+      "count": 17
+    },
+    "D_preexisting_changes_not_accidentally_altered": {
+      "pass": true,
+      "comparison": "git diff vs backup working.diff exact match"
+    }
   }
-]
+}
