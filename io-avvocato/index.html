@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Io Avvocato | Blog legale chiaro per famiglie e cittadini</title>
+  <meta name="description" content="Io Avvocato è un prototipo di blog per uno studio legale: articoli chiari, taglio autorevole e linguaggio comprensibile per chi cerca orientamento giuridico." />
+  <meta property="og:title" content="Io Avvocato | Blog legale chiaro per famiglie e cittadini" />
+  <meta property="og:description" content="Un blog autorevole per spiegare il diritto in modo semplice, umano e professionale." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pages.riccardoromano.biz/io-avvocato/" />
+  <link rel="canonical" href="https://pages.riccardoromano.biz/io-avvocato/" />
+  <style>
+    :root {
+      --bg: #f4efe8;
+      --paper: #fffdfa;
+      --ink: #1e2430;
+      --muted: #5d6674;
+      --line: rgba(30, 36, 48, 0.10);
+      --primary: #243b6b;
+      --accent: #b8893d;
+      --accent-soft: rgba(184, 137, 61, 0.12);
+      --shadow: 0 24px 70px rgba(24, 31, 43, 0.10);
+      --hero: linear-gradient(180deg, #f8f3ed 0%, #f2ece4 100%);
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.7; }
+    a { color: inherit; }
+    .container { width: min(1120px, calc(100% - 40px)); margin: 0 auto; }
+    .hero { background: var(--hero); padding: 72px 0 86px; border-bottom: 1px solid var(--line); }
+    .eyebrow { display: inline-flex; padding: 8px 14px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-size: 12px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    h1 { margin: 18px 0 16px; font-size: clamp(2.6rem, 5vw, 4.6rem); line-height: 1; letter-spacing: -.05em; }
+    .lead { max-width: 760px; margin: 0 0 28px; color: var(--muted); font-size: 1.08rem; }
+    .hero-grid, .content-grid, .values-grid { display: grid; gap: 24px; }
+    .hero-grid { grid-template-columns: 1.15fr .85fr; align-items: start; }
+    .content-grid { grid-template-columns: 1.2fr .8fr; }
+    .values-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .card { background: var(--paper); border: 1px solid var(--line); border-radius: 24px; padding: 28px; box-shadow: var(--shadow); }
+    .card h2, .card h3 { margin-top: 0; }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 14px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; padding: 15px 22px; border-radius: 14px; text-decoration: none; font-weight: 800; }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-secondary { border: 1px solid var(--line); background: #fff; }
+    .meta-list, .article-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+    .meta-list li, .article-item { padding: 18px; border-radius: 18px; background: #fff; border: 1px solid var(--line); }
+    .section { padding: 68px 0; }
+    .section-title { margin: 0 0 14px; font-size: clamp(1.9rem, 3vw, 2.9rem); line-height: 1.08; letter-spacing: -.04em; }
+    .section-sub { margin: 0 0 32px; max-width: 760px; color: var(--muted); }
+    .kicker { color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: .12em; font-size: 12px; }
+    .article-item a { text-decoration: none; }
+    .article-item h3 { margin: 10px 0 10px; font-size: 1.4rem; }
+    .article-item p, .card p { margin-bottom: 0; color: var(--muted); }
+    .badge { display: inline-flex; padding: 6px 12px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-size: 12px; font-weight: 700; }
+    footer { padding: 28px 0 48px; text-align: center; color: var(--muted); font-size: .95rem; }
+    @media (max-width: 900px) {
+      .hero-grid, .content-grid, .values-grid { grid-template-columns: 1fr; }
+      .hero { padding-top: 56px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Prototipo blog legale</div>
+        <h1>Io Avvocato</h1>
+        <p class="lead">Un blog pensato per uno studio legale che vuole spiegare temi delicati con autorevolezza, chiarezza e tono umano. L’obiettivo è semplice: trasformare dubbi complessi in contenuti leggibili che aumentano fiducia, posizionamento e contatti qualificati.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#articoli">Leggi gli articoli</a>
+          <a class="btn btn-secondary" href="#perche-funziona">Perché funziona</a>
+        </div>
+      </div>
+      <aside class="card">
+        <h2 style="margin-bottom:10px;">Identità editoriale</h2>
+        <ul class="meta-list">
+          <li><strong>Tono:</strong> professionale, rassicurante, comprensibile</li>
+          <li><strong>Target:</strong> famiglie, coppie, cittadini che cercano orientamento legale</li>
+          <li><strong>Obiettivo:</strong> costruire fiducia prima del contatto con lo studio</li>
+          <li><strong>Formato:</strong> guide pratiche, approfondimenti, FAQ e casi frequenti</li>
+        </ul>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="articoli">
+      <div class="container content-grid">
+        <div>
+          <div class="kicker">Primo contenuto pubblicato</div>
+          <h2 class="section-title">Un blog già pronto a parlare di temi ad alto valore percepito</h2>
+          <p class="section-sub">Per un avvocato non basta “avere un sito”. Serve una struttura editoriale che faccia capire competenza, serietà e capacità di spiegare bene anche i passaggi più sensibili.</p>
+          <div class="article-list">
+            <article class="article-item">
+              <span class="badge">Diritto di famiglia</span>
+              <a href="/io-avvocato/adozioni-in-italia/">
+                <h3>Adozioni in Italia: come funziona davvero il percorso per una famiglia</h3>
+              </a>
+              <p>Un articolo introduttivo che spiega differenza tra requisiti, iter, tempi e ruolo del tribunale, con linguaggio chiaro e senza burocratese inutile.</p>
+            </article>
+          </div>
+        </div>
+        <aside class="card" id="perche-funziona">
+          <h3>Perché questo prototipo è utile</h3>
+          <p>Mostra subito tre cose: il tono giusto, l’architettura del blog e un contenuto concreto già online. È una base buona da far evolvere in magazine professionale con categorie, archivio articoli, CTA consulenza e SEO locale.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" style="background:#efe8de; border-top:1px solid var(--line); border-bottom:1px solid var(--line);">
+      <div class="container">
+        <h2 class="section-title">Cosa potrebbe avere la versione completa</h2>
+        <p class="section-sub">Questo è il prototipo. La versione estesa può diventare un vero asset di acquisizione e posizionamento.</p>
+        <div class="values-grid">
+          <article class="card"><h3>Categorie editoriali</h3><p>Adozioni, separazioni, successioni, tutela minori, responsabilità genitoriale, diritto patrimoniale.</p></article>
+          <article class="card"><h3>CTA strategiche</h3><p>Richiesta consulenza, call conoscitiva, raccolta lead con guida PDF o mini-checklist legale.</p></article>
+          <article class="card"><h3>Struttura SEO</h3><p>Hub tematici, articoli pillar e articoli satellite per intercettare query informative ad alta intenzione.</p></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Io Avvocato — prototipo demo pubblicato su pages.riccardoromano.biz
+  </footer>
+</body>
+</html>
