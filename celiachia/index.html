@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Celiachia Portameria | Pizzeria Gluten Free per Giovani</title>
+  <meta name="description" content="La pizzeria Celiachia Portameria crea pizze gluten free piene di gusto per ragazzi e ragazze dai 18 ai 35 anni. Zero rinunce, più libertà, più convivialità." />
+  <meta property="og:title" content="Celiachia Portameria | Pizzeria Gluten Free per Giovani" />
+  <meta property="og:description" content="Pizza senza glutine fatta bene, atmosfera giovane e serate senza ansia per chi convive con la celiachia." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://pages.riccardoromano.biz/celiachia/" />
+  <link rel="canonical" href="https://pages.riccardoromano.biz/celiachia/" />
+  <style>
+    :root {
+      --bg: #fffaf3;
+      --bg-soft: #fff4df;
+      --panel: rgba(255,255,255,0.84);
+      --panel-strong: rgba(255,255,255,0.96);
+      --text: #2b1e16;
+      --muted: #6e584a;
+      --accent: #e85d2a;
+      --accent-dark: #ba3f14;
+      --accent-soft: #ffe1cf;
+      --green: #2d8f5b;
+      --green-soft: #daf4e7;
+      --line: rgba(90, 54, 28, 0.12);
+      --shadow: 0 24px 70px rgba(150, 84, 40, 0.15);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255, 225, 207, 0.95), transparent 34%),
+        radial-gradient(circle at top right, rgba(218, 244, 231, 0.8), transparent 26%),
+        linear-gradient(180deg, #fffaf3 0%, #fffdf8 45%, #ffffff 100%);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(1160px, calc(100% - 32px)); margin: 0 auto; }
+    .hero { padding: 28px 0 72px; position: relative; overflow: hidden; }
+    .hero::before, .hero::after {
+      content: ""; position: absolute; border-radius: 999px; filter: blur(10px); pointer-events: none;
+    }
+    .hero::before { width: 280px; height: 280px; top: -90px; right: -50px; background: rgba(232, 93, 42, 0.14); }
+    .hero::after { width: 230px; height: 230px; left: -70px; bottom: 50px; background: rgba(218, 244, 231, 0.9); }
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 8px 0 28px; position: relative; z-index: 1;
+    }
+    .brand {
+      font-size: 0.92rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 800; color: var(--accent-dark);
+    }
+    .top-cta {
+      display: inline-flex; align-items: center; justify-content: center; padding: 12px 18px; border-radius: 999px; text-decoration: none;
+      background: rgba(255,255,255,0.86); border: 1px solid rgba(232,93,42,0.14); box-shadow: 0 10px 28px rgba(186, 63, 20, 0.08); font-weight: 700; color: var(--accent-dark);
+    }
+    .hero-card {
+      position: relative; z-index: 1; display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr); gap: 28px; align-items: stretch;
+      padding: 28px; border-radius: var(--radius-xl); background: rgba(255,255,255,0.68); border: 1px solid rgba(255,255,255,0.7); box-shadow: var(--shadow); backdrop-filter: blur(14px);
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px; border-radius: 999px; background: rgba(232,93,42,0.1); color: var(--accent-dark); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 800; margin-bottom: 16px;
+    }
+    h1 { margin: 0; font-size: clamp(2.5rem, 5vw, 4.8rem); line-height: 0.96; letter-spacing: -0.05em; max-width: 11ch; }
+    .lead { margin: 18px 0 0; font-size: clamp(1.04rem, 1.8vw, 1.22rem); color: var(--muted); max-width: 56ch; }
+    .hero-list { list-style: none; padding: 0; margin: 24px 0 0; display: grid; gap: 12px; }
+    .hero-list li { display: flex; gap: 12px; align-items: flex-start; font-weight: 500; }
+    .hero-list li span {
+      flex: 0 0 28px; width: 28px; height: 28px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center;
+      background: var(--accent-soft); color: var(--accent-dark); font-size: 0.82rem; font-weight: 800; margin-top: 2px;
+    }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; text-align: center; min-height: 56px; padding: 15px 24px; border-radius: 999px; text-decoration: none; font-weight: 800;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary { color: #fff; background: linear-gradient(135deg, var(--accent), var(--accent-dark)); box-shadow: 0 16px 30px rgba(186, 63, 20, 0.24); }
+    .btn-secondary { color: var(--accent-dark); background: rgba(255,255,255,0.82); border: 1px solid rgba(186,63,20,0.14); }
+    .hero-note { margin-top: 12px; color: var(--muted); font-size: 0.95rem; }
+    .booking-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,244,223,0.95)); border-radius: 28px; padding: 24px; border: 1px solid rgba(232,93,42,0.14);
+      box-shadow: 0 18px 50px rgba(186, 90, 38, 0.12); display: flex; flex-direction: column; gap: 18px;
+    }
+    .booking-card h2 { margin: 0; font-size: 1.5rem; line-height: 1.1; }
+    .booking-card p { margin: 0; color: var(--muted); font-size: 0.98rem; }
+    .mini-badge {
+      align-self: flex-start; padding: 7px 12px; border-radius: 999px; background: var(--green-soft); color: var(--green); font-size: 0.8rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .selector-grid, .times { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+    .choice, .time-chip {
+      border: 1px solid rgba(186,63,20,0.12); background: #fff; color: var(--text); border-radius: 18px; padding: 14px 10px; cursor: pointer; text-align: left; font: inherit;
+      transition: border-color .18s ease, transform .18s ease, box-shadow .18s ease, background .18s ease;
+    }
+    .choice strong, .time-chip strong { display: block; font-size: 0.98rem; }
+    .choice span, .time-chip span { display: block; font-size: 0.82rem; color: var(--muted); margin-top: 4px; }
+    .choice:hover, .time-chip:hover { transform: translateY(-1px); }
+    .choice.active, .time-chip.active {
+      border-color: transparent; background: linear-gradient(135deg, #ffe2d3, #daf4e7); box-shadow: 0 12px 24px rgba(186, 90, 38, 0.15);
+    }
+    .booking-summary {
+      padding: 16px 18px; border-radius: 18px; background: var(--bg-soft); color: var(--text); font-size: 0.96rem; border: 1px solid rgba(186,63,20,0.08); min-height: 68px;
+    }
+    .booking-summary strong { color: var(--accent-dark); }
+    .section { padding: 78px 0; }
+    .section.alt { background: linear-gradient(180deg, rgba(255,244,223,0.82), rgba(255,255,255,0)); }
+    .section-head { max-width: 760px; margin-bottom: 34px; }
+    .section-label { margin: 0 0 12px; color: var(--accent-dark); letter-spacing: 0.12em; text-transform: uppercase; font-size: 0.78rem; font-weight: 800; }
+    .section h2 { margin: 0; font-size: clamp(1.9rem, 4vw, 3.3rem); line-height: 1.02; letter-spacing: -0.04em; }
+    .section-intro { margin: 16px 0 0; color: var(--muted); font-size: 1.04rem; max-width: 62ch; }
+    .grid-2, .grid-3 { display: grid; gap: 20px; }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .card {
+      background: var(--panel-strong); border-radius: var(--radius-lg); padding: 26px; border: 1px solid var(--line); box-shadow: 0 16px 45px rgba(153, 98, 126, 0.08);
+    }
+    .card h3 { margin: 0 0 10px; font-size: 1.18rem; line-height: 1.2; }
+    .card p, .card li { color: var(--muted); margin: 0; }
+    .problem { border-top: 4px solid rgba(232,93,42,0.24); }
+    .transformation { border-top: 4px solid rgba(45,143,91,0.5); background: linear-gradient(180deg, rgba(255,255,255,0.97), rgba(245,255,250,0.95)); }
+    .step { position: relative; padding-left: 76px; min-height: 68px; }
+    .step + .step { margin-top: 18px; }
+    .step::before {
+      counter-increment: step; content: counter(step); position: absolute; left: 0; top: 0; width: 52px; height: 52px; border-radius: 18px; display: inline-flex; align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #ffe2d3, #daf4e7); color: var(--accent-dark); font-weight: 900; font-size: 1.1rem;
+    }
+    .method-steps { counter-reset: step; }
+    .service-tag, .pill {
+      align-self: flex-start; padding: 6px 10px; border-radius: 999px; background: rgba(232,93,42,0.1); color: var(--accent-dark); font-size: 0.78rem; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .benefits-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+    .benefits-list li {
+      display: flex; gap: 12px; align-items: flex-start; padding: 16px 18px; background: rgba(255,255,255,0.88); border: 1px solid var(--line); border-radius: 18px;
+    }
+    .benefits-list li span {
+      flex: 0 0 30px; width: 30px; height: 30px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center; background: var(--green-soft); color: var(--green); font-weight: 800; font-size: 0.88rem; margin-top: 2px;
+    }
+    .testimonial { background: linear-gradient(180deg, rgba(255,255,255,0.97), rgba(255,248,242,0.94)); }
+    .testimonial blockquote { margin: 0; font-size: 1.02rem; color: var(--text); }
+    .testimonial .who { margin-top: 18px; color: var(--muted); font-size: 0.94rem; }
+    .menu-card { height: 100%; display: flex; flex-direction: column; gap: 12px; }
+    .price { font-size: 1.8rem; font-weight: 900; color: var(--accent-dark); letter-spacing: -0.04em; }
+    .cta-panel {
+      background: linear-gradient(135deg, #2b1e16, #482f22); color: #fff; border-radius: 28px; padding: 32px; display: grid; gap: 16px; box-shadow: 0 24px 60px rgba(43, 30, 22, 0.28);
+    }
+    .cta-panel p { margin: 0; color: rgba(255,255,255,0.78); }
+    footer { padding: 34px 0 58px; color: var(--muted); font-size: 0.92rem; }
+    @media (max-width: 960px) {
+      .hero-card, .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .selector-grid, .times { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 640px) {
+      .container { width: min(100% - 24px, 1160px); }
+      .hero { padding-bottom: 56px; }
+      .hero-card, .booking-card, .card, .cta-panel { padding: 22px; }
+      .topbar { flex-direction: column; align-items: flex-start; }
+      .selector-grid, .times { grid-template-columns: 1fr; }
+      .cta-row { flex-direction: column; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <div class="topbar">
+        <div class="brand">Celiachia Portameria</div>
+        <a class="top-cta" href="#prenota">Scopri il menu gluten free</a>
+      </div>
+
+      <div class="hero-card">
+        <div>
+          <div class="eyebrow">Pizzeria gluten free • 18–35</div>
+          <h1>La pizza che ti rimette dentro la serata.</h1>
+          <p class="lead">Se hai la celiachia o vuoi mangiare senza glutine senza sentirti “quello complicato del tavolo”, Celiachia Portameria ti offre pizze vere, atmosfera giovane e serate leggere da vivere fino all’ultimo morso.</p>
+
+          <ul class="hero-list">
+            <li><span>✓</span><div>Impasti gluten free studiati per avere croccantezza, gusto e digeribilità reali.</div></li>
+            <li><span>✓</span><div>Cucina organizzata per ridurre stress, dubbi e paura della contaminazione.</div></li>
+            <li><span>✓</span><div>Format giovane: cena, amici, appuntamenti e zero sensazione di rinuncia.</div></li>
+          </ul>
+
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#prenota">Voglio la mia serata senza ansia</a>
+            <a class="btn btn-secondary" href="#menu">Guarda cosa rende diversa questa pizzeria</a>
+          </div>
+          <p class="hero-note">Demo page: concept per una pizzeria che trasforma la celiachia in un’esperienza sociale più semplice, buona e desiderabile.</p>
+        </div>
+
+        <aside class="booking-card" id="prenota">
+          <div class="mini-badge">Esperienza guidata</div>
+          <h2>Scegli la vibe della tua serata</h2>
+          <p>Una piccola demo interattiva per mostrare come una pizzeria giovane possa far sentire il cliente già accolto prima ancora del primo ordine.</p>
+
+          <div class="selector-grid" id="moodChoices">
+            <button class="choice active" type="button" data-label="Cena con amici">
+              <strong>Cena con amici</strong>
+              <span>Condivisione, tavolo pieno, zero spiegazioni imbarazzanti.</span>
+            </button>
+            <button class="choice" type="button" data-label="Appuntamento easy">
+              <strong>Appuntamento easy</strong>
+              <span>Atmosfera rilassata e feeling premium ma accessibile.</span>
+            </button>
+            <button class="choice" type="button" data-label="Pizza post università">
+              <strong>Pizza post università</strong>
+              <span>Velocità, gusto, prezzo smart e sensazione di normalità.</span>
+            </button>
+          </div>
+
+          <div class="times" id="timeChoices">
+            <button class="time-chip active" type="button" data-label="19:30">
+              <strong>19:30</strong>
+              <span>Aperitivo + pizza</span>
+            </button>
+            <button class="time-chip" type="button" data-label="21:00">
+              <strong>21:00</strong>
+              <span>Prime time</span>
+            </button>
+            <button class="time-chip" type="button" data-label="22:30">
+              <strong>22:30</strong>
+              <span>Late dinner</span>
+            </button>
+          </div>
+
+          <div class="booking-summary" id="bookingSummary">
+            <strong>Preview esperienza:</strong> cena con amici alle 19:30, in una pizzeria dove il gluten free non è un ripiego ma la scelta protagonista.
+          </div>
+
+          <a class="btn btn-primary" href="#cta-final">Portami al menu</a>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-label">Il problema</p>
+          <h2>Non è solo la celiachia. È tutto quello che ti fa sentire fuori posto.</h2>
+          <p class="section-intro">Per tanti giovani il vero fastidio non è solo evitare il glutine: è dover spiegare, dubitare, controllare il menu, rinunciare al gusto o accettare sempre l’opzione triste di turno.</p>
+        </div>
+
+        <div class="grid-3">
+          <article class="card problem">
+            <h3>Ansia sociale</h3>
+            <p>Quando esci con altri vuoi goderti la serata, non trasformarti in ispettore degli ingredienti.</p>
+          </article>
+          <article class="card problem">
+            <h3>Scelta povera</h3>
+            <p>Molte pizze gluten free sembrano una concessione minima, non una vera esperienza da desiderare.</p>
+          </article>
+          <article class="card problem">
+            <h3>Fiducia fragile</h3>
+            <p>Se non senti sicurezza sul processo, ogni morso rischia di toglierti relax invece di dartelo.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="menu">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-label">La soluzione</p>
+          <h2>Celiachia Portameria rende la pizza gluten free finalmente desiderabile.</h2>
+          <p class="section-intro">Il concept unisce gusto, attenzione reale e immagine giovane. Non stai “gestendo un problema”: stai scegliendo un posto in cui mangiare bene e stare bene.</p>
+        </div>
+
+        <div class="grid-2">
+          <article class="card transformation">
+            <div class="pill">Esperienza</div>
+            <h3>Una pizzeria costruita per farti dire: “Qui torno volentieri.”</h3>
+            <p>Ambiente informale ma curato, team preparato, menu chiaro e un’identità che parla a chi non vuole più sentirsi limitato dalla celiachia.</p>
+          </article>
+          <article class="card">
+            <div class="pill">Trust</div>
+            <h3>Il gluten free non è la nota a piè pagina.</h3>
+            <p>È il centro del concept: ingredienti scelti bene, processo chiaro e comunicazione che riduce frizione prima ancora dell’ordine.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-label">Come funziona</p>
+          <h2>Tre step semplici per trasformare una cena tesa in una serata leggera.</h2>
+        </div>
+
+        <div class="card method-steps">
+          <div class="step">
+            <h3>Scegli senza confusione</h3>
+            <p>Menu leggibile, proposte chiare e linguaggio diretto: capisci subito cosa puoi ordinare e perché ti puoi fidare.</p>
+          </div>
+          <div class="step">
+            <h3>Ordina con tranquillità</h3>
+            <p>Il team sa come rispondere, spiegare e accompagnarti senza farti sentire diverso o “difficile”.</p>
+          </div>
+          <div class="step">
+            <h3>Goditi la tua pizza</h3>
+            <p>Impasto, condimenti e atmosfera fanno il resto: finalmente una pizza che vuoi raccontare, non giustificare.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-label">Menu highlights</p>
+          <h2>Tre proposte pensate per piacere davvero al target giovane.</h2>
+        </div>
+
+        <div class="grid-3">
+          <article class="card menu-card">
+            <div class="service-tag">Signature</div>
+            <h3>Portameria Crunch</h3>
+            <p>Pomodoro vivace, fiordilatte senza compromessi, chips croccanti di patate e zest agrumato per una pizza memorabile.</p>
+            <div class="price">€14</div>
+          </article>
+          <article class="card menu-card">
+            <div class="service-tag">Comfort</div>
+            <h3>Late Night Bites</h3>
+            <p>Base gluten free leggera, crema delicata, salume selezionato e topping pensato per chi vuole gusto pieno ma digeribile.</p>
+            <div class="price">€15</div>
+          </article>
+          <article class="card menu-card">
+            <div class="service-tag">Social</div>
+            <h3>Green Party Slice</h3>
+            <p>Versione vegetariana colorata, fresca e instagrammabile, perfetta per tavoli di gruppo e condivisione.</p>
+            <div class="price">€13</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-label">Perché funziona</p>
+          <h2>Non vendi solo pizza. Vendi libertà sociale.</h2>
+        </div>
+
+        <ul class="benefits-list">
+          <li><span>1</span><div><strong>Più tranquillità:</strong> meno paura della contaminazione, più spazio mentale per goderti la compagnia.</div></li>
+          <li><span>2</span><div><strong>Più gusto:</strong> il prodotto è pensato per convincere anche chi non mangia gluten free ogni giorno.</div></li>
+          <li><span>3</span><div><strong>Più identità:</strong> il brand parla giovane, non medico. Fa sentire parte di qualcosa, non etichettati.</div></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <p class="section-label">Social proof</p>
+          <h2>Quando il concept è giusto, cambia anche il modo in cui le persone vivono la cena.</h2>
+        </div>
+
+        <div class="grid-3">
+          <article class="card testimonial">
+            <blockquote>“La prima volta che non ho dovuto fare mille domande prima di ordinare. Mi sono sentita normale, e la pizza era pure buonissima.”</blockquote>
+            <div class="who">Giulia, 24 anni</div>
+          </article>
+          <article class="card testimonial">
+            <blockquote>“Di solito scelgo io il posto peggiore per non complicare il gruppo. Qui invece ci torniamo tutti volentieri.”</blockquote>
+            <div class="who">Marco, 29 anni</div>
+          </article>
+          <article class="card testimonial">
+            <blockquote>“Finalmente un locale gluten free che sembra pensato per uscire, non per ‘adattarsi’.”</blockquote>
+            <div class="who">Elena, 32 anni</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-panel" id="cta-final">
+          <div class="pill" style="background: rgba(255,255,255,0.12); color: #fff;">Final CTA</div>
+          <h2 style="margin:0; font-size: clamp(2rem, 4vw, 3.3rem); line-height:1; letter-spacing:-0.04em;">Se la celiachia ti ha fatto rinunciare troppe volte, questa è la tua nuova pizzeria.</h2>
+          <p>Concept demo pensato per attirare giovani adulti che vogliono mangiare bene, sentirsi capiti e vivere serate più semplici. Nessuna promessa medica: solo una proposta più intelligente, desiderabile e conviviale.</p>
+          <div class="cta-row" style="margin-top: 6px;">
+            <a class="btn btn-primary" href="#prenota">Ritorna in alto</a>
+            <a class="btn btn-secondary" href="#menu" style="background: rgba(255,255,255,0.1); color: #fff; border-color: rgba(255,255,255,0.2);">Rivedi il menu</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      Celiachia Portameria — demo concept page per pages.riccardoromano.biz.
+    </div>
+  </footer>
+
+  <script>
+    const moodButtons = document.querySelectorAll('#moodChoices .choice');
+    const timeButtons = document.querySelectorAll('#timeChoices .time-chip');
+    const summary = document.getElementById('bookingSummary');
+
+    let selectedMood = 'Cena con amici';
+    let selectedTime = '19:30';
+
+    function updateSummary() {
+      summary.innerHTML = `<strong>Preview esperienza:</strong> ${selectedMood.toLowerCase()} alle ${selectedTime}, in una pizzeria dove il gluten free non è un ripiego ma la scelta protagonista.`;
+    }
+
+    moodButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        moodButtons.forEach((item) => item.classList.remove('active'));
+        button.classList.add('active');
+        selectedMood = button.dataset.label;
+        updateSummary();
+      });
+    });
+
+    timeButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        timeButtons.forEach((item) => item.classList.remove('active'));
+        button.classList.add('active');
+        selectedTime = button.dataset.label;
+        updateSummary();
+      });
+    });
+
+    updateSummary();
+  </script>
+</body>
+</html>
