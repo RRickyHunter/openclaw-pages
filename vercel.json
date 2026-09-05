@@ -1,1 +1,406 @@
-{"cleanUrls": true}
+{
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/__OPENCLAW_ISOLATED_UNIT_ROUTES_START__",
+      "destination": "/__OPENCLAW_ISOLATED_UNIT_ROUTES_START__"
+    },
+    {
+      "source": "/api/ocae-pricing",
+      "destination": "https://ocae-funnel.vercel.app/api/ocae-pricing"
+    },
+    {
+      "source": "/webinar/openclaw-webinar.ics",
+      "destination": "https://ocae-funnel.vercel.app/webinar/openclaw-webinar.ics"
+    },
+    {
+      "source": "/OCAE",
+      "destination": "https://ocae-funnel.vercel.app/OCAE"
+    },
+    {
+      "source": "/OCAE/",
+      "destination": "https://ocae-funnel.vercel.app/OCAE/"
+    },
+    {
+      "source": "/OCAE/:path*",
+      "destination": "https://ocae-funnel.vercel.app/OCAE/:path*"
+    },
+    {
+      "source": "/disclaimer-ocae",
+      "destination": "https://ocae-funnel.vercel.app/disclaimer-ocae"
+    },
+    {
+      "source": "/disclaimer-ocae/",
+      "destination": "https://ocae-funnel.vercel.app/disclaimer-ocae/"
+    },
+    {
+      "source": "/disclaimer-ocae/:path*",
+      "destination": "https://ocae-funnel.vercel.app/disclaimer-ocae/:path*"
+    },
+    {
+      "source": "/ocae",
+      "destination": "https://ocae-funnel.vercel.app/ocae"
+    },
+    {
+      "source": "/ocae/",
+      "destination": "https://ocae-funnel.vercel.app/ocae/"
+    },
+    {
+      "source": "/ocae/:path*",
+      "destination": "https://ocae-funnel.vercel.app/ocae/:path*"
+    },
+    {
+      "source": "/ocaeckout",
+      "destination": "https://ocae-funnel.vercel.app/ocaeckout"
+    },
+    {
+      "source": "/ocaeckout/",
+      "destination": "https://ocae-funnel.vercel.app/ocaeckout/"
+    },
+    {
+      "source": "/ocaeckout/:path*",
+      "destination": "https://ocae-funnel.vercel.app/ocaeckout/:path*"
+    },
+    {
+      "source": "/ocaetyorder",
+      "destination": "https://ocae-funnel.vercel.app/ocaetyorder"
+    },
+    {
+      "source": "/ocaetyorder/",
+      "destination": "https://ocae-funnel.vercel.app/ocaetyorder/"
+    },
+    {
+      "source": "/ocaetyorder/:path*",
+      "destination": "https://ocae-funnel.vercel.app/ocaetyorder/:path*"
+    },
+    {
+      "source": "/webinar",
+      "destination": "https://ocae-funnel.vercel.app/webinar"
+    },
+    {
+      "source": "/webinar/",
+      "destination": "https://ocae-funnel.vercel.app/webinar/"
+    },
+    {
+      "source": "/webinar/:path*",
+      "destination": "https://ocae-funnel.vercel.app/webinar/:path*"
+    },
+    {
+      "source": "/webreplay",
+      "destination": "https://ocae-funnel.vercel.app/webreplay"
+    },
+    {
+      "source": "/webreplay/",
+      "destination": "https://ocae-funnel.vercel.app/webreplay/"
+    },
+    {
+      "source": "/webreplay/:path*",
+      "destination": "https://ocae-funnel.vercel.app/webreplay/:path*"
+    },
+    {
+      "source": "/webreplayover",
+      "destination": "https://ocae-funnel.vercel.app/webreplayover"
+    },
+    {
+      "source": "/webreplayover/",
+      "destination": "https://ocae-funnel.vercel.app/webreplayover/"
+    },
+    {
+      "source": "/webreplayover/:path*",
+      "destination": "https://ocae-funnel.vercel.app/webreplayover/:path*"
+    },
+    {
+      "source": "/__OPENCLAW_ISOLATED_UNIT_ROUTES_END__",
+      "destination": "/__OPENCLAW_ISOLATED_UNIT_ROUTES_END__"
+    },
+    {
+      "source": "/identity",
+      "destination": "https://risorse-iota.vercel.app/identity/"
+    },
+    {
+      "source": "/identity/",
+      "destination": "https://risorse-iota.vercel.app/identity/"
+    },
+    {
+      "source": "/soul",
+      "destination": "https://risorse-iota.vercel.app/soul/"
+    },
+    {
+      "source": "/soul/",
+      "destination": "https://risorse-iota.vercel.app/soul/"
+    },
+    {
+      "source": "/nucleo",
+      "destination": "https://risorse-iota.vercel.app/nucleo/"
+    },
+    {
+      "source": "/nucleo/",
+      "destination": "https://risorse-iota.vercel.app/nucleo/"
+    },
+    {
+      "source": "/centro-conoscenza",
+      "destination": "https://risorse-iota.vercel.app/centro-conoscenza/"
+    },
+    {
+      "source": "/centro-conoscenza/",
+      "destination": "https://risorse-iota.vercel.app/centro-conoscenza/"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/webinar/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/ocae/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "src": "/__OPENCLAW_ISOLATED_UNIT_ROUTES_START__",
+      "dest": "/__OPENCLAW_ISOLATED_UNIT_ROUTES_START__"
+    },
+    {
+      "src": "/OCAE",
+      "dest": "https://ocae-funnel.vercel.app/OCAE/index.html"
+    },
+    {
+      "src": "/OCAE/",
+      "dest": "https://ocae-funnel.vercel.app/OCAE/index.html"
+    },
+    {
+      "src": "/OCAE/disclaimer",
+      "dest": "https://ocae-funnel.vercel.app/OCAE/disclaimer/index.html"
+    },
+    {
+      "src": "/OCAE/disclaimer/",
+      "dest": "https://ocae-funnel.vercel.app/OCAE/disclaimer/index.html"
+    },
+    {
+      "src": "/OCAE/privacy-policy",
+      "dest": "https://ocae-funnel.vercel.app/OCAE/privacy-policy/index.html"
+    },
+    {
+      "src": "/OCAE/privacy-policy/",
+      "dest": "https://ocae-funnel.vercel.app/OCAE/privacy-policy/index.html"
+    },
+    {
+      "src": "/OCAE/termini-di-servizio",
+      "dest": "https://ocae-funnel.vercel.app/OCAE/termini-di-servizio/index.html"
+    },
+    {
+      "src": "/OCAE/termini-di-servizio/",
+      "dest": "https://ocae-funnel.vercel.app/OCAE/termini-di-servizio/index.html"
+    },
+    {
+      "src": "/api/ocae-pricing",
+      "dest": "https://ocae-funnel.vercel.app/api/ocae-pricing.js"
+    },
+    {
+      "src": "/api/ocae-pricing/",
+      "dest": "https://ocae-funnel.vercel.app/api/ocae-pricing.js"
+    },
+    {
+      "src": "/disclaimer-ocae",
+      "dest": "https://ocae-funnel.vercel.app/disclaimer-ocae/index.html"
+    },
+    {
+      "src": "/disclaimer-ocae/",
+      "dest": "https://ocae-funnel.vercel.app/disclaimer-ocae/index.html"
+    },
+    {
+      "src": "/ocae",
+      "dest": "https://ocae-funnel.vercel.app/ocae/index.html"
+    },
+    {
+      "src": "/ocae/",
+      "dest": "https://ocae-funnel.vercel.app/ocae/index.html"
+    },
+    {
+      "src": "/ocae/disclaimer",
+      "dest": "https://ocae-funnel.vercel.app/ocae/disclaimer.html"
+    },
+    {
+      "src": "/ocae/disclaimer/",
+      "dest": "https://ocae-funnel.vercel.app/ocae/disclaimer.html"
+    },
+    {
+      "src": "/ocae/privacy-policy",
+      "dest": "https://ocae-funnel.vercel.app/ocae/privacy-policy.html"
+    },
+    {
+      "src": "/ocae/privacy-policy/",
+      "dest": "https://ocae-funnel.vercel.app/ocae/privacy-policy.html"
+    },
+    {
+      "src": "/ocae/termini-di-servizio",
+      "dest": "https://ocae-funnel.vercel.app/ocae/termini-di-servizio.html"
+    },
+    {
+      "src": "/ocae/termini-di-servizio/",
+      "dest": "https://ocae-funnel.vercel.app/ocae/termini-di-servizio.html"
+    },
+    {
+      "src": "/ocaeckout",
+      "dest": "https://ocae-funnel.vercel.app/ocaeckout/index.html"
+    },
+    {
+      "src": "/ocaeckout/",
+      "dest": "https://ocae-funnel.vercel.app/ocaeckout/index.html"
+    },
+    {
+      "src": "/ocaetyorder",
+      "dest": "https://ocae-funnel.vercel.app/ocaetyorder/index.html"
+    },
+    {
+      "src": "/ocaetyorder/",
+      "dest": "https://ocae-funnel.vercel.app/ocaetyorder/index.html"
+    },
+    {
+      "src": "/webinar",
+      "dest": "https://ocae-funnel.vercel.app/webinar/index.html"
+    },
+    {
+      "src": "/webinar/",
+      "dest": "https://ocae-funnel.vercel.app/webinar/index.html"
+    },
+    {
+      "src": "/webinar/openclaw-webinar.ics",
+      "dest": "https://ocae-funnel.vercel.app/webinar/openclaw-webinar.ics"
+    },
+    {
+      "src": "/webinar/openclaw-webinar.ics/",
+      "dest": "https://ocae-funnel.vercel.app/webinar/openclaw-webinar.ics"
+    },
+    {
+      "src": "/webinar/thank-you",
+      "dest": "https://ocae-funnel.vercel.app/webinar/thank-you.html"
+    },
+    {
+      "src": "/webinar/thank-you/",
+      "dest": "https://ocae-funnel.vercel.app/webinar/thank-you.html"
+    },
+    {
+      "src": "/webreplay",
+      "dest": "https://ocae-funnel.vercel.app/webreplay/index.html"
+    },
+    {
+      "src": "/webreplay/",
+      "dest": "https://ocae-funnel.vercel.app/webreplay/index.html"
+    },
+    {
+      "src": "/webreplayover",
+      "dest": "https://ocae-funnel.vercel.app/webreplayover/index.html"
+    },
+    {
+      "src": "/webreplayover/",
+      "dest": "https://ocae-funnel.vercel.app/webreplayover/index.html"
+    },
+    {
+      "src": "/ocae/assets/testimonial-1.png",
+      "dest": "https://ocae-funnel.vercel.app/ocae/assets/testimonial-1.png"
+    },
+    {
+      "src": "/ocae/assets/testimonial-2.png",
+      "dest": "https://ocae-funnel.vercel.app/ocae/assets/testimonial-2.png"
+    },
+    {
+      "src": "/ocae/assets/testimonial-3.png",
+      "dest": "https://ocae-funnel.vercel.app/ocae/assets/testimonial-3.png"
+    },
+    {
+      "src": "/ocae/assets/testimonial-4.png",
+      "dest": "https://ocae-funnel.vercel.app/ocae/assets/testimonial-4.png"
+    },
+    {
+      "src": "/ocae/hero.jpg",
+      "dest": "https://ocae-funnel.vercel.app/ocae/hero.jpg"
+    },
+    {
+      "src": "/ocae/logo.jpg",
+      "dest": "https://ocae-funnel.vercel.app/ocae/logo.jpg"
+    },
+    {
+      "src": "/ocaeckout/assets/offer-image.jpg",
+      "dest": "https://ocae-funnel.vercel.app/ocaeckout/assets/offer-image.jpg"
+    },
+    {
+      "src": "/ocaeckout/index.html.bak",
+      "dest": "https://ocae-funnel.vercel.app/ocaeckout/index.html.bak"
+    },
+    {
+      "src": "/webinar/assets/hero-bg.png",
+      "dest": "https://ocae-funnel.vercel.app/webinar/assets/hero-bg.png"
+    },
+    {
+      "src": "/webinar/assets/riccardo-chi-sono-mobile.jpg",
+      "dest": "https://ocae-funnel.vercel.app/webinar/assets/riccardo-chi-sono-mobile.jpg"
+    },
+    {
+      "src": "/webinar/assets/testimonianza-claudia.jpg",
+      "dest": "https://ocae-funnel.vercel.app/webinar/assets/testimonianza-claudia.jpg"
+    },
+    {
+      "src": "/webinar/assets/testimonianza-gaetano.jpg",
+      "dest": "https://ocae-funnel.vercel.app/webinar/assets/testimonianza-gaetano.jpg"
+    },
+    {
+      "src": "/webinar/assets/testimonianza-writing-pathfinder.jpg",
+      "dest": "https://ocae-funnel.vercel.app/webinar/assets/testimonianza-writing-pathfinder.jpg"
+    },
+    {
+      "src": "/webinar/openclaw-webinar.ics",
+      "dest": "https://ocae-funnel.vercel.app/webinar/openclaw-webinar.ics"
+    },
+    {
+      "src": "/OCAE/(.*)",
+      "dest": "https://ocae-funnel.vercel.app/OCAE/$1"
+    },
+    {
+      "src": "/disclaimer-ocae/(.*)",
+      "dest": "https://ocae-funnel.vercel.app/disclaimer-ocae/$1"
+    },
+    {
+      "src": "/ocae/(.*)",
+      "dest": "https://ocae-funnel.vercel.app/ocae/$1"
+    },
+    {
+      "src": "/ocaeckout/(.*)",
+      "dest": "https://ocae-funnel.vercel.app/ocaeckout/$1"
+    },
+    {
+      "src": "/ocaetyorder/(.*)",
+      "dest": "https://ocae-funnel.vercel.app/ocaetyorder/$1"
+    },
+    {
+      "src": "/webinar/(.*)",
+      "dest": "https://ocae-funnel.vercel.app/webinar/$1"
+    },
+    {
+      "src": "/webreplay/(.*)",
+      "dest": "https://ocae-funnel.vercel.app/webreplay/$1"
+    },
+    {
+      "src": "/webreplayover/(.*)",
+      "dest": "https://ocae-funnel.vercel.app/webreplayover/$1"
+    },
+    {
+      "src": "/__OPENCLAW_ISOLATED_UNIT_ROUTES_END__",
+      "dest": "/__OPENCLAW_ISOLATED_UNIT_ROUTES_END__"
+    },
+    {
+      "handle": "filesystem"
+    }
+  ]
+}
