@@ -10,6 +10,10 @@
       "destination": "https://ocae-funnel.vercel.app/api/ocae-pricing"
     },
     {
+      "source": "/api/stripe-webhook",
+      "destination": "https://ocae-funnel.vercel.app/api/stripe-webhook"
+    },
+    {
       "source": "/webinar/openclaw-webinar.ics",
       "destination": "https://ocae-funnel.vercel.app/webinar/openclaw-webinar.ics"
     },
