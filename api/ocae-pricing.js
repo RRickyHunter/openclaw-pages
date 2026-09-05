@@ -32,7 +32,7 @@ const SCHEDULE = [
   {
     key: 'webinar-offer-647',
     startsAt: '2026-07-14T00:00:00+02:00',
-    endsAt: '2026-08-15T23:59:59+02:00',
+    endsAt: '2026-09-18T23:59:59+02:00',
     price: 647,
     compareAtPrice: 1497,
     timerVisible: true,
@@ -46,7 +46,7 @@ const SCHEDULE = [
 
 const POST_OFFER_DEFAULT = {
   key: 'post-offer-full-1497',
-  startsAt: '2026-08-16T00:00:00+02:00',
+  startsAt: '2026-09-19T00:00:00+02:00',
   endsAt: null,
   price: 1497,
   compareAtPrice: null,
