@@ -4,10 +4,10 @@ PRODID:-//Riccardo Romano//OpenClaw Webinar//IT
 CALSCALE:GREGORIAN
 METHOD:PUBLISH
 BEGIN:VEVENT
-UID:webinar-openclaw-20260916T181500@riccardoromano.biz
+UID:webinar-openclaw-20260918T181500@riccardoromano.biz
 DTSTAMP:20260707T091700Z
-DTSTART;TZID=Europe/Rome:20260916T181500
-DTEND;TZID=Europe/Rome:20260916T194500
+DTSTART;TZID=Europe/Rome:20260918T181500
+DTEND;TZID=Europe/Rome:20260918T194500
 SUMMARY:Webinar OpenClaw - Come smettere di fare tutto da solo
 DESCRIPTION:Webinar gratuito OpenClaw. Riceverai il link Google Meet un'ora prima dell'evento.
 LOCATION:Online su Google Meet

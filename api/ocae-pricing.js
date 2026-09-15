@@ -32,7 +32,7 @@ const SCHEDULE = [
   {
     key: 'webinar-offer-647',
     startsAt: '2026-07-14T00:00:00+02:00',
-    endsAt: '2026-09-18T23:59:59+02:00',
+    endsAt: '2026-09-20T23:59:59+02:00',
     price: 647,
     compareAtPrice: 1497,
     timerVisible: true,
@@ -46,7 +46,7 @@ const SCHEDULE = [
 
 const POST_OFFER_DEFAULT = {
   key: 'post-offer-full-1497',
-  startsAt: '2026-09-19T00:00:00+02:00',
+  startsAt: '2026-09-21T00:00:00+02:00',
   endsAt: null,
   price: 1497,
   compareAtPrice: null,
@@ -122,7 +122,7 @@ function buildResponse(nowMs = Date.now()) {
   };
 }
 
-module.exports = (req, res) => {
+function handler(req, res) {
   if (req.method && req.method !== 'GET') {
     res.setHeader('Allow', 'GET');
     return res.status(405).json({ error: 'Method not allowed' });
@@ -131,7 +131,7 @@ module.exports = (req, res) => {
   const payload = buildResponse();
   res.setHeader('Cache-Control', 'no-store, max-age=0, s-maxage=0');
   return res.status(200).json(payload);
-};
+}
 
-module.exports.buildResponse = buildResponse;
-module.exports.SCHEDULE = SCHEDULE;
+export default handler;
+export { buildResponse, SCHEDULE };

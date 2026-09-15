@@ -294,7 +294,7 @@ async function syncOcaePurchase(session, ocaeContext = null) {
   return { contactId: contact.id, tagName: tagMatch.tagName, productName, purchaseValue };
 }
 
-module.exports = async (req, res) => {
+async function handler(req, res) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return json(res, 405, { error: 'Method not allowed' });
@@ -326,4 +326,6 @@ module.exports = async (req, res) => {
   } catch (error) {
     return json(res, 500, { error: 'Webhook processing failed', detail: error.message || String(error) });
   }
-};
+}
+
+export default handler;

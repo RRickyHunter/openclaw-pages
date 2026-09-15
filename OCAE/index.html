@@ -343,7 +343,10 @@
     window.OCAE_DEFAULT_PRICING = {
       active: {
         ctaLabel: 'Accedi subito',
-        endsAt: '2026-06-28T23:59:59+02:00'
+        price: 647,
+        compareAtPrice: 1497,
+        endsAt: '2026-09-18T23:59:59+02:00',
+        timerVisible: true
       },
       timezone: 'Europe/Rome'
     };
@@ -693,17 +696,26 @@
         return new Intl.NumberFormat('it-IT', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(value);
       }
 
+      function isOfferExpired() {
+        if (!state.active.endsAt) return false;
+        return new Date(state.active.endsAt).getTime() - Date.now() <= 0;
+      }
+
       function renderPrice() {
-        const hasPrice = typeof state.active.price === 'number';
+        const expired = isOfferExpired();
+        const effectivePrice = expired && typeof state.active.compareAtPrice === 'number'
+          ? state.active.compareAtPrice
+          : state.active.price;
+        const hasPrice = typeof effectivePrice === 'number';
         priceEls.forEach((priceEl) => {
-          priceEl.textContent = hasPrice ? formatMoney(state.active.price) : '—';
+          priceEl.textContent = hasPrice ? formatMoney(effectivePrice) : '—';
         });
         if (compareEl) {
-          compareEl.textContent = typeof state.active.compareAtPrice === 'number' ? formatMoney(state.active.compareAtPrice) : '';
+          compareEl.textContent = !expired && typeof state.active.compareAtPrice === 'number' ? formatMoney(state.active.compareAtPrice) : '';
         }
         ctaEls.forEach((ctaEl) => {
           ctaEl.textContent = hasPrice
-            ? `${state.active.ctaLabel || 'Accedi subito'} — ${formatMoney(state.active.price)}`
+            ? `${state.active.ctaLabel || 'Accedi subito'} — ${formatMoney(effectivePrice)}`
             : (state.active.ctaLabel || 'Accedi subito');
           ctaEl.setAttribute('href', '/ocaeckout');
         });
@@ -711,12 +723,37 @@
 
       function stopCountdown(message) {
         countdownEls.forEach((wrap) => {
-          if (wrap) wrap.innerHTML = `<span class="countdown-expired">${message}</span>`;
+          if (!wrap) return;
+          wrap.querySelectorAll('.countdown-item').forEach((item) => {
+            item.style.display = 'none';
+          });
+          let expired = wrap.querySelector('.countdown-expired');
+          if (!expired) {
+            expired = document.createElement('span');
+            expired.className = 'countdown-expired';
+            wrap.appendChild(expired);
+          }
+          expired.textContent = message;
+          expired.style.display = '';
+        });
+      }
+
+      function restoreCountdown() {
+        deadlineEls.forEach((el) => {
+          if (el) el.style.display = '';
+        });
+        countdownEls.forEach((wrap) => {
+          if (!wrap) return;
+          const expired = wrap.querySelector('.countdown-expired');
+          if (expired) expired.style.display = 'none';
+          wrap.querySelectorAll('.countdown-item').forEach((item) => {
+            item.style.display = '';
+          });
         });
       }
 
       function updateCountdown() {
-        if (!state.active.endsAt) {
+        if (state.active.timerVisible === false || !state.active.endsAt) {
           deadlineEls.forEach((el) => {
             if (el) el.style.display = 'none';
           });
@@ -724,9 +761,10 @@
         }
         const diff = new Date(state.active.endsAt).getTime() - Date.now();
         if (diff <= 0) {
-          stopCountdown('Prezzo aggiornato. Il checkout mostra già il nuovo importo.');
+          stopCountdown('Offerta scaduta.');
           return false;
         }
+        restoreCountdown();
         const totalSeconds = Math.floor(diff / 1000);
         const values = {
           days: Math.floor(totalSeconds / 86400),
@@ -742,20 +780,29 @@
         return true;
       }
 
-      renderPrice();
-      updateCountdown();
-      setInterval(updateCountdown, 1000);
+      function renderPricing(data) {
+        if (data && data.active) {
+          state.active = data.active;
+          state.timezone = data.timezone || state.timezone;
+        }
+        renderPrice();
+        updateCountdown();
+      }
 
       fetch('/api/ocae-pricing', { cache: 'no-store' })
         .then((res) => (res.ok ? res.json() : null))
         .then((data) => {
-          if (!data || !data.active) return;
-          state.active = data.active;
-          state.timezone = data.timezone || state.timezone;
-          renderPrice();
-          updateCountdown();
+          if (!data || !data.active) throw new Error('Pricing unavailable');
+          renderPricing(data);
         })
-        .catch(() => {});
+        .catch(() => {
+          renderPricing(fallback);
+        });
+
+      setInterval(() => {
+        renderPrice();
+        updateCountdown();
+      }, 1000);
     })();
   </script>
 
