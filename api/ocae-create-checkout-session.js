@@ -18,20 +18,27 @@ async function createStripeCheckoutSession({ stripeSecretKey, pricingConfig, cus
   const productDescription = 'Accesso a OCAE, 1 mese di ClawRoot, minicorso attivazione e gruppo VIP Telegram';
   const productImage = `${origin}/stripe-assets/ocae-stripe-product.jpg`;
 
+  const lineItem = pricingConfig.stripePriceId
+    ? {
+        price: pricingConfig.stripePriceId,
+        quantity: 1,
+      }
+    : {
+        price_data: {
+          currency: 'eur',
+          unit_amount: Math.round(Number(pricingConfig.price || pricing.basePrice || 0) * 100),
+          product_data: {
+            name: displayName,
+            description: productDescription,
+            images: [productImage],
+          },
+        },
+        quantity: 1,
+      };
+
   const session = await stripe.checkout.sessions.create({
     mode: 'payment',
-    line_items: [{
-      price_data: {
-        currency: 'eur',
-        unit_amount: Math.round(Number(pricingConfig.price || pricing.basePrice || 0) * 100),
-        product_data: {
-          name: displayName,
-          description: productDescription,
-          images: [productImage],
-        },
-      },
-      quantity: 1,
-    }],
+    line_items: [lineItem],
     success_url: successUrl,
     cancel_url: cancelUrl,
     customer_email: customer.email,
@@ -53,6 +60,8 @@ async function createStripeCheckoutSession({ stripeSecretKey, pricingConfig, cus
       tax_amount: '0',
       base_price: String(pricingConfig.price || pricing.basePrice || 0),
       total_amount: String(pricingConfig.price || pricing.total || pricing.basePrice || 0),
+      stripe_price_id: pricingConfig.stripePriceId || '',
+      pricing_key: pricingConfig.key || '',
     },
     custom_text: {
       submit: {
@@ -85,7 +94,7 @@ module.exports = async (req, res) => {
     return json(res, 400, { error: 'Missing required customer fields' });
   }
 
-  const stripeMode = (process.env.STRIPE_MODE || 'test').toLowerCase();
+  const stripeMode = (process.env.STRIPE_MODE || 'live').toLowerCase();
   const useLive = stripeMode === 'live';
   const stripeSecretKey = useLive
     ? (process.env.STRIPE_SECRET_KEY || process.env.STRIPE_LIVE_SECRET_KEY || null)

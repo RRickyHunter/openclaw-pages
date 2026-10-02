@@ -1,6 +1,6 @@
 const TZ = 'Europe/Rome';
 const DEFAULT_CURRENCY = 'EUR';
-const STRIPE_MODE = (process.env.STRIPE_MODE || 'test').toLowerCase();
+const STRIPE_MODE = (process.env.STRIPE_MODE || 'live').toLowerCase();
 
 const SCHEDULE = [
   {
@@ -30,14 +30,14 @@ const SCHEDULE = [
     ctaLabel: 'Accedi subito',
   },
   {
-    key: 'webinar-offer-647',
+    key: 'webinar-offer-997',
     startsAt: '2026-07-14T00:00:00+02:00',
-    endsAt: '2026-09-27T23:59:59+02:00',
-    price: 647,
+    endsAt: '2026-10-07T23:59:59+02:00',
+    price: 997,
     compareAtPrice: 1497,
     timerVisible: true,
     stripePriceId: {
-      live: 'price_1U2w6kEnlub9vBJKKZ1oRohJ',
+      live: 'price_1UM2ZDEnlub9vBJKm7Pbniov',
       test: 'price_1TjdxJEnlub9vBJKYaxJO8tc',
     },
     ctaLabel: 'Accedi subito',
@@ -46,12 +46,15 @@ const SCHEDULE = [
 
 const POST_OFFER_DEFAULT = {
   key: 'post-offer-full-1497',
-  startsAt: '2026-09-28T00:00:00+02:00',
+  startsAt: '2026-10-08T00:00:00+02:00',
   endsAt: null,
   price: 1497,
   compareAtPrice: null,
   timerVisible: false,
-  stripePriceId: null,
+  stripePriceId: {
+    live: 'price_1TtG3kEnlub9vBJKWjuT7UIR',
+    test: 'price_1TjdxJEnlub9vBJKYaxJO8tc',
+  },
   ctaLabel: 'Accedi subito',
 };
 
