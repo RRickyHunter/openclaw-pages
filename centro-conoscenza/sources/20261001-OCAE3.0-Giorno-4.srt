@@ -1,0 +1,4839 @@
+1
+00:00:00,000 --> 00:00:06,700
+ Buona sera a tutti, grazie per essere qua a questo quarto e penultimo appuntamento del workshop
+
+2
+00:00:06,700 --> 00:00:16,640
+ di inizio del percorso Open Claw Activation Experience 3.0. Io sono Riccardo Romano come
+
+3
+00:00:16,640 --> 00:00:29,520
+ sempre, ammettiamo Francesca che è la nostra ritardataria cronica. Ciao Sara.
+
+4
+00:00:29,520 --> 00:00:36,080
+ In questa sessione, la numero quattro, andremo a vedere non ancora l'orchestrazione di agenti,
+
+5
+00:00:36,080 --> 00:00:41,320
+ poi vedremo, ma strumenti e conoscenze in un solo sistema, assolutamente sì, perché andremo a
+
+6
+00:00:41,320 --> 00:00:49,280
+ vedere, diciamo, quelle che sono le specifiche un pochino più dettagliate sulle skill software.
+
+7
+00:00:49,280 --> 00:00:54,680
+ Vi assoluto la puntata precedente, così vi rinfresco un po' la memoria. Allora,
+
+8
+00:00:54,680 --> 00:01:01,040
+ nella sessione tre abbiamo visto i vostri compiti a casa e per fare questi compiti a casa vi avevo
+
+9
+00:01:01,040 --> 00:01:08,240
+ dato in aiuto questa slide, dove un po' di domande vi avrebbero aiutato a definire quelli
+
+10
+00:01:08,240 --> 00:01:14,840
+ che sono i vostri processi, le vostre priorità e, insomma, il primo punto in cui si potrebbe
+
+11
+00:01:14,840 --> 00:01:22,440
+ decidere di utilizzare l'AI. Poi abbiamo fatto il ripasso, andando a ribadire cosa è un comando,
+
+12
+00:01:22,440 --> 00:01:28,240
+ cos'è una skill, cos'è un workflow, colgo l'occasione per dire anche una cosa. Il comando,
+
+13
+00:01:28,240 --> 00:01:35,880
+ in generale, è quello che tu scrivi dentro alla chat con chat GPT, con il vostro bot e quant'altro,
+
+14
+00:01:35,880 --> 00:01:43,880
+ ma possiamo definire comando, questo ve lo voglio dire, anche quello che lancia una skill,
+
+15
+00:01:43,880 --> 00:01:49,520
+ è il comando che lancia la skill, ok? Quindi in generale comando definiamo qualunque cosa noi
+
+16
+00:01:49,520 --> 00:01:56,240
+ scriviamo dalla linea di comando nella nostra chat e si può chiamare anche comando, il famoso
+
+17
+00:01:56,240 --> 00:02:02,320
+ slash, non l'avete visto usare no? Ieri slash generafattura, quello lì è un comando, è proprio
+
+18
+00:02:02,320 --> 00:02:09,160
+ quello il suo nome. Detto questo, skill e workflow li abbiamo già iniziati ad improdurre da un paio
+
+19
+00:02:09,160 --> 00:02:15,560
+ di giorni, quindi doveva esserci già piuttosto chiaro in quanto meno come concetto logico. Poi
+
+20
+00:02:15,560 --> 00:02:24,240
+ abbiamo visto i tipi di skill, skill logica, quella semplice che in generale ragiona e trasforma testi
+
+21
+00:02:24,240 --> 00:02:31,440
+ e informazioni. Abbiamo visto che c'è la skill software che usa gli strumenti esterni attraverso
+
+22
+00:02:31,440 --> 00:02:38,760
+ l'API e poi la skill orchestratrice che è un misto di queste due skill precedenti, usare skill
+
+23
+00:02:38,760 --> 00:02:44,840
+ logica e skill software. Abbiamo visto la differenza tra skill logica e skill software,
+
+24
+00:02:44,840 --> 00:02:49,400
+ qua vado veloce perché dovreste ricordarvi, non l'avevo appena detto. La skill software la
+
+25
+00:02:49,400 --> 00:02:56,240
+ rivedremo oggi perché andiamo a vedere nello specifico le skill software. Abbiamo visto che
+
+26
+00:02:56,240 --> 00:03:01,960
+ cosa è un mcp, perché là fuori si parla tanto di mcp, a voi in questo momento non interessa più
+
+27
+00:03:01,960 --> 00:03:08,960
+ di tanto, ma sappiate che poi vi potrete collegare negli strumenti che vedono a disposizione e poi
+
+28
+00:03:08,960 --> 00:03:13,720
+ siamo andati a vedere come nasce una skill, questo fa parte di quel processo che vi ho detto a essere
+
+29
+00:03:13,720 --> 00:03:20,020
+ un po' più complesso per chi non è abituato a lavorare in termini di algoritmi. E poi stavo
+
+30
+00:03:20,020 --> 00:03:25,640
+ ragionando con un collega prima di iniziare questo appuntamento, c'è una differenza sostanziale
+
+31
+00:03:25,640 --> 00:03:32,400
+ tra i processi aziendali e il processo che ti porta ad utilizzare un AI. Perché dico questo?
+
+32
+00:03:32,400 --> 00:03:39,000
+ Perché io vi sto facendo ragionare intanto sui vostri processi aziendali, perché quando vi ho
+
+33
+00:03:39,000 --> 00:03:48,920
+ dato questo suggerimento qua, questo fa parte dei processi aziendali e anche dei vostri processi
+
+34
+00:03:48,920 --> 00:03:54,360
+ personali, cosa fai davvero, quali passaggi ti servono, vorresti togliere quant'altro. Però i
+
+35
+00:03:54,360 --> 00:04:00,280
+ processi aziendali sono diversi dai processi che poi andete a mettere giù con le skill. Perché?
+
+36
+00:04:00,280 --> 00:04:08,320
+ Perché abbiamo visto che per noi esseri umani, di ieri molto banalmente, la fattura deve avere il
+
+37
+00:04:08,320 --> 00:04:14,280
+ numero progressivo, giusto? Per noi esseri umani è easy, andiamo a vedere il numero a cui eravamo
+
+38
+00:04:14,280 --> 00:04:19,920
+ arrivati fino a finire il gioco. Per noi è super easy. Per un sistema automatico non è così
+
+39
+00:04:19,920 --> 00:04:26,160
+ super easy, bisogna costruirgli questa memoria. Perciò da un processo aziendale che potrebbe
+
+40
+00:04:26,160 --> 00:04:31,360
+ essere, non so, arriva il cliente, c'è il pagamento, controllo che si è stato fatto, controllo
+
+41
+00:04:31,360 --> 00:04:35,920
+ che arriva in banto, bla bla bla. Questo è un procedimento aziendale e poi fai gli la fattura e
+
+42
+00:04:35,920 --> 00:04:40,560
+ la fattura si fa. Magari c'è il procedimento anche per generare la fattura. Uno può avere
+
+43
+00:04:40,560 --> 00:04:45,640
+ un software, uno può fare la mano come faccio io e quant'altro. Quindi ci sono due processi
+
+44
+00:04:45,640 --> 00:04:51,520
+ aziendali. Ma quando questi processi aziendali devono essere trasformati in processi da AI,
+
+45
+00:04:51,520 --> 00:05:00,320
+ allora bisogna andare ancora più nello specifico a ragionare come ragionerebbe un computer. Poi
+
+46
+00:05:00,320 --> 00:05:06,880
+ questo ragionamento non dovete scerverlarvi troppo perché come vi ho fatto vedere ieri c'è
+
+47
+00:05:06,880 --> 00:05:12,760
+ l'AI che vi aiuta anche a ragionare. Vi ricordate, poi lo vediamo, però ricordate che vi ho fatto no
+
+48
+00:05:12,760 --> 00:05:18,280
+ so tre o quattro punti di specifiche di quello che dovrebbe fare e poi ho chiesto aiuto all'AI per
+
+49
+00:05:18,280 --> 00:05:24,600
+ generare quella che era la skill. Quindi siamo andati a vedere come nasce una skill reale da un
+
+50
+00:05:24,600 --> 00:05:30,480
+ problema, dobbiamo capire quali sono gli ingressi di questo problema, le regole che abbiamo bisogno che
+
+51
+00:05:30,480 --> 00:05:36,480
+ vengano seguite dalla nostra intelligenza artificiale e poi il tipo di uscita che desideriamo per poi
+
+52
+00:05:36,480 --> 00:05:41,880
+ poter testare. Ieri abbiamo fatto esattamente questo se vi ricordate. Abbiamo creato la skill
+
+53
+00:05:41,880 --> 00:05:49,680
+ per le fatture, tramite esattamente questo tipo di processo e poi l'ho testata. Prima di mandarla,
+
+54
+00:05:49,680 --> 00:05:55,920
+ inviare, l'ho testata. Esempio di skill reali, l'avevo fatto da un po' ieri, saltiamo a piepare
+
+55
+00:05:55,920 --> 00:06:02,200
+ che non c'è problema. La skill live l'abbiamo vista che è stata appunto quella della fatturazione.
+
+56
+00:06:02,200 --> 00:06:09,480
+ Aggiungere capacità al bot è quella caratteristica delle skill. Quando voi create una skill,
+
+57
+00:06:09,480 --> 00:06:17,440
+ prendete un bot base, vi date della conoscenza e quindi cambia il tipo di risposta che vi dà
+
+58
+00:06:17,440 --> 00:06:22,960
+ al bot. Da una risposta generica, diventa una risposta strutturata per come la volete voi.
+
+59
+00:06:22,960 --> 00:06:29,880
+ Quindi dal singolo pezzo al workflow, vuol dire che questo era un esempio, però vuol dire che in
+
+60
+00:06:29,880 --> 00:06:36,640
+ buona sostanza voi fate un pezzettino per volta e quando avete due o tre pezzettini fatti e ve l'ho
+
+61
+00:06:36,640 --> 00:06:43,140
+ fatto vedere ieri, perché io avevo un pezzettino fatto, perché avevo già la skill che mi spedisce
+
+62
+00:06:43,140 --> 00:06:51,240
+ l'email, giusto? Quella lì ce l'avevo già. Quando ho realizzato l'altra skill che creava la fattura,
+
+63
+00:06:51,240 --> 00:06:58,360
+ ho creato la fattura e dopo gli ho detto va bene, fammi anche l'invio di questa fattura. Non era
+
+64
+00:06:58,360 --> 00:07:04,120
+ ancora un workflow automatico, era già un workflow perché è una sequenza di cose che l'ho fatto
+
+65
+00:07:04,120 --> 00:07:10,000
+ fare. Oggi magari lo rendiamo automatico, vi faccio vedere come renderlo automatico e quindi
+
+66
+00:07:10,000 --> 00:07:15,200
+ diventa proprio un workflow fatto ben dall'inizio alla fine, fatto dall'intelligenza artificiale.
+
+67
+00:07:15,200 --> 00:07:22,840
+ Abbiamo visto qual era il compito per oggi, quindi andare a vedere un po' di mettere le prime,
+
+68
+00:07:22,840 --> 00:07:30,440
+ i primi appunti, le prime idee sulla vostra prima skill. Sessione numero quattro. Perciò
+
+69
+00:07:30,440 --> 00:07:35,440
+ abbiamo fatto già quello che abbiamo detto ieri, facciamo ripasto sui tipi di skill,
+
+70
+00:07:35,440 --> 00:07:41,080
+ ma l'avevo appena detto praticamente, andremo a vedere questi step skill evoluta, skill software,
+
+71
+00:07:41,080 --> 00:07:47,440
+ creazione skill live e la repository delle skill. Allora, partiamo come ieri, vediamo i compiti a
+
+72
+00:07:47,440 --> 00:07:54,200
+ casa che avete fatto. Quindi attivatevi pure i microfoni, ditemi cosa avete fatto, se avete
+
+73
+00:07:54,200 --> 00:08:03,600
+ delle immagini o delle robe mele condividete nel gruppo di Telegram e così vediamo di dare un
+
+74
+00:08:03,600 --> 00:08:15,240
+ primo feedback su quello che avete fatto. A me il feedback potrebbe essere altamente negativo,
+
+75
+00:08:15,240 --> 00:08:24,800
+ partendo da che devo capire come condividere una nota. Fai uno screenshot, la cosa più semplice,
+
+76
+00:08:24,800 --> 00:08:38,680
+ facciamo uno screenshot e poi te lo butti sul Telegram. Condividi, file, pbs, pbs standard,
+
+77
+00:08:38,680 --> 00:08:48,000
+ dovrei farci allo stesso, open, via, fatto. Dovrei esserci il cheat. Su Telegram, perfetto,
+
+78
+00:08:48,000 --> 00:08:53,720
+ andiamo a vedere il Telegram, andiamo nel gruppo, qui puoi mente perché te l'ho detto che non ci ho
+
+79
+00:08:53,720 --> 00:09:01,160
+ capito molto. Non importa, non importa, siamo qua per imparare, se nascessimo tutti imparati. Allora,
+
+80
+00:09:01,160 --> 00:09:17,920
+ quindi note, ho messo in finder per me, e adesso note, pbs, voilà. Quindi obiettivo qual è?
+
+81
+00:09:17,920 --> 00:09:23,600
+ Calcolo delle bollette, perfetto. L'ingresso che cosa ti sarà per te? Pagina 2 delle bollette,
+
+82
+00:09:23,600 --> 00:09:30,380
+ con dati e costi, ok. L'output che vuoi è capire i dati che invio per calcolare se la mia offerta
+
+83
+00:09:30,380 --> 00:09:36,840
+ è più vantaggiosa, ok. Vincolo, utilizzare il foglio costi fornito dal fornitore. Farmi presente
+
+84
+00:09:36,840 --> 00:09:43,760
+ se in pagina 2 mancano dati fondamentali come codice pod o pdr e canon erai, ok. Quindi questa
+
+85
+00:09:43,760 --> 00:09:51,000
+ sono le informazioni, diciamo, nude e crude di base che ti sei immaginato per costruire la skill.
+
+86
+00:09:51,000 --> 00:10:03,120
+ Da lì in realtà ho cercato di stare sul più basico possibile, perché poi in realtà domande
+
+87
+00:10:03,120 --> 00:10:09,360
+ ce ne sarebbero due miliardi. Cioè, cose da aggiungere ce ne sarebbero miliardi, perché poi
+
+88
+00:10:09,360 --> 00:10:17,000
+ può valutare anche un'alternativa del mercato che può essere interessante, può andare anche a
+
+89
+00:10:17,000 --> 00:10:26,680
+ concentrarsi di più sul canone fisse, che poi è quello che veramente frega la gente, sapendo che
+
+90
+00:10:26,680 --> 00:10:35,640
+ l'offerta che noi proponiamo ha un prezzo bloccato che tendenzialmente è più vantaggioso del mercato
+
+91
+00:10:35,640 --> 00:10:41,920
+ e così via. E così via. Però sono tutte cose in più. Esattamente, esattamente. Hai fatto benissimo.
+
+92
+00:10:41,920 --> 00:10:47,680
+ Allora ti do non un feedback, ti do un suggerimento, perché il feedback va assolutamente bene. Hai
+
+93
+00:10:47,680 --> 00:10:53,760
+ fatto esattamente quello che ho detto di fare, quindi va benissimo. Allora l'ingresso per te,
+
+94
+00:10:53,760 --> 00:11:04,120
+ mi faccio la fantasia che saranno delle immagini. Scansioni, foto. Tendenzialmente sì. Per questa
+
+95
+00:11:04,120 --> 00:11:11,680
+ parte qua ti sconsiglio di provare ad utilizzare il tuo bot. Te l'ho accendato ieri perché in teoria
+
+96
+00:11:11,680 --> 00:11:20,920
+ il tuo bot ha tutte le capacità per poter imparare ad analizzare una foto. Però ti dico da imprenditore
+
+97
+00:11:20,920 --> 00:11:29,280
+ e non da formatore sull'AI. Da imprenditore quello che devi fare è sempre capire se lo sforzo vale
+
+98
+00:11:29,280 --> 00:11:36,320
+ la candela, ok? In questo caso qua se tu volessi utilizzare il tuo bot, dovresti ricostruire un
+
+99
+00:11:36,320 --> 00:11:45,720
+ processo che hai già pronto su ChudGPT. Mi segui? Quindi se tu dai in pasto a ChudGPT un'immagine e
+
+100
+00:11:45,720 --> 00:11:55,680
+ gli dici estrapolamenti questi dati dall'immagine, ChudGPT te lo fa. Perché ha già la capacità di
+
+101
+00:11:55,680 --> 00:12:00,920
+ analisi dell'immagine enorme, è una roba fighissima, quindi va sicuramente meglio di
+
+102
+00:12:00,920 --> 00:12:09,560
+ quella che tu potresti fare con il tuo bot. E io posso istruire ChudGPT perché mi vada a
+
+103
+00:12:09,560 --> 00:12:15,080
+ recuperare quello che a me effettivamente serve? Perché a me servono tutte le informazioni della
+
+104
+00:12:15,080 --> 00:12:20,320
+ bolletta, mi servono quattro cagate della bolletta. Assolutamente sì. Ti faccio vedere una cosa che
+
+105
+00:12:20,320 --> 00:12:29,440
+ ho fatto oggi. Non è nella funzionalità che stai cercando tu, ma per farti capire che è
+
+106
+00:12:29,440 --> 00:12:40,880
+ intelligente ChudGPT. Allora io oggi ho fatto delle immagini, sapete che io uso ChudGPT per
+
+107
+00:12:40,880 --> 00:12:50,000
+ fare le immagini. Allora quando ho avuto bisogno per esempio qua, guarda, gli ho caricato una
+
+108
+00:12:50,000 --> 00:12:56,760
+ pagina del programma di oggi, programma del giorno, vedi che è diversa da quella che ho
+
+109
+00:12:56,760 --> 00:13:02,280
+ presuntato oggi, ripasso, skill evoluta, ricerca contatti, smontiamo la skill, prospecto router,
+
+110
+00:13:02,280 --> 00:13:09,320
+ memoria di duplicazione. Guarda che istruzione che gli ho dato. La pagina del programma del
+
+111
+00:13:09,320 --> 00:13:14,960
+ giorno va cambiata. Non c'è la casella ricerca contatti, non c'è smontiamo la skill, non c'è
+
+112
+00:13:14,960 --> 00:13:20,760
+ prospecto router, neppure memoria di duplicazione. Farei ripasso, skill evoluta, skill software,
+
+113
+00:13:20,760 --> 00:13:29,160
+ creazione skill live, repository skill. Secondo te per fare questo tipo di azione, poi il
+
+114
+00:13:29,160 --> 00:13:35,320
+ programma del giorno è questo, che è quello che ti ho appena fatto vedere. Ha fatto esattamente
+
+115
+00:13:35,320 --> 00:13:40,280
+ quello che l'ho chiesto. Per fare quello che l'ho chiesto secondo te, ha dovuto capire
+
+116
+00:13:40,280 --> 00:13:45,080
+ quale pagina, tra l'altro qua abbiamo dato più di una, quale pagina mi riferivo, che
+
+117
+00:13:45,080 --> 00:13:52,560
+ tipo di contenuto aveva dentro, dove era quel contenuto, l'ha dovuto capire. Quindi non
+
+118
+00:13:52,560 --> 00:13:57,000
+ devi inventare l'acqua calda. Taggipiti te lo fa già a stappato qua. Quello che dovrai
+
+119
+00:13:57,000 --> 00:14:08,040
+ fare tu, non adesso. Oggi vi voglio far vedere un po' di cose mie così vedete. Anzi, ne
+
+120
+00:14:08,040 --> 00:14:12,280
+ approfitto e ve lo faccio vedere subito, perché è esattamente in quest'ottica. Vi faccio
+
+121
+00:14:12,280 --> 00:14:16,880
+ vedere il codex, che ne ho parlato tante volte di questo codex. Vi ho detto non usatelo perché
+
+122
+00:14:16,880 --> 00:14:24,000
+ potreste fare casini. Però io codex lo sto usando. E come sto usando codex? Codex lo
+
+123
+00:14:24,000 --> 00:14:35,720
+ sto usando qua là. OCAE 3.0 giorno 3. Revisione prima della pubblicazione. Quindi cosa ho fatto?
+
+124
+00:14:35,720 --> 00:14:42,040
+ Questo è il mio lavoro sul mio computer interno. Io ho creato una skill che ho chiamato
+
+125
+00:14:42,040 --> 00:14:52,960
+ preparalezione. E do preparalezione, è il nome del file della registrazione. E lui fa
+
+126
+00:14:52,960 --> 00:14:57,560
+ un po' di cose. L'ho preparato localmente, ho conservato l'originale, bla bla, video,
+
+127
+00:14:57,560 --> 00:15:03,920
+ trascrizione e sottotitoli. Questa roba qua me la fa lui. Poi la pubblicazione è in attesa
+
+128
+00:15:03,920 --> 00:15:09,880
+ della tua scelta, bla bla bla bla. La skill preparalezione chiede risolvere questo cosa.
+
+129
+00:15:09,880 --> 00:15:14,800
+ C'è di preparare una versione con i dati rimossi e poi proseguire a pubblicare l'exporto
+
+130
+00:15:14,800 --> 00:15:18,680
+ attuale. Vabbè, andiamo a vedere che cazzo mi ha detto. Motivo della revisione. Il video
+
+131
+00:15:18,680 --> 00:15:25,600
+ mostra nel test della skill il nome e l'indirizzo di un'azienda partecipante che è esattamente
+
+132
+00:15:25,600 --> 00:15:32,960
+ il permesso che ho chiesto a Francesca quando le ho chiesto se potevamo mettere le cose.
+
+133
+00:15:32,960 --> 00:15:36,760
+ Quindi, passaggio audio, pronuncia anche l'indirizzo e mail, richiesta una serie di
+
+134
+00:15:36,760 --> 00:15:43,040
+ modifici, bla bla bla. Quindi, test mostra, generazione, editoriale. Perfetto. Quindi,
+
+135
+00:15:43,040 --> 00:15:51,800
+ questa cosa qua va bene, questa cosa qua va bene. Perciò, io adesso le dico, va tutto
+
+136
+00:15:51,800 --> 00:16:06,400
+ bene, ti do il permesso di proseguire. Quindi, qua adesso sta usando Charge GPT,
+
+137
+00:16:06,400 --> 00:16:13,920
+ perché il codex è Charge GPT. Quindi, procedo con l'exporto attuale, registro la tua produzione
+
+138
+00:16:13,920 --> 00:16:19,240
+ della pubblicazione, poi avvio upload v-mail, pacchetto e consegna a Selen. Qua cosa sta
+
+139
+00:16:19,240 --> 00:16:24,320
+ facendo? Questa è una super mega skill, la famosa skill orchestratrice che vi ho detto.
+
+140
+00:16:24,320 --> 00:16:35,760
+ Qui sta orchestrando più pezzettini perché io ho fatto una skill che mi va a trascrivere
+
+141
+00:16:35,760 --> 00:16:47,920
+ il test. Ho fatto una skill che mi genera i titoli. Ho fatto una skill che mi va a creare
+
+142
+00:16:47,920 --> 00:16:55,320
+ i metadata editoriali, le informazioni editoriali. Ho fatto una skill che va a consegnare direttamente
+
+143
+00:16:55,320 --> 00:17:03,160
+ al mio Telegram, su Selen, i dati che vengono estrapolati alla fine di tutto questo aggeggio.
+
+144
+00:17:03,160 --> 00:17:10,080
+ Ho fatto una skill che si collega a vimeo e mi carica la registrazione del video su
+
+145
+00:17:10,080 --> 00:17:17,400
+ vimeo. Vedete quante skill ho fatto per fare un unico processo. Però da cosa sono partito?
+
+146
+00:17:17,400 --> 00:17:22,200
+ Mi serve questa cosina qua. Magari in questo caso potrei essere partito dalla skill che
+
+147
+00:17:22,200 --> 00:17:27,160
+ mi carica il video su vimeo. Così io non devo aprire vimeo, c'ha già i permessi, sa già
+
+148
+00:17:27,160 --> 00:17:33,880
+ dove andare. Posso dire semplicemente mettere dentro questa cartella e la skill fa. Mi evita
+
+149
+00:17:33,880 --> 00:17:38,920
+ di andare su vimeo e fare tutte le cose io. Quindi poi quella ho detto cosa mi potrebbe
+
+150
+00:17:38,920 --> 00:17:43,560
+ servire dopo? Ah questa cosa qua e ho aggiunto. Poi ho aggiunto, ho aggiunto, ho aggiunto prima,
+
+151
+00:17:43,560 --> 00:17:48,120
+ ho aggiunto dopo ed è venuto fuori questa orchestrazione. Ed è esattamente il procedimento
+
+152
+00:17:48,120 --> 00:17:53,760
+ che sto suggerendo a voi. Iniziate da un pezzettino che vi può servire immediatamente e poi andate
+
+153
+00:17:53,760 --> 00:18:02,760
+ avanti. Quindi qua ha fatto le robe che doveva fare, adesso mi sta caricando la lezione su
+
+154
+00:18:02,760 --> 00:18:09,040
+ vimeo. Poi vi faccio vedere anche il resto, perché quando finisce qua su codex si passa
+
+155
+00:18:09,040 --> 00:18:16,560
+ su selen. Perciò capite perché vi dico fate un pezzettino una volta? Perché ragionando
+
+156
+00:18:16,560 --> 00:18:21,320
+ un pezzettino piccolo poi lo potete aggiungere ad un altro pezzettino piccolo. Nel tuo caso
+
+157
+00:18:21,320 --> 00:18:29,080
+ ti dico, secondo me dovrai fare o una skill o comunque all'inizio, visto che ti sto sconsigliando
+
+158
+00:18:29,080 --> 00:18:36,920
+ di mettere subito il codex, potrai usare chatgpt, gli dai 10 immagini alla volta e ti fai analizzare
+
+159
+00:18:36,920 --> 00:18:43,080
+ tutto quanto, gli dai l'accesso al tuo google drive tanto per intenderci e ti può creare
+
+160
+00:18:43,080 --> 00:18:48,280
+ direttamente un file con le celle di cui hai bisogno. E anche in questo giro ti faccio
+
+161
+00:18:48,280 --> 00:18:55,000
+ vedere cosa sto facendo io, perché questa roba qua per voi deve essere pratica, dovete
+
+162
+00:18:55,000 --> 00:19:03,920
+ capire dove potete applicare le cose che vi sto insegnando. Fatemi pensare in che chat
+
+163
+00:19:03,920 --> 00:19:12,800
+ è, tipo questo qua. Vi ho dato a disposizione un file, giusto? Vi ricordate? Il file non
+
+164
+00:19:12,800 --> 00:19:19,360
+ l'ho creato io, l'ho fatto creare a chatgpt. Le ho detto cosa dovevo fare e poi qua c'è
+
+165
+00:19:19,360 --> 00:19:27,720
+ apri il foglio e controllalo. Quindi qua non ho usato selen, qui ho usato chatgpt. Mi
+
+166
+00:19:27,720 --> 00:19:33,080
+ ha fatto i ragionamenti, stavo ragionando con lei, allora ho detto vabbè sai che c'è,
+
+167
+00:19:33,080 --> 00:19:38,160
+ fammelo direttamente tu, esissimo. Poi l'ho controllato, ovviamente c'era stato il mio
+
+168
+00:19:38,160 --> 00:19:45,000
+ giro, perché subito c'erano le regole sbagliate, le formule sbagliate, eccetera. E ieri quando
+
+169
+00:19:45,000 --> 00:19:48,520
+ poi vi ho detto che l'avrei controllato e quant'altro, non solo l'ho controllato ma
+
+170
+00:19:48,520 --> 00:19:54,400
+ poi gli ho detto, fammi due caselle di esempio in modo tale che gli studenti sappiano come
+
+171
+00:19:54,400 --> 00:19:59,080
+ si utilizza. A parte il fatto che poi nella teoria di vita migliorata c'è la guida,
+
+172
+00:19:59,080 --> 00:20:03,780
+ no? Ok? Quindi avete la guida, avete detto tutto quanto, questo non l'ho creato io da
+
+173
+00:20:03,780 --> 00:20:09,880
+ zero, o meglio l'ho creato io da zero a livello concettuale, a livello operativo me l'ha creato
+
+174
+00:20:09,880 --> 00:20:17,000
+ chatgpt. Va bene? Quindi tu potresti fare esattamente la stessa cosa, la puoi istruire
+
+175
+00:20:17,000 --> 00:20:24,520
+ dicendola. Ok, io adesso uso questa chat per fornirti una serie di immagini, tu mi devi
+
+176
+00:20:24,520 --> 00:20:30,640
+ estrapolare esattamente questi dati e gli chiedi i dati. Però io a quel punto devo avere quella
+
+177
+00:20:30,640 --> 00:20:36,160
+ chat sempre facilmente reperibile, posso fare la stessa cosa con la valutazione dell'usato,
+
+178
+00:20:36,160 --> 00:20:42,080
+ posso fare la stessa cosa con esattamente, anche perché ugualmente la valutazione dell'usato
+
+179
+00:20:42,080 --> 00:20:51,240
+ non mi serve una skill ne niente, chatgpt già lo fa. Se io metto un dato prodotto particolare
+
+180
+00:20:51,240 --> 00:20:58,400
+ che è poco conosciuto, chat, l'ho fatto oggi banalmente, adesso io qua non vi posso condividere
+
+181
+00:20:58,400 --> 00:21:07,440
+ il mio chat gpt, ma io chat dopo chat l'ho messo perché ne abbiamo già parlato, il
+
+182
+00:21:07,440 --> 00:21:14,960
+ modello in condizioni perfette. Esattamente hai già visto che funziona eccetera eccetera,
+
+183
+00:21:14,960 --> 00:21:21,960
+ quello che avrai da fare è creare delle cartelle dove io mi ritrovo le chat subito, sennò
+
+184
+00:21:21,960 --> 00:21:30,240
+ non ci diventa matto ritrovare la chat. Quello potresti usare dei progetti, ma non è quella
+
+185
+00:21:30,240 --> 00:21:35,280
+ la difficoltà, non è trovare la chat, la chat vai qua e se l'hai dato eccetera e la
+
+186
+00:21:35,280 --> 00:21:42,640
+ trovi. Ok, posso dare un nome? Sì, una volta che c'hai questa roba qua, metti che l'abbia
+
+187
+00:21:42,640 --> 00:21:52,320
+ fatto con l'intelligenza artificiale, se è segnata lei, le idee, i nomi. Io poi, non so,
+
+188
+00:21:52,320 --> 00:22:00,320
+ questa qua l'ho data io, ho dato qua tre puntini, rename e la chiami come vuoi. Quindi quello
+
+189
+00:22:00,320 --> 00:22:07,560
+ lì non è difficile, il difficile, e te lo rimanisco ancora una volta, sarà inserire
+
+190
+00:22:07,560 --> 00:22:14,960
+ quel processo che fai con chat GPT dentro un sistema. Ci sono dei pezzi che potrai fare
+
+191
+00:22:14,960 --> 00:22:25,840
+ interamente con chat GPT e tra l'altro caffeina, abbiamo deciso che si chiama così oggi Francesca,
+
+192
+00:22:25,840 --> 00:22:33,080
+ la caffeina lo sta usando molto in questo senso qua, però non è ancora all'interno
+
+193
+00:22:33,080 --> 00:22:38,180
+ di un sistema. Se lo vuoi mettere all'interno del sistema, probabilmente devi utilizzare
+
+194
+00:22:38,180 --> 00:22:44,320
+ una roba che si funziona 24 su 7, che è quello che vi sto suggerendo io. Ragionate con chat
+
+195
+00:22:44,320 --> 00:22:51,320
+ GPT così, questa roba qua è easy e poi andate ad utilizzare Selen, nel mio caso, quando
+
+196
+00:22:51,320 --> 00:22:59,560
+ c'è bisogno che questa roba qua sia sempre attiva. La fattura è una cosa che è propedeutica
+
+197
+00:22:59,560 --> 00:23:06,000
+ e devi utilizzare sempre dall'oggi a domani, quindi ci sta che lo faccio al Selen, nel
+
+198
+00:23:06,000 --> 00:23:11,480
+ tuo caso, eccetera. La fattura voglio essere libero di poterla fare io, quando sono anche
+
+199
+00:23:11,480 --> 00:23:16,400
+ in giro, non davanti al computer, in prima battuta. In seconda battuta deve essere automatica.
+
+200
+00:23:16,400 --> 00:23:23,080
+ Se un cliente mi acquista un prodotto e paga su Stripe alle 3 di notte, non devo essere
+
+201
+00:23:23,080 --> 00:23:28,680
+ io che faccio la fattura, ci deve essere un sistema che mi manda dal pagamento di Stripe
+
+202
+00:23:28,680 --> 00:23:35,440
+ a Selen le informazioni e su questo ci doveva pensare, ovviamente non l'ho ancora fatto,
+
+203
+00:23:35,440 --> 00:23:41,320
+ ci doveva essere un sistema che funziona 24/7, non devo esserci io, ok? E non deve esserci
+
+204
+00:23:41,320 --> 00:23:45,640
+ soprattutto sempre il computer acceso perché altrimenti, perché io ho detto un attimo
+
+205
+00:23:45,640 --> 00:23:49,960
+ al computer "eh, vi siete distanti", oddio, non funziona più nulla.
+
+206
+00:23:49,960 --> 00:23:57,320
+ Nel mio specifico non mi viene in mente un qualcosa che debba essere attivo 24/7, se
+
+207
+00:23:57,320 --> 00:24:07,800
+ non forse la possibilità di rispondere automaticamente, ma è pericolosissimo secondo me.
+
+208
+00:24:07,800 --> 00:24:13,800
+ Un pezzettino per folta Alessandro, veramente. In questo momento, per quello che mi hai detto
+
+209
+00:24:13,800 --> 00:24:21,000
+ tu, anche io ti dico che non vedo parti, no? Magari dove devono essere 24/7, ma vedrai
+
+210
+00:24:21,000 --> 00:24:27,720
+ che poi la fame viene mangiando, vedrai che poi arriva anche quella necessità lì. Chiudo
+
+211
+00:24:27,720 --> 00:24:35,400
+ un attimo prima di passare alla domanda di Caffeina, vi stavo facendo vedere il codex,
+
+212
+00:24:35,400 --> 00:24:41,840
+ vediamo un po'. Allora, ha fatto due file modificati, blablabla, etc. Quindi adesso
+
+213
+00:24:41,840 --> 00:24:50,120
+ ha completato la fase che vi avevo fatto vedere io, ha già validato e inviato a Selen un
+
+214
+00:24:50,120 --> 00:24:56,080
+ file zippato, vediamo cosa ha fatto. Questo è un automatismo, vediamo un po' se è andata
+
+215
+00:24:56,080 --> 00:25:05,720
+ su Selen, voilà. Cosa ha fatto in questo caso qua? Io ho deciso di passare da quello
+
+216
+00:25:05,720 --> 00:25:11,320
+ che faccio sul computer, perché il file video in questo momento lo edito ancora io, ok?
+
+217
+00:25:11,320 --> 00:25:18,480
+ Sono un solopreneur, faccio tutto io. Quindi io mi edito il file della registrazione, poi
+
+218
+00:25:18,480 --> 00:25:24,600
+ lo do in pasto a questa procedura qua, però una volta che mi ha fatto la procedura sul
+
+219
+00:25:24,600 --> 00:25:28,720
+ computer, io voglio uscire di prima possibile dal mio computer, voglio andare online che
+
+220
+00:25:28,720 --> 00:25:38,040
+ posso fare tutto online. Quindi faccio passare questo file zip che ha un contenuto, lo faccio
+
+221
+00:25:38,040 --> 00:25:42,400
+ passare direttamente a Selen ed è esattamente quello che ha fatto. Io questo comando non
+
+222
+00:25:42,400 --> 00:25:49,520
+ glielo ho dato, scusate, questo comando io non glielo ho dato, glielo ho dato direttamente
+
+223
+00:25:49,520 --> 00:25:56,400
+ Codex, va bene? Quindi, ricevuto, procedo con validezione, bla bla, questa roba che sta
+
+224
+00:25:56,400 --> 00:26:02,360
+ facendo e quindi aggiornamento centro conoscenza completato. Adesso io cosa faccio? Su Selen
+
+225
+00:26:02,360 --> 00:26:24,560
+ ho un altro flusso, quindi faccio /carica-lezione e magari ne dico anche ocae3.0 giorno 3. E
+
+226
+00:26:24,560 --> 00:26:31,880
+ qua inizia il secondo flusso. Cosa fa il secondo flusso? E' un'altra skill orchestratrice
+
+227
+00:26:31,880 --> 00:26:41,480
+ che va a prendere i dati che le sono stati passati dal Codex perché io ho creato un centro
+
+228
+00:26:41,480 --> 00:26:50,160
+ conoscenza dove praticamente memorizzo tutti i video che faccio e sto andando a fare tutta
+
+229
+00:26:50,160 --> 00:26:56,120
+ una serie di cose. Una delle cose è caricare il video nella piattaforma dei corsi, quella
+
+230
+00:26:56,120 --> 00:27:06,760
+ dove voi usufruite dei video, mi va a creare la descrizione del corso, mi va a creare il
+
+231
+00:27:06,760 --> 00:27:14,480
+ goal del corso, i goal sono quelle domande a cui avete risposto, che avete visto nella
+
+232
+00:27:14,480 --> 00:27:21,280
+ struttura del corso iniziale e quindi va a fare un po' di cose. Poi è perfetto, magari
+
+233
+00:27:21,280 --> 00:27:26,280
+ non ancora, quindi qua mi dicevo "ho trovato un blocco corretto, manca il goal didattico",
+
+234
+00:27:26,280 --> 00:27:31,280
+ vedete qua mi ha trovato che manca un goal, lo prepara direttamente lei, quindi gestisce
+
+235
+00:27:31,280 --> 00:27:41,640
+ Selen la creazione di questo goal da mettere nella lezione, ma per farvi capire alla fine
+
+236
+00:27:41,640 --> 00:27:53,840
+ di questo processo io mi troverò pronto diverse cose, mi troverò pronto il file dentro qua
+
+237
+00:27:53,840 --> 00:28:00,680
+ dentro, quindi vedrete che quando è finito questo processo non ci saranno più due video,
+
+238
+00:28:00,680 --> 00:28:07,640
+ ma ce ne saranno tre e saranno preparati esattamente in questo modo qua. Network Error, aspetta
+
+239
+00:28:07,640 --> 00:28:23,800
+ un attimo, fammi fare, probabilmente devo, ok, andiamo un po'. Aspetta che devo rientrare,
+
+240
+00:28:23,800 --> 00:28:53,640
+ ok. Ok. Allora, alla fine ci sarà questa struttura. Cosa vuole? OCA, to send attivation,
+
+241
+00:28:53,640 --> 00:29:01,320
+ allora. Ci sarà questa struttura qua, quindi, e io non ho fatto nulla, anche per questi
+
+242
+00:29:01,320 --> 00:29:07,160
+ esempi che vi sto facendo vedere, io non c'ho messo mano, vedete? Mi fa la descrizione,
+
+243
+00:29:07,160 --> 00:29:12,280
+ già fatta benino in HTML con una struttura, e indovinate per fare questa struttura che
+
+244
+00:29:12,280 --> 00:29:25,000
+ l'ho usata, usata la scrivi che abbiamo fatto nella CAE 2.0. Mi ha creato il goal, individua
+
+245
+00:29:25,000 --> 00:29:29,800
+ il tuo processo minimo di valore, scegli un processo operativo su cui lavorare per primo,
+
+246
+00:29:29,800 --> 00:29:34,760
+ preferendo quello che ti assorbe di più, il tempo, energia, attenzione. Vi sembra allineato
+
+247
+00:29:34,760 --> 00:29:43,120
+ con quello che vi ho detto nella lezione numero 2, sì o no? Sì o sì? Sì. Non c'ho messo
+
+248
+00:29:43,120 --> 00:29:51,520
+ mano, ha fatto tutto il mio sistema, ok. Quindi immaginate quanto tempo io sto risparmiando
+
+249
+00:29:51,520 --> 00:29:56,960
+ ogni volta, sennò io dovrei prendere il file, dovrei andare a caricarlo su Vimeo, dovrei
+
+250
+00:29:56,960 --> 00:30:03,640
+ venire qua, creare la lezione, metterci il file dentro, metterci tutto quello che serve,
+
+251
+00:30:03,640 --> 00:30:08,480
+ farmi una descrizione, eccetera, eccetera. Creare il goal tutto a manina dovrei fare.
+
+252
+00:30:08,480 --> 00:30:14,480
+ Invece qua è tutto fatto dalla intelligenza artificiale. Poi, prefly tratta, la lezione
+
+253
+00:30:14,480 --> 00:30:19,280
+ è pronta dal tuo contenuto ma manca da conferma sul goal prima del caricamento. Allora, il
+
+254
+00:30:19,280 --> 00:30:23,960
+ goal del giorno a te è, il goal progetto è una micro skill MWP. Vuoi approvare questo
+
+255
+00:30:23,960 --> 00:30:29,240
+ goal, caricare la lezione? Ditemi voi, lo approvo questo goal di ieri? Quale è stato
+
+256
+00:30:29,240 --> 00:30:40,160
+ il compito che vi ho assegnato? È stato questo? Sì? Bene, approviamo. Allora, uno e carica,
+
+257
+00:30:40,160 --> 00:30:50,000
+ carica, senza, allegati. Adesso continuiamo a fare quello che dobbiamo fare e poi vi faccio
+
+258
+00:30:50,000 --> 00:30:57,200
+ vedere cosa ha fatto. Quindi, poi il prossimo step che io voglio per questo flusso è che
+
+259
+00:30:57,200 --> 00:31:01,360
+ io non ci devo mettere più becco. Adesso vedete che sto ancora facendo dei controlli
+
+260
+00:31:01,360 --> 00:31:06,520
+ qui e là. Non ci voglio mettere più becco, quindi dovrà essere un processo automatico
+
+261
+00:31:06,520 --> 00:31:11,960
+ che parte. Io gli dico, prepara lezione sul computer e dopo un po' mi trovo la lezione
+
+262
+00:31:11,960 --> 00:31:19,240
+ caricata senza che io gli dica niente sul sito. E non solo sul sito, vi ricordo che
+
+263
+00:31:19,240 --> 00:31:27,360
+ voi avete a disposizione una cosa che si chiama dashboard. Quindi quella roba lì mi dovrà
+
+264
+00:31:27,360 --> 00:31:31,680
+ compilare anche la dashboard e aggiornare anche la dashboard. Allora, vi rendete conto
+
+265
+00:31:31,680 --> 00:31:37,000
+ quanto è complicato tutto questo giro? Ma ve lo sto facendo vedere perché questo non
+
+266
+00:31:37,000 --> 00:31:43,840
+ è il risultato di un giorno di pensieri, è il risultato di mesi in cui dico adesso
+
+267
+00:31:43,840 --> 00:31:49,320
+ faccio questo pezzettino, adesso faccio questo, adesso faccio quest'altro. Sara, tu che sei
+
+268
+00:31:49,320 --> 00:31:57,200
+ dello CAE 1.0, c'era la dashboard per voi sulle lezioni quando hai iniziato? Non c'era.
+
+269
+00:31:57,200 --> 00:32:00,600
+ Sara ha pagato anche di meno rispetto a voi. Però, cazzo, questi sono tutti servizi in
+
+270
+00:32:00,600 --> 00:32:09,240
+ più che sto dando ai nuovi studenti. E oggi, stanotte, l'ho modificata questa. Prima,
+
+271
+00:32:09,240 --> 00:32:16,600
+ se voi andavate qua, potevate aprire lezioni e basta. Adesso potete usare questi pulsanti
+
+272
+00:32:16,600 --> 00:32:24,760
+ per filtrare le lezioni direttamente da qua. Sto aggiungendo cose. Ve lo faccio vedere
+
+273
+00:32:24,760 --> 00:32:31,440
+ perché adesso il funzionamento è un po' diverso. Ho utilizzato i tag per filtrare,
+
+274
+00:32:31,440 --> 00:32:36,960
+ quindi avete il filtro per tool, non so. Abbiamo parlato di Google Calendar, dove è? In questa
+
+275
+00:32:36,960 --> 00:32:45,240
+ lezione qua. Oppure, voglio vedere tutti i moduli dei tutorial operativi. Vediamo qua.
+
+276
+00:32:45,240 --> 00:32:51,320
+ Ecco, qua c'è un errore, forse no. Filto per tool, buono, eccoli qua. Ci sono i filtri
+
+277
+00:32:51,320 --> 00:33:00,640
+ per tool anche. Mi fa vedere quindi nei tutorial operativi dove ho pagato di codex. Configurate
+
+278
+00:33:00,640 --> 00:33:04,960
+ il controllo remoto di codex da smartphone, c'è a GPT, arriva sul computer, prima prova
+
+279
+00:33:04,960 --> 00:33:13,200
+ della codex. Questa roba prima non si poteva fare dal catalogo lezioni, adesso sì. Perciò
+
+280
+00:33:13,200 --> 00:33:18,160
+ ho dovuto fare delle modifiche anche nella skill che vi sto facendo vedere. Vi sto facendo
+
+281
+00:33:18,160 --> 00:33:22,960
+ vedere questa roba non per spaventarvi, ma per farvi vedere che figata si può arrivare
+
+282
+00:33:22,960 --> 00:33:30,460
+ a fare, quanto tempo io sto andando a risparmiare grazie a queste skill che ho creato. Mi sta
+
+283
+00:33:30,460 --> 00:33:38,400
+ servendo tempo per crearle, sì, magari anche tanto, ma capite io adesso ho caricato 41
+
+284
+00:33:38,400 --> 00:33:45,960
+ lezioni. Quindi il tempo che io ho speso a creare tutto questo skill che vi sto facendo
+
+285
+00:33:45,960 --> 00:33:55,200
+ vedere, ne vale la spesa per un imprenditore? Sì, è questo il mio ambito, quello che ho
+
+286
+00:33:55,200 --> 00:34:01,320
+ di fare. Io adesso le lezioni non devo più dedicarmi a caricarle online, sto risparmiando
+
+287
+00:34:01,320 --> 00:34:12,040
+ un botto, un botto di tempo, ok? Andiamo a vedere che punto ha SLN, dove si ha SLN?
+
+288
+00:34:12,040 --> 00:34:25,560
+ SLN è qua, fatto. OCAE3, giorno tre, caricato senza legati. Lezione, creare, testare, blablabla,
+
+289
+00:34:25,560 --> 00:34:33,800
+ ok. Hai aggiornato anche il dashboard delle lezioni, andiamo. Intanto andiamo a vedere
+
+290
+00:34:33,800 --> 00:34:48,040
+ se effettivamente l'ha messo su. Quindi andiamo su OCAE, torniamo indietro. Voilà, terza
+
+291
+00:34:48,040 --> 00:34:57,680
+ lezione caricata. Creare, testare una skill MVP per fatture. Io me la rido ragazzi, però
+
+292
+00:34:57,680 --> 00:35:08,080
+ ditemi una cosa. Vi sto dando un po' di illuminazione, datemi un feedback da questo punto di vista.
+
+293
+00:35:08,080 --> 00:35:19,000
+ Pensavate che si potesse fare sta roba prima di partecipare? No, perché io personalmente
+
+294
+00:35:19,000 --> 00:35:26,640
+ non potevo, ma per conoscenza mia, immaginare il quantitivo di roba che si può fare, che
+
+295
+00:35:26,640 --> 00:35:36,480
+ può fare in autonomia. Il problema è che vedo… Un secondo, dammi una soluzione e
+
+296
+00:35:36,480 --> 00:35:45,000
+ non mi dare il problema. Eh no, non è la soluzione. Non riesco ancora. La questione
+
+297
+00:35:45,000 --> 00:35:53,680
+ da risolvere è capire come poterlo applicare. No, come lo faccio io? Come questa roba qua
+
+298
+00:35:53,680 --> 00:36:04,640
+ riesco poi a cucirla su addosso a quello che serve a me. E' la parte più difficile Alessandro.
+
+299
+00:36:04,640 --> 00:36:10,880
+ E' lì su cui insisto parecchio, perché è la parte più complessa per voi altri. Ma
+
+300
+00:36:10,880 --> 00:36:16,080
+ è la parte che una volta che capite la potete insegnare ai vostri collaboratori, la potete
+
+301
+00:36:16,080 --> 00:36:21,480
+ applicare da adesso in avanti, la potete insegnare alle AI. Cioè una volta che voi entrate in
+
+302
+00:36:21,480 --> 00:36:28,840
+ questa attica qua, la vostra vita lavorativa fa un salto di qualità enorme. La fatica
+
+303
+00:36:28,840 --> 00:36:34,400
+ che state facendo adesso è perché non siete abituati a ragionare in certi termini, innanzitutto
+
+304
+00:36:34,400 --> 00:36:41,000
+ in termini di processi. Quindi, imparate a organizzarvi il lavoro in processi aziendali.
+
+305
+00:36:41,000 --> 00:36:48,400
+ E poi, adesso che state conoscendoli, piano piano vi fate i vari pezzettini, perché quello
+
+306
+00:36:48,400 --> 00:36:55,520
+ che vi sto dando a disposizione è mostruosamente, brutalmente, importantissimamente efficace.
+
+307
+00:36:55,520 --> 00:37:06,280
+ Vedete? Non so se vi siete resi conto di quello che sto facendo io. Non ho iniziato 50 anni
+
+308
+00:37:06,280 --> 00:37:11,360
+ fa questa roba qua. Io ho iniziato a febbraio. La differenza magari mia è che sono un po'
+
+309
+00:37:11,360 --> 00:37:19,320
+ diverso. Sono già, avendo fatto studi tecnici, abituato a ragionare in workflow, in algoritmi,
+
+310
+00:37:19,320 --> 00:37:25,080
+ mettiamo così. Poi ho un'esperienza importante da business coach, quindi so le problematiche
+
+311
+00:37:25,080 --> 00:37:30,600
+ degli imprenditori. E indovinate un po', cari imprenditori, normalmente non siamo capaci
+
+312
+00:37:30,600 --> 00:37:35,720
+ di fare i processi. Siamo capaci a metterci lì, a lavorare come delle bestie, ma fare
+
+313
+00:37:35,720 --> 00:37:42,760
+ i processi non siamo capaci. Ben, banalmente io penso che per fare una roba del genere
+
+314
+00:37:42,760 --> 00:37:49,520
+ riscrivere il trasfiletto, fare il riassunto di quello che si è detto. La trascrizione
+
+315
+00:37:49,520 --> 00:37:53,880
+ di quello che si è detto non è il riassunto, è la trascrizione totale di quello che si
+
+316
+00:37:53,880 --> 00:38:02,320
+ è detto. Farne il riassunto, dividerlo in paragrafi, andarlo a postare, mettere il link,
+
+317
+00:38:02,320 --> 00:38:13,160
+ poterlo, poi inviare. Banalmente la lezione, il corso, sono due ore e mezza, ma almeno
+
+318
+00:38:13,160 --> 00:38:18,480
+ se dovessi farlo tu ex novo, secondo me non ti bastano due ore e mezza.
+
+319
+00:38:18,480 --> 00:38:22,120
+ No, no, perché solo per trascriverlo dicivorebbero.
+
+320
+00:38:22,120 --> 00:38:28,920
+ Scusami, due ore solo per trascriverlo, perché è uguale. Cioè a meno che mentre non sei
+
+321
+00:38:28,920 --> 00:38:36,880
+ un battitore, hai lavorato per il sistema legale americano che batti a macchina alla
+
+322
+00:38:36,880 --> 00:38:41,880
+ velocità della luce, allora a quel punto due ore di lezione, hai la trascrizione perché
+
+323
+00:38:41,880 --> 00:38:49,040
+ mentre sei lì, digiti. A parte il fatto che parlare, ascoltare e scrivere contemporaneamente
+
+324
+00:38:49,040 --> 00:38:54,200
+ pauri. Io malamente non riesco a fare una per volta, forse anche fatta male.
+
+325
+00:38:54,200 --> 00:38:59,040
+ Esatto, i maschetti siamo limitati, le donne sono più brave da questo punto di vista.
+
+326
+00:38:59,040 --> 00:39:04,280
+ Esatto, molto banalmente sono due, tre, quattro ore, perché tra lezione, tra trascrizione
+
+327
+00:39:04,280 --> 00:39:10,640
+ più tutto il lavoro che c'è dietro. Esatto, esatto. Quindi mi fa piacere che stai intuendo
+
+328
+00:39:10,640 --> 00:39:15,120
+ quanto tempo io sto risparmiando su questa roba, perché questa roba ve la faccio vedere
+
+329
+00:39:15,120 --> 00:39:21,040
+ per me, non per far vedere che io sono figo, per farvi vedere che io ho iniziato da zero
+
+330
+00:39:21,040 --> 00:39:27,240
+ qualche tempo fa e sto realizzando delle robe incredibili. Ragazzi, credetemi, io quando
+
+331
+00:39:27,240 --> 00:39:33,560
+ ho iniziato, ho intravisto le possibilità quando il mio mentore mi ha fatto conoscere
+
+332
+00:39:33,560 --> 00:39:39,560
+ questo sistema, ma poi da lì a quello che sto realizzando c'è un monte di roba in più.
+
+333
+00:39:39,560 --> 00:39:45,400
+ È stato semplice fare tutto quanto, no, io mi ci sto dedicando anima e corpo a questo,
+
+334
+00:39:45,400 --> 00:39:50,360
+ però mi ci sto dedicando anima e corpo perché ho deciso di insegnare, ho deciso di avere
+
+335
+00:39:50,360 --> 00:39:56,440
+ altri imprenditori a cui traslare queste mie conoscenze. Poi, siete in un percorso,
+
+336
+00:39:56,440 --> 00:40:01,000
+ non siete in un corso, ricordatevi, perché ho creato un percorso? Ho creato un percorso
+
+337
+00:40:01,000 --> 00:40:07,520
+ perché questa roba qua, se io vi faccio un corso dopo domani non la usate, giusto? Se
+
+338
+00:40:07,520 --> 00:40:15,080
+ invece io organizzo un percorso dopo domani, siete question and answer di Riccardo. Io
+
+339
+00:40:15,080 --> 00:40:20,560
+ quando ho iniziato a utilizzare questa cosa qua nella skill ho avuto questa difficoltà,
+
+340
+00:40:20,560 --> 00:40:25,880
+ oppure sono nella direzione giusta, sono nella direzione sbagliata? Nel percorso fate
+
+341
+00:40:25,880 --> 00:40:31,320
+ le cose che vi servono a voi altri, quindi vi aiuta anche a capire, perché ci sono io,
+
+342
+00:40:31,320 --> 00:40:35,880
+ perché ci sono anche gli altri ragazzi che hanno già frequentato, a capire quello che
+
+343
+00:40:35,880 --> 00:40:40,400
+ potreste realizzare nel vostro ambito. Io oggi ti ho dato un suggerimento pratico,
+
+344
+00:40:40,400 --> 00:40:45,680
+ l'ho detto per la tua skill che stai costruendo va benissimo perché hai fatto esattamente
+
+345
+00:40:45,680 --> 00:40:52,360
+ quello che ti ho chiesto, questa qua, l'ingresso, sai già come gestirla adesso perché ti ho
+
+346
+00:40:52,360 --> 00:40:56,400
+ dato il suggerimento di farlo con chat gpt e di non andare a sprecare il tuo tempo con
+
+347
+00:40:56,400 --> 00:41:01,640
+ il tuo bot. Poi tutto il resto capirai se lo vuoi fare con chat gpt o se lo vuoi fare
+
+348
+00:41:01,640 --> 00:41:10,480
+ con il tuo bot, va bene? Ma è un percorso. Un'altra roba, perché tu ho visto che il
+
+349
+00:41:10,480 --> 00:41:21,400
+ tuo chat comunica con il bot in automatico mediante Telegram, ma io posso quindi dirgli
+
+350
+00:41:21,400 --> 00:41:35,920
+ di mandare la faccia con chat gpt perché non ho necessità di. Adesso stavo ragionando
+
+351
+00:41:35,920 --> 00:41:43,240
+ di mandare un backup in modo che se un domani devo recuperarmi la bolletta di Nunzia, mi
+
+352
+00:41:43,240 --> 00:41:48,320
+ vado a mettere Nunzia perché magari Nunzia vuole rivedere la sua situazione. Basta che
+
+353
+00:41:48,320 --> 00:41:52,120
+ rischio di suo chat, questa è sua memoria, quindi se la va a riprendere direttamente
+
+354
+00:41:52,120 --> 00:41:57,080
+ da lì non serve neanche che comunica. Poi visto che ti ho detto, passi i dati dentro
+
+355
+00:41:57,080 --> 00:42:03,840
+ a un file, molto banalmente è un file di tipo foglio di calcolo, così è strutturato
+
+356
+00:42:03,840 --> 00:42:09,560
+ ed è facile da poterci fare statistiche e quant'altro. Poi anche se non si dovesse
+
+357
+00:42:09,560 --> 00:42:15,600
+ ricordare o anche se dovesse cambiare strumento, tu hai il file di riperimento e vai a dire
+
+358
+00:42:15,600 --> 00:42:22,840
+ ok vanni a cercare in quel file lì il cliente pincopalla. Quindi sì, assolutamente, però
+
+359
+00:42:22,840 --> 00:42:27,600
+ puoi farlo con chat gpt, tra l'altro adesso non so se avete notato, ma se voi fate una
+
+360
+00:42:27,600 --> 00:42:35,000
+ nuova chat, anche online, c'è chat e c'è work. Chat è il funzionamento normale che
+
+361
+00:42:35,000 --> 00:42:42,480
+ avete sempre utilizzato, work è il funzionamento quello più in stile open claw che vi sto dicendo,
+
+362
+00:42:42,480 --> 00:42:52,640
+ e quello che vi permette di collegarvi a strumenti esterni. Work vi consuma crediti, quindi utilizzate
+
+363
+00:42:52,640 --> 00:42:58,920
+ principalmente la chat e poi usate work solo quando è necessario. Anche perché di mandare
+
+364
+00:42:58,920 --> 00:43:03,720
+ le foto quant'altro penso che sia inclusa senza che tu debba pagare per fare. Esatto,
+
+365
+00:43:03,720 --> 00:43:09,120
+ se quella roba la fai con una chat normale. Quando fate una chat di tipo work, qua a lato
+
+366
+00:43:09,120 --> 00:43:14,440
+ del titolo vi viene scritto work, quindi le potete anche riconoscere quando ci passate
+
+367
+00:43:14,440 --> 00:43:43,520
+ e vedete che io qua non c'è no mezza di work, sono tutte chat normali. Poi potrebbe
+
+368
+00:43:43,520 --> 00:43:46,320
+ essere un database, potrebbe essere qualunque altra cosa.
+
+369
+00:43:46,320 --> 00:43:48,360
+ Quindi devo collegarli il drive?
+
+370
+00:43:48,360 --> 00:43:55,840
+ Sì, però su chat GPT è super facile collegare il drive. Il problema è collegarlo su tutto
+
+371
+00:43:55,840 --> 00:43:56,840
+ vuoto.
+
+372
+00:43:56,840 --> 00:44:02,840
+ C'è una lezione lì per collegare tutto quello che è Google?
+
+373
+00:44:02,840 --> 00:44:07,480
+ C'è una lezione, però lì ce l'avevo già collegata. Potrebbe essere da rifare, ma non
+
+374
+00:44:07,480 --> 00:44:13,360
+ so come fare. Adesso devo capire. Magari faccio un appuntamento con uno di voi e registro la
+
+375
+00:44:13,360 --> 00:44:19,840
+ cosa e poi ne faccio un video per gli altri. Potrebbe essere una soluzione. Perché il problema
+
+376
+00:44:19,840 --> 00:44:26,040
+ è che il vostro bot lavora su un server remoto e dargli i permessi da un server remoto è
+
+377
+00:44:26,040 --> 00:44:31,080
+ più complesso. Invece su chat GPT che lavora comunque dentro il vostro ambiente, dentro
+
+378
+00:44:31,080 --> 00:44:37,160
+ il vostro computer, anche se sul browser, se deve fare una richiesta di accesso a Google
+
+379
+00:44:37,160 --> 00:44:42,800
+ viene direttamente sul browser e istantanea praticamente. Invece sul remoto è un po'
+
+380
+00:44:42,800 --> 00:44:43,800
+ più complesso.
+
+381
+00:44:43,800 --> 00:44:50,500
+ Però, a parte quello, ti volevo far vedere proprio una cosa di questo tipo. Fammi pensare
+
+382
+00:44:50,500 --> 00:44:51,840
+ dove ce l'abbiamo.
+
+383
+00:44:51,840 --> 00:44:58,120
+ Poi, scusami, faccio ancora una domanda su quella cosa là nel frattempo di Google. Ma
+
+384
+00:44:58,120 --> 00:45:05,640
+ tu gli dai l'accesso poi per i permessi per accedere a un account o a quanti account vuoi.
+
+385
+00:45:05,640 --> 00:45:14,560
+ Volendo poi dargli tutti gli account che vuoi, inizia a dargli uno.
+
+386
+00:45:14,560 --> 00:45:19,960
+ No, no, no. Io trerei appunto un account a posta.
+
+387
+00:45:19,960 --> 00:45:21,960
+ Ah, perché non ce l'hai?
+
+388
+00:45:21,960 --> 00:45:26,960
+ No, ho già degli account. Però per esempio per fare tutta questa cosa qua, per non mischiare
+
+389
+00:45:26,960 --> 00:45:30,920
+ le cose, ho messo l'account che uso per Arcaplanet del mio gatto.
+
+390
+00:45:30,920 --> 00:45:40,680
+ Va bene, va bene. Quindi almeno so le cose dove mi arrivano e le trovo facile. Perché
+
+391
+00:45:40,680 --> 00:45:46,720
+ se do la mia mail normale è aperta da vent'anni, c'è dentro di tutto, arrivano in continuazione
+
+392
+00:45:46,720 --> 00:45:47,720
+ rumenta.
+
+393
+00:45:47,720 --> 00:45:53,440
+ Va bene, va bene. Sì, sì, è meglio farlo. Va benissimo così. Vi faccio vedere un'altra
+
+394
+00:45:53,440 --> 00:46:01,200
+ cosa e poi vorrei sentire anche gli altri, visto che ho chiesto chi sto illuminando in
+
+395
+00:46:01,200 --> 00:46:04,440
+ un certo modo. Faccio vedere ancora questa cosa qua, che è esattamente quello che potresti
+
+396
+00:46:04,440 --> 00:46:11,880
+ fare tu ma anche tutti gli altri, ovvero vedi che qua c'è roadmap lavori. Io questa
+
+397
+00:46:11,880 --> 00:46:18,920
+ roadmap non ci ho mai messo mano, c'ho sempre messo mano a chat GPT, però mi sono arrivato
+
+398
+00:46:18,920 --> 00:46:24,920
+ a un punto che io sto costruendo tante cose. Penso che lo abbiate capito, che sto costruendo
+
+399
+00:46:24,920 --> 00:46:29,280
+ tante cose. E sono arrivato in un punto in cui avevo la difficoltà a tenere traccia
+
+400
+00:46:29,280 --> 00:46:35,000
+ di tutto quanto. Cosa ho fatto? Ho detto sai che c'è, un giorno mi sono messo lì,
+
+401
+00:46:35,000 --> 00:46:39,560
+ ho detto guarda sarà meglio che mi aiuti a tenere traccia dei vari lavori tecnici che
+
+402
+00:46:39,560 --> 00:46:45,080
+ io voglio fare, skill, roba di dashboard, il mio centro di controllo e quant'altro.
+
+403
+00:46:45,080 --> 00:46:57,080
+ E da quel giorno lì mi ha creato un file su Google. Se riesco a farlo vedere, mi dai
+
+404
+00:46:57,080 --> 00:47:08,040
+ il link del file di roadmap. Potrei andare anche a cercare su Google, ma posso fare
+
+405
+00:47:08,040 --> 00:47:17,960
+ anche così. Buon, apri file roadmap lavori, guardate. Io non ci ho inserito una lettera
+
+406
+00:47:17,960 --> 00:47:29,200
+ qua dentro, non ci ho inserito una lettera. Ho un po' di cose da fare secondo voi. Al
+
+407
+00:47:29,200 --> 00:47:34,120
+ parco di quello ha fatto la roadmap, ha fatto la sintesi. Io questa roba non l'ho ancora
+
+408
+00:47:34,120 --> 00:47:40,880
+ guardata tanto bene, vi dico la verità, perché ha fatto una leggenda per cercare di farmi
+
+409
+00:47:40,880 --> 00:47:45,840
+ capire magari come l'ho organizzato. Io qua non ci ho messo una virgola, ha fatto
+
+410
+00:47:45,840 --> 00:47:52,040
+ tutto, c'è a GPT, quindi adesso, io come lo sto usando questa roba qua, mi sto fidando,
+
+411
+00:47:52,040 --> 00:47:57,800
+ perciò non ho ancora verificato se effettivamente sta facendo bene le cose. Però siccome sono
+
+412
+00:47:57,800 --> 00:48:05,360
+ tante e aumentano esponenzialmente le cose che dovrei fare, ho creato questo file e ogni
+
+413
+00:48:05,360 --> 00:48:11,140
+ tanto le dico "aggiornami" oppure "aggiorna il file". Oggi per esempio, che è una delle
+
+414
+00:48:11,140 --> 00:48:16,920
+ cose che potreste fare anche voi, le ho chiesto "consulta il file della roadmap ed indichiamo
+
+415
+00:48:16,920 --> 00:48:22,800
+ i quali sarebbero le prossere cose da sviluppare". Quindi di tutta quella pappardella che vi
+
+416
+00:48:22,800 --> 00:48:36,680
+ ho appena fatto vedere, lei mi ha citato 5 punti che secondo lei sono prioritari. Quindi
+
+417
+00:48:36,680 --> 00:48:45,080
+ in questo momento il flusso OCAE 3.0, Core Sprout, è esattamente quello che vi ho fatto
+
+418
+00:48:45,080 --> 00:48:51,200
+ vedere oggi. Quello che vi ho fatto vedere che è partito dal Codex, che poi è andato
+
+419
+00:48:51,200 --> 00:49:01,680
+ su Selen e che ha messo la lezione dentro il corso. E al proposito mi ha anche aggiornato
+
+420
+00:49:01,680 --> 00:49:09,840
+ la Dashboard Lezioni. Quindi se andiamo nella Dashboard Lezioni, facciamo un ripristino,
+
+421
+00:49:09,840 --> 00:49:19,080
+ 42, prima erano 41, con anche l'ultimo punto della OCAE 3.0 Sessione. Questa qua è quella
+
+422
+00:49:19,080 --> 00:49:23,240
+ che abbiamo fatto ieri. Vedo già che c'è un problema da sistemare, perché ha fatto
+
+423
+00:49:23,240 --> 00:49:30,520
+ OCAE 3.0 poi Sessioni, quindi questa cosa deve essere corretta, però avete la sessione
+
+424
+00:49:30,520 --> 00:49:37,600
+ online con le cose che vi dicevo. Telegram, Skill, API, Workflow, ecc. Quindi in questo
+
+425
+00:49:37,600 --> 00:49:45,280
+ super mega hiper skill orchestratrice ho fatto in modo tale che si parte dal mio file editato,
+
+426
+00:49:45,280 --> 00:49:54,100
+ e poi venga tutto fatto in maniera automatica. Poi, ovviamente lei mi ricorda, devo chiudere
+
+427
+00:49:54,100 --> 00:49:58,280
+ questo flusso perché vi ho detto che voglio migliorarlo, voglio automatizzare tutto quanto,
+
+428
+00:49:58,280 --> 00:50:05,120
+ non voglio più intervenire come vi ho fatto vedere adesso. Poi ci sono altre cose, repository
+
+429
+00:50:05,120 --> 00:50:10,720
+ condivisa delle skill, mettere in sicurezza /contatto, Stripe Gateway per la fatturazione
+
+430
+00:50:10,720 --> 00:50:16,160
+ automatica, che è una delle cose che vi sto condividendo adesso, e poi miglioramenti non
+
+431
+00:50:16,160 --> 00:50:23,280
+ bloccanti ecc. Quindi ho anche quello scarico mentale che dicevamo spesso che noi imprenditori
+
+432
+00:50:23,280 --> 00:50:31,200
+ abbiamo difficoltà a tenere tutto tracciato. Cosa devo fare? Questo. C'ho già i quattro
+
+433
+00:50:31,200 --> 00:50:36,640
+ punti principali da affrontare, poi posso dire questo lo faccio prima, questo lo faccio
+
+434
+00:50:36,640 --> 00:50:41,360
+ dopo, poi è mia scelta da imprenditore. Però questa è una delle cose che potete fare già
+
+435
+00:50:41,360 --> 00:50:52,840
+ con CppT adesso. Francesca, non hai ancora detto una parola? Sei spaventata, ti sto illuminando.
+
+436
+00:50:52,840 --> 00:50:55,880
+ Sì, Zegarelli, Zegarelli. L'altra la chiamiamo caffeina oggi.
+
+437
+00:50:55,880 --> 00:51:04,240
+ Ok, allora non ho con me la bandierina quella bianca, non so se è bianca o rossa, sarebbe
+
+438
+00:51:04,240 --> 00:51:12,720
+ più indicata da usare. Cioè, è come se mi stessi parlando oggi, non te, quello che
+
+439
+00:51:12,720 --> 00:51:26,160
+ è, come sto io, Cispadanese. Cioè, io c'ho una confusione oggi assurda. Cioè, passo
+
+440
+00:51:26,160 --> 00:51:31,240
+ di palo in frasca con la testa, oltre a quello che dici tu, a come penso, eh, al fatto che
+
+441
+00:51:31,240 --> 00:51:36,520
+ - cioè, io a un certo punto veramente la più grande difficoltà è dire benissimo.
+
+442
+00:51:36,520 --> 00:51:41,920
+ Quando tu mi hai fatto la domanda, prima ancora di iniziare il percorso, hai detto "ma cosa
+
+443
+00:51:41,920 --> 00:51:45,440
+ ti sarebbe utile?" eccetera, io sono andata subito dritta, mi servirebbe questo, mi servirebbe
+
+444
+00:51:45,440 --> 00:51:50,560
+ questo, mi servirebbe tutto, tutto. E alcune delle cose che ti servirebbero le puoi fare
+
+445
+00:51:50,560 --> 00:51:55,120
+ già con CppT, eh? Sì, no, dico, io oggi non so più cosa mi
+
+446
+00:51:55,120 --> 00:52:02,560
+ serve. Cioè, nel senso che non so qual è la priorità più facile da mettere, da mettere
+
+447
+00:52:02,560 --> 00:52:09,280
+ in campo. Cioè, proprio il guado più totale. Lo so, eh, lasciami dire, visto che di formazione
+
+448
+00:52:09,280 --> 00:52:16,640
+ me ne occupo da anni e so, so come va fatta, c'è una parte, una fase durante i, i corsi,
+
+449
+00:52:16,640 --> 00:52:27,480
+ chiamamola così, nella quale devi destrutturare. Ovvero, vi do delle nozioni nuove, devo disintegrare
+
+450
+00:52:27,480 --> 00:52:33,560
+ un po' di cose che avete in mente e questo crea la confusione di cui stai parlando.
+
+451
+00:52:33,560 --> 00:52:44,200
+ Ok? Poi, eh, mi auguro che avvenga già stasera o domani o comunque in settimana, dovresti
+
+452
+00:52:44,200 --> 00:52:50,720
+ passare in una fase più illuminata, più di ricostruzione. Tant'altro, io sto facendovi
+
+453
+00:52:50,720 --> 00:52:57,320
+ vedere i risultati perché vi sto facendo vedere che sto unendo i puntini, no? Il fatto
+
+454
+00:52:57,320 --> 00:52:59,240
+ di vedere... Quindi, è normale che io non saprei da dove
+
+455
+00:52:59,240 --> 00:53:03,120
+ iniziare? Assolutamente sì, eh, Alessandro è nella stessa,
+
+456
+00:53:03,120 --> 00:53:06,120
+ nella stessa situazione. No, Alessandro, Alessandro, cioè, per me è
+
+457
+00:53:06,120 --> 00:53:10,920
+ un, non so, il guru del, della situazione. No, ma guarda che se, guarda che se...
+
+458
+00:53:10,920 --> 00:53:16,720
+ Alessandro, tanto... Posso dirti, Posso dirti, Francesca, la grande
+
+459
+00:53:16,720 --> 00:53:24,280
+ differenza è dettata dal nulla cosmico che riesce a esprimere un commerciante.
+
+460
+00:53:24,280 --> 00:53:27,480
+ Ok. E allora, è quello?
+
+461
+00:53:27,480 --> 00:53:32,600
+ È semplicemente quello. Io magari... Sì, però tu non sei solo fuffa, capito?
+
+462
+00:53:32,600 --> 00:53:38,920
+ Cioè, tu non, tu hai fatto pure qualcosa. Tu sei arrivato oggi, hai fatto il compito,
+
+463
+00:53:38,920 --> 00:53:41,680
+ ma io non l'ho fatto. E quello...
+
+464
+00:53:41,680 --> 00:53:46,080
+ Ma farai, Francesca. No, ma perché mi mancava proprio, dico, da
+
+465
+00:53:46,080 --> 00:53:50,600
+ dove inizio? Cioè, nel senso, ok, il processo, metti quello lì, metti quello là, lo schemino
+
+466
+00:53:50,600 --> 00:53:56,840
+ che ci ha fatto vedere ieri sera Riccardo, che c'ho lo screen, e quindi, ok, devo soltanto
+
+467
+00:53:56,840 --> 00:54:04,060
+ sostituire le parole, diciamo, per sintetizzare. Però, di fatto, mi manca proprio il concetto
+
+468
+00:54:04,060 --> 00:54:09,120
+ a monte, che forse era quello che diceva Sara, oh, non mi ricordo se Francesca, la difficoltà
+
+469
+00:54:09,120 --> 00:54:14,800
+ più grande. Cioè, io oggi ho la difficoltà più grande. Tipo, è da stamattina, ma in
+
+470
+00:54:14,800 --> 00:54:20,000
+ questi giorni che penso e dico, bene, allora siccome c'è lì la nuvoletta, no, tutto quello
+
+471
+00:54:20,000 --> 00:54:25,360
+ che ci sta proponendo Riccardo, dico, ok, qual è la cosa, la prima, una ne devo scegliere
+
+472
+00:54:25,360 --> 00:54:29,860
+ intanto, no? Ok, qual è la prima cosa che mi aiuterebbe ad integrare?
+
+473
+00:54:29,860 --> 00:54:42,760
+ Io c'ho i fogli, c'ho il pc, c'ho il telefono, e c'ho l'agenda, e c'ho lo schema, e c'ho
+
+474
+00:54:42,760 --> 00:54:49,080
+ tutto quanto spazio. Però nella mia testa c'ha una logica, cioè io oggi so che devo
+
+475
+00:54:49,080 --> 00:54:53,560
+ andare a prendere una cosa, vado lì, vado lì, vado lì, ok? Però è il fatto di andare
+
+476
+00:54:53,560 --> 00:55:00,560
+ lì, lì, lì, lì, lì, che poi alla fine sto così, so full.
+
+477
+00:55:00,560 --> 00:55:05,640
+ E' normale, io molto banalmente ho fatto il compito pensando a un'ipotetica skill
+
+478
+00:55:05,640 --> 00:55:15,000
+ che potesse servirmi, e ho fatto il compito, ma se vai a vedere ho "sbagliato" perché
+
+479
+00:55:15,000 --> 00:55:22,360
+ non è che ho sbagliato, la cosa che ho fatto non serve in realtà come skill, è una cosa
+
+480
+00:55:22,360 --> 00:55:30,000
+ che fa già chat in automatico, quindi lì purtroppo è come ogni cosa bisogna sbatterci
+
+481
+00:55:30,000 --> 00:55:35,580
+ la testa, bam, bam, bam, bam, finché poi il meccanismo non entra. Io guardo quello
+
+482
+00:55:35,580 --> 00:55:42,880
+ che fa lui e capisco l'entità mastodontica del lavoro che gli fa in automatico SLEN,
+
+483
+00:55:42,880 --> 00:55:52,680
+ è di costa, è figata, siamo nel 3000 praticamente, sembra di parlare con IRONMAN, e pian piano
+
+484
+00:55:52,680 --> 00:55:57,720
+ arriveremo sicuramente, però per arrivare ad IRONMAN dobbiamo partire dal sasso e dalla
+
+485
+00:55:57,720 --> 00:56:01,560
+ matita. E' quello che ho fatto poi ricordo, credo.
+
+486
+00:56:01,560 --> 00:56:06,040
+ LM - Ma tu già che hai capito che devi prendere il sasso e la matita, o comunque che ti serve
+
+487
+00:56:06,040 --> 00:56:10,880
+ il sasso e la matita, è già tanta roba, io non so ancora cosa devo prendere, dove
+
+488
+00:56:10,880 --> 00:56:15,440
+ potrei dire. LM - Intanto, poi do la parola a Caffeina
+
+489
+00:56:15,440 --> 00:56:19,880
+ e anche poi a Sara, perché mi fa piacere se comunque ti tranquillizzano da questo punto
+
+490
+00:56:19,880 --> 00:56:24,520
+ di vista, perché magari io mi dici "il cazzo tu sei già laggiù, no?" e fai cose strane.
+
+491
+00:56:24,520 --> 00:56:30,320
+ Loro invece mi ha messo un pochino più vicine. Però ti posso dire, ti faccio questo augurio
+
+492
+00:56:30,320 --> 00:56:37,680
+ perché il quarto, io mi ricordo, nell'OCEA è 1.0, c'era Nerea che è arrivata al quarto
+
+493
+00:56:37,680 --> 00:56:51,640
+ giorno come te, quando si degna di presentarsi con noi. Lei aveva esattamente una confusione,
+
+494
+00:56:51,640 --> 00:56:57,280
+ oddio, che cazzo fa? Poi cosa è successo? Non so cosa è successo, ma evidentemente
+
+495
+00:56:57,280 --> 00:57:03,440
+ ha funzionato questa azione che ti ho detto di decostruzione e ricostruzione. Alla notte
+
+496
+00:57:03,440 --> 00:57:09,720
+ sono messo in mezzo a un sacco di idee e il giorno dopo è arrivata "no, perché ho pensato
+
+497
+00:57:09,720 --> 00:57:14,160
+ questo, quest'altro, potrei fare questo e quest'altro" e aveva tutto ordinato, poi ovviamente
+
+498
+00:57:14,160 --> 00:57:20,680
+ doveva mettersi lì e fare le cose. Però è normale Francesca, ma quello che ti voglio
+
+499
+00:57:20,680 --> 00:57:28,560
+ far notare è che stai avendo un problema con l'AI o stai avendo un problema di tipo imprenditoriale?
+
+500
+00:57:28,560 --> 00:57:36,980
+ Sicuramente l'imprenditoriale prima. È per questo che io dico, non sto facendo un percorso
+
+501
+00:57:36,980 --> 00:57:41,120
+ solo sull'AI. Ti ricordi che quando ho fatto la presentazione dicevo "non è un corso solo
+
+502
+00:57:41,120 --> 00:57:47,160
+ sull'AI", perché questa è la parte più complessa. Però una volta che tu sei abituata
+
+503
+00:57:47,160 --> 00:57:51,880
+ a ragionare in processi, li metti nella tua azienda, la tua azienda funziona meglio, perché
+
+504
+00:57:51,880 --> 00:57:58,880
+ il primo e l'ultimo impiegato che assumi ha i suoi processi e non devi sperderci troppo
+
+505
+00:57:58,880 --> 00:58:06,360
+ tempo, quindi già ti aiuta tantissimo, ma ti aiuta anche a te per in questo caso utilizzare
+
+506
+00:58:06,360 --> 00:58:14,880
+ l'AI. Questo è un effetto collaterale. Il fatto di riuscire a ragionare a processi ti
+
+507
+00:58:14,880 --> 00:58:20,760
+ permette di poter introdurre l'intelligenza artificiale in modo strutturato, ricordati,
+
+508
+00:58:20,760 --> 00:58:26,400
+ perché tanta gente usa cià CPT e ha pezzi sparsi, che è un po' quello che dico durante
+
+509
+00:58:26,400 --> 00:58:32,880
+ la presentazione. Ok, quindi mi sento di darti questa rassicurazione. Adesso ci mancherebbe.
+
+510
+00:58:32,880 --> 00:58:38,480
+ Apriamo i microfoni per Caffeina, così ti dice anche la sua. Cerchiamo di stringare
+
+511
+00:58:38,480 --> 00:58:42,440
+ un po', perché ragazzi volevo fare un botto di roba, ma non ci riusciamo. Abbiamo fatto
+
+512
+00:58:42,440 --> 00:58:49,880
+ una roba veramente interessante, perché comunque questa chiacchierata so che serve a tutti,
+
+513
+00:58:49,880 --> 00:58:56,000
+ ma voglio andare avanti anche con gli argomenti. Allora, cercherò di essere breve. Quello che
+
+514
+00:58:56,000 --> 00:59:02,000
+ mi ha insegnato l'intelligenza artificiale, io che sono creativa, è essere strutturata
+
+515
+00:59:02,000 --> 00:59:09,680
+ e faccio tantissima fatica. Però nel momento in cui, la cosa è, perché noi le cose le
+
+516
+00:59:09,680 --> 00:59:13,400
+ facciamo in automatico, quindi tutti i processi che noi abbiamo non sappiamo che dobbiamo
+
+517
+00:59:13,400 --> 00:59:17,920
+ destrutturarli, perché li facciamo direttamente in automatico. Quindi credo Francesca che la
+
+518
+00:59:17,920 --> 00:59:22,440
+ cosa più difficile sia questa, perché tu dici, ho questo, questo, questo, questo, questo,
+
+519
+00:59:22,440 --> 00:59:28,560
+ questo, bisognerbbe proprio fermarsi e dire, ok, cosa faccio per? Però, vi faccio un esempio
+
+520
+00:59:28,560 --> 00:59:34,080
+ pratico. Io ho fatto un folie XR che serviva a me. Sono partita da una cosa, dopo ho pensato,
+
+521
+00:59:34,080 --> 00:59:37,600
+ aspetta, posso automatizzare questo? Posso automatizzare quello? Posso automatizzare?
+
+522
+00:59:37,600 --> 00:59:42,000
+ Adesso sono rimasta scioccata, ve lo dico in diretta, perché mi è venuta in mente una
+
+523
+00:59:42,000 --> 00:59:48,800
+ cosa, non gli do i dati, gli ho dato un pezzo del mio, come si dice, stratto conto, gli
+
+524
+00:59:48,800 --> 00:59:55,040
+ ho fatto uno screenshot e li faccio, riesci a mettermelo nelle transaction, me l'ha messo
+
+525
+00:59:55,040 --> 01:00:00,160
+ correttamente? Cioè ha fatto tutto in maniera corretta, quindi stamattina io ho inserito
+
+526
+01:00:00,160 --> 01:00:05,480
+ vocina per vocina, adesso mi è venuto in mente, aspetta se posso automatizzare, l'ha
+
+527
+01:00:05,480 --> 01:00:10,960
+ fatto, stamattina non mi era venuto in mente. Quindi, Francesca, posso chiamare Francesca,
+
+528
+01:00:10,960 --> 01:00:18,160
+ vai la cosa? Cioè ci sta, la Sara lo sa, io forse al terzo giorno ho detto ciao, io
+
+529
+01:00:18,160 --> 01:00:26,080
+ me ne vado e non fa per me, nel senso perché ti viene tutta sta cosa, oddio, oddio, oddio
+
+530
+01:00:26,080 --> 01:00:31,280
+ e dopo hai da capire, io partecipo a questo perché comunque, cioè parteciporò anche
+
+531
+01:00:31,280 --> 01:00:38,360
+ i prossimi perché si impara, i processi vengono man mano, ecco, volevo chiudo. L'ultima cosa
+
+532
+01:00:38,360 --> 01:00:43,360
+ che mi era venuta in mente prima, i pagamenti per esempio tipo Stripe, quando tu hai detto
+
+533
+01:00:43,360 --> 01:00:47,840
+ uno fa un pagamento voglio che venga in automatico, però quello esiste già, cioè nel senso se
+
+534
+01:00:47,840 --> 01:00:53,160
+ uno compra una cosa le tre di notte su Amazon o sul tuo sito, la fattura comunque gli arriva,
+
+535
+01:00:53,160 --> 01:00:59,200
+ no? Cioè ci sono alcune cose che sono già automatizzate? Nel mio caso potrei, la decisione
+
+536
+01:00:59,200 --> 01:01:05,640
+ era gli faccio arrivare la fattura da Stripe, gliela faccio io, ho deciso di farla io perché
+
+537
+01:01:05,640 --> 01:01:11,560
+ in Spagna, in questo periodo che stanno introducendo la fatturazione elettronica, chi fa le fatture
+
+538
+01:01:11,560 --> 01:01:18,960
+ a mano non deve fare fatturazione elettronica. Io sono per la semplificazione quindi per
+
+539
+01:01:18,960 --> 01:01:29,720
+ il momento scusate il gesto ma fatturazione elettronica, no? Ok, anche perché mi complicherebbe
+
+540
+01:01:29,720 --> 01:01:33,760
+ la gestione con l'intelligenza artificiale se facessi già la fatturazione elettronica,
+
+541
+01:01:33,760 --> 01:01:38,320
+ se l'ho detto ieri, no? Quindi teniamolo semplice, poi quando mi obbligheranno, allora…
+
+542
+01:01:38,320 --> 01:01:43,440
+ Ok, ok, pensavo che dicesse dal sito perché quello lo fai in automatico, esiste sempre
+
+543
+01:01:43,440 --> 01:01:47,840
+ per semplificare le cose che già funzionano, no? Secondo me lasciamo le che funzionino
+
+544
+01:01:47,840 --> 01:01:53,240
+ già. Esattamente, sì, io ti ho detto un mio caso specifico quindi… Ok, ok, perfetto.
+
+545
+01:01:53,240 --> 01:01:59,120
+ Ok, fai pure la domanda, Francesca? Scusa Francesca, mi illumini con questo, quando
+
+546
+01:01:59,120 --> 01:02:04,480
+ mi hai detto che mi sono creata un file Excel, che cosa ci hai messo? Praticamente l'onere
+
+547
+01:02:04,480 --> 01:02:09,120
+ che ci hai dato da fare Riccardo? No, no, ho creato un file Excel per me in modo che
+
+548
+01:02:09,120 --> 01:02:13,280
+ ci metto tutte le transaction mie. Quelle transaction mi vanno a compilare un foglio
+
+549
+01:02:13,280 --> 01:02:18,560
+ che dopo ho mandato al commercialista, ho tutto il forecast e praticamente credo di
+
+550
+01:02:18,560 --> 01:02:24,880
+ avere tipo 10 tab, però sono tutta un foglio Excel, ci ho creato il CRM, quindi no, veramente
+
+551
+01:02:24,880 --> 01:02:31,840
+ sono proud perché ho fatto questa roba qua che gli Excel sono zero, zero, e quindi mi
+
+552
+01:02:31,840 --> 01:02:36,760
+ ha aiutato veramente un sacco. E adesso che Riccardo stava parlando mi è venuta in mente
+
+553
+01:02:36,760 --> 01:02:41,280
+ questa cosa, l'ho fatta e funziona. Però una cosa che gli ho detto, gli ho detto non
+
+554
+01:02:41,280 --> 01:02:46,720
+ tenere in memoria nessun importo e cancella tutto, quindi anche se vai a correggere non
+
+555
+01:02:46,720 --> 01:02:52,280
+ mettere nessun importo nella chat, in modo che io non voglio niente nella chat. Ok,
+
+556
+01:02:52,280 --> 01:03:00,080
+ sono un po' privacy. Comunque, per Francio, se vuoi te lo faccio vedere, magari ci sentiamo
+
+557
+01:03:00,080 --> 01:03:08,480
+ ieri. Grazie. Magari fai anche così, condividilo nel gruppo, ma magari che così dai una un
+
+558
+01:03:08,480 --> 01:03:15,240
+ po' di ispirazione a tutti. Usatelo il gruppo, perché l'ho creato apposta, siamo i founders,
+
+559
+01:03:15,240 --> 01:03:20,880
+ dobbiamo far girare le informazioni, faremo girare le skill, poi vi parlo anche di questo,
+
+560
+01:03:20,880 --> 01:03:26,760
+ ma usatelo il gruppo perché ci diamo un aiuto all'un l'altro. Sara, anche tu brevissima.
+
+561
+01:03:26,760 --> 01:03:33,360
+ Poi arrivo Francesca. Sì, io ero nella stessa situazione in Francesca quando ho fatto il
+
+562
+01:03:33,360 --> 01:03:42,560
+ corso e ho pensato "sì, è interessante, ma non lo so io". Poi invece vedi gli altri,
+
+563
+01:03:42,560 --> 01:03:50,520
+ poi c'era questo esempio di Nerea che "buuuu". E allora lei poi lavorava sul contenuto. Anche
+
+564
+01:03:50,520 --> 01:03:56,600
+ io ho cominciato a lavorare sul contenuto e adesso anche io ho delle cose semiautomatiche
+
+565
+01:03:56,600 --> 01:04:03,960
+ che faccio con il calendario, con Notion, io uso tanto Notion, perché poi comincio a pensare
+
+566
+01:04:03,960 --> 01:04:10,360
+ anche cos'è che uso tutti i giorni, cos'è che effettivamente posso togliermi. Ti viene
+
+567
+01:04:10,360 --> 01:04:18,440
+ naturale dopo. È vero che quando assumi così tante informazioni e sono tutte lì "buuuu"
+
+568
+01:04:18,440 --> 01:04:26,920
+ e dici "aiuto", ma dopo pian piano le assimili, le digerisci e quando cominci a digerirle
+
+569
+01:04:26,920 --> 01:04:38,040
+ cominciano anche a venire le idee più chiaramente. Mi permetto di dire che normalmente da che
+
+570
+01:04:38,040 --> 01:04:44,200
+ sappia io prima si cammina e poi si corre. Esattamente. Anzi, prima si prende una facciata
+
+571
+01:04:44,200 --> 01:04:50,400
+ in terra. Prima si gattora. Esatto. Prima si prende una facciata in terra, io ne ho prese.
+
+572
+01:04:50,400 --> 01:04:57,040
+ Pongo i dopo col tempo, quindi diamoci tempo e soprattutto cosa è successo anche a me.
+
+573
+01:04:57,040 --> 01:05:00,960
+ Te lo dico perché è successo anche a me ieri mentre che pensavo alla skill, mentre che
+
+574
+01:05:00,960 --> 01:05:05,760
+ pensavo a quello e mentre che ripensavo andando a ritroso quello che ci siamo detti in queste
+
+575
+01:05:05,760 --> 01:05:12,920
+ due ore. Viene da demoralizzarsi, non bisogna demoralizzarsi, anche perché basta mandare
+
+576
+01:05:12,920 --> 01:05:19,720
+ in due messaggi e a tempo debito le soluzioni si trovano. Poi ragazzi, anche per questo
+
+577
+01:05:19,720 --> 01:05:24,160
+ usate il gruppo. Io il gruppo l'ho immaginato proprio per queste situazioni, ovvero sono
+
+578
+01:05:24,160 --> 01:05:29,920
+ demoralizzato perché non riesco a fare niente oppure perché non c'ho ancora capito nulla.
+
+579
+01:05:29,920 --> 01:05:36,400
+ Usate il gruppo, ditelo ragazzi. Questa questione come l'avete risolta, cosa avete fatto? Usatelo
+
+580
+01:05:36,400 --> 01:05:47,240
+ il gruppo. Stiamo usando un po' pochino, perciò usatelo. Prego Francesca. Vi dico ancora una
+
+581
+01:05:47,240 --> 01:05:54,720
+ cosa e poi proseguiamo perché non c'è proprio più materiale se no. Voi state affrontando
+
+582
+01:05:54,720 --> 01:06:03,200
+ delle robe che a livello tecnologico sono lassù in cima. Io le sto rendendo semplici,
+
+583
+01:06:03,200 --> 01:06:10,400
+ il sistema OpenClaw, ma adesso anche gli altri, ve le rendono semplici anche loro. C'è questa
+
+584
+01:06:10,400 --> 01:06:15,240
+ difficoltà iniziale di cui vi ho parlato, ma quando uscite di qua dal percorso sapete
+
+585
+01:06:15,240 --> 01:06:24,120
+ delle robe che la 99% delle persone non conoscono. Ok? E quindi anche questa difficoltà di dire
+
+586
+01:06:24,120 --> 01:06:30,560
+ così. Perché questa roba qua? Ragazzi, io sono un pioniere di questa roba qua perché
+
+587
+01:06:30,560 --> 01:06:36,560
+ ho iniziato a usare OpenClaw da praticamente il momento zero, da quando ho uscito e sto
+
+588
+01:06:36,560 --> 01:06:41,620
+ vedendo i problemi, sto vedendo le robe e sono un pioniere nell'ambito dell'applicazione
+
+589
+01:06:41,620 --> 01:06:47,600
+ a livello imprenditoriale, non a livello di le figherie che si possono fare. Come un imprenditore
+
+590
+01:06:47,600 --> 01:06:52,960
+ può farlo? Parlando con altri imprenditori mi dico che sei tra le due persone, uniche
+
+591
+01:06:52,960 --> 01:06:59,960
+ due persone in Italia, che sentiamo che affronti le cose da quel punto di vista lì. Ok? Siete
+
+592
+01:06:59,960 --> 01:07:11,700
+ di fronte ad una roba gigantesca. Dovete fare l'applauso. Assolutamente sì, dovete fare
+
+593
+01:07:11,700 --> 01:07:17,200
+ l'applauso per essere dati l'opportunità di partecipare a questo percorso. I compiti
+
+594
+01:07:17,200 --> 01:07:22,760
+ a casa l'abbiamo visti. Tre tipi di skill l'abbiamo visti. Skill semplice, skill avvoluta.
+
+595
+01:07:22,760 --> 01:07:29,360
+ Vi ho già fatto l'esempio di quello che significa passare da una skill semplice ad una skill
+
+596
+01:07:29,360 --> 01:07:35,040
+ avvoluta. Quello che vi ho fatto vedere oggi con la mia skill di prepara lezione non vuole
+
+597
+01:07:35,040 --> 01:07:39,720
+ essere un modo per vantarmi di quello che ho fatto, per farvi vedere quanto sono figo.
+
+598
+01:07:39,720 --> 01:07:46,000
+ Vuole essere un modo per farvi vedere a) dove potete arrivare, b) farvi capire la montagna
+
+599
+01:07:46,000 --> 01:07:53,320
+ di tempo che mi sta facendo risparmiare questa skill che ho fatto, farvi capire che non è
+
+600
+01:07:53,320 --> 01:07:59,680
+ stata una passeggiata di salute. Ho fatto un pezzettino per volta, quindi esattamente
+
+601
+01:07:59,680 --> 01:08:06,520
+ come vi sto suggerendo a voi, ma poi fra tre mesi, sei mesi, potrete dire "Caspita,
+
+602
+01:08:06,520 --> 01:08:13,360
+ sono passato da doverci stare quattro ore a farci quattro minuti". Quindi questo è
+
+603
+01:08:13,360 --> 01:08:17,100
+ la roba. Perciò il passaggio da la skill semplice ad una skill avvoluta è esattamente
+
+604
+01:08:17,100 --> 01:08:23,300
+ quello che voglio che facciate. Una trasformazione sola, pochi input, un solo output e poi quella
+
+605
+01:08:23,300 --> 01:08:28,480
+ parte lì potrete iniziare a pensare "ok, questo mi sarà per risolvere questo pezzettino
+
+606
+01:08:28,480 --> 01:08:33,520
+ qua, cosa potrei fare dopo?" e fate esattamente il percorso che ho fatto io. Anche qua c'è
+
+607
+01:08:33,520 --> 01:08:38,040
+ una scaletta che vi fa vedere che cresce quando combina capacità e poi ci sarà la
+
+608
+01:08:38,040 --> 01:08:47,800
+ skill più avvoluta, che è esattamente quella che vi ho fatto vedere oggi. La skill software,
+
+609
+01:08:47,800 --> 01:08:51,680
+ questa parte qua ve la voglio far vedere perché ovviamente ieri ci sono state delle domande,
+
+610
+01:08:51,680 --> 01:08:57,240
+ ma era già in programma la skill software, che è quella, vi ho già detto, che vi permette
+
+611
+01:08:57,240 --> 01:09:07,720
+ di collegarvi a tool esterni tipo CRM, tipo software che gestiscono le mail, tipo il vostro
+
+612
+01:09:07,720 --> 01:09:19,680
+ Google e l'Apple di turno, tutte le robe esterne. Come si fa a fare la skill software? Quindi
+
+613
+01:09:19,680 --> 01:09:26,560
+ andiamo a vedere un caso reale di una skill software. Intanto prima ancora di vedere il
+
+614
+01:09:26,560 --> 01:09:56,480
+ caso reale vi do questo, apreti sesamo. Allora vi do l'accesso a questo, quindi ve lo condivido
+
+615
+01:09:56,480 --> 01:10:13,160
+ nella chat, il link, e condivido anche la password per entrare. Scusate mi sono perso
+
+616
+01:10:13,160 --> 01:10:19,480
+ un attimo un passaggio perché dovevo rispondere a un grande negozio. Stiamo parlando di skill
+
+617
+01:10:19,480 --> 01:10:23,440
+ software, quindi vediamo come costruire una skill software, che è quella che vi permette
+
+618
+01:10:23,440 --> 01:10:32,200
+ di collegarvi verso l'esterno. Allora intanto vi ho messo in chat i dati per poter entrare
+
+619
+01:10:32,200 --> 01:10:36,640
+ in questa repository, che è quella che durante la presentazione vi ho detto che ha un valore
+
+620
+01:10:36,640 --> 01:10:43,440
+ enorme. Perché? Perché qua trovate già delle skill fatte e finite. Esempio io uso
+
+621
+01:10:43,440 --> 01:10:54,280
+ il campaign, lo vede qua, è proprio in primo piano. Però uso Asana come software di progetto,
+
+622
+01:10:54,280 --> 01:11:14,320
+ Asana productivity, Asana tasks, c'è l'avete già. Uso che ne so GHL, GHL non c'è però,
+
+623
+01:11:14,320 --> 01:11:21,120
+ quindi qua trovate già tutta una serie di skill software, che potete utilizzare, ma
+
+624
+01:11:21,120 --> 01:11:30,920
+ non solo software, potrebbero esserci anche delle skill di tipo logico, tipo writer. Avete
+
+625
+01:11:30,920 --> 01:11:36,400
+ master copywriter per esempio. Indominate cosa fa master copywriter, insegna al vostro
+
+626
+01:11:36,400 --> 01:11:47,040
+ bot a essere un copywriter. Ok? Quindi dateci un'occhiata, vedete che qua
+
+627
+01:11:47,040 --> 01:11:54,440
+ sono divise in categorie, quindi guardate un po' se c'è qualcosa che vi possa essere
+
+628
+01:11:54,440 --> 01:12:01,040
+ utile. A parte queste, le skill che sto costruendo io ve le metto a disposizione. Adesso ve le
+
+629
+01:12:01,040 --> 01:12:06,240
+ metto a disposizione a livello manuale, ma poi voglio creare una cosa mia, io qua non
+
+630
+01:12:06,240 --> 01:12:12,680
+ ci posso mettere mano, però voglio creare una cosa mia che abbia questo stesso tipo
+
+631
+01:12:12,680 --> 01:12:18,920
+ di approccio, dove voi potete andare e scaricarvi le skill del caso. Quindi questo è il primo
+
+632
+01:12:18,920 --> 01:12:27,680
+ modo che vi do per le skill software, va bene? Il secondo modo che vi do è chiedete alla
+
+633
+01:12:27,680 --> 01:12:36,840
+ vostra intelligenza artificiale di aiutarvi a creare una skill per open flow, ovviamente,
+
+634
+01:12:36,840 --> 01:12:42,640
+ che vi permetta di collegarvi a un determinato software, potrebbe essere Google, potrebbe
+
+635
+01:12:42,640 --> 01:12:49,120
+ essere come nel mio caso Active Campaign, eccetera. Vi lo chiedete, vi faccio vedere
+
+636
+01:12:49,120 --> 01:13:01,360
+ il trucchetto. Noi andiamo sul nostro chat GPT di turno. Gli dite in chat, facciamo finta
+
+637
+01:13:01,360 --> 01:13:13,960
+ che, Francesca, che software usi quotidianamente? Software? Che intendi? Programmi, CRM, gestionali.
+
+638
+01:13:13,960 --> 01:13:27,120
+ No? Come no? Non usi gestionali, non usi software di nessun tipo. Aspetta, io mi chiamo Francesca,
+
+639
+01:13:27,120 --> 01:13:39,360
+ oggi non lo so. Come era la maglietta? Ma io dovevo venire col cartello, lasciavo la maglietta.
+
+640
+01:13:39,360 --> 01:13:44,160
+ Mi presento, non ho fatto in tempo. Mi ricordo anche che ci dovrebbe essere scritto sulla
+
+641
+01:13:44,160 --> 01:13:53,680
+ maglietta. Oggi chiamatemi Doris, ragazzi. Avete presente i pesce di Nemo? Nuota in nuota
+
+642
+01:13:53,680 --> 01:13:59,920
+ non si ricorda niente. Non è per SPC, ma quello è Dory. Perché Dory è quello che
+
+643
+01:13:59,920 --> 01:14:10,120
+ ha creato la banca Mediolanum. No, scusa, Dory. Sono Dory. Quindi, ritorniamo alla
+
+644
+01:14:10,120 --> 01:14:25,240
+ domanda, se uso un CRM? Sì, se usi qualche software esterno, in azienda. No, ma in azienda
+
+645
+01:14:25,240 --> 01:14:34,680
+ si, pieni di software. Allora, ad esempio c'è il PMS, che è il sistema di prenotazione
+
+646
+01:14:34,680 --> 01:14:45,800
+ nel senso dove gestiamo le prenotazioni, che è di Passpartout, e si chiama Welcome. Allora,
+
+647
+01:14:45,800 --> 01:15:05,600
+ se lo faccio vedere così. Dove si è scritto? Sì. Senza lei, forse. Sì, senza lei, scusa.
+
+648
+01:15:05,600 --> 01:15:16,320
+ Grazie, che mi ha ingrandito. Quì sta diventando molto buio, e sto lasciando una luce. Sì.
+
+649
+01:15:16,320 --> 01:15:21,000
+ Quindi, questo qua, MPI. Ma proprio si sa che è Passpartout. Aspetta, aspetta. A niente,
+
+650
+01:15:21,000 --> 01:15:28,280
+ a niente. Tanto lo capisce. Lo capisce meno male. Basta che gli metti PMS, capisce. Vediamo.
+
+651
+01:15:28,280 --> 01:15:33,520
+ Comunque, tu mi entici, vado, perché io già stavo pensando a una cosa su questa cosa qui,
+
+652
+01:15:33,520 --> 01:15:40,440
+ perché io ho i file delle procedure per l'ombording delle nuove risorse, che li facciamo a manetta,
+
+653
+01:15:40,440 --> 01:15:49,480
+ eccetera, eccetera, eccetera. Pensa se gli metto una skill/agente/non so. Allora, qua
+
+654
+01:15:49,480 --> 01:15:56,200
+ in effetti non ha trovato un Kaiser, è un, hai mai detto che si chiama questo tipo di
+
+655
+01:15:56,200 --> 01:16:17,360
+ Kaiser? PMS? Sì. È italiana questa azienda? Non lo so. È un PMS. Passpartout si scrive.
+
+656
+01:16:17,360 --> 01:16:25,000
+ Eh sì, quello che ti stavo dicendo. Ok. Non mi tornava, sì. Oh, questa è un'ottima
+
+657
+01:16:25,000 --> 01:16:32,480
+ notizia, cara mia, Dory. Grazie. Dory e caffè. Questa è un'ottima notizia, perché il loro
+
+658
+01:16:32,480 --> 01:16:37,240
+ gestionale per strutture ricettive dispone di API pubbliche, perché ha le integrazioni
+
+659
+01:16:37,240 --> 01:16:44,440
+ esterne. Super figo. Molti di questi software non hanno le chiavi pubbliche. Quindi, cosa
+
+660
+01:16:44,440 --> 01:16:51,520
+ dobbiamo fare? Bene, abbiamo trovato la chiave pubblica. E dire, vi dico esattamente quello
+
+661
+01:16:51,520 --> 01:17:10,240
+ che faccio io. Allora, benissimo, è proprio quello. Mi servirebbe un aiuto a creare le
+
+662
+01:17:10,240 --> 01:17:39,880
+ specifiche per realizzare una skill per OpenClaw, che mi permetta di connetterla, di connettere
+
+663
+01:17:39,880 --> 01:17:48,200
+ i due software. Ok? Vedete, uso un linguaggio. In che senso che mi permetta di connettere
+
+664
+01:17:48,200 --> 01:17:56,120
+ i due software? Qual è l'altro? Eh, uno è OpenClaw e uno è il tuo welcome. Ah, scusa.
+
+665
+01:17:56,120 --> 01:18:07,480
+ Ok. Di modo. Ok, quindi, sto utilizzando un linguaggio del tutto naturale, no? Quindi
+
+666
+01:18:07,480 --> 01:18:11,400
+ mi servirebbe un aiuto per creare le specifiche per realizzare una skill per OpenClaw, che
+
+667
+01:18:11,400 --> 01:18:20,480
+ mi permetta di connettere i due software. Ehm, vai. Vediamo cosa mi dice CHUBGBT. Sì, la
+
+668
+01:18:20,480 --> 01:18:24,680
+ stata aggiunta è tutta tala come una skill software, non come una semplice integrazione
+
+669
+01:18:24,680 --> 01:18:29,480
+ API. Prima definiamo bene cosa deve sapere fare OpenClaw con welcome, poi traduciamo
+
+670
+01:18:29,480 --> 01:18:34,080
+ tutto in specifiche tecniche verificabili. Parla da due cose. Documentazione ufficiale
+
+671
+01:18:34,080 --> 01:18:41,040
+ password to welcome e struttura delle operazioni che vuoi esporre a Selen. Allora, per esperienza
+
+672
+01:18:41,040 --> 01:18:47,160
+ vi dico già che sta iniziando a costruirmi uno shuttle, ok? Perché mi sta dicendo vuole
+
+673
+01:18:47,160 --> 01:18:53,520
+ fare la skill software che faccia tutto quanto. Io in questo momento voglio che mi permetta
+
+674
+01:18:53,520 --> 01:19:00,680
+ semplicemente di collegare i due software. Quindi le dirò di non fare tutta quanta
+
+675
+01:19:00,680 --> 01:19:06,820
+ la cosa che mi sta proponendo, no? Perché mi sta proponendo di fare cose strane. Ehm,
+
+676
+01:19:06,820 --> 01:19:12,840
+ quindi te installazione cloud, qualsiasi documentare struttura di questo tipo, blablabla. Chi se
+
+677
+01:19:12,840 --> 01:19:21,560
+ ne frega saltate tutto a piedi pari, non ve ne frega un kaizen. E diciamo ok, però non
+
+678
+01:19:21,560 --> 01:19:38,120
+ mi serve, non mi serve ancora tutta la skill software. Voglio solo realizzare la skill
+
+679
+01:19:38,120 --> 01:20:00,320
+ per le api. Vedete, ho dovuto dire che non doveva fare la strada che stava percorrendo.
+
+680
+01:20:00,320 --> 01:20:06,480
+ Per questo che vi dico la direzione, ricordatemi qual era il mio obiettivo, fornire OpenClaw,
+
+681
+01:20:06,480 --> 01:20:13,020
+ il mio bot, una skill che si possa utilizzare per connettermi a questo software. Non di
+
+682
+01:20:13,020 --> 01:20:20,180
+ crearmi la gestione dei dati. Quello poi sarà una parte che faremo dopo. Voglio la skill
+
+683
+01:20:20,180 --> 01:20:26,200
+ che mi permetta di creare questo collegamento. Infatti, mi ha detto, è là, esatto, allora
+
+684
+01:20:26,200 --> 01:20:32,320
+ restringiamo molto il perimetro. E questa cosa qua che vi dico sempre, tenete a bada
+
+685
+01:20:32,320 --> 01:20:38,160
+ il vostro chatt GPT. Non serve ancora progettare la skill software completa Welcome, con logica
+
+686
+01:20:38,160 --> 01:20:44,960
+ operativa, intenti, workflow, webhook, ti serve prima una skill API. Va bene, la chiama skill
+
+687
+01:20:44,960 --> 01:20:48,160
+ API, benissimo, cioè a livello tecnico permette a OpenClaw di parlare correttamente con Passport
+
+688
+01:20:48,160 --> 01:20:54,080
+ to Welcome. Bene, la farei così, nome provvisorio, Welcome API. Scopo, fornire a OpenClaw un
+
+689
+01:20:54,080 --> 01:20:58,440
+ client affidabile per l'API di Passport to Welcome, dentro la skill autenticazione, costruzione
+
+690
+01:20:58,440 --> 01:21:05,080
+ delle richieste, un po' di disponibili. Vi fa tutta una serie di spara blinda, saltatele
+
+691
+01:21:05,080 --> 01:21:10,320
+ a piepari. Questa separazione secondo me è una migliore, anche miglior, architettualmente
+
+692
+01:21:10,320 --> 01:21:15,160
+ Welcome API, diventa il connettore tecnico ed utilizzabile mentre una fortuna skill Welcome
+
+693
+01:21:15,160 --> 01:21:19,600
+ contiene il comportamento e la logica applicativa. Ok, quindi la skill software in questo caso
+
+694
+01:21:19,600 --> 01:21:26,000
+ per lui è tutto insieme, ok? Benissimo, allora, quindi a questo punto posso procedere direttamente
+
+695
+01:21:26,000 --> 01:21:30,080
+ quella cosa che ti serve, recuperare la documentazione per il retroampleta e iniziare a trasformare
+
+696
+01:21:30,080 --> 01:21:34,840
+ le specifiche di Welcome API, senza progettare tutto il resto. È esattamente questo quello
+
+697
+01:21:34,840 --> 01:21:53,800
+ che voglio. Quindi le dico, ok, procedi, poi mi fornisci il comando da dare a Selen per
+
+698
+01:21:53,800 --> 01:22:09,280
+ realizzare effettivamente la skill nel suo sistema. Dory Dinghy. Scusa, ma tu perché
+
+699
+01:22:09,280 --> 01:22:31,800
+ non usi il microfono? Non uso perché prima mi ha dato dei problemi e quindi giusto oggi
+
+700
+01:22:31,800 --> 01:22:38,000
+ mi ha dato dei problemi, non lo sto usando, però lo uso molto. Procedo in due passaggi,
+
+701
+01:22:38,000 --> 01:22:43,120
+ prima mi pareccavo dalla documentazione ufficiale a autenticazione, base URL, gruppi endpoint
+
+702
+01:22:43,120 --> 01:22:50,040
+ e bla bla, poi ho riscritto un po' di roba, ho ristretto il progetto, aiuto, aiuto, niente
+
+703
+01:22:50,040 --> 01:22:55,880
+ logica alberghiera, niente automazioni, niente webhook per ora. La base verificata è questa,
+
+704
+01:22:55,880 --> 01:23:02,560
+ dispone di API tramite questo dominio. Una scelta importante, non voglio inserire nel
+
+705
+01:23:02,560 --> 01:23:07,040
+ comando un catalogo di un po' il dedotto inventato, la documentazione posto nel ufficiale è raggiungibile,
+
+706
+01:23:07,040 --> 01:23:12,960
+ ma in digitazione web non espone in modo affidabile tutto il contenuto. Se lei deve quindi acquisire
+
+707
+01:23:12,960 --> 01:23:17,200
+ la documentazione ufficiale swopper e costruire il catalogo prima di arrivare, va bene, chi
+
+708
+01:23:17,200 --> 01:23:22,280
+ se ne frega. Quando vedete nomi strani, roba che non sapete, io non so che cazzo è questo
+
+709
+01:23:22,280 --> 01:23:26,920
+ swopper, non so il warac per cosa sia, non ne so niente di questa roba qua. Quindi saltate
+
+710
+01:23:26,920 --> 01:23:33,680
+ la piepari a un bla bla tecnico, non vi interessa niente, ribadisco, i tecnicismi non vi interessa.
+
+711
+01:23:33,680 --> 01:23:39,840
+ Mi interessano magari le cose un pochino più descrittive tipo il comando che sta impostando
+
+712
+01:23:39,840 --> 01:23:45,040
+ per Selen, quindi voglio che tu realizzi nel tuo workspace una nuova skill chiamata WorldCamp
+
+713
+01:23:45,040 --> 01:23:49,880
+ API. Obiettivo, questa non deve essere ancora la skill software completa per gestire Passpartout
+
+714
+01:23:49,880 --> 01:23:54,000
+ WorldCamp, deve essere esclusivamente il layer tecnico API che permetterà ad altri skill
+
+715
+01:23:54,000 --> 01:23:58,520
+ open cloud di comunicare in modo affidabile con Passpartout WorldCamp PMS. In futuro una
+
+716
+01:23:58,520 --> 01:24:04,640
+ skill applicativa WorldCamp potrà usare WorldCamp API ma non implementare una workflow alberghiera,
+
+717
+01:24:04,640 --> 01:24:12,640
+ automazione, aggiornamenti, blablabla. Quindi sta facendo i punti che vi ho dato, obiettivo,
+
+718
+01:24:12,640 --> 01:24:21,560
+ i punti da fare, le regole fondamentali, sta dando già dei dati tecnici, sta dicendo le
+
+719
+01:24:21,560 --> 01:24:28,500
+ varie fasi eccetera eccetera eccetera. Quindi sono pezzi che conoscete già, la struttura
+
+720
+01:24:28,500 --> 01:24:33,600
+ è più o meno quella. Quindi c'è tutta una roba con blablabla tecnici, io vedete salto
+
+721
+01:24:33,600 --> 01:24:42,200
+ tutto a prescindere, via, saltiamo, saltiamo, blablabla, sa meglio lei o lui cosa deve fare
+
+722
+01:24:42,200 --> 01:24:47,800
+ per crearmi una skill API, fine dei giochi, blablabla testi, finito. Non dichiarare se
+
+723
+01:24:47,800 --> 01:24:52,680
+ questa impostazione è un vantaggio importante, Selen dovrà prima trasformare l'API ufficiale
+
+724
+01:24:52,680 --> 01:24:58,040
+ in una base di conoscenza locale della skill e solo dopo programmare il client. È esattamente
+
+725
+01:24:58,040 --> 01:25:03,720
+ il pezzo documentazione specifica API, implementazione che ci interessa anche per il futuro sistema
+
+726
+01:25:03,720 --> 01:25:09,320
+ di generazione delle skill software. Quando Selen restituisce il report in column, soprattutto
+
+727
+01:25:09,320 --> 01:25:14,120
+ mi interessano API catalogate e punti non documentati perché da lì possiamo controllare
+
+728
+01:25:14,120 --> 01:25:18,720
+ se ha davvero letto tutta la documentazione oppure ha fatto una skill generica mascherata
+
+729
+01:25:18,720 --> 01:25:26,520
+ da integrazione webcam. Ok, quindi noi adesso abbiamo questa pappardella di roba, blablabla,
+
+730
+01:25:26,520 --> 01:25:39,880
+ andiamo in cima, copiamo, andiamo da Selen, qua, e diciamo, aspettate che mi è arrivato
+
+731
+01:25:39,880 --> 01:25:47,000
+ il, ok, le diciamo e incogliamo il comando che ci ha dato, voilà, è esattamente tutto
+
+732
+01:25:47,000 --> 01:25:54,480
+ il comando che mi ha dato "ciao GPT", va bene? Ok, adesso ovviamente devo ridicciolire un
+
+733
+01:25:54,480 --> 01:25:59,520
+ po' lo schermo, quindi gli ho dato tutto il comandone totale globale, ci starà un
+
+734
+01:25:59,520 --> 01:26:09,040
+ po' per ovviamente per farlo, però poi mi creerà questa skill API, chiamiamola skill
+
+735
+01:26:09,040 --> 01:26:17,920
+ API, così almeno utilizziamo le stesse nomenclature che avete visto usare da "ciao GPT". Ok,
+
+736
+01:26:17,920 --> 01:26:21,440
+ potete fare questa cosa qua? Potete dire al "ciao GPT" che volete usare un software
+
+737
+01:26:21,440 --> 01:26:30,600
+ che lo volete collegare ad OpenClaw? Sì o no? Sì o sì? Non è sì o no, sì o sì?
+
+738
+01:26:30,600 --> 01:26:35,760
+ Ok, super easy, ricevuto, ma il messaggio si interrompe, va bene, adesso capisce che
+
+739
+01:26:35,760 --> 01:26:42,600
+ ci sono altri messaggi e lavora, perfetto, continuo, ok. Quindi quando un messaggio è
+
+740
+01:26:42,600 --> 01:26:51,080
+ tanto tanto lungo su Telegram viene diviso in più messaggi, quindi a volte ti dice "ah,
+
+741
+01:26:51,080 --> 01:26:55,400
+ non ho capito, non ho interrotto", però poi quando riconosce che sono arrivato tutto va
+
+742
+01:26:55,400 --> 01:27:00,900
+ avanti. Quindi al momento l'unico endpoint verificato
+
+743
+01:27:00,900 --> 01:27:05,880
+ da specifico ufficiale che mi hai dato, il catalogo partirà conservativo e marcherà
+
+744
+01:27:05,880 --> 01:27:11,320
+ il resto come non verificato finché non avremo Swogger reale o export post in un'accessibile.
+
+745
+01:27:11,320 --> 01:27:19,560
+ Questa roba qua non so che cazzo sia, possiamo chiedere al "ciao GPT", giusto per curiosità.
+
+746
+01:27:19,560 --> 01:27:38,720
+ Domanda, cosa sono Swogger reale? Sono due modi diversi per avere la descrizione
+
+747
+01:27:38,720 --> 01:27:43,680
+ tecnica completa dell'EPI. Swogger reale significa documentazione API generata dalla tua specifica
+
+748
+01:27:43,680 --> 01:27:48,520
+ installazione di welcome. In pratica se il tuo domenio fosse ad esempio quello lì potresti
+
+749
+01:27:48,520 --> 01:27:53,180
+ avere una cosa del tipo quello l'ha. Li trovi in endpoint effettivamente disponibile
+
+750
+01:27:53,180 --> 01:27:58,680
+ nella tua installazione versione, quindi probabilmente mi faccio la fantasia che per generare bene
+
+751
+01:27:58,680 --> 01:28:06,760
+ questa skill bisognerà andare a farlo proprio con i corrispettivi reali della tua installazione
+
+752
+01:28:06,760 --> 01:28:12,320
+ di welcome. Vediamo cosa si riesce a fare in questo ambito
+
+753
+01:28:12,320 --> 01:28:21,280
+ qua. Tanto mi dicevi che questa non la usi tu, però pensa per i tuoi collaboratori, ti
+
+754
+01:28:21,280 --> 01:28:27,360
+ sto aprendo un po' gli orizzonti. Poi parleremo dei tuoi collaboratori, però pensa che se
+
+755
+01:28:27,360 --> 01:28:36,720
+ loro usano questa roba qua, ok. Cosa sta combinando Selen? Ok, ha fatto un po' di
+
+756
+01:28:36,720 --> 01:28:43,040
+ test, quindi ho completato la ricognizione e il risultato nessuno fa un modificato benissimo,
+
+757
+01:28:43,040 --> 01:28:47,720
+ sintesi operativa, struttura consigliata, blablablabla eccetera eccetera. Noto importante
+
+758
+01:28:47,720 --> 01:28:52,920
+ command registry AMD va aggiornato solo se vogliamo esporre welcome o el cam EPI come
+
+759
+01:28:52,920 --> 01:28:59,560
+ comando utente. Se resta layer tecnico meglio non inserirlo nel registry, va bene. Ho colpito
+
+760
+01:28:59,560 --> 01:29:06,480
+ un problema banale di partner, scrittura batch, correglio subito in modo atomico. Quando parla
+
+761
+01:29:06,480 --> 01:29:13,360
+ così mi fa un po' ridere perché sembra di sentire parlare un nerd di quelli programmatori
+
+762
+01:29:13,360 --> 01:29:19,080
+ e dico vabbè, vabbè, non ci ho capito un cazzo, ma va bene. Ok, allora la lasciamo
+
+763
+01:29:19,080 --> 01:29:27,480
+ finire. Quando non fa più typing ha finito di fare le cose, fin quando vedete questi
+
+764
+01:29:27,480 --> 01:29:36,040
+ pearling exec eccetera eccetera, vuol dire che sta facendo le sue cose. È un processo
+
+765
+01:29:36,040 --> 01:29:41,000
+ che richiede un po' di tempo perché devo andare ad analizzare l'EPI esterna, la documentazione
+
+766
+01:29:41,000 --> 01:29:47,160
+ e quant'altro, però lasciate lavorare e quando è finito andiamo a vedere. Quindi proseguiamo
+
+767
+01:29:47,160 --> 01:29:56,560
+ con quello che vi voglio finire di condividere. Quindi caso reale lo stiamo costruendo. Compito
+
+768
+01:29:56,560 --> 01:30:06,360
+ per domani. Siamo quindi quasi in chiusura. Compito per domani sarà questo. Pensate ai
+
+769
+01:30:06,360 --> 01:30:18,320
+ software che utilizzate, sia a livello personale e poi anche a livello aziendale. Scegliete
+
+770
+01:30:18,320 --> 01:30:24,560
+ uno di questi software o anche tutti quanti e provate a fare la skill per utilizzare uno
+
+771
+01:30:24,560 --> 01:30:32,320
+ di questi software. Cosa dovete fare? Andarvi a verificare che esistano le API. Quindi questa
+
+772
+01:30:32,320 --> 01:30:38,320
+ parte qua, verifica API e documentazione, è quella che io ho chiesto di fare a ChartGPT.
+
+773
+01:30:38,320 --> 01:30:43,960
+ Gli ho detto il nome del programma, gli ho detto API Documentation e quindi è andato
+
+774
+01:30:43,960 --> 01:30:50,840
+ a cercare, va bene. Quindi dovete verificare se esistono. Se esistono avranno un indirizzo
+
+775
+01:30:50,840 --> 01:30:59,120
+ e quindi poi lui va ad analizzare quell'indirizzo lì, se sono pubbliche. Poi, create la skill
+
+776
+01:30:59,120 --> 01:31:07,760
+ candidata, fate le specifiche come sto facendo io adesso e dopodiché se riuscite, che non
+
+777
+01:31:07,760 --> 01:31:14,000
+ ci sono problemi, vi create la skill direttamente sul vostro bot. Se ci sono dei problemi, portate
+
+778
+01:31:14,000 --> 01:31:22,240
+ dubbi e test nelle question and answer o domani direttamente. L'obiettivo è fare in modo
+
+779
+01:31:22,240 --> 01:31:27,120
+ tale che voi possiate collegarvi piano piano con tutti gli strumenti di cui avete bisogno.
+
+780
+01:31:27,120 --> 01:31:33,080
+ Abbiamo parlato di Google Drive, abbiamo parlato del calendario, abbiamo parlato di Welcome,
+
+781
+01:31:33,080 --> 01:31:39,600
+ questo software. Io ho parlato di Active Campaign, Sara ha parlato di Notion, eccetera, eccetera.
+
+782
+01:31:39,600 --> 01:31:46,900
+ Vi fate un elenco di tutti questi software che dovreste iniziare ad utilizzare e vi cercate
+
+783
+01:31:46,900 --> 01:31:53,280
+ le API, la documentazione API di tutti questi software. Non è il caso che vi costruite
+
+784
+01:31:53,280 --> 01:31:59,440
+ la skill. La skill ve l'ho chiesta per uno solo, così vi impratichite. Però cercatevi
+
+785
+01:31:59,440 --> 01:32:04,440
+ se c'è la documentazione API di questi software. Perché vi dico questo? Perché eventualmente
+
+786
+01:32:04,440 --> 01:32:09,320
+ le specifiche ve le posso creare io. Io ho un automatismo per creare le specifiche. Ci
+
+787
+01:32:09,320 --> 01:32:17,200
+ so molto meno di quanto poteste fare voi. Mi interessa che avete l'elenco dei vostri
+
+788
+01:32:17,200 --> 01:32:26,320
+ software, mitate l'elenco delle documentazioni pubbliche, sarà un URL, e poi semmai vi aiuto
+
+789
+01:32:26,320 --> 01:32:34,200
+ io a crearvi già le specifiche per quelle skill. Perché con la specifica voi andate
+
+790
+01:32:34,200 --> 01:32:41,720
+ con le specifiche che vi do io, dite al vostro bot "Guarda le specifiche per una nuova skill
+
+791
+01:32:41,720 --> 01:32:49,560
+ che voglio scostruire". Viene date in pasto e lui vi costruisce la skill. Una delle cose
+
+792
+01:32:49,560 --> 01:32:56,120
+ che vi suggerisco altamente di fare è di pensare a software che potreste voler utilizzare
+
+793
+01:32:56,120 --> 01:33:07,080
+ in un prossimo futuro. Capisco che sia uno sforzo. Già non so quelli che uso nel presente.
+
+794
+01:33:07,080 --> 01:33:13,840
+ Mi chiedi di pensare a quelli nel futuro. Sì, perché se siete imprenditori o imprenditrici
+
+795
+01:33:13,840 --> 01:33:20,920
+ avrete comunque idea di espandere quello che è il vostro business o dedicati a qualcos'altro.
+
+796
+01:33:20,920 --> 01:33:29,440
+ Vi chiedo questo sforzo e vi spiego perché, in modo tale che cerchiate già dei software
+
+797
+01:33:29,440 --> 01:33:39,080
+ che prossimamente potreste voler utilizzare. Se non avete idea, potreste spiegare la vostra
+
+798
+01:33:39,080 --> 01:33:44,720
+ situazione lavorativa, oppure l'idea lavorativa che potreste avere in un prossimo futuro.
+
+799
+01:33:44,720 --> 01:33:52,600
+ In un prossimo futuro mi potrei dedicare a vendere galline. Se io volessi realizzare
+
+800
+01:33:52,600 --> 01:33:59,760
+ un business di vendita delle galline, secondo te che tipo di software mi servirebbe? E vi
+
+801
+01:33:59,760 --> 01:34:06,320
+ fate fare un elenco di software e poi vi fate trovare tutte le documentazioni API di quei
+
+802
+01:34:06,320 --> 01:34:16,080
+ software lì. Perché vi dico questo? Perché le ditte che producono software prossimamente
+
+803
+01:34:16,080 --> 01:34:23,320
+ chiuderanno le porte. State vedendo quanta roba riesco a fare io collegando strumenti
+
+804
+01:34:23,320 --> 01:34:28,640
+ uno con l'altro con l'AI? State vedendo che vi sto dicendo che non sto spendendo
+
+805
+01:34:28,640 --> 01:34:37,040
+ niente o poco? Questa roba qua ovviamente all'azienda che fanno software non piace,
+
+806
+01:34:37,040 --> 01:34:47,280
+ quindi prossimamente metteranno le API a pagamento. Oppure chiuderanno la documentazione
+
+807
+01:34:47,280 --> 01:34:56,560
+ API, però se voi avete già la skill fatta per la documentazione sapete già come istruire
+
+808
+01:34:56,560 --> 01:35:01,480
+ il vostro bot per utilizzare quel software lì. Poi magari dovete pagare l'utilizzo
+
+809
+01:35:01,480 --> 01:35:10,800
+ dell'API, ma almeno sapete già come funziona il software. Quindi è un suggerimento, non
+
+810
+01:35:10,800 --> 01:35:16,440
+ è obbligatorio, io vi suggerisco di farlo, io l'ho fatto ai miei tempi, quindi vi suggerisco
+
+811
+01:35:16,440 --> 01:35:22,680
+ di farlo. Così avete già una vostra libreria di skill o di specifiche, se non volete realizzare
+
+812
+01:35:22,680 --> 01:35:28,960
+ skill direttamente, che potreste voler utilizzare in un prossimo futuro. Francesca dimmi.
+
+813
+01:35:28,960 --> 01:35:37,320
+ Scusami veloce, quindi se ho capito bene, che sono sempre dori stasera, io che ho appena
+
+814
+01:35:37,320 --> 01:35:45,720
+ preso un software che lo stavo cercando da anni, ma non trovavo mai quello che mi piaceva
+
+815
+01:35:45,720 --> 01:35:52,520
+ e riguarda ad esempio le pulizie, la manutenzione, il contagio della biancheria, ok? E oggi loro
+
+816
+01:35:52,520 --> 01:35:58,080
+ hanno quindi questo software sul cellulare e mano a mano quindi no più fogli, tutto
+
+817
+01:35:58,080 --> 01:36:02,920
+ centralizzato. Io potrei per un compito di domani andarmi a cercare l'API di questo
+
+818
+01:36:02,920 --> 01:36:07,880
+ software, ammesso che le trovo, ok, perché ci riesco, perché altro, ok?
+
+819
+01:36:07,880 --> 01:36:09,560
+ No, io ce li riesco.
+
+820
+01:36:09,560 --> 01:36:18,640
+ Vabbè, ci riesco, ok. Santo fa prima chat e poi Athena, ok? E dopo di che se le trovo
+
+821
+01:36:18,640 --> 01:36:25,600
+ e me le metto tutte quante lì e fra due anni che chiudo il primo mandato diciamo di noleggio
+
+822
+01:36:25,600 --> 01:36:28,800
+ di questo software, i due anni potrei avere già il mio. Questo mi stai dicendo sulla
+
+823
+01:36:28,800 --> 01:36:33,480
+ base di come è quello lì e può essere anche migliorato rispetto a quello che oggi a quello
+
+824
+01:36:33,480 --> 01:36:36,560
+ gli manca ancora? Oddio, non so se mi sono spiegata.
+
+825
+01:36:36,560 --> 01:36:40,600
+ Sì, ti sei spiegata, ho intuito quello che vorresti fare. Non è esattamente quello che
+
+826
+01:36:40,600 --> 01:36:46,680
+ ti ho detto, ma sì, potresti anche andare in quella direzione lì. Quello che ti ho detto
+
+827
+01:36:46,680 --> 01:36:53,280
+ io è un periodo diverso perché stanno togliendo i software, stanno togliendo la documentazione
+
+828
+01:36:53,280 --> 01:36:59,480
+ API perché mettono l'uso delle API a pagamento. Quindi vuoi interfacerti col mio software,
+
+829
+01:36:59,480 --> 01:37:07,320
+ mi paghi come un banco. Secondo degli esperti, programmatore, insomma gente che ho consultato,
+
+830
+01:37:07,320 --> 01:37:13,880
+ prossimamente il business model delle software house cambierà parecchio proprio perché
+
+831
+01:37:13,880 --> 01:37:21,000
+ l'intelligenza artificiale sta creando delle cose che prima non esistevano. Quindi quello
+
+832
+01:37:21,000 --> 01:37:27,680
+ che mi hanno detto questi esperti è che probabilmente i software potrebbero diventare gratuiti,
+
+833
+01:37:27,680 --> 01:37:35,480
+ ma poi pagherai come un banco l'utilizzo delle API. Nel momento, perché c'è ancora
+
+834
+01:37:35,480 --> 01:37:42,300
+ questo passaggio, non si sa se questo effettivamente avverrà pure, tanto voi mettete via le specifiche
+
+835
+01:37:42,300 --> 01:37:50,880
+ delle API da parte, quindi le skill pronte da parte, che comunque ce l'avete. Poi si
+
+836
+01:37:50,880 --> 01:37:51,880
+ vedrà.
+
+837
+01:37:51,880 --> 01:37:55,920
+ E perché quando tu dici pensa a un software che potrebbe servirti in futuro, a me viene
+
+838
+01:37:55,920 --> 01:38:01,760
+ in mente quello che a quel punto diventa il mio. L'ho creato io insieme a Tatiana sulla
+
+839
+01:38:01,760 --> 01:38:02,760
+ Batsi.
+
+840
+01:38:02,760 --> 01:38:13,440
+ Io gli sto creando il mio centro di controllo. Non so se ti l'avevo fatto vedere già sul
+
+841
+01:38:13,440 --> 01:38:16,720
+ cellulare quando ci siamo conosciuti, però io sto...
+
+842
+01:38:16,720 --> 01:38:22,040
+ Sì, hai fatto vedere qualcosa che era tutto colorato con tutte le caselline, sarà quello.
+
+843
+01:38:22,040 --> 01:38:27,720
+ Esatto, esatto. Quindi sto facendo queste cose qua. Alessandro, vai, rapido perché
+
+844
+01:38:27,720 --> 01:38:35,000
+ se no veramente non ci siamo più dentro. Sei mutato, sei molto senz'altro.
+
+845
+01:38:35,000 --> 01:38:39,240
+ Software, intendi anche quello che può essere un software gestionale?
+
+846
+01:38:39,240 --> 01:38:41,280
+ Sì, sì, tutto quanto.
+
+847
+01:38:41,280 --> 01:38:44,600
+ Perché io utilizzo un gestionale dove carico per esempio le assistenze.
+
+848
+01:38:44,600 --> 01:38:49,120
+ Sì, sì, sì, tutto quanto. Tutto quello che puoi utilizzare a livello software, pensalo
+
+849
+01:38:49,120 --> 01:38:54,360
+ e mettilo in un elenco. Quindi fatevi un elenco di software e poi sbizzarritevi nel
+
+850
+01:38:54,360 --> 01:38:59,920
+ pensare. Io domani vorrei aprire un business di latte e biscotti.
+
+851
+01:38:59,920 --> 01:39:05,600
+ Sì, ma inteso anche quello che già utilizziamo noi potenzialmente.
+
+852
+01:39:05,600 --> 01:39:06,600
+ Assolutamente.
+
+853
+01:39:06,600 --> 01:39:11,880
+ Quindi se io adesso utilizzo un software gestionale, un software... gli scrivo, li butto dentro
+
+854
+01:39:11,880 --> 01:39:17,120
+ e se sono API pubblici io posso creare una skill per cui il bot parli con quel software
+
+855
+01:39:17,120 --> 01:39:18,120
+ in automatico.
+
+856
+01:39:18,120 --> 01:39:24,720
+ Bravissimo. Bravissimo, esatto. Megavivoni. Suono e posto.
+
+857
+01:39:24,720 --> 01:39:28,000
+ L'inglesismo, vai. Francesca vai, vai.
+
+858
+01:39:28,000 --> 01:39:33,560
+ Super veloce e ha conferma, che ha detto anche Francesca, che la cosa più difficile è trovare
+
+859
+01:39:33,560 --> 01:39:39,400
+ dei software che ci piacciono a noi. Perché quelli sul mercato non ci piacciono perché
+
+860
+01:39:39,400 --> 01:39:41,240
+ ragioniamo tutti in maniera diversa.
+
+861
+01:39:41,240 --> 01:39:50,400
+ Esatto. Grande. Ok, ottimo. Quindi vi sto dicendo di fare questa roba qua perché prossimamente
+
+862
+01:39:50,400 --> 01:39:55,840
+ ci sarà un cambio a livello di sotto, quindi almeno voi avete un po' già le mani avanti.
+
+863
+01:39:55,840 --> 01:40:04,240
+ Vi voglio dire una cosa, ma ve la dico solo se volete. Volete un'informazione che solo
+
+864
+01:40:04,240 --> 01:40:09,960
+ per questa mi dovreste dare 10 per rispetto all'investimento che avete fatto? E non mi
+
+865
+01:40:09,960 --> 01:40:14,560
+ dovete dare 10 per ovviamente, però la volete un'informazione di questo tipo?
+
+866
+01:40:14,560 --> 01:40:15,560
+ Ovvio.
+
+867
+01:40:15,560 --> 01:40:22,720
+ Come imprenditori, ricordatevi, quando scegliete un software, al di là che sia quello che
+
+868
+01:40:22,720 --> 01:40:30,800
+ vi serve, ma quando scegliete un software, anche se trovate quello che vi serve, assicuratevi
+
+869
+01:40:30,800 --> 01:40:39,000
+ che abbia le API aperte, che abbia la connessione verso l'esterno. E vi dico questo perché
+
+870
+01:40:39,000 --> 01:40:44,520
+ ci sono delle software house, zucchetti, senza fare nomi, che sono chiuse da questo
+
+871
+01:40:44,520 --> 01:40:50,880
+ punto di vista. Quando avete i dati da zucchetti dovete fare un'esportazione in csv, che dovete
+
+872
+01:40:50,880 --> 01:40:57,640
+ sempre farla manuale. Cercate di evitarlo. Quindi c'è il software che dide "fighissimo,
+
+873
+01:40:57,640 --> 01:41:03,080
+ questo fa tutto quello che voglio e anche di più è chiuso". No, non scegliete quello.
+
+874
+01:41:03,080 --> 01:41:10,800
+ Scegliete un software che abbia le API disponibili, che vi possa far comunicare verso l'esterno.
+
+875
+01:41:10,800 --> 01:41:19,060
+ Perché vi dico questo? Primo, anche prima che esistesse l'intelligenza artificiale,
+
+876
+01:41:19,060 --> 01:41:26,360
+ con dei software aperti era possibile fare in modo tale che i software si potessero parlare,
+
+877
+01:41:26,360 --> 01:41:31,480
+ comunicare, passare i dati da uno all'altro. Dico una fesseria, ma non è una fesseria
+
+878
+01:41:31,480 --> 01:41:37,000
+ perché ho parlato con diversi imprenditori con questo problema molto grosso. Ho un gestionale
+
+879
+01:41:37,000 --> 01:41:41,840
+ e ho il software di email marketing, ho una lista di persone da una parte, una lista di
+
+880
+01:41:41,840 --> 01:41:47,960
+ persone dall'altra parte e non si matchano. Quindi non posso fare le operazioni coi clienti.
+
+881
+01:41:47,960 --> 01:41:53,720
+ C'è un gran casino. Perché? Perché i due software non si parlavano perché uno era
+
+882
+01:41:53,720 --> 01:41:58,600
+ chiuso da una parte e non poteva collegarsi al software di email marketing ad esempio.
+
+883
+01:41:58,600 --> 01:42:06,840
+ Bene, evitate di avere queste situazioni già solo con i software umani normalissimi. Adesso
+
+884
+01:42:06,840 --> 01:42:13,440
+ che c'è l'intelligenza artificiale, immagino che stiate iniziando ad intuire le potenzialità
+
+885
+01:42:13,440 --> 01:42:21,160
+ di collegare i software. E visto che vi sto facendo vedere gli esempi pratici. Allora,
+
+886
+01:42:21,160 --> 01:42:28,760
+ questo io vi ho fatto vedere sul codex che facevo certe cose. Ok? Allora, ho usato software
+
+887
+01:42:28,760 --> 01:42:37,920
+ esterni? Sì, ho usato Vimeo, ho usato Selend e ho usato la piattaforma che ho scelto io
+
+888
+01:42:37,920 --> 01:42:46,280
+ per i software. Scusate, per i corsi. Ok? Immaginate se questa piattaforma per i corsi
+
+889
+01:42:46,280 --> 01:42:52,080
+ non avesse l'apertura dell'EPI. Secondo voi, quello che vi ho fatto vedere oggi,
+
+890
+01:42:52,080 --> 01:43:00,500
+ avrei potuto farlo? No? Non avrei potuto farlo per niente. Quindi tutta la mia bellissima
+
+891
+01:43:00,500 --> 01:43:05,640
+ struttura che è, non potevo realizzarla. Quindi avrei dovuto comunque andare nella
+
+892
+01:43:05,640 --> 01:43:11,560
+ piattaforma, creare la lezione, creare la descrizione, eccetera, eccetera, eccetera.
+
+893
+01:43:11,560 --> 01:43:17,040
+ Questa l'avevo già detto. E questa è la potenza di poter avere dei software che si
+
+894
+01:43:17,040 --> 01:43:22,800
+ comunicano. E con l'intelligenza artificiale agentica, quella che state imparando adesso
+
+895
+01:43:22,800 --> 01:43:29,560
+ con il sottoscritto, rendetevi conto di tutto quello che potete andare a realizzare. Perché?
+
+896
+01:43:29,560 --> 01:43:34,520
+ Perché sono aperti. Questa roba qua è aperta. Ok? Quindi solo questa informazione qua di
+
+897
+01:43:34,520 --> 01:43:40,760
+ scegliere dei software che siano aperti verso l'esterno, vi cambia la vita dal punto di
+
+898
+01:43:40,760 --> 01:43:44,920
+ vista imprenditoriale. Ok? Alessandro, dimmi.
+
+899
+01:43:44,920 --> 01:43:52,920
+ Ma allora, se poniamo a caso l'esempio che ho in mente, io mi sto sbattendo un attimo
+
+900
+01:43:52,920 --> 01:43:58,400
+ con l'altro mio collega per trovare il modo di avere un magazzino organizzato così che
+
+901
+01:43:58,400 --> 01:44:03,760
+ io vado a m'inserire un dato prodotto nel magazzino, se devo fare un'assistenza e non
+
+902
+01:44:03,760 --> 01:44:10,720
+ c'è il prodotto magazzino, già lo so, perché lo vedo quel magazzino. Quindi se io potessi
+
+903
+01:44:10,720 --> 01:44:16,720
+ collegare il software che abbiamo gestionale dove andiamo a caricare l'assistenza a questo
+
+904
+01:44:16,720 --> 01:44:22,780
+ file magazzino, si può far sì che se io vado a inserire l'assistenza, ma mi manca
+
+905
+01:44:22,780 --> 01:44:27,760
+ il prodotto magazzino, l'altro programma me lo dice. Giusto?
+
+906
+01:44:27,760 --> 01:44:32,000
+ Giusto. No, questa cosa qua è passante mediante
+
+907
+01:44:32,000 --> 01:44:44,640
+ il bot. No, se ci sono due software che sono aperti e si possono collegare gli API, intanto
+
+908
+01:44:44,640 --> 01:44:54,680
+ ci sono dei software che hanno già un repository loro di connessioni verso l'esterno. Ti
+
+909
+01:44:54,680 --> 01:45:02,240
+ faccio vedere Active Campaign così almeno perché ve lo sto nominando, lo uso piuttosto
+
+910
+01:45:02,240 --> 01:45:08,800
+ bene quindi vi posso far vedere quello. Dammi un secondo che devo fare una finestrella nuova
+
+911
+01:45:08,800 --> 01:45:18,760
+ di Chrome. Riccardo, Romano, Tivoschi. E se il software non esiste, lo crei?
+
+912
+01:45:18,760 --> 01:45:24,040
+ Creare un software non è una passeggiata di salute, quindi se esiste un software che
+
+913
+01:45:24,040 --> 01:45:32,440
+ fa quello che vuoi ed è già fatto, paga i 50 euro mensili e evita tutta una serie
+
+914
+01:45:32,440 --> 01:45:44,400
+ di problemi. Però ti faccio vedere. Se vai qua, in qualunque software hai una parte che
+
+915
+01:45:44,400 --> 01:45:50,560
+ si chiama integrazioni. Qualunque software aperto, quelli chiusi con Kaiser che ti danno
+
+916
+01:45:50,560 --> 01:45:57,080
+ questa roba qua. Vai a vedere le integrazioni e guarda qua. Vabbè, adesso l'hanno messa
+
+917
+01:45:57,080 --> 01:46:08,440
+ in un app directory direttamente. Guarda qua. Boom. Guarda un po' che roba. Ok, quindi
+
+918
+01:46:08,440 --> 01:46:16,840
+ cosa significa? Io uso Calendly, cerco Calendly che l'ho visto poco fa. Ecco qua. Clicco,
+
+919
+01:46:16,840 --> 01:46:22,800
+ non so se c'è una relazione già fatta diretta con ActiveCampaign. ActiveCampaign to Calendly.
+
+920
+01:46:22,800 --> 01:46:29,280
+ Ok, ho capito, ma è il mio caso. Il tuo caso è uguale. Se hai un software
+
+921
+01:46:29,280 --> 01:46:36,160
+ investionale. Sì, perché non è un software. Fammi finire. Se hai un software che ha la
+
+922
+01:46:36,160 --> 01:46:44,640
+ possibilità di collegarsi verso esterno, probabilmente ti dà già un elenco di connessioni ufficiali.
+
+923
+01:46:44,640 --> 01:46:49,520
+ Ok? O se non c'è la connessione ufficiale, te lo dice. In questo caso ActiveCampaign
+
+924
+01:46:49,520 --> 01:46:56,400
+ ti dice di usare Zapier se non c'è una connessione ufficiale. Però se ci sono le connessioni
+
+925
+01:46:56,400 --> 01:47:01,600
+ ufficiali, te lo dice. Quindi cosa significa? Che quando tu usi quella connessione ufficiale,
+
+926
+01:47:01,600 --> 01:47:07,680
+ tu la installi, tra virgolette, dentro il tuo software e poi l'altro software gli dirà
+
+927
+01:47:07,680 --> 01:47:14,280
+ e guarda che sei collegato e quindi da quel momento lì potranno parlarsi. Cosa possono
+
+928
+01:47:14,280 --> 01:47:20,400
+ fare quando si parlano, dipende da quello che è la sviluppo del software. Ok? Quindi
+
+929
+01:47:20,400 --> 01:47:27,440
+ nel tuo caso se hai il gestionale e se hai o devi cercare un software di magazzino, intanto
+
+930
+01:47:27,440 --> 01:47:33,440
+ userai il suggerimento di tuo dato e poi vedrai cosa si passa a livello di informazione. Ok?
+
+931
+01:47:33,440 --> 01:47:42,200
+ Poi e quindi non ti serve l'AI. Ti serve avere due software aperti. Dopodiché a seconda
+
+932
+01:47:42,200 --> 01:47:47,000
+ dei software ti potrai fare gli automatismi dentro. Mi faccio la fantasia che un software
+
+933
+01:47:47,000 --> 01:47:54,200
+ di magazzino nel momento in cui tu bipi un articolo ti possa fare un automatismo tale
+
+934
+01:47:54,200 --> 01:47:58,360
+ per cui te lo vada ad aggiungere, te lo vada a togliere, eccetera. Questi sono automatismi
+
+935
+01:47:58,360 --> 01:48:04,320
+ interni. Ma poi con l'automatismo potrebbe dirti ok, vado a comunicare al gestionale
+
+936
+01:48:04,320 --> 01:48:12,080
+ che quel articolo lì è esaurito, pure ne mancano solo tre e magari dal gestionale potresti
+
+937
+01:48:12,080 --> 01:48:19,560
+ dire ok, quando arrivano tre come numero di pezzi parte in automatico un ordine per fare,
+
+938
+01:48:19,560 --> 01:48:26,120
+ no? Quindi questa roba qua la puoi fare senza intelligenza artificiale. Punto. Va bene?
+
+939
+01:48:26,120 --> 01:48:32,360
+ Poi nel caso in cui i software siano aperti, non ci sono i collegamenti, puoi scegliersi
+
+940
+01:48:32,360 --> 01:48:39,400
+ utilizzare Zapier e lì vedere se sono nella lista di collegamenti effettivi oppure dire
+
+941
+01:48:39,400 --> 01:48:46,280
+ ok, inizio ad utilizzare intelligenza artificiale. Quindi ho l'API di uno, ho l'API dell'altro,
+
+942
+01:48:46,280 --> 01:48:52,560
+ vado a realizzare le due skill e API e poi mi realizzo una skill software che mi dica
+
+943
+01:48:52,560 --> 01:48:59,220
+ ok, quando da un software arriva quello, allora deve succedere quell'altra roba. Questo è
+
+944
+01:48:59,220 --> 01:49:12,760
+ il concetto generale. Sì, non ho ben capito il come si collegano i due software tra di
+
+945
+01:49:12,760 --> 01:49:21,880
+ loro, cioè se c'è il percorso ok, se no. Il problema è che il mio gestionale, ti dicevo
+
+946
+01:49:21,880 --> 01:49:29,760
+ prima che è diverso, perché in realtà è una pagina browser di internet. Non importa.
+
+947
+01:49:29,760 --> 01:49:37,440
+ ActiveCampaign che cos'è? Mi caccio la sul computer. Vedi che ho un indirizzo. Però
+
+948
+01:49:37,440 --> 01:49:42,560
+ quella roba lì non la trovo da nessuna parte nel gestionale. Vuol dire che il gestionale
+
+949
+01:49:42,560 --> 01:49:50,120
+ è chiuso e quindi cambia il gestionale. Alessandro, fidati, dai retta a un cretino come si suol
+
+950
+01:49:50,120 --> 01:49:57,880
+ è, cambia il gestionale. Se è chiuso, cambia il gestionale. Sì, perché io qua nel gestionale
+
+951
+01:49:57,880 --> 01:50:02,840
+ per così dire, che poi è quello che mi tiene traccia di tutte le assistenze che faccio,
+
+952
+01:50:02,840 --> 01:50:08,440
+ tutte le prenotazioni che faccio e quant'altro, è una pagina online con degli account nostri
+
+953
+01:50:08,440 --> 01:50:16,160
+ interni messi per vedere qual è l'operatore che fa cosa. Scusa, ti taglio un attimo,
+
+954
+01:50:16,160 --> 01:50:22,000
+ sennò stiamo qua a tre ore. Dimmi il nome del software del gestionale. E' una pagina
+
+955
+01:50:22,000 --> 01:50:32,640
+ internet. Si chiama secondhandmobile.it. Aspetta, non ho capito una cippola. Secondhandmobile.it,
+
+956
+01:50:32,640 --> 01:50:56,560
+ che poi è https/herp.secondhandmobile. Voi non avete ancora capito che potenza mi sto
+
+957
+01:50:56,560 --> 01:51:01,440
+ mettendo a disposizione. Da quello che riesco a verificare pubblicamente non trovo una documentazione
+
+958
+01:51:01,440 --> 01:51:07,320
+ API pubblica aperta di secondhandmobile.it/herp. Cambia il cazzo di herp, punto. Dai retta
+
+959
+01:51:07,320 --> 01:51:11,280
+ a un cretino, cambialo. Perché magari ti fa le cose fighe in questo momento. Cerca
+
+960
+01:51:11,280 --> 01:51:15,920
+ qualcos'altro, ma cercalo che sia aperto verso l'esterno. Perché altrimenti non puoi
+
+961
+01:51:15,920 --> 01:51:21,440
+ fare automatismi. Sei bloccato. Quella roba che vuoi fare tu, il magazzino, ma se sto
+
+962
+01:51:21,440 --> 01:51:27,880
+ magazzino non comunica col tuo herp, ma cosa caspita, lo metti su a fare. Non puoi farle
+
+963
+01:51:27,880 --> 01:51:36,880
+ certe cose. Poi ci sono delle realtà, magari italiane, piccoline, etc. Poi avere un rapporto
+
+964
+01:51:36,880 --> 01:51:44,120
+ personale dei chiami. Mi realizzi un API che io mi posso collegare verso esterno? La risposta
+
+965
+01:51:44,120 --> 01:51:49,680
+ è sì, lo possiamo fare, c'è già un programmo, c'è già eccetera, figo. Gli chiedi quant'altro.
+
+966
+01:51:49,680 --> 01:51:54,960
+ Se ti dico no, guarda, noi il nostro codone lo facciamo, dici va bene, buona sapersi,
+
+967
+01:51:54,960 --> 01:52:03,000
+ grazie. E cerchi un altro software. Sono duro su questo aspetto qua, ma stiamo andando
+
+968
+01:52:03,000 --> 01:52:08,280
+ su automatismi, siamo qui per risparmiare tempo. Io ho già capito più o meno cosa
+
+969
+01:52:08,280 --> 01:52:15,400
+ vorresti realizzare. Se il tuo ERP è chiuso, questa roba qua non la puoi fare. Quindi,
+
+970
+01:52:15,400 --> 01:52:21,320
+ vedi un po' qua e poi ti dice, interroga come ho fatto io. Alla prima mi dice che non
+
+971
+01:52:21,320 --> 01:52:25,800
+ trovi le documentazioni aperte. Quindi vuol dire che di base è chiuso e non puoi fare
+
+972
+01:52:25,800 --> 01:52:30,560
+ questa roba qua. Però magari ti dice, guarda, c'è qualcosa, ci sono le API private, per
+
+973
+01:52:30,560 --> 01:52:35,360
+ questo che dovresti chiamarli e capire se ci sono. Magari ci sono delle integrazioni
+
+974
+01:52:35,360 --> 01:52:43,080
+ partner. Quindi questa roba qua indagala un po'. La cosa più easy è che abbia la
+
+975
+01:52:43,080 --> 01:52:50,040
+ documentazione API pubblica così sai già che si può fare. Queste qua sono un po'
+
+976
+01:52:50,040 --> 01:52:55,800
+ meno easy. Gli posso chiedere quale gestionale mi va a consigliare. Anche per questo gestionale
+
+977
+01:52:55,800 --> 01:53:01,080
+ lo pago, non è che me lo regalo. Più che quello, perché tirano sempre l'acqua al
+
+978
+01:53:01,080 --> 01:53:10,200
+ proprio molino, io andrei proprio a dirgli, avete le API. Ma non chiedere, non chiedere
+
+979
+01:53:10,200 --> 01:53:14,680
+ al fornitore del gestionale, chiedere a chat. Sì, perché io non trovo un gestionale che
+
+980
+01:53:14,680 --> 01:53:23,480
+ faccia quello che fa questo, o comunque similare. Benissimo. Io dago un poco, con queste informazioni
+
+981
+01:53:23,480 --> 01:53:29,280
+ qua praticamente smetta di dormire direttamente. Magari per un periodo, poi dopo avrai un vantaggio
+
+982
+01:53:29,280 --> 01:53:38,720
+ della Madonna. Quello sicuro. Intanto per intenderci, quella roba che vi ho fatto vedere
+
+983
+01:53:38,720 --> 01:53:51,680
+ per mettere su le lezioni. Pensate che l'abbia realizzato in due ore? No. Ci sono stato parecchio
+
+984
+01:53:51,680 --> 01:53:59,840
+ tempo ma il gioco ne valeva la candela, quello che vi sto dicendo da imprenditore. Sì, perché
+
+985
+01:53:59,840 --> 01:54:05,640
+ io adesso le mille e mille lezioni che farò da adesso in avanti, io non ci metto più
+
+986
+01:54:05,640 --> 01:54:13,120
+ tempo. Ecco, mi sta facendo il goal anche in maniera perfetta. Cioè una roba così,
+
+987
+01:54:13,120 --> 01:54:20,000
+ magari non riusciva neanche a scrivere io. Io quello pensavo lo scrivessi tu. No, tutto
+
+988
+01:54:20,000 --> 01:54:27,400
+ fatto in maniera automatica. Per dire, magari ci vuole del tempo per realizzare certe robe,
+
+989
+01:54:27,400 --> 01:54:35,480
+ ma poi dovete avere la visione finale. Io fra tre mesi, come sarò messo? Tra sei mesi,
+
+990
+01:54:35,480 --> 01:54:38,960
+ come sarò messo? Io all'epoca, quando ho iniziato a fare questa roba qua, mi vedevo
+
+991
+01:54:38,960 --> 01:54:45,400
+ già. Dicevo, cazzo, voglio insegnare queste cose, voglio mettere le lezioni online. Necessito
+
+992
+01:54:45,400 --> 01:54:50,040
+ immediatamente di avere un sistema, di iniziare a impostare un sistema che mi crei questo
+
+993
+01:54:50,040 --> 01:54:57,240
+ automatismo e l'ho iniziato a creare. Sono passati sei mesi, io adesso posso essere orgoglioso
+
+994
+01:54:57,240 --> 01:55:02,880
+ di essere qua, perché è la prima volta che lo presento, questa cosa qua, giusto? Non
+
+995
+01:55:02,880 --> 01:55:09,680
+ mi ricordo neanche più. Non l'avevo ancora fatto vedere tutto il mio processo del carica
+
+996
+01:55:09,680 --> 01:55:14,400
+ lezione così come adesso. No, però quando abbiamo fatto il percorso noi, stavi cominciando
+
+997
+01:55:14,400 --> 01:55:18,520
+ a lavorarci. Ecco, quindi non sono sei mesi, è meno, perché il percorso abbiamo fatto
+
+998
+01:55:18,520 --> 01:55:27,600
+ a luglio il primo. Perciò da luglio ad adesso ho sviluppato una marea di robe. E' vero,
+
+999
+01:55:27,600 --> 01:55:35,180
+ mi ricordo che vi avevo fatto le specifiche come volevo fare e avevo iniziato a pensare
+
+1000
+01:55:35,180 --> 01:55:41,840
+ a questa roba qua a luglio. Quindi adesso siamo a ottobre, vedete che cosa ho realizzato.
+
+1001
+01:55:41,840 --> 01:55:49,040
+ Luglio, agosto, settembre, tre mesi. Esattamente quello che dico. Fra tre mesi potresti avere
+
+1002
+01:55:49,040 --> 01:55:56,240
+ il vostro sistema che vi fa la prima cosa e vi realizza la cosa. Ok, perfetto, quindi
+
+1003
+01:55:56,240 --> 01:56:00,920
+ il software per il futuro ve l'abbiamo detto. Ciao GPT, te l'ho fatto vedere adesso, quindi
+
+1004
+01:56:00,920 --> 01:56:05,440
+ ciao GPT come ricercatore tecnico, chiede a ciao GPT di trovarti l'API dei software
+
+1005
+01:56:05,440 --> 01:56:11,560
+ che stai usando e anche di quelli che potresti usare in un prossimo futuro. Utilizza ciao
+
+1006
+01:56:11,560 --> 01:56:20,840
+ GPT. E questa vi permetterà di iniziare ad avere una libreria, una biblioteca di skill
+
+1007
+01:56:20,840 --> 01:56:28,760
+ che è fondamentale. Vi ho fatto capire oggi quante skill si è utilizzata la mia procedura
+
+1008
+01:56:28,760 --> 01:56:36,240
+ per realizzare la lezione online. C'è un po' sul computer, un po' su Selen, perciò
+
+1009
+01:56:36,240 --> 01:56:42,160
+ una skill sola vi permette di risolvere un problema puntuale. Perciò è anche abbastanza
+
+1010
+01:56:42,160 --> 01:56:48,000
+ veloce. Una biblioteca vi permette di, intanto di farla crescere nel tempo, ma vi permette
+
+1011
+01:56:48,000 --> 01:56:53,200
+ di costruire flussi tipo quello che vi ho fatto vedere oggi. Lo potete riutilizzare,
+
+1012
+01:56:53,200 --> 01:57:01,040
+ lo potete ripetere, lo potete correggere. Magari le esigenze possono cambiare col tempo,
+
+1013
+01:57:01,040 --> 01:57:05,800
+ quindi potete aggiungere o togliere esigenze, eccetera. Io adesso sto intervenendo in maniera
+
+1014
+01:57:05,800 --> 01:57:14,080
+ manuale in alcuni punti, vi ho detto che il prossimo sviluppo di questo flusso sarà automatico
+
+1015
+01:57:14,080 --> 01:57:22,800
+ totale. Prima ad esempio mi fermavo anche alla scelta del titolo della lezione, perché
+
+1016
+01:57:22,800 --> 01:57:27,280
+ volevo sceglierelo io, non ero sicuro che facesse un buon lavoro, eccetera. Ho visto
+
+1017
+01:57:27,280 --> 01:57:32,760
+ in questi mesi che sta facendo un buon lavoro, l'altro ieri ho detto stai sentire, non voglio
+
+1018
+01:57:32,760 --> 01:57:37,440
+ più quell'interruzione lì e il titolo prendiamo quello che mi consigli tu. C'è sempre la
+
+1019
+01:57:37,440 --> 01:57:43,040
+ skill che va a realizzare cinque titoli, scegli in automatico il consigliato che lo faceva
+
+1020
+01:57:43,040 --> 01:57:48,800
+ già prima e per me questa cosa qua è diventata trasparente, non devo più scegliere io, quindi
+
+1021
+01:57:48,800 --> 01:57:55,320
+ le potete modificare con il tempo e a seconda delle vostre esigenze. Questa è una cosa
+
+1022
+01:57:55,320 --> 01:58:02,240
+ che ho già detto nella precedente versione edizione dell'Open Cloud Activation Experience,
+
+1023
+01:58:02,240 --> 01:58:09,240
+ l'ho ripeto anche a voi, e se costruissimo una repository della skill nostra, dove possiamo
+
+1024
+01:58:09,240 --> 01:58:18,120
+ condividere, dove possiamo magari creare un accesso personale e quant'altro. Vi piacerebbe
+
+1025
+01:58:18,120 --> 01:58:24,720
+ questa cosa? All'epoca mi hanno dato una risposta, vi chiedo anche adesso una risposta
+
+1026
+01:58:24,720 --> 01:58:30,560
+ su questo, quindi avere un posto nostro dove avete la vostra password, eccetera. Potete
+
+1027
+01:58:30,560 --> 01:58:36,160
+ scaricarvi le skill che sto facendo io, che sta facendo Sara, eccetera, eccetera. Questo
+
+1028
+01:58:36,160 --> 01:58:41,040
+ deve essere un lavoro di gruppo, ovviamente, no? Poi rimane nostro. Alessandro m'ha già
+
+1029
+01:58:41,040 --> 01:58:49,680
+ fatto così con la testa. Non vi prometto di gestirla, di costruirla, dopo domani perché
+
+1030
+01:58:49,680 --> 01:58:55,480
+ non ci ho ancora messo mano. Però, visto che la direzione precedente del percorso è stata
+
+1031
+01:58:55,480 --> 01:59:01,940
+ così, questa è stata sì, vi prometto che cercherò di mettere le mani anche in questa
+
+1032
+01:59:01,940 --> 01:59:07,320
+ repository qua per farla privata. Ci vorrà un po' di tempo per svilupparla, ma vi garantisco
+
+1033
+01:59:07,320 --> 01:59:13,920
+ che se voi volete questa cosa qua, la realizziamo prima o poi. Ok? Dimi Alessandro.
+
+1034
+01:59:13,920 --> 01:59:21,860
+ D'una parte sono testardo, dall'altra anche. Ho copio incollato il link del gestionare
+
+1035
+01:59:21,860 --> 01:59:26,800
+ che ti dicevo sul mio chat e mi dice che le API sono pubbliche e ti ho mandato lo screenshot
+
+1036
+01:59:26,800 --> 01:59:35,600
+ su WhatsApp. Figo, tanto meglio. Sì, perché mi dice già cosa può fare il mio bot direttamente
+
+1037
+01:59:35,600 --> 01:59:42,440
+ lì e quindi ci devo lavorare un sacco. E quindi hai trovato cosa fare stanotte, Alessandro.
+
+1038
+01:59:42,440 --> 01:59:49,920
+ Esatto. Che coglione che mi sono sposato. Poi mi servirà un'infarinatura sui processi
+
+1039
+01:59:49,920 --> 02:00:01,600
+ che devo fare perché questa roba qua è meravigliosa. E ne parliamo poi, ti rompo il timo lesto.
+
+1040
+02:00:01,600 --> 02:00:08,560
+ No, ti chiedo aiuto. Esatto. Poi, l'altra cosa che vi chiederò è,
+
+1041
+02:00:08,560 --> 02:00:14,440
+ adesso che ci sono queste domande posso rispondere molto facilmente e anche velocemente su cose
+
+1042
+02:00:14,440 --> 02:00:19,760
+ più complesse non posso garantire di riuscire a rispondere ad ognuno privatamente. Ed è
+
+1043
+02:00:19,760 --> 02:00:26,360
+ per questo che vi invito ad usare il gruppo, mi mettete le domande lì. Noi finiamo venerdì,
+
+1044
+02:00:26,360 --> 02:00:32,920
+ io non pretendo che sabato avviate già le domande sulle vostre processi aziendali, non
+
+1045
+02:00:32,920 --> 02:00:46,560
+ pretendo questo, però sabato c'è ancora la sessione domande e risposte del percorso precedente.
+
+1046
+02:00:46,560 --> 02:00:52,740
+ Voi, visto che siete founders, potete già partecipare. Se vi fa piacere, sabato mattina
+
+1047
+02:00:52,740 --> 02:00:59,280
+ dalle 10 alle 12 italiane abbiamo questo appuntamento. Parleremo principalmente di come si costruiscono
+
+1048
+02:00:59,280 --> 02:01:06,000
+ i siti internet, perché è una cosa che interessa a tutti, a Francesca in Primis, a Caffeina
+
+1049
+02:01:06,000 --> 02:01:14,160
+ in Primis. Tutta la roba che vi sto facendo vedere, la dashboard sulle lezioni, il control
+
+1050
+02:01:14,160 --> 02:01:20,800
+ center che poi vi condividerò magari domani, sono tutte robe che sto costruendo grazie
+
+1051
+02:01:20,800 --> 02:01:28,360
+ a quello che vi farò vedere sabato. Diciamo che la paginetta online è stata proprio la
+
+1052
+02:01:28,360 --> 02:01:35,840
+ punta dell'iceberg, poi ho scoperto veramente che sotto c'è la qualunque. Perciò la repository
+
+1053
+02:01:35,840 --> 02:01:42,640
+ la costruiremo con i tool di cui parleremo sabato, perciò voi potete già partecipare.
+
+1054
+02:01:42,640 --> 02:01:58,840
+ Domani parleremo di agenti, di opportunità e di prossimi passi. Quindi abbiamo visto
+
+1055
+02:01:58,840 --> 02:02:04,480
+ la schier che vi dà delle capacità. Questo non l'abbiamo ancora visto, ma vi anticipo
+
+1056
+02:02:04,480 --> 02:02:10,920
+ che l'agente è quello che ha una responsabilità. Domani non crederemo il primo sottogente perché
+
+1057
+02:02:10,920 --> 02:02:17,120
+ lo faremo durante un incontro di question and answer, quindi domani vi faccio capire
+
+1058
+02:02:17,120 --> 02:02:22,160
+ un po' la struttura degli agenti e dei sottagenti. Domani facciamo le testimonianze per quanto
+
+1059
+02:02:22,160 --> 02:02:28,480
+ riguarda questo workshop. Vi parlerò di opportunità, vi parlerò di prossimi passi, se riesco organizzo
+
+1060
+02:02:28,480 --> 02:02:36,400
+ già una piccola sorpresina e vediamo se riesco a fare tutto quanto. Per le testimonianze
+
+1061
+02:02:36,400 --> 02:02:41,200
+ che vi chiederò domani, ovviamente se vi farà piacere dare una testimonianza su questa
+
+1062
+02:02:41,200 --> 02:02:48,480
+ prima parte del percorso, non è obbligatoria, vi chiedo di avere questo tipo di struttura.
+
+1063
+02:02:48,480 --> 02:02:53,080
+ Intanto dovete dire chi siete e cosa fate. Questo è importante perché nelle testimonianze
+
+1064
+02:02:53,080 --> 02:03:00,120
+ vi fate pubblicità. Poi dite ovviamente che avete fatto il percorso OCAE, che avete fatto
+
+1065
+02:03:00,120 --> 02:03:09,640
+ qualcosa come un Riccardo, questo rende coerente la testimonianza col posto dove la utilizzerò.
+
+1066
+02:03:09,640 --> 02:03:16,080
+ Mi date il permesso poi di utilizzarlo ovviamente. Il suggerimento è pensare a queste cose qua.
+
+1067
+02:03:16,080 --> 02:03:20,520
+ Cosa pensavi prima di iniziare? Cosa hai capito durante il percorso? Cosa pensi di
+
+1068
+02:03:20,520 --> 02:03:25,720
+ poter fare adesso che prima non pensavi possibile, non vedevi neanche possibile? Queste sono
+
+1069
+02:03:25,720 --> 02:03:32,360
+ tre piccolezze. Te le chiederò corte, un minuto, basta, basta e avanza. Se siete già con l'idea
+
+1070
+02:03:32,360 --> 02:03:40,320
+ un po' chiare, per questo vi sto dando delle dritte su come potete organizzare una testimonianza,
+
+1071
+02:03:40,320 --> 02:03:46,320
+ domani vi chiederò di darmi una piccola testimonianza. La chiedo anche sempre ai ripetenti, perché
+
+1072
+02:03:46,320 --> 02:03:52,760
+ il fatto di avere questa garanzia di essere founder che adesso è ancora viva, ovviamente
+
+1073
+02:03:52,760 --> 02:04:03,120
+ è sentire un ripetente, è un founder che ha partecipato ad altre edizioni, comunque
+
+1074
+02:04:03,120 --> 02:04:09,680
+ rende non solo quello che dico coerente, ovviamente, ma fa anche capire che riparticipare
+
+1075
+02:04:09,680 --> 02:04:21,480
+ ha un valore. Domande? Siamo in ritardo ovviamente, ma la sessione di oggi è stata molto interessante.
+
+1076
+02:04:21,480 --> 02:04:29,560
+ Abbiamo visto un sacco in mezzo di roba e quindi va bene così. Se ci sono delle domande
+
+1077
+02:04:29,560 --> 02:04:33,800
+ brevi, ovviamente, sennò si allunga troppo il video, altrimenti ci vediamo domani.
+
+1078
+02:04:33,800 --> 02:04:40,280
+ Posso chiedere una cosa superveloce che avevo scritto nella chat? Come tu dici che il codex
+
+1079
+02:04:40,280 --> 02:04:45,320
+ vuol dire che va a lavorare proprio sul computer, quindi legge tutti i file che ci sono all'interno
+
+1080
+02:04:45,320 --> 02:04:52,800
+ del computer? Sì. Tutti? Tutti. È come fosse proprio dentro il computer, ok. Non è come
+
+1081
+02:04:52,800 --> 02:04:56,800
+ se fosse. È dentro il computer. È un software che sta lì dentro il computer. A parte che
+
+1082
+02:04:56,800 --> 02:05:04,760
+ si chiama poi chatgpt uguale, ma lo chiamo codex. C'è un po' di confusione da questo
+
+1083
+02:05:04,760 --> 02:05:11,800
+ punto di vista, perché codex in realtà è quella funzione di chatgpt che lavora sul
+
+1084
+02:05:11,800 --> 02:05:21,320
+ codice, ok? Tipo la parte code di cloud. Cloud code è la parte di cloud che lavora sul codice,
+
+1085
+02:05:21,320 --> 02:05:29,320
+ ok? Quindi codex è fatto per lavorare col codice. Ma se tu vai su chatgpt eccetera eccetera
+
+1086
+02:05:29,320 --> 02:05:35,600
+ e chiedi di installarlo, ti dice installa codex sul computer. Probabilmente e prossimamente
+
+1087
+02:05:35,600 --> 02:05:43,880
+ vi arriverà diciamo una richiesta, vediamo se arriva, fatemi vedere, da qualche parte.
+
+1088
+02:05:43,880 --> 02:05:49,920
+ No, non arriva. Ogni tanto qua sotto, vi faccio vedere, ogni tanto qua sotto quando apre una
+
+1089
+02:05:49,920 --> 02:05:57,040
+ chat nuova c'è una nuvoletta che mi dice prova questa cosa, prova quest'altra cosa eccetera.
+
+1090
+02:05:57,040 --> 02:06:05,960
+ Mi è arrivato all'epoca prova codex, no? E io ho detto proviamo codex sul computer,
+
+1091
+02:06:05,960 --> 02:06:10,320
+ no? Quindi ho cliccato, mi ha fatto fare il download di codex. Il codex in realtà poi
+
+1092
+02:06:10,320 --> 02:06:18,200
+ quando l'installate, ve lo rifaccio vedere, questo è codex, però vedete qua sopra, quello
+
+1093
+02:06:18,200 --> 02:06:24,080
+ che vedete qua sul Mac è il titolo del programma che sto usando. Non si chiama codex, si chiama
+
+1094
+02:06:24,080 --> 02:06:29,500
+ chat-gpt. Infatti all'inizio non c'era neanche questa codex qua, c'era direttamente
+
+1095
+02:06:29,500 --> 02:06:37,240
+ questo e basta, c'è scritto chat-gpt. Quindi il codex adesso è la parte di chat-gpt che
+
+1096
+02:06:37,240 --> 02:06:44,280
+ sviluppa codex, è il modo che usano loro per dirti di scaricare il chat-gpt sul computer,
+
+1097
+02:06:44,280 --> 02:06:49,400
+ insomma in buona sostanza c'è un po' di casino, ma io ho deciso per mia semplicità
+
+1098
+02:06:49,400 --> 02:06:54,200
+ di chiamare, scusate io ho fatto vedere delle cose che però erano chiuse, dicevo qua in
+
+1099
+02:06:54,200 --> 02:06:59,440
+ cima non c'era neanche la differenza codex o chat-gpt prima, c'era direttamente solo
+
+1100
+02:06:59,440 --> 02:07:05,320
+ chat-gpt e dicevo per mia semplicità anche per poter spiegare cose in modo più semplice
+
+1101
+02:07:05,320 --> 02:07:10,920
+ sto chiamando codex il mio chat-gpt che è installato dentro il computer, questa è una
+
+1102
+02:07:10,920 --> 02:07:16,720
+ applicazione dentro il computer, la vedete qua, eccolo qua vedete, ha lo stesso singolo
+
+1103
+02:07:16,720 --> 02:07:21,680
+ di chat-gpt, si chiama chat-gpt, è ufficialmente chat-gpt, ma io la chiamo codex, se no come
+
+1104
+02:07:21,680 --> 02:07:27,840
+ cazzo vi faccio a differenziare il chat-gpt che uso sul browser da questo? Non potrei,
+
+1105
+02:07:27,840 --> 02:07:36,120
+ perciò codex per me è questo. Detta questa specifica mi dicevi se può andare a vedere
+
+1106
+02:07:36,120 --> 02:07:41,600
+ tutto quanto, la risposta è sì, la risposta è anche nì, nel senso che tu puoi limitare
+
+1107
+02:07:41,600 --> 02:07:52,520
+ l'intervento su alcune parti di sistema ovviamente, ma visto che sono robe tecniche, visto che
+
+1108
+02:07:52,520 --> 02:07:58,600
+ si parla di software, visto che si parla di uno strumento che hai potenzialmente in grado
+
+1109
+02:07:58,600 --> 02:08:05,800
+ di farvi dei danni sul computer, intanto non vi ho suggerito di utilizzarlo, anche se vi
+
+1110
+02:08:05,800 --> 02:08:14,120
+ sto dicendo della sua esistenza e non vi metto questa roba ulteriore tecnica di fronte, quando
+
+1111
+02:08:14,120 --> 02:08:20,080
+ ve la sentite ovviamente utilizzatelo, perché è una delle figate di poter utilizzare l'abbonamento
+
+1112
+02:08:20,080 --> 02:08:27,240
+ di chat-gpt, avete anche quello, e poi piano piano potete iniziare ad utilizzarlo, se avete
+
+1113
+02:08:27,240 --> 02:08:34,720
+ bisogno come nel mio caso di avere della operatività automatica nel vostro computer, nel mio caso
+
+1114
+02:08:34,720 --> 02:08:41,140
+ di trasformare dei video in lezioni, altrimenti aspettate ancora un po', io prima di mettere
+
+1115
+02:08:41,140 --> 02:08:48,000
+ il codex nel computer ci sono stati mesi di nuovo, 4-5 mesi, quindi non è necessario
+
+1116
+02:08:48,000 --> 02:08:53,400
+ averlo sul computer, anzi vi potrebbe complicare la questione tecnica proprio, perché se non
+
+1117
+02:08:53,400 --> 02:09:01,500
+ gli date i limiti giusti, potreste fare dei danni. Tutto a riposto? Ok, perfetto, altre
+
+1118
+02:09:01,500 --> 02:09:16,880
+ domande? Io sono rimasto quando mi hai detto API aperte e poi sono malato di mente, quindi
+
+1119
+02:09:16,880 --> 02:09:22,600
+ sto mandando, parlando, cioè mi dice lui cosa fare, è meraviglioso, perché mi dice lui
+
+1120
+02:09:22,600 --> 02:09:27,040
+ cosa devo fare, io gli mando lo screenshot di quello che gli serve e lui mi dice "guarda,
+
+1121
+02:09:27,040 --> 02:09:34,240
+ fai così, schiascioli, prova a cliccare lì". Ed è per questo che Sara ti ha detto già
+
+1122
+02:09:34,240 --> 02:09:39,000
+ ieri e l'altro ieri che, per esempio, quando ci sono delle difficoltà di tipo tecniche,
+
+1123
+02:09:39,000 --> 02:09:47,360
+ come quella che ho detto, collegare la suite di Google dentro il vostro bot che è complicato,
+
+1124
+02:09:47,360 --> 02:09:53,440
+ segui il tuo bot, puoi seguire il bot o seguireci al CPT. Potenzialmente adesso mi ha detto
+
+1125
+02:09:53,440 --> 02:10:05,800
+ che io posso fare la skill per collegare direttamente Ray al gestionare per dirgli quanto mi valuti
+
+1126
+02:10:05,800 --> 02:10:10,360
+ questo modello, lui prende i dati da lì, li carica e poi gli posso dire "fammi la
+
+1127
+02:10:10,360 --> 02:10:15,480
+ DVP" e mi fa in automatico la dichiarazione di venita, ma lo carica direttamente al magazzino.
+
+1128
+02:10:15,480 --> 02:10:27,400
+ Secondo me sì. Ho capito, è un risparmio di tempo, ma soprattutto a livello pratico,
+
+1129
+02:10:27,400 --> 02:10:31,720
+ anche soltanto se invece che mettermigli sto parlando con un cliente, non vi tedio sul
+
+1130
+02:10:31,720 --> 02:10:41,400
+ mio lavoro. Tanto abbiamo già capito che costruire hai lo shutton. Ricordati che quando inizi
+
+1131
+02:10:41,400 --> 02:10:48,320
+ in questa direzione c'è il bianconiglio che ti aspetta dietro l'angolo e quindi se entri
+
+1132
+02:10:48,320 --> 02:10:53,440
+ nella tana del bianconiglio passi le notate in bianco.
+
+1133
+02:10:53,440 --> 02:11:15,440
+ Quando dicevo che dormo poco, io dormo mediamente dalle 3-4 ore a notte per dedicarmi a fumetti,
+
+1134
+02:11:15,440 --> 02:11:28,460
+ Vi sa che sto creando altri mostri qua, già uno l'ho creato che è Nerea. Capite perché
+
+1135
+02:11:28,460 --> 02:11:34,320
+ questa roba qua voi siete assolutamente dei elitari, no? Capite anche perché aumenterò
+
+1136
+02:11:34,320 --> 02:11:40,040
+ in maniera veloce, il prezzo per partecipare a questo percorso, l'ho iniziato intuito.
+
+1137
+02:11:40,040 --> 02:11:46,660
+ Ma una roba del genere prima di conoscere te non la potevo immaginare nemmeno. In realtà
+
+1138
+02:11:46,660 --> 02:11:50,600
+ mi faccio complimenti da solo, immaginavo di voler implementare la possibilità, perché
+
+1139
+02:11:50,600 --> 02:11:56,340
+ quella è un'idea che è venuta prima e del motivo che mi ha spinto poi, ovvero di creare
+
+1140
+02:11:56,340 --> 02:12:03,000
+ un magazzino virtuale con tutta la roba che io ho in termini di riparazione in modo che
+
+1141
+02:12:03,000 --> 02:12:10,240
+ comunichi direttamente col gestionale. Quindi se io ordino un peppe e poi ordino dal fornitore,
+
+1142
+02:12:10,240 --> 02:12:16,480
+ mette già in automatico, se li collego, mette già ricambio ordinato sul gestionale e potenzialmente
+
+1143
+02:12:16,480 --> 02:12:20,100
+ può mandare la mail direttamente al cliente "ciao, ricambio stato ordinato" e non può
+
+1144
+02:12:20,100 --> 02:12:31,960
+ sbagliare perché è una macchina che lo fa. Capirete perché questo percorso, l'investimento
+
+1145
+02:12:31,960 --> 02:12:36,520
+ che avete fatto voi ovviamente era in offerta a lancio, rimarrà ancora in offerta a lancio
+
+1146
+02:12:36,520 --> 02:12:44,840
+ per un po', finché non raggiunto uno zoccolo duro di clienti sarà così. Ma secondo voi,
+
+1147
+02:12:44,840 --> 02:12:49,840
+ vi chiedo una cosa, quanto potrebbe valere le cose che state imparando per un imprenditore?
+
+1148
+02:12:49,840 --> 02:12:50,840
+ Quanto potrebbero valere?
+
+1149
+02:12:50,840 --> 02:12:58,400
+ Allora io non ne ho idea, ma probabilmente vi dico quello che pago il gestionale con una
+
+1150
+02:12:58,400 --> 02:13:07,900
+ riduzione del potenziale. Perché queste cose non le sapevo, è zoppo. Non perché attiviere
+
+1151
+02:13:07,900 --> 02:13:11,380
+ un gestionario che funziona benissimo, ma è zoppo. Se tu gli implementi tutto il resto
+
+1152
+02:13:11,380 --> 02:13:17,820
+ va veramente come uno shuttle e lo paghi mediamente, se non ricordo male, 170 mese.
+
+1153
+02:13:17,820 --> 02:13:31,940
+ Quindi avere le capacità, l'info e il know-how per poi andare a potenziarlo e usarlo come
+
+1154
+02:13:31,940 --> 02:13:38,860
+ veramente dovrebbe, migliorandolo eccetera, non ho idea di quanto valore possa avere,
+
+1155
+02:13:38,860 --> 02:13:46,420
+ quando tu nell'ultima slide metti 10 mila, secondo me sì, tranquillamente.
+
+1156
+02:13:46,420 --> 02:13:54,460
+ E infatti quei valori lì non sono inventati. Perché nel marketing tendenzialmente si tendono
+
+1157
+02:13:54,460 --> 02:13:58,900
+ a gonchiare un po' i valori. Quei valori non sono inventati, secondo me sono ancora
+
+1158
+02:13:58,900 --> 02:14:04,380
+ bassi. Perché un imprenditore come voi, che avete comunque già un'azienda strutturata,
+
+1159
+02:14:04,380 --> 02:14:10,940
+ se vi faccio risparmiare dieci minuti al giorno, ma per venti persone, dieci persone, quelle
+
+1160
+02:14:10,940 --> 02:14:11,940
+ che siete in azienda.
+
+1161
+02:14:11,940 --> 02:14:21,160
+ Poi, tolto che questa roba qua non credo, sicuramente più tu mi sai confermare, una
+
+1162
+02:14:21,160 --> 02:14:28,640
+ volta che ha tutte le credenziali che si prende dai siti così, perché sono pubblici, potrebbe
+
+1163
+02:14:28,640 --> 02:14:35,640
+ tranquillamente a mettere sulle base o mettere in piedi direttamente il software credo. Non è
+
+1164
+02:14:35,640 --> 02:14:41,200
+ ancora così prossimamente potrà diventare così secondo me, adesso non è così ovviamente. Quindi
+
+1165
+02:14:41,200 --> 02:14:46,360
+ avere queste chiavi qua nega guadagni di valore perché se hai le chiavi hai già accesso al
+
+1166
+02:14:46,360 --> 02:14:52,680
+ software o comunque quello che era prima che lo aggiornassero le chiavi e l'AI sa già cosa
+
+1167
+02:14:52,680 --> 02:15:01,080
+ fa quel software, quindi lo può potenzialmente replicare. E quindi risparmi quello che tu prima
+
+1168
+02:15:01,080 --> 02:15:08,560
+ pagavi mensilmente non lo paghi più banalmente, perché te lo sei fatto in casa. Però a differenza
+
+1169
+02:15:08,560 --> 02:15:16,680
+ del fatto in casa, ma cioè è diverso da "ok, lo vedo lì, lo compro perché mi piace, mi piaccio
+
+1170
+02:15:16,680 --> 02:15:21,760
+ che ci sono delle cose che modificherei". No, no, no, lì te lo modifichi tu, è il tuo vestito che
+
+1171
+02:15:21,760 --> 02:15:28,220
+ torniamo su quello che dicevano Francesca e Francesca, Dori e Caffeina. Te lo fai tu,
+
+1172
+02:15:28,220 --> 02:15:37,400
+ te lo fai come vuoi. Se c'è un in top, te lo giusti e è posto. Bellissimo. Per Dio,
+
+1173
+02:15:37,400 --> 02:15:49,840
+ perché figata. E' molto pericolosa questa roba qua, è molto pericolosa. Cioè messa in mano a
+
+1174
+02:15:49,840 --> 02:16:02,400
+ alle persone "sbagliate". Non per niente, oggi hanno fatto un attacco a Akindus, un gestionale
+
+1175
+02:16:02,400 --> 02:16:09,400
+ che noi utilizziamo, di un importante fornitore che è Wind3, quindi tutti fermi per sei ore perché
+
+1176
+02:16:09,400 --> 02:16:14,160
+ qualche uno ci stava a lavorare mettendo le mani dentro. Esatto, quindi anche il discorso del
+
+1177
+02:16:14,160 --> 02:16:22,600
+ lo sviluppo software, quello lì c'è come possibilità ovviamente, io non vivendo questo
+
+1178
+02:16:22,600 --> 02:16:28,240
+ percorso per iniziare a sviluppare software, però ovviamente nel percorso capite che potete
+
+1179
+02:16:28,240 --> 02:16:32,440
+ andare a realizzare dei software, io lo sto facendo. Però quando realizzi poi un software
+
+1180
+02:16:32,440 --> 02:16:37,200
+ ci sono tutta una serie di problematiche, la sicurezza, dove lo metti, eccetera eccetera.
+
+1181
+02:16:37,200 --> 02:16:42,680
+ Quindi quella dei software la si vedrà, va bene, non ci voglio mettere becco da questo
+
+1182
+02:16:42,680 --> 02:16:50,240
+ punto di vista. Però quello che mi preme è che adesso che avete questa difficoltà nel capire i
+
+1183
+02:16:50,240 --> 02:16:57,800
+ processi eccetera, il mio obiettivo di oggi è quello di darvi una visione del futuro. Il fatto
+
+1184
+02:16:57,800 --> 02:17:03,880
+ di avermi messo di fronte a una roba che uso io adesso quotidianamente, perché ogni giorno vi devo
+
+1185
+02:17:03,880 --> 02:17:10,720
+ caricare la lezione online, lo faccio ogni giorno, il fatto di vedere che io lo uso, che ho fatto un
+
+1186
+02:17:10,720 --> 02:17:17,440
+ un certo utilizzo, che sono partito da zero come voi, quanto tempo sto risparmiando, quanti
+
+1187
+02:17:17,440 --> 02:17:23,680
+ soldi sto risparmiando. Vi ricordo che se voi tempo a dietro volevate trascrivervi un
+
+1188
+02:17:23,680 --> 02:17:29,280
+ video, c'erano fiori di servizi, magari ci saranno ancora là fuori, che vi facevano
+
+1189
+02:17:29,280 --> 02:17:33,840
+ pagare un totale minuto per trascrivere il video, perché c'era gente lì che scriveva
+
+1190
+02:17:33,840 --> 02:17:39,840
+ velocemente e vi faceva pagare. Quindi già solo quello, un risparmio di tempo incredibile
+
+1191
+02:17:39,840 --> 02:17:46,040
+ e inoltre delle capacità che all'altro ieri non si potevano fare. Io ho la compilazione
+
+1192
+02:17:46,040 --> 02:17:52,400
+ automatica della descrizione, della lezione, dei goal e quant'altro. Senza una trascrizione
+
+1193
+02:17:52,400 --> 02:17:57,040
+ non la puoi fare. Quindi avessi voluto farla cinque anni fa a questa cosa. Intanto mi dovevo
+
+1194
+02:17:57,040 --> 02:18:03,200
+ pagare un'azienda, perché non me ce n'avevo io, tu Alessandro prima hai detto fai la trascrizione,
+
+1195
+02:18:03,200 --> 02:18:10,320
+ due ore di video, sono due ore di trascrizione. Prova a trascriverti due ore di video e dimmi
+
+1196
+02:18:10,320 --> 02:18:15,920
+ se in quattro, cinque ore ci riesci a stare dietro. O sei veramente un razzo a scrivere,
+
+1197
+02:18:15,920 --> 02:18:16,920
+ esatto.
+
+1198
+02:18:16,920 --> 02:18:20,080
+ Devi essere un stenografo. Nel frattempo mi è venuto in mente come si chiamano.
+
+1199
+02:18:20,080 --> 02:18:26,880
+ Esatto. E' dattilografo forse. Nostenografo sono quelli che scrivono Marco in quel simbolismo.
+
+1200
+02:18:26,880 --> 02:18:36,760
+ - Sì, sono i dattilografi, no? Quelli che sono bla bla bla super veloci. Perciò risparmio
+
+1201
+02:18:36,760 --> 02:18:42,260
+ di soldi, risparmio di tempo e poi opportunità che prima non c'era. E' questa roba qua
+
+1202
+02:18:42,260 --> 02:18:48,680
+ che voglio che capiate, ok? Vi do un po' di visione in modo tale che il vostro cervello
+
+1203
+02:18:48,680 --> 02:18:54,840
+ piano piano il vostro inconscio lavora, lavorà anche quando voi dormite e vedrete che uno
+
+1204
+02:18:54,840 --> 02:19:00,440
+ di questi giorni, vi verrai… ma aspetta un attimo, io potrei fare questa cosa qua,
+
+1205
+02:19:00,440 --> 02:19:02,800
+ vero garantisco, vi arriverà una roba leggera.
+
+1206
+02:19:02,800 --> 02:19:08,800
+ Bene, detto questo, domanda è finita, oggi è stato super interessante, super lunga,
+
+1207
+02:19:08,800 --> 02:19:12,720
+ però quando ovviamente ci sono cose interessanti è bene condividerla.
+
+1208
+02:19:12,720 --> 02:19:17,640
+ Noi ci vediamo per l'ultimo appuntamento domani, avete già visto che cosa affronteremo
+
+1209
+02:19:17,640 --> 02:19:24,760
+ come argomenti, quindi vi aspetto, al solito ora, al solito luogo, ci vediamo domani
+
+1210
+02:19:24,760 --> 02:19:29,800
+ buonaseralta e buoni compiti. Grazie, ciao a tutti, ciao ciao.

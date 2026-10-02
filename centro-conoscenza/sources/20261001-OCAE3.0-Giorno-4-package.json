@@ -1,0 +1,310 @@
+{
+  "schema_version": "1.2",
+  "runtime_mode": "local",
+  "source": {
+    "source_title_original": null,
+    "source_filename_original": "20261001-OCAE3.0-Giorno 4.mp4",
+    "transcript_filename": "20261001-OCAE3.0-Giorno 4.txt",
+    "srt_filename": "20261001-OCAE3.0-Giorno 4.srt"
+  },
+  "content_date": "2026-10-01",
+  "title": {
+    "options": [
+      {
+        "number": 1,
+        "title": "Evitare software chiusi che bloccano le automazioni",
+        "angle": "problema"
+      },
+      {
+        "number": 2,
+        "title": "Progettare skill API per collegare OpenClaw ai software aziendali",
+        "angle": "operazione"
+      },
+      {
+        "number": 3,
+        "title": "Dalla documentazione API alle specifiche di una skill",
+        "angle": "esito verificato"
+      },
+      {
+        "number": 4,
+        "title": "API, skill software e integrazioni tra strumenti",
+        "angle": "strumento o componente"
+      },
+      {
+        "number": 5,
+        "title": "Scegliere software aperti e costruire una libreria di skill",
+        "angle": "catalogo sintetico"
+      }
+    ],
+    "recommended_choice": 2,
+    "canonical": "Progettare skill API per collegare OpenClaw ai software aziendali",
+    "profile_id": "ocae",
+    "status": "approved",
+    "destinations": {
+      "local": "20261001-OCAE3.0-Giorno 4",
+      "vimeo": "Progettare skill API per collegare OpenClaw ai software aziendali",
+      "coursesprout": "Progettare skill API per collegare OpenClaw ai software aziendali",
+      "course_portal": "Progettare skill API per collegare OpenClaw ai software aziendali"
+    }
+  },
+  "identity": {
+    "content_type": "video",
+    "collection": "OCAE 3.0 - Sessioni",
+    "author": "Riccardo Romano",
+    "origin_type": "lezione-ocae"
+  },
+  "course": {
+    "course_name": "OCAE 3.0",
+    "module_name": "Sessioni workshop",
+    "session_label": "Giorno 4"
+  },
+  "classification": {
+    "content_type": "Workshop",
+    "content_type_secondary": "Q&A",
+    "main_topic": "Creazione di skill e automazioni",
+    "theme": "Skill API e integrazione dei software aziendali con OpenClaw",
+    "specific_problem": "Una skill generica o un software senza API accessibili non permette di costruire integrazioni affidabili e riutilizzabili.",
+    "cause": "Si cerca di progettare subito l'intero workflow senza delimitare il connettore tecnico e verificare documentazione e accesso alle API.",
+    "outcome": "Dimostrazione della ricerca di API e della definizione delle specifiche per un connettore Passepartout Welcome; avvio del lavoro in Selen, senza prova finale di integrazione funzionante.",
+    "tools": [
+      "OpenClaw",
+      "ChatGPT",
+      "Codex",
+      "ActiveCampaign",
+      "Zapier",
+      "Vimeo",
+      "CourseSprout",
+      "Telegram"
+    ],
+    "components": [
+      "skill API",
+      "skill software",
+      "documentazione API",
+      "endpoint",
+      "specifiche",
+      "integrazioni",
+      "repository di skill"
+    ],
+    "difficulty": "base-intermedio",
+    "search_intents": [
+      "come verificare se un software dispone di API",
+      "come progettare una skill API per OpenClaw",
+      "come separare un connettore API dalla logica del workflow",
+      "come scegliere software integrabili e riutilizzare skill"
+    ],
+    "catalog_module": "Sessioni",
+    "module_primary": "Creazione di skill e automazioni",
+    "module_secondary_internal": "Costruzione del sistema",
+    "format": "Workshop",
+    "relevant_tools": [
+      "OpenClaw",
+      "ChatGPT",
+      "Codex",
+      "ActiveCampaign",
+      "Zapier",
+      "Vimeo",
+      "CourseSprout",
+      "Telegram"
+    ],
+    "incidental_tools": [
+      "Google Drive",
+      "Google Sheets",
+      "Stripe",
+      "Notion",
+      "Calendly",
+      "Zucchetti",
+      "Asana",
+      "WhatsApp"
+    ],
+    "tags": [
+      "API",
+      "Skill",
+      "Integrazioni",
+      "Automazione",
+      "Workflow"
+    ],
+    "problems_addressed": [
+      "Scegliere un software chiuso che impedisce lo scambio di dati con altri strumenti.",
+      "Chiedere subito una skill software completa quando serve prima un connettore API limitato.",
+      "Passare dai processi aziendali impliciti a piccoli passi verificabili e riutilizzabili."
+    ],
+    "questions_answered": [
+      "Come verifico se il software che uso offre API e documentazione accessibile?",
+      "Come delimito una skill API prima di aggiungere workflow e logica applicativa?",
+      "Quando bastano integrazioni native o Zapier e quando serve una skill OpenClaw?",
+      "Come costruisco nel tempo una libreria di skill riutilizzabili?"
+    ],
+    "internal_keywords": [
+      "OCAE 3.0 Giorno 4",
+      "skill API",
+      "skill software",
+      "Passepartout Welcome",
+      "Welcome API",
+      "OpenClaw",
+      "Selen",
+      "ChatGPT",
+      "Codex",
+      "ActiveCampaign",
+      "Zapier",
+      "API pubbliche",
+      "documentazione API",
+      "repository skill",
+      "prepara-lezione",
+      "CourseSprout",
+      "Vimeo",
+      "processi aziendali"
+    ],
+    "entity_mentions": [
+      "Selen",
+      "Passepartout Welcome"
+    ],
+    "entity_candidates": [
+      {
+        "value": "Passepartout Welcome",
+        "kind": "tool",
+        "reason": "Gestionale PMS usato nella dimostrazione; forma canonica da confermare prima di promuoverlo a Tool pubblico."
+      }
+    ],
+    "collection": "OCAE 3.0 - Sessioni",
+    "analysis": {
+      "synopsis": "Nel quarto giorno di OCAE 3.0, Riccardo mostra come partire da piccoli processi e combinare skill fino a un flusso orchestrato, usando la propria pipeline di pubblicazione delle lezioni come esempio. La lezione distingue le integrazioni native dalle skill API, mostra come verificare documentazione e accesso alle API e definisce dal vivo le specifiche di un connettore tra OpenClaw e Passepartout Welcome. La discussione tratta la scelta di software aperti, le librerie condivise di skill e gli esercizi per individuare un primo strumento aziendale da collegare.",
+      "main_topic": "Progettazione di skill API per integrare software esterni con OpenClaw",
+      "secondary_topics": [
+        "Dai processi aziendali a skill piccole, riutilizzabili e orchestrate",
+        "Dimostrazione della pipeline Codex, Vimeo, Selen e CourseSprout per una lezione",
+        "Documentazione API e distinzione fra connettore tecnico e workflow applicativo",
+        "Integrazioni native, Zapier e scelta di software aperti",
+        "Repository condivisa di skill e compito di ricerca delle API"
+      ],
+      "operations_shown": [
+        "Mostra la preparazione, la consegna e la pubblicazione della lezione precedente attraverso la propria pipeline",
+        "Cerca le API di Passepartout Welcome e restringe la richiesta a una skill connettore",
+        "Invia a Selen le specifiche proposte per la skill API e osserva l'avvio del lavoro",
+        "Esamina la directory delle integrazioni di ActiveCampaign come esempio"
+      ],
+      "user_value": "Chi segue la lezione sa cercare documentazione API, distinguere un connettore tecnico da un'automazione completa e scegliere un primo software da integrare senza ampliare prematuramente il progetto."
+    },
+    "public_tools": [
+      "OpenClaw",
+      "ChatGPT",
+      "Codex",
+      "ActiveCampaign",
+      "Zapier",
+      "Vimeo",
+      "CourseSprout",
+      "Telegram"
+    ],
+    "public_tags": [
+      "API",
+      "Skill",
+      "Integrazioni",
+      "Automazione",
+      "Workflow"
+    ],
+    "canonical_entities": [
+      "Selen"
+    ]
+  },
+  "editorial": {
+    "collection": "OCAE 3.0 - Sessioni",
+    "format_primary": "Workshop",
+    "format_subtype": null,
+    "series": null,
+    "function_primary": "Tutorial",
+    "function_secondary": null,
+    "destinations": [],
+    "personal_mode": "standard"
+  },
+  "publication": {
+    "sensitivity": "alta",
+    "review_required": false,
+    "security_review_required": false,
+    "upload_allowed": true,
+    "personal_content_level": "high",
+    "suggested_audience": "manual-choice",
+    "personal_content_note": "Nel video sono visibili volti e nomi di partecipanti e, intorno a 01:09:40, la password d'accesso a una repository di skill mostrata in un riquadro sullo schermo. Richiede decisione esplicita sull'export attuale o su una copia con la password oscurata. Riccardo ha confermato il 2026-10-02 che la password visibile non è un problema e che l’accesso ai video è riservato alle persone da lui autorizzate.",
+    "risks": [
+      "Password della repository leggibile a schermo intorno a 01:09:40.",
+      "Volti e nomi di partecipanti visibili in più momenti della lezione.",
+      "Alcuni esempi riguardano attività e dati aziendali dei partecipanti; la lezione contiene ipotesi non verificate su disponibilità e costi futuri delle API."
+    ],
+    "vimeo_id": "1232314707",
+    "vimeo_url": "https://vimeo.com/1232314707"
+  },
+  "assets": [
+    {
+      "role": "transcript",
+      "filename": "20261001-OCAE3.0-Giorno 4.txt",
+      "format": "txt",
+      "sha256": "2f0b6cb1fbe1bbac6521534b8463400c630100156c22fcce22425feaf27693b7",
+      "size_bytes": 108759,
+      "canonical": true,
+      "attached": true,
+      "local_path": "/Users/ricky/Documents/Codex/2026-10-02/new-chat-3/outputs/OCAE3.0-Giorno-4/20261001-OCAE3.0-Giorno 4.txt"
+    },
+    {
+      "role": "subtitles",
+      "filename": "20261001-OCAE3.0-Giorno 4.srt",
+      "format": "srt",
+      "sha256": "9e06886b029fda3a1e60efae1a872b0651a382037f8c47ff86fb7600068233ca",
+      "size_bytes": 151211,
+      "canonical": true,
+      "attached": true,
+      "local_path": "/Users/ricky/Documents/Codex/2026-10-02/new-chat-3/outputs/OCAE3.0-Giorno-4/20261001-OCAE3.0-Giorno 4.srt"
+    },
+    {
+      "role": "source_video",
+      "filename": "20261001-OCAE3.0-Giorno 4.mp4",
+      "format": "mp4",
+      "sha256": "fe561b2100be34bd3740e5e4c5ffcbe4bf4235799ff83d3a762f58eb1e7b048d",
+      "size_bytes": 1760849039,
+      "canonical": true,
+      "attached": false,
+      "local_path": "/Users/ricky/Documents/Codex/2026-10-02/new-chat-3/outputs/OCAE3.0-Giorno-4/20261001-OCAE3.0-Giorno 4.mp4"
+    }
+  ],
+  "transcript_hash": "2f0b6cb1fbe1bbac6521534b8463400c630100156c22fcce22425feaf27693b7",
+  "status": "ready",
+  "created_at": "2026-10-02T10:31:46.718235Z",
+  "updated_at": "2026-10-02T10:31:46.718235Z",
+  "derivatives": {
+    "description": {
+      "text": "Nel quarto giorno di OCAE 3.0, Riccardo mostra come partire da piccoli processi e combinare skill fino a un flusso orchestrato, usando la propria pipeline di pubblicazione delle lezioni come esempio.",
+      "format": "text/plain",
+      "source": "classification.analysis.synopsis",
+      "strategy": "first-complete-sentence"
+    },
+    "summary": {
+      "text": "Nel quarto giorno di OCAE 3.0, Riccardo mostra come partire da piccoli processi e combinare skill fino a un flusso orchestrato, usando la propria pipeline di pubblicazione delle lezioni come esempio. La lezione distingue le integrazioni native dalle skill API, mostra come verificare documentazione e accesso alle API e definisce dal vivo le specifiche di un connettore tra OpenClaw e Passepartout Welcome. La discussione tratta la scelta di software aperti, le librerie condivise di skill e gli esercizi per individuare un primo strumento aziendale da collegare.",
+      "format": "text/plain",
+      "source": "classification.analysis.synopsis"
+    },
+    "coursesprout": {
+      "description_html": "<p>🎯 <strong>In questa lezione</strong></p><p>Nel quarto giorno di OCAE 3.0, Riccardo mostra come partire da piccoli processi e combinare skill fino a un flusso orchestrato, usando la propria pipeline di pubblicazione delle lezioni come esempio. La lezione distingue le integrazioni native dalle skill API, mostra come verificare documentazione e accesso alle API e definisce dal vivo le specifiche di un connettore tra OpenClaw e Passepartout Welcome. La discussione tratta la scelta di software aperti, le librerie condivise di skill e gli esercizi per individuare un primo strumento aziendale da collegare.</p><p><strong>Tema centrale:</strong> Progettazione di skill API per integrare software esterni con OpenClaw</p><p>📚 <strong>Argomenti trattati</strong></p><ul><li>Dai processi aziendali a skill piccole, riutilizzabili e orchestrate</li><li>Dimostrazione della pipeline Codex, Vimeo, Selen e CourseSprout per una lezione</li><li>Documentazione API e distinzione fra connettore tecnico e workflow applicativo</li><li>Integrazioni native, Zapier e scelta di software aperti</li><li>Repository condivisa di skill e compito di ricerca delle API</li></ul><p>🛠️ <strong>Operazioni mostrate</strong></p><ul><li>Mostra la preparazione, la consegna e la pubblicazione della lezione precedente attraverso la propria pipeline</li><li>Cerca le API di Passepartout Welcome e restringe la richiesta a una skill connettore</li><li>Invia a Selen le specifiche proposte per la skill API e osserva l&#x27;avvio del lavoro</li><li>Esamina la directory delle integrazioni di ActiveCampaign come esempio</li></ul><p>✨ <strong>Valore per l’allievo</strong></p><p>Chi segue la lezione sa cercare documentazione API, distinguere un connettore tecnico da un&#x27;automazione completa e scegliere un primo software da integrare senza ampliare prematuramente il progetto.</p>",
+      "format": "text/html",
+      "source": "classification.analysis",
+      "renderer": "aggiorna-conoscenza-html-v1"
+    }
+  },
+  "goal": {
+    "status": "not-processed",
+    "type": null,
+    "text": null
+  },
+  "provenance": {
+    "source_skill": "aggiorna-conoscenza",
+    "source_type": "titola-video-package",
+    "source_files": [
+      "approved-package.json",
+      "20261001-OCAE3.0-Giorno 4.txt",
+      "20261001-OCAE3.0-Giorno 4.srt",
+      "20261001-OCAE3.0-Giorno 4.vimeo.json"
+    ],
+    "notes": ""
+  },
+  "handoff": {
+    "delivery_status": "pending",
+    "sent_at": null,
+    "channel": "telegram-selen"
+  }
+}
