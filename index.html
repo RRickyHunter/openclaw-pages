@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Riccardo Romano - Business Architect & OpenClaw Ecosystem</title>
+  <title>Riccardo Romano - Business Architect & Coach</title>
   <meta name="description" content="Trasforma il caos del tuo business in chiarezza e sistemi. Prenota una call con Riccardo Romano." />
+  <link rel="icon" type="image/png" href="/favicon-riccardo.png" />
+  <link rel="apple-touch-icon" href="/favicon-riccardo.png" />
+  <meta property="og:image" content="https://pages.riccardoromano.biz/favicon-riccardo.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -51,11 +54,11 @@
     }
 
     h1 {
-      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-size: clamp(2rem, 4.5vw, 3.35rem);
       font-weight: 900;
-      line-height: 1.1;
+      line-height: 1.06;
       letter-spacing: -.03em;
-      margin-bottom: 1rem;
+      margin-bottom: .85rem;
     }
 
     h1 em {
@@ -67,10 +70,10 @@
     }
 
     .subtitle {
-      font-size: 1.25rem;
+      font-size: 1.18rem;
       color: rgba(255,255,255,.85);
       max-width: 600px;
-      margin: 0 auto 2.5rem;
+      margin: 0 auto 1.45rem;
     }
 
     .cta-button {
@@ -143,13 +146,31 @@
       color: rgba(255,255,255,.6);
     }
 
+    .brand-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .brand-logo,
     .avatar {
-      margin-bottom: 1.5rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-logo img {
+      width: clamp(130px, 20vw, 190px);
+      height: auto;
+      display: block;
+      filter: brightness(0) invert(1) drop-shadow(0 10px 28px rgba(0,0,0,.26));
     }
 
     .avatar img {
-      width: 120px;
-      height: 120px;
+      width: 106px;
+      height: 106px;
       border-radius: 50%;
       border: 3px solid var(--gold);
       box-shadow: 0 8px 30px rgba(255,180,0,.3);
@@ -162,7 +183,244 @@
       color: rgba(255,255,255,.4);
     }
 
+
+
+    /* Booking modal certificato */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.35rem;
+      backdrop-filter: blur(6px);
+      text-align: left;
+    }
+
+    .card h3 {
+      font-size: 1.02rem;
+      font-weight: 800;
+      margin-bottom: .5rem;
+    }
+
+    .card p {
+      color: rgba(255,255,255,.75);
+      font-size: .95rem;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(4, 10, 24, .72);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      z-index: 999;
+      backdrop-filter: blur(8px);
+    }
+
+    .modal.open { display: flex; }
+
+    .modal-panel {
+      width: min(980px, 100%);
+      max-height: 92vh;
+      overflow: auto;
+      background: linear-gradient(180deg, rgba(14,29,61,.98), rgba(9,18,39,.98));
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 26px;
+      padding: 1.5rem;
+      box-shadow: 0 24px 80px rgba(0,0,0,.35);
+    }
+
+    .modal-top {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      text-align: left;
+    }
+
+    .close-btn {
+      background: rgba(255,255,255,.08);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 999px;
+      width: 42px;
+      height: 42px;
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    .scheduler-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 1.2rem;
+    }
+
+    .date-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .8rem;
+      margin-top: 1rem;
+    }
+
+    .nav-btn {
+      background: rgba(255,255,255,.06);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 999px;
+      width: 42px;
+      height: 42px;
+      cursor: pointer;
+      transition: .2s ease;
+      font-family: inherit;
+      font-weight: 900;
+    }
+
+    .nav-btn:disabled {
+      opacity: .35;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .date-page-label {
+      color: rgba(255,255,255,.72);
+      font-size: .9rem;
+      font-weight: 700;
+    }
+
+    .slot-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .8rem;
+      margin-top: 1rem;
+    }
+
+    .slot-btn,
+    .date-btn {
+      width: 100%;
+      background: rgba(255,255,255,.06);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 14px;
+      padding: .95rem 1rem;
+      text-align: left;
+      cursor: pointer;
+      transition: .2s ease;
+      font-family: inherit;
+    }
+
+    .date-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .8rem;
+      margin-top: 1rem;
+    }
+
+    .slot-btn:hover:not(:disabled),
+    .date-btn:hover:not(:disabled),
+    .slot-btn.active,
+    .date-btn.active,
+    .nav-btn:hover:not(:disabled) {
+      background: rgba(255,180,0,.16);
+      border-color: rgba(255,180,0,.45);
+      transform: translateY(-2px);
+    }
+
+    .slot-btn:disabled,
+    .date-btn:disabled {
+      opacity: .38;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .slot-btn small,
+    .date-btn small {
+      display: block;
+      color: rgba(255,255,255,.62);
+      margin-top: .2rem;
+    }
+
+    .booking-form {
+      display: grid;
+      gap: .9rem;
+      margin-top: 1rem;
+    }
+
+    .booking-form label {
+      display: grid;
+      gap: .35rem;
+      font-size: .92rem;
+      color: rgba(255,255,255,.8);
+    }
+
+    .booking-form input,
+    .booking-form textarea {
+      width: 100%;
+      min-height: 52px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.06);
+      color: #fff;
+      padding: 0 1rem;
+      font-family: inherit;
+      font-size: 1rem;
+    }
+
+    .booking-form textarea {
+      min-height: 104px;
+      padding: .9rem 1rem;
+      resize: vertical;
+      line-height: 1.45;
+    }
+
+    .turnstile-wrap {
+      min-height: 65px;
+      display: flex;
+      align-items: center;
+    }
+
+    .booking-note,
+    .success-box {
+      margin-top: .9rem;
+      padding: .95rem 1rem;
+      border-radius: 16px;
+      font-size: .92rem;
+    }
+
+    .booking-note {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      color: rgba(255,255,255,.72);
+    }
+
+    .success-box {
+      display: none;
+      background: rgba(34,197,94,.14);
+      border: 1px solid rgba(34,197,94,.35);
+      color: rgba(255,255,255,.9);
+    }
+
+    .success-box.show { display: block; }
+
+
+    @media (max-width: 900px) {
+      .scheduler-grid, .date-list, .slot-grid { grid-template-columns: 1fr; }
+    }
+
     @media (max-width: 600px) {
+      body { padding: 1.25rem; justify-content: flex-start; }
+      .brand-row { gap: .85rem; margin-bottom: .75rem; }
+      .brand-logo img { width: min(138px, 42vw); }
+      .avatar img { width: 84px; height: 84px; }
+      h1 { font-size: clamp(1.95rem, 10vw, 2.55rem); }
+      h1 br { display: none; }
+      .eyebrow { margin-bottom: 1rem; }
+      .subtitle { font-size: 1.04rem; margin-bottom: 1.15rem; }
+      .cta-button { min-height: 56px; padding: 0 1.55rem; font-size: 1rem; }
+      .divider { margin: 1.6rem auto; }
+      footer { margin-top: 2rem; }
       .links { flex-direction: column; align-items: center; }
       .link-card { width: 100%; max-width: 300px; }
     }
@@ -171,19 +429,24 @@
 <body>
 
   <div class="container">
-    <div class="avatar">
-      <img src="riccardo-avatar.jpg" alt="Riccardo Romano">
+    <div class="brand-row">
+      <div class="brand-logo" aria-label="Riccardo Romano">
+        <img src="/favicon-riccardo.png" alt="Logo Riccardo Romano">
+      </div>
+      <div class="avatar">
+        <img src="/home/riccardo-avatar.jpg" alt="Riccardo Romano">
+      </div>
     </div>
     <span class="eyebrow">Business Architect & Coach</span>
     
-    <h1>Trasforma il <em>caos</em> del tuo business in <em>chiarezza</em> e sistemi.</h1>
+    <h1>Trasforma il <em>caos</em> del tuo business<br>in <em>chiarezza</em> e sistemi.</h1>
     
     <p class="subtitle">
       Aiuto business owner e professionisti a liberarsi dall'operatività, 
       automatizzare i processi e ritrovare tempo per ciò che conta davvero.
     </p>
 
-    <a href="https://calendar.app.google/RJyxGPqhs3HRQpew8" class="cta-button">
+    <a href="#booking" class="cta-button" id="openBookingHome">
       Prenota una Call Gratuita →
     </a>
     
@@ -203,5 +466,454 @@
     © 2026 Riccardo Romano · Tutti i diritti riservati
   </footer>
 
+  <div class="modal" id="bookingModal" aria-hidden="true">
+    <div class="modal-panel">
+      <div class="modal-top">
+        <div>
+          <span class="eyebrow">Prenota un appuntamento</span>
+          <h2 class="section-title" style="margin-bottom:.35rem;">Scegli il tuo giorno e il tuo orario</h2>
+          <p class="section-copy" style="margin-bottom:0;">Seleziona una data disponibile, l’orario che preferisci e lascia i tuoi dati.</p>
+        </div>
+        <button class="close-btn" id="closeBooking" aria-label="Chiudi">×</button>
+      </div>
+
+      <div class="scheduler-grid">
+        <div class="card">
+          <h3>1. Data disponibile</h3>
+          <div class="date-nav" aria-label="Navigazione date disponibili">
+            <button type="button" class="nav-btn" id="prevDatePage" aria-label="Blocco precedente">‹</button>
+            <span class="date-page-label" id="datePageLabel"></span>
+            <button type="button" class="nav-btn" id="nextDatePage" aria-label="Blocco successivo">›</button>
+          </div>
+          <div class="date-list" id="dateList"></div>
+
+          <h3 style="margin-top:1.2rem;">2. Orario</h3>
+          <p>Scegli il momento più adatto a te.</p>
+          <p class="booking-note" id="timezoneNote"></p>
+          <div class="slot-grid" id="slotList"></div>
+        </div>
+
+        <div class="card">
+          <h3>3. I tuoi dati</h3>
+          <form class="booking-form" id="bookingForm">
+            <label>
+              Nome
+              <input type="text" id="bookingName" name="name" placeholder="Il tuo nome" required />
+            </label>
+
+            <label>
+              Cognome
+              <input type="text" id="bookingSurname" name="surname" placeholder="Il tuo cognome" required />
+            </label>
+
+            <label>
+              Email
+              <input type="email" id="bookingEmail" name="email" placeholder="tua@email.com" autocomplete="email" required />
+            </label>
+
+            <label>
+              Giorno selezionato
+              <input type="text" id="bookingDate" name="date" readonly required />
+            </label>
+
+            <label>
+              Orario selezionato
+              <input type="text" id="bookingTime" name="time" readonly required />
+            </label>
+
+            <label>
+              C’è qualcosa che vuoi che sappia prima del nostro incontro?
+              <textarea id="bookingComment" name="comment" placeholder="Puoi anticiparmi contesto, obiettivi o temi che vorresti affrontare."></textarea>
+            </label>
+
+            <div class="turnstile-wrap">
+              <div id="bookingTurnstile"></div>
+            </div>
+
+            <button type="submit" class="cta-button">Prenota</button>
+          </form>
+
+          <div class="success-box" id="successBox"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const bookingConfig = {
+      apiBaseUrl: 'https://booking-backend-riccardoromano.vercel.app',
+      turnstileSiteKey: '0x4AAAAAADoozULU4eecn7bG',
+      slotDurations: [45],
+      defaultDurationMinutes: 45,
+      daysAhead: 24,
+      pageSize: 8
+    };
+
+    const modal = document.getElementById('bookingModal');
+    const openButtons = [document.getElementById('openBookingHome')];
+    const closeButton = document.getElementById('closeBooking');
+    const dateList = document.getElementById('dateList');
+    const slotList = document.getElementById('slotList');
+    const bookingDate = document.getElementById('bookingDate');
+    const bookingTime = document.getElementById('bookingTime');
+    const bookingSurname = document.getElementById('bookingSurname');
+    const bookingComment = document.getElementById('bookingComment');
+    const bookingForm = document.getElementById('bookingForm');
+    const submitButton = bookingForm.querySelector('button[type="submit"]');
+    const successBox = document.getElementById('successBox');
+    const prevDatePage = document.getElementById('prevDatePage');
+    const nextDatePage = document.getElementById('nextDatePage');
+    const datePageLabel = document.getElementById('datePageLabel');
+    const timezoneNote = document.getElementById('timezoneNote');
+
+    const requesterTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    timezoneNote.textContent = `Orari mostrati nel tuo fuso orario: ${requesterTimezone}`;
+
+    let selectedDate = null;
+    let selectedSlot = null;
+    let currentDatePage = 0;
+    let availableSlotsByDate = new Map();
+    let availabilityLoaded = false;
+    let turnstileToken = '';
+    let turnstileWidgetId = null;
+    let currentAttemptKey = null;
+    let currentAttemptSlotUtc = null;
+    let isSubmitting = false;
+
+    window.onBookingTurnstileSuccess = function(token) {
+      turnstileToken = token || '';
+    };
+
+    window.onBookingTurnstileExpired = function() {
+      turnstileToken = '';
+    };
+
+    window.onBookingTurnstileApiLoad = function() {
+      if (!window.turnstile || turnstileWidgetId !== null) return;
+      turnstileWidgetId = window.turnstile.render('#bookingTurnstile', {
+        sitekey: bookingConfig.turnstileSiteKey,
+        theme: 'dark',
+        size: 'flexible',
+        callback: window.onBookingTurnstileSuccess,
+        'expired-callback': window.onBookingTurnstileExpired,
+        'error-callback': window.onBookingTurnstileExpired
+      });
+    };
+
+    function resetTurnstile() {
+      turnstileToken = '';
+      if (window.turnstile && typeof window.turnstile.reset === 'function' && turnstileWidgetId !== null) {
+        window.turnstile.reset(turnstileWidgetId);
+      }
+    }
+
+    function generateIdempotencyKey() {
+      if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+        return window.crypto.randomUUID();
+      }
+      const bytes = new Uint8Array(16);
+      window.crypto.getRandomValues(bytes);
+      bytes[6] = (bytes[6] & 0x0f) | 0x40;
+      bytes[8] = (bytes[8] & 0x3f) | 0x80;
+      const hex = [...bytes].map(b => b.toString(16).padStart(2, '0')).join('');
+      return `${hex.slice(0,8)}-${hex.slice(8,12)}-${hex.slice(12,16)}-${hex.slice(16,20)}-${hex.slice(20)}`;
+    }
+
+    function getAttemptKeyForSlot(startUtc) {
+      if (!currentAttemptKey || currentAttemptSlotUtc !== startUtc) {
+        currentAttemptKey = generateIdempotencyKey();
+        currentAttemptSlotUtc = startUtc;
+      }
+      return currentAttemptKey;
+    }
+
+    function resetAttempt() {
+      currentAttemptKey = null;
+      currentAttemptSlotUtc = null;
+    }
+
+    function setSubmitLoading(loading) {
+      isSubmitting = loading;
+      submitButton.disabled = loading;
+      submitButton.textContent = loading ? 'Prenotazione in corso...' : 'Prenota';
+    }
+
+    function dateKey(date) {
+      return new Intl.DateTimeFormat('en-CA', {
+        timeZone: requesterTimezone,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit'
+      }).format(date);
+    }
+
+    function slotDateKey(slot) {
+      return dateKey(new Date(slot.displayStart || slot.startUtc));
+    }
+
+    function formatHumanDate(date) {
+      return new Intl.DateTimeFormat('it-IT', {
+        timeZone: requesterTimezone,
+        weekday: 'long',
+        day: 'numeric',
+        month: 'long'
+      }).format(date);
+    }
+
+    function formatShortDate(date) {
+      return new Intl.DateTimeFormat('it-IT', {
+        timeZone: requesterTimezone,
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+      }).format(date);
+    }
+
+    function formatSlotTime(displayValue) {
+      return new Intl.DateTimeFormat('it-IT', {
+        hour: '2-digit',
+        minute: '2-digit'
+      }).format(new Date(displayValue));
+    }
+
+    function formatDateRange(dates) {
+      if (!dates.length) return '';
+      const first = dates[0];
+      const last = dates[dates.length - 1];
+      const sameMonth = first.getMonth() === last.getMonth() && first.getFullYear() === last.getFullYear();
+      const sameYear = first.getFullYear() === last.getFullYear();
+      const firstDay = first.getDate();
+      const lastDay = last.getDate();
+      const monthFormatter = new Intl.DateTimeFormat('it-IT', { month: 'long', timeZone: requesterTimezone });
+      if (sameMonth) return `${firstDay}–${lastDay} ${monthFormatter.format(last)} ${last.getFullYear()}`;
+      const firstMonth = monthFormatter.format(first);
+      const lastMonth = monthFormatter.format(last);
+      if (sameYear) return `${firstDay} ${firstMonth}–${lastDay} ${lastMonth} ${last.getFullYear()}`;
+      return `${firstDay} ${firstMonth} ${first.getFullYear()}–${lastDay} ${lastMonth} ${last.getFullYear()}`;
+    }
+
+    function getDateWindow() {
+      const dates = [];
+      const now = new Date();
+      for (let i = 0; i < bookingConfig.daysAhead; i++) {
+        const d = new Date(now);
+        d.setDate(now.getDate() + i);
+        d.setHours(0, 0, 0, 0);
+        dates.push(d);
+      }
+      return dates;
+    }
+
+    function sameDay(a, b) {
+      return a && b && dateKey(a) === dateKey(b);
+    }
+
+    async function loadAvailability() {
+      availabilityLoaded = false;
+      selectedDate = null;
+      selectedSlot = null;
+      bookingDate.value = '';
+      bookingTime.value = '';
+      dateList.innerHTML = '';
+      slotList.innerHTML = '<p class="booking-note">Caricamento disponibilità...</p>';
+
+      const dates = getDateWindow();
+      const body = {
+        requesterTimezone,
+        fromDate: dateKey(dates[0]),
+        toDate: dateKey(dates[dates.length - 1])
+      };
+
+      try {
+        const response = await fetch(`${bookingConfig.apiBaseUrl}/api/availability`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+        if (!response.ok) throw new Error('availability_failed');
+        const data = await response.json();
+        availableSlotsByDate = new Map();
+        (data.slots || []).forEach(slot => {
+          const key = slotDateKey(slot);
+          if (!availableSlotsByDate.has(key)) availableSlotsByDate.set(key, []);
+          availableSlotsByDate.get(key).push(slot);
+        });
+        availabilityLoaded = true;
+        renderDates();
+        const firstAvailable = dates.find(d => (availableSlotsByDate.get(dateKey(d)) || []).length);
+        if (firstAvailable) selectDate(firstAvailable);
+        else renderSlots();
+      } catch (error) {
+        datePageLabel.textContent = '';
+        dateList.innerHTML = '';
+        slotList.innerHTML = '<p class="booking-note">Non riesco a caricare le disponibilità in questo momento. Riprova tra poco.</p>';
+      }
+    }
+
+    function selectDate(date) {
+      selectedDate = date;
+      selectedSlot = null;
+      bookingDate.value = `${formatHumanDate(date)} (${formatShortDate(date)})`;
+      bookingTime.value = '';
+      renderDates();
+      renderSlots();
+    }
+
+    function renderDates() {
+      const dates = getDateWindow();
+      const maxPage = Math.ceil(bookingConfig.daysAhead / bookingConfig.pageSize) - 1;
+      const start = currentDatePage * bookingConfig.pageSize;
+      const pageDates = dates.slice(start, start + bookingConfig.pageSize);
+      dateList.innerHTML = '';
+      datePageLabel.textContent = formatDateRange(pageDates);
+      prevDatePage.disabled = currentDatePage === 0 || !availabilityLoaded;
+      nextDatePage.disabled = currentDatePage >= maxPage || !availabilityLoaded;
+
+      pageDates.forEach(date => {
+        const slots = availableSlotsByDate.get(dateKey(date)) || [];
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.disabled = slots.length === 0;
+        btn.className = 'date-btn' + (sameDay(selectedDate, date) ? ' active' : '');
+        btn.innerHTML = `${formatHumanDate(date)}<small>${slots.length ? formatShortDate(date) : `${formatShortDate(date)} · non disponibile`}</small>`;
+        btn.addEventListener('click', () => selectDate(date));
+        dateList.appendChild(btn);
+      });
+    }
+
+    function renderSlots() {
+      slotList.innerHTML = '';
+      if (!selectedDate) {
+        slotList.innerHTML = '<p class="booking-note">Seleziona una data disponibile.</p>';
+        return;
+      }
+      const slots = availableSlotsByDate.get(dateKey(selectedDate)) || [];
+      if (!slots.length) {
+        slotList.innerHTML = '<p class="booking-note">Nessun orario disponibile per questa data.</p>';
+        return;
+      }
+      slots.forEach(slot => {
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'slot-btn' + (selectedSlot && selectedSlot.startUtc === slot.startUtc ? ' active' : '');
+        const start = formatSlotTime(slot.displayStart);
+        const end = slot.displayEnd ? formatSlotTime(slot.displayEnd) : '';
+        btn.innerHTML = `${start}<small>${end ? `${start}–${end}` : `Sessione di ${bookingConfig.defaultDurationMinutes} minuti`}</small>`;
+        btn.addEventListener('click', () => {
+          selectedSlot = slot;
+          resetAttempt();
+          [...slotList.children].forEach(el => el.classList.remove('active'));
+          btn.classList.add('active');
+          bookingTime.value = start;
+        });
+        slotList.appendChild(btn);
+      });
+    }
+
+    function openModal() {
+      modal.classList.add('open');
+      modal.setAttribute('aria-hidden', 'false');
+      successBox.classList.remove('show');
+      currentDatePage = 0;
+      resetTurnstile();
+      loadAvailability();
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+      resetTurnstile();
+    }
+
+    openButtons.forEach(btn => btn.addEventListener('click', openModal));
+    closeButton.addEventListener('click', closeModal);
+    prevDatePage.addEventListener('click', () => {
+      if (currentDatePage > 0) {
+        currentDatePage -= 1;
+        renderDates();
+      }
+    });
+    nextDatePage.addEventListener('click', () => {
+      const maxPage = Math.ceil(bookingConfig.daysAhead / bookingConfig.pageSize) - 1;
+      if (currentDatePage < maxPage) {
+        currentDatePage += 1;
+        renderDates();
+      }
+    });
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    bookingForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (isSubmitting) return;
+      const name = document.getElementById('bookingName').value.trim();
+      const surname = bookingSurname.value.trim();
+      const email = document.getElementById('bookingEmail').value.trim();
+      const comment = bookingComment.value.trim();
+      if (!name || !surname || !email || !selectedDate || !selectedSlot || !requesterTimezone) return;
+      if (!turnstileToken) {
+        successBox.classList.add('show');
+        successBox.innerHTML = 'Completa la verifica di sicurezza.';
+        return;
+      }
+
+      const payload = {
+        name,
+        surname,
+        email,
+        startUtc: selectedSlot.startUtc,
+        requesterTimezone,
+        comment,
+        turnstileToken,
+        idempotencyKey: getAttemptKeyForSlot(selectedSlot.startUtc)
+      };
+
+      successBox.classList.add('show');
+      successBox.innerHTML = 'Prenotazione in corso...';
+      setSubmitLoading(true);
+
+      try {
+        const response = await fetch(`${bookingConfig.apiBaseUrl}/api/booking/create`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        let result = {};
+        try { result = await response.json(); } catch (_) { result = {}; }
+        const status = result.status || result.code;
+
+        if (response.ok && status === 'BOOKING_CREATED') {
+          successBox.innerHTML = `Appuntamento confermato.<br><strong>${formatHumanDate(selectedDate)} alle ${bookingTime.value}</strong><br>Riceverai l'invito via email con il link Google Meet.`;
+          resetTurnstile();
+          return;
+        }
+
+        if (status === 'SLOT_UNAVAILABLE') {
+          successBox.innerHTML = 'Questo orario non è più disponibile. Scegline un altro.';
+          selectedSlot = null;
+          bookingTime.value = '';
+          resetAttempt();
+          await loadAvailability();
+          return;
+        }
+
+        if (status === 'ANTISPAM_FAILED') {
+          successBox.innerHTML = 'La verifica di sicurezza è scaduta. Completala nuovamente.';
+          resetTurnstile();
+          return;
+        }
+
+        successBox.innerHTML = 'Non sono riuscito a completare la prenotazione. Riprova tra poco.';
+        resetTurnstile();
+      } catch (error) {
+        successBox.innerHTML = 'Non sono riuscito a completare la prenotazione. Riprova tra poco.';
+        resetTurnstile();
+      } finally {
+        setSubmitLoading(false);
+      }
+    });
+  </script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onBookingTurnstileApiLoad&render=explicit" async defer></script>
 </body>
 </html>
