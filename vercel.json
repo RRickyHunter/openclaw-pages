@@ -152,6 +152,24 @@
   ],
   "headers": [
     {
+      "source": "/c/7fK29mQx84Nz-ricky",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive, nosnippet, noimageindex"
+        }
+      ]
+    },
+    {
+      "source": "/c/7fK29mQx84Nz-ricky/",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive, nosnippet, noimageindex"
+        }
+      ]
+    },
+    {
       "source": "/webinar/assets/(.*)",
       "headers": [
         {
