@@ -422,6 +422,14 @@
       "dest": "/__OPENCLAW_ISOLATED_UNIT_ROUTES_END__"
     },
     {
+      "src": "/c/7fK29mQx84Nz-ricky",
+      "dest": "https://riccardoromano-site.vercel.app/c/7fK29mQx84Nz-ricky"
+    },
+    {
+      "src": "/c/7fK29mQx84Nz-ricky/",
+      "dest": "https://riccardoromano-site.vercel.app/c/7fK29mQx84Nz-ricky"
+    },
+    {
       "handle": "filesystem"
     }
   ]
