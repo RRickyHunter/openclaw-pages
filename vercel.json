@@ -456,5 +456,6 @@
     {
       "handle": "filesystem"
     }
-  ]
+  ],
+  "outputDirectory": "."
 }
