@@ -118,6 +118,18 @@
       "destination": "/__OPENCLAW_ISOLATED_UNIT_ROUTES_END__"
     },
     {
+      "source": "/calcolatore-alessio-serenella",
+      "destination": "https://fast-pages.vercel.app/calcolatore-alessio-serenella/"
+    },
+    {
+      "source": "/calcolatore-alessio-serenella/",
+      "destination": "https://fast-pages.vercel.app/calcolatore-alessio-serenella/"
+    },
+    {
+      "source": "/calcolatore-alessio-serenella/:path*",
+      "destination": "https://fast-pages.vercel.app/calcolatore-alessio-serenella/:path*"
+    },
+    {
       "source": "/identity",
       "destination": "https://risorse-iota.vercel.app/identity/"
     },
@@ -420,6 +432,18 @@
     {
       "src": "/__OPENCLAW_ISOLATED_UNIT_ROUTES_END__",
       "dest": "/__OPENCLAW_ISOLATED_UNIT_ROUTES_END__"
+    },
+    {
+      "src": "/calcolatore-alessio-serenella",
+      "dest": "https://fast-pages.vercel.app/calcolatore-alessio-serenella/"
+    },
+    {
+      "src": "/calcolatore-alessio-serenella/",
+      "dest": "https://fast-pages.vercel.app/calcolatore-alessio-serenella/"
+    },
+    {
+      "src": "/calcolatore-alessio-serenella/(.*)",
+      "dest": "https://fast-pages.vercel.app/calcolatore-alessio-serenella/$1"
     },
     {
       "src": "/c/7fK29mQx84Nz-ricky",
