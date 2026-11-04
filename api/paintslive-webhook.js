@@ -49,7 +49,7 @@ async function sync(session){
 export default async function handler(req,res){
  if(req.method!=='POST')return res.status(405).json({error:'Method not allowed'});
  const secret=process.env.STRIPE_VMO_WEBHOOK_SECRET;
- const key=process.env.STRIPE_VMO_SECRET_KEY;
+ const key=process.env.STRIPE_VMO_SECRET_KEY||process.env.STRIPE_LIVE_SECRET_KEY;
  if(!secret||!key)return res.status(503).json({error:'Webhook not configured'});
  let event;
  try{event=new Stripe(key).webhooks.constructEvent(await readRaw(req),req.headers['stripe-signature'],secret)}
@@ -60,6 +60,8 @@ export default async function handler(req,res){
  if(session.metadata?.product_key!=='paintslive')return res.status(200).json({received:true,ignored:true});
  try{
   const stripe=new Stripe(key);
+  const account=await stripe.accounts.retrieve();
+  if(account.id!=='acct_1EcgVDEnlub9vBJK')throw Error('Stripe account is not VideoMakingOnline');
   const items=await stripe.checkout.sessions.listLineItems(session.id,{limit:20});
   if(!items.data.some(i=>i.price?.id===PRICE_ID))throw Error('Unexpected product price');
   const contactId=await sync(session);
