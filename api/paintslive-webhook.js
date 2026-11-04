@@ -4,7 +4,7 @@ const TAG_ID='157';
 export const config={api:{bodyParser:false}};
 async function readRaw(req){const chunks=[];for await(const chunk of req)chunks.push(Buffer.isBuffer(chunk)?chunk:Buffer.from(chunk));return Buffer.concat(chunks);}
 async function ac(path,method='GET',body){
- const base=(process.env.ACTIVECAMPAIGN_API_URL||'https://riccardoromano.api-us1.com/api/3').replace(/\\/$/,'');
+ const base=(process.env.ACTIVECAMPAIGN_API_URL||'https://riccardoromano.api-us1.com/api/3').replace(/\/$/,'');
  const key=process.env.ACTIVECAMPAIGN_API_KEY;
  if(!key)throw Error('ActiveCampaign API key missing');
  const r=await fetch(base+path,{method,headers:{'Api-Token':key,'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined});
