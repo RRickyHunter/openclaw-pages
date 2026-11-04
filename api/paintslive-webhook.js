@@ -27,7 +27,7 @@ async function sync(session){
  const email=session.customer_details?.email||session.customer_email;
  if(!email)throw Error('Paid checkout has no email');
  const fullName=(session.customer_details?.name||'').trim();
- const parts=fullName.split(/\\s+/).filter(Boolean);
+ const parts=fullName.split(/\s+/).filter(Boolean);
  const firstName=parts.length>1?parts.slice(0,-1).join(' '):(parts[0]||'');
  const lastName=parts.length>1?parts.at(-1):'';
  const found=await ac('/contacts?email='+encodeURIComponent(email));
