@@ -1,0 +1,26 @@
+name: Import PAINTS Live testimonial image
+on:
+  push:
+    branches: [feature/paintslive-funnel]
+    paths:
+      - .github/workflows/import-paintslive-image.yml
+permissions:
+  contents: write
+jobs:
+  import-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c # v4.2.2
+        with:
+          persist-credentials: true
+      - name: Retrieve image attachment
+        run: |
+          mkdir -p wspaintslive/assets
+          curl --fail --location --retry 3 --max-time 40 'https://v3b.fal.media/files/b/0ab12d1d/QrAYI3LYElGB9Lmv97Vuf_foto%20testimonianza%20kaffeina%20per%20pagina%20vendita.jpg' -o wspaintslive/assets/francesca-scomparin.jpg
+          file wspaintslive/assets/francesca-scomparin.jpg
+          test "$(wc -c < wspaintslive/assets/francesca-scomparin.jpg)" -gt 100000
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add wspaintslive/assets/francesca-scomparin.jpg
+          git commit -m 'Add Francesca Scomparin testimonial image as local asset'
+          git push origin HEAD:feature/paintslive-funnel
