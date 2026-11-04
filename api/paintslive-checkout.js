@@ -3,10 +3,12 @@ const PRICE_ID = 'price_1UYC6lEnlub9vBJKkZXO2ONs';
 module.exports = async (req,res)=>{
  res.setHeader('Cache-Control','no-store');
  if(req.method!=='POST') return res.status(405).json({error:'Method not allowed'});
- const key=process.env.STRIPE_VMO_SECRET_KEY;
+ const key=process.env.STRIPE_VMO_SECRET_KEY||process.env.STRIPE_LIVE_SECRET_KEY;
  if(!key) return res.status(503).json({error:'VMO Stripe credentials not configured'});
  try{
   const stripe=new Stripe(key);
+  const account=await stripe.accounts.retrieve();
+  if(account.id!=='acct_1EcgVDEnlub9vBJK') throw Error('Stripe account is not VideoMakingOnline');
   const price=await stripe.prices.retrieve(PRICE_ID,{expand:['product']});
   if(!price.active||price.currency!=='eur'||price.unit_amount!==999||price.product?.metadata?.product_key!=='paintslive') throw Error('PAINTS Live price validation failed');
   const origin='https://pages.riccardoromano.biz';
