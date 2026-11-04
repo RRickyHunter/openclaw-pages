@@ -5,24 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PAINTS Live — Perché l'AI non ti serve | 16 novembre 2026</title>
   <meta name="description" content="Workshop pratico per capire perché l'AI non ti sta ancora facendo recuperare il tempo che speravi e cosa sistemare prima di aggiungere altri prompt, tool o automazioni." />
-  <!-- Meta Pixel Code -->
-  <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '998401136465722');
-    fbq('track', 'PageView');
-  </script>
-  <noscript>
-    <img height="1" width="1" style="display:none" 
-         src="https://www.facebook.com/tr?id=998401136465722&ev=PageView&noscript=1"/>
-  </noscript>
-  <!-- End Meta Pixel Code -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -750,6 +733,12 @@
       }
     }
   </style>
+  <style>
+    .paints-cookie-banner{position:fixed;bottom:16px;left:16px;right:16px;z-index:9999;max-width:850px;margin:auto;background:#152139;color:#fff;border:1px solid #64748b;border-radius:14px;padding:18px;box-shadow:0 12px 32px #0008;display:none}
+    .paints-cookie-banner button{padding:10px 18px;border-radius:10px;border:1px solid #84ccff;cursor:pointer;margin:6px 8px 0 0;background:#243957;color:#fff}
+    .paints-cookie-banner button.accept{background:#5b21b6;color:#fff}
+    .paints-cookie-banner a{color:#a5eaff}
+  </style>
 </head>
 <body>
   <main class="wrap">
@@ -1018,5 +1007,27 @@
       });
     });
   </script>
+<div class="paints-cookie-banner" id="paints-cookie-banner" role="dialog" aria-label="Preferenze cookie">
+  <p>Utilizziamo tecnologie di tracciamento pubblicitario solo con il tuo consenso. Puoi rifiutare senza perdere l'accesso al sito. <a href="/paintslive-privacy">Informativa privacy</a>.</p>
+  <button type="button" id="paints-cookie-reject">Rifiuta</button><button type="button" class="accept" id="paints-cookie-accept">Accetta pixel pubblicitario</button>
+</div>
+<footer style="max-width:1100px;margin:0 auto;padding:24px;text-align:center;font-size:13px;color:#cbd5e1"><a href="/paintslive-privacy" style="color:inherit">Privacy</a> · <a href="/paintslive-termini" style="color:inherit">Termini</a> · <a href="/paintslive-disclaimer" style="color:inherit">Disclaimer</a> · <button id="paints-cookie-settings" type="button" style="background:transparent;border:0;color:#a5eaff;text-decoration:underline;cursor:pointer">Preferenze cookie</button></footer>
+<script>
+(function(){
+  const key='paintslive_meta_consent_v1';
+  const banner=document.getElementById('paints-cookie-banner');
+  function loadPixel(){
+    if(window.fbq)return;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','998401136465722');fbq('track','PageView');
+  }
+  const choice=localStorage.getItem(key);
+  if(choice==='yes')loadPixel();
+  else if(choice!=='no')banner.style.display='block';
+  document.getElementById('paints-cookie-accept').addEventListener('click',()=>{localStorage.setItem(key,'yes');banner.style.display='none';loadPixel()});
+  document.getElementById('paints-cookie-reject').addEventListener('click',()=>{localStorage.setItem(key,'no');banner.style.display='none'});
+  document.getElementById('paints-cookie-settings').addEventListener('click',()=>{banner.style.display='block'});
+})();
+</script>
 </body>
 </html>
