@@ -16,7 +16,7 @@ module.exports=async (req,res)=>{
   const price=await stripe.prices.retrieve(priceId,{expand:['product']});
   if(!price.active||price.currency!=='eur'||price.unit_amount!==999||price.product?.metadata?.product_key!=='paintslive'||price.livemode===test)throw Error('PAINTS Live price validation failed');
   const host=(req.headers['x-forwarded-host']||req.headers.host||'').split(',')[0].trim().toLowerCase();
-  const safePreview=/^openclaw-pages-[a-z0-9]+-riccardoromano\\.vercel\\.app$/.test(host);
+  const safePreview=/^openclaw-pages-[a-z0-9]+-riccardoromano\.vercel\.app$/.test(host);
   const origin=(test&&safePreview)?'https://'+host:'https://pages.riccardoromano.biz';
   const session=await stripe.checkout.sessions.create({
    mode:'payment',
