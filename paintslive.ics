@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Riccardo Romano//PAINTS Live//IT
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:paintslive-20261116-1815@riccardoromano.biz
+DTSTAMP:20261104T220000Z
+DTSTART:20261116T171500Z
+DTEND:20261116T184500Z
+SUMMARY:PAINTS Live — Perché l'AI non ti serve (se non hai questo prima)
+DESCRIPTION:Workshop live online di Riccardo Romano. Il link di partecipazione verrà inviato via email prima dell'evento.
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR
