@@ -9,6 +9,7 @@ module.exports=async (req,res)=>{
  const key=test?process.env.STRIPE_TEST_SECRET_KEY:(process.env.STRIPE_VMO_SECRET_KEY||process.env.STRIPE_LIVE_SECRET_KEY);
  const priceId=test?TEST_PRICE_ID:LIVE_PRICE_ID;
  if(!key)return res.status(503).json({error:'Stripe credentials not configured'});
+ if(!test&&(!process.env.STRIPE_VMO_WEBHOOK_SECRET||!process.env.ACTIVECAMPAIGN_API_KEY))return res.status(503).json({error:'Workshop purchase activation not configured'});
  try{
   const stripe=new Stripe(key);
   const account=await stripe.accounts.retrieve();
