@@ -1,5 +1,6 @@
 const Stripe = require('stripe');
-const PRICE_ID='price_1UYC6lEnlub9vBJKkZXO2ONs';
+const LIVE_PRICE_ID='price_1UYC6lEnlub9vBJKkZXO2ONs';
+const TEST_PRICE_ID='price_1UYCQMEnlub9vBJKw7vSXxks';
 const TAG_ID='157';
 export const config={api:{bodyParser:false}};
 async function readRaw(req){const chunks=[];for await(const chunk of req)chunks.push(Buffer.isBuffer(chunk)?chunk:Buffer.from(chunk));return Buffer.concat(chunks);}
@@ -48,8 +49,10 @@ async function sync(session){
 }
 export default async function handler(req,res){
  if(req.method!=='POST')return res.status(405).json({error:'Method not allowed'});
- const secret=process.env.STRIPE_VMO_WEBHOOK_SECRET;
- const key=process.env.STRIPE_VMO_SECRET_KEY||process.env.STRIPE_LIVE_SECRET_KEY;
+ const test=process.env.VERCEL_ENV!=='production'&&process.env.STRIPE_MODE==='test';
+ const secret=test?process.env.STRIPE_VMO_TEST_WEBHOOK_SECRET:process.env.STRIPE_VMO_WEBHOOK_SECRET;
+ const key=test?process.env.STRIPE_TEST_SECRET_KEY:(process.env.STRIPE_VMO_SECRET_KEY||process.env.STRIPE_LIVE_SECRET_KEY);
+ const expectedPrice=test?TEST_PRICE_ID:LIVE_PRICE_ID;
  if(!secret||!key)return res.status(503).json({error:'Webhook not configured'});
  let event;
  try{event=new Stripe(key).webhooks.constructEvent(await readRaw(req),req.headers['stripe-signature'],secret)}
@@ -58,12 +61,14 @@ export default async function handler(req,res){
  const session=event.data.object;
  if(session.payment_status!=='paid')return res.status(200).json({received:true,pending:true});
  if(session.metadata?.product_key!=='paintslive')return res.status(200).json({received:true,ignored:true});
+ if(session.livemode===test)return res.status(400).json({error:'Wrong Stripe mode'});
  try{
   const stripe=new Stripe(key);
   const account=await stripe.accounts.retrieve();
   if(account.id!=='acct_1EcgVDEnlub9vBJK')throw Error('Stripe account is not VideoMakingOnline');
   const items=await stripe.checkout.sessions.listLineItems(session.id,{limit:20});
-  if(!items.data.some(i=>i.price?.id===PRICE_ID))throw Error('Unexpected product price');
+  if(!items.data.some(i=>i.price?.id===expectedPrice))throw Error('Unexpected product price');
+  if(test)return res.status(200).json({received:true,validated:true,activeCampaignSkipped:true});
   const contactId=await sync(session);
   return res.status(200).json({received:true,contactId});
  }catch(e){console.error('PAINTS Live webhook failure:',e.message);return res.status(500).json({error:'Webhook processing failed'});}
