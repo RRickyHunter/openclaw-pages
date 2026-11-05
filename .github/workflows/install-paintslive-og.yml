@@ -1,0 +1,25 @@
+name: Install PAINTS Live Open Graph image
+on:
+  push:
+    branches: [master]
+    paths: [.github/workflows/install-paintslive-og.yml]
+permissions:
+  contents: write
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: true
+      - name: Install original cover image
+        run: |
+          set -euo pipefail
+          mkdir -p wspaintslive/assets
+          curl --fail --location --retry 3 --max-time 45 'https://d2ol7oe51mr4n9.cloudfront.net/user_3KKvHzetnvZlqlW5q075olcK4rU/e61b4c97-215c-4807-b0a3-a71e36377033.jpg' -o wspaintslive/assets/og-paintslive.jpg
+          echo '74445f12ca7a12b626a373d3f22f7184b81c9a6d8f3091dcdb46e3748d5838e2  wspaintslive/assets/og-paintslive.jpg' | sha256sum -c -
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add wspaintslive/assets/og-paintslive.jpg
+          git commit -m 'Add original PAINTS Live Open Graph cover image'
+          git push origin HEAD:master
