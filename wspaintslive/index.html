@@ -782,6 +782,7 @@
     .paints-cookie-banner button.accept{background:#5b21b6;color:#fff}
     .paints-cookie-banner a{color:#a5eaff}
   </style>
+  <script src="/wspaintslive/paintslive-openai.js" defer></script>
 </head>
 <body>
   <main class="wrap">
@@ -1084,8 +1085,8 @@
   const choice=localStorage.getItem(key);
   if(choice==='yes')loadPixel();
   else if(choice!=='no')banner.style.display='block';
-  document.getElementById('paints-cookie-accept').addEventListener('click',()=>{localStorage.setItem(key,'yes');banner.style.display='none';loadPixel()});
-  document.getElementById('paints-cookie-reject').addEventListener('click',()=>{localStorage.setItem(key,'no');banner.style.display='none'});
+  document.getElementById('paints-cookie-accept').addEventListener('click',()=>{localStorage.setItem(key,'yes');banner.style.display='none';loadPixel();window.paintsliveOpenAIConsentChanged?.(true)});
+  document.getElementById('paints-cookie-reject').addEventListener('click',()=>{localStorage.setItem(key,'no');banner.style.display='none';window.paintsliveOpenAIConsentChanged?.(false)});
   document.getElementById('paints-cookie-settings').addEventListener('click',()=>{banner.style.display='block'});
 })();
 </script>
