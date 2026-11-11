@@ -21,8 +21,16 @@
         const first = d.getElementsByTagName(s)[0]; first.parentNode.insertBefore(js, first);
       })(window,document,'script','https://bzrcdn.openai.com/sdk/oaiq.min.js');
     }
+    // Follow the documented order: set initial denial, initialize, then grant
+    // the consent that the visitor has already provided in the site's banner.
+    if (!started) {
+      window.oaiq('consent', false);
+      const options = {pixelId: pixelId};
+      if (new URLSearchParams(location.search).get('oai_debug') === '1') options.debug = true;
+      window.oaiq('init', options);
+      started = true;
+    }
     window.oaiq('consent', true);
-    if (!started) { window.oaiq('init',{pixelId:pixelId}); started = true; }
     return true;
   }
   function pageView() {
